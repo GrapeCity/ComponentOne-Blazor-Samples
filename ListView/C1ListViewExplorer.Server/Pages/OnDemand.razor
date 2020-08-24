@@ -1,0 +1,78 @@
+﻿@page "/ondemand"
+@inject IJSRuntime JsRuntime
+@using System.Threading
+@using C1.Blazor.Core
+@using C1.Blazor.ListView
+@using C1.Blazor.Input
+
+<h1>On Demand</h1>
+
+<C1TextBox @bind-Text="Filter" Placeholder="Type here to search for videos on YouTube" Style="@("width:640px")" />
+
+<C1ListView @ref="list" ItemsSource="@videos" T="YouTubeVideo" ItemStyle="@("height:100px")" ItemTapped="OnItemTapped" LoadingItem="OnLoadingItem" Style="@("max-height:50vh")">
+    <ItemTemplate Context="video">
+        <table>
+            <tr>
+                <td rowspan="2"><img src="@video.Thumbnail" style="width:120px;height:80px" /> </td>
+                <td style="padding-left:4px;vertical-align:bottom">@video.Title</td>
+            </tr>
+            <tr>
+                <td style="padding-left:4px;font-size:small;color:dimgray;vertical-align:top">@video.ChannelTitle</td>
+            </tr>
+        </table>
+    </ItemTemplate>
+</C1ListView>
+
+@code
+{
+    C1ListView<YouTubeVideo> list;
+    string filterValue;
+    YouTubeDataCollection videos = new YouTubeDataCollection();
+    SemaphoreSlim filterSemaphore = new System.Threading.SemaphoreSlim(1);
+
+    public string Filter
+    {
+        get
+        {
+            return filterValue;
+        }
+        set
+        {
+            filterValue = value;
+            OnFilterChanged(value);
+        }
+    }
+    private async void OnFilterChanged(string filter)
+    {
+        Console.WriteLine($"OnTextChange({filterValue})");
+        try
+        {
+            filterValue = filter;
+            await Task.Delay(400);
+            await filterSemaphore.WaitAsync();
+            if (filterValue == filter)
+            {
+                await list.ChangeViewAsync(0);
+                await videos.SearchAsync(filterValue);
+            }
+        }
+        finally
+        {
+            filterSemaphore.Release();
+        }
+    }
+
+    private void OnItemTapped(object sender, ListViewInputEventArgs e)
+    {
+        var video = videos[e.Range.Row] as YouTubeVideo;
+        if (video != null)
+        {
+            JsRuntime.InvokeAsync<bool>("open", video.Link, "_blank");
+        }
+    }
+
+    private void OnLoadingItem(object sender, ListViewItemStyleEventArgs e)
+    {
+        e.ItemStyle["cursor"] = "pointer";
+    }
+}

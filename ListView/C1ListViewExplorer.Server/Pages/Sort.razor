@@ -1,0 +1,36 @@
+﻿@page "/sorting"
+@using C1.Blazor.ListView
+@using C1.DataCollection
+
+<h1>Sorting</h1>
+
+<button class="btn btn-primary" @onclick="SortClicked" style="margin-bottom:4px">@sortButtonMessage</button>
+
+<C1ListView @ref="listView" ItemsSource="@customers" T="Customer" DisplayMemberPath="Name" Style="@("max-height:50vh")"/>
+
+@code
+{
+    SortDirection? sortDirection;
+    string sortButtonMessage;
+    C1ListView<Customer> listView;
+    IEnumerable<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        UpdateSortMessage();
+        customers = Customer.GetCustomerList(100);
+    }
+
+    private async void SortClicked()
+    {
+        sortDirection = sortDirection != SortDirection.Ascending ? SortDirection.Ascending : SortDirection.Descending;
+        UpdateSortMessage();
+        await listView.ChangeViewAsync(0);
+        await listView.DataCollection.SortAsync("Name", sortDirection.Value);
+    }
+
+    private void UpdateSortMessage()
+    {
+        sortButtonMessage = sortDirection != SortDirection.Ascending ? "Sort ascendingly" : "Sort descendingly";
+    }
+}

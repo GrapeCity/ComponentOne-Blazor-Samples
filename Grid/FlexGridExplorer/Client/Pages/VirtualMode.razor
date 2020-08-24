@@ -1,0 +1,20 @@
+﻿@page "/virtualmode"
+@using Resources
+@using C1.Blazor.Grid
+@using C1.Blazor.Input
+@inject HttpClient Http
+
+<h1>@AppResources.VirtualModeTitle</h1>
+<p>@AppResources.VirtualModeDescription</p>
+
+<C1TextBox Class="filled-text-box" @bind-Text="filterText" Placeholder="@AppResources.FilterPlaceholderText" />
+
+<FlexGrid ItemsSource="@(new VirtualModeDataCollection() { Http = Http, PageSize = 50 })" Style="@("max-height:50vh")">
+    <FlexGridBehaviors>
+        <FullTextFilterBehavior FilterString="@filterText" />
+    </FlexGridBehaviors>
+</FlexGrid>
+
+@code {
+    string filterText = "";
+}

@@ -1,0 +1,31 @@
+﻿@page "/columndefinitions"
+@using Resources
+@using System.Collections.ObjectModel;
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using C1.Blazor.Grid
+
+<h1>@AppResources.ColumnDefinitionTitle</h1>
+<p>@AppResources.ColumnDefinitionDescription</p>
+
+<FlexGrid ItemsSource="customers" MinColumnWidth="85" AutoGenerateColumns="false" VerticalScrollBarVisibility="ScrollBarVisibility.Visible" Style="@("max-height:50vh")">
+    <FlexGridColumns>
+        <GridColumn Binding="Active" MinWidth="70" Width="new GridLength(0.5, GridUnitType.Star)" HorizontalAlignment="C1HorizontalAlignment.Center" />
+        <GridColumn Binding="FirstName" MinWidth="110" Width="GridLength.Star" />
+        <GridColumn Binding="LastName" MinWidth="110" Width="GridLength.Star" />
+        <GridColumn Binding="CountryId" Header="Country" MinWidth="110" Width="GridLength.Star" DataMap="countryDataMap" />
+        <GridDateTimeColumn Binding="LastOrderDate" Format="d" Mode="GridDateTimeColumnMode.Date" MinWidth="160" Width="GridLength.Star" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
+        <GridDateTimeColumn Binding="LastOrderDate" SortMemberPath="LastOrderTime" Format="t" Mode="GridDateTimeColumnMode.Time" Header="Last Order Time" MinWidth="150" Width="GridLength.Star" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
+        <GridColumn Binding="OrderTotal" Format="C" MinWidth="110" Width="GridLength.Star" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" InputType="TextBoxType.Number" />
+    </FlexGridColumns>
+</FlexGrid>
+
+@code {
+    ObservableCollection<Customer> customers;
+    GridDataMap countryDataMap = new GridDataMap() { ItemsSource = Customer.GetCountries(), DisplayMemberPath = "Value", SelectedValuePath = "Key" };
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+}

@@ -1,0 +1,40 @@
+﻿@page "/customsort"
+@using Resources
+@using C1.DataCollection
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using C1.Blazor.Grid
+
+<h1>@AppResources.CustomSortIconTitle</h1>
+<p>@AppResources.CustomSortIconDescription</p>
+
+<p>
+    Sort Icon Position <C1ComboBox ItemsSource="sortIconPositions" @bind-SelectedItem="@sortIconPosition"/>
+</p>
+<p>
+    Sort Icon Template <C1ComboBox ItemsSource="sortAscendingIconTemplates" DisplayMemberPath="Key" ValueMemberPath="Value" @bind-SelectedItem="@sortAscendingIconTemplate" />
+</p>
+
+<FlexGrid ItemsSource="source" SortIconPosition="sortIconPosition" SortAscendingIconTemplate="sortAscendingIconTemplate" Style="@("max-height:50vh")"/>
+
+@code {
+    C1DataCollection<Customer> source;
+    GridSortIconPosition[] sortIconPositions = { GridSortIconPosition.Inline, GridSortIconPosition.Left, GridSortIconPosition.Right };
+    GridSortIconPosition sortIconPosition = GridSortIconPosition.Inline;
+    Dictionary<string, RenderFragment<C1Style>> sortAscendingIconTemplates = new Dictionary<string, RenderFragment<C1Style>>()
+        {
+            { nameof(C1IconTemplate.ChevronUp), C1IconTemplate.ChevronUp },
+            { nameof(C1IconTemplate.ArrowUp), C1IconTemplate.ArrowUp },
+            { nameof(C1IconTemplate.TriangleNorth), C1IconTemplate.TriangleNorth },
+            { nameof(C1IconTemplate.TriangleUp), C1IconTemplate.TriangleUp },
+        };
+    RenderFragment<C1Style> sortAscendingIconTemplate = C1IconTemplate.ChevronUp;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var customers = Customer.GetCustomerList(100);
+        var dataCollection = new C1DataCollection<Customer>(customers);
+        await dataCollection.SortAsync(new SortDescription(nameof(Customer.FirstName), SortDirection.Ascending), new SortDescription(nameof(Customer.LastName), SortDirection.Descending));
+        source = dataCollection;
+    }
+}

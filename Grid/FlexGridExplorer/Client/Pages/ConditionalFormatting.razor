@@ -1,0 +1,58 @@
+﻿@page "/conditionalformatting"
+@using Resources
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using C1.Blazor.Grid
+@using System.Collections.ObjectModel;
+
+<h1>@AppResources.ConditionalFormattingTitle</h1>
+<p>@AppResources.ConditionalFormattingDescription</p>
+
+<FlexGrid CellFactory="@cellFactory" AutoGenerateColumns="false" ItemsSource="customers" Style="@("max-height:50vh")">
+    <FlexGridColumns>
+        <GridColumn Binding="FirstName" />
+        <GridColumn Binding="LastName" />
+        <GridColumn Binding="OrderTotal" Format="C2" InputType="TextBoxType.Number" />
+        <GridColumn Binding="OrderCount" Format="N1" InputType="TextBoxType.Number" />
+        <GridColumn Binding="CountryId" Header="Country" />
+        <GridDateTimeColumn Binding="LastOrderDate" Format="d" Mode="GridDateTimeColumnMode.Date" />
+        <GridDateTimeColumn Binding="LastOrderDate" Header="Last Order Time" Format="t" Mode="GridDateTimeColumnMode.Time" />
+    </FlexGridColumns>
+</FlexGrid>
+
+@code {
+    ObservableCollection<Customer> customers;
+    GridCellFactory cellFactory = new MyCellFactory();
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+
+    public class MyCellFactory : GridCellFactory
+    {
+        public override void PrepareCellStyle(GridCellType cellType, GridCellRange range, C1Style style)
+        {
+            base.PrepareCellStyle(cellType, range, style);
+            var orderTotalColumn = Grid.Columns["OrderTotal"];
+            var orderCountColumn = Grid.Columns["OrderCount"];
+            if (cellType == GridCellType.Cell && range.Column == orderTotalColumn.Index)
+            {
+                var cellValue = Grid[range.Row, range.Column] as double?;
+                if (cellValue.HasValue)
+                {
+                    style.Color = cellValue < 5000.0 ? C1Color.Red : C1Color.Green;
+                }
+            }
+            if (cellType == GridCellType.Cell && range.Column == orderCountColumn.Index)
+            {
+                var cellValue = Grid[range.Row, range.Column] as int?;
+                if (cellValue.HasValue)
+                {
+                    style.BackgroundColor = cellValue < 50.0 ? C1Color.FromARGB(0xFF, 0xFF, 0x70, 0x70) : C1Color.FromARGB(0xFF, 0x8E, 0xE9, 0x8E);
+                    style.Color = C1Color.Black;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+﻿@page "/"
+@using C1.Blazor.ListView
+
+<h1>Getting started</h1>
+
+<C1ListView ItemsSource="@customers" T="Customer" DisplayMemberPath="Name" ScrollBarVisibility="C1.Blazor.Core.ScrollBarVisibility.Visible" Style="@("max-height:50vh")"/>
+
+@code
+{
+    IEnumerable<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+}
