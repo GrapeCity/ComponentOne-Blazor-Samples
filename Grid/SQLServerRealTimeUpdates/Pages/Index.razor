@@ -1,0 +1,31 @@
+﻿@page "/"
+@using C1.Blazor.Grid
+@using SQLServerRealTimeUpdates.Data
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@implements IDisposable
+
+<h1>Products</h1>
+<p>Immediate client notification on record table change with Blazor</p>
+
+<FlexGrid ItemsSource="Items" AutoGenerateColumns="false" HeadersVisibility="GridHeadersVisibility.All" NewRowPosition="GridNewRowPosition.Bottom" Style="@("width:100%;")">
+    <FlexGridColumns>
+        <GridColumn Binding="Code"></GridColumn>
+        <GridColumn Binding="Name" Width="GridLength.Star"></GridColumn>
+        <GridColumn Binding="Price"></GridColumn>
+    </FlexGridColumns>
+</FlexGrid>
+
+@code {
+    SQLServerDataCollection<Product> Items;
+
+    protected override void OnInitialized()
+    {
+        var sqlConnection = new Microsoft.Data.SqlClient.SqlConnection(Configuration["ConnectionString"]);
+        Items = new SQLServerDataCollection<Product>(sqlConnection, "Products", new ProductComparer());
+    }
+
+    public void Dispose()
+    {
+        Items.Dispose();
+    }
+}

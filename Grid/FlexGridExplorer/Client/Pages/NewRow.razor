@@ -1,0 +1,17 @@
+﻿@page "/newrow"
+@using Resources
+@using C1.Blazor.Grid
+
+<h1>@AppResources.NewRowTitle</h1>
+<p>@AppResources.NewRowDescription</p>
+
+<FlexGrid ItemsSource="customers" NewRowPosition="GridNewRowPosition.Top" NewRowPlaceholder="@AppResources.NewRowPlaceholder" AllowDragging="GridAllowDragging.Both" HeadersVisibility="GridHeadersVisibility.All" SelectionMode="GridSelectionMode.RowRange" Style="@("max-height:50vh")"/>
+
+@code {
+    CustomCollectionView<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = new CustomCollectionView<Customer>(Customer.GetCustomerList(100));
+    }
+}

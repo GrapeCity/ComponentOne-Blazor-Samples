@@ -1,0 +1,22 @@
+﻿@page "/paging"
+@using Resources
+@using C1.DataCollection
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+@using C1.Blazor.DataPager
+@inject HttpClient Http
+
+<h1>@AppResources.PagingTitle</h1>
+<p>@AppResources.PagingDescription</p>
+
+<FlexGrid ItemsSource="customers" HorizontalScrollBarVisibility="ScrollBarVisibility.Visible" />
+<C1DataPager Source="customers" />
+
+@code {
+    C1PagedDataCollection<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = new C1PagedDataCollection<Customer>(new VirtualModeDataCollection() { Http = Http, PageSize = 10 });
+    }
+}

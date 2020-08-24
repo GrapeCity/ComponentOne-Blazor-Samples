@@ -1,0 +1,37 @@
+@page "/fetchdata"
+@using FlexGridDataVirtualization.Shared
+@using C1.Blazor.Input
+@using C1.Blazor.Grid
+@using C1.DataCollection
+@inject HttpClient Http
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (customers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <FlexGrid ItemsSource="customers" AutoGenerateColumns="false" DefaultColumnWidth="GridLength.Star" ColumnHeaderStyle="@("font-weight:bold")" Style="@("height:500px")">
+        <FlexGridColumns>
+            <GridColumn Binding="FirstName" />
+            <GridColumn Binding="LastName" />
+            <GridColumn Binding="Address" />
+            <GridColumn Binding="PostalCode" />
+        </FlexGridColumns>
+    </FlexGrid>
+}
+
+@code {
+    private VirtualModeCollectionView customers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var collection = new VirtualModeCollectionView() { Http = Http };
+        await collection.LoadAsync(0, 0);
+        customers = collection;
+    }
+}

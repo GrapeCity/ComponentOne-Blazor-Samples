@@ -1,0 +1,28 @@
+﻿@page "/grouping"
+@using Resources
+@using System.Collections.ObjectModel;
+@using C1.DataCollection
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+
+<h1>@AppResources.GroupingTitle</h1>
+<p>@AppResources.GroupingDescription</p>
+
+<FlexGrid ItemsSource="items" AutoGenerateColumns="false" ShowOutlineBar="true" VerticalScrollBarVisibility="ScrollBarVisibility.Visible" Style="@("max-height:50vh")">
+    <FlexGridColumns>
+        <GridColumn Binding="Active" Width="110" HorizontalAlignment="C1HorizontalAlignment.Center" />
+        <GridColumn Binding="Name" Width="GridLength.Star" />
+        <GridColumn Binding="OrderTotal" Format="C" Aggregate="GridAggregate.Sum" HorizontalAlignment="C1HorizontalAlignment.Right" />
+    </FlexGridColumns>
+</FlexGrid>
+
+@code {
+    C1DataCollection<Customer> items;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var dataCollection = new C1DataCollection<Customer>(Customer.GetCustomerList(100));
+        await dataCollection.GroupAsync(c => c.Country);
+        items = dataCollection;
+    }
+}
