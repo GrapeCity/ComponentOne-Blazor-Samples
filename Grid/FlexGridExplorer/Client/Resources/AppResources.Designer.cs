@@ -61,6 +61,15 @@ namespace FlexGridExplorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allow Resizing.
+        /// </summary>
+        public static string AllowResizing {
+            get {
+                return ResourceManager.GetString("AllowResizing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         public static string Apply {
@@ -268,11 +277,11 @@ namespace FlexGridExplorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DetailsVisibiltyMode.
+        ///   Looks up a localized string similar to DetailVisibiltyMode.
         /// </summary>
-        public static string DetailsVisibiltyMode {
+        public static string DetailVisibiltyMode {
             get {
-                return ResourceManager.GetString("DetailsVisibiltyMode", resourceCulture);
+                return ResourceManager.GetString("DetailVisibiltyMode", resourceCulture);
             }
         }
         

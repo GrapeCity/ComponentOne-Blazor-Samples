@@ -8,11 +8,11 @@
 <h1>@AppResources.GroupingTitle</h1>
 <p>@AppResources.GroupingDescription</p>
 
-<FlexGrid ItemsSource="items" AutoGenerateColumns="false" ShowOutlineBar="true" VerticalScrollBarVisibility="ScrollBarVisibility.Visible" Style="@("max-height:50vh")">
+<FlexGrid ItemsSource="items" AutoGenerateColumns="false" ShowOutlineBar="true" Style="@("max-height:50vh")">
     <FlexGridColumns>
         <GridColumn Binding="Active" Width="110" HorizontalAlignment="C1HorizontalAlignment.Center" />
         <GridColumn Binding="Name" Width="GridLength.Star" />
-        <GridColumn Binding="OrderTotal" Format="C" Aggregate="GridAggregate.Sum" HorizontalAlignment="C1HorizontalAlignment.Right" />
+        <GridColumn Binding="OrderTotal" Format="C" Aggregate="GridAggregate.Sum" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
     </FlexGridColumns>
 </FlexGrid>
 

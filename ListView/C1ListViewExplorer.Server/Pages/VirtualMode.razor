@@ -1,7 +1,9 @@
 ﻿@page "/virtualmode"
 @using C1.Blazor.ListView
+@using Resources
 
-<h1>Virtual Mode</h1>
+<h1>@AppResources.VirtualModeTitle</h1>
+<p>@AppResources.VirtualModeDescription</p>
 
 <C1ListView ItemsSource="customers" T="Customer" Style="@("max-height:50vh")">
     <ItemTemplate Context="customer">

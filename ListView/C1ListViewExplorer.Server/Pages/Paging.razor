@@ -2,11 +2,13 @@
 @using C1.Blazor.ListView
 @using C1.DataCollection
 @using C1.Blazor.DataPager
+@using Resources
 
-<h1>Paging</h1>
+<h1>@AppResources.PagingTitle</h1>
+<p>@AppResources.PagingDescription</p>
 
 <C1ListView ItemsSource="customers" T="Customer" DisplayMemberPath="Name" />
-<C1DataPager Source="customers"/>
+<C1DataPager Source="customers" />
 
 @code
 {

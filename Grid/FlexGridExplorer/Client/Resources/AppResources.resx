@@ -286,8 +286,8 @@
   <data name="CustomAppearanceTitle" xml:space="preserve">
     <value>Custom Appearance</value>
   </data>
-  <data name="DetailsVisibiltyMode" xml:space="preserve">
-    <value>DetailsVisibiltyMode</value>
+  <data name="DetailVisibiltyMode" xml:space="preserve">
+    <value>DetailVisibiltyMode</value>
   </data>
   <data name="Friday" xml:space="preserve">
     <value>Friday</value>
@@ -378,5 +378,8 @@
   </data>
   <data name="VirtualModeTitle" xml:space="preserve">
     <value>Virtual Mode</value>
+  </data>
+  <data name="AllowResizing" xml:space="preserve">
+    <value>Allow Resizing</value>
   </data>
 </root>

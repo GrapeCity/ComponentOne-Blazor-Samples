@@ -9,10 +9,10 @@
 <p>@AppResources.CustomSortIconDescription</p>
 
 <p>
-    Sort Icon Position <C1ComboBox ItemsSource="sortIconPositions" @bind-SelectedItem="@sortIconPosition"/>
+    @AppResources.SortIconPosition <C1ComboBox ItemsSource="sortIconPositions" @bind-SelectedItem="@sortIconPosition" />
 </p>
 <p>
-    Sort Icon Template <C1ComboBox ItemsSource="sortAscendingIconTemplates" DisplayMemberPath="Key" ValueMemberPath="Value" @bind-SelectedItem="@sortAscendingIconTemplate" />
+    @AppResources.SortIconTemplate <C1ComboBox ItemsSource="sortAscendingIconTemplates" DisplayMemberPath="Key" ValueMemberPath="Value" @bind-SelectedItem="@sortAscendingIconTemplate" />
 </p>
 
 <FlexGrid ItemsSource="source" SortIconPosition="sortIconPosition" SortAscendingIconTemplate="sortAscendingIconTemplate" Style="@("max-height:50vh")"/>

@@ -14,7 +14,6 @@
         <GridColumn Binding="LastName" />
         <GridColumn Binding="OrderTotal" Format="C2" InputType="TextBoxType.Number" />
         <GridColumn Binding="OrderCount" Format="N1" InputType="TextBoxType.Number" />
-        <GridColumn Binding="CountryId" Header="Country" />
         <GridDateTimeColumn Binding="LastOrderDate" Format="d" Mode="GridDateTimeColumnMode.Date" />
         <GridDateTimeColumn Binding="LastOrderDate" Header="Last Order Time" Format="t" Mode="GridDateTimeColumnMode.Time" />
     </FlexGridColumns>
@@ -31,9 +30,9 @@
 
     public class MyCellFactory : GridCellFactory
     {
-        public override void PrepareCellStyle(GridCellType cellType, GridCellRange range, C1Style style)
+        public override void PrepareCellStyle(GridCellType cellType, GridCellRange range, C1Style style, C1Thickness internalBorders)
         {
-            base.PrepareCellStyle(cellType, range, style);
+            base.PrepareCellStyle(cellType, range, style, internalBorders);
             var orderTotalColumn = Grid.Columns["OrderTotal"];
             var orderCountColumn = Grid.Columns["OrderCount"];
             if (cellType == GridCellType.Cell && range.Column == orderTotalColumn.Index)
