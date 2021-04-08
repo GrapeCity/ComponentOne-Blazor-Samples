@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 
 namespace FlexGridExplorer.Pages
 {
-    public class CustomCollectionView<T> : C1DataCollection<T>
+    public class CustomDataCollection<T> : C1DataCollection<T>
         where T : class
     {
-        public CustomCollectionView(IEnumerable source)
+        public CustomDataCollection(IEnumerable source)
             : base(source)
         {
         }

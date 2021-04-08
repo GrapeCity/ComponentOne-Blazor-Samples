@@ -10,7 +10,7 @@
 <C1TextBox Class="filled-text-box" @bind-Text="filterText" Placeholder="@AppResources.FilterPlaceholderText"/>
 <br />
 <p style="margin:8px 0px">
-    Match Case <C1CheckBox @bind-IsChecked="matchCase" /> Match Whole Word <C1CheckBox @bind-IsChecked="matchWholeWord" />
+    @AppResources.MatchCaseLabel <C1CheckBox @bind-IsChecked="matchCase" /> @AppResources.MatchWholeWordLabel <C1CheckBox @bind-IsChecked="matchWholeWord" />
 </p>
 <FlexGrid ItemsSource="customers" Style="@("max-height:50vh")">
     <FlexGridBehaviors>

@@ -14,7 +14,6 @@ namespace FlexGridExplorer.Pages
     /// <summary>
     /// Simple data class generator.
     /// </summary>
-    /// <remarks>
     public class Customer : INotifyPropertyChanged, IEditableObject
     {
         #region ** fields
@@ -65,7 +64,7 @@ namespace FlexGridExplorer.Pages
         #region ** object model
 
         [Display(AutoGenerateField = false)]
-        [JsonIgnore]
+        //[JsonIgnore]
         public int Id
         {
             get { return _id; }
@@ -366,6 +365,7 @@ namespace FlexGridExplorer.Pages
 
     public class City
     {
+        [Display(AutoGenerateField = false)]
         public bool Selected { get; set; }
         public string Name { get; set; }
         public string Country { get; set; }

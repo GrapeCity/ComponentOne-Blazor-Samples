@@ -20,8 +20,10 @@
           ShowMarquee="true"
           SelectionMode="GridSelectionMode.CellRange"
           GridLinesColor="@("#FFD0D7E5")"
-          HeaderGridLinesColor="@("#FF9EB6CE")"
-          Style="@("max-height:50vh;color:#000")"
+          ColumnHeaderGridLinesColor="@("#FF9EB6CE")"
+          RowHeaderGridLinesColor="@("#FF9EB6CE")"
+          TopLeftHeaderGridLinesColor="@("#FF9EB6CE")"
+          Style="@("max-height:50vh;color:#000;border: 1px solid #9EB6CE")"
           RowStyle="@("background-color:#fff")"
           CursorStyle="@("background-color:rgba(208,215,229,0.2);color:#000")"
           EditorStyle="@("background-color:#fff;color:#000")"
@@ -30,8 +32,9 @@
           RowHeaderSelectedStyle="@("background-color:#FFD58D")"
           SelectionStyle="@("background-color:#EAECF5;color:#000")"
           SelectionAdornerStyle="@("border-color:#fff;color:#fff")"
-          ColumnHeaderStyle="@("background-color:#E4ECF7;color:#000")"
-          ColumnHeaderSelectedStyle="@("background-color:#F8D79B")"/>
+          ColumnHeaderStyle="@("background-image:linear-gradient(to bottom,#F6FAFB,#D5DDEA);color:#000")"
+          ColumnHeaderSelectedStyle="@("background-image:linear-gradient(to bottom,#F8D79B,#F1C263)")"
+          AllowResizing="GridAllowResizing.Both"/>
 
 @code {
     ObservableCollection<Customer> customers;

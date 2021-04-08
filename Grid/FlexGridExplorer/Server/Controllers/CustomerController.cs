@@ -1,5 +1,4 @@
 ﻿using FlexGridExplorer.Pages;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
 using C1.DataCollection;
+using C1.DataCollection.Serialization;
 
 namespace FlexGridExplorer.Server.Controllers
 {
@@ -14,7 +14,7 @@ namespace FlexGridExplorer.Server.Controllers
     [Route("[controller]")]
     public class CustomerController : ControllerBase
     {
-        private static List<Customer> _customers = Enumerable.Range(0, 1000).Select(i => new Customer(i)).ToList();
+        private static List<Customer> _customers = Enumerable.Range(0, 100_000).Select(i => new Customer(i)).ToList();
         private readonly ILogger<CustomerController> logger;
 
         public CustomerController(ILogger<CustomerController> logger)

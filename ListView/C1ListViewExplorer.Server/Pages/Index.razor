@@ -1,9 +1,11 @@
 ﻿@page "/"
 @using C1.Blazor.ListView
+@using Resources
 
-<h1>Getting started</h1>
+<h1>@AppResources.OverviewTitle</h1>
+<p>@AppResources.OverviewDescription</p>
 
-<C1ListView ItemsSource="@customers" T="Customer" DisplayMemberPath="Name" ScrollBarVisibility="C1.Blazor.Core.ScrollBarVisibility.Visible" Style="@("max-height:50vh")"/>
+<C1ListView ItemsSource="@customers" T="Customer" DisplayMemberPath="Name" ScrollBarVisibility="C1.Blazor.Core.ScrollBarVisibility.Visible" Style="@("max-height:50vh")" />
 
 @code
 {

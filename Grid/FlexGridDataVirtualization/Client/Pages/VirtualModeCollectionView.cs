@@ -1,10 +1,12 @@
 ﻿using C1.DataCollection;
+using C1.DataCollection.Serialization;
 using FlexGridDataVirtualization.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,26 +18,26 @@ namespace FlexGridDataVirtualization.Client.Pages
 
         public override bool CanSort(params SortDescription[] sortDescriptions)
         {
-            return sortDescriptions?.Length <= 1;
+            return true;
         }
 
         public override bool CanFilter(FilterExpression filterExpression)
         {
-            return filterExpression is FilterOperationExpression operation && operation.FilterOperation == FilterOperation.Contains;
+            return true;
         }
 
         protected override async Task<Tuple<int, IReadOnlyList<Customer>>> GetPageAsync(int pageIndex, int startingIndex, int count, IReadOnlyList<SortDescription> sortDescriptions = null, FilterExpression filterExpression = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             string url = $"Customer?skip={startingIndex}&take={count}";
-            if (sortDescriptions?.Count == 1)
+            if (sortDescriptions?.Count > 0)
             {
-                url += $"&sort={sortDescriptions[0].SortPath}";
-                if(sortDescriptions[0].Direction == SortDirection.Descending)
-                    url += "&sortDirection=desc";
+                var options = new JsonSerializerOptions { Converters = { new SortDescriptionJsonConverter() } };
+                url += $"&sort={Uri.EscapeUriString(JsonSerializer.Serialize<IReadOnlyList<SortDescription>>(sortDescriptions, options))}";
             }
-            if(filterExpression != null)
+            if (filterExpression != null)
             {
-                url += $"&filter={Uri.EscapeUriString(((FilterOperationExpression)filterExpression).Value as string)}";
+                var options = new JsonSerializerOptions { Converters = { new FilterExpressionJsonConverter() } };
+                url += $"&filter={Uri.EscapeUriString(JsonSerializer.Serialize(filterExpression, options))}";
             }
             var response = await Http.GetFromJsonAsync<CustomerResponse>(new Uri(url, UriKind.Relative), cancellationToken);
             return new Tuple<int, IReadOnlyList<Customer>>(response.TotalCount, response.Customers.ToList());

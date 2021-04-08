@@ -5,6 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Text.Json;
+using C1.DataCollection.Serialization;
+using C1.DataCollection;
 
 namespace FlexGridDataVirtualization.Server.Controllers
 {
@@ -21,12 +24,12 @@ namespace FlexGridDataVirtualization.Server.Controllers
         }
 
         [HttpGet]
-        public CustomerResponse Get()
+        public async Task<CustomerResponse> Get()
         {
-            var skip = 0;
-            var take = 10;
-            int.TryParse(Request.Query?["skip"].FirstOrDefault(), out skip);
-            int.TryParse(Request.Query?["take"].FirstOrDefault(), out take);
+            int skip;
+            int take;
+            if (!int.TryParse(Request.Query?["skip"].FirstOrDefault(), out skip)) skip = 0;
+            if (!int.TryParse(Request.Query?["take"].FirstOrDefault(), out take)) take = 10;
 
             var customers = _customers;
 
@@ -34,26 +37,39 @@ namespace FlexGridDataVirtualization.Server.Controllers
             var filter = Request.Query?["filter"].FirstOrDefault();
 
             if (!string.IsNullOrWhiteSpace(filter))
+
             {
-                var properties = typeof(Customer).GetProperties();
-                customers = customers.Where(c => properties.Any(p => p.GetValue(c) is string str && (str?.Contains(filter, StringComparison.CurrentCultureIgnoreCase) ?? false))).ToList();
+
+                var options = new JsonSerializerOptions
+                {
+                    Converters = { new FilterExpressionJsonConverter() }
+                };
+
+                var filterExpression = JsonSerializer.Deserialize<FilterExpression>(filter, options);
+                var filterCollection = new C1FilterDataCollection<Customer>(customers);
+                await filterCollection.FilterAsync(filterExpression);
+                customers = filterCollection.ToList();
+
             }
             #endregion
 
             #region sorting
             var sort = Request.Query?["sort"].FirstOrDefault();
-            var sortDirection = Request.Query?["sortDirection"].FirstOrDefault()?.ToLower() != "desc";
 
             if (!string.IsNullOrWhiteSpace(sort))
             {
-                var property = typeof(Customer).GetProperty(sort);
-                if (sortDirection)
-                    customers = customers.OrderBy(c => property.GetValue(c)).ToList();
-                else
-                    customers = customers.OrderByDescending(c => property.GetValue(c)).ToList();
+
+                var options = new JsonSerializerOptions
+                {
+                    Converters = { new SortDescriptionJsonConverter() }
+                };
+                var sortDescriptions = JsonSerializer.Deserialize<SortDescription[]>(sort, options);
+                var sortCollection = new C1SortDataCollection<Customer>(customers);
+                await sortCollection.SortAsync(sortDescriptions);
+                customers = sortCollection.ToList();
+
             }
             #endregion
-
             return new CustomerResponse { TotalCount = customers.Count, Customers = customers.Skip(skip).Take(take) };
         }
     }

@@ -297,9 +297,9 @@
     <value>個のセルを選択</value>
     <comment>cell(s) selected</comment>
   </data>
-  <data name="DetailsVisibiltyMode" xml:space="preserve">
+  <data name="DetailVisibiltyMode" xml:space="preserve">
     <value>詳細の表示モード</value>
-    <comment>DetailsVisibiltyMode</comment>
+    <comment>DetailVisibiltyMode</comment>
   </data>
   <data name="Friday" xml:space="preserve">
     <value>金曜日</value>
@@ -414,5 +414,8 @@
   <data name="VirtualModeTitle" xml:space="preserve">
     <value>仮想モード</value>
     <comment>Virtual Mode</comment>
+  </data>
+  <data name="AllowResizing" xml:space="preserve">
+    <value>はじめに</value>
   </data>
 </root>

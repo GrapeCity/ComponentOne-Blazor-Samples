@@ -9,10 +9,10 @@
 <p>@AppResources.OnDemandDescription</p>
 
 <C1TextBox Placeholder="@AppResources.SearchPlaceholderText" @bind-Text="searchText" Style="@("width:500px;margin:8px 0")" />
-<FlexGrid AutoGenerateColumns="false" IsReadOnly="true" MinColumnWidth="85" AllowMerging="GridAllowMerging.ColumnHeaders" CellDoubleTapped="OnCellDoubleTapped" VerticalScrollBarVisibility="ScrollBarVisibility.Visible" Style="@("max-height:50vh")">
+<FlexGrid AutoGenerateColumns="false" IsReadOnly="true" MinColumnWidth="85" AllowMerging="GridAllowMerging.ColumnHeaders" CellDoubleTapped="OnCellDoubleTapped" Style="@("max-height:50vh")">
     <FlexGridColumns>
         <GridImageColumn Binding="Thumbnail" Header="Title" Width="50" />
-        <GridColumn Binding="Title" Header="Title" MinWidth="300" Width="GridLength.Star" />
+        <GridHyperlinkColumn Binding="Link" ContentBinding="Title" Header="Title" TargetName="_blank" MinWidth="300" Width="GridLength.Star" />
         <GridColumn Binding="ChannelTitle" Header="Channel" />
     </FlexGridColumns>
     <FlexGridBehaviors>

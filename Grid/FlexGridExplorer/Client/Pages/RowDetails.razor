@@ -9,23 +9,22 @@
 <p>@AppResources.RowDetailsDescription</p>
 
 <p>
-    @AppResources.DetailsVisibiltyMode <C1ComboBox ItemsSource="detailVisibilityModes" @bind-SelectedItem="detailVisibilityMode" />
+    @AppResources.DetailVisibiltyMode <C1ComboBox ItemsSource="detailVisibilityModes" @bind-SelectedItem="detailVisibilityMode" />
 </p>
 
-<FlexGrid IsReadOnly="true" AutoGenerateColumns="false" HeadersVisibility="GridHeadersVisibility.All" ItemsSource="customers" VerticalScrollBarVisibility="ScrollBarVisibility.Visible" Style="@("max-height:50vh")">
+<FlexGrid IsReadOnly="true" AutoGenerateColumns="false" HeadersVisibility="GridHeadersVisibility.All" ItemsSource="customers" Style="@("max-height:50vh")">
     <FlexGridColumns>
         <GridColumn Binding="Id" Width="80" />
         <GridColumn Binding="FirstName" Width="GridLength.Star" />
         <GridColumn Binding="LastName" Width="GridLength.Star" />
     </FlexGridColumns>
     <FlexGridBehaviors>
-        <FlexGridDetailProvider TItem="Customer" Height="130" DetailVisibilityMode="detailVisibilityMode">
-            <div>
-                <div>Country: @context.Country</div>
-                <div>City: @context.City</div>
-                <div>Address: @context.Address</div>
-                <div>PostalCode: @context.PostalCode</div>
-            </div>
+        <FlexGridDetailProvider TItem="IEnumerable<City>" Height="200" DetailVisibilityMode="detailVisibilityMode" DetailLoading="OnDetailLoading">
+            <FlexGrid ItemsSource="@context" Style="@("height:100%")">
+                <FlexGridBehaviors>
+                    <CheckListBehavior SelectionBinding="Selected" />
+                </FlexGridBehaviors>
+            </FlexGrid>
         </FlexGridDetailProvider>
     </FlexGridBehaviors>
 </FlexGrid>
@@ -38,5 +37,19 @@
     protected override void OnInitialized()
     {
         customers = Customer.GetCustomerList(100);
+    }
+
+    private async void OnDetailLoading(object sender, GridDetailLoadingEventArgs<IEnumerable<City>> e)
+    {
+        var deferral = e.GetDeferral();
+        try
+        {
+            await Task.Delay(1000);//Simulates network traffic.
+            e.DetailRow.DataSource = Customer.GetCities();
+        }
+        finally
+        {
+            deferral.Complete();
+        }
     }
 }

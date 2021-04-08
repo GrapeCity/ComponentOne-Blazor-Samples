@@ -1,10 +1,12 @@
 ﻿@page "/grouping"
 @using C1.Blazor.ListView
 @using C1.DataCollection
+@using Resources
 
-<h1>Grouping</h1>
+<h1>@AppResources.GroupingTitle</h1>
+<p>@AppResources.GroupingDescription</p>
 
-<C1ListView ItemsSource="@collection" T="Customer" DisplayMemberPath="Name" GroupBackgroundColor="@("#F1F1F1")" Style="@("max-height:50vh")"/>
+<C1ListView ItemsSource="@collection" T="Customer" DisplayMemberPath="Name" GroupBackgroundColor="@("#F1F1F1")" Style="@("max-height:50vh")" />
 
 @code
 {

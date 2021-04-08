@@ -4,15 +4,26 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Data.Common;
 using System.Threading;
+using System.Threading.Tasks;
 using TableDependency.SqlClient;
 using TableDependency.SqlClient.Base.Enums;
 using TableDependency.SqlClient.Base.EventArgs;
 
 namespace SQLServerRealTimeUpdates.Data
 {
+    /// <summary>
+    /// Specialized SQLServer collection supporting notifications when the table changes.
+    /// </summary>
     public class SQLServerDataCollection<T> : C1AdoNetCursorDataCollection<T>, IDisposable
         where T : class, new()
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SQLServerDataCollection{T}"/> class.
+        /// </summary>
+        /// <param name="connection">The ado.net connection.</param>
+        /// <param name="tableName">The table name.</param>
+        /// <param name="comparer">Comparer used to determine the identity of the items.</param>
+        /// <param name="fields">The fields that will be queried.</param>
         public SQLServerDataCollection(DbConnection connection, string tableName, IEqualityComparer<T> comparer = null, IEnumerable<string> fields = null)
             : base(connection, tableName, fields)
         {
@@ -23,14 +34,8 @@ namespace SQLServerRealTimeUpdates.Data
             Notifier.Start();
         }
 
-        public void Dispose()
-        {
-            Notifier.OnChanged -= OnTableDependencyChanged;
-            Notifier.Stop();
-        }
-
-        public SynchronizationContext SynchronizationContext { get; }
-        public IEqualityComparer<T> Comparer { get; }
+        private SynchronizationContext SynchronizationContext { get; }
+        private IEqualityComparer<T> Comparer { get; }
         private SqlTableDependency<T> Notifier { get; }
 
 
@@ -72,5 +77,53 @@ namespace SQLServerRealTimeUpdates.Data
                 }
             }), e);
         }
+
+#pragma warning disable CS1591
+
+        public void Dispose()
+        {
+            Notifier.OnChanged -= OnTableDependencyChanged;
+            Notifier.Stop();
+        }
+
+        protected override async Task<int> InsertAsyncOverride(int index, object item)
+        {
+            try
+            {
+                Notifier.Stop();
+                return await base.InsertAsyncOverride(index, item);
+            }
+            finally
+            {
+                Notifier.Start();
+            }
+        }
+
+        protected override async Task RemoveAsyncOverride(int index)
+        {
+            try
+            {
+                Notifier.Stop();
+                await base.RemoveAsyncOverride(index);
+            }
+            finally
+            {
+                Notifier.Start();
+            }
+        }
+
+        protected override async Task ReplaceAsyncOverride(int index, object item)
+        {
+            try
+            {
+                Notifier.Stop();
+                await base.ReplaceAsyncOverride(index, item);
+            }
+            finally
+            {
+                Notifier.Start();
+            }
+        }
+#pragma warning restore CS1591
     }
 }
