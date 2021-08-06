@@ -313,4 +313,61 @@
   <data name="ExportTitle" xml:space="preserve">
     <value>Export</value>
   </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Alert" xml:space="preserve">
+    <value>Alert!</value>
+  </data>
+  <data name="AlertText" xml:space="preserve">
+    <value>Please select row to edit.</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="CustomColumnDescription" xml:space="preserve">
+    <value>This demo shows several custom columns including images, numeric input, date &amp; time and cell text with wrapping.</value>
+  </data>
+  <data name="CustomColumnSummary" xml:space="preserve">
+    <value>Shows how to customize different kinds of columns</value>
+  </data>
+  <data name="CustomColumnTitle" xml:space="preserve">
+    <value>Custom Column</value>
+  </data>
+  <data name="EditItem" xml:space="preserve">
+    <value>Edit item</value>
+  </data>
+  <data name="EditSelectedItem" xml:space="preserve">
+    <value>Edit selected item</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="GroupByDepartmentText" xml:space="preserve">
+    <value>Group by department</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Postal code</value>
+  </data>
+  <data name="ResponsiveSizingDescription" xml:space="preserve">
+    <value>FlexGrid can be responsively sized, meaning the column widths can adjust automatically to nicely fill the entire available space no matter what browser or device is being used. This is known as star-sizing, and you can configure each column to be proportionally sized such as 2*, 3*, and so on.</value>
+  </data>
+  <data name="ResponsiveSizingInstructions" xml:space="preserve">
+    <value>Rotate the device to see star-sizing in action.</value>
+  </data>
+  <data name="ResponsiveSizingSummary" xml:space="preserve">
+    <value>Shows a responsive column layout that uses star sizing.</value>
+  </data>
+  <data name="ResponsiveSizingTitle" xml:space="preserve">
+    <value>Responsive Sizing</value>
+  </data>
+  <data name="PopupEditingDescription" xml:space="preserve">
+    <value>Demo using popup to edit a row.</value>
+  </data>
+  <data name="PopupEditingTitle" xml:space="preserve">
+    <value>Popup Editing</value>
+  </data>
 </root>

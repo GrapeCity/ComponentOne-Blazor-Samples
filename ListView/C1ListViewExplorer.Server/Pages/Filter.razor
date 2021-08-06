@@ -8,7 +8,7 @@
 <h1>@AppResources.FilterTitle</h1>
 <p>@AppResources.FilterDescription</p>
 
-<C1TextBox TextChanged="OnTextChanged" Placeholder="Type here to filter" Style="@("width:500px;margin-bottom:8px")" />
+<C1TextBox TextChanged="OnTextChanged" Placeholder="@AppResources.Filter_TextFilter_Placeholder" Style="@("width:500px;margin-bottom:8px")" />
 <C1ListView @ref="list" ItemsSource="products" T="Customer" DisplayMemberPath="Name" ItemBackgroundColor="@("#5f6fa4")" ItemTextColor="C1Color.White" AlternatingItemBackgroundColor="C1Color.White" AlternatingItemTextColor="@("#5f6fa4")" SeparatorWidth="0" Style="@("max-height:50vh")" />
 @code
 {

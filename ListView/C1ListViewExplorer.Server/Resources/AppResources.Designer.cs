@@ -61,6 +61,24 @@ namespace C1ListViewExplorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type here to filter.
+        /// </summary>
+        public static string Filter_TextFilter_Placeholder {
+            get {
+                return ResourceManager.GetString("Filter_TextFilter_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable asynchronous, full-text filtering on the C1ListView control through the C1DataCollection..
         /// </summary>
         public static string FilterDescription {
@@ -120,6 +138,15 @@ namespace C1ListViewExplorer.Resources {
         public static string GroupingTitle {
             get {
                 return ResourceManager.GetString("GroupingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter here to search for videos on YouTube.
+        /// </summary>
+        public static string OnDemand_TextSearch_PlaceHolder {
+            get {
+                return ResourceManager.GetString("OnDemand_TextSearch_PlaceHolder", resourceCulture);
             }
         }
         

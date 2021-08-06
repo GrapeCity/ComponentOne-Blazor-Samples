@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>詳しくは</value>
+    <comment>About</comment>
+  </data>
   <data name="FilterDescription" xml:space="preserve">
     <value>C1DataCollection を介して、C1ListView コントロールで非同期のフルテキストフィルタリングを有効にします。</value>
     <comment>Enable asynchronous, full-text filtering on the C1ListView control through the C1DataCollection.</comment>
@@ -128,6 +132,10 @@
   <data name="FilterTitle" xml:space="preserve">
     <value>フィルタ</value>
     <comment>Filter</comment>
+  </data>
+  <data name="Filter_TextFilter_Placeholder" xml:space="preserve">
+    <value>ここに入力してフィルタリングします</value>
+    <comment>Type here to filter</comment>
   </data>
   <data name="GettingStarted" xml:space="preserve">
     <value>はじめに</value>
@@ -157,8 +165,12 @@
     <value>オンデマンド</value>
     <comment>On Demand</comment>
   </data>
+  <data name="OnDemand_TextSearch_PlaceHolder" xml:space="preserve">
+    <value>YouTubeで動画を検索するには、ここに入力してください</value>
+    <comment>Type here to search for videos on YouTube</comment>
+  </data>
   <data name="OverviewDescription" xml:space="preserve">
-    <value>C1ListView for Blazor は、C1DataCollection コンポーネントの支援により、非同期ソート、フィルタリング、グループ化、および基本リスト内のアイテムのオンデマンドロードを提供します。</value>
+    <value>BlazorのC1ListView は、C1DataCollection コンポーネントの支援により、非同期ソート、フィルタリング、グループ化、および基本リスト内のアイテムのオンデマンドロードを提供します。</value>
     <comment>The C1ListView control for Blazor provides asynchronous sorting, filtering, grouping and on-demand loading of items in a basic list by the help of the C1DataCollection component.</comment>
   </data>
   <data name="OverviewTitle" xml:space="preserve">

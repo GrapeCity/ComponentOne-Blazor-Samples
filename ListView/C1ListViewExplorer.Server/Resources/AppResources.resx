@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
   <data name="FilterDescription" xml:space="preserve">
     <value>Enable asynchronous, full-text filtering on the C1ListView control through the C1DataCollection.</value>
   </data>
@@ -125,6 +128,9 @@
   </data>
   <data name="FilterTitle" xml:space="preserve">
     <value>Filter</value>
+  </data>
+  <data name="Filter_TextFilter_Placeholder" xml:space="preserve">
+    <value>Type here to filter</value>
   </data>
   <data name="GettingStarted" xml:space="preserve">
     <value>Getting Started</value>
@@ -146,6 +152,9 @@
   </data>
   <data name="OnDemandTitle" xml:space="preserve">
     <value>On Demand</value>
+  </data>
+  <data name="OnDemand_TextSearch_PlaceHolder" xml:space="preserve">
+    <value>Enter here to search for videos on YouTube</value>
   </data>
   <data name="OverviewDescription" xml:space="preserve">
     <value>The C1ListView control for Blazor provides asynchronous sorting, filtering, grouping and on-demand loading of items in a basic list by the help of the C1DataCollection component.</value>

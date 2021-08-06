@@ -219,7 +219,7 @@
     <value>列のデータをフィルタリングして強調表示</value>
   </data>
   <data name="FullTextFilterTitle" xml:space="preserve">
-    <value>全テキストフィルタ</value>
+    <value>Full-Textフィルター</value>
   </data>
   <data name="GettingStartedDescription" xml:space="preserve">
     <value>FlexGrid でデータを表示、編集、集計</value>
@@ -262,11 +262,11 @@
     <value>YouTube で検索するビデオのテキストを入力</value>
   </data>
   <data name="SelectionModesDescription" xml:space="preserve">
-    <value>各種セル選択モードを表示</value>
+    <value>さまざまなセルSelection Modesを表示します。</value>
     <comment>Shows the various cell selection modes.</comment>
   </data>
   <data name="SelectionModesTitle" xml:space="preserve">
-    <value>選択モード</value>
+    <value>Selection Modes</value>
   </data>
   <data name="SelectRowMessage" xml:space="preserve">
     <value>編集する行を選択してください。対象の行をダブルタップしても編集できます。</value>
@@ -298,8 +298,8 @@
     <comment>cell(s) selected</comment>
   </data>
   <data name="DetailVisibiltyMode" xml:space="preserve">
-    <value>詳細の表示モード</value>
-    <comment>DetailVisibiltyMode</comment>
+    <value>DetailVisibilityMode</value>
+    <comment>DetailVisibilityMode</comment>
   </data>
   <data name="Friday" xml:space="preserve">
     <value>金曜日</value>
@@ -359,10 +359,10 @@
     <value>クリックして新しい行を追加する</value>
   </data>
   <data name="CustomSortIconTitle" xml:space="preserve">
-    <value>カスタムソートアイコン</value>
+    <value>Custom Sortアイコン</value>
   </data>
   <data name="CustomSortIconDescription" xml:space="preserve">
-    <value>ヘッダー列にカスタムソートアイコンを表示</value>
+    <value>ヘッダー列にCustom Sortアイコンを表示</value>
     <comment>Show how to custom sort icon in header column.</comment>
   </data>
   <data name="CheckListDescription" xml:space="preserve">
@@ -372,10 +372,10 @@
     <value>チェックリスト</value>
   </data>
   <data name="SortIconPosition" xml:space="preserve">
-    <value>ソートアイコンの位置</value>
+    <value>SortIconPosition</value>
   </data>
   <data name="SortIconTemplate" xml:space="preserve">
-    <value>ソートアイコンのテンプレート</value>
+    <value>SortAscendingIconTemplate</value>
   </data>
   <data name="LiveUpdatesDescription" xml:space="preserve">
     <value>グリッド内の変更をアニメーションで表す方法を示します。</value>
@@ -416,6 +416,83 @@
     <comment>Virtual Mode</comment>
   </data>
   <data name="AllowResizing" xml:space="preserve">
-    <value>はじめに</value>
+    <value>Allow Resizing</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>詳しくは</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>住所</value>
+    <comment>Address</comment>
+  </data>
+  <data name="Alert" xml:space="preserve">
+    <value>警告！</value>
+    <comment>Alert!</comment>
+  </data>
+  <data name="AlertText" xml:space="preserve">
+    <value>編集する行を選択してください。</value>
+    <comment>Please select row to edit.</comment>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>市</value>
+    <comment>City</comment>
+  </data>
+  <data name="CustomColumnDescription" xml:space="preserve">
+    <value>このデモでは、画像、数値入力、日付と時刻、折り返し付きのセルテキストなど、いくつかのカスタム列を示します。</value>
+    <comment>This demo shows several custom columns including images, numeric input, date &amp; time and cell text with wrapping.</comment>
+  </data>
+  <data name="CustomColumnSummary" xml:space="preserve">
+    <value>さまざまな種類の列をカスタマイズする方法</value>
+    <comment>Shows how to customize different kinds of columns</comment>
+  </data>
+  <data name="CustomColumnTitle" xml:space="preserve">
+    <value>カスタム列</value>
+    <comment>Custom Column</comment>
+  </data>
+  <data name="EditItem" xml:space="preserve">
+    <value>アイテムを編集する</value>
+    <comment>Edit item</comment>
+  </data>
+  <data name="EditSelectedItem" xml:space="preserve">
+    <value>選択したアイテムを編集する</value>
+    <comment>Edit selected item</comment>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>ファーストネーム</value>
+    <comment>First name</comment>
+  </data>
+  <data name="GroupByDepartmentText" xml:space="preserve">
+    <value>部署でグループ化</value>
+    <comment>Group by department</comment>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>苗字</value>
+    <comment>Last name</comment>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>郵便番号</value>
+    <comment>Postal code</comment>
+  </data>
+  <data name="ResponsiveSizingDescription" xml:space="preserve">
+    <value>FlexGrid はレスポンシブにサイズ変更できます。つまり、使用しているブラウザやデバイスに関係なく、列幅を自動的に調整して利用可能なスペース全体をうまく埋めることができます。これはスターサイズ設定と呼ばれ、各列を 2 *、3 * などの比例したサイズに設定できます。</value>
+    <comment>FlexGrid can be responsively sized, meaning the column widths can adjust automatically to nicely fill the entire available space no matter what browser or device is being used. This is known as star-sizing, and you can configure each column to be proportionally sized such as 2*, 3*, and so on.</comment>
+  </data>
+  <data name="ResponsiveSizingInstructions" xml:space="preserve">
+    <value>デバイスの回転でスターサイズ機能の動作を確認</value>
+    <comment>Rotate the device to see star-sizing in action.</comment>
+  </data>
+  <data name="ResponsiveSizingSummary" xml:space="preserve">
+    <value>スターサイズ変更を使用するレスポンシブ列レイアウト</value>
+    <comment>Shows a responsive column layout that uses star sizing.</comment>
+  </data>
+  <data name="ResponsiveSizingTitle" xml:space="preserve">
+    <value>スターサイズ設定</value>
+    <comment>Responsive Sizing</comment>
+  </data>
+  <data name="PopupEditingDescription" xml:space="preserve">
+    <value>Demo using popup to edit a row.</value>
+  </data>
+  <data name="PopupEditingTitle" xml:space="preserve">
+    <value>Popup Editing</value>
   </data>
 </root>

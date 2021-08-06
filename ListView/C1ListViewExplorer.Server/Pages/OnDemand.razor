@@ -9,7 +9,7 @@
 <h1>@AppResources.OnDemandTitle</h1>
 <p>@AppResources.OverviewDescription</p>
 
-<C1TextBox @bind-Text="Filter" Placeholder="Type here to search for videos on YouTube" Style="@("width:640px")" />
+<C1TextBox @bind-Text="Filter" Placeholder="@AppResources.OnDemand_TextSearch_PlaceHolder" Style="@("width:640px")" />
 
 <C1ListView @ref="list" ItemsSource="@videos" T="YouTubeVideo" ItemStyle="@("height:100px")" ItemTapped="OnItemTapped" LoadingItem="OnLoadingItem" Style="@("max-height:50vh")">
     <ItemTemplate Context="video">

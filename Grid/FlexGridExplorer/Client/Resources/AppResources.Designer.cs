@@ -61,6 +61,42 @@ namespace FlexGridExplorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alert!.
+        /// </summary>
+        public static string Alert {
+            get {
+                return ResourceManager.GetString("Alert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select row to edit..
+        /// </summary>
+        public static string AlertText {
+            get {
+                return ResourceManager.GetString("AlertText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Allow Resizing.
         /// </summary>
         public static string AllowResizing {
@@ -147,6 +183,15 @@ namespace FlexGridExplorer.Resources {
         public static string CheckListTitle {
             get {
                 return ResourceManager.GetString("CheckListTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        public static string City {
+            get {
+                return ResourceManager.GetString("City", resourceCulture);
             }
         }
         
@@ -259,6 +304,33 @@ namespace FlexGridExplorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This demo shows several custom columns including images, numeric input, date &amp; time and cell text with wrapping..
+        /// </summary>
+        public static string CustomColumnDescription {
+            get {
+                return ResourceManager.GetString("CustomColumnDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shows how to customize different kinds of columns.
+        /// </summary>
+        public static string CustomColumnSummary {
+            get {
+                return ResourceManager.GetString("CustomColumnSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom Column.
+        /// </summary>
+        public static string CustomColumnTitle {
+            get {
+                return ResourceManager.GetString("CustomColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show how to customize the sorting icon in header columns..
         /// </summary>
         public static string CustomSortIconDescription {
@@ -277,7 +349,7 @@ namespace FlexGridExplorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DetailVisibiltyMode.
+        ///   Looks up a localized string similar to DetailVisibilityMode.
         /// </summary>
         public static string DetailVisibiltyMode {
             get {
@@ -358,11 +430,29 @@ namespace FlexGridExplorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit item.
+        /// </summary>
+        public static string EditItem {
+            get {
+                return ResourceManager.GetString("EditItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Row.
         /// </summary>
         public static string EditRow {
             get {
                 return ResourceManager.GetString("EditRow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit selected item.
+        /// </summary>
+        public static string EditSelectedItem {
+            get {
+                return ResourceManager.GetString("EditSelectedItem", resourceCulture);
             }
         }
         
@@ -430,6 +520,15 @@ namespace FlexGridExplorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First name.
+        /// </summary>
+        public static string FirstName {
+            get {
+                return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Friday.
         /// </summary>
         public static string Friday {
@@ -475,6 +574,15 @@ namespace FlexGridExplorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Group by department.
+        /// </summary>
+        public static string GroupByDepartmentText {
+            get {
+                return ResourceManager.GetString("GroupByDepartmentText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Groups and aggregates a collection of data..
         /// </summary>
         public static string GroupingDescription {
@@ -489,6 +597,15 @@ namespace FlexGridExplorer.Resources {
         public static string GroupingTitle {
             get {
                 return ResourceManager.GetString("GroupingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name.
+        /// </summary>
+        public static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
             }
         }
         
@@ -610,11 +727,74 @@ namespace FlexGridExplorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demo using popup to edit a row..
+        /// </summary>
+        public static string PopupEditingDescription {
+            get {
+                return ResourceManager.GetString("PopupEditingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Popup Editing.
+        /// </summary>
+        public static string PopupEditingTitle {
+            get {
+                return ResourceManager.GetString("PopupEditingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postal code.
+        /// </summary>
+        public static string PostalCode {
+            get {
+                return ResourceManager.GetString("PostalCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove.
         /// </summary>
         public static string Remove {
             get {
                 return ResourceManager.GetString("Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FlexGrid can be responsively sized, meaning the column widths can adjust automatically to nicely fill the entire available space no matter what browser or device is being used. This is known as star-sizing, and you can configure each column to be proportionally sized such as 2*, 3*, and so on..
+        /// </summary>
+        public static string ResponsiveSizingDescription {
+            get {
+                return ResourceManager.GetString("ResponsiveSizingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rotate the device to see star-sizing in action..
+        /// </summary>
+        public static string ResponsiveSizingInstructions {
+            get {
+                return ResourceManager.GetString("ResponsiveSizingInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shows a responsive column layout that uses star sizing..
+        /// </summary>
+        public static string ResponsiveSizingSummary {
+            get {
+                return ResourceManager.GetString("ResponsiveSizingSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Responsive Sizing.
+        /// </summary>
+        public static string ResponsiveSizingTitle {
+            get {
+                return ResourceManager.GetString("ResponsiveSizingTitle", resourceCulture);
             }
         }
         

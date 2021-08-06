@@ -4,10 +4,10 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>3.1.20211.65</Version>
+      <Version>3.1.20212.106</Version>
     </PackageReference>
     <PackageReference Include="C1.DataCollection.AdoNet">
-      <Version>1.0.20211.34</Version>
+      <Version>1.0.20212.57</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.2" />
     <PackageReference Include="SqlTableDependency" Version="8.5.8" />
