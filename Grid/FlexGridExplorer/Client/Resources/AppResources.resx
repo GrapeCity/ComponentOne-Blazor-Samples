@@ -436,6 +436,9 @@
   <data name="ResponsiveSizingTitle" xml:space="preserve">
     <value>Responsive Sizing</value>
   </data>
+  <data name="ShowSort" xml:space="preserve">
+    <value>Show sort icons</value>
+  </data>
   <data name="PopupEditingDescription" xml:space="preserve">
     <value>Demo using popup to edit a row.</value>
   </data>

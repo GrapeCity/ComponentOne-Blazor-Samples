@@ -880,6 +880,15 @@ namespace FlexGridExplorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show sort icons.
+        /// </summary>
+        public static string ShowSort {
+            get {
+                return ResourceManager.GetString("ShowSort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sort.
         /// </summary>
         public static string Sort {

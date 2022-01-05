@@ -1,11 +1,12 @@
 ﻿@page "/"
 @using C1.Blazor.Grid
 @using SQLServerRealTimeUpdates.Data
+@using Resources
 @inject Microsoft.Extensions.Configuration.IConfiguration Configuration
 @implements IDisposable
 
-<h1>Products</h1>
-<p>Immediate client notification on record table change with Blazor</p>
+<h1>@AppResource.Products</h1>
+<p>@AppResource.IndexDes</p>
 
 <FlexGrid ItemsSource="Items" AutoGenerateColumns="false" HeadersVisibility="GridHeadersVisibility.All" NewRowPosition="GridNewRowPosition.Bottom" Style="@("width:100%;")">
     <FlexGridColumns>

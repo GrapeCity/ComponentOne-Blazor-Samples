@@ -3,14 +3,20 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove=".gclicx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include=".gclicx" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>3.1.20212.106</Version>
+      <Version>3.1.20213.154</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>3.1.20212.106</Version>
+      <Version>3.1.20213.154</Version>
     </PackageReference>
     <PackageReference Include="C1.DataCollection.Serialization">
-      <Version>1.0.20212.57</Version>
+      <Version>1.0.20213.61</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.4" PrivateAssets="all" />
@@ -18,5 +24,18 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\FlexGridDataVirtualization.Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\AppResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppResource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\AppResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

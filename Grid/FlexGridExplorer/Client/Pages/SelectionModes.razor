@@ -10,11 +10,12 @@
 <p>
     @AppResources.SelectionModesTitle <C1ComboBox ItemsSource="selectionModes" @bind-SelectedItem="selectionMode" Class="filled-drop-down" />
     @AppResources.AllowResizing <C1ComboBox ItemsSource="allowResizingModes" @bind-SelectedItem="allowResizing" Class="filled-drop-down" />
+    Allow Dragging <C1ComboBox ItemsSource="allowDraggingModes" @bind-SelectedItem="allowDragging" Class="filled-drop-down" />
 </p>
 
 @selectedCells
 
-<FlexGrid ItemsSource="@customers" StyleKind="@GridStyle.Classic" SelectionChanged="OnSelectionChanged" SelectionMode="selectionMode" AllowResizing="allowResizing" Style="@("max-height:50vh")" />
+<FlexGrid ItemsSource="@customers" StyleKind="@GridStyle.Classic" SelectionChanged="OnSelectionChanged" SelectionMode="selectionMode" AllowResizing="allowResizing" AllowDragging="allowDragging" Style="@("max-height:50vh")" />
 
 @code {
     ObservableCollection<Customer> customers;
@@ -23,6 +24,8 @@
     GridSelectionMode[] selectionModes = new GridSelectionMode[] { GridSelectionMode.None, GridSelectionMode.Cell, GridSelectionMode.CellRange, GridSelectionMode.Row, GridSelectionMode.RowRange, GridSelectionMode.Column, GridSelectionMode.ColumnRange };
     GridAllowResizing allowResizing = GridAllowResizing.Columns;
     GridAllowResizing[] allowResizingModes = new GridAllowResizing[] { GridAllowResizing.None, GridAllowResizing.Columns, GridAllowResizing.Rows, GridAllowResizing.Both, };
+    GridAllowDragging allowDragging = GridAllowDragging.Columns;
+    GridAllowDragging[] allowDraggingModes = new GridAllowDragging[] { GridAllowDragging.None, GridAllowDragging.Columns, GridAllowDragging.Rows, GridAllowDragging.Both, };
 
     protected override void OnInitialized()
     {

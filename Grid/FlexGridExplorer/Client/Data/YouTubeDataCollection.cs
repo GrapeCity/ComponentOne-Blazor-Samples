@@ -84,7 +84,7 @@ namespace FlexGridExplorer.Pages
                 {
                     var video = new YouTubeVideo()
                     {
-                        Title = item.Snippet.Title,
+                        Title = System.Net.WebUtility.HtmlDecode(item.Snippet.Title),
                         Description = item.Snippet.Description,
                         Thumbnail = item.Snippet.Thumbnails.Default.Url,
                         Link = "http://www.youtube.com/watch?v=" + item.Id.VideoId,

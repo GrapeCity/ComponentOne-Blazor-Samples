@@ -4,14 +4,15 @@
 @using C1.Blazor.Grid
 @using C1.DataCollection
 @inject HttpClient Http
+@using Resources
 
-<h1>Customers</h1>
+<h1>@Resources.AppResource.Customers</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<p>@Resources.AppResource.FetchDataDes</p>
 
 @if (customers == null)
 {
-    <p><em>Loading...</em></p>
+    <p><em>@Resources.AppResource.Loading</em></p>
 }
 else
 {

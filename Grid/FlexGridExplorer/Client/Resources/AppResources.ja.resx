@@ -489,10 +489,16 @@
     <value>スターサイズ設定</value>
     <comment>Responsive Sizing</comment>
   </data>
+  <data name="ShowSort" xml:space="preserve">
+    <value>並べ替えアイコンの表示</value>
+    <comment>Show sort icons</comment>
+  </data>
   <data name="PopupEditingDescription" xml:space="preserve">
-    <value>Demo using popup to edit a row.</value>
+    <value>ポップアップを使用して行を編集するデモ</value>
+    <comment>Demo using popup to edit a row.</comment>
   </data>
   <data name="PopupEditingTitle" xml:space="preserve">
-    <value>Popup Editing</value>
+    <value>ポップアップ編集</value>
+    <comment>Popup Editing</comment>
   </data>
 </root>

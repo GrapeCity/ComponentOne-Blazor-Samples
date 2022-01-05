@@ -21,11 +21,11 @@
           SelectionChanged="OnSelectionChanged"
           ColumnHeaderStyle="@("background-color:#eee;color:black;font-weight:bold;")">
   <FlexGridColumns>
-    <GridColumn Binding="FirstName" Header="@AppResources.FirstName" />
-    <GridColumn Binding="LastName" Header="@AppResources.LastName" />
-    <GridColumn Binding="Address" Header="@AppResources.Address" />
-    <GridColumn Binding="City" Header="@AppResources.City" />
-    <GridColumn Binding="PostalCode" Header="@AppResources.PostalCode" />
+    <GridColumn Binding="FirstName" Header="First Name" />
+    <GridColumn Binding="LastName" Header="Last Name" />
+    <GridColumn Binding="Address" Header="Address" />
+    <GridColumn Binding="City" Header="City" />
+    <GridColumn Binding="PostalCode" Header="Postal Code" />
     <GridColumn Binding="Email" Header="Email" />
   </FlexGridColumns>
 </FlexGrid>
@@ -46,23 +46,23 @@
   <PopupContent>
     <table class="table">
       <tr>
-        <th>@AppResources.FirstName</th>
+          <th>@AppResources.FirstName</th>
         <td><input class="form-control" @bind-value="firstName" /></td>
       </tr>
       <tr>
-        <th>@AppResources.LastName</th>
+          <th>@AppResources.LastName</th>
         <td><input class="form-control" @bind-value="lastName" /></td>
       </tr>
       <tr>
-        <th>@AppResources.Address</th>
+          <th>@AppResources.Address</th>
         <td><input class="form-control" @bind-value="address" /></td>
       </tr>
       <tr>
-        <th>@AppResources.City</th>
+          <th>@AppResources.City</th>
         <td><input class="form-control" @bind-value="city" /></td>
       </tr>
       <tr>
-        <th>@AppResources.PostalCode</th>
+          <th>@AppResources.PostalCode</th>
         <td><input class="form-control" @bind-value="postalCode" /></td>
       </tr>
       <tr>

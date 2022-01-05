@@ -1,11 +1,12 @@
 ﻿@page "/fetchdata"
 
 @using SQLServerRealTimeUpdates.Data
+@using Resources
 @inject WeatherForecastService ForecastService
 
-<h1>Weather forecast</h1>
+<h1>@AppResource.WeatherForecast</h1>
 
-<p>This component demonstrates fetching data from a service.</p>
+<p>@AppResource.FetchDataDes</p>
 
 @if (forecasts == null)
 {
