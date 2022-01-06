@@ -1,0 +1,29 @@
+﻿@page "/ComboBox/Editable"
+@using C1.Blazor.Input
+@using Localization
+
+<C1ComboBox ItemsSource="countries" IsEditable="isEditable ?? false" T="Country" Style="@("margin:8px 0; width:180px; height:32px;")" Placeholder="@ComboBoxRes.SelectCountryPlaceholder">
+    <ItemTemplate>
+        <img src="@context.FlagUrl" style="height:32px;width:32px" />
+        <span style="margin-left:8px;white-space:nowrap;word-break:break-all">@context.Name</span>
+    </ItemTemplate>
+</C1ComboBox>
+
+<_Sections>
+    <Settings>
+        Is Editable <C1CheckBox @bind-IsChecked="@isEditable"/>
+    </Settings>
+    <Title>@ComboBoxRes.EditableTitle</Title>
+    <Summary>@ComboBoxRes.EditableSummary</Summary>
+    <Description>@ComboBoxRes.EditableDescription</Description>
+</_Sections>
+
+@code{
+    IEnumerable<Country> countries;
+    bool? isEditable = true;
+
+    protected override void OnInitialized()
+    {
+        countries = Country.GetCountries();
+    }
+}

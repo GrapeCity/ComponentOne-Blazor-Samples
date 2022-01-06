@@ -1,0 +1,56 @@
+﻿@page "/Calendar/IconTemplate"
+@using C1.Blazor.Calendar
+@using C1.Blazor.Core
+@using System;
+@using BlazorExplorer.Localization
+
+
+<C1Calendar ExpandViewIconTemplate="@C1.Blazor.Core.C1IconTemplate.ChevronDown"
+            TodayIconTemplate="@C1.Blazor.Core.C1IconTemplate.Asterisk"
+            NextIconTemplate="@C1.Blazor.Core.C1IconTemplate.ArrowUp"
+            PrevIconTemplate="@C1.Blazor.Core.C1IconTemplate.ArrowDown">
+</C1Calendar>
+
+
+<C1Calendar CollapseViewIconTemplate="@C1.Blazor.Core.C1IconTemplate.ChevronUp"
+            TodayIconTemplate="@C1.Blazor.Core.C1IconTemplate.Asterisk"
+            NextIconTemplate="@C1.Blazor.Core.C1IconTemplate.ArrowUp"
+            PrevIconTemplate="@C1.Blazor.Core.C1IconTemplate.ArrowDown">
+</C1Calendar>
+
+<C1Calendar ExpandViewIconTemplate="@C1.Blazor.Core.C1IconTemplate.ChevronDown"
+            CollapseViewIconTemplate="@C1.Blazor.Core.C1IconTemplate.ChevronUp"
+            TodayIconTemplate="@C1.Blazor.Core.C1IconTemplate.Asterisk"
+            NextIconTemplate="@C1.Blazor.Core.C1IconTemplate.ArrowUp"
+            PrevIconTemplate="@C1.Blazor.Core.C1IconTemplate.ArrowDown">
+</C1Calendar>
+<C1Calendar>
+    <NextIconTemplate>
+        <span class="navigation">↷</span>
+    </NextIconTemplate>
+    <PrevIconTemplate>
+        <span class="navigation">↶</span>
+    </PrevIconTemplate>
+    <TodayIconTemplate>
+        <span class="navigation">↹</span>
+    </TodayIconTemplate>
+    <CollapseViewIconTemplate>
+        <span class="navigation">↡</span>
+    </CollapseViewIconTemplate>
+
+</C1Calendar>
+
+<_Sections>
+    <Title>@CalendarRes.IconTemplateTitle</Title>
+    <Summary>@CalendarRes.OverviewSummary</Summary>
+    <Description>@CalendarRes.IconTemplateDescription</Description>
+</_Sections>
+
+<style>
+    .c1-calendar { 
+        margin: 20px;  
+        -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+    }
+</style>

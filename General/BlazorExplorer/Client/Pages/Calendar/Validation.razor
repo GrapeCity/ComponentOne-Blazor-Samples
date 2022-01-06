@@ -1,0 +1,80 @@
+﻿@page "/Calendar/Validation"
+@using C1.Blazor.Calendar
+@using C1.Blazor.Core
+@using System;
+@using BlazorExplorer.Localization
+
+<style>
+
+    .c1-calendar {
+        -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+        margin: 20px;
+    }
+
+    .custom-slot {
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+
+    .non-available-slot {
+        color: white;
+        background: red;
+        opacity: 0.3;
+    }
+
+    .adjacent-slot {
+        color: red;
+        opacity: 0.5;
+    }
+
+</style>
+
+<h5>
+    @CalendarRes.ValidationHeader
+</h5>
+
+
+<C1Calendar HeaderMonthFormat="MMMM"  ItemValidator="ItemValidator">
+
+  <DaySlotTemplate>
+
+      @if (!ItemValidator((DateTime) context.Date))
+      {
+          <div class="custom-slot non-available-slot">@context.Date.ToString("dd")</div>
+      }
+      else if (context.IsAdjacent)
+      {
+          <div class="custom-slot adjacent-slot">@context.Date.ToString("dd")</div>
+      }
+      else
+      {
+          @context.Date.ToString("dd")
+      }
+
+
+
+    </DaySlotTemplate>
+
+</C1Calendar>
+
+@code
+{
+    bool ItemValidator(DateTime date)
+    {
+        return date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
+    }
+
+}
+
+
+<_Sections>
+    <Title>@CalendarRes.ValidationTitle</Title>
+    <Summary>@CalendarRes.OverviewSummary</Summary>
+    <Description>@CalendarRes.ValidationDescription</Description>
+</_Sections>

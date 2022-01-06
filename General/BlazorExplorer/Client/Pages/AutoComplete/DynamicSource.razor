@@ -1,0 +1,45 @@
+﻿@page "/AutoComplete/DynamicSource"
+@using C1.DataCollection
+@using C1.Blazor.Input
+@using Localization
+
+<C1AutoComplete ItemsSource="_collection" T="YouTubeVideo" DisplayMemberPath="Title" Placeholder="@FlexGridRes.SearchPlaceholderText" Delay="@TimeSpan.FromSeconds(1)" Style="@("margin:8px 0;width:400px")" ListItemStyle="@("height:61px")" DropDownStyle="@("max-width:50vw;max-height:60vh")" Filtering="OnFiltering" ShowButton="false">
+    <ItemTemplate>
+        <img src="@context.Thumbnail" style="height:45px;width:60px" />
+        <span style="margin-left:8px;white-space:nowrap;word-break:break-all">@context.Title</span>
+    </ItemTemplate>
+</C1AutoComplete>
+
+<_Sections>
+    <Title>@AutoCompleteRes.DynamicSourceTitle</Title>
+    <Summary>@AutoCompleteRes.DynamicSourceSummary</Summary>
+    <Description>@AutoCompleteRes.DynamicSourceDescription</Description>
+</_Sections>
+
+@code{
+    YouTubeDataCollection _youTubeFeed;
+    C1GroupDataCollection<YouTubeVideo> _collection;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _youTubeFeed = new YouTubeDataCollection();
+        var collection = new C1GroupDataCollection<YouTubeVideo>(_youTubeFeed, false);
+        await collection.GroupAsync("PublishedDay");
+        _collection = collection;
+    }
+
+    async void OnFiltering(object sender, AutoCompleteFilteringEventArgs e)
+    {
+        var autoComplete = sender as C1AutoComplete<YouTubeVideo>;
+        var deferal = e.GetDeferral();
+        try
+        {
+            await _youTubeFeed.SearchAsync(e.FilterString);
+            e.Cancel = true;
+        }
+        finally
+        {
+            deferal.Complete();
+        }
+    }
+}

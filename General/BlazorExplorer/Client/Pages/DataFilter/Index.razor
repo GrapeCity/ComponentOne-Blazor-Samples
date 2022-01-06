@@ -1,0 +1,92 @@
+﻿@page "/DataFilter/Index"
+@using Localization
+@using C1.Blazor.DataFilter
+@using C1.Blazor.Grid
+@using C1.Blazor.Accordion
+
+<div style="margin: 4px;">
+    <C1.Blazor.Input.C1CheckBox @bind-IsChecked="autoApply" IsThreeState="false" /> @DataFilterRes.AutoApplyFilter
+    <button @onclick="OnApplyFilterClicked" style="margin: 4px;"><img src="Content/images/filter.png"></button>
+</div>
+<br />
+
+<section class="sampleDataFilterSection">
+    <div class="filtersSection">
+        <C1DataFilter @ref="dataFilter" AutoApply="autoApply.GetValueOrDefault()" ItemsSource="@data" FilterAutoGenerating="@FilterAutoGenerating" Style="@("max-height: inherit")" ExpandMode="@ExpandMode.One">
+
+        </C1DataFilter>
+    </div>
+    <div class="dataSection">
+        <FlexGrid AutoGeneratingColumn="OnAutoGeneratingColumn" ItemsSource="@data" HeadersVisibility="GridHeadersVisibility.All" Style="@("max-height: inherit")">
+
+        </FlexGrid>
+    </div>
+</section>
+
+<_Sections>
+    <Title>@DataFilterRes.CarListTitle</Title>
+    <Description>@DataFilterRes.CarListDescription</Description>
+</_Sections>
+
+@code{
+    bool? autoApply { get; set; } = true;
+    C1DataFilter dataFilter { get; set; }
+    C1.DataCollection.C1DataCollection<Car> data { get; set; }
+
+
+    protected override void OnInitialized()
+    {
+        var carsTable = DataProvider.GetCarTable();
+        data = new C1.DataCollection.C1DataCollection<Car>(DataProvider.GetCarDataCollection(carsTable));
+    }
+    
+    void OnAutoGeneratingColumn(object sender, GridAutoGeneratingColumnEventArgs args)
+    {
+        if (args.Property.Name == nameof(Car.Picture))
+        {
+            args.Column.CellTemplate = target => builder =>
+            {
+                builder.OpenElement(0, "img");
+                builder.AddAttribute(1, "style", "max-height: 35px");
+                builder.AddAttribute(2, "src", $"data:image/bmp;base64, {((Lazy<string>)target).Value}");
+                builder.CloseElement();
+            };
+        }
+    }
+
+    void FilterAutoGenerating(object sender, FilterAutoGeneratingEventArgs e)
+    {
+        if (e.Property.Name == nameof(Car.Brand))
+        {
+            var filter = e.Filter as ChecklistFilter;
+            filter.ShowSearchBox = true;
+        }
+        else if (e.Property.Name == nameof(Car.Price))
+        {
+            var priceFilter = (RangeFilter)e.Filter;
+            priceFilter.Maximum = data.Max(o => ((Car)o).Price);
+            priceFilter.Minimum = data.Min(o => ((Car)o).Price);
+            priceFilter.Increment = 1000;
+            priceFilter.Format = "F0";
+        }
+        else if (e.Property.Name == nameof(Car.TransmissSpeedCount))
+        {
+            var filter = e.Filter as ChecklistFilter;
+            filter.SelectionMode = SelectionMode.Single;
+        }
+        else if (e.Property.Name == nameof(Car.TransmissAutomatic))
+        {
+            var filter = e.Filter as ChecklistFilter;
+            var unset = filter.Items.FirstOrDefault(i => string.IsNullOrEmpty(i.DisplayValue));
+            if (unset != null)
+            {
+                unset.DisplayValue = C1.Blazor.DataFilter.Resources.Resource.Null;
+            }
+        }
+    }
+
+    void OnApplyFilterClicked()
+    {
+        _ = dataFilter.ApplyFilterAsync();
+    }
+}

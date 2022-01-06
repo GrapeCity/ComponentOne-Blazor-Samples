@@ -1,0 +1,109 @@
+﻿@page "/Menu/Unbound"
+@using C1.Blazor.Menu
+@using C1.Blazor.Input
+@using Localization
+<div>OpenOnClick <C1CheckBox @bind-IsChecked="@openOnClick" /></div>
+<div>
+    <i>@MenuRes.Selected_Menu_Item:</i> @selectedItem
+</div>
+<div>
+    <div><strong>@MenuRes.SideBar</strong></div>
+    <C1Menu OpenIconTemplate="C1.Blazor.Core.C1IconTemplate.TriangleRight" Style="@("width: 150px")"
+            OpenOnClick="openOnClick.Value" OnItemSelected="OnSelectedItem" Orientation="Orientation.Vertical">
+        <C1MenuItem Header="Hierarchical 1">
+            <C1MenuItem Header="Hierarchical 1.1" IsEnabled="false">
+                <C1MenuItem Header="Hierarchical 1.1.1" />
+                <C1MenuItem Header="Hierarchical 1.1.2" />
+                <C1MenuItem Header="Hierarchical 1.1.3" />
+            </C1MenuItem>
+            <C1MenuItem Header="Hierarchical 1.2">
+                <C1MenuItem Header="Hierarchical 1.2.1" />
+                <C1MenuItem Header="Hierarchical 1.2.2">
+                    <C1MenuItem Header="Hierarchical 1.2.2.1" />
+                    <C1MenuItem Header="Hierarchical 1.2.2.2" />
+                    <C1MenuItem Header="Hierarchical 1.2.2.3" />
+                </C1MenuItem>
+                <C1MenuItem Header="Hierarchical 1.2.3" />
+            </C1MenuItem>
+            <C1MenuItem Header="Hierarchical 1.3" />
+            <C1MenuItem Header="Hierarchical 1.4">
+                <C1MenuItem Header="Hierarchical 1.4.1" />
+                <C1MenuItem Header="Hierarchical 1.4.2" />
+                <C1MenuItem Header="Hierarchical 1.4.3" />
+            </C1MenuItem>
+        </C1MenuItem>
+        <C1MenuItem Header="Hierarchical 2">
+            <C1MenuItem Header="Hierarchical 2.1" />
+            <C1MenuItem Header="Hierarchical 2.2" />
+            <C1MenuItem Header="Hierarchical 2.3" />
+            <C1MenuItem Header="Hierarchical 2.4">
+                <C1MenuItem Header="Hierarchical 2.4.1" />
+                <C1MenuItem Header="Hierarchical 2.4.2" />
+                <C1MenuItem Header="Hierarchical 2.4.3" />
+            </C1MenuItem>
+        </C1MenuItem>
+        <C1MenuItem Header="Hierarchical 3" />
+    </C1Menu>
+
+
+</div>
+<div style="margin-top: 2em">
+    <div><strong>@MenuRes.Inline</strong></div>
+    <C1Menu OpenIconTemplate="C1.Blazor.Core.C1IconTemplate.TriangleRight" OpenOnClick="openOnClick.Value" OnItemSelected="OnSelectedItem">
+        <C1MenuItem Header="Hierarchical 1">
+            <C1MenuItem Header="Hierarchical 1.1" IsEnabled="false">
+                <C1MenuItem Header="Hierarchical 1.1.1" />
+                <C1MenuItem Header="Hierarchical 1.1.2" />
+                <C1MenuItem Header="Hierarchical 1.1.3" />
+            </C1MenuItem>
+            <C1MenuItem Header="Hierarchical 1.2">
+                <C1MenuItem Header="Hierarchical 1.2.1" />
+                <C1MenuItem Header="Hierarchical 1.2.2">
+                    <C1MenuItem Header="Hierarchical 1.2.2.1" />
+                    <C1MenuItem Header="Hierarchical 1.2.2.2" />
+                    <C1MenuItem Header="Hierarchical 1.2.2.3" />
+                </C1MenuItem>
+                <C1MenuItem Header="Hierarchical 1.2.3" />
+            </C1MenuItem>
+            <C1MenuItem Header="Hierarchical 1.3" />
+            <C1MenuItem Header="Hierarchical 1.4">
+                <C1MenuItem Header="Hierarchical 1.4.1" />
+                <C1MenuItem Header="Hierarchical 1.4.2" />
+                <C1MenuItem Header="Hierarchical 1.4.3" />
+            </C1MenuItem>
+        </C1MenuItem>
+        <C1MenuItem Header="Hierarchical 2">
+            <C1MenuItem Header="Hierarchical 2.1" />
+            <C1MenuItem Header="Hierarchical 2.2" />
+            <C1MenuItem Header="Hierarchical 2.3" />
+            <C1MenuItem Header="Hierarchical 2.4">
+                <C1MenuItem Header="Hierarchical 2.4.1" />
+                <C1MenuItem Header="Hierarchical 2.4.2" />
+                <C1MenuItem Header="Hierarchical 2.4.3" />
+            </C1MenuItem>
+        </C1MenuItem>
+        <C1MenuItem Header="Hierarchical 3" />
+    </C1Menu>
+</div>
+
+<_Sections>
+    <Title>@MenuRes.Unbound_Title</Title>
+    <Description>@((MarkupString)MenuRes.Unbound_Description)</Description>
+</_Sections>
+
+@code{
+    bool? openOnClick = true;
+
+    string selectedItem = "";
+    public void OnSelectedItem(C1MenuItem item)
+    {
+        selectedItem = GetFullPath(item);
+    }
+
+    public static string GetFullPath(C1MenuItem item)
+    {
+        if (item.ParentItem == null)
+            return item.Header;
+        return $"{GetFullPath(item.ParentItem)} / {item.Header}";
+    }
+}

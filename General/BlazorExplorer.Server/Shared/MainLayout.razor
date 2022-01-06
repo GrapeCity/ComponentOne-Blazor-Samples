@@ -1,0 +1,79 @@
+﻿@inherits LayoutComponentBase
+@implements IDisposable
+@using Localization
+@using Models
+
+<div class="hide">
+    <_SiteNav IsNarrowScreen="true"></_SiteNav>
+    @if (allGroups != null)
+    {
+        <ul class="narrow-screen task-bar-nav">
+            @foreach (var group in allGroups)
+            {
+                <_ControlGroup Model="group"></_ControlGroup>
+            }
+        </ul>
+    }
+</div>
+
+<header>
+    <div class="hamburger-nav-btn narrow-screen"><a class="glyphicon glyphicon-home" href=""></a><!--<a href="/"><span class="icon-bars"></span></a>--></div>
+    <a class="logo-container" href="@(Resource.Layout_ProductUrl)" target="_blank">
+        <i class="gcicon-product-c1"></i>@_App.HtmlRaw(Resource.Layout_ComponentOne)
+    </a>
+
+    <div class="task-bar">
+        <span class="semi-bold">@_App.HtmlRaw(Resource.Layout_LongTitle)</span>
+        <_SiteNav IsNarrowScreen="false"></_SiteNav>
+    </div>
+    <_BreadcrumbNav Path="@_App.RelativeUri"></_BreadcrumbNav>
+</header>
+
+<div class="main-content">
+    @Body
+</div>
+
+<footer>
+    <a href="@(Resource.Layout_GrapeCityUrl)">
+        <i class="gcicon-logo-gc-horiz"></i>
+    </a>
+    <p>
+        © @DateTime.Now.Year @Resource.Layout_License1<br />
+        @Resource.Layout_License2
+    </p>
+    @{
+        var urlStr = _App.NavMan.Uri;
+    }
+    <a href="http://www.facebook.com/sharer.php?u=@urlStr" target="_blank">
+        <img src="Content/css/images/icons/32/picons36.png" alt="facebook" />
+    </a>
+    <a href="http://twitter.com/share?text=@(Resource.Layout_TwitterText)&url=@urlStr" target="_blank">
+        <img src="Content/css/images/icons/32/picons33.png" alt="Twitter" />
+    </a>
+</footer>
+
+
+@code {
+    List<ControlGroup> allGroups = null;
+    private Action<object> _updateUI;
+
+    protected override void OnInitialized()
+    {
+         _updateUI = new Action<object>((e) => { base.InvokeAsync(this.StateHasChanged); });
+        _App.ViewBagSrv.AddObserveAction(_updateUI);
+        var allGroups = new List<ControlGroup>();
+        allGroups.Add(ControlPages.NewGroup);
+        allGroups.Add(ControlPages.PopularGroup);
+        allGroups.AddRange(ControlPages.ControlGroups);
+    }
+
+    public void Dispose()
+    {
+        _App.ViewBagSrv.RemoveObserveAction(_updateUI);
+    }
+}
+
+
+
+
+

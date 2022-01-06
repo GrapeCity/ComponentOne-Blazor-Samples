@@ -1,0 +1,89 @@
+﻿@using Models
+
+@{
+  if (Model == null || !Model.Visible)
+  {
+      return;
+  }
+  var _groupIcon = _App.TrimSpec(Model.GroupNameEn);
+}
+
+<li class="control-group">
+    <h3 class="semi-bold smalliconview">
+        <img class="group @_groupIcon" src="-"
+             onerror="tryFiles(this, '@_App.IconPath\Unknown.png,Group.png,@(_groupIcon).png', '@_IconFolder');" />
+        @Model.GroupName
+        <span class="arrow-down"></span>
+        <hr class="red-gradient" />
+    </h3>
+
+    <ul class="@ViewStyle scaleup @(IsCollapsable ? "collapse-none" : null)">
+        @foreach (var control in Model.Controls)
+        {
+            string href;
+            bool isInNewTab = false;
+            if (string.IsNullOrEmpty(control.Link))
+            {
+                href = control.ControlNameEn + "/Index";
+            }
+            else
+            {
+                href = control.Link;
+                isInNewTab = true;
+            }
+            <li class="pointer" @onclick="@((e) => _App.OnClickNavigateTo(e, href, isInNewTab))">
+                <a>
+                    @if (!String.IsNullOrEmpty(_IconFolder) && IsControlHasIcon == true)
+                    {
+                        var _controlIcon = @_App.TrimSpec(control.ControlNameEn);
+                        <img class="@_controlIcon" src="-"
+                             onerror="tryFiles(this, '@_App.IconPath\Unknown.png,@(_controlIcon).png', '@_IconFolder');" />
+                    }
+                    @control.Text
+                </a>
+            </li>
+
+        }
+    </ul>
+</li>
+
+@code {
+    [Parameter]
+    public ControlGroup Model { get; set; }
+    [Parameter]
+    public bool IsCollapsable { get; set; }
+    [Parameter]
+    public bool IsControlHasIcon { get; set; } = true;
+    [Parameter]
+    public string ViewStyle
+    {
+        get { return _ViewStyle; }
+        set { _ViewStyle = value; _IconFolder = GetIconFolder(); }
+    }
+    private string _ViewStyle;
+    private string _IconFolder;
+
+    private string GetIconFolder()
+    {
+        string sizes = "64,32,164,16";
+        if (String.IsNullOrEmpty(ViewStyle))
+            return null;
+        if (ViewStyle == "smalliconview")
+            sizes = "32,64,164,16";
+        else if (ViewStyle == "iconview")
+            sizes = "64,164,32,16";
+        var dirPath = _App.IconPath + sizes.Split(",")[0];
+
+        return dirPath;
+
+        /*
+        foreach (var size in sizes.Split(","))
+        {
+            var dirPath = _App.IconPath + size;
+            if (_App.DirExists(dirPath))
+                return dirPath;
+        }
+        return null;
+        */
+    }
+}

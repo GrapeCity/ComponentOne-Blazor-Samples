@@ -1,0 +1,26 @@
+﻿@page "/FlexGrid/FilterRow"
+@using Localization
+@using System.Collections.ObjectModel;
+@using C1.Blazor.Grid
+
+<FlexGrid ItemsSource="customers" HeadersVisibility="GridHeadersVisibility.All" FrozenRows="1" Style="@("max-height:50vh")">
+    <FlexGridRows>
+        <GridFilterRow Placeholder="@FlexGridRes.FilterPlaceholderText" AutoComplete="true" />
+    </FlexGridRows>
+</FlexGrid>
+
+<_Sections>
+    <Title>@FlexGridRes.FilterRowTitle</Title>
+    <Summary>@FlexGridRes.FilterRowSummary</Summary>
+    <Description>@FlexGridRes.FilterRowDescription</Description>
+</_Sections>
+
+@code {
+    ObservableCollection<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+
+}

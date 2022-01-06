@@ -1,0 +1,49 @@
+﻿@page "/FlexChart/BasicLine"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+
+<FlexChart Class="chart" ChartType="ChartType.Line"
+           HeaderContent="Temperature in New York" HeaderStyle="font-size:24px"
+           LegendPosition="Position.Bottom"
+           BindingX="month" ItemsSource="@DataSource.GetData()">
+    <SeriesCollection>
+        <Series Name="Average Low" Binding="low" />
+        <Series Name="Average Mean" Binding="mean" />
+        <Series Name="Average High" Binding="high" />
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis AxisType="AxisType.Y" Position="Position.Left" Title="Temperature(°C)" MajorGrid="true" />
+    </AxisCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.BasicLineTitle</Title>
+    <Summary>@FlexChartRes.BasicLineSummary</Summary>
+    <Description>@FlexChartRes.BasicLineDescription</Description>
+</_Sections>
+
+@code {
+
+    public class DataSource
+    {
+        public static List<object> GetData()
+        {
+            return new List<object>()
+        {
+                new { month = "Jan", mean= -5.2, high= -0.8, low= -9.7 },
+                new { month ="Feb", mean= -3.4, high= 1.4, low= -8.2 },
+                new { month = "Mar", mean= 1.7, high= 6.9, low= -3.5 },
+                new { month = "Apr", mean= 8.8, high= 14.6, low= 2.9 },
+                new { month = "May", mean= 14.6, high= 20.8, low= 8.4 },
+                new { month ="Jun", mean= 19.6, high= 25.5, low= 13.6 },
+                new { month = "Jul", mean= 22.1, high= 27.9, low= 16.3 },
+                new { month ="Aug", mean= 21.2, high= 26.9, low= 15.5 },
+                new { month = "Sep", mean= 16.6, high= 22.3, low= 10.9 },
+                new { month ="Oct", mean= 9.8, high= 15.4, low= 4.2 },
+                new { month = "Nov", mean= 4.3, high= 8.8, low= -0.3 },
+                new { month ="Dec", mean= -1.9, high= 2.1, low= -6.0 }
+            };
+        }
+    }
+}

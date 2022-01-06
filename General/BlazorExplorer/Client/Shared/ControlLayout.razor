@@ -1,0 +1,83 @@
+﻿@layout MainLayout
+@inherits LayoutComponentBase
+@implements IDisposable
+@using Localization
+@using Models
+
+@{
+    var path = _App.SplitPath(_App.RelativeUri);
+    var controlName = path.Item1;
+    var actionName = path.Item2;
+
+    var currentPage = ControlPages.GetControlPage(controlName, actionName);
+
+    if (currentPage != null)
+    {
+        var pageText = ControlPages.GetPageText(controlName, actionName);
+        var group = ControlPages.GetControlPageGroup(controlName);
+
+        foreach (var page in group.Pages)
+        {
+            SetPagePath(page, controlName);
+        }
+
+        <div class="narrow-screen features-bar">
+            <_ControlPage Header="@group.ControlName" Model="group"></_ControlPage>
+        </div>
+
+        <div class="col-md-3 side">
+            <div>
+                <h3 class="semi-bold wide-screen smalliconview">
+                    <img class="gray-filter" src="-"
+                         onerror="tryFiles(this, '@_App.IconPath\Unknown.png,@(_App.TrimSpec(currentPage.ControlName)).png', '@(_App.IconPath)32');" />
+                    @currentPage.ControlName
+                </h3>
+                <h3 class="semi-bold narrow-screen">@pageText</h3>
+                <div style="min-height:3em;">
+                    <_Sections RenderSections="Summary" NullHtml="@pageText"></_Sections>
+                </div> 
+            </div>
+            <h4 class="semi-bold wide-screen">@_App.HtmlRaw(Resource.ControlsNav_Features)</h4>
+            <_NavMenu PageGroup="@group" CurrentPage="@currentPage"></_NavMenu>
+        </div>
+
+        <div class="col-md-9">
+            <div class="padder">
+                <_Sections RenderSections="Title" Tag="h3" Class="wide-screen" NullHtml="@pageText"></_Sections>
+                <_ControlTabs Body="@Body" ControlName="@controlName" ActionName="@actionName" DocLink="@group.Documentation"></_ControlTabs>
+                
+            </div>
+        </div>
+    }
+}
+
+@code {
+    private Action<object> _updateUI;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        _App.ViewBagSrv.IsHome = false;
+
+        _updateUI = new Action<object>((e) => { base.InvokeAsync(this.StateHasChanged); });
+        _App.ViewBagSrv.AddObserveAction(_updateUI);
+    }
+
+    public void Dispose()
+    {
+        _App.ViewBagSrv.RemoveObserveAction(_updateUI);
+    }
+
+    void SetPagePath(ControlPage page, string controllerName)
+    {
+        page.Path = string.IsNullOrEmpty(page.Name) ? "#" : controllerName + "/" + page.Name;
+
+        if (page.SubPages != null)
+        {
+            foreach (var subPage in page.SubPages)
+            {
+                SetPagePath(subPage, controllerName);
+            }
+        }
+    }
+}

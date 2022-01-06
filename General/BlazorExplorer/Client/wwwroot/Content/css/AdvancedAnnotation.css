@@ -1,0 +1,45 @@
+﻿.wj-flexchart .wj-axis-scrollbar-container {
+    position: relative;
+}
+
+    .wj-flexchart .wj-axis-scrollbar-container .wj-chart-rangeslider {
+        border: 1px solid #EAEAEA;
+        background-color: #EAEAEA;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+
+    .wj-flexchart .wj-axis-scrollbar-container .wj-chart-hrangeslider {
+        height: 20px;
+    }
+
+    .wj-flexchart .wj-axis-scrollbar-container .wj-chart-vrangeslider {
+        width: 20px;
+    }
+
+.chartcontainer {
+    padding-bottom: 40px;
+}
+
+.anchart {
+    margin: 0px;
+    padding: 0px;
+    border-bottom: 0px;
+    touch-action: none;
+    -ms-touch-action: none;
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.panel-default {
+    border-color: #ddd;
+}

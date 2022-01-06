@@ -1,0 +1,140 @@
+﻿@page "/NumericBox/Index"
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using BlazorExplorer.Localization
+
+
+<br />
+<div class="form-group">
+    <label>@NumericBoxRes.BindingAndHandleEvent</label>
+    <div>
+        <C1NumericBox Format="C" Placeholder="@NumericBoxRes.Placeholder.ToLower()" Style="@_c1Style" TNumeric="double?" OnValueChanged="HandleValueChanged"></C1NumericBox>
+    </div>
+    <i>Value: @(_value?.ToString()??"Null")</i>
+</div>
+<hr />
+
+<br />
+<div class="form-group">
+    <label>@NumericBoxRes.FinishEditingByPressingEnter</label>
+    <div>
+        <C1NumericBox Format="##,###.##" Placeholder="@NumericBoxRes.Placeholder.ToLower()" Style="@(new C1Style(){ Width = 500})" FinishEditingKeys="@(new[] {NumericBoxFinishEditingKey.Enter})" TNumeric="double"></C1NumericBox>
+    </div>
+</div>
+<hr />
+<div class="form-group">
+    <label>@NumericBoxRes.Placeholder</label>
+    <div>
+        <C1NumericBox Format="##,###.##" Placeholder="@NumericBoxRes.Placeholder.ToLower()" Style="@_c1Style" TNumeric="double?"></C1NumericBox>
+    </div>
+</div>
+<hr />
+<div class="form-group">
+    <label>@NumericBoxRes.CustomStyleAndLayout</label>
+    <div>
+        <C1NumericBox Format="##,###.##" Placeholder="@NumericBoxRes.Placeholder.ToLower()" Style="@_customStyle1" TNumeric="double?"></C1NumericBox> <br /> <br />
+        <C1NumericBox Format="##,###.##" Placeholder="@NumericBoxRes.Placeholder.ToLower()" ButtonDisplayMode="@ButtonDisplayMode.Right" Style="@_customStyle2" TNumeric="double?"></C1NumericBox>  <br /> <br />
+        <C1NumericBox Format="##,###.##" Placeholder="@NumericBoxRes.Placeholder.ToLower()" ButtonDisplayMode="@ButtonDisplayMode.None" Style="@_customStyle3" TNumeric="double?"></C1NumericBox> <br /> <br />
+
+        <C1NumericBox Format="##,###.##" TNumeric="double" ButtonDisplayMode="@ButtonDisplayMode.SideBySide"></C1NumericBox> @NumericBoxRes.PlaceButtonsSideBySide
+        <br /><br />
+        <C1NumericBox Format="##,###.##" TNumeric="double" ButtonDisplayMode="@ButtonDisplayMode.Right"></C1NumericBox> @NumericBoxRes.PlaceButtonsOnTheRight
+        <br /><br />
+        <C1NumericBox IncrementIconTemplate="@C1IconTemplate.ChevronUp"
+                      DecrementIconTemplate="@C1IconTemplate.ChevronDown"
+                      Style="@(new C1Style{ Width = "50%"})" Format="##,###.##" TNumeric="double" ButtonDisplayMode="@ButtonDisplayMode.Right"></C1NumericBox> (50%)
+        <br /><br />
+        <C1NumericBox IncrementIconTemplate="@C1IconTemplate.ChevronUp"
+                      DecrementIconTemplate="@C1IconTemplate.ChevronDown"
+                      Style="@(new C1Style{ Width = "50%"})" Format="##,###.##" TNumeric="double" ButtonDisplayMode="@ButtonDisplayMode.RightInline"></C1NumericBox> (50%)
+        <br /><br />
+        <C1NumericBox Style="@(new C1Style{ Width = "50%"})" Format="##,###.##" TNumeric="double" ButtonDisplayMode="@ButtonDisplayMode.RightInline">
+            <IncrementIconTemplate>
+                <span class="oi oi-plus"></span>
+            </IncrementIconTemplate>
+            <DecrementIconTemplate>
+                <span class="oi oi-minus"></span>
+            </DecrementIconTemplate>
+        </C1NumericBox> (50%)
+    </div>
+</div>
+<hr />
+<div class="form-group">
+    <label>@NumericBoxRes.StepAndMaxMin</label>
+    <div>
+        <C1NumericBox Format="##,###.##" Placeholder="@NumericBoxRes.Placeholder.ToLower()" Style="@_c1Style" TNumeric="double?" Step="2" Max="10" Min="0"></C1NumericBox>
+    </div>
+</div>
+<hr />
+
+<div class="form-group">
+    <label>@NumericBoxRes.Format</label>
+    <div>
+        <C1NumericBox Format="##,###.##" Placeholder="@NumericBoxRes.Placeholder.ToLower()" Style="@_c1Style" TNumeric="double?" Value="999999.99"></C1NumericBox>
+    </div>
+</div>
+
+<hr />
+<div class="form-group">
+    <label>@NumericBoxRes.IsReadOnly</label> <C1CheckBox @bind-IsChecked="@IsReadOnly" />
+    <br />
+    <C1NumericBox Format="##,###.##" IsReadOnly="@IsReadOnly.GetValueOrDefault()" Placeholder="@NumericBoxRes.Placeholder.ToLower()"
+                  Style="@_c1Style" TNumeric="double?" Value="@_value2"
+                  OnValueChanged="HandleValue2Changed"></C1NumericBox>
+    <br /><br />
+
+    <label>@NumericBoxRes.IsEnabled</label> <C1CheckBox @bind-IsChecked="@IsEnabled" />
+    <br />
+    <C1NumericBox Format="##,###.##" IsEnabled="@IsEnabled.GetValueOrDefault()" Placeholder="@NumericBoxRes.Placeholder.ToLower()"
+                  Style="@_c1Style" TNumeric="double?" Value="@_value3" OnValueChanged="HandleValue3Changed"></C1NumericBox>
+</div>
+
+<_Sections>
+    <Title>@NumericBoxRes.OverviewTitle</Title>
+    <Summary>@NumericBoxRes.OverviewSummary</Summary>
+    <Description>@NumericBoxRes.OverviewDescription</Description>
+</_Sections>
+
+
+
+@code{
+    bool? IsEnabled { get; set; } = true;
+    bool? IsReadOnly { get; set; } = false;
+    double? _value, _value2 = 999999.99, _value3 = 999999.99;
+
+    readonly C1Style _c1Style = new C1Style() { Width = 140 };
+
+    readonly C1Style _customStyle1 = new C1Style() { Width = 230, Height = 45, BorderColor = "orange", BorderWidth = 1, };
+    readonly C1Style _customStyle2 = new C1Style() { Width = 230, Height = 55, BorderColor = "green", BorderWidth = 3, };
+    readonly C1Style _customStyle3 = new C1Style() { Width = 270, Height = 65, BorderColor = "violet", BorderWidth = 5, };
+
+
+    private void HandleValueChanged(object sender, C1NumericBoxEventArgs e)
+    {
+
+        _value = (double?)e.Value;
+
+        StateHasChanged();
+    }
+
+    private void HandleValue2Changed(object sender, C1NumericBoxEventArgs e)
+    {
+
+        _value2 = (double?)e.Value;
+
+        StateHasChanged();
+    }
+
+    private void HandleValue3Changed(object sender, C1NumericBoxEventArgs e)
+    {
+
+        _value3 = (double?)e.Value;
+
+        StateHasChanged();
+    }
+}
+
+
+
+
+

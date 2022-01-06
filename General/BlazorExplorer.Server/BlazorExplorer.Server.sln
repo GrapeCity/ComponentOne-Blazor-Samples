@@ -1,0 +1,35 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorExplorer.Server", "BlazorExplorer.Server.csproj", "{0007A7F0-00BA-4847-AB52-248F31CEF09A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		GRAPECITY|Any CPU = GRAPECITY|Any CPU
+		GRAPECITY|x86 = GRAPECITY|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.Debug|x86.Build.0 = Debug|Any CPU
+		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.GRAPECITY|Any CPU.ActiveCfg = Release|Any CPU
+		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.GRAPECITY|Any CPU.Build.0 = Release|Any CPU
+		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.GRAPECITY|x86.ActiveCfg = Release|Any CPU
+		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.GRAPECITY|x86.Build.0 = Release|Any CPU
+		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.Release|x86.ActiveCfg = Release|Any CPU
+		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2EF40FD4-EF42-4537-8B76-25243532B4F5}
+	EndGlobalSection
+EndGlobal

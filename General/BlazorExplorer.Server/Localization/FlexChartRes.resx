@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BasicLineDescription" xml:space="preserve">
+    <value>This demo shows a basic line chart with multiple series.</value>
+  </data>
+  <data name="BasicLineSummary" xml:space="preserve">
+    <value>Basic Line Chart</value>
+  </data>
+  <data name="BasicLineTitle" xml:space="preserve">
+    <value>Basic Line Chart</value>
+  </data>
+  <data name="BubbleDescription" xml:space="preserve">
+    <value>This demo shows a bubble chart with multiple series.</value>
+  </data>
+  <data name="BubbleSummary" xml:space="preserve">
+    <value>Bubble Plot</value>
+  </data>
+  <data name="BubbleTitle" xml:space="preserve">
+    <value>Bubble Plot</value>
+  </data>
+  <data name="ColumnLineDescription" xml:space="preserve">
+    <value>This demo shows a combination of Column and LineSymbols chart types. The chart has two series: the first one is Column (inherited from parent chart) and the second series is LineSymbols.</value>
+  </data>
+  <data name="ColumnLineSummary" xml:space="preserve">
+    <value>Column and LineSymbols Combination</value>
+  </data>
+  <data name="ColumnLineTitle" xml:space="preserve">
+    <value>Combination</value>
+  </data>
+  <data name="ColumnWithDataLabelsDescription" xml:space="preserve">
+    <value>This demo shows a column chart with data labels.</value>
+  </data>
+  <data name="ColumnWithDataLabelsSummary" xml:space="preserve">
+    <value>Column Chart With Data Labels</value>
+  </data>
+  <data name="ColumnWithDataLabelsTitle" xml:space="preserve">
+    <value>Column With Data Labels</value>
+  </data>
+  <data name="ColumnWithNegativeValuesDescription" xml:space="preserve">
+    <value>This demo shows a column chart with negative values to show drawing below the X axis.</value>
+  </data>
+  <data name="ColumnWithNegativeValuesSummary" xml:space="preserve">
+    <value>Column Chart With Negative Values</value>
+  </data>
+  <data name="ColumnWithNegativeValuesTitle" xml:space="preserve">
+    <value>Column With Negative Values</value>
+  </data>
+  <data name="IndexChartType" xml:space="preserve">
+    <value>Chart type:</value>
+  </data>
+  <data name="IndexDescription" xml:space="preserve">
+    <value>It binds the chart to a data source and allows you to select the chart type, series stacking, palette and rotation.</value>
+  </data>
+  <data name="IndexPalette" xml:space="preserve">
+    <value>Palette:</value>
+  </data>
+  <data name="IndexStacking" xml:space="preserve">
+    <value>Stacking:</value>
+  </data>
+  <data name="IndexSummary" xml:space="preserve">
+    <value>Shows basic FlexChart features.</value>
+  </data>
+  <data name="IndexTitle" xml:space="preserve">
+    <value>FlexChart Overview.</value>
+  </data>
+  <data name="FunnelDescription" xml:space="preserve">
+    <value>Funnel charts show values along multiple stages in a process.
+
+For example, you could use a funnel chart to show the number of sales prospects at each stage in a sales pipeline. Typically, the values decrease gradually, making the bars resemble a funnel.</value>
+  </data>
+  <data name="FunnelNeckHeight" xml:space="preserve">
+    <value>Neck Height:</value>
+  </data>
+  <data name="FunnelNeckWidth" xml:space="preserve">
+    <value>Neck Width:</value>
+  </data>
+  <data name="FunnelSummary" xml:space="preserve">
+    <value>Funnel Chart</value>
+  </data>
+  <data name="FunnelType" xml:space="preserve">
+    <value>Funnel Type:</value>
+  </data>
+  <data name="FunnelTitle" xml:space="preserve">
+    <value>Funnel Chart</value>
+  </data>
+  <data name="LineWithGapsDescription" xml:space="preserve">
+    <value>The sample shows a line chart with missing points (interpolate nulls).</value>
+  </data>
+  <data name="LineWithGapsInterpolateNulls" xml:space="preserve">
+    <value>Interpolate Nulls</value>
+  </data>
+  <data name="LineWithGapsSummary" xml:space="preserve">
+    <value>Line Chart With Gaps</value>
+  </data>
+  <data name="LineWithGapsTitle" xml:space="preserve">
+    <value>Line With Gaps</value>
+  </data>
+  <data name="MultiplePiesDescription" xml:space="preserve">
+    <value>The sample shows how to create multiple pie charts based on the same data source.
+
+To create multiple pie charts, just specify several comma-separated properties in FlexPie.binding.</value>
+  </data>
+  <data name="MultiplePiesSummary" xml:space="preserve">
+    <value>Multiple Pie Charts</value>
+  </data>
+  <data name="MultiplePiesTitle" xml:space="preserve">
+    <value>Multiple Pie Charts</value>
+  </data>
+  <data name="PieIndexDescription" xml:space="preserve">
+    <value>It binds the chart to a data source and allows you to select palette and change various options.</value>
+  </data>
+  <data name="PieIndexInnerRadius" xml:space="preserve">
+    <value>InnerRadius:</value>
+  </data>
+  <data name="PieIndexOffset" xml:space="preserve">
+    <value>Offset:</value>
+  </data>
+  <data name="PieIndexPalette" xml:space="preserve">
+    <value>Palette:</value>
+  </data>
+  <data name="PieIndexSummary" xml:space="preserve">
+    <value>Shows basic FlexPie features.</value>
+  </data>
+  <data name="PieIndexTitle" xml:space="preserve">
+    <value>Pie chart overview.</value>
+  </data>
+  <data name="RangeColumnDescription" xml:space="preserve">
+    <value>This demo shows a range column scenario similar to a Gantt chart.</value>
+  </data>
+  <data name="RangeColumnSummary" xml:space="preserve">
+    <value>Range Column Chart</value>
+  </data>
+  <data name="RangeColumnTitle" xml:space="preserve">
+    <value>Range Column</value>
+  </data>
+  <data name="Stacked100pcAreaDescription" xml:space="preserve">
+    <value>The sample shows stacked area 100% chart.</value>
+  </data>
+  <data name="Stacked100pcAreaSummary" xml:space="preserve">
+    <value>Stacked 100% Area Chart</value>
+  </data>
+  <data name="Stacked100pcAreaTitle" xml:space="preserve">
+    <value>Stacked 100% Area</value>
+  </data>
+  <data name="StackedBarDescription" xml:space="preserve">
+    <value>This demo shows stacking applied to a bar chart, which is similar to a rotated column chart.
+
+By default, items on the Y axis start from the bottom of the chart, so the first items appear at the bottom and the last at the top.
+
+If you reverse the Y axis, items will start at the top of the, which is often a more natural order.</value>
+  </data>
+  <data name="StackedBarSummary" xml:space="preserve">
+    <value>Stacked Bar</value>
+  </data>
+  <data name="StackedBarTitle" xml:space="preserve">
+    <value>Stacked Bar</value>
+  </data>
+  <data name="StepChartDescription" xml:space="preserve">
+    <value>This demo shows line and area step charts.</value>
+  </data>
+  <data name="StepChartSummary" xml:space="preserve">
+    <value>Step Charts</value>
+  </data>
+  <data name="StepChartTitle" xml:space="preserve">
+    <value>Step Charts</value>
+  </data>
+  <data name="XYScatterDescription" xml:space="preserve">
+    <value>The FlexChart's itemsSource and binding/bindingX properties apply to all series in the chart by default.
+
+Specific series may override those properties and use different data sources and bindings. This allows you to use multiple data sources on the same chart, and reduces the need to pre-process data for charting.</value>
+  </data>
+  <data name="XYScatterSummary" xml:space="preserve">
+    <value>XY Scatter Plot</value>
+  </data>
+  <data name="XYScatterTitle" xml:space="preserve">
+    <value>XY Scatter Plot</value>
+  </data>
+  <data name="TreeMapDescription" xml:space="preserve">
+    <value>This demo shows TreeMap chart with hierarchical data.</value>
+  </data>
+  <data name="TreeMapSummary" xml:space="preserve">
+    <value>Shows TreeMap chart</value>
+  </data>
+  <data name="TreeMapTitle" xml:space="preserve">
+    <value>TreeMap overview</value>
+  </data>
+  <data name="SunburstDescription" xml:space="preserve">
+    <value>This demo shows Sunburst chart that visualizes hierarchical data.</value>
+  </data>
+  <data name="SunburstSummary" xml:space="preserve">
+    <value>Shows Sunburst chart</value>
+  </data>
+  <data name="SunburstTitle" xml:space="preserve">
+    <value>Sunburst chart</value>
+  </data>
+  <data name="PlotAreasDescription" xml:space="preserve">
+    <value>This demos shows FlexChart with three plot areas.</value>
+  </data>
+  <data name="PlotAreasSummary" xml:space="preserve">
+    <value>Shows chart with multiple plot areas</value>
+  </data>
+  <data name="PlotAreasTitle" xml:space="preserve">
+    <value>Multiple Plot Areas</value>
+  </data>
+  <data name="SelectionDescription" xml:space="preserve">
+    <value>The sample demonstrates FlexChart's selection feature. FlexChart provides two different selection modes: in Point mode, clicking a data point would show it as selected with the current SelectionStyle. In Series mode, clicking a data point would show all the data points in that series as selected with the current SelectionStyle.</value>
+  </data>
+  <data name="SelectionMode" xml:space="preserve">
+    <value>Selection Mode:</value>
+  </data>
+  <data name="SelectionSummary" xml:space="preserve">
+    <value>Selection in FlexChart</value>
+  </data>
+  <data name="SelectionTitle" xml:space="preserve">
+    <value>Selection</value>
+  </data>
+  <data name="PieSelectionDescription" xml:space="preserve">
+    <value>The sample below shows FlexPie's selection feature. To enable selection in FlexPie, set the 'SelectionMode' property to 'Point'.</value>
+  </data>
+  <data name="PieSelectionOffset" xml:space="preserve">
+    <value>Selected Item Offset:</value>
+  </data>
+  <data name="PieSelectionPosition" xml:space="preserve">
+    <value>Selected Item Position:</value>
+  </data>
+  <data name="PieSelectionSummary" xml:space="preserve">
+    <value>Selection in FlexPie</value>
+  </data>
+  <data name="PieSelectionTitle" xml:space="preserve">
+    <value>FlexPie Selection</value>
+  </data>
+  <data name="BoxWhiskerDescription" xml:space="preserve">
+    <value>Box and Whisker series (AKA boxplots) show groups of numerical data through their quartiles. They have lines extending vertically from the boxes (whiskers) indicating variability outside the upper and lower quartiles.</value>
+  </data>
+  <data name="BoxWhiskerInnerPoints" xml:space="preserve">
+    <value>Show Inner Points</value>
+  </data>
+  <data name="BoxWhiskerMeanLine" xml:space="preserve">
+    <value>Show Mean Line</value>
+  </data>
+  <data name="BoxWhiskerMeanMarks" xml:space="preserve">
+    <value>Show Mean Marks</value>
+  </data>
+  <data name="BoxWhiskerOutliers" xml:space="preserve">
+    <value>Show Outliers</value>
+  </data>
+  <data name="BoxWhiskerSummary" xml:space="preserve">
+    <value>Show Box &amp; Whisker Chart</value>
+  </data>
+  <data name="BoxWhiskerTitle" xml:space="preserve">
+    <value>Box &amp; Whisker Chart</value>
+  </data>
+  <data name="ErrorBarDescription" xml:space="preserve">
+    <value>The ErrorBar class extends the regular Series class to provide error bars that can be added on top of the regular series data.</value>
+  </data>
+  <data name="ErrorBarErrorAmount" xml:space="preserve">
+    <value>Error Amount:</value>
+  </data>
+  <data name="ErrorBarSummary" xml:space="preserve">
+    <value>Show ErrorBar chart</value>
+  </data>
+  <data name="ErrorBarTitle" xml:space="preserve">
+    <value>ErrorBar Chart</value>
+  </data>
+  <data name="HistogramAppearance" xml:space="preserve">
+    <value>Appearance:</value>
+  </data>
+  <data name="HistogramBinSize" xml:space="preserve">
+    <value>Bin Size:</value>
+  </data>
+  <data name="HistogramCumulativeMode" xml:space="preserve">
+    <value>Cumulative Mode</value>
+  </data>
+  <data name="HistogramDescription" xml:space="preserve">
+    <value>A Histogram chart is used to study the distribution of non-categorical data by dividing it into bins of specified width. It plots the frequency of data items that fall in each of these bins.</value>
+  </data>
+  <data name="HistogramSummary" xml:space="preserve">
+    <value>Shows Histogram Chart</value>
+  </data>
+  <data name="HistogramTitle" xml:space="preserve">
+    <value>Histogram Chart</value>
+  </data>
+  <data name="HistogramNormalCurve" xml:space="preserve">
+    <value>Normal Curve</value>
+  </data>
+  <data name="RangedHistogramBinMode" xml:space="preserve">
+    <value>Bin Mode:</value>
+  </data>
+  <data name="RangedHistogramBinWidth" xml:space="preserve">
+    <value>Bin Width:</value>
+  </data>
+  <data name="RangedHistogramByCategory" xml:space="preserve">
+    <value>By Category</value>
+  </data>
+  <data name="RangedHistogramDescription" xml:space="preserve">
+    <value>An unique Histogram chart that can be used to study categorical as well as non-categorical data. Provides multiple binning options as well as support for Overflow and Underflow bins.</value>
+  </data>
+  <data name="RangedHistogramNumBins" xml:space="preserve">
+    <value>Number of Bins:</value>
+  </data>
+  <data name="RangedHistogramSummary" xml:space="preserve">
+    <value>Shows Ranged Histogram Chart</value>
+  </data>
+  <data name="RangedHistogramTitle" xml:space="preserve">
+    <value>Ranged Histogram Chart</value>
+  </data>
+  <data name="RadarDescription" xml:space="preserve">
+    <value>This sample shows a FlexRadar control with multiple series.</value>
+  </data>
+  <data name="RadarSummary" xml:space="preserve">
+    <value>Show Basic FlexRadar features</value>
+  </data>
+  <data name="RadarTitle" xml:space="preserve">
+    <value>Radar Chart</value>
+  </data>
+  <data name="TrendLineDescription" xml:space="preserve">
+    <value>The TrendLine class extends the regular Series class to provide a calculated series based on the data and parameters you select.</value>
+  </data>
+  <data name="TrendLineFitType" xml:space="preserve">
+    <value>Fit Type:</value>
+  </data>
+  <data name="TrendLineOrder" xml:space="preserve">
+    <value>Order:</value>
+  </data>
+  <data name="TrendLineSummary" xml:space="preserve">
+    <value>Shows plot with trend Line</value>
+  </data>
+  <data name="TrendLineTitle" xml:space="preserve">
+    <value>Trend Line</value>
+  </data>
+  <data name="WaterfallDescription" xml:space="preserve">
+    <value>Waterfall charts help in understanding the cumulative effect of sequentially introduced positive or negative values. The Waterfall chart is also known as a "flying bricks" chart or Mario chart due to the apparent suspension of columns in mid-air.</value>
+  </data>
+  <data name="WaterfallLines" xml:space="preserve">
+    <value>Show Lines</value>
+  </data>
+  <data name="WaterfallSummary" xml:space="preserve">
+    <value>Shows Waterfall Chart</value>
+  </data>
+  <data name="WaterfallTitle" xml:space="preserve">
+    <value>Waterfall Chart</value>
+  </data>
+  <data name="WaterfallTotal" xml:space="preserve">
+    <value>Show Totals</value>
+  </data>
+  <data name="MarkerDescription" xml:space="preserve">
+    <value>The LineMarker class allows you to add a mouse-driven cursor to your charts. The cursor consists of a text element used to display information about the point under the mouse and optional lines to indicate the exact position of the mouse.</value>
+  </data>
+  <data name="MarkerInteraction" xml:space="preserve">
+    <value>Interaction</value>
+  </data>
+  <data name="MarkerSummary" xml:space="preserve">
+    <value>Shows plot with line marker</value>
+  </data>
+  <data name="MarkerTitle" xml:space="preserve">
+    <value>Line Marker</value>
+  </data>
+  <data name="RangeSelectorDescription" xml:space="preserve">
+    <value>RangeSelector allows to choose displayed range on another chart.</value>
+  </data>
+  <data name="RangeSelectorSummary" xml:space="preserve">
+    <value>FlexChart Range Selector</value>
+  </data>
+  <data name="RangeSelectorTitle" xml:space="preserve">
+    <value>Range Selector</value>
+  </data>
+  <data name="AxisScrollbarDescription" xml:space="preserve">
+    <value>Axis scrollbar allows to select scale and scroll through the data range.</value>
+  </data>
+  <data name="AxisScrollbarSummary" xml:space="preserve">
+    <value>Axis Scrollbar</value>
+  </data>
+  <data name="AxisScrollbarTitle" xml:space="preserve">
+    <value>Axis Scrollbar</value>
+  </data>
+  <data name="LegendDescription" xml:space="preserve">
+    <value>This demo shows several advanced legend features, like scrolling and grouping.</value>
+  </data>
+  <data name="LegendSummary" xml:space="preserve">
+    <value>Advanced Legend Features</value>
+  </data>
+  <data name="LegendTitle" xml:space="preserve">
+    <value>Legend</value>
+  </data>
+  <data name="AnimationDescription" xml:space="preserve">
+    <value>FlexChart supports animation when loading or updating data.</value>
+  </data>
+  <data name="AnimationSummary" xml:space="preserve">
+    <value>FlexChart Animation</value>
+  </data>
+  <data name="AnimationTitle" xml:space="preserve">
+    <value>Animation</value>
+  </data>
+  <data name="AnnotationsDescription" xml:space="preserve">
+    <value>The FlexChart control supports various built-in annotations such as Rectangle, Square, Circle, Ellipse, Line, Polygon, Image, and Text. In this demo the annotations are used to display plot quadrants as well as country flags.</value>
+  </data>
+  <data name="AnnotationsSummary" xml:space="preserve">
+    <value>Shows FlexChart with rich annotations</value>
+  </data>
+  <data name="AnnotationsTitle" xml:space="preserve">
+    <value>Annotations</value>
+  </data>
+  <data name="PieAnimationDescription" xml:space="preserve">
+    <value>FlexPie supports animation when loading or updating data. Use FlexPie.AnimationSettings property to enable animation.</value>
+  </data>
+  <data name="PieAnimationSummary" xml:space="preserve">
+    <value>FlexPie Animation</value>
+  </data>
+  <data name="PieAnimationTitle" xml:space="preserve">
+    <value>Pie Animation</value>
+  </data>
+  <data name="BreakEvenDescription" xml:space="preserve">
+    <value>Break-Even chart is a chart that shows the sales volume level at which total costs equal sales.</value>
+  </data>
+  <data name="BreakEvenSummary" xml:space="preserve">
+    <value>Break Even Plot</value>
+  </data>
+  <data name="BreakEvenTitle" xml:space="preserve">
+    <value>Break Even Plot</value>
+  </data>
+  <data name="NewData" xml:space="preserve">
+    <value>New Data</value>
+  </data>
+  <data name="UpdateData" xml:space="preserve">
+    <value>UpdateData</value>
+  </data>
+</root>

@@ -1,0 +1,94 @@
+﻿@page "/DataFilter/VirtualSource"
+@using Localization
+@using C1.Blazor.DataFilter
+@using C1.Blazor.Grid
+@using C1.Blazor.Accordion
+
+@using System.ComponentModel;
+@using System;
+@implements IDisposable;
+
+<section class="sampleDataFilterSection">
+    <div class="filtersSection">
+        <C1DataFilter ItemsSource="@data" FilterAutoGenerating="OnFilterAutoGenerating" ExpandMode="@ExpandMode.One" Style="@("max-height: inherit;")">
+
+        </C1DataFilter>
+    </div>
+    <div class="dataSection" style="position: relative; top: 0px; left: 0px; min-height:350px; z-index:999">
+        <FlexGrid AutoGeneratingColumn="OnAutoGeneratingColumn" ItemsSource="@data" HeadersVisibility="GridHeadersVisibility.All" Style=@("max-height: inherit;")>
+
+        </FlexGrid>
+
+        @if (data.IsLoading)
+        {
+            <div style="width: 300px; height: 200px; position: absolute; left: 50%; top: 50%; margin-left: -150px; margin-top: -100px; background-color: #5252DF;  border-radius: 20px;">
+                <p style="font-size: 26px; text-align:center; padding-top: 85px; color:white;">Loading...</p>
+            </div>
+        }
+    </div>
+</section>
+
+<_Sections>
+    <Title>@DataFilterRes.VirtualSourceTitle</Title>
+    <Description>@DataFilterRes.VirtualSourceDescription</Description>
+</_Sections>
+
+@code{
+
+    CarVirtualCollection data { get; set; }
+
+
+    protected override void OnInitialized()
+    {
+        data = new CarVirtualCollection();
+        data.PropertyChanged += DataOnPropertyChanged;
+    }
+
+    void OnAutoGeneratingColumn(object sender, GridAutoGeneratingColumnEventArgs args)
+    {
+        if (args.Property.Name == nameof(Car.Picture))
+        {
+            args.Column.CellTemplate = target => builder =>
+            {
+                if (target == null)
+                {
+                    return;
+                }
+                builder.OpenRegion(0);
+                builder.OpenElement(10, "img");
+                builder.AddAttribute(11, "style", "max-height: 35px;");
+                builder.AddAttribute(12, "src", $"data:image/bmp;base64, {((Lazy<string>)target).Value}");
+                builder.CloseElement();
+                builder.CloseRegion();
+            };
+        }
+    }
+
+    void OnFilterAutoGenerating(object sender, FilterAutoGeneratingEventArgs args)
+    {
+        if (args.Filter.PropertyName == nameof(Car.Price))
+        {
+            var rangeFilter = args.Filter as RangeFilter;
+            rangeFilter.Maximum = 1_000_000;
+            rangeFilter.Increment = 1000;
+            rangeFilter.Minimum = 0;
+        }
+    }
+    private void DataOnPropertyChanged(object sender, PropertyChangedEventArgs args)
+    {
+        if (args.PropertyName == nameof(data.IsLoading))
+        {
+            InvokeAsync(StateHasChanged);
+        }
+    }
+
+    public void Dispose()
+    {
+        if (data == null)
+        {
+            return;
+        }
+
+        data.PropertyChanged -= DataOnPropertyChanged;
+    }
+}

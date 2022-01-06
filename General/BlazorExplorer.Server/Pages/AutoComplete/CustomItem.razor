@@ -1,0 +1,25 @@
+﻿@page "/AutoComplete/CustomItem"
+@using C1.Blazor.Input
+@using Localization
+
+<C1AutoComplete ItemsSource="countries" Placeholder="@ComboBoxRes.SelectCountryPlaceholder" T="Country" Style="@("margin:8px 0")">
+    <ItemTemplate>
+        <img src="@context.FlagUrl" style="height:32px;width:32px" />
+        <span style="margin-left:8px;white-space:nowrap;word-break:break-all">@context.Name</span>
+    </ItemTemplate>
+</C1AutoComplete>
+
+<_Sections>
+    <Title>@AutoCompleteRes.CustomItemTitle</Title>
+    <Summary>@AutoCompleteRes.CustomItemSummary</Summary>
+    <Description>@AutoCompleteRes.CustomItemDescription</Description>
+</_Sections>
+
+@code{
+    IEnumerable<Country> countries;
+
+    protected override void OnInitialized()
+    {
+        countries = Country.GetCountries();
+    }
+}

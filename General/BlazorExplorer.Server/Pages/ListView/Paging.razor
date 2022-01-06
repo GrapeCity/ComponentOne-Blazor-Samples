@@ -1,0 +1,24 @@
+﻿@page "/ListView/Paging"
+@using C1.Blazor.ListView
+@using C1.DataCollection
+@using C1.Blazor.DataPager
+@using Localization
+
+<C1ListView ItemsSource="customers" T="Customer" DisplayMemberPath="Name" />
+<C1DataPager Source="customers" CurrentButtonStyle="@("background-color:gray;color:white;border-radius:4px;box-shadow:0px 6px 13px rgba(0,0,0,0.2)")" />
+
+<_Sections>
+    <Title>@ListViewRes.PagingTitle</Title>
+    <Summary>@ListViewRes.PagingSummary</Summary>
+    <Description>@ListViewRes.PagingDescription</Description>
+</_Sections>
+
+@code
+{
+    C1PagedDataCollection<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = new C1PagedDataCollection<Customer>(new VirtualModeDataCollection() { PageSize = 10 });
+    }
+}

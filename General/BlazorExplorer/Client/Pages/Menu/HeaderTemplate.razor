@@ -1,0 +1,155 @@
+﻿@page "/Menu/HeaderTemplate"
+@using C1.Blazor.Menu
+@using C1.Blazor.Input
+@using Localization
+
+<style>
+    .name {
+        float: left;
+        line-height: 30px;
+    }
+</style>
+<div>
+    <div class="name">Last Name</div>
+    <div class="icon">
+        <C1Menu SubMenuStyle="@("width: 282px;")">
+            <C1MenuItem HeaderTemplate="@GetIcon("Content/images/three-dots.png")">
+                <C1MenuItem HeaderTemplate="GetAscending()" />
+                <C1MenuItem HeaderTemplate="GetDescending()" />
+                <C1MenuSeparator />
+                <C1MenuItem HeaderTemplate="GetResizing()" />
+                <C1MenuSeparator SeparatorStyle="@("margin-bottom: 5px;")" />
+                <C1MenuItem HeaderTemplate="GetTextBox()" />
+                <C1MenuItem HeaderTemplate="GetMatchTemplate()" ClickToCloseMenu="false" />
+            </C1MenuItem>
+        </C1Menu>
+    </div>
+</div>
+<_Sections>
+    <Title>@MenuRes.HeaderTemplate_Title</Title>
+    <Description>@((MarkupString)MenuRes.HeaderTemplate_Description)</Description>
+</_Sections>
+
+@code{
+    bool? openOnClick = false, closeOnLeave = false, displayExpandedIcon = true,
+        matchCase = false, matchWholeWord = false;
+
+    C1.Blazor.Core.C1Style style = new C1.Blazor.Core.C1Style() { ["margin-right"] = "5px;" };
+
+    private RenderFragment GetIcon(string path)
+    {
+        return new RenderFragment(builder =>
+        {
+            builder.OpenElement(0, "img");
+            builder.AddAttribute(1, "style", new C1.Blazor.Core.C1Style() { Width = "13px", Height = "13px" });
+            builder.AddAttribute(2, "src", path);
+            builder.CloseElement();
+        });
+    }
+
+    private RenderFragment GetAscending()
+    {
+        return new RenderFragment(builder =>
+        {
+            builder.OpenElement(0, "div");
+
+            builder.OpenElement(1, "span");
+            builder.AddAttribute(2, "style", style);
+            builder.AddContent(3, GetIcon("Content/images/ascending.png"));
+            builder.CloseElement();
+
+            builder.OpenElement(3, "span");
+            builder.AddContent(4, "Sort Ascending");
+            builder.CloseElement();
+
+            builder.CloseElement();
+        });
+    }
+
+    private RenderFragment GetDescending()
+    {
+        return new RenderFragment(builder =>
+        {
+            builder.OpenElement(0, "div");
+
+            builder.OpenElement(1, "span");
+            builder.AddAttribute(2, "style", style);
+            builder.AddContent(3, GetIcon("Content/images/descending.png"));
+            builder.CloseElement();
+
+            builder.OpenElement(3, "span");
+            builder.AddContent(4, "Sort Descending");
+            builder.CloseElement();
+
+            builder.CloseElement();
+        });
+    }
+
+    private RenderFragment GetResizing()
+    {
+        return new RenderFragment(builder =>
+        {
+            builder.OpenElement(0, "div");
+            builder.OpenElement(1, "span");
+            builder.AddAttribute(2, "style", style);
+            builder.AddContent(3, GetIcon("Content/images/resizing.jpg"));
+            builder.CloseElement();
+
+            builder.OpenElement(3, "span");
+            builder.AddContent(4, "Auto-Size Column");
+            builder.CloseElement();
+
+            builder.CloseElement();
+        });
+    }
+
+    private RenderFragment GetTextBox()
+    {
+        return new RenderFragment(builder =>
+        {
+            builder.OpenComponent<C1TextBox>(0);
+            builder.AddAttribute(1, nameof(C1TextBox.Placeholder), MenuRes.EnterTextToFilter);
+            builder.AddAttribute(2, nameof(C1TextBox.Style), new C1.Blazor.Core.C1Style() { Width = "100%" });
+            builder.CloseComponent();
+        });
+    }
+
+    private RenderFragment GetMatchTemplate()
+    {
+        return new RenderFragment(builder =>
+        {
+            builder.OpenElement(0, "div");
+
+            builder.OpenElement(1, "span");
+            builder.AddAttribute(2, "style", new C1.Blazor.Core.C1Style() { ["margin-right"] = "20px" });
+
+            builder.OpenComponent<C1CheckBox>(3);
+            builder.AddAttribute(4, "style", style);
+            builder.AddAttribute(5, nameof(C1CheckBox.IsChecked), matchCase);
+            builder.AddAttribute(6, nameof(C1CheckBox.IsCheckedChanged), EventCallback.Factory.Create<bool?>(this, (arg) => { matchCase = arg; }));
+            builder.CloseComponent();
+
+            builder.OpenElement(7, "span");
+            builder.AddContent(8, "Match Case");
+            builder.CloseElement();
+
+            builder.CloseElement();
+
+            builder.OpenElement(15, "span");
+
+            builder.OpenComponent<C1CheckBox>(9);
+            builder.AddAttribute(16, "style", style);
+            builder.AddAttribute(17, nameof(C1CheckBox.IsChecked), matchWholeWord);
+            builder.AddAttribute(18, nameof(C1CheckBox.IsCheckedChanged), EventCallback.Factory.Create<bool?>(this, (arg) => { matchWholeWord = arg; }));
+            builder.CloseComponent();
+
+            builder.OpenElement(19, "span");
+            builder.AddContent(20, "Match Whole Word");
+            builder.CloseElement();
+
+            builder.CloseElement();
+
+            builder.CloseElement();
+        });
+    }
+}

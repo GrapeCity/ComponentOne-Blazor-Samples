@@ -1,0 +1,215 @@
+﻿@page "/DateRangePicker/Index"
+
+@using C1.Blazor.Calendar
+@using C1.Blazor.Core
+@using C1.Blazor.DateTimeEditors
+@using System;
+@using BlazorExplorer.Localization
+@using C1.Blazor.DateTimeEditors.EventArgs
+@using C1.Blazor.Input
+
+<h5>@DateRangePickerRes.Result</h5>
+
+<C1DateRangePicker CalendarStyle="@(new C1Style(){ Width = _c1DateRangePickerSettings.CalendarWidth, Height = _c1DateRangePickerSettings.CalendarHeight})"
+                   MonthCount="_c1DateRangePickerSettings.MonthCount??1"
+                   MinDate="_c1DateRangePickerSettings.Min"
+                   MaxDate="_c1DateRangePickerSettings.Max"
+                   Value="_c1DateRangePickerSettings.DateRange"
+                   OnValueChanged="OnValueChanged"
+                   IsReadOnly="@_c1DateRangePickerSettings.IsReadonly.GetValueOrDefault()"
+                   IsEnabled="@_c1DateRangePickerSettings.IsEnabled.GetValueOrDefault()"
+                   Placeholder="@_c1DateRangePickerSettings.Placeholder"
+                   Separator="@_c1DateRangePickerSettings.Separator"
+                   Format="@_c1DateRangePickerSettings.DateTimeFormat"
+                   Style="@(new C1Style { Width = 350})"
+                   CalendarOrientation="_c1DateRangePickerSettings.CalendarOrientation"
+                   DropDownBehavior="DropDownBehavior.HeaderTap"></C1DateRangePicker>
+
+
+<span>@_c1DateRangePickerSettings?.DateRange?.ToString()</span>
+
+
+<br />
+<br />
+<hr />
+
+<h5>@DateRangePickerRes.Settings</h5>
+
+<C1HtmlButton Click="PointToLastWeek">
+    <span class="button-content">@DateRangePickerRes.Index_LastWeek</span>
+</C1HtmlButton>
+
+<C1HtmlButton Click="PointToThisWeek">
+    <span class="button-content">@DateRangePickerRes.Index_ThisWeek</span>
+
+</C1HtmlButton>
+
+<C1HtmlButton Click="PointToNextWeek">
+    <span class="button-content">@DateRangePickerRes.Index_NextWeek</span>
+</C1HtmlButton>
+
+<br />
+<br />
+
+<C1DatePicker @bind-Value="_c1DateRangePickerSettings.DateRange.Start" Placeholder="@DateRangePickerRes.Index_StartDate"></C1DatePicker>
+<C1DatePicker @bind-Value="_c1DateRangePickerSettings.DateRange.End" Placeholder="@DateRangePickerRes.Index_EndDate"></C1DatePicker>
+
+<br />
+<br />
+
+<C1DatePicker @bind-Value="_c1DateRangePickerSettings.Min" Placeholder="@DateRangePickerRes.Index_MinDate"></C1DatePicker>
+<C1DatePicker @bind-Value="_c1DateRangePickerSettings.Max" Placeholder="@DateRangePickerRes.Index_MaxDate"></C1DatePicker>
+
+<br />
+<br />
+
+
+<C1ComboBox Placeholder="@DateRangePickerRes.Index_SelectCalendarOrientation" T="CalendarOrientation" SelectedIndexChanged="SelectedIndexChanged" ItemsSource="_calendarOrientations"></C1ComboBox>
+
+<C1NumericBox Min="1" @bind-Value="@_c1DateRangePickerSettings.MonthCount" Style="@(new C1Style(){ Width = 150})" TNumeric="int?" Placeholder="@DateRangePickerRes.Index_Month_Count"></C1NumericBox>
+
+<C1TextBox @bind-Text="@_c1DateRangePickerSettings.Placeholder" Placeholder="@DateRangePickerRes.Index_Placeholder"></C1TextBox>
+
+
+<br />
+<br />
+
+
+<C1TextBox Placeholder="@DateRangePickerRes.Index_EnterCalendarWidth" FinishedTextChange="ChangeCalendarWidth"></C1TextBox>
+<C1TextBox Placeholder="@DateRangePickerRes.Index_EnterCalendarHeight" FinishedTextChange="ChangeCalendarHeight"></C1TextBox>
+
+<br />
+<br />
+
+<C1TextBox @bind-Text="@_c1DateRangePickerSettings.DateTimeFormat" Placeholder="@DateRangePickerRes.Index_Format"></C1TextBox>
+
+<C1TextBox Style="@(new C1Style(){ Width = 310})" @bind-Text="@_c1DateRangePickerSettings.Separator" Placeholder="@DateRangePickerRes.Index_Separator"></C1TextBox>
+
+<br />
+<br />
+@DateRangePickerRes.IsReadOnly <C1CheckBox @bind-IsChecked="@_c1DateRangePickerSettings.IsReadonly"></C1CheckBox>
+
+<br />
+<br />
+@DateRangePickerRes.IsEnabled <C1CheckBox @bind-IsChecked="@_c1DateRangePickerSettings.IsEnabled"></C1CheckBox>
+<br />
+<br />
+
+@code {
+    readonly IList<CalendarOrientation> _calendarOrientations = new List<CalendarOrientation>() { CalendarOrientation.Vertical, CalendarOrientation.Horizontal };
+
+    class C1DateRangePickerSettings
+    {
+        public int? MonthCount { get; set; }
+
+        private string _calendarWidth;
+
+        public string CalendarWidth
+        {
+
+            get => _calendarWidth ?? "280px";
+            set => _calendarWidth = value;
+        }
+
+        private string _calendarHeight;
+
+        public string CalendarHeight
+        {
+            get => _calendarHeight ?? "230px";
+            set => _calendarHeight = value;
+        }
+
+        public string Separator { get; set; }
+        public string Placeholder { get; set; }
+        public string DateTimeFormat { get; set; }
+        public bool? IsReadonly { get; set; } = false;
+        public bool? IsEnabled { get; set; } = true;
+        public DateRange DateRange { get; set; }
+        public DateTime? Min { get; set; }
+        public DateTime? Max { get; set; }
+        public CalendarOrientation CalendarOrientation { get; set; }
+
+        public C1DateRangePickerSettings()
+        {
+            DateRange = new DateRange();
+        }
+    }
+
+
+    readonly C1DateRangePickerSettings _c1DateRangePickerSettings = new C1DateRangePickerSettings();
+
+
+    private void OnValueChanged(object sender, DateTimeRangeValueChangedEventArgs e)
+    {
+        StateHasChanged();
+    }
+
+    private void PointToLastWeek(MouseEventArgs obj)
+    {
+
+        var date = DateTime.Today;
+
+        DateTime mondayOfLastWeek = date.AddDays(-(int)date.DayOfWeek - 6);
+
+        _c1DateRangePickerSettings.DateRange.Start = mondayOfLastWeek;
+        _c1DateRangePickerSettings.DateRange.End = mondayOfLastWeek.AddDays(6);
+
+
+    }
+
+    private void PointToThisWeek(MouseEventArgs obj)
+    {
+
+        var date = DateTime.Today;
+
+        DateTime mondayOfThisWeek = date.AddDays(-(int)date.DayOfWeek + 1);
+
+        _c1DateRangePickerSettings.DateRange.Start = mondayOfThisWeek;
+        _c1DateRangePickerSettings.DateRange.End = mondayOfThisWeek.AddDays(6);
+
+
+    }
+
+    private void PointToNextWeek(MouseEventArgs obj)
+    {
+
+        var date = DateTime.Today;
+
+        DateTime mondayOfNextWeek = date.AddDays(-(int)date.DayOfWeek + 8);
+
+        _c1DateRangePickerSettings.DateRange.Start = mondayOfNextWeek;
+        _c1DateRangePickerSettings.DateRange.End = mondayOfNextWeek.AddDays(6);
+
+    }
+
+    private void SelectedIndexChanged(int index)
+    {
+        var orientation = _calendarOrientations[index];
+
+        _c1DateRangePickerSettings.CalendarOrientation = orientation;
+    }
+
+    private void ChangeCalendarWidth(string width)
+    {
+        _c1DateRangePickerSettings.CalendarWidth = width;
+    }
+
+    private void ChangeCalendarHeight(string height)
+    {
+        _c1DateRangePickerSettings.CalendarHeight = height;
+    }
+
+}
+
+<_Sections>
+    <Title>@DateRangePickerRes.OverviewTitle</Title>
+    <Summary>@DateRangePickerRes.OverviewSummary</Summary>
+    <Description>@DateRangePickerRes.OverviewDescription</Description>
+</_Sections>
+
+
+<style>
+    .button-content {
+        padding: 5px
+    }
+</style>

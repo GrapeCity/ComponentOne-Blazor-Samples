@@ -1,0 +1,150 @@
+﻿@page "/Tooltip/Index"
+@using BlazorExplorer.Localization
+@using C1.Blazor.Input
+
+<p>
+    @((MarkupString)TooltipRes.Index_Text0)
+</p>
+
+<p>
+    @((MarkupString)TooltipRes.Index_Text1)
+</p>
+
+<p>
+    @((MarkupString)TooltipRes.Index_Text2)
+</p>
+
+<p>
+    @TooltipRes.Index_Text3
+</p>
+<style>
+
+    .gridContainer {
+        margin: 20px;
+        display: grid;
+        grid-template-columns: 160px 160px 160px 160px 160px;
+        grid-template-rows: repeat(160px);
+        padding: 10px;
+    }
+
+    .grid-item {
+        color: rgb(0,0,0);
+        background-color: rgb(155, 30, 52);
+        margin: 5px;
+        padding: 20px;
+        font-size: 23px;
+        text-align: center;
+    }
+
+    .ttPanel {
+        height: 70px;
+        border-top-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        box-sizing: border-box;
+    }
+
+    .ttTitle {
+        padding: 0px;
+        background-color: cyan;
+        border-bottom-color: darkcyan;
+        border-bottom-width: 1px;
+        position: relative;
+        height: 20px;
+    }
+
+    .ttContent {
+        padding: 7px 4px 4px 4px;
+        position: relative;
+        height: 100%;
+    }
+</style>
+
+<div class="gridContainer" style="">
+    <div class="grid-item"></div>
+    <div class="grid-item"><span id="aboveLeft">AboveLeft</span></div>
+    <div class="grid-item"><span id="above">Above</span></div>
+    <div class="grid-item"><span id="aboveRight">AboveRight</span></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"><span id="leftTop">LeftTop</span></div>
+    <div class="grid-item">1</div>
+    <div class="grid-item">2</div>
+    <div class="grid-item">3</div>
+    <div class="grid-item"><span id="rightTop">RightTop</span></div>
+    <div class="grid-item"><span id="left">Left</span></div>
+    <div class="grid-item">4</div>
+    <div class="grid-item">5</div>
+    <div class="grid-item">6</div>
+    <div class="grid-item"><span id="right">Right</span></div>
+    <div class="grid-item"><span id="leftBottom">LeftBottom</span></div>
+    <div class="grid-item">7</div>
+    <div class="grid-item">8</div>
+    <div class="grid-item">9</div>
+    <div class="grid-item"><span id="rightBottom">RightBottom</span></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"><span id="belowLeft">BelowLeft</span></div>
+    <div class="grid-item"><span id="below">Below</span></div>
+    <div class="grid-item"><span id="belowRight">BelowRight</span></div>
+    <div class="grid-item"></div>
+</div>
+
+
+<C1Tooltip Target="testTooltip" Position="PopupPosition.Right" Gap="25" Style="@("background-color:red;color:yellow;")">
+    <Content>@TooltipRes.Index_Text4</Content>
+</C1Tooltip>
+<C1Tooltip Target="btnOpenPopup" Style="@("color:red")">
+    <Content>@TooltipRes.Index_Text5</Content>
+</C1Tooltip>
+
+<C1Tooltip Target="ttcustom" Position="PopupPosition.AboveLeft" Style="@("padding:0px;")" ShowDelay="200">
+    <Content>
+        @((MarkupString)TooltipRes.Index_Text6)
+    </Content>
+</C1Tooltip>
+
+<C1Tooltip Target="aboveLeft" Position="PopupPosition.AboveLeft">
+    <Content>@TooltipRes.Index_Text7</Content>
+</C1Tooltip>
+<C1Tooltip Target="above" Position="PopupPosition.Above">
+    <Content>@TooltipRes.Index_Text8</Content>
+</C1Tooltip>
+<C1Tooltip Target="aboveRight" Position="PopupPosition.AboveRight">
+    <Content>@TooltipRes.Index_Text9</Content>
+</C1Tooltip>
+<C1Tooltip Target="belowLeft" Position="PopupPosition.BelowLeft">
+    <Content>@TooltipRes.Index_Text10</Content>
+</C1Tooltip>
+<C1Tooltip Target="below" Position="PopupPosition.Below">
+    <Content>@TooltipRes.Index_Text11</Content>
+</C1Tooltip>
+<C1Tooltip Target="belowRight" Position="PopupPosition.BelowRight">
+    <Content>@TooltipRes.Index_Text12</Content>
+</C1Tooltip>
+<C1Tooltip Target="leftTop" Position="PopupPosition.LeftTop">
+    <Content>@TooltipRes.Index_Text13</Content>
+</C1Tooltip>
+<C1Tooltip Target="left" Position="PopupPosition.Left">
+    <Content>@TooltipRes.Index_Text14</Content>
+</C1Tooltip>
+<C1Tooltip Target="leftBottom" Position="PopupPosition.LeftBottom">
+    <Content>@TooltipRes.Index_Text15</Content>
+</C1Tooltip>
+<C1Tooltip Target="rightTop" Position="PopupPosition.RightTop">
+    <Content>@TooltipRes.Index_Text16</Content>
+</C1Tooltip>
+<C1Tooltip Target="right" Position="PopupPosition.Right">
+    <Content>@TooltipRes.Index_Text17</Content>
+</C1Tooltip>
+<C1Tooltip Target="rightBottom" Position="PopupPosition.RightBottom">
+    <Content>@TooltipRes.Index_Text18</Content>
+</C1Tooltip>
+
+@code{
+
+
+}
+<_Sections>
+    <Title>@TooltipRes.OverviewTitle</Title>
+    <Summary>@TooltipRes.OverviewSummary</Summary>
+    <Description>@((MarkupString)TooltipRes.OverviewDescription)</Description>
+
+</_Sections>

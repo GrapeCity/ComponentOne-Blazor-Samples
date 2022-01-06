@@ -1,0 +1,34 @@
+﻿@page "/NumericBox/ModelBinding"
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using Localization
+
+
+
+<div class="form-group">
+
+    <C1NumericBox Format="##,###.##" Style="@c1Style" TNumeric="double" @bind-Value="@value">
+
+    </C1NumericBox>
+
+    <br />
+    <span>@NumericBoxRes.Binding</span>
+    <span>@value</span>
+</div>
+
+<_Sections>
+    <Title>@NumericBoxRes.ModelBindingTitle</Title>
+    <Summary>@NumericBoxRes.OverviewSummary</Summary>
+    <Description>@NumericBoxRes.ModelBindingDescription</Description>
+</_Sections>
+
+
+@code{
+
+    double value;
+
+    C1Style c1Style = new C1Style() { Width = 120 };
+
+}
+
+

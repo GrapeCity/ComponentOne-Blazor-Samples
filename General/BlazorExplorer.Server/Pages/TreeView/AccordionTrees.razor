@@ -1,0 +1,140 @@
+﻿@page "/TreeView/AccordionTrees"
+@using C1.Blazor.Core
+@using C1.Blazor.TreeView
+@using C1.Blazor.Input
+@using Localization
+
+<style>
+    .msg {
+        color: orange;
+        margin-bottom: 15px;
+    }
+
+    .custom-css .header-item {
+        font-weight: bold;
+        padding: 6px 10px;
+        color: white;
+        background: #106cc8;
+        margin-bottom: 4px;
+    }
+
+    .custom-css .c1-tree-view-item {
+        background: none !important;
+        grid-template-columns: 0 auto !important;
+    }
+
+        .custom-css .c1-tree-view-item > div:first-child {
+            width: 0 !important;
+        }
+</style>
+<div class="pb-2">@TreeViewRes.CustomCss<C1CheckBox @bind-IsChecked="@isCustomCss" /></div>
+<div class="msg">
+    @((MarkupString)navigation)
+</div>
+<C1TreeView Class="@("p-2" + (isCustomCss != null && isCustomCss.Value ? " custom-css" : ""))" ShowLines="false" IsExpandedPath="Expanded" ItemsSource="@_dataSource" ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name"
+            Style="@_c1Style" KeyboardNavigation="true" SelectionMode="C1SelectionMode.Single" ExpandOnClick="true" ExpandMode="TreeViewExpandMode.Single">
+    <ItemTemplate>
+
+        @if (context is TreeViewItem { DataItem: Directory dir } item)
+        {
+            if (dir.IsHeader)
+            {
+                <div class="header-item">
+                    @dir.Name
+                </div>
+            }
+            else
+            {
+                <a href="" @onclick="@(() => Navigation(dir.Url))" @onclick:preventDefault>
+                    @dir.Name
+                </a>
+            }
+
+        }
+
+    </ItemTemplate>
+</C1TreeView>
+
+<_Sections>
+    <Title>
+        TreeView Accordion
+    </Title>
+    <Summary>@TreeViewRes.AccordionTreesSummary</Summary>
+    <Description>@TreeViewRes.AccordionTreesDescription</Description>
+</_Sections>
+
+@code{
+    string navigation = TreeViewRes.Navigation_Ready;
+    bool? isCustomCss = true;
+    readonly C1Style _c1Style = new C1Style
+    {
+        Height = 400,
+        Width = 600,
+        BackgroundColor = C1Color.FromARGB(250, 240, 240, 240)
+    };
+
+
+
+    readonly IList<Directory> _dataSource = new List<Directory>()
+{
+        new Directory()
+        {
+            Name = "Angular",
+            Expanded = true,
+            IsHeader = true,
+            Subdirectories = new List<Directory>
+    {
+                new Directory {Name = "Introduction", Url = "ng/intro"},
+                new Directory {Name = "Sample", Url = "ng/sample"},
+                new Directory {Name = "Performance", Url = "ng/perf"}
+            }
+        },
+        new Directory
+        {
+            Name = "React",
+            IsHeader = true,
+            Subdirectories = new List<Directory>
+    {
+                new Directory {Name = "Introduction", Url = "rc/intro"},
+                new Directory {Name = "Sample", Url = "rc/sample"},
+                new Directory {Name = "Performance", Url = "rc/perf"}
+            }
+        },
+        new Directory
+        {
+            Name = "Vue",
+            IsHeader = true,
+            Subdirectories = new List<Directory>
+    {
+                new Directory {Name = "Introduction", Url = "vue/intro"},
+                new Directory {Name = "Sample", Url = "vue/sample"},
+                new Directory {Name = "Performance", Url = "vue/perf"}
+            }
+        },
+        new Directory
+        {
+            Name = "Knockout",
+            IsHeader = true,
+            Subdirectories = new List<Directory>
+    {
+                new Directory {Name = "Introduction", Url = "ko/intro"},
+                new Directory {Name = "Sample", Url = "ko/sample"},
+                new Directory {Name = "Performance", Url = "ko/perf"}
+            }
+        }
+    };
+
+    public class Directory
+    {
+        public string Name { get; set; }
+        public List<Directory> Subdirectories { get; set; }
+        public bool Expanded { get; set; }
+        public bool IsHeader { get; set; }
+        public string Url { get; set; }
+    }
+
+    public void Navigation(string url)
+    {
+        navigation = string.Format(TreeViewRes.Navigation_Navigating, url);
+    }
+}

@@ -1,0 +1,151 @@
+﻿@inherits ComponentBase
+@implements IDisposable
+
+@if (!String.IsNullOrEmpty(RenderSections))
+{
+    var secs = RenderSections.Trim() == "*" ? _sections : RenderSections.Split(',');
+    foreach (var sec in secs)
+    {
+        var seci = sec.Trim();
+        @WrapWithTag(seci, Tag)
+    }
+}
+
+@code {
+    [Parameter]
+    public string Tag { get; set; } = "div";
+    [Parameter]
+    public string Class { get; set; }
+    [Parameter]
+    public string Style { get; set; }
+    [Parameter]
+    public string RenderSections { get; set; }
+    [Parameter]
+    public RenderFragment Title { get { return Get("Title"); } set { Set("Title", value); } }
+    [Parameter]
+    public RenderFragment Summary { get { return Get("Summary"); } set { Set("Summary", value); } }
+    [Parameter]
+    public RenderFragment Description { get { return Get("Description"); } set { Set("Description", value); } }
+    [Parameter]
+    public RenderFragment Settings { get { return Get("Settings"); } set { Set("Settings", value); } }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public string NullHtml { get; set; }
+
+    private static ViewBagService _viewBagSrv;
+    private static string[] _sections = ("Title,Summary,Description,Settings").Split(",");
+    private static IDictionary<string, bool> _isSet = newDict(new bool[_sections.Length]);
+    private Action<object> _updateUI;
+
+    private static IDictionary<string, bool> newDict(bool[] initValues)
+    {
+        var dict = new Dictionary<string, bool>();
+        for (int i = 0; i < Math.Min(_sections.Length, initValues.Length); i++)
+        {
+            dict.Add(_sections[i], initValues[i]);
+        }
+        return dict;
+    }
+
+    private RenderFragment WrapWithTag(string section, string tag = null)
+    {
+        var secFrag = Get(section);
+        if (_isSet[section] && secFrag == null) return null;
+        else if (secFrag == null && NullHtml == null) return null;
+        else if (String.IsNullOrEmpty(Tag) && secFrag != null) return secFrag;
+        else return new RenderFragment(b =>
+        {
+            b.OpenElement(0, tag);
+            b.AddAttribute(1, "class", section + " " + Class);
+            b.AddAttribute(2, "style", Style);
+            if (secFrag == null)
+                b.AddContent(3, NullHtml);
+            else b.AddContent(4, secFrag);
+            b.CloseElement();
+        });
+    }
+
+    public bool isEmpty(string section)
+    {
+        return (Get(section) == null);
+    }
+
+    private static void _Set(string section, RenderFragment value, bool isSet = false)
+    {
+        if (_viewBagSrv != null)
+        {
+            var propName = section + "Fragment";
+            var prop = _viewBagSrv.GetType().GetProperty(propName);
+            if (prop != null)
+            {
+                prop.SetValue(_viewBagSrv, value);
+                _isSet[section] = isSet;
+                if (value == null)
+                    _viewBagSrv.Invalidate(propName);
+            }
+        }
+    }
+
+    public static void Set(string section, RenderFragment value)
+    {
+        _Set(section, value, true);
+    }
+
+    public static void Set(string section, string value)
+    {
+        if (String.IsNullOrEmpty(value))
+            _Set(section, (RenderFragment)null, true);
+        else
+            _Set(section, new RenderFragment(b => { b.AddContent(0, (MarkupString)value); }), true);
+    }
+
+    public static RenderFragment Get(string section)
+    {
+        if (_viewBagSrv != null)
+        {
+            var prop = _viewBagSrv.GetType().GetProperty(section + "Fragment");
+            if (prop != null)
+            {
+                return (RenderFragment)prop.GetValue(_viewBagSrv);
+            }
+        }
+        return null;
+    }
+
+    public static void Clear(bool all = true)
+    {
+        foreach (var sec in _sections)
+            if ((all || !_isSet[sec]) && Get(sec) != null)
+            {
+                _Set(sec, (RenderFragment)null, false);
+            }
+    }
+
+    public static void Reset()
+    {
+        foreach (var sec in _sections)
+        {
+            _isSet[sec] = false;
+        }
+        if (Get("Title") != null)
+            _Set("Title", (RenderFragment)null, false);
+    }
+
+    protected override void OnInitialized()
+    {
+        if (_viewBagSrv == null)
+            _viewBagSrv = _App.ViewBagSrv;
+
+        if (!String.IsNullOrEmpty(RenderSections))
+        {
+            _updateUI = new Action<object>((e) => { base.InvokeAsync(this.StateHasChanged); });
+            _viewBagSrv.AddObserveAction(_updateUI);
+        }
+    }
+
+    public void Dispose()
+    {
+        _viewBagSrv.RemoveObserveAction(_updateUI);
+    }
+}

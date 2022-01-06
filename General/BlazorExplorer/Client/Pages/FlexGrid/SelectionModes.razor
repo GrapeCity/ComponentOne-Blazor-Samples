@@ -1,0 +1,50 @@
+﻿@page "/FlexGrid/SelectionModes"
+@using Localization
+@using System.Collections.ObjectModel;
+@using C1.Blazor.Grid
+@using C1.Blazor.Input
+
+@selectedCells
+
+<FlexGrid ItemsSource="@customers" StyleKind="@GridStyle.Classic" SelectionChanged="OnSelectionChanged" SelectionMode="selectionMode" 
+          AllowResizing="allowResizing" AllowDragging="allowDragging" Style="@("max-height:50vh")" />
+
+<_Sections>
+    <Title>@FlexGridRes.SelectionModesTitle</Title>
+    <Settings>
+        Selection Modes <C1ComboBox ItemsSource="selectionModes" @bind-SelectedItem="selectionMode" Class="filled-drop-down" />
+        Allow Resizing <C1ComboBox ItemsSource="allowResizingModes" @bind-SelectedItem="allowResizing" Class="filled-drop-down" />
+        Allow Dragging <C1ComboBox ItemsSource="allowDraggingModes" @bind-SelectedItem="allowDragging" Class="filled-drop-down" />
+    </Settings>
+    <Summary>@FlexGridRes.SelectionModesSummary</Summary>
+    <Description>@FlexGridRes.SelectionModesDescription</Description>
+</_Sections>
+
+@code {
+    ObservableCollection<Customer> customers;
+    string selectedCells;
+    GridSelectionMode selectionMode = GridSelectionMode.CellRange;
+    GridSelectionMode[] selectionModes = new GridSelectionMode[] { GridSelectionMode.None, GridSelectionMode.Cell, GridSelectionMode.CellRange, GridSelectionMode.Row, GridSelectionMode.RowRange, GridSelectionMode.Column, GridSelectionMode.ColumnRange };
+    GridAllowResizing allowResizing = GridAllowResizing.Columns;
+    GridAllowResizing[] allowResizingModes = new GridAllowResizing[] { GridAllowResizing.None, GridAllowResizing.Columns, GridAllowResizing.Rows, GridAllowResizing.Both, };
+    GridAllowDragging allowDragging = GridAllowDragging.Columns;
+    GridAllowDragging[] allowDraggingModes = new GridAllowDragging[] { GridAllowDragging.None, GridAllowDragging.Columns, GridAllowDragging.Rows, GridAllowDragging.Both, };
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+
+    private void OnSelectionChanged(object sender, GridCellRangeEventArgs e)
+    {
+        if (e.CellRange != null && e.CellRange.Row != -1)
+        {
+            int rowsSelected = Math.Abs(e.CellRange.Row2 - e.CellRange.Row) + 1;
+            int colsSelected = Math.Abs(e.CellRange.Column2 - e.CellRange.Column) + 1;
+
+            selectedCells = (rowsSelected * colsSelected).ToString() + " " + FlexGridRes.CellsSelectedText;
+            StateHasChanged();
+        }
+    }
+
+}

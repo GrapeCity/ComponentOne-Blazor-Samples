@@ -1,0 +1,75 @@
+﻿@page "/FlexChart/Index"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Input;
+
+<FlexChart Class="chart" ChartType="chartType ?? ChartType.Column" Stacking="stacking ?? Stacking.None" Palette="palette ?? Palette.Standard"
+           HeaderContent="Revenue and Expense Comparison" HeaderStyle="font-size:24px"
+           LegendPosition="Position.Bottom" LegendStyle="font-size:20px"
+           BindingX="Country" ItemsSource="Data">
+    <SeriesCollection>
+        <Series Name="Revenue" Binding="Sales" />
+        <Series Name="Expenses" Binding="Expenses" />
+    </SeriesCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.IndexTitle</Title>
+    <Settings>
+        Chart Type <C1ComboBox ItemsSource="chartTypes" @bind-SelectedItem="chartType" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")"/>
+        Stacking <C1ComboBox ItemsSource="stackings" @bind-SelectedItem="stacking" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")"/>
+        Palette <C1ComboBox ItemsSource="palettes" @bind-SelectedItem="palette" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")"/>
+    </Settings>
+    <Summary>@FlexChartRes.IndexSummary</Summary>
+    <Description>@FlexChartRes.IndexDescription</Description>
+</_Sections>
+
+@code {
+    ChartType[] chartTypes = new ChartType[] { ChartType.Column, ChartType.Bar, ChartType.Line, ChartType.LineSymbols, 
+        ChartType.Scatter, ChartType.Area, ChartType.Spline, ChartType.SplineArea, ChartType.SplineSymbols,
+        ChartType.Step, ChartType.StepArea, ChartType.StepSymbols};
+    ChartType? chartType = ChartType.Column;
+
+    Stacking[] stackings = new Stacking[] { Stacking.None, Stacking.Stacked, Stacking.Stacked100pc };
+    Stacking? stacking = Stacking.None;
+
+    IEnumerable<Palette> palettes = Enum.GetValues(typeof(Palette)).Cast<Palette>().Where((p, x) => p!=Palette.Custom);
+    Palette? palette = Palette.Standard;
+
+    List<DataSource.CountryData> Data { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Data = DataSource.GetData();
+    }
+
+    public class DataSource
+    {
+        private static Random rnd = new Random();
+
+        public class CountryData
+        {
+            public string Country { get; set; }
+            public double Sales { get; set; }
+            public double Expenses { get; set; }
+        }
+
+        public static List<CountryData> GetData(int rangeMin = 100, int rangeMax = 1000)
+        {
+            var countries = "US,Canada,Mexico,Germany,UK,France,Italy,Japan,Korea,China".Split(',');
+            var data = new List<CountryData>();
+            for (int i = 0; i < countries.Length; i++)
+            {
+                var country = new CountryData
+                {
+                    Country = countries[i],
+                    Sales = rnd.Next(rangeMin, rangeMax),
+                    Expenses = rnd.Next(rangeMin, rangeMax)
+                };
+                data.Add(country);
+            }
+            return data;
+        }
+    }
+}

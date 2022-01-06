@@ -1,0 +1,207 @@
+﻿@inject NavigationManager _Nvm
+@inject IJSRuntime _Jsr
+@inject ViewBagService _ViewBagSrv
+@implements IDisposable
+@using System.IO
+@using System.Text.RegularExpressions
+@using System.Net
+
+@{
+    InitOnRoute();
+}
+
+@code {
+    [Parameter]
+    public object RouteData { get; set; }
+
+    public static string RelativeUri;
+    public static NavigationManager NavMan;
+    public static IJSRuntime JsRuntime;
+    public static ViewBagService ViewBagSrv;
+    public static string IconPath = "Content/css/images/icons/";
+
+    protected override Task OnInitializedAsync()
+    {
+        JsRuntime = _Jsr;
+        NavMan = _Nvm;
+        ViewBagSrv = _ViewBagSrv;
+        ViewBagSrv.Clear();
+        NavMan.LocationChanged += HandleLocationChanged;
+        return base.OnInitializedAsync();
+    }
+
+    private bool _initialized;
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if(firstRender)
+        {
+            _initialized = true;
+            if (string.IsNullOrEmpty(_title))
+            {
+                return;
+            }
+
+            SetPageTitle(_title);
+        }
+    }
+
+    private string _title;
+    public void InitOnRoute()
+    {
+        var NewRelativeUri = _Nvm.ToBaseRelativePath(_Nvm.Uri);
+        if (NewRelativeUri != RelativeUri)
+        {
+            RelativeUri = NewRelativeUri;
+            _title = SplitPath(RelativeUri, "Home/").Item1 + Localization.Resource.Layout_TitleSuffix;
+            if (_initialized)
+            {
+                SetPageTitle(_title);
+            }
+            //_Sections.Clear();
+            _Sections.Reset();
+        }
+        ViewBagSrv.State = null;
+    }
+
+    public static void SetPageTitle(string title)
+    {
+        JsRuntime.InvokeAsync<object>("setPageTitle", title);
+    }
+
+    public static Tuple<string, string> SplitPath(string path = null, string defaultPath = "Index")
+    {
+        var uriParts = ("/" + path).Split('?')[0].Split("/");
+        var l = uriParts.Length;
+        if (!String.IsNullOrEmpty(defaultPath))
+        {
+            var defUriParts = ("/" + defaultPath).Split("/");
+            var dl = defUriParts.Length;
+            for (int i = 1; i < 3; i++)
+                if (uriParts[l - i].Trim() == "")
+                    uriParts[l - i] = defUriParts[dl - i];
+        }
+
+        return new Tuple<string, string>(
+          uriParts[l - 2], //controlName
+          uriParts[l - 1] //actionName
+        );
+    }
+
+    public static MarkupString HtmlRaw(string s)
+    {
+        return (MarkupString)s;
+    }
+
+    public static string TrimSpec(string name)
+    {
+        return Regex.Replace(name, @"[^\w-]", "");
+    }
+
+    public static bool IsHome(string uri, out string controlName, out string actionName)
+    {
+        var path = _App.SplitPath(uri);
+        controlName = path.Item1;
+        actionName = path.Item2;
+        return string.IsNullOrEmpty(controlName) || string.Equals(controlName, "home", StringComparison.OrdinalIgnoreCase);
+    }
+
+    public static bool IsHome(string uri)
+    {
+        string p1, p2;
+        return IsHome(uri, out p1, out p2);
+    }
+
+    public static string ToUri(string filePath)
+    {
+        string absFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", filePath);
+        var uri = new Uri(absFilePath).AbsoluteUri;
+        return uri;
+    }
+
+    public static bool FileExists(string filePath)
+    {
+        string absFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", filePath);
+        return File.Exists(absFilePath);
+    }
+
+    public static bool DirExists(string dirPath)
+    {
+        string absDirPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", dirPath);
+        return Directory.Exists(absDirPath);
+    }
+
+    public static string TryFile(string path, string ext, params string[] files)
+    {
+        for (var i = 0; i < files.Length; i++)
+        {
+            var filePath = files[i];
+            if (filePath.IndexOf(",") == -1)
+            {
+                if (!String.IsNullOrEmpty(path) && filePath.IndexOf("/") == -1)
+                    filePath = Path.Combine(path, filePath);
+                if (!String.IsNullOrEmpty(ext))
+                    filePath += (ext[0] == '.' ? "" : ".") + ext;
+                if (FileExists(filePath))
+                    return filePath;
+            }
+            else
+            {
+                filePath = TryFile(path, ext, filePath.Split(","));
+                if (filePath != null) return filePath;
+            }
+        }
+        return null;
+    }
+
+    public static async Task NavigateTo(String uri, int delay)
+    {
+        if (uri != null)
+        {
+            ViewBagSrv.State = "Loading...";
+            await Task.Delay(delay);
+            NavMan.NavigateTo(uri);
+            ViewBagSrv.State = null;
+        }
+        else
+        {
+            ViewBagSrv.State = ViewBagSrv.State == null ? "Loading..." : null;
+        }
+    }
+
+    public static async Task NavigateTo(String uri)
+    {
+        await NavigateTo(uri, 0);
+    }
+
+    public static async Task NavigateTo(string uri, bool isInNewTab)
+    {
+        if (isInNewTab)
+        {
+            await JsRuntime.InvokeAsync<object>("open", uri, "_blank");
+        }
+        else
+        {
+            await NavigateTo(uri);
+        }
+    }
+
+    public static async Task OnClickNavigateTo(MouseEventArgs e, String uri)
+    {
+        await NavigateTo(uri);
+    }
+
+    public static async Task OnClickNavigateTo(MouseEventArgs e, String uri, bool isInNewTab)
+    {
+        await NavigateTo(uri, isInNewTab);
+    }
+
+    private void HandleLocationChanged(object sender, LocationChangedEventArgs e)
+    {
+        ViewBagSrv.State = null;
+    }
+
+    public void Dispose()
+    {
+        NavMan.LocationChanged -= HandleLocationChanged;
+    }
+}

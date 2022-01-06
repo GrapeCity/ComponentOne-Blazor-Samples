@@ -1,0 +1,103 @@
+﻿@page "/Menu/ItemTemplate"
+@using C1.Blazor.Menu
+@using Localization
+@using C1.Blazor.Input 
+
+<style>
+    .default-menu .c1-menu-item.is-master {
+        border: 1px solid #d5d5d5
+    }
+</style>
+
+<C1Menu ItemsSource="@_dataSource" Class="default-menu"
+        ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name">
+        <ItemTemplate>
+            @if (context is C1MenuItem { DataItem: Hierarchical obj } item)
+            {
+                if (item.IsMaster)
+                {
+                    <span>@obj.Name</span>
+                }else{
+                    <span>
+                        <span class="@obj.Icon"></span>&nbsp;&nbsp;
+                        <b>@obj.Name</b>
+                        <br>
+                        <small><i>@obj.SubDescription</i></small>
+                    </span>
+                }
+                
+            }
+        </ItemTemplate>
+</C1Menu>
+
+<div style="margin-top: 2em">DropDown</div>
+<C1DropDown @ref="dropdown">
+    <Header>File</Header>
+    <ChildContent>
+        <C1MenuList ItemsSource="@_dataSource[0].Subdirectories" Orientation="Orientation.Vertical"
+                    ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name" OnItemSelected="OnDropDownItemSelected">
+            <ItemTemplate>
+                @if (context is C1MenuItem { DataItem: Hierarchical obj } item)
+                {
+                    <span>
+                        <span class="@obj.Icon"></span>&nbsp;&nbsp;
+                        <b>@obj.Name</b>
+                        <br>
+                        <small><i>@obj.SubDescription</i></small>
+                    </span>
+                }
+            </ItemTemplate>
+        </C1MenuList>
+    </ChildContent>
+</C1DropDown>
+<_Sections>
+    <Title>@MenuRes.ItemTemplate_Title</Title>
+    <Description>@((MarkupString)MenuRes.ItemTemplate_Description)</Description>
+</_Sections>
+
+@code{
+    C1DropDown dropdown;
+    readonly IList<Hierarchical> _dataSource = new List<Hierarchical >()
+    {
+        new Hierarchical ()
+        {
+            Name = MenuRes.File,
+            Subdirectories = new List<Hierarchical>
+            {
+                new Hierarchical {
+                    Icon = "glyphicon glyphicon-asterisk",
+                    Name = MenuRes.New,
+                    SubDescription = MenuRes.CreateFile
+                },
+                new Hierarchical {
+                    Icon = "glyphicon glyphicon-folder-open",
+                    Name = MenuRes.Open,
+                    SubDescription = MenuRes.OpenFile
+                },
+                new Hierarchical {
+                    Icon = "glyphicon glyphicon-floppy-disk",
+                    Name = MenuRes.Save,
+                    SubDescription = MenuRes.SaveFile
+                },
+                new Hierarchical {
+                    Icon = "glyphicon glyphicon-remove",
+                    Name = MenuRes.Exit,
+                    SubDescription = MenuRes.ExitApplication
+                }
+            }
+        }
+    };
+
+    public class Hierarchical
+    {
+        public string Name { get; set; }
+        public List<Hierarchical> Subdirectories { get; set; }
+        public string Icon { get; set;}
+        public string SubDescription { get; set;}
+    }
+
+    private void OnDropDownItemSelected()
+    {
+        dropdown.IsDropDownOpen = false;
+    }
+}

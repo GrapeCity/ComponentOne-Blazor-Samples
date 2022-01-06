@@ -1,0 +1,79 @@
+﻿@page "/"
+@namespace BlazorExplorer.Server.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Localization
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <title>Home@(Resource.Layout_TitleSuffix)</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="@Url.Content("~/Content/favicon/apple-touch-icon.png")">
+    <link rel="icon" type="image/png" href="@Url.Content("~/Content/favicon/favicon-32x32.png")" sizes="32x32">
+    <link rel="icon" type="image/png" href="@Url.Content("~/Content/favicon/favicon-16x16.png")" sizes="16x16">
+    <link rel="manifest" href="@Url.Content("~/Content/favicon/manifest.json")">
+    <link rel="mask-icon" href="@Url.Content("~/Content/favicon/safari-pinned-tab.svg")" color="#503b75">
+
+    <base href="~/" />
+    <!--
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    -->
+    <link href="css/site.css" rel="stylesheet" />
+
+    <link href="Content\css\bootstrap\css\bootstrap.css" rel="stylesheet" />
+    <link href="Content/css/explorer.css" rel="stylesheet" />
+    <link href="Content/css/gcicons.css" rel="stylesheet" />
+    <link href="Content/css/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+    <link href="Content/css/SyntaxHighlighter/shCoreEclipse.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="Scripts/blazor.polyfill.min.js"></script> <!--Support IE11-->
+    <script src="Scripts/ControlLayout.js"></script>
+    <script src="Scripts/SyntaxHighlighter/shCore.js"></script>
+    <script src="Scripts/SyntaxHighlighter/shBrushXml.js"></script>
+    <script src="Scripts/SyntaxHighlighter/shBrushJScript.js"></script>
+    <script src="Scripts/SyntaxHighlighter/shBrushCSharp.js"></script>
+    <script src="Scripts/SyntaxHighlighter/shBrushRazor.js"></script>
+    <script src="Scripts/scripts.js"></script>
+    <script src="Scripts/ResizeObserver.js"></script>
+
+    <!-- Add controls's styles, js here: -->
+    <link rel="stylesheet" href="~/_content/C1.Blazor.Core/styles.css" />
+    <link rel="stylesheet" href="~/_content/C1.Blazor.Grid/styles.css" />
+    <link rel="stylesheet" href="~/_content/C1.Blazor.ListView/styles.css" />
+    <link rel="stylesheet" href="~/_content/C1.Blazor.Input/styles.css" />
+    <link rel="stylesheet" href="~/_content/C1.Blazor.DataPager/styles.css" />
+    <link rel="stylesheet" href="~/_content/C1.Blazor.Calendar/styles.css" />
+    <link rel="stylesheet" href="~/_content/C1.Blazor.DateTimeEditors/styles.css" />
+    <link rel="stylesheet" href="~/_content/C1.Blazor.Chart/styles.css" />
+    <link rel="stylesheet" href="~/_content/C1.Blazor.TreeView/styles.css" />
+    <link rel="stylesheet" href="~/_content/C1.Blazor.DataFilter/styles.css" />
+    <link rel="stylesheet" href="~/_content/C1.Blazor.Accordion/styles.css" />
+
+    <script src="~/_content/C1.Blazor.Core/scripts.js"></script>
+    <script src="~/_content/C1.Blazor.Input/scripts.js"></script>
+    <script src="~/_content/C1.Blazor.Grid/scripts.js"></script>
+    <script src="~/_content/C1.Blazor.Chart/scripts.js"></script>
+    <script src="~/_content/C1.Blazor.Calendar/scripts.js"></script>
+    <script src="~/_content/C1.Blazor.TreeView/scripts.js"></script>
+    <script src="~/_content/C1.Blazor.Accordion/scripts.js"></script>
+
+</head>
+<body>
+    @{
+        this.HttpContext.Response.Cookies.Append(
+        Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.DefaultCookieName,
+        Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.MakeCookieValue(
+            new Microsoft.AspNetCore.Localization.RequestCulture(
+                new System.Globalization.CultureInfo("en-us"),
+                System.Globalization.CultureInfo.CurrentUICulture)));
+    }
+    <app>
+        @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))
+    </app>
+
+    <script src="_framework/blazor.server.js"></script>
+
+</body>
+</html>
+

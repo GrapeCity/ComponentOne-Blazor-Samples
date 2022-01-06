@@ -1,0 +1,25 @@
+﻿@page "/FlexGrid/CheckList"
+@using Localization
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+
+<FlexGrid ItemsSource="cities" Style="@("max-height:50vh")">
+    <FlexGridBehaviors>
+        <CheckListBehavior SelectionBinding="Selected" />
+    </FlexGridBehaviors>
+</FlexGrid>
+
+<_Sections>
+    <Title>@FlexGridRes.CheckListTitle</Title>
+    <Summary>@FlexGridRes.CheckListSummary</Summary>
+    <Description>@FlexGridRes.CheckListDescription</Description>
+</_Sections>
+
+@code {
+    IEnumerable<City> cities;
+
+    protected override void OnInitialized()
+    {
+        cities = Customer.GetCities();
+    }
+}

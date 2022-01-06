@@ -1,0 +1,50 @@
+﻿@font-face {
+    font-family: 'gcicons';
+    src: url("../fonts/gcicons.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="gcicon-"],
+[class*=" gcicon-"] {
+    font-family: 'gcicons';
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.logo-container {
+    display: inline-block;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 26px;
+    color: rgb(61, 61, 61) !important;
+}
+    .logo-container .gcicon-product-c1{
+        font-size: 46px;
+        margin-right: 4px;
+        vertical-align: middle;
+        display: inline-block;
+        color: rgb(158, 33, 50);
+    }
+    .logo-container a {
+        text-decoration:none;
+    }
+
+.logo-container .gcicon-product-c1:before {
+    content: "\e962";
+}
+
+footer .gcicon-logo-gc-horiz {
+    font-size: 44px;
+}
+    footer .gcicon-logo-gc-horiz:before {
+        content: "\e900";
+        color: #451a62;
+    }

@@ -1,0 +1,64 @@
+﻿@page "/C1Window/OpenWithOwner"
+@using BlazorExplorer.Localization
+@using C1.Blazor.Input
+
+<style>
+    .btn {
+        height: auto;
+        margin-bottom: 0;
+    }
+
+    .option {
+        margin-bottom: 15px;
+    }
+</style>
+
+    <div class="option">
+        OpenTrigger: <C1ComboBox ItemsSource="openTriggers" @bind-SelectedItem="openTrigger" Class="filled-drop-down" />
+        CloseTrigger: <C1ComboBox ItemsSource="closeTriggers" @bind-SelectedItem="closeTrigger" Class="filled-drop-down" />
+        Position: <C1ComboBox ItemsSource="positions" @bind-SelectedItem="position" Class="filled-drop-down" />
+    </div>
+    <button class="btn btn-default" id="btnDefault">@PopupRes.OpenPopupBtn</button>
+    <C1Window @ref="myPopup" Style="@("width: 300px")" Target="btnDefault" OpenTrigger="openTrigger" CloseTrigger="closeTrigger" IsDraggable="true" Position="position">
+        <PopupHeader>
+            Lorem ipsum
+        </PopupHeader>
+        <PopupContent>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. .
+            </p>
+        </PopupContent>
+        <PopupFooter>
+            <div style="width: 100%; display: flex; justify-content: center">
+                <button class="btn btn-default" @onclick="@ClosePopup">@PopupRes.BtnClose</button>
+            </div>
+        </PopupFooter>
+    </C1Window>
+
+    @code{
+        C1Window myPopup;
+        PopupTrigger openTrigger = PopupTrigger.ClickOwner;
+        PopupTrigger[] openTriggers = new PopupTrigger[] { PopupTrigger.None, PopupTrigger.ClickOwner, PopupTrigger.HoverOwner };
+
+        PopupTrigger closeTrigger = PopupTrigger.Blur;
+        PopupTrigger[] closeTriggers = new PopupTrigger[] { PopupTrigger.None, PopupTrigger.ClickOwner, PopupTrigger.ClickPopup,
+            PopupTrigger.Click, PopupTrigger.BlurOwner, PopupTrigger.BlurPopup, PopupTrigger.Blur, PopupTrigger.Leave};
+
+        PopupPosition position = PopupPosition.BelowLeft;
+        PopupPosition[] positions = new PopupPosition[] { PopupPosition.Above, PopupPosition.AboveRight, PopupPosition.RightTop,
+            PopupPosition.Right, PopupPosition.RightBottom, PopupPosition.BelowRight, PopupPosition.Below,
+            PopupPosition.BelowLeft, PopupPosition.LeftBottom, PopupPosition.Left,
+            PopupPosition.LeftTop, PopupPosition.AboveLeft};
+
+        void ClosePopup()
+        {
+            myPopup.Close();
+        }
+    }
+
+<_Sections>
+    <Title>@PopupRes.PopupOwnerTitle</Title>
+    <Summary>@PopupRes.PopupOwnerSummary</Summary>
+    <Description>@((MarkupString)PopupRes.PopupOwnerDescription)</Description>
+
+</_Sections>

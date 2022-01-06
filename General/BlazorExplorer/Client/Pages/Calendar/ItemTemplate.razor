@@ -1,0 +1,154 @@
+﻿@page "/Calendar/ItemTemplate"
+@using C1.Blazor.Calendar
+@using C1.Blazor.Core
+@using System;
+@using BlazorExplorer.Localization
+
+<div >
+
+    <ul class="status-list">
+        <li>
+            <span class="oi oi-warning" style="color: orange;">&nbsp; @CalendarRes.Incident</span>
+        </li>
+        <li>
+            <span class="oi oi-bug" style="color: crimson;">&nbsp; @CalendarRes.IssueFound</span>
+        </li>
+        <li>
+            <span class="oi oi-wrench" style="color: blue;">&nbsp; @CalendarRes.Maintenance</span>
+        </li>
+        <li>
+            <span class="oi oi-check" style="color: green;">&nbsp; @CalendarRes.Good</span>
+        </li>
+    </ul>
+
+    <div style="height: 550px; width: 550px">
+
+        <C1Calendar Style="@_calendarStyle" HeaderStyle="@_calendarHeaderStyle" DayOfWeekStyle="@_calendarDayOfWeekStyle" DayStyle="@CalendarDayStyle" TodayStyle="@_calendarToDayStyle" SelectionStyle="@_calendarSelectionStyle">
+
+            <DayOfWeekSlotTemplate>
+
+                @if (context.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    <span class="oi oi-flag" style="color: orange;">&nbsp;Sunday</span>
+                }
+                else if (context.DayOfWeek == DayOfWeek.Saturday)
+                {
+                    <span class="oi oi-flag" style="color: orange;">&nbsp;Saturday</span>
+                }
+                else
+                {
+                    <span class="oi">@context.DayOfWeek.ToString()</span>
+                }
+
+
+            </DayOfWeekSlotTemplate>
+
+
+            <DaySlotTemplate>
+
+                @if (((DateTime) context.Date).Day % 3 == 0)
+                {
+                    <span class="oi oi-warning" style="color: orange;">&nbsp;</span>
+                    @context.Date.ToString("dd")
+                }
+                else if (((DateTime) context.Date).Day % 4 == 0)
+                {
+                    <span class="oi oi-bug" style="color: crimson;">&nbsp;</span>
+                    @context.Date.ToString("dd")
+                }
+
+                else if (((DateTime) context.Date).Day % 7 == 0)
+                {
+                    <span class="oi oi-wrench" style="color: blue;">&nbsp;</span>
+                    @context.Date.ToString("dd")
+                }
+
+                else
+                {
+                    <span class="oi oi-check" style="color: green;">&nbsp;</span>
+                    @context.Date.ToString("dd")
+                }
+
+
+
+            </DaySlotTemplate>
+
+        </C1Calendar>
+
+    </div>
+
+
+
+
+</div>
+
+<br />
+<br />
+<br />
+
+
+@code {
+    readonly C1Style _calendarStyle = new C1Style()
+    {
+        Width = "100%",
+        Height = "100%",
+
+        BorderWidth = 1,
+        BorderStyle = C1StyleBorderStyle.Solid,
+        BorderColor = "#cccccc"
+    };
+
+    readonly C1Style _calendarHeaderStyle = new C1Style()
+    {
+    };
+
+    readonly C1Style _calendarDayOfWeekStyle = new C1Style()
+    {
+    };
+
+    static readonly C1Style CalendarDayStyle = new C1Style()
+    {
+        FontSize = C1StyleFontSize.Large
+
+    };
+
+    readonly C1Style _calendarToDayStyle = new C1Style(CalendarDayStyle)
+    {
+        BackgroundColor = "#efefef",
+        Color = "#000000",
+        FontWeight = "bold"
+
+    };
+
+    readonly C1Style _calendarSelectionStyle = new C1Style(CalendarDayStyle)
+    {
+        Color = "#000000",
+        BackgroundColor = "#dedede",
+        FontWeight = "bold"
+    };
+
+}
+
+
+
+<style>
+
+
+.status-list > li {
+    display: inline; 
+    margin: 7px;
+}
+
+    .c1-calendar {
+        -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+        margin: 20px;
+    }
+</style>
+
+<_Sections>
+    <Title>@CalendarRes.ItemTemplateTitle</Title>
+    <Summary>@CalendarRes.OverviewSummary</Summary>
+    <Description>@CalendarRes.ItemTemplateDescription</Description>
+</_Sections>

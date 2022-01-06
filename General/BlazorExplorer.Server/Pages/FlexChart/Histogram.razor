@@ -1,0 +1,79 @@
+﻿@page "/FlexChart/Histogram"
+@using Localization
+@using System.Drawing;
+@using C1.Chart;
+@using C1.Blazor.Input;
+@using C1.Blazor.Chart;
+
+<FlexChart Class="chart" ChartType="ChartType.Histogram" 
+           LegendPosition="Position.Bottom" LegendStyle="font-size:20px"
+           ItemsSource="Data">
+    <SeriesCollection>
+        <C1.Blazor.Chart.Histogram BindingX="X" Binding="X" BinWidth="binWidth" CumulativeMode="(bool)cumulative" 
+                                   HistogramAppearance="appearance ?? HistogramAppearance.Histogram"
+                                   NormalCurveVisible="(bool)normalCurve" />
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis AxisType="AxisType.X" Position="Position.Bottom" Title="Sample Size" />
+        <Axis AxisType="AxisType.Y" Position="Position.Left" Title="Frequency" />
+    </AxisCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.HistogramTitle</Title>
+    <Settings>
+        Bin Size <C1ComboBox ItemsSource="binWidths" @bind-SelectedItem="binWidth" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+
+        Cumulative Mode  <C1CheckBox @bind-IsChecked="cumulative" />
+        Normal Curve <C1CheckBox @bind-IsChecked="normalCurve" />
+        <br />
+
+        Histogram Appearance <C1ComboBox ItemsSource="appearances" @bind-SelectedItem="appearance" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+
+    </Settings>
+    <Summary>@FlexChartRes.HistogramSummary</Summary>
+    <Description>@FlexChartRes.HistogramDescription</Description>
+</_Sections>
+
+@code {
+    double[] binWidths = {0.5, 1, 2};
+    double binWidth = 0.5;
+
+    bool? cumulative = false;
+    bool? normalCurve = false;
+    
+    HistogramAppearance? appearance = HistogramAppearance.Histogram;
+    HistogramAppearance[] appearances = { HistogramAppearance.Histogram, HistogramAppearance.FrequencyPolygon, HistogramAppearance.HistogramAndFrequencyPolygon };
+
+    List<PointF> Data { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Data = DataSource.GetData();
+    }
+
+    public class DataSource
+    {
+        private static Random rnd = new Random();
+
+        static double rnorm(double mu, double sigma)
+        {
+            var u1 = rnd.NextDouble();
+            var u2 = rnd.NextDouble();
+
+            var z0 = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Cos(2 * Math.PI * u2);
+
+            return z0 * sigma + mu;
+        }
+
+
+        public static List<PointF> GetData()
+        {
+            var data = new List<PointF>();
+            for (int i = 0; i < 200; i++)
+                data.Add(new PointF((float)rnorm(5, 1),i));
+
+            return data;
+        }
+    }
+}

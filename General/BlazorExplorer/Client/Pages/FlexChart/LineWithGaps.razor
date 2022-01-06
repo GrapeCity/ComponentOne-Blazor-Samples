@@ -1,0 +1,76 @@
+﻿@page "/FlexChart/LineWithGaps"
+@using Localization
+@using C1.Blazor.Input;
+@using C1.Chart;
+@using C1.Blazor.Chart;
+
+<FlexChart Class="chart" ChartType="ChartType.Line"
+           HeaderContent="24 Hours CPU Utilization and Temperature" HeaderStyle="font-size:24px"
+           LegendPosition="Position.Bottom"
+           BindingX="time" ItemsSource="@DataSource.GetData()">
+    <SeriesCollection>
+        <Series Name="CPU %" Binding="utilization" />
+        <Series Name="CPU Temp" Binding="temperature" />
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis AxisType="AxisType.X" Position="Position.Bottom" LabelAngle="45" />
+    </AxisCollection>
+    <Options>
+        <ChartOptions InterpolateNulls="InterpolateNulls??InterpolateNulls.Value" />
+    </Options>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.LineWithGapsTitle</Title>
+    <Summary>@FlexChartRes.LineWithGapsSummary</Summary>
+    <Description>@FlexChartRes.LineWithGapsDescription</Description>
+    <Settings>
+        Interpolate Nulls <C1CheckBox @bind-IsChecked="InterpolateNulls" />
+    </Settings>
+</_Sections>
+
+@code {
+    bool? InterpolateNulls = true;
+
+    public class DataSource
+    {
+        public class CpuData
+        {
+            public string time { get; set; }
+            public double? utilization { get; set; }
+            public double? temperature { get; set; }
+        }
+
+        public static List<CpuData> GetData()
+        {
+            return new List<CpuData>()
+            {
+                new CpuData(){ time= "1:00", utilization= 26, temperature= 55 },
+                new CpuData(){ time= "2:00", utilization= 36, temperature= 57 },
+                new CpuData(){ time= "3:00", utilization= 74, temperature= 60 },
+                new CpuData(){ time= "4:00", utilization= 23, temperature= 46 },
+                new CpuData(){ time= "5:00", utilization= 13, temperature= 44 },
+                new CpuData(){ time= "6:00", utilization= 64, temperature= 56 },
+                new CpuData(){ time= "7:00", utilization= 34, temperature= 50 },
+                new CpuData(){ time= "8:00", utilization= 67, temperature= 55 },
+                new CpuData(){ time= "9:00", utilization= 72, temperature= 60 },
+                new CpuData(){ time= "10:00", utilization= 23, temperature= 54 },
+                new CpuData(){ time= "11:00", utilization= 100, temperature= 78 },
+                new CpuData(){ time= "12:00", utilization= 100, temperature= 87 },
+                new CpuData(){ time= "13:00", utilization= 100, temperature= 94 },
+                new CpuData(){ time= "14:00", utilization= null, temperature= null },
+                new CpuData(){ time= "15:00", utilization= 95, temperature= 87 },
+                new CpuData(){ time= "16:00", utilization= 80, temperature= 84 },
+                new CpuData(){ time= "17:00", utilization= 53, temperature= 76 },
+                new CpuData(){ time= "18:00", utilization= 26, temperature= 58 },
+                new CpuData(){ time= "19:00", utilization= 42, temperature= 53 },
+                new CpuData(){ time= "20:00", utilization= 36, temperature= 62 },
+                new CpuData(){ time= "21:00", utilization= 34, temperature= 53 },
+                new CpuData(){ time= "22:00", utilization= 63, temperature= 61 },
+                new CpuData(){ time= "23:00", utilization= 53, temperature= 57 },
+                new CpuData(){ time= "24:00", utilization= 54, temperature= 47 }
+
+            };
+        }
+    }
+}

@@ -1,0 +1,64 @@
+﻿@page "/FlexChart/TrendLines"
+@using Localization
+@using System.Drawing;
+@using C1.Chart;
+@using C1.Blazor.Input;
+@using C1.Blazor.Chart;
+
+<FlexChart Class="chart" ChartType="ChartType.Scatter" BindingX="X" Binding="Y" Tooltip="X={x:n1},Y={y:n1}">
+    <SeriesCollection>
+        <Series Name="Raw Data" ItemsSource="Data" />
+        <TrendLine Name="Trend Line" FitType="fitType ?? FitType.Linear" Order="order" ItemsSource="Data" />
+    </SeriesCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.TrendLineTitle</Title>
+    <Settings>
+             Fit Type 
+            <C1ComboBox ItemsSource="fitTypes" @bind-SelectedItem="fitType" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+            
+            <span hidden="@hideOrder">
+                Order
+                <C1ComboBox ItemsSource="orders" @bind-SelectedItem="order" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+            </span>
+    </Settings>
+
+    <Summary>@FlexChartRes.TrendLineSummary</Summary>
+    <Description>@FlexChartRes.TrendLineDescription</Description>
+</_Sections>
+
+@code {
+    List<PointF> Data { get; set; }
+
+    bool hideOrder => fitType != FitType.Polynom && fitType != FitType.Fourier;
+
+    FitType? fitType = FitType.Linear;
+    IEnumerable<FitType> fitTypes = Enum.GetValues(typeof(FitType)).Cast<FitType>();
+
+    int order = 2;
+    int[] orders = new int[] { 2, 3, 4, 5, 6 };
+
+    protected override void OnInitialized()
+    {
+        Data = DataSource.GetData(50);
+    }
+
+    public class DataSource
+    {
+        static Random rand = new Random();
+
+        public static List<PointF> GetData(int cnt)
+        {
+            var data = new List<PointF>();
+            var a = rand.NextDouble();
+            var b = rand.NextDouble();
+
+            for (var i = 1; i < cnt; i++)
+                data.Add(new PointF(i, (float)(a + i * b + i * rand.NextDouble())));
+
+            return data;
+        }
+    }
+
+}

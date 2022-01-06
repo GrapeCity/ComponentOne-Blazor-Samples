@@ -1,0 +1,122 @@
+﻿@page "/DatePicker/Index"
+
+@using C1.Blazor.Calendar
+@using C1.Blazor.Core
+@using C1.Blazor.DateTimeEditors
+@using System;
+@using BlazorExplorer.Localization
+@using C1.Blazor.DateTimeEditors.EventArgs
+@using C1.Blazor.Input
+
+
+@DatePickerRes.Placeholder
+<br />
+<C1DatePicker Placeholder="@DatePickerRes.Placeholder.ToLower()"
+              DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DatePicker>
+
+<br />
+<br />
+
+
+@DatePickerRes.MultipleCalendar
+<br />
+<C1DatePicker Placeholder="@DatePickerRes.Placeholder.ToLower()" MonthCount="2" CalendarOrientation="CalendarOrientation.Horizontal" CalendarStyle="@(new C1Style(){ Width = 600})"
+              DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DatePicker>
+
+
+<C1DatePicker Placeholder="@DatePickerRes.Placeholder.ToLower()" MonthCount="5" CalendarOrientation="CalendarOrientation.Horizontal" CalendarStyle="@(new C1Style(){ Width = 550})"
+              DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DatePicker>
+
+
+<C1DatePicker Placeholder="@DatePickerRes.Placeholder.ToLower()" MonthCount="5" CalendarOrientation="CalendarOrientation.Vertical" CalendarStyle="@(new C1Style(){ Height = 450})"
+              DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DatePicker>
+
+<br />
+<br />
+
+@DatePickerRes.BindingAndMinMax
+<br />
+<C1DatePicker MinDate="@(DateTime.Today.AddDays(-10))"
+              MaxDate="@(DateTime.Today.AddDays(10))"
+              @ref="_c1DatePicker"
+              @bind-Value="@_time"
+              DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DatePicker>
+
+<i>@(_time?.ToString()??"Null")</i>
+
+
+<br />
+<br />
+
+
+@DatePickerRes.ViewModesAndCustomStyles
+<br />
+
+
+<C1DatePicker CalendarStyle="@(new C1Style(){ BackgroundColor = C1Color.White})"
+              HeaderStyle="@(new C1Style(){Color = "White", BackgroundColor ="#FF3D834B", FontWeight = "100!important"})"
+              DayOfWeekStyle="@(new C1Style(){BackgroundColor = "#FF63A646", Height = 27, LineHeight = 27, Color = C1Color.Black})"
+              DayStyle="@(new C1Style(){ Color = C1Color.Green})"
+              SelectedDateStyle="@(new C1Style(){BackgroundColor = "#FFD2D2D2", Color = "Black",})"
+              TodayStyle="@(new C1Style(){BackgroundColor = "#eeeeee", BorderColor = "#FFF2F2F2", BorderRadius = 0, Color = "Black",})"
+              AdjacentDayStyle="@(new C1Style() {Color = "#FFA5A5A3"})"
+              DropDownBehavior="@DropDownBehavior.HeaderTap">
+
+    <CollapsedButtonIcon>
+        <span class="oi oi-calendar" style="color: green"></span>
+    </CollapsedButtonIcon>
+    <ExpandedButtonIcon>
+        <span class="oi oi-calendar" style="color: darkgreen;"></span>
+    </ExpandedButtonIcon>
+
+
+    <NextIconTemplate>
+        <span class="oi oi-chevron-right"></span>
+    </NextIconTemplate>
+    <PrevIconTemplate>
+        <span class="oi oi-chevron-left"></span>
+    </PrevIconTemplate>
+    <TodayIconTemplate>
+        <span class="oi oi-action-undo"></span>
+    </TodayIconTemplate>
+    <ExpandViewIconTemplate>
+        <span class="oi oi-caret-bottom"></span>
+    </ExpandViewIconTemplate>
+    <CollapseViewIconTemplate>
+        <span class="oi oi-caret-top"></span>
+    </CollapseViewIconTemplate>
+
+
+</C1DatePicker>
+
+<br />
+<br />
+
+@DatePickerRes.IsReadOnly  <C1CheckBox @bind-IsChecked="@IsReadOnly"></C1CheckBox>
+<br />
+<C1DatePicker Placeholder="@DatePickerRes.Placeholder.ToLower()"
+              IsReadOnly="@IsReadOnly.GetValueOrDefault()"
+              DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DatePicker>
+<br />
+<br />
+
+@DatePickerRes.IsEnabled <C1CheckBox @bind-IsChecked="@IsEnabled"></C1CheckBox>
+<br />
+<C1DatePicker Placeholder="@DatePickerRes.Placeholder.ToLower()"
+              IsEnabled="@IsEnabled.GetValueOrDefault()"
+              DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DatePicker>
+<br />
+<br />
+
+@code {
+    C1DatePicker _c1DatePicker;
+    DateTime? _time = DateTime.Today;
+    public bool? IsEnabled { get; set; } = true;
+    public bool? IsReadOnly { get; set; } = false;
+}
+
+<_Sections>
+    <Title>@DatePickerRes.OverviewTitle</Title>
+    <Summary>@DatePickerRes.OverviewSummary</Summary>
+    <Description>@DatePickerRes.OverviewDescription</Description>
+</_Sections>

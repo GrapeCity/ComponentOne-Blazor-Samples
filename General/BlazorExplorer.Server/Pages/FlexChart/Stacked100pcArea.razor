@@ -1,0 +1,53 @@
+﻿@page "/FlexChart/Stacked100pcArea"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+
+<FlexChart Class="chart" ChartType="ChartType.Area" Stacking="Stacking.Stacked100pc" 
+           BindingX="year" ItemsSource="@DataSource.GetData()">
+    <SeriesCollection>
+        <Series Name="Africa" Binding="africa" />
+        <Series Name="Asia" Binding="asia" />
+        <Series Name="Europe" Binding="europe" />
+        <Series Name="South America" Binding="southAmerica" />
+        <Series Name="North America" Binding="northAmerica" />
+        <Series Name="Oceania" Binding="oceania" />
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis AxisType="AxisType.X" Position="Position.Bottom" />
+        <Axis AxisType="AxisType.Y" Position="Position.Left" Title="Population" Format="p0" MajorGrid="true" Min="0.0001"/>
+    </AxisCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.Stacked100pcAreaTitle</Title>
+    <Summary>@FlexChartRes.Stacked100pcAreaSummary</Summary>
+    <Description>@FlexChartRes.Stacked100pcAreaDescription</Description>
+</_Sections>
+
+@code {
+
+    public class DataSource
+    {
+        public static List<object> GetData()
+        {
+            return new List<object> {
+                new { year= 1950, africa= 229.0, asia= 1394.0, europe= 549.0, southAmerica= 169.0, northAmerica= 172.0, oceania= 12.7 },
+                new { year= 1955, africa= 254.0, asia= 1534.0, europe= 577.0, southAmerica= 193.0, northAmerica= 187.0, oceania= 14.2 },
+                new { year= 1960, africa= 285.0, asia= 1687.0, europe= 606.0, southAmerica= 221.0, northAmerica= 204.0, oceania= 15.8 },
+                new { year= 1965, africa= 322.0, asia= 1875.0, europe= 635.0, southAmerica= 254.0, northAmerica= 219.0, oceania= 17.5 },
+                new { year= 1970, africa= 366.0, asia= 2120.0, europe= 657.0, southAmerica= 288.0, northAmerica= 231.0, oceania= 19.7 },
+                new { year= 1975, africa= 416.0, asia= 2378.0, europe= 677.0, southAmerica= 326.0, northAmerica= 242.0, oceania= 21.5 },
+                new { year= 1980, africa= 478.0, asia= 2626.0, europe= 694.0, southAmerica= 365.0, northAmerica= 254.0, oceania= 23.0 },
+                new { year= 1985, africa= 550.0, asia= 2897.0, europe= 708.0, southAmerica= 406.0, northAmerica= 267.0, oceania= 24.9 },
+                new { year= 1990, africa= 632.0, asia= 3202.0, europe= 721.0, southAmerica= 447.0, northAmerica= 281.0, oceania= 27.0 },
+                new { year= 1995, africa= 720.0, asia= 3475.0, europe= 728.0, southAmerica= 487.0, northAmerica= 296.0, oceania= 29.1 },
+                new { year= 2000, africa= 814.0, asia= 3714.0, europe= 726.0, southAmerica= 527.0, northAmerica= 314.0, oceania= 31.1 },
+                new { year= 2005, africa= 920.0, asia= 3945.0, europe= 729.0, southAmerica= 564.0, northAmerica= 329.0, oceania= 33.4 },
+                new { year= 2010, africa= 1044.0, asia= 4170.0, europe= 735.0, southAmerica= 600.0, northAmerica= 344.0, oceania= 36.4 },
+                new { year= 2015, africa= 1196.0, asia= 4393.0, europe= 738.0, southAmerica= 634.0, northAmerica= 358.0, oceania= 39.3 }
+            };
+        }
+    }
+
+}

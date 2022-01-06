@@ -1,0 +1,43 @@
+﻿@page "/FlexGrid/OnDemand"
+@inject IJSRuntime JsRuntime
+@using Localization;
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using C1.Blazor.Grid
+
+<C1TextBox Placeholder="@FlexGridRes.SearchPlaceholderText" @bind-Text="searchText" Style="@("width:500px;margin:8px 0")" />
+<FlexGrid AutoGenerateColumns="false" IsReadOnly="true" MinColumnWidth="85" AllowMerging="GridAllowMerging.ColumnHeaders" CellDoubleTapped="OnCellDoubleTapped" Style="@("max-height:50vh")">
+    <FlexGridColumns>
+        <GridImageColumn Binding="Thumbnail" Header="Title" Width="50" />
+        <GridHyperlinkColumn Binding="Link" ContentBinding="Title" Header="Title" TargetName="_blank" MinWidth="300" Width="GridLength.Star" />
+        <GridColumn Binding="ChannelTitle" Header="Channel" />
+    </FlexGridColumns>
+    <FlexGridBehaviors>
+        <YouTubeSearchBehavior SearchText="@searchText" />
+    </FlexGridBehaviors>
+</FlexGrid>
+
+<_Sections>
+    <Title>@FlexGridRes.OnDemandTitle</Title>
+    <Summary>@FlexGridRes.OnDemandSummary</Summary>
+    <Description>@FlexGridRes.OnDemandDescription</Description>
+</_Sections>
+
+@code {
+    string searchText = "Blazor";
+
+    private void OnCellDoubleTapped(object sender, GridInputEventArgs e)
+    {
+        var grid = sender as FlexGrid;
+        if (e.CellType == GridCellType.Cell)
+        {
+            var video = grid.Rows[e.CellRange.Row].DataItem as YouTubeVideo;
+            if (video != null)
+            {
+
+                JsRuntime.InvokeAsync<bool>("open", video.Link, "_blank");
+            }
+        }
+
+    }
+}

@@ -1,0 +1,30 @@
+﻿@page "/Calendar/MultipleMonths"
+@using C1.Blazor.Calendar
+@using C1.Blazor.Core
+@using System;
+@using BlazorExplorer.Localization
+
+<style>
+
+    .c1-calendar {
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+    margin: 20px;
+    }
+
+</style>
+
+
+<C1Calendar MonthCount="2" Orientation="@CalendarOrientation.Horizontal"></C1Calendar>
+<C1Calendar MonthCount="2" Orientation="@CalendarOrientation.Vertical"></C1Calendar>
+<C1Calendar MonthCount="2" Style="@(new C1Style(){ Width = 650 })" Orientation="@CalendarOrientation.Horizontal"></C1Calendar>
+
+
+
+
+<_Sections>
+    <Title>@CalendarRes.MultipleMonthsTitle</Title>
+    <Summary>@CalendarRes.OverviewSummary</Summary>
+    <Description>@CalendarRes.MultipleMonthsTitleDescription</Description>
+</_Sections>

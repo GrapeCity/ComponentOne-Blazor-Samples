@@ -1,0 +1,29 @@
+﻿
+@using Localization
+
+
+<ul class="site-nav @(IsNarrowScreen ? "narrow-screen" : "wide-screen")">
+  <li class="narrow-screen">
+    <a href="/">@_App.HtmlRaw(Resource.SiteNav_Home)</a>
+  </li>
+  <li>
+    <a href="@(Resource.SiteNav_AboutUrl)" target="_blank">@_App.HtmlRaw(Resource.SiteNav_About)</a>
+  </li>
+  <li>
+    <a href="@(Resource.SiteNav_SupportUrl)" target="_blank">@_App.HtmlRaw(Resource.SiteNav_Support)</a>
+  </li>
+  @*<li>
+    <a href="@(Resource.SiteNav_PricingUrl)" target="_blank">@_App.HtmlRaw(Resource.SiteNav_Pricing)</a>
+  </li>
+  <li class="bold">
+    <a href="@(Resource.SiteNav_FreeTrialUrl)" target="_blank">@_App.HtmlRaw(Resource.SiteNav_FreeTrial)</a>
+  </li>*@
+  <li class="narrow-screen">
+    @_App.HtmlRaw(Resource.SiteNav_EditTheme)    
+  </li>
+</ul>
+
+@code {
+  [Parameter]
+  public bool IsNarrowScreen { get; set; }  
+}

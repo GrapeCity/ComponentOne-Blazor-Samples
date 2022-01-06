@@ -1,0 +1,111 @@
+﻿@page "/DateTimePicker/Index"
+@using C1.Blazor.Calendar
+@using C1.Blazor.Core
+@using C1.Blazor.DateTimeEditors
+@using System;
+@using BlazorExplorer.Localization
+@using C1.Blazor.DateTimeEditors.EventArgs
+@using C1.Blazor.Input
+
+
+@DateTimePickerRes.Placeholder
+<br />
+<C1DateTimePicker Placeholder="@DateTimePickerRes.Placeholder.ToLower()"
+                  DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
+
+<br />
+<br />
+
+
+@DateTimePickerRes.MultipleCalendar
+<br />
+<C1DateTimePicker CalendarStyle="@(new C1Style(){ BackgroundColor = C1Color.White, Width = 700, Margin = 11})"
+                  Placeholder="@DateTimePickerRes.Placeholder.ToLower()" MonthCount="2" CalendarOrientation="CalendarOrientation.Horizontal"
+                  DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
+
+<C1DateTimePicker CalendarStyle="@(new C1Style(){ BackgroundColor = C1Color.White, Width = 500, Margin = 11})"
+                  Placeholder="@DateTimePickerRes.Placeholder.ToLower()" MonthCount="5" CalendarOrientation="CalendarOrientation.Horizontal"
+                  DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
+
+<C1DateTimePicker CalendarStyle="@(new C1Style(){ BackgroundColor = C1Color.White,  Height = 500, Margin = 11})"
+                  Placeholder="@DateTimePickerRes.Placeholder.ToLower()" MonthCount="5" CalendarOrientation="CalendarOrientation.Vertical"
+                  DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
+
+<br />
+<br />
+
+@DateTimePickerRes.BindingAndMinMax
+<br />
+<C1DateTimePicker MinDate="@(DateTime.Today.AddDays(-10))"
+                  MaxDate="@(DateTime.Today.AddDays(10))"
+                  @ref="_c1DatePicker"
+                  @bind-Value="@_time"
+                  DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
+
+<i>@(_time?.ToString()??"Null")</i>
+
+
+<br />
+<br />
+
+
+@DateTimePickerRes.ViewModesAndCustomStyles
+<br />
+
+<C1DateTimePicker CalendarStyle="@(new C1Style(){ BackgroundColor = C1Color.White, ["border"]="1px solid #eeeeee", Width = 300, Margin = 11})"
+                  HeaderStyle="@(new C1Style(){Color = "White", BackgroundColor ="#FF3D834B", FontWeight = "100!important"})"
+                  DayOfWeekStyle="@(new C1Style(){BackgroundColor = "#FF63A646", Height = 27, LineHeight = 27, Color = C1Color.Black})"
+                  DayStyle="@(new C1Style(){ Color = C1Color.Green})"
+                  SelectedDateStyle="@(new C1Style(){BackgroundColor = "#FFD2D2D2", Color = "Black",})"
+                  TodayStyle="@(new C1Style(){BackgroundColor = "#eeeeee", BorderColor = "#FFF2F2F2", BorderRadius = 0, Color = "Black",})"
+                  AdjacentDayStyle="@(new C1Style() {Color = "#FFA5A5A3"})"
+                  DropDownBehavior="@DropDownBehavior.HeaderTap" ViewMode="@DateTimePickerViewMode.Switchable"></C1DateTimePicker>
+
+<br />
+<br />
+
+<C1DateTimePicker CalendarStyle="@(new C1Style(){ BackgroundColor = C1Color.White, ["border"]="1px solid #eeeeee", Width = 300, Margin = 11})"
+                  HeaderStyle="@(new C1Style(){Color = "White", BackgroundColor ="#FF3D834B", FontWeight = "100!important"})"
+                  DayOfWeekStyle="@(new C1Style(){BackgroundColor = "#FF63A646", Height = 27, LineHeight = 27, Color = C1Color.Black})"
+                  DayStyle="@(new C1Style(){ Color = C1Color.Green})"
+                  SelectedDateStyle="@(new C1Style(){BackgroundColor = "#FFD2D2D2", Color = "Black",})"
+                  TodayStyle="@(new C1Style(){BackgroundColor = "#eeeeee", BorderColor = "#FFF2F2F2", BorderRadius = 0, Color = "Black",})"
+                  AdjacentDayStyle="@(new C1Style() {Color = "#FFA5A5A3"})"
+                  DropDownBehavior="@DropDownBehavior.HeaderTap" ViewMode="@DateTimePickerViewMode.SideBySide"></C1DateTimePicker>
+
+<br />
+<br />
+
+
+@DateTimePickerRes.IsReadOnly <C1CheckBox @bind-IsChecked="@IsReadOnly"></C1CheckBox>
+<br />
+<C1DateTimePicker Placeholder="@DateTimePickerRes.Placeholder.ToLower()" MonthCount="2"
+                  IsReadOnly="@IsReadOnly.GetValueOrDefault()"
+                  DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
+<br />
+<br />
+@DateTimePickerRes.IsEnabled <C1CheckBox @bind-IsChecked="@IsEnabled"></C1CheckBox>
+<br />
+<C1DateTimePicker Placeholder="@DateTimePickerRes.Placeholder.ToLower()" MonthCount="2"
+                  IsEnabled="@IsEnabled.GetValueOrDefault()"
+                  DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
+
+<br />
+<br />
+
+
+@code {
+    C1DateTimePicker _c1DatePicker;
+    DateTime? _time = DateTime.Today;
+    public bool? IsEnabled { get; set; } = true;
+    public bool? IsReadOnly { get; set; } = false;
+}
+
+
+
+<_Sections>
+    <Title>@DateTimePickerRes.OverviewTitle</Title>
+    <Summary>@DateTimePickerRes.OverviewSummary</Summary>
+    <Description>@DateTimePickerRes.OverviewDescription</Description>
+</_Sections>
+

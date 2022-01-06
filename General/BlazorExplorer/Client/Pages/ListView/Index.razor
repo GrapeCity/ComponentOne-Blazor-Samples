@@ -1,0 +1,26 @@
+﻿@page "/ListView/Index"
+@using C1.Blazor.Core
+@using C1.Blazor.ListView
+@using Localization
+
+<C1ListView ItemsSource="countries" T="Country" Style="@("max-height:50vh")">
+    <ItemTemplate>
+        <img src="@context.FlagUrl" style="height:32px;width:32px" />
+        <span style="margin-left:8px;white-space:nowrap;word-break:break-all">@context.Name</span>
+    </ItemTemplate>
+</C1ListView>
+
+<_Sections>
+    <Title>@ListViewRes.OverviewTitle</Title>
+    <Description>@ListViewRes.OverviewDescription</Description>
+</_Sections>
+
+@code{
+
+    IEnumerable<Country> countries;
+
+    protected override void OnInitialized()
+    {
+        countries = Country.GetCountries();
+    }
+}

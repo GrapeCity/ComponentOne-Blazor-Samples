@@ -1,0 +1,24 @@
+﻿@page "/ListView/Grouping"
+@using C1.Blazor.ListView
+@using C1.DataCollection
+@using Localization
+
+<C1ListView ItemsSource="@collection" T="Customer" DisplayMemberPath="Name" GroupBackgroundColor="@("#F1F1F1")" Style="@("max-height:50vh")" />
+
+<_Sections>
+    <Title>@ListViewRes.GroupingTitle</Title>
+    <Summary>@ListViewRes.GroupingSummary</Summary>
+    <Description>@ListViewRes.GroupingDescription</Description>
+</_Sections>
+
+@code
+{
+    C1DataCollection<Customer> collection;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var cv = new C1DataCollection<Customer>(Customer.GetCustomerList(100));
+        await cv.GroupAsync("Country");
+        collection = cv;
+    }
+}

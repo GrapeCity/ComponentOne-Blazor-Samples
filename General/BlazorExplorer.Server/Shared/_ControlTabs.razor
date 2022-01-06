@@ -1,0 +1,43 @@
+﻿@using Localization
+@using Models
+
+<div id="navList" class="nav nav-tabs">
+    <div style="width:100%">
+
+        <div class="nav-tabs">
+            <div class="tab-header @(TabIndex==0?"state-active":null)" @onclick="@(e => OnTabClick(e,0))"><a>@_App.HtmlRaw(Resource.ControlLayout_Sample)</a></div>
+            <div class="tab-header @(TabIndex==1?"state-active":null)" @onclick="@(e => OnTabClick(e,1))"><a>@_App.HtmlRaw(Resource.ControlLayout_Source)</a></div>
+            <div class="tab-header @(TabIndex==2?"state-active":null)" @onclick="@(e => OnTabClick(e,2))">
+                <a target="_blank" href="@DocLink">@_App.HtmlRaw(Resource.ControlLayout_Documentation)</a>
+            </div>
+        </div>
+
+        <div id="sample" class="tab-pane pane-content">
+            <div class="demo-source  @(TabIndex == 1 ? "expand-fade" : "collapse-fade")">
+                <_DemoSource Model="@ControlPages.GetPageSources(ControlName, ActionName)"></_DemoSource>
+            </div>
+            <div class="demo-control @(TabIndex==0?"expand-fade":"collapse-fade")">
+                <_RenderAsync Content="@Body"></_RenderAsync>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@code {
+    [Parameter]
+    public string ControlName { get; set; }
+    [Parameter]
+    public string ActionName { get; set; }
+    [Parameter]
+    public string DocLink { get; set; }
+    [Parameter]
+    public RenderFragment Body { get; set; }
+
+    private int TabIndex = 0;
+    private void OnTabClick(MouseEventArgs e, int tabIndex)
+    {
+        if (tabIndex < 2)
+            TabIndex = tabIndex;
+    }
+}
