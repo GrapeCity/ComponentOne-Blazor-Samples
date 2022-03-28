@@ -1,0 +1,116 @@
+﻿@page "/searching"
+@using C1.Blazor.Core
+@using C1.Blazor.TreeView
+@using C1.Blazor.Input
+@using C1.DataCollection
+
+<C1AutoComplete @ref="ac" DisplayMemberPath="FullPathHeader" T="TreeViewItemViewModel" HighlightStyle="@("color:#428bca;font-weight:bold")"
+                Placeholder="Input TreeNode name" Style="@("margin:8px 0; width: 400px;")" SelectedItemChanged="OnSelectedChanged" />
+
+
+<C1TreeView Class="shadow" @ref="treeview" ShowLines="true" IsExpandedPath="Expanded" ItemsSource="@_dataSource" ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name"
+            Style="@_c1Style" KeyboardNavigation="true" SelectionMode="C1SelectionMode.Extended" ExpandMode="TreeViewExpandMode.Single" />
+
+
+@code{
+    readonly C1Style _c1Style = new C1Style
+    {
+        Height = 600,
+        Width = 300
+    };
+
+    C1TreeView treeview;
+    C1AutoComplete<TreeViewItemViewModel> ac;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (ac.ItemsSource == null)
+            ac.ItemsSource = treeview.GetAllItems().Select((item, index) =>
+            {
+                return new TreeViewItemViewModel(item);
+            });
+    }
+
+    readonly IList<Directory> _dataSource = new List<Directory>()
+    {
+        new Directory()
+        {
+            Name = "Electronics",
+            Expanded = true,
+            Subdirectories = new List<Directory>
+            {
+                new Directory { Name = "Trimmers/Shavers" },
+                new Directory { Name = "Tablets" },
+                new Directory
+                {
+                    Name = "Phones",
+                    Expanded = true,
+                    Subdirectories = new List<Directory>
+                    {
+                        new Directory { Name = "Apple" },
+                        new Directory { Name = "Motorola" },
+                        new Directory { Name = "Nokia" },
+                        new Directory { Name = "Samsung" }
+                    }
+                },
+                new Directory { Name = "Speakers" },
+                new Directory { Name = "Monitors" }
+            }
+        },
+        new Directory
+        {
+            Name = "Toys",
+            Subdirectories = new List<Directory>()
+            {
+                new Directory {Name = "Shopkins"},
+                new Directory {Name = "Train Sets"},
+                new Directory {Name = "Science Kit"},
+                new Directory {Name = "Play-Doh"},
+                new Directory {Name = "Crayola"}
+            }
+        },
+        new Directory
+        {
+            Name = "Home",
+            Subdirectories = new List<Directory>()
+            {
+                new Directory {Name = "Coffee Maker"},
+                new Directory {Name = "Breadmaker"},
+                new Directory {Name = "Solar Panel"},
+                new Directory {Name = "Work Table"},
+                new Directory {Name = "Propane Grill"}
+            }
+        }
+    };
+
+    public class Directory
+    {
+        public string Name { get; set; }
+        public List<Directory> Subdirectories { get; set; }
+        public bool Expanded { get; set; }
+    }
+
+    public void OnSelectedChanged(TreeViewItemViewModel itemViewModel)
+    {
+        treeview.Expand(itemViewModel.Item);
+    }
+
+    public class TreeViewItemViewModel
+    {
+        public TreeViewItemViewModel(TreeViewItem item)
+        {
+            Item = item;
+            FullPathHeader = GetFullPath(item);
+        }
+
+        public TreeViewItem Item { get; set; }
+        public string FullPathHeader { get; set; }
+
+        public static string GetFullPath(TreeViewItem item)
+        {
+            if (item.Parent == null)
+                return item.Header;
+            return $"{GetFullPath(item.Parent)} / {item.Header}";
+        }
+    }
+}

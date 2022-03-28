@@ -1,0 +1,2560 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>C1.Blazor.Input</name>
+    </assembly>
+    <members>
+        <member name="T:C1.Blazor.Input.C1AutoComplete`1">
+            <summary>
+            The auto-complete control is an editable input control that shows completion suggestions automatically while the user is typing. The list of suggestions is displayed in a drop down menu from which the user.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1AutoComplete`1.#ctor">
+            <summary>
+            Initializes a new instance of the C1AutoComplete class.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1AutoComplete`1.HighlightStyle">
+            <summary>
+            Gets or sets the matched text highlight style.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1AutoComplete`1.MinLength">
+            <summary>
+             Gets or sets the minimum input length to trigger auto-complete suggestions.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1AutoComplete`1.FilterString">
+            <summary>
+            Gets the filter string used to show auto-complete suggestions.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1AutoComplete`1.AutoCompleteMode">
+            <summary>
+            Gets or sets the mode that the DropDown uses to display the DropDownView.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1AutoComplete`1.Filtering">
+            <summary>
+            Event raised when the control is about to apply a filter to the list of items.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1AutoComplete`1.OnFiltering(C1.Blazor.Input.AutoCompleteFilteringEventArgs)">
+            <summary>
+            Handle Filtering event.
+            </summary>
+            <param name="e">The filtering event arguments</param>
+        </member>
+        <member name="T:C1.Blazor.Input.C1ComboBox`1">
+            <summary>
+            C1ComboBox is an extension of DropDown that contains an editable textbox in the header and a listview in the drop-down.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1ComboBox`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Input.C1ComboBox`1"/> class.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.ItemsSource">
+            <summary>
+            Gets or sets the source collection that contains the items to select from.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.DisplayMemberPath">
+            <summary>
+            Gets or sets the name of the property to use as the visual representation of the items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.ValueMemberPath">
+            <summary>
+            Gets or sets the path that is used to get the value from the item.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.SelectedIndex">
+            <summary>
+             Gets or sets the index of the selected item.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.SelectedItem">
+            <summary>
+            Gets or sets the current selected item.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.Text">
+            <summary>
+            Gets or sets the text of the control.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.AutoComplete">
+            <summary>
+            Gets or sets whether the control should try to automatically complete entries using the list of items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.Placeholder">
+            <summary>
+            Gets or sets the placeholder displayed when there is no entered text.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.EditorStyle">
+            <summary>
+            Gets or sets the style of the editor used to edit the selected item.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.ListStyle">
+            <summary>
+            Gets or sets the style of the list of items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.ListItemStyle">
+            <summary>
+            Gets or sets the style of the items of the list.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.ItemTemplate">
+            <summary>
+            Gets or sets the item template.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.Delay">
+            <summary>
+             Gets or sets the delay that occurs between the key strokes and the auto-complete.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.SelectedIndexChanged">
+            <summary>
+            Gets or sets the callback that is called when the selected index changed.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.SelectedItemChanged">
+            <summary>
+            Gets or sets the callback that is called when the selected item changed.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.DataCollection">
+            <summary>
+            Gets the collection that is bound to the list.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.Items">
+            <summary>
+            Gets the items that are shown in the list.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1ComboBox`1.FocusAsync">
+            <summary>
+            Sets the focus.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1ComboBox`1.AutoSelect">
+            <summary>
+            Gets or sets whether the selected item will be changed automatically from the input received.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1ComboBox`1.OnAfterRender(System.Boolean)">
+            <summary>
+            Correct rendered layout
+            </summary>
+            <param name="firstRender"></param>
+        </member>
+        <member name="T:C1.Blazor.Input.C1DropDown">
+            <summary>
+            C1DropDown provides a generic drop-down control with a Header property that determines what the user sees when the drop-down part of the control is closed, and a Content property that determines what goes into the drop-down section.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1DropDown.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Input.C1DropDown"/> class.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1DropDown.ChildContent">
+            <summary>
+            Gets or sets the content of the drop-down.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1DropDown.Header">
+            <summary>
+            Gets or sets the header. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1DropDown.EditableHeader">
+            <summary>
+            Gets or sets the editable header. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1DropDown.IsEditable">
+            <summary>
+            Gets or sets whether it is editable.
+            </summary>
+            <remarks>When this property is <code>true</code>, the <see cref="P:C1.Blazor.Input.C1DropDown.EditableHeader"/> will be used. If the drop-down is full-screen, the editor will be shown in the popup, otherwise it will be shown inline and will replace <see cref="P:C1.Blazor.Input.C1DropDown.Header"/>.</remarks>
+        </member>
+        <member name="P:C1.Blazor.Input.C1DropDown.IsDropDownOpen">
+            <summary>
+            Gets or sets whether the drop-down is open.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1DropDown.ButtonStyle">
+            <summary>
+            Gets or sets the style of the button used to toggle the drop-down.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1DropDown.IconStyle">
+            <summary>
+            Gets or sets the sytle of the icon that is placed inside the button used to toggle the drop-down.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1DropDown.DropDownStyle">
+            <summary>
+            Gets or sets the sytle of the drop-down popup.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1DropDown.DropDownBehavior">
+            <summary>
+            Gets or sets the drop-down behavior. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1DropDown.DropDownMode">
+            <summary>
+            Gets or sets the mode that the DropDown uses to display the DropDownView.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1DropDown.ShowButton">
+            <summary>
+            Gets or sets a value that indicates whether the control should display a dropdown button. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1DropDown.ExpandedButtonIcon">
+            <summary>
+            Gets or sets the icon used when the drop-down is expanded.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1DropDown.CollapsedButtonIcon">
+            <summary>
+            Gets or sets the icon used when the drop-down is collapsed.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1DropDown.IsDropDownOpenChanged">
+            <summary>
+            This callback is called when the drop-down is opened or closed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1DropDown.OnIsDropDownOpenChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1DropDown.IsDropDownOpen"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1DropDown.OnAfterRender(System.Boolean)">
+            <summary>
+            Correct rendered layout
+            </summary>
+            <param name="firstRender"></param>
+        </member>
+        <member name="T:C1.Blazor.Input.C1MaskedTextBox">
+            <summary>
+            The C1MaskedTextEditor control allows you to validate and format user input as it is entered, preventing users from entering invalid data.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.C1MaskedTextBox.C1MaskedTextBoxReference">
+            <summary>
+            Extends C1TextBoxReference
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1MaskedTextBox.C1MaskedTextBoxReference.OnMaskInputRejectedAsync(System.String,System.Int32)">
+            <summary>
+            will get called by js when a invalid char entered by user.
+            </summary>
+            <param name="rejectedValue">the invalid char entered by user.</param>
+            <param name="index">the position of the invalid char entered by user.</param>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.Input.C1MaskedTextBox.C1MaskedTextBoxReference.OnFocusInAsync">
+            <summary>
+            will get called by js when the box focused.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.Input.C1MaskedTextBox.C1MaskedTextBoxReference.OnFocusOutAsync">
+            <summary>
+            will get called by js when the box lost-focused.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:C1.Blazor.Input.C1MaskedTextBox.IsValid">
+            <summary>
+            Gets a value that determines whether the control contains a valid entry.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1MaskedTextBox.Mask">
+            <summary>
+            Gets or sets the input mask.
+            </summary>
+            <remarks>
+            <para>The mask consists of a string that determines what class of character is acceptable
+            at each input position.</para>
+            <para>Valid mask characters are:</para>
+            <para>
+            <b>0</b>    Digit (0-9)</para>
+            <para>
+            <b>9</b>    Digit or space</para>
+            <para>
+            <b>#</b>    Digit, space, or sign (+/-)</para>
+            <para>
+            <b>L</b>    Letter</para>
+            <para>
+            <b>?</b>    Letter or space</para>
+            <para>
+            <b>A</b>    Letter or digit</para>
+            <para>
+            <b>a</b>    Letter, digit, or space</para>
+            <para>
+            <b>&amp;</b>    Any character</para>
+            <para>
+            <b>.</b>    Localized decimal symbol</para>
+            <para>
+            <b>,</b>    Localized thousand separator</para>
+            <para>
+            <b>:</b>    Localized time separator</para>
+            <para>
+            <b>/</b>    Localized date separator</para>
+            <para>Other characters are treated as literals. They are displayed in the control but cannot
+            be edited.</para>
+            <para>For example, the mask "000-0000" causes the control to accept only digits at every
+            position except the third, which always contains a dash.</para>
+            
+            </remarks>
+        </member>
+        <member name="P:C1.Blazor.Input.C1MaskedTextBox.PromptChar">
+            <summary>
+             Gets or set the PromptChar value.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1MaskedTextBox.MaskFormat">
+            <summary>
+             Gets or set the MaskFormat value.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1MaskedTextBox.DisplayMode">
+            <summary>
+            Gets or set the DisplayMode value.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1MaskedTextBox.TabBehavior">
+            <summary>
+            Define the tab behavior if set.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1MaskedTextBox.FocusAsync">
+            <summary>
+            handle focus behavior.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1MaskedTextBox.FocusOutAsync">
+            <summary>
+            handle lost-focus behavior.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:C1.Blazor.Input.C1MaskedTextBox.Value">
+            <summary>
+            Gets text value
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1MaskedTextBox.OnMaskInputRejected">
+            <summary>
+            Gets or sets the callback called when the text changing is finished.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1MaskedTextBox.OnMaskFormatChanged">
+            <summary>
+            /// Occurs when consistent content that conforms to the <see cref="P:C1.Blazor.Input.C1MaskedTextBox.MaskFormat"/> changes.
+            Gets or sets the callback called when the MaskFormat is changed.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1MaskedTextBox.MaskedTextChanged">
+            <summary>
+            Occurs when consistent content that conforms to the <see cref="P:C1.Blazor.Input.C1MaskedTextBox.Mask"/> changes in the text box.
+            </summary>
+            <remarks>
+            Just after the Text property has beed changed via user input or code, 
+            the <see cref="T:C1.Blazor.Input.C1MaskedTextBox"/> updates the text again in order to make it consistent with
+            the <see cref="P:C1.Blazor.Input.C1MaskedTextBox.Mask"/>. As a result, the TextChanged event can be triggered twice on each user
+            input. In contrast to this, the <see cref="P:C1.Blazor.Input.C1MaskedTextBox.MaskedTextChanged"/> is triggered only when Text is
+            updated with a value that conforms to the <see cref="P:C1.Blazor.Input.C1MaskedTextBox.Mask"/>.
+            </remarks>
+        </member>
+        <member name="M:C1.Blazor.Input.C1MaskedTextBox.GetActualType">
+            <summary>
+            define the actual type of box DOM.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.Input.C1MaskedTextBox.InitializeAsync">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.Input.C1MaskedTextBox.OnTextPropertyChanged(System.String,System.String)">
+            <summary>
+            custom handling the text changed.
+            </summary>
+            <param name="oldText"></param>
+            <param name="newText"></param>
+        </member>
+        <member name="M:C1.Blazor.Input.C1MaskedTextBox.ApplyMaskSettings">
+            <summary>
+            Update client mask settings
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1MaskedTextBox.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Input.C1MaskedTextBox"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1MaskedTextBox.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1MaskedTextBox.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:C1.Blazor.Input.MaskDisplayMode">
+            <summary>
+            Custom displays mask
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.MaskDisplayMode.Always">
+            <summary>
+            Always show mask value
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.MaskDisplayMode.FocusIn">
+            <summary>
+            Show when the input is focused in
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.TabBehavior">
+            <summary>
+            Custom displays mask
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.TabBehavior.Normal">
+            <summary>
+            Take browser behavior
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.TabBehavior.MoveToNextNearestSegment">
+            <summary>
+            Move to the next nearest segment in the box.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.MaskInputRejectedEventArgs">
+            <summary>
+            Provides data for the <see cref="P:C1.Blazor.Input.C1MaskedTextBox.OnMaskInputRejected"/> event.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.MaskInputRejectedEventArgs.Value">
+            <summary>
+            Gets the rejected value.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.MaskInputRejectedEventArgs.Position">
+            <summary>
+            Gets the rejected position.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.MaskFormatChangedEventArgs">
+            <summary>
+            Provides data for the <see cref="P:C1.Blazor.Input.C1MaskedTextBox.OnMaskFormatChanged"/> event.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.MaskFormatChangedEventArgs.NewValue">
+            <summary>
+            Gets the new masked text value.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.C1NumericBoxEventArgs">
+            <summary>
+            Event contains changed value.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBoxEventArgs.Value">
+            <summary>
+            The changed value
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.ButtonDisplayMode">
+            <summary>
+            Display the numeric box with options
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.ButtonDisplayMode.SideBySide">
+            <summary>
+            decrease button placed at the left, increase button at the right.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.ButtonDisplayMode.RightInline">
+            <summary>
+            decrease and increase button placed inline at the right.
+            </summary> 
+        </member>
+        <member name="F:C1.Blazor.Input.ButtonDisplayMode.Right">
+            <summary>
+            buttons placed at the right.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.ButtonDisplayMode.None">
+            <summary>
+            Display without buttons
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.NumericBoxFinishEditingKey">
+            <summary>
+            Hit the key to finish editing
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.NumericBoxFinishEditingKey.Enter">
+            <summary>
+            Hit enter to finish editing
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.C1NumericBox`1">
+            <summary>
+            Represents a control that can be used to display and edit numeric
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.OnValueChanged">
+            <summary>
+            Gets or sets the callback that is called when the value is changed.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.ValueChanged">
+            <summary>
+            This Callback will gets and sets by Blazor framework automatically if user is binding Value.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.Id">
+            <summary>
+            Get or set the ID
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.Value">
+            <summary>
+            Get or set value of numeric box
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.Placeholder">
+            <summary>
+            Get or set placeholder
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.Format">
+            <summary>
+            Standard numeric format strings
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.Step">
+            <summary>
+            The value that the numeric box should take to add or dec current value.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.Max">
+            <summary>
+            Maximum of value 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.Min">
+            <summary>
+            Minimum of value
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.IsReadOnly">
+            <summary>
+            Enable readonly mode
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.IsEnabled">
+            <summary>
+            Enable disable mode
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.FinishEditingKeys">
+            <summary>
+            Hit one of keys to finish editing
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.ButtonDisplayMode">
+            <summary>
+            Set ButtonDisplayMode
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.IncrementIconTemplate">
+            <summary>
+            Increment IconTemplate button content
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.DecrementIconTemplate">
+            <summary>
+            Decrement IconTemplate button content
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1NumericBox`1.StopOnClickPropagation">
+            <summary>
+            Stop the onclick event from outside.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1NumericBox`1.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)">
+            <summary>
+            Render numeric box
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:C1.Blazor.Input.C1NumericBox`1.OnParametersSetAsync">
+            <summary>
+            Validate user input
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.Input.C1NumericBox`1.InitializeAsync">
+            <summary>
+            Init JS reference 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.Input.C1NumericBox`1.OnInitialized">
+            <summary>
+            Verify lic
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1NumericBox`1.FocusOutAsync">
+            <summary>
+            Control lost focused
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1NumericBox`1.FocusAsync">
+            <summary>
+            Control get focused
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1NumericBox`1.Refresh">
+            <summary>
+            Re render the UI
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Popup.IsFullScreen">
+            <summary>
+            Gets or sets to make the popup open in full screen 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Popup.IsDarkOverlay">
+            <summary>
+            Gets or sets whether the overlay is dark themed. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Popup.IsModeless">
+            <summary>
+            Gets or sets whether the dialog should be modeless (e.g. not dismiss when focusing/clicking outside of the dialog).
+            if true: there will be no overlay (isDarkOverlay is ignored)
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Popup.Target">
+            <summary>
+             Gets or sets the element id that owns this Popup.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Popup.CloseTrigger">
+            <summary>
+             Gets or sets actions that trigger closing Popup controls.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Popup.OpenTrigger">
+            <summary>
+             Gets or sets actions that trigger opening Popup controls.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Popup.Position">
+            <summary>
+             Gets or sets the position display the popup.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Popup.OpenDelay">
+            <summary>
+             Gets or sets delay time before opening the Popup controls.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Popup.CloseDelay">
+            <summary>
+             Gets or sets delay time before close the Popup controls.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Popup.Gap">
+            <summary>
+             Gets or sets space between owner and popup.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Popup.IsDraggable">
+            <summary>
+            Gets or sets to make the popup draggable 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Popup.IsResizable">
+            <summary>
+            Gets or sets to make the popup is resizable
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Popup.IsPosUpdated">
+            <summary>
+            Gets or sets to whether popup updates the position when its parent change position by scrolling
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Popup.PopupContent">
+            <summary>
+            Gets or sets the content of the popup.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Popup.IsPopupOpenChanged">
+            <summary>
+            This callback is called when the popup is opened or closed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Popup.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Input.C1Popup"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Popup.Open">
+            <summary>
+            Call method to open Popup
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Popup.Close">
+            <summary>
+            Call method to close Popup
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Popup.IsOpened">
+            <summary>
+            Determine whether the Popup is opened or not.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Popup.OnIsPopupOpenChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Popup.IsOpen"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Popup.OnTargetChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Popup.Target"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Popup.OnCloseTriggerChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Popup.CloseTrigger"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Popup.OnOpenTriggerChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Popup.OpenTrigger"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Popup.OnPositionChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Popup.Position"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Popup.OnIsModelessChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Popup.IsModeless"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Popup.OnIsFullScreenChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Popup.IsFullScreen"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Popup.OnIsResizableChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Popup.IsResizable"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Popup.OnIsDraggableChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Popup.IsDraggable"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Popup.Refresh">
+            <summary>
+            Refresh current view panel
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.PopupTrigger">
+            <summary>
+            Specifies actions that trigger open/close the Popup controls.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupTrigger.None">
+            <summary>
+            No triggers; popups must be opened and closed using code.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupTrigger.ClickOwner">
+            <summary>
+            When the user clicks the owner element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupTrigger.ClickPopup">
+            <summary>
+            When the user clicks the popup.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupTrigger.Click">
+            <summary>
+            When the user clicks the owner element or the popup.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupTrigger.BlurOwner">
+            <summary>
+            When the owner element loses focus.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupTrigger.BlurPopup">
+            <summary>
+            When the popup loses focus.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupTrigger.Blur">
+            <summary>
+            When the owner element or the popup lose focus.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupTrigger.Leave">
+            <summary>
+            When the mouse leaves the owner element or the popup.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupTrigger.HoverOwner">
+            <summary>
+            When the mouse hover the owner element.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.PopupPosition">
+            <summary>
+            Represents the position of a popup element with respect to a reference element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupPosition.Above">
+            <summary>
+            Above the reference element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupPosition.AboveRight">
+            <summary>
+            Above and aligned to the right of the reference element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupPosition.RightTop">
+            <summary>
+            To the right and aligned to the top of the reference element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupPosition.Right">
+            <summary>
+            To the right of the reference element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupPosition.RightBottom">
+            <summary>
+            To the right and aligned to the bottom of the reference element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupPosition.BelowRight">
+            <summary>
+            Below and aligned to the right of the reference element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupPosition.Below">
+            <summary>
+            Below the reference element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupPosition.BelowLeft">
+            <summary>
+            Below and aligned to the left of the reference element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupPosition.LeftBottom">
+            <summary>
+            To the left and aligned to the bottom of the reference element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupPosition.Left">
+            <summary>
+            To the left of the reference element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupPosition.LeftTop">
+            <summary>
+            To the left and aligned to the top of the reference element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.PopupPosition.AboveLeft">
+            <summary>
+            Above and aligned to the left of the reference element.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.C1RangeSlider">
+            <summary>
+            Range slider.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider._thumbSizeChanged">
+            <summary>
+            Render logic flag used to define whether the size of thumbs was updated through the style.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider._valuesParameterChanged">
+            <summary>
+            Render logic flag used to define whether the any of slider's values was changed (e.g. Minimum or Maximum, or thumb's value.).
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider._isEnabled">
+            <summary>
+            Gets or sets a value indicating whether this element is enabled in the user interface (UI).
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider._orientation">
+            <summary>
+            Orientation of the slider.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider._minimum">
+            <summary>
+            The lowest value in the range of permitted values. This value must be less than or equal to the value of the <see cref="P:C1.Blazor.Input.C1RangeSlider.Maximum"/> parameter. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider._maximum">
+            <summary>
+            The greatest value in the range of permitted values. This value must be greater than or equal to the value of the <see cref="P:C1.Blazor.Input.C1RangeSlider.Minimum"/> parameter.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider._lowerValue">
+            <summary>
+            Gets or sets the current lower magnitude of the range control. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider._upperValue">
+            <summary>
+            Gets or sets the current upper magnitude of the range control. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider._trackStyle">
+            <summary>
+            Track style.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider._rangeTrackStyle">
+            <summary>
+            Range track style.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider._lowerThumbStyle">
+            <summary>
+            Lower thumb style.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider._upperThumbStyle">
+            <summary>
+            Upper thumb style.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider._scrollBehavior">
+            <summary>
+            Gets or sets how thumbs will be moved when a pointer click will be performed outside the selected area.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider._valueChanged">
+            <summary>
+            Fires when any of the properties: <see cref="P:C1.Blazor.Input.C1RangeSlider.LowerValue"/> or <see cref="P:C1.Blazor.Input.C1RangeSlider.UpperValue"/> changes.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.LowerThumb">
+            <summary>
+            Lower thumb.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.LowerThumbNode">
+            <summary>
+            Lower thumb node.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.UpperThumb">
+            <summary>
+            Upper thumb.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.UpperThumbNode">
+            <summary>
+            Upper thumb node.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.IsRepeatButtonsUsed">
+            <summary>
+            True, if repeat buttons are used.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.InitializeAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.CreatePositionStrategy">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.TurnOnElementsTransition">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.TurnOffElementsTransition">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.OnRepeatButtonElementsInitializationRequested">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.OnFetchElementsSizeFromStyleRequested">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.ThumbGotFocus(System.Collections.Generic.LinkedListNode{C1.Blazor.Input.SliderBase.ThumbModel})">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.ThumbLostFocus">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.GetMinimum">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.GetMaximum">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.GetIsEnabled">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.GetOrientation">
+            <inheritdoc/>
+        </member>
+        <member name="T:C1.Blazor.Input.C1RangeSlider.RangeDefaultPositionStrategy">
+            <summary>
+            Specified calculation of the position of the thumb when the lower thumb able to reach side of track only in left direction and the right thumb - in right direction.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Input.C1RangeSlider"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1RangeSlider.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider.IsEnabledProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1RangeSlider.IsEnabled"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.IsEnabled">
+            <summary>
+            Gets or sets a value indicating whether this element is enabled in the user interface (UI).
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider.OrientationProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1RangeSlider.Orientation"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.Orientation">
+            <summary>
+            Orientation of the slider.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider.MinimumProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1RangeSlider.Minimum"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.Minimum">
+            <summary>
+            The lowest value in the range of permitted values. This value must be less than or equal to the value of the <see cref="!:Maximum" /> parameter. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider.MaximumProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1RangeSlider.Maximum"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.Maximum">
+            <summary>
+            The greatest value in the range of permitted values. This value must be greater than or equal to the value of the <see cref="!:Minimum" /> parameter.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider.LowerValueProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1RangeSlider.LowerValue"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.LowerValue">
+            <summary>
+            Gets or sets the current lower magnitude of the range control. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.LowerValueChanged">
+            <summary>
+            Gets or sets the callback called when the <see cref="P:C1.Blazor.Input.C1RangeSlider.LowerValue"/> property has changed.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider.UpperValueProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1RangeSlider.UpperValue"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.UpperValue">
+            <summary>
+            Gets or sets the current upper magnitude of the range control. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.UpperValueChanged">
+            <summary>
+            Gets or sets the callback called when the <see cref="P:C1.Blazor.Input.C1RangeSlider.UpperValue"/> property has changed.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider.TrackStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1RangeSlider.TrackStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.TrackStyle">
+            <summary>
+            Track style.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider.RangeTrackStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1RangeSlider.RangeTrackStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.RangeTrackStyle">
+            <summary>
+            Range track style.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider.LowerThumbStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1RangeSlider.LowerThumbStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.LowerThumbStyle">
+            <summary>
+            Lower thumb style.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider.UpperThumbStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1RangeSlider.UpperThumbStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.UpperThumbStyle">
+            <summary>
+            Upper thumb style.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider.ScrollBehaviorProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1RangeSlider.ScrollBehavior"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.ScrollBehavior">
+            <summary>
+            Gets or sets how thumbs will be moved when a pointer click will be performed outside the selected area.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1RangeSlider.ValueChangedProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1RangeSlider.ValueChanged"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1RangeSlider.ValueChanged">
+            <summary>
+            Fires when any of the properties: <see cref="!:LowerValue" /> or <see cref="!:UpperValue" /> changes.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.SliderScrollBehavior">
+            <summary>
+            Specifies how the thumb will be moved when a pointer click will be performed outside the area.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderScrollBehavior.None">
+            <summary>
+             Thumb will not move.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderScrollBehavior.Thumb">
+            <summary>
+            The thumb will be moved in the direction of the pointer.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.C1Slider">
+            <summary>
+            Slider.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider._valuesParameterChanged">
+            <summary>
+            Flag used to define whether the any of slider's values was changed (e.g. Minimum or Maximum, or thumb value.).
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider._thumbSizeChanged">
+            <summary>
+            Render logic flag used to define whether the size of thumbs was updated through the style.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider._isEnabled">
+            <summary>
+            Gets or sets a value indicating whether this element is enabled in the user interface (UI).
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider._orientation">
+            <summary>
+            Orientation of the slider.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider._minimum">
+            <summary>
+            The lowest value in the range of permitted values. This value must be less than or equal to the value of the <see cref="P:C1.Blazor.Input.C1Slider.Maximum"/> parameter. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider._maximum">
+            <summary>
+            The greatest value in the range of permitted values. This value must be greater than or equal to the value of the <see cref="P:C1.Blazor.Input.C1Slider.Minimum"/> parameter.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider._value">
+            <summary>
+            Gets or sets the current value.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider._trackStyle">
+            <summary>
+            Track style.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider._thumbStyle">
+            <summary>
+            Thumb style.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider._scrollBehavior">
+            <summary>
+            Gets or sets how the thumb will be moved when a pointer click will be performed outside the area.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Slider.Thumb">
+            <summary>
+            Thumb.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Slider.ThumbNode">
+            <summary>
+            Thumb node.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Slider.IsRepeatButtonsUsed">
+            <summary>
+            True, if repeat buttons are used.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Slider.InitializeAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Slider.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Slider.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Slider.OnRepeatButtonElementsInitializationRequested">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Slider.OnFetchElementsSizeFromStyleRequested">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Slider.GetMinimum">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Slider.GetMaximum">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Slider.GetIsEnabled">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Slider.GetOrientation">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Slider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Input.C1Slider"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Slider.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Slider.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider.IsEnabledProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1Slider.IsEnabled"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Slider.IsEnabled">
+            <summary>
+            Gets or sets a value indicating whether this element is enabled in the user interface (UI).
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider.OrientationProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1Slider.Orientation"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Slider.Orientation">
+            <summary>
+            Orientation of the slider.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider.MinimumProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1Slider.Minimum"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Slider.Minimum">
+            <summary>
+            The lowest value in the range of permitted values. This value must be less than or equal to the value of the <see cref="!:Maximum" /> parameter. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider.MaximumProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1Slider.Maximum"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Slider.Maximum">
+            <summary>
+            The greatest value in the range of permitted values. This value must be greater than or equal to the value of the <see cref="!:Minimum" /> parameter.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider.ValueProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1Slider.Value"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Slider.Value">
+            <summary>
+            Gets or sets the current value.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Slider.ValueChanged">
+            <summary>
+            Gets or sets the callback called when the <see cref="P:C1.Blazor.Input.C1Slider.Value"/> property has changed.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider.TrackStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1Slider.TrackStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Slider.TrackStyle">
+            <summary>
+            Track style.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider.ThumbStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1Slider.ThumbStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Slider.ThumbStyle">
+            <summary>
+            Thumb style.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1Slider.ScrollBehaviorProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1Slider.ScrollBehavior"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Slider.ScrollBehavior">
+            <summary>
+            Gets or sets how the thumb will be moved when a pointer click will be performed outside the area.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.C1Tooltip">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Tooltip.TooltipReference">
+            <summary>
+            Reference to tooltip element.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Tooltip.Target">
+            <summary>
+            Gets or sets the id of target element.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Tooltip.TargetCss">
+            <summary>
+            Gets or sets the Css class name of target element.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Tooltip.Content">
+            <summary>
+            Gets or Sets the content of tooltip.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Tooltip.Position">
+            <summary>
+            Gets or sets the PopupPosition where the tooltip should be displayed with respect to the owner element.
+            Default value is PopupPosition.Above
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Tooltip.Gap">
+            <summary>
+            Gets or sets the distance between the tooltip and the target element.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Tooltip.HideDelay">
+            <summary>
+            Gets or sets the delay, in milliseconds, before hiding the tooltip after the mouse leaves the target element.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Tooltip.ShowDelay">
+            <summary>
+            Gets or sets the delay, in milliseconds, before showing the tooltip after the mouse enters the target element.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Tooltip.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.PopupHeader">
+            <summary>
+            Gets or sets the header of the popup.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.PopupContent">
+            <summary>
+            Gets or sets the content of the popup.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.PopupFooter">
+            <summary>
+            Gets or sets the footer of the popup.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.IsDarkOverlay">
+            <summary>
+            Gets or sets whether the overlay is dark themed. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.IsModeless">
+            <summary>
+            Gets or sets whether the dialog should be modeless (e.g. not dismiss when focusing/clicking outside of the dialog).
+            if true: there will be no overlay (isDarkOverlay is ignored)
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.IsFullScreen">
+            <summary>
+            Gets or sets to make the window display in full screen .
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.IsDraggable">
+            <summary>
+            Gets or sets to make the popup draggable 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.IsResizable">
+            <summary>
+            Gets or sets to make the popup is resizable
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.IsDialog">
+            <summary>
+            Gets or sets to determine whether Popup is dialog result.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.DialogType">
+            <summary>
+            Gets or sets dialog result type.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.OkText">
+            <summary>
+            Gets or sets OkText.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.CancelText">
+            <summary>
+            Gets or sets CancelText.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.IsOk">
+            <summary>
+            Get Ok button is click or not
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.PromptValue">
+            <summary>
+            Get Prompt value
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.Target">
+            <summary>
+             Gets or sets the element id that owns this Popup.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.CloseTrigger">
+            <summary>
+             Gets or sets actions that trigger closing Popup controls.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.OpenTrigger">
+            <summary>
+             Gets or sets actions that trigger opening Popup controls.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.Position">
+            <summary>
+             Gets or sets the position that display the window.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.OpenDelay">
+            <summary>
+             Gets or sets delay time before opening Popup controls.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.CloseDelay">
+            <summary>
+             Gets or sets delay time before closing Popup controls.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.Gap">
+            <summary>
+             Gets or sets space between owner and popup.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1Window.IsPopupOpenChanged">
+            <summary>
+            This callback is called when the popup is opened or closed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Input.C1Window"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.Open">
+            <summary>
+            Call method to Open Popup
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.Close">
+            <summary>
+            Call method to close Popup
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.IsOpened">
+            <summary>
+            Determine whether the Popup is opened or not.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.OnIsModelessChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Window.IsModeless"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.OnIsFullScreenChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Window.IsFullScreen"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.OnIsDraggableChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Window.IsDraggable"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.OnIsResizableChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Window.IsResizable"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.OnTargetChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Window.Target"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.OnCloseTriggerChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Window.CloseTrigger"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.OnOpenTriggerChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Window.OpenTrigger"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.OnPositionChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Window.Position"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.OnOpenDelayChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Window.OpenDelay"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.OnCloseDelayChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Window.CloseDelay"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.OnGapChanged">
+            <summary>
+            Called when <see cref="P:C1.Blazor.Input.C1Window.Gap"/> changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1Window.Refresh">
+            <summary>
+            Refresh current view panel
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.SliderOrientation">
+            <summary>
+            Defines the different orientations that a control or layout can have.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderOrientation.Horizontal">
+             <summary>
+             Control or layout should be horizontally oriented.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderOrientation.Vertical">
+            <summary>
+            Control or layout should be vertically oriented.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.SliderBase">
+            <summary>
+            Base class for sliders.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderBase._containerWidth">
+            <summary>
+            Container width.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderBase._containerHeight">
+            <summary>
+            Container height.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderBase._trackSize">
+            <summary>
+            Track size.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderBase._thumbSize">
+            <summary>
+            Thumb size.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderBase._thumbVisualSize">
+            <summary>
+            Thumb regular visual size (without considering over state size).
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderBase._containerElem">
+            <summary>
+            Container element reference.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderBase._trackElem">
+            <summary>
+            Track element reference.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderBase._thumbOverlayElem">
+            <summary>
+            Thumb overlay element reference.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderBase._lowerRepeatElem">
+            <summary>
+            Lower hit button is used for decreasing thumb's value by <see cref="P:C1.Blazor.Input.SliderBase.ValueChange"/>.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderBase._upperRepeatElem">
+            <summary>
+            Upper hit button is used for increasing thumb's value by <see cref="P:C1.Blazor.Input.SliderBase.ValueChange"/>.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderBase._thumbs">
+            <summary>
+            List of thumbs.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderBase._selectedThumbNode">
+            <summary>
+            Selected thumb node.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderBase._innerStyle">
+            <summary>
+            Inner container style.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.SliderBase._positionStrategy">
+            <summary>
+            Specified calculation of the thumb position.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.SliderBase.RepeatButtonInitializationRequested">
+            <summary>
+            Set to true to initialize repeat buttons elements. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.SliderBase.FetchElementsSizeFromStyleRequested">
+            <summary>
+            Set to true to fetch elements size from the styles (container's width, height, thumb's size ) after it's implementation after the render.
+            </summary> 
+        </member>
+        <member name="P:C1.Blazor.Input.SliderBase.SmallValueChange">
+            <summary>
+            Gets or sets a value to be added to or subtracted from the thumb's value using a keyboard./>.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.SliderBase.ValueChange">
+            <summary>
+            Gets or sets a value to be added to or subtracted from the thumb's value using a pointer outside of the thumb.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.SliderBase.Delay">
+            <summary>
+            Gets or sets the time, in milliseconds, buttons (at the left of the thumb and at the right of the thumb) wait when they are pressed before they start repeating the click action.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.SliderBase.Interval">
+            <summary>
+            Gets or sets the time, in milliseconds, between repetitions of the click action, as soon as repeating starts (for buttons at the left of the thumb and at the right of the thumb).
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.SliderBase.IsRenderEnabled">
+            <summary>
+            Set false to prevent rendering.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.ShouldRender">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.#ctor">
+            <summary>
+            Ctor.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.CreatePositionStrategy">
+            <summary>
+            Thumbs could have a specific position calculation.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.UpdateSizeParameters(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Update size parameters.
+            </summary>
+            <param name="containerWidth">Container width.</param>
+            <param name="containerHeight">Container height.</param>
+            <param name="thumbVisualWidth">Thumb regular visual width.</param>
+            <param name="thumbVisualHeight">Thumb regular visual height</param>
+            <param name="thumbWidth">Thumb maximum width.</param>
+            <param name="thumbHeight">Thumb maximum height.</param>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.InvalidateInnerStyle">
+            <summary>
+            Invalidate inner control style.
+            </summary>
+            <returns>Style.</returns>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.GetThumbElementPosition(C1.Blazor.Input.SliderBase.ThumbModel)">
+            <summary>
+            Get thumb's position based on the it's value.
+            </summary>
+            <param name="thumb">Thumb.</param>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.GetValueDelta(System.Double)">
+            <summary>
+            Calculate value's delta based on the offset in pixels.
+            </summary>
+            <param name="offset">Offset in pixels.</param>
+            <returns> Value.</returns>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.UpdateThumbValue(System.Collections.Generic.LinkedListNode{C1.Blazor.Input.SliderBase.ThumbModel},System.Double)">
+            <summary>
+            Update thumb's value considering the conditions.
+            </summary>
+            <param name="thumb"> Thumb.</param>
+            <param name="value"> Value.</param>
+            <returns> True, if value of thumb was updated otherwise false.</returns>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.GetThumbNode(System.Int32)">
+            <summary>
+            Get a thumb node.
+            </summary>
+            <param name="thumbId"> Thumb id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.OnAfterRenderAsync(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.OnRepeatButtonElementsInitializationRequested">
+            <summary>
+            Calls to initialize repeat buttons elements. 
+            </summary>
+            <remarks> Js interop expected.</remarks>
+            <returns> Task.</returns>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.OnFetchElementsSizeFromStyleRequested">
+            <summary>
+            Calls to fetch control's elements sizes from the style.
+            </summary>
+            <remarks> Js interop expected.</remarks>
+            <returns> Task.</returns>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.EnrichDisabledC1Style(C1.Blazor.Core.C1Style,C1.Blazor.Core.C1Color)">
+            <summary>
+            Create style based on <paramref name="style"/> and update it with disabled state.
+            </summary>
+            <param name="style"> Origin style.</param>
+            <param name="color"> Disabled color.</param>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.ThumbGotFocus(System.Collections.Generic.LinkedListNode{C1.Blazor.Input.SliderBase.ThumbModel})">
+            <summary>
+            Calls when a thumb got the focus.
+            </summary>
+            <param name="thumbNode"> Thumb node.</param>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.ThumbLostFocus">
+            <summary>
+            Calls when a thumb lost the focus.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.ChangeThumbValue(System.Collections.Generic.LinkedListNode{C1.Blazor.Input.SliderBase.ThumbModel},System.Double)">
+            <summary>
+            Change thumb value. 
+            </summary>
+            <remarks> If value was changed then rerender.</remarks>
+            <param name="thumb"> Thumb.</param>
+            <param name="deltaValue"> Value offset.</param>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.TurnOnElementsTransition">
+            <summary>
+            Turn on elements transition.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.TurnOffElementsTransition">
+            <summary>
+            Turn off elements transition.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.GetIsEnabled">
+            <summary>
+            Return the slider's IsEnabled.
+            </summary>
+            <remarks> Codegeneration doesn't allow to define a parameter in the base class. Override this method at the descendant and return the value.</remarks>
+            <returns> Value</returns>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.GetOrientation">
+            <summary>
+            Return the slider's Orientation.
+            </summary>
+            <remarks> Codegeneration doesn't allow to define a parameter in the base class. Override this method at the descendant and return the value.</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.GetMinimum">
+            <summary>
+            Return the slider's minimum value.
+            </summary>
+            <remarks> Codegeneration doesn't allow to define a parameter in the base class. Override this method at the descendant and return the value.</remarks>
+            <returns> Value.</returns>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.GetMaximum">
+            <summary>
+            Return the slider's maximum value.
+            </summary>
+            <remarks> Codegeneration doesn't allow to define a parameter in the base class. Override this method at the descendant and return the value.</remarks>
+            <returns> Value</returns>
+        </member>
+        <member name="T:C1.Blazor.Input.SliderBase.ThumbModel">
+            <summary>
+            Present slider's thumb.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.ThumbModel.#ctor(System.Action{System.Double},System.Double,System.Int32)">
+            <summary>
+            Ctor.
+            </summary>
+            <param name="update"> Action on updating thumb value.</param>
+            <param name="value"> Initial value.</param>
+            <param name="id"> Unic id of thumb to identify it.</param>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.ThumbModel.NotifyUpdate">
+            <summary>
+            Calls update action.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.SliderBase.ThumbModel.Value">
+            <summary>
+            Thumb's value.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.SliderBase.ThumbModel.Id">
+            <summary>
+            Unic id.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.SliderBase.ThumbModel.Element">
+            <summary>
+            Element reference.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.SliderBase.ThumbModel.Style">
+            <summary>
+            Thumb style.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.SliderBase.ThumbPositionStrategy">
+            <summary>
+            Specified how the position of the thumb is calculated.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.SliderBase.ThumbPositionStrategy.GetPosition(C1.Blazor.Input.SliderBase.ThumbModel@)">
+            <summary>
+            Calculate position of thumb.
+            </summary>
+            <param name="thumb"> Thumb.</param>
+            <returns> Position.</returns>
+        </member>
+        <member name="T:C1.Blazor.Input.SliderBase.ThroughoutPositionStrategy">
+            <summary>
+            Specified calculation of the position of the thumb when thumb's center able to reach left and right sides of track.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.RangeSliderScrollBehavior">
+            <summary>
+            Specifies how thumbs will be moved when mouse click will be performed outside selected area.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.RangeSliderScrollBehavior.None">
+            <summary>
+            Both thumbs will not move.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.RangeSliderScrollBehavior.Thumb">
+            <summary>
+            Closest thumb will be moved to direction of mouse by a large distance.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.RangeSliderScrollBehavior.Range">
+            <summary>
+            Both thumbs will be moved to direction of mouse by a large distance.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.C1CheckBox">
+            <summary>
+            Represents a control that a user can select and clear.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1CheckBox._isChecked">
+            <summary>
+            Gets or sets whether the <see cref="T:C1.Blazor.Input.C1CheckBox"/> is checked.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1CheckBox._isThreeState">
+            <summary>
+            Gets or sets whether <see cref="T:C1.Blazor.Input.C1CheckBox"/> supports indeterminate state.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1CheckBox._isReadOnly">
+            <summary>
+            Gets or sets whether the <see cref="T:C1.Blazor.Input.C1CheckBox"/> is read only.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1CheckBox.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1CheckBox.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Input.C1CheckBox"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1CheckBox.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1CheckBox.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.Input.C1CheckBox.IsCheckedProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1CheckBox.IsChecked"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1CheckBox.IsChecked">
+            <summary>
+            Gets or sets whether the <see cref="T:C1.Blazor.Input.C1CheckBox" /> is checked.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1CheckBox.IsThreeStateProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1CheckBox.IsThreeState"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1CheckBox.IsThreeState">
+            <summary>
+            Gets or sets whether <see cref="T:C1.Blazor.Input.C1CheckBox" /> supports indeterminate state.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1CheckBox.IsReadOnlyProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1CheckBox.IsReadOnly"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1CheckBox.IsReadOnly">
+            <summary>
+            Gets or sets whether the <see cref="T:C1.Blazor.Input.C1CheckBox" /> is read only.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.C1AutoCompleteTextBox">
+            <summary>
+            Represents a control that can be used to display and edit plain text,
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.C1AutoCompleteTextBox._delay">
+            <summary>
+             Gets or sets the delay that occurs between the key strokes and the text changed event.
+            </summary>
+            <remarks>
+            Setting this delay to something bigger than zero allows skipping unnecessary events when the text box is used in filtering scenarios.
+            </remarks>
+        </member>
+        <member name="P:C1.Blazor.Input.C1AutoCompleteTextBox.AutoCompleteText">
+            <summary>
+            Gets the auto-completed text.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1AutoCompleteTextBox.AutoComplete">
+            <summary>
+            Gets or sets the callback used to provide the auto-completion text.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1AutoCompleteTextBox.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Input.C1AutoCompleteTextBox"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1AutoCompleteTextBox.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1AutoCompleteTextBox.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.Input.C1AutoCompleteTextBox.DelayProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Input.C1AutoCompleteTextBox.Delay"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1AutoCompleteTextBox.Delay">
+            <summary>
+             Gets or sets the delay that occurs between the key strokes and the text changed event.
+            </summary>
+            <remarks>
+                Setting this delay to something bigger than zero allows skipping unnecessary events when the text box is used in filtering scenarios.
+                </remarks>
+        </member>
+        <member name="T:C1.Blazor.Input.TextBoxAutoCompleteEventArgs">
+            <summary>
+            Contains information about the <see cref="P:C1.Blazor.Input.C1AutoCompleteTextBox.AutoComplete"/>.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.TextBoxAutoCompleteEventArgs.Text">
+            <summary>
+            Gets or sets the text that is being auto-completed.
+            </summary>
+            <remarks>
+            Use this property to correct the capitalization of the entered text.
+            </remarks>
+        </member>
+        <member name="P:C1.Blazor.Input.TextBoxAutoCompleteEventArgs.AutoComplete">
+            <summary>
+            Gets or sets the text used to auto-complete.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.C1TextBox">
+            <summary>
+            Represents a control that can be used to display and edit plain text,
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1TextBox.IsPlaceholderVisible">
+            <summary>
+            Gets a value indicating whether the placeholder is visible.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1TextBox.StopOnClickPropagation">
+            <summary>
+            Stop the onclick event from outside
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1TextBox.Text">
+            <summary>
+            Gets or sets the text displayed.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1TextBox.Placeholder">
+            <summary>
+            Gets or sets the placeholder displayed when there is no entered text.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1TextBox.Type">
+            <summary>
+            Gets or sets the type of text to be entered.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1TextBox.Step">
+            <summary>
+            Gets or sets the kind of step accepted by the text box when the <see cref="P:C1.Blazor.Input.C1TextBox.Type"/> is numeric.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1TextBox.Min">
+            <summary>
+            Gets or sets the min value accepted in the text box.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1TextBox.Max">
+            <summary>
+            Gets or sets the max value accepted in the text box.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1TextBox.MaxLength">
+            <summary>
+            Gets or sets the maximum number of characters allowed in the text box.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1TextBox.BrowserAutocomplete">
+            <summary>
+            Gets or sets whether the browser will show suggestions based on previous entered texts.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1TextBox.TextChanged">
+            <summary>
+            Gets or sets the callback called when the text changed.
+            </summary>
+            <remarks>This event is used by Blazor to allow setting @bind-Text</remarks>
+        </member>
+        <member name="P:C1.Blazor.Input.C1TextBox.FinishedTextChange">
+            <summary>
+            Gets or sets the callback called when the text changing is finished.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.C1TextBox.KeyPressed">
+            <summary>
+            Gets or sets the callback called when a key is pressed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1TextBox.FocusAsync">
+            <summary>
+            Sets the focus.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1TextBox.Select(System.Int32,System.Int32)">
+            <summary>
+            Selects the text between the specified <paramref name="start"/> and <paramref name="length"/>.
+            </summary>
+            <param name="start">The selection start.</param>
+            <param name="length">The selection length.</param>
+        </member>
+        <member name="M:C1.Blazor.Input.C1TextBox.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Input.C1TextBox"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.C1TextBox.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Input.C1TextBox.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:C1.Blazor.Input.TextBoxChangedEventArgs">
+            <summary>
+            Contains information about the <see cref="P:C1.Blazor.Input.C1TextBox.TextChanged"/>.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.TextBoxChangedEventArgs.Text">
+            <summary>
+            Gets or sets the text that is being auto-completed.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxType.Button">
+            <summary>
+            Defines a button.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxType.Checkbox">
+            <summary>
+            Defines a checkbox.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxType.Color">
+            <summary>
+            Is used for input fields that should contain a color.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxType.Date">
+            <summary>
+            Is used for input fields that should contain a date.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxType.DateTimeLocal">
+            <summary>
+            Specifies a date and time input field, with no time zone.
+            </summary>
+            <remarks>Depending on browser support, a date picker can show up in the input field.</remarks>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxType.Email">
+            <summary>
+            Is used for input fields that should contain an e-mail address.
+            </summary>
+            <remarks>Depending on browser support, the e-mail address can be automatically validated when submitted.
+            Some smartphones recognize the email type, and add ".com" to the keyboard to match email input.</remarks>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxType.File">
+            <summary>
+            Defines a file-select field and a "Browse" button for file uploads.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxType.Month">
+            <summary>
+            Allows the user to select a month and year.
+            </summary>
+            <remarks>Depending on browser support, a date picker can show up in the input field.</remarks>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxType.Number">
+            <summary>
+            Defines a numeric input field.
+            </summary>
+            <remarks>You can also set restrictions on what numbers are accepted.</remarks>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxType.Password">
+            <summary>
+            Defines a password field.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxType.Radio">
+            <summary>
+            Defines a radio button.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxType.Reset">
+            <summary>
+            Defines a reset button that will reset all form values to their default values.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxType.Submit">
+            <summary>
+            Defines a button for submitting form data to a form-handler.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.TextBoxStep">
+            <summary>
+            The step attribute specifies the interval between legal numbers in an <see cref="T:C1.Blazor.Input.C1AutoCompleteTextBox"/>.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.TextBoxStep.Any">
+            <summary>
+            Gets the step used to accept any number.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.TextBoxStep.#ctor(C1.Blazor.Input.TextBoxStepType,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Input.TextBoxStep"/> struct.
+            </summary>
+            <param name="type">The type of step.</param>
+            <param name="value">The value of the step.</param>
+        </member>
+        <member name="P:C1.Blazor.Input.TextBoxStep.Type">
+            <summary>
+            Gets the type of step.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.TextBoxStep.Value">
+            <summary>
+            Gets the value of the step.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.TextBoxStep.op_Implicit(System.Double)~C1.Blazor.Input.TextBoxStep">
+            <summary>
+            Casting operator to convert a double into a <see cref="T:C1.Blazor.Input.TextBoxStep"/>.
+            </summary>
+            <param name="value">The value of the length in pixels.</param>
+        </member>
+        <member name="M:C1.Blazor.Input.TextBoxStep.ToString">
+            <summary>
+            Converts to string.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.TextBoxStepType">
+            <summary>
+            Enumerates the accepted kind of steps for <see cref="T:C1.Blazor.Input.TextBoxStep"/>.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxStepType.Any">
+            <summary>
+            Any number is accepted.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxStepType.Number">
+            <summary>
+            Specifies the interval between legal numbers in the input field. Default is 1.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.TextBoxMinMax">
+            <summary>
+            The min/max value used in <see cref="T:C1.Blazor.Input.C1TextBox"/>.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.TextBoxMinMax.#ctor(System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Input.TextBoxMinMax"/> struct.
+            </summary>
+            <param name="number">The number min/max value.</param>
+        </member>
+        <member name="M:C1.Blazor.Input.TextBoxMinMax.#ctor(System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Input.TextBoxMinMax"/> struct.
+            </summary>
+            <param name="date">The date min/max value.</param>
+        </member>
+        <member name="P:C1.Blazor.Input.TextBoxMinMax.Type">
+            <summary>
+            Gets the type of min/max value.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.TextBoxMinMax.Number">
+            <summary>
+            Gets the number value.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.TextBoxMinMax.Date">
+            <summary>
+            Gets the date value.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.TextBoxMinMax.op_Implicit(System.Double)~C1.Blazor.Input.TextBoxMinMax">
+            <summary>
+            Casting operator to convert a double into a <see cref="T:C1.Blazor.Input.TextBoxMinMax"/>.
+            </summary>
+            <param name="value">The min/max number value.</param>
+        </member>
+        <member name="M:C1.Blazor.Input.TextBoxMinMax.op_Implicit(System.DateTime)~C1.Blazor.Input.TextBoxMinMax">
+            <summary>
+            Casting operator to convert a double into a <see cref="T:C1.Blazor.Input.TextBoxMinMax"/>.
+            </summary>
+            <param name="date">The min/max date value.</param>
+        </member>
+        <member name="M:C1.Blazor.Input.TextBoxMinMax.ToString">
+            <summary>
+            Converts to string.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.TextBoxMinMaxType">
+            <summary>
+            Enumerates the accepted kind of values for <see cref="T:C1.Blazor.Input.TextBoxMinMax"/>.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxMinMaxType.Number">
+            <summary>
+            The min/max value is a number.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.TextBoxMinMaxType.Date">
+            <summary>
+            The min/max value is a date.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.AutoCompleteMode">
+            <summary>
+            Specifies how to filter items of autocomplete.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.AutoCompleteMode.StartsWith">
+            <summary>
+            Filtering items of autocomplete when starts with the input string
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.AutoCompleteMode.Contains">
+            <summary>
+            Filtering items of autocomplete when contains the input string. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.AutoCompleteMode.EndsWith">
+            <summary>
+            Filtering items of autocomplete when ends with the input string
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.AutoCompleteMode.MatchCase">
+            <summary>
+            Filtering items of autocomplete when contains the input string that match case. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.AutoCompleteMode.MatchWholeWord">
+            <summary>
+            Filtering items of autocomplete when contains the input string that match whole word. 
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.AutoCompleteOperator">
+            <summary>
+            Specifies how to filter items of autocomplete.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.AutoCompleteOperator.Contains">
+            <summary>
+            Filtering items of autocomplete when contains the input string. 
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.DropDownBehavior">
+            <summary>
+            DropDown interaction behavior.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.DropDownBehavior.ButtonTap">
+            <summary>
+            The drop-down appears when the user taps the button.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.DropDownBehavior.HeaderTap">
+            <summary>
+            The drop-down appears when the user taps any part of the header.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.DropDownMode">
+            <summary>
+            DropDown display mode.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.DropDownMode.Default">
+            <summary>
+            If the device is phone, then DropDownView is displayed in separate FullScreen page, if device is not phone, mode will be BelowOrAbove by default.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.DropDownMode.FullScreen">
+            <summary>
+            DropDownView is displayed in separate FullScreen page (similar to navigationpage) where user can select from list or navigate backwards by hitting back button
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.DropDownMode.Below">
+            <summary>
+            Opens the drop-down below the header.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.DropDownMode.Above">
+            <summary>
+            Opens the drop-down above the header.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.MaskFormat">
+            <summary>
+            Defines how to format the value inside of a <see cref="T:C1.Blazor.Input.C1MaskedTextBox"/>.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.MaskFormat.IncludePrompt">
+            <summary>
+            Return text input by the user as well as any instances of the prompt character.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.MaskFormat.IncludeLiterals">
+            <summary>
+            Return text input by the user as well as any literal characters defined in the mask.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.MaskFormat.IncludePromptAndLiterals">
+            <summary>
+            Return text input by the user as well as any literal characters defined in the mask and any instances of the prompt character.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Input.MaskFormat.ExcludePromptAndLiterals">
+            <summary>
+            Return only text input by the user.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Input.AutoCompleteFilteringEventArgs">
+            <summary>
+            Event information for <see cref="E:C1AutoComplete.Filtering"/> event.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.AutoCompleteFilteringEventArgs.Cancel">
+            <summary>
+            Gets or sets whether to cancel the default filtering of the autocomplete.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.AutoCompleteFilteringEventArgs.FilterString">
+            <summary>
+            Gets or sets the FilterString of the autocomplete.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.AutoCompleteFilteringEventArgs.#ctor(System.Boolean,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Input.AutoCompleteFilteringEventArgs"/> class.
+            </summary>
+            <param name="cancel">cancel or not.</param>
+            <param name="filterString">The filter string.</param> 
+        </member>
+        <member name="T:C1.Blazor.Input.MaskedTextChangedEventArgs">
+            <summary>
+            Provides data for the <see cref="P:C1.Blazor.Input.C1MaskedTextBox.MaskedTextChanged"/> event.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Input.MaskedTextChangedEventArgs.#ctor(System.String,System.String)">
+            <summary>
+            Creates an instance of the <see cref="T:C1.Blazor.Input.MaskedTextChangedEventArgs"/> class.
+            </summary>
+            <param name="newText">
+            The new text.
+            </param>
+            <param name="oldText">
+            The old text.
+            </param>
+        </member>
+        <member name="P:C1.Blazor.Input.MaskedTextChangedEventArgs.OldText">
+            <summary>
+            Gets an old text.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Input.MaskedTextChangedEventArgs.NewText">
+            <summary>
+            Gets a new text.
+            </summary>
+        </member>
+    </members>
+</doc>

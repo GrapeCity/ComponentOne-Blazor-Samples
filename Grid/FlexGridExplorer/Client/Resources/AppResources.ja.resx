@@ -213,13 +213,13 @@
     <value>フィルタリングするテキストを入力</value>
   </data>
   <data name="FilterRowTitle" xml:space="preserve">
-    <value>フィルタ</value>
+    <value>フィルタ処理</value>
   </data>
   <data name="FullTextFilterDescription" xml:space="preserve">
     <value>列のデータをフィルタリングして強調表示</value>
   </data>
   <data name="FullTextFilterTitle" xml:space="preserve">
-    <value>Full-Textフィルター</value>
+    <value>Full-Text フィルター</value>
   </data>
   <data name="GettingStartedDescription" xml:space="preserve">
     <value>FlexGrid でデータを表示、編集、集計</value>
@@ -262,11 +262,12 @@
     <value>YouTube で検索するビデオのテキストを入力</value>
   </data>
   <data name="SelectionModesDescription" xml:space="preserve">
-    <value>さまざまなセルSelection Modesを表示します。</value>
+    <value>さまざまなセル選択モードを表示します。</value>
     <comment>Shows the various cell selection modes.</comment>
   </data>
   <data name="SelectionModesTitle" xml:space="preserve">
-    <value>Selection Modes</value>
+    <value>選択モード</value>
+    <comment>Selection Modes</comment>
   </data>
   <data name="SelectRowMessage" xml:space="preserve">
     <value>編集する行を選択してください。対象の行をダブルタップしても編集できます。</value>
@@ -298,7 +299,7 @@
     <comment>cell(s) selected</comment>
   </data>
   <data name="DetailVisibiltyMode" xml:space="preserve">
-    <value>DetailVisibilityMode</value>
+    <value>詳細の表示モード</value>
     <comment>DetailVisibilityMode</comment>
   </data>
   <data name="Friday" xml:space="preserve">
@@ -359,10 +360,10 @@
     <value>クリックして新しい行を追加する</value>
   </data>
   <data name="CustomSortIconTitle" xml:space="preserve">
-    <value>Custom Sortアイコン</value>
+    <value>カスタムソートアイコン</value>
   </data>
   <data name="CustomSortIconDescription" xml:space="preserve">
-    <value>ヘッダー列にCustom Sortアイコンを表示</value>
+    <value>ヘッダー列にカスタムソートアイコンを表示</value>
     <comment>Show how to custom sort icon in header column.</comment>
   </data>
   <data name="CheckListDescription" xml:space="preserve">
@@ -372,10 +373,12 @@
     <value>チェックリスト</value>
   </data>
   <data name="SortIconPosition" xml:space="preserve">
-    <value>SortIconPosition</value>
+    <value>ソートアイコンの位置</value>
+    <comment>SortIconPosition</comment>
   </data>
   <data name="SortIconTemplate" xml:space="preserve">
-    <value>SortAscendingIconTemplate</value>
+    <value>ソートアイコンのテンプレート</value>
+    <comment>SortAscendingIconTemplate</comment>
   </data>
   <data name="LiveUpdatesDescription" xml:space="preserve">
     <value>グリッド内の変更をアニメーションで表す方法を示します。</value>
@@ -416,7 +419,8 @@
     <comment>Virtual Mode</comment>
   </data>
   <data name="AllowResizing" xml:space="preserve">
-    <value>Allow Resizing</value>
+    <value>リサイズを許可</value>
+    <comment>Allow Resizing</comment>
   </data>
   <data name="About" xml:space="preserve">
     <value>詳しくは</value>

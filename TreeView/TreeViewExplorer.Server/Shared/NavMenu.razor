@@ -1,0 +1,121 @@
+﻿<style>
+    span.nav-link {
+        color: white;
+    }
+</style>
+<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">TreeViewExplorer.Server</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span>  @(Localization.Resource.Overview)
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="unbound">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Unbound
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="behavior">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> @(Localization.Resource.Behavior)
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="itemtemplate">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> ItemTemplate
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="icontemplate">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> IconTemplate
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="searching">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>@(Localization.Resource.Searching)
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <span class="nav-link">
+                <span class="oi oi-plus" aria-hidden="true"></span> @(Localization.Resource.Styling)
+            </span>
+            <ul class="nav flex-column">
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="styling/overview">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>@(Localization.Resource.Overview)
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="styling/nodeborders">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>@(Localization.Resource.Node_Borders)
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="styling/accordiontrees">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>@(Localization.Resource.Accordion_Tree)
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="styling/cleanaccordion">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>@(Localization.Resource.Clean_Accordion)
+                    </NavLink>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item px-3">
+            <span class="nav-link">
+                <span class="oi oi-plus" aria-hidden="true"></span> @(Localization.Resource.Nodes)
+            </span>
+            <ul class="nav flex-column">
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="nodes/showcheckboxes">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>ShowCheckboxes
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="nodes/adding">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>@(Localization.Resource.Adding)
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="nodes/removing">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>@(Localization.Resource.Removing)
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="nodes/draganddrop">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>Drag And Drop
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="nodes/draganddropbetweentrees">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>Drag And Drop BetweenTree
+                    </NavLink>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="rtl">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>@(Localization.Resource.RightToLeft)
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

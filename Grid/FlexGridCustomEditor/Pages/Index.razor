@@ -1,0 +1,24 @@
+﻿@page "/"
+@using  C1.Blazor.Grid
+
+<FlexGrid AutoGenerateColumns="false" ItemsSource="source">
+    <FlexGridColumns>
+        <GridColumn Binding="FirstName" />
+        <GridColumn Binding="LastName" />
+        <CustomDropDownColumn Binding="Country" />
+    </FlexGridColumns>
+</FlexGrid>
+
+@code{
+    List<Person> source;
+
+    protected override void OnInitialized()
+    {
+        source = new List<Person>();
+        source.Add(new Person { FirstName = "John", LastName = "Lennon", Country = Country.GetCountries().First(c => c.Code == "GB") });
+        source.Add(new Person { FirstName = "Whitney", LastName = "Houston", Country = Country.GetCountries().First(c => c.Code == "US") });
+        source.Add(new Person { FirstName = "Bob", LastName = "Marley", Country = Country.GetCountries().First(c => c.Code == "JM") });
+        source.Add(new Person { FirstName = "Amy", LastName = "Winehouse", Country = Country.GetCountries().First(c => c.Code == "GB") });
+        source.Add(new Person { FirstName = "Jim", LastName = "Morrison", Country = Country.GetCountries().First(c => c.Code == "US") });
+    }
+}

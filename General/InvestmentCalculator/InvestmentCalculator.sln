@@ -1,0 +1,42 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvestmentCalculator.Server", "InvestmentCalculator\Server\InvestmentCalculator.Server.csproj", "{E0308B1F-7B67-4082-8ED1-E448E968AE97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvestmentCalculator.Client", "InvestmentCalculator\Client\InvestmentCalculator.Client.csproj", "{AE08060E-E5CA-4F87-B2B2-47255E2B9112}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvestmentCalculator.Shared", "InvestmentCalculator\Shared\InvestmentCalculator.Shared.csproj", "{FB28E5A2-DEB2-4368-92F7-7F846347C4C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		GRAPECITY|Any CPU = GRAPECITY|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0308B1F-7B67-4082-8ED1-E448E968AE97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0308B1F-7B67-4082-8ED1-E448E968AE97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0308B1F-7B67-4082-8ED1-E448E968AE97}.GRAPECITY|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0308B1F-7B67-4082-8ED1-E448E968AE97}.GRAPECITY|Any CPU.Build.0 = Debug|Any CPU
+		{E0308B1F-7B67-4082-8ED1-E448E968AE97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0308B1F-7B67-4082-8ED1-E448E968AE97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE08060E-E5CA-4F87-B2B2-47255E2B9112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE08060E-E5CA-4F87-B2B2-47255E2B9112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE08060E-E5CA-4F87-B2B2-47255E2B9112}.GRAPECITY|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE08060E-E5CA-4F87-B2B2-47255E2B9112}.GRAPECITY|Any CPU.Build.0 = Debug|Any CPU
+		{AE08060E-E5CA-4F87-B2B2-47255E2B9112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE08060E-E5CA-4F87-B2B2-47255E2B9112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB28E5A2-DEB2-4368-92F7-7F846347C4C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB28E5A2-DEB2-4368-92F7-7F846347C4C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB28E5A2-DEB2-4368-92F7-7F846347C4C0}.GRAPECITY|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB28E5A2-DEB2-4368-92F7-7F846347C4C0}.GRAPECITY|Any CPU.Build.0 = Debug|Any CPU
+		{FB28E5A2-DEB2-4368-92F7-7F846347C4C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB28E5A2-DEB2-4368-92F7-7F846347C4C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5ADB952C-B134-4F20-A945-076DFFE87349}
+	EndGlobalSection
+EndGlobal

@@ -63,7 +63,7 @@
 
     protected override void OnInitialized()
     {
-        var stocks = new StockDataCollection { Http = Http, PageSize = 8 };
+        var stocks = new StockDataCollection { Http = Http };
         financialData = new C1PagedDataCollection<Stock>(stocks) { PageSize = 8 };
     }
 

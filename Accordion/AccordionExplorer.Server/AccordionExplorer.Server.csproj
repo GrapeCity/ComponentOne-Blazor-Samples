@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove=".gclicx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include=".gclicx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.Accordion">
+      <Version>6.0.20221.211</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>6.0.20221.211</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Grid">
+      <Version>6.0.20221.211</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Input">
+      <Version>6.0.20221.211</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.ListView">
+      <Version>6.0.20221.211</Version>
+    </PackageReference>
+  </ItemGroup>
+</Project>

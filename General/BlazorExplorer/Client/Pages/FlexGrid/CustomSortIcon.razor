@@ -12,9 +12,9 @@
 <_Sections>
     <Title>@FlexGridRes.CustomSortIconTitle</Title>
     <Settings>
-        @FlexGridRes.SortIconPosition <C1ComboBox ItemsSource="sortIconPositions" @bind-SelectedItem="@sortIconPosition" />
-        @FlexGridRes.SortIconTemplate  <C1ComboBox SelectedIndexChanged="SortIconTemplateChanged" ItemsSource="sortTemplates" DisplayMemberPath="Value" ValueMemberPath="Key" @bind-SelectedItem="@selectedTemplate" />
-        @FlexGridRes.ShowSort <C1CheckBox @bind-IsChecked="showSort" />
+        Sort Icon Position <C1ComboBox ItemsSource="sortIconPositions" @bind-SelectedItem="@sortIconPosition" />
+        Sort Icon Template  <C1ComboBox SelectedIndexChanged="SortIconTemplateChanged" ItemsSource="sortTemplates" DisplayMemberPath="Value" ValueMemberPath="Key" @bind-SelectedItem="@selectedTemplate" />
+        Show Sort <C1CheckBox @bind-IsChecked="showSort" />
     </Settings>
     <Summary>@FlexGridRes.CustomSortIconSummary</Summary>
     <Description>@FlexGridRes.CustomSortIconDescription</Description>

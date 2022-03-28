@@ -541,4 +541,13 @@ Specific series may override those properties and use different data sources and
   <data name="UpdateData" xml:space="preserve">
     <value>Update Data</value>
   </data>
+  <data name="TwoAxesDescription" xml:space="preserve">
+    <value>The sample shows how to add second y-axis to the plot.</value>
+  </data>
+  <data name="TwoAxesSummary" xml:space="preserve">
+    <value>Plot with two y-axes</value>
+  </data>
+  <data name="TwoAxesTitle" xml:space="preserve">
+    <value>Two Y-axes</value>
+  </data>
 </root>

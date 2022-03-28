@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlexGridCustomEditor", "FlexGridCustomEditor.csproj", "{5C459B51-F557-45D3-AC82-0A6BD7CBB77D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1.Blazor.Core", "..\..\..\Controls\Core\C1.Blazor.Core.csproj", "{77078570-E2E5-45A8-B683-B59B46DE70B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1.Blazor.ListView", "..\..\..\Controls\ListView\C1.Blazor.ListView.csproj", "{990D14FF-3693-409B-8CA1-4FE355B12CA2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1.Blazor.Input", "..\..\..\Controls\Input\C1.Blazor.Input.csproj", "{09F6D6C8-69A1-4846-A5D6-9024D1FB40AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1.Blazor.Grid", "..\..\..\Controls\Grid\C1.Blazor.Grid.csproj", "{225ADBAA-4253-4135-B03C-6BBA3E67E9A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		GRAPECITY|Any CPU = GRAPECITY|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C459B51-F557-45D3-AC82-0A6BD7CBB77D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C459B51-F557-45D3-AC82-0A6BD7CBB77D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C459B51-F557-45D3-AC82-0A6BD7CBB77D}.GRAPECITY|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C459B51-F557-45D3-AC82-0A6BD7CBB77D}.GRAPECITY|Any CPU.Build.0 = Debug|Any CPU
+		{5C459B51-F557-45D3-AC82-0A6BD7CBB77D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C459B51-F557-45D3-AC82-0A6BD7CBB77D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77078570-E2E5-45A8-B683-B59B46DE70B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77078570-E2E5-45A8-B683-B59B46DE70B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77078570-E2E5-45A8-B683-B59B46DE70B1}.GRAPECITY|Any CPU.ActiveCfg = GRAPECITY|Any CPU
+		{77078570-E2E5-45A8-B683-B59B46DE70B1}.GRAPECITY|Any CPU.Build.0 = GRAPECITY|Any CPU
+		{77078570-E2E5-45A8-B683-B59B46DE70B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77078570-E2E5-45A8-B683-B59B46DE70B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{990D14FF-3693-409B-8CA1-4FE355B12CA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{990D14FF-3693-409B-8CA1-4FE355B12CA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{990D14FF-3693-409B-8CA1-4FE355B12CA2}.GRAPECITY|Any CPU.ActiveCfg = GRAPECITY|Any CPU
+		{990D14FF-3693-409B-8CA1-4FE355B12CA2}.GRAPECITY|Any CPU.Build.0 = GRAPECITY|Any CPU
+		{990D14FF-3693-409B-8CA1-4FE355B12CA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{990D14FF-3693-409B-8CA1-4FE355B12CA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09F6D6C8-69A1-4846-A5D6-9024D1FB40AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09F6D6C8-69A1-4846-A5D6-9024D1FB40AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09F6D6C8-69A1-4846-A5D6-9024D1FB40AE}.GRAPECITY|Any CPU.ActiveCfg = GRAPECITY|Any CPU
+		{09F6D6C8-69A1-4846-A5D6-9024D1FB40AE}.GRAPECITY|Any CPU.Build.0 = GRAPECITY|Any CPU
+		{09F6D6C8-69A1-4846-A5D6-9024D1FB40AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09F6D6C8-69A1-4846-A5D6-9024D1FB40AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{225ADBAA-4253-4135-B03C-6BBA3E67E9A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{225ADBAA-4253-4135-B03C-6BBA3E67E9A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{225ADBAA-4253-4135-B03C-6BBA3E67E9A0}.GRAPECITY|Any CPU.ActiveCfg = GRAPECITY|Any CPU
+		{225ADBAA-4253-4135-B03C-6BBA3E67E9A0}.GRAPECITY|Any CPU.Build.0 = GRAPECITY|Any CPU
+		{225ADBAA-4253-4135-B03C-6BBA3E67E9A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{225ADBAA-4253-4135-B03C-6BBA3E67E9A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {688438C5-2AB9-47BC-9B01-6FA9A4C53E0D}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfsdevel.componentone.com:8090/tfs/defaultcollection
+		SccProjectUniqueName0 = ..\\..\\Controls\\Core\\C1.Blazor.Core.csproj
+		SccProjectName0 = ../../Controls/Core
+		SccLocalPath0 = ..\\..\\Controls\\Core
+		SccProjectUniqueName1 = ..\\..\\Controls\\ListView\\C1.Blazor.ListView.csproj
+		SccProjectName1 = ../../Controls/ListView
+		SccLocalPath1 = ..\\..\\Controls\\ListView
+		SccProjectUniqueName2 = ..\\..\\Controls\\Input\\C1.Blazor.Input.csproj
+		SccProjectName2 = ../../Controls/Input
+		SccLocalPath2 = ..\\..\\Controls\\Input
+		SccProjectUniqueName3 = ..\\..\\Controls\\Grid\\C1.Blazor.Grid.csproj
+		SccProjectName3 = ../../Controls/Grid
+		SccLocalPath3 = ..\\..\\Controls\\Grid
+		SccLocalPath4 = .
+		SccProjectUniqueName5 = FlexGridCustomEditor.csproj
+		SccLocalPath5 = .
+	EndGlobalSection
+EndGlobal

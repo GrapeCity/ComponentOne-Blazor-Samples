@@ -1,18 +1,13 @@
 ﻿@page "/DataFilter/FiltersSummary"
-@using Localization
-@using C1.Blazor.DataFilter
-@using C1.Blazor.Grid
-@using C1.Blazor.Accordion
-
 
 <section class="sampleDataFilterSection">
     <div class="filtersSection">
-        <C1DataFilter ItemsSource="@data" FilterAutoGenerating="@FilterAutoGenerating" Style="@("max-height: inherit")" ExpandMode="@ExpandMode.One">
+        <C1DataFilter ItemsSource="@_data" FilterAutoGenerating="@FilterAutoGenerating" Style="@("max-height: inherit")" ExpandMode="@ExpandMode.One">
 
         </C1DataFilter>
     </div>
     <div class="dataSection">
-        <FlexGrid AutoGeneratingColumn="OnAutoGeneratingColumn" ItemsSource="@data" HeadersVisibility="GridHeadersVisibility.All" Style="@("max-height: inherit")">
+        <FlexGrid AutoGeneratingColumn="OnAutoGeneratingColumn" ItemsSource="@_data" HeadersVisibility="GridHeadersVisibility.All" Style="@("max-height: inherit")">
 
         </FlexGrid>
     </div>
@@ -25,13 +20,13 @@
 
 @code{
 
-    C1.DataCollection.C1DataCollection<Car> data { get; set; }
+    C1.DataCollection.C1DataCollection<Car> _data;
 
 
     protected override void OnInitialized()
     {
         var carsTable = DataProvider.GetCarTable();
-        data = new C1.DataCollection.C1DataCollection<Car>(DataProvider.GetCarDataCollection(carsTable));
+        _data = new C1.DataCollection.C1DataCollection<Car>(DataProvider.GetCarDataCollection(carsTable));
     }
     
     void OnAutoGeneratingColumn(object sender, GridAutoGeneratingColumnEventArgs args)

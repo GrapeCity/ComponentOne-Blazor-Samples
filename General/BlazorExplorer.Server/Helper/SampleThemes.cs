@@ -100,16 +100,16 @@ namespace FlexGridExplorer
 
                     #region Grid Lines
 
-                    grid.GridLinesColor = "#F3F3F3";
+                    grid.GridLinesBrush = "#F3F3F3";
                     grid.GridLinesVisibility = GridLinesVisibility.All;
 
-                    grid.ColumnHeaderGridLinesColor = "#F3F3F3";
+                    grid.ColumnHeaderGridLinesBrush = "#F3F3F3";
                     grid.ColumnHeaderGridLinesVisibility = GridLinesVisibility.All;
 
-                    grid.RowHeaderGridLinesColor = "#F3F3F3";
+                    grid.RowHeaderGridLinesBrush = "#F3F3F3";
                     grid.RowHeaderGridLinesVisibility = GridLinesVisibility.All;
 
-                    grid.TopLeftHeaderGridLinesColor = "#F3F3F3";
+                    grid.TopLeftHeaderGridLinesBrush = "#F3F3F3";
                     grid.TopLeftHeaderGridLinesVisibility = GridLinesVisibility.All;
 
                     #endregion
@@ -175,16 +175,16 @@ namespace FlexGridExplorer
 
                     #region Grid Lines
 
-                    grid.GridLinesColor = "#E0E0E0";
+                    grid.GridLinesBrush = "#E0E0E0";
                     grid.GridLinesVisibility = GridLinesVisibility.Horizontal;
 
-                    grid.ColumnHeaderGridLinesColor = "#E0E0E0";
+                    grid.ColumnHeaderGridLinesBrush = "#E0E0E0";
                     grid.ColumnHeaderGridLinesVisibility = GridLinesVisibility.Horizontal;
 
-                    grid.RowHeaderGridLinesColor = "#E0E0E0";
+                    grid.RowHeaderGridLinesBrush = "#E0E0E0";
                     grid.RowHeaderGridLinesVisibility = GridLinesVisibility.Horizontal;
 
-                    grid.TopLeftHeaderGridLinesColor = "#E0E0E0";
+                    grid.TopLeftHeaderGridLinesBrush = "#E0E0E0";
                     grid.TopLeftHeaderGridLinesVisibility = GridLinesVisibility.Horizontal;
 
                     #endregion
@@ -250,16 +250,16 @@ namespace FlexGridExplorer
 
                     #region Grid Lines
 
-                    grid.GridLinesColor = "#E0E0E0";
+                    grid.GridLinesBrush = "#E0E0E0";
                     grid.GridLinesVisibility = GridLinesVisibility.Horizontal;
 
-                    grid.ColumnHeaderGridLinesColor = "#E0E0E0";
+                    grid.ColumnHeaderGridLinesBrush = "#E0E0E0";
                     grid.ColumnHeaderGridLinesVisibility = GridLinesVisibility.Horizontal;
 
-                    grid.RowHeaderGridLinesColor = "#E0E0E0";
+                    grid.RowHeaderGridLinesBrush = "#E0E0E0";
                     grid.RowHeaderGridLinesVisibility = GridLinesVisibility.Horizontal;
 
-                    grid.TopLeftHeaderGridLinesColor = "#E0E0E0";
+                    grid.TopLeftHeaderGridLinesBrush = "#E0E0E0";
                     grid.TopLeftHeaderGridLinesVisibility = GridLinesVisibility.Horizontal;
 
                     #endregion
@@ -325,16 +325,16 @@ namespace FlexGridExplorer
 
                     #region Grid Lines
 
-                    grid.GridLinesColor = "#E0E0E0";
+                    grid.GridLinesBrush = "#E0E0E0";
                     grid.GridLinesVisibility = GridLinesVisibility.Horizontal;
 
-                    grid.ColumnHeaderGridLinesColor = "#E0E0E0";
+                    grid.ColumnHeaderGridLinesBrush = "#E0E0E0";
                     grid.ColumnHeaderGridLinesVisibility = GridLinesVisibility.Horizontal;
 
-                    grid.RowHeaderGridLinesColor = "#E0E0E0";
+                    grid.RowHeaderGridLinesBrush = "#E0E0E0";
                     grid.RowHeaderGridLinesVisibility = GridLinesVisibility.Horizontal;
 
-                    grid.TopLeftHeaderGridLinesColor = "#E0E0E0";
+                    grid.TopLeftHeaderGridLinesBrush = "#E0E0E0";
                     grid.TopLeftHeaderGridLinesVisibility = GridLinesVisibility.Horizontal;
 
                     #endregion
@@ -401,16 +401,16 @@ namespace FlexGridExplorer
 
                     #region Grid Lines
 
-                    grid.GridLinesColor = "#484848";
+                    grid.GridLinesBrush = "#484848";
                     grid.GridLinesVisibility = GridLinesVisibility.Horizontal;
 
-                    grid.ColumnHeaderGridLinesColor = "#484848";
+                    grid.ColumnHeaderGridLinesBrush = "#484848";
                     grid.ColumnHeaderGridLinesVisibility = GridLinesVisibility.Horizontal;
 
-                    grid.RowHeaderGridLinesColor = "#484848";
+                    grid.RowHeaderGridLinesBrush = "#484848";
                     grid.RowHeaderGridLinesVisibility = GridLinesVisibility.Horizontal;
 
-                    grid.TopLeftHeaderGridLinesColor = "#484848";
+                    grid.TopLeftHeaderGridLinesBrush = "#484848";
                     grid.TopLeftHeaderGridLinesVisibility = GridLinesVisibility.Horizontal;
 
                     #endregion

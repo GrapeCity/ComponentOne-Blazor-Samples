@@ -13,10 +13,10 @@
           ColumnHeaderGridLinesVisibility="GridLinesVisibility.All"
           RowHeaderGridLinesVisibility="GridLinesVisibility.All"
           TopLeftHeaderGridLinesVisibility="GridLinesVisibility.All"
-          GridLinesColor="@("#FF2B2B2B")"
-          ColumnHeaderGridLinesColor="@("#FF222222")"
-          RowHeaderGridLinesColor="@("#FF222222")"
-          TopLeftHeaderGridLinesColor="@("#FF222222")"
+          GridLinesBrush="@("#FF2B2B2B")"
+          ColumnHeaderGridLinesBrush="@("#FF222222")"
+          RowHeaderGridLinesBrush="@("#FF222222")"
+          TopLeftHeaderGridLinesBrush="@("#FF222222")"
           Style="@("background-color: #777777;color: #E2E2E2;border: 1px solid #222222;max-height:50vh")"
           ColumnHeaderStyle="@("background-image: linear-gradient(180deg,#A5A5A5 0%,#898989 48%,#777777 52%,#6F6F6F 100%);color: #E2E2E2;font-weight:bold;")"
           RowHeaderStyle="@("background-color: #6F6F6F;color: #E2E2E2;")"
@@ -69,7 +69,7 @@
             }
             fileContent = System.Text.UTF8Encoding.UTF8.GetString(stream.GetBuffer());
         }
-
+        fileName = string.IsNullOrEmpty(fileName) ? "export" : fileName;
         await JsRuntime.InvokeVoidAsync("openSaveFile", fileName, fileType, fileContent);
     }
 }

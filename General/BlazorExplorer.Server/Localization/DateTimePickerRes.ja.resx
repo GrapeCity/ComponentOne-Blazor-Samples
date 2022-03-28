@@ -122,11 +122,11 @@
     <comment>Binding &amp; Min-Max</comment>
   </data>
   <data name="IsEnabled" xml:space="preserve">
-    <value>IsEnabled</value>
+    <value>有効</value>
     <comment>IsEnabled property</comment>
   </data>
   <data name="IsReadOnly" xml:space="preserve">
-    <value>IsReadOnly</value>
+    <value>読み取り専用</value>
     <comment>IsReadOnly property name</comment>
   </data>
   <data name="MultipleCalendar" xml:space="preserve">

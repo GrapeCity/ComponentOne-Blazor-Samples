@@ -2,11 +2,20 @@
 @using Localization
 @using System.Collections.ObjectModel;
 @using C1.Blazor.Grid
-
-<FlexGrid ItemsSource="customers" HeadersVisibility="GridHeadersVisibility.All" FrozenRows="1" Style="@("max-height:50vh")">
+<FlexGrid AutoGenerateColumns="false" ItemsSource="_customers" HeadersVisibility="GridHeadersVisibility.All" FrozenRows="1" Style="@("max-height:50vh")">
     <FlexGridRows>
         <GridFilterRow Placeholder="@FlexGridRes.FilterPlaceholderText" AutoComplete="true" />
     </FlexGridRows>
+
+    <FlexGridColumns>
+       <GridColumn Header="Active" Binding="Active" />
+       <GridColumn Header="First Name" Binding="FirstName"/>
+       <GridColumn Header="Last Name" Binding="LastName" />
+       <GridColumn Header="Country" Binding="CountryId" DataMap="@_countryDataMap"  />
+       <GridColumn Header="City" Binding="City" FilterLoading="@CityOnFilterLoading"/>
+       <GridColumn Header="OrderCount" Binding="OrderCount"/>
+       <GridColumn Header="LastOrderDate" Binding="LastOrderDate" />
+    </FlexGridColumns>
 </FlexGrid>
 
 <_Sections>
@@ -16,11 +25,17 @@
 </_Sections>
 
 @code {
-    ObservableCollection<Customer> customers;
-
+    ObservableCollection<Customer> _customers;
+    GridDataMap _countryDataMap;
     protected override void OnInitialized()
     {
-        customers = Customer.GetCustomerList(100);
+        _customers = Customer.GetCustomerList(100);
+        _countryDataMap = new GridDataMap { ItemsSource = Customer.GetCountries(), SelectedValuePath = "Key", DisplayMemberPath = "Value" };
     }
 
+    void CityOnFilterLoading(object sender, GridColumnFilterLoadingEventArgs e)
+    {
+        e.ShowApplyButton = true;
+        e.ShowClearButton = true;
+    }
 }

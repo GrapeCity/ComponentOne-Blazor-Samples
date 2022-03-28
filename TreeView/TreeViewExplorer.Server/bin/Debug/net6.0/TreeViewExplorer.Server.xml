@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TreeViewExplorer.Server</name>
+    </assembly>
+    <members>
+        <member name="T:TreeViewExplorer.Server.Localization.Resource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.About">
+            <summary>
+              Looks up a localized string similar to About.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Accordion_Tree">
+            <summary>
+              Looks up a localized string similar to Accordion Tree.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Adding">
+            <summary>
+              Looks up a localized string similar to Adding.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Adding_BoundTree">
+            <summary>
+              Looks up a localized string similar to Add Node for Bound TreeView.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Adding_FirstChild">
+            <summary>
+              Looks up a localized string similar to First child.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Adding_LastChild">
+            <summary>
+              Looks up a localized string similar to Last child.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Adding_UnBoundTree">
+            <summary>
+              Looks up a localized string similar to Add Node for UnBound TreeView.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.AddItemDescription">
+            <summary>
+              Looks up a localized string similar to For Adding new item for C1TreeView, &lt;b&gt;ItemsSource must implement INotifyCollectionChanged&lt;/b&gt; to allow the control to get notified of the changes, then it will be reflected automatically in the control. &lt;br/&gt; In this sample, we use &lt;i&gt;ObservableCollection&amp;lt;T&amp;gt;&lt;/i&gt; which is a built-in implementation of a data collection that implements the INotifyCollectionChanged interface..
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Behavior">
+            <summary>
+              Looks up a localized string similar to Behavior.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Clean_Accordion">
+            <summary>
+              Looks up a localized string similar to Clean Accordion.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.NavigationTo">
+            <summary>
+              Looks up a localized string similar to Navigating to &lt;b&gt;** {0} **&lt;/b&gt;.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Node_Borders">
+            <summary>
+              Looks up a localized string similar to Node Borders.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Nodes">
+            <summary>
+              Looks up a localized string similar to Nodes.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Overview">
+            <summary>
+              Looks up a localized string similar to Overview.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Ready">
+            <summary>
+              Looks up a localized string similar to Ready.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Removing">
+            <summary>
+              Looks up a localized string similar to Removing.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.RemovingBtn">
+            <summary>
+              Looks up a localized string similar to Remove selected item.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.RightToLeft">
+            <summary>
+              Looks up a localized string similar to Right to Left.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Searching">
+            <summary>
+              Looks up a localized string similar to Searching.
+            </summary>
+        </member>
+        <member name="P:TreeViewExplorer.Server.Localization.Resource.Styling">
+            <summary>
+              Looks up a localized string similar to Styling.
+            </summary>
+        </member>
+    </members>
+</doc>

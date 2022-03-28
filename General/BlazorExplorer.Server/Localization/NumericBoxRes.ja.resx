@@ -172,11 +172,11 @@
     <value>このセクションでは、値を C1NumericBox コンポーネントにバインドする方法について簡単に説明します。</value>
   </data>
   <data name="IsEnabled" xml:space="preserve">
-    <value>IsEnabled</value>
+    <value>有効</value>
     <comment>property name caption</comment>
   </data>
   <data name="IsReadOnly" xml:space="preserve">
-    <value>IsReadOnly</value>
+    <value>読み取り専用</value>
     <comment>property name caption</comment>
   </data>
 </root>

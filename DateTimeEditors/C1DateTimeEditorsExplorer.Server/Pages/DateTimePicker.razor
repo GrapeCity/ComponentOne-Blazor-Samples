@@ -1,0 +1,95 @@
+﻿@page "/DateTimePicker"
+@using C1.Blazor.Calendar
+@using C1.Blazor.Core
+@using C1.Blazor.DateTimeEditors
+@using System;
+@using C1.Blazor.DateTimeEditors.EventArgs
+@using C1.Blazor.Input
+
+
+Placeholder
+<br />
+<C1DateTimePicker Placeholder="any text"
+              DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
+
+<br />
+<br />
+
+
+Multiple Calendar
+<br />
+<C1DateTimePicker Placeholder="any text" MonthCount="2"
+              DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
+
+<br />
+<br />
+
+Binding & Min-Max
+<br />
+<C1DateTimePicker MinDate="@(DateTime.Today.AddDays(-10))"
+              MaxDate="@(DateTime.Today.AddDays(10))"
+              @ref="_c1DatePicker"
+              @bind-Value="@_time"
+              DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
+
+<i>@_time</i>
+
+
+<br />
+<br />
+
+
+ViewModes & Custom Styles
+<br />
+
+<C1DateTimePicker Value="@DateTime.Today" 
+                  
+                  CalendarStyle="@(new C1Style(){ BackgroundColor = C1Color.White, ["border"]="1px solid #eeeeee", Width = 300, Margin = 11})"
+                  HeaderStyle="@(new C1Style(){Color = "White", BackgroundColor ="#FF3D834B", FontWeight = "100!important"})"
+                  DayOfWeekStyle="@(new C1Style(){BackgroundColor = "#FF63A646", Height = 27, LineHeight = 27, Color = C1Color.Black})"
+                  DayStyle="@(new C1Style(){ Color = C1Color.Green})"
+                  SelectedDateStyle="@(new C1Style(){BackgroundColor = "#FFD2D2D2", Color = "Black",})"
+                  TodayStyle="@(new C1Style(){BackgroundColor = "#eeeeee", BorderColor = "#FFF2F2F2", BorderRadius = 0, Color = "Black",})"
+                  AdjacentDayStyle="@(new C1Style() {Color = "#FFA5A5A3"})"
+                  DropDownBehavior="@DropDownBehavior.HeaderTap" ViewMode="@DateTimePickerViewMode.Switchable"></C1DateTimePicker>
+
+<br />
+<br />
+    
+<C1DateTimePicker Value="@DateTime.Today" 
+                  
+                  CalendarStyle="@(new C1Style(){ BackgroundColor = C1Color.White, ["border"]="1px solid #eeeeee", Width = 300, Margin = 11})"
+                  HeaderStyle="@(new C1Style(){Color = "White", BackgroundColor ="#FF3D834B", FontWeight = "100!important"})"
+                  DayOfWeekStyle="@(new C1Style(){BackgroundColor = "#FF63A646", Height = 27, LineHeight = 27, Color = C1Color.Black})"
+                  DayStyle="@(new C1Style(){ Color = C1Color.Green})"
+                  SelectedDateStyle="@(new C1Style(){BackgroundColor = "#FFD2D2D2", Color = "Black",})"
+                  TodayStyle="@(new C1Style(){BackgroundColor = "#eeeeee", BorderColor = "#FFF2F2F2", BorderRadius = 0, Color = "Black",})"
+                  AdjacentDayStyle="@(new C1Style() {Color = "#FFA5A5A3"})"
+
+                  DropDownBehavior="@DropDownBehavior.HeaderTap" ViewMode="@DateTimePickerViewMode.SideBySide"></C1DateTimePicker>
+
+<br />
+<br />
+
+
+Readonly
+<br />
+<C1DateTimePicker Placeholder="any text" MonthCount="2" IsReadOnly="true"
+                  DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
+
+<br />
+<br />
+
+Disabled
+<br />
+<C1DateTimePicker Placeholder="any text" MonthCount="2" IsEnabled="false"
+                  DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
+
+<br />
+<br />
+
+
+@code {
+    C1DateTimePicker _c1DatePicker;
+    DateTime? _time = DateTime.Today;
+}                

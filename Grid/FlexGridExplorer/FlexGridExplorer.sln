@@ -1,6 +1,6 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
+# Visual Studio Version 17
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlexGridExplorer.Client", "Client\FlexGridExplorer.Client.csproj", "{A2D0EF3E-7F81-40C0-857E-F21A9B430D56}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlexGridExplorer.Shared", "Shared\FlexGridExplorer.Shared.csproj", "{E7ABBD38-1D51-4AA7-9C81-FB7ED06B5C28}"

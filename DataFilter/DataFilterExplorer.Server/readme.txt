@@ -6,4 +6,5 @@ Shows samples of the DataFilter control.
 	- AutoApply
 	- FiltersSummary
 	- CustomFilter
+	- ConditionalFilter
 

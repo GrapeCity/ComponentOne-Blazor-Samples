@@ -129,6 +129,12 @@
   <data name="CarListTitle" xml:space="preserve">
     <value>Cars List</value>
   </data>
+  <data name="ConditionalFiltersDescription" xml:space="preserve">
+    <value>Demonstrate using new conditional filters that accept multiple conditions and a new full text filter.</value>
+  </data>
+  <data name="ConditionalFiltersTitle" xml:space="preserve">
+    <value>Conditional Filters</value>
+  </data>
   <data name="CustomFilterDescription" xml:space="preserve">
     <value>Demonstrates using C1DataFilter control to show custom filters.
 There is C1TreeView and C1DataFilter on the window.
@@ -152,5 +158,8 @@ PriceFilter based on ChecklistFilter, allows to choose the price range of cars.<
   </data>
   <data name="VirtualSourceTitle" xml:space="preserve">
     <value>Virtual Source</value>
+  </data>
+  <data name="VirtualSource_TextLoading" xml:space="preserve">
+    <value>Loading...</value>
   </data>
 </root>

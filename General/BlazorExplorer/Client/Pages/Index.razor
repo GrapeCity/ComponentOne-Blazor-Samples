@@ -12,7 +12,7 @@
     <ul class="controls-nav">
         @foreach (var group in allGroups)
         {
-            <_ControlGroup Model="group" ViewStyle="smalliconview" IsCollapsable="true" IsControlHasIcon="@(group.GroupName.Equals("Reference Applications") ? false : true)"></_ControlGroup>
+            <_ControlGroup Model="group" ViewStyle="smalliconview" IsCollapsable="true" IsControlHasIcon="@group.IconVisible"></_ControlGroup>
         }
     </ul>
 </div>

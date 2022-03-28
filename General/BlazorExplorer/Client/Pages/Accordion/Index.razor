@@ -1,0 +1,167 @@
+﻿@page "/Accordion/Index"
+@using C1.Blazor.ListView
+@using C1.Blazor.Accordion
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+
+<style>
+
+    .accordion-item-content {
+    margin: 20px;
+    grid:auto-flow;
+    }
+    .item-input{
+      width:40%;
+      box-sizing:border-box;
+      position:relative;
+      display:inline-block;
+      max-width:100%;
+      margin: 0 20px;
+    }
+
+    .item-input input[type=checkbox]+label{
+      padding-left:10px;
+      color:#0085c7;
+    }
+    .item-input > label > span{
+      display:block;
+      font-weight: normal;
+      font-size:90%;
+      opacity:.90;
+      color:black;
+    }
+    .app-item input[type=checkbox]{
+      margin-left: 20px;
+    }
+
+</style>
+
+<C1Accordion ExpandMode="expandMode" ExpandIconAlignment="iconAlignment"
+              Style="@("overflow:hidden;")" 
+              ItemStyle="@("border-radius:4px;overflow:hidden;border:solid 2px rgba(0,0,0,0.2)")"
+              HeaderStyle="@("color:#0085c7;background-color: rgba(0,0,0,0.2) ")"
+             >
+    <AccordionItem Header="Accordion Settings" ItemHeaderStyle="@("color:#0085c7;background-color: rgba(0,255,0,0.2) ")">
+      <div class="accordion-item-content">
+          <div class="item-input" >
+          Button Alignment <C1ComboBox ItemsSource="alignments" @bind-SelectedItem="iconAlignment" SelectedIndex=0 />
+            </div>
+          <div class="item-input" >
+          Expand Modes <C1ComboBox ItemsSource="expandModes" @bind-SelectedItem="expandMode" SelectedIndex=0 />
+          </div>
+      </div>
+    </AccordionItem>
+    <AccordionItem Header="Network and Internet">
+        <div class="accordion-item-content">
+                    <div class="item-input">
+                        <input id="wifi" type="checkbox" checked />
+                        <label for="wifi">
+                            Wi-Fi <span>turn wi-fi on or off</span>
+                        </label>
+                    </div>
+                    <div class="item-input">
+                        <input id="apmode" type="checkbox" />
+                        <label for="apmode">
+                            Airplane Mode <span>turn airplane mode on or off</span>
+                        </label>
+                    </div>
+                    <div class="item-input">
+                        <input id="hotspot" type="checkbox" />
+                        <label for="hotspot">
+                            Hot Spot &amp; Tethering <span>hotspot on, tethering</span>
+                        </label>
+                    </div>
+        </div>
+    </AccordionItem>
+    <AccordionItem Header="Connected Devices">
+        <div class="accordion-item-content"> 
+                    <div class="item-input">
+                        <input id="dev1" type="checkbox" />
+                        <label for="dev1">
+                            Gear Fit2 Pro <span>health monitor</span>
+                        </label>
+                    </div>
+                    <div class="item-input">
+                        <input id="dev2" type="checkbox" />
+                        <label for="dev2">
+                            SYNC <span>car connection</span>
+                        </label>
+                    </div>
+                    <div class="item-input">
+                        <input id="dev3" type="checkbox" />
+                        <label for="dev3">
+                            Samsung XT-9343 <span>TV</span>
+                        </label>
+                    </div>
+                    <button class="btn btn-primary">
+                        See all 8 devices...
+                    </button>
+                </div>
+    </AccordionItem>
+    <AccordionItem Header="Apps &amp; Notifications">
+        <div class="accordion-item-content app-item">
+                    <div class="item-input">
+                        <img src="/Content/images/chrome.jpg" />
+                        <label for="app-chrome">
+                            Chrome <span>web browser</span>
+                        </label>
+                        <input id="app-chrome" type="checkbox" />
+                    </div>
+                    <div class="item-input">
+                      <img src="/Content/images/outlook.jpg" />
+                        <label for="app-outlook">
+                            Outlook <span>mail and schedule</span>
+                        </label>
+                        <input id="app-outlook" type="checkbox" />
+                    </div>
+                    <div class="item-input">
+                      <img src="/Content/images/fb.jpg" />
+                        <label for="app-fb">
+                            Facebook <span>social media</span>
+                        </label>
+                        <input id="app-fb" type="checkbox" />
+                    </div>
+                    <button class="btn btn-primary">
+                        See all 62 apps...
+                    </button>
+         </div>
+    </AccordionItem>
+    <AccordionItem Header="Battery">
+        <div class="accordion-item-content">
+                    <div class="item-input">
+                        <input id="bat-sav" type="checkbox" />
+                        <label for="bat-sav">
+                            Battery Saver <span>slow down to reduce battery usage</span>
+                        </label>
+                    </div>
+                    <div class="item-input">
+                        <input id="bat-adapt" type="checkbox" />
+                        <label for="bat-adapt">
+                            Adaptive Battery <span>detect when apps drain battery</span>
+                        </label>
+                    </div>
+                    <div class="item-input">
+                        <input id="bat-pct" type="checkbox" />
+                        <label for="bat-pct">
+                            Battery Percentage <span>show battery percentage</span>
+                        </label>
+                    </div>
+                </div>
+    </AccordionItem>
+</C1Accordion>
+
+@code
+{
+    ExpandMode expandMode = ExpandMode.Any;
+    ExpanderIconAlignment iconAlignment = ExpanderIconAlignment.Right;
+    ExpandMode[] expandModes = new ExpandMode[] { ExpandMode.One, ExpandMode.Collapsible, ExpandMode.Any };
+    ExpanderIconAlignment[] alignments = new ExpanderIconAlignment[] { ExpanderIconAlignment.Left, ExpanderIconAlignment.Right };
+
+}
+
+
+<_Sections>
+    <Title>@AccordionRes.AccordionTitle</Title>
+    <Summary>@AccordionRes.AccordionSummary</Summary>
+    <Description>@AccordionRes.AccordionDescription</Description>
+</_Sections>

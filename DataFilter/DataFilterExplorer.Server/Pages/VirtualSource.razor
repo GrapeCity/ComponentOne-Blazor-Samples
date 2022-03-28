@@ -1,18 +1,13 @@
 ﻿@page "/VirtualSource"
-@using C1.Blazor.DataFilter
-@using C1.Blazor.Grid
-@using C1.Blazor.Accordion
-@using System.ComponentModel;
-@using System;
-@using Localization
 @implements IDisposable;
 
 <h3>@DataFilterRes.VirtualSourceTitle</h3>
 <p>@DataFilterRes.VirtualSourceDescription</p>
 
+
 <section class="sampleDataFilterSection">
     <div class="filtersSection">
-        <C1DataFilter ItemsSource="@data" FilterAutoGenerating="OnFilterAutoGenerating" ExpandMode="@ExpandMode.One" Style="@("max-height: inherit;")">
+        <C1DataFilter ItemsSource="@data" ExpandMode="@ExpandMode.One" Style="@("max-height: inherit;")">
 
         </C1DataFilter>
     </div>
@@ -23,16 +18,18 @@
 
         @if (data.IsLoading)
         {
-            <div style="width: 300px; height: 200px; position: absolute; left: 50%; top: 50%; margin-left: -150px; margin-top: -100px; background-color: #5252DF;  border-radius: 20px;">
-                <p style="font-size: 26px; text-align:center; padding-top: 85px; color:white;">Loading...</p>
+            <div style="z-index: 100; width: 280px; height: 200px; position: absolute; left: 50%; top: 50%; margin-left: -150px; margin-top: -100px; background-color: #5252DF;  border-radius: 20px;">
+                <p style="font-size: 26px; text-align:center; padding-top: 85px; color:white;">@DataFilterRes.VirtualSource_TextLoading</p>
             </div>
         }
     </div>
 </section>
 
+
 @code{
 
     CarVirtualCollection data { get; set; }
+
 
     protected override void OnInitialized()
     {
@@ -46,7 +43,7 @@
         {
             args.Column.CellTemplate = target => builder =>
             {
-                if(target==null)
+                if (target == null)
                 {
                     return;
                 }
@@ -60,18 +57,7 @@
         }
     }
 
-    void OnFilterAutoGenerating(object sender, FilterAutoGeneratingEventArgs args)
-    {
-        if (args.Filter.PropertyName == nameof(Car.Price))
-        {
-            var rangeFilter = args.Filter as RangeFilter;
-            rangeFilter.Maximum = 1_000_000;
-            rangeFilter.Increment = 1000;
-            rangeFilter.Minimum = 0;
-        }
-    }
-
-    private void DataOnPropertyChanged(object sender, PropertyChangedEventArgs args)
+    private void DataOnPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs args)
     {
         if (args.PropertyName == nameof(data.IsLoading))
         {

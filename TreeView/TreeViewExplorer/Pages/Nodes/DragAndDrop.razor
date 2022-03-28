@@ -1,0 +1,68 @@
+﻿@page "/nodes/draganddrop"
+@using C1.Blazor.Core
+@using C1.Blazor.TreeView
+@using System.Collections.ObjectModel
+
+<C1TreeView Class="shadow" ShowLines="true" AllowDragDrop="true" IsExpandedPath="Expanded" ItemsSource="@_dataSource" ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name"
+            Style="@_c1Style" KeyboardNavigation="true" SelectionMode="C1SelectionMode.Extended" />
+
+@code{
+    readonly C1Style _c1Style = new C1Style
+    {
+        Height = 500,
+        Width = 300,
+    };
+
+    readonly ObservableCollection<Directory> _dataSource = new ObservableCollection<Directory>()
+{
+    new Directory()
+    {
+        Name = "Directory 2",
+        Subdirectories = new ObservableCollection<Directory>
+    {
+            new Directory
+            {
+                Name = "Directory 2.1",
+                Subdirectories = new ObservableCollection<Directory>
+            {
+                    new Directory {Name = "Directory 2.1.1"},
+                    new Directory {Name = "Directory 2.1.2"},
+                    new Directory
+                    {
+                        Name = "Directory 2.1.3",
+                        Subdirectories = new ObservableCollection<Directory>()
+                    {
+                            new Directory {Name = "Directory 2.1.3.1"},
+                            new Directory
+                            {
+                                Name = "Directory 2.1.3.2",
+                                Subdirectories = new ObservableCollection<Directory>()
+                            {
+                                    new Directory {Name = "Directory 2.1.3.2.1"},
+                                    new Directory {Name = "Directory 2.1.3.2.2"}
+                                }
+                            },
+                        }
+                    },
+                }
+
+            }
+        }
+    },
+    new Directory
+    {
+        Name = "Directory 3",
+        Subdirectories = new ObservableCollection<Directory>()
+{
+            new Directory {Name = "Directory 3.1"}
+        }
+    },
+};
+
+    public class Directory
+    {
+        public string Name { get; set; }
+        public ObservableCollection<Directory> Subdirectories { get; set; } = new();
+        public bool Expanded { get; set; } = true;
+    }
+}

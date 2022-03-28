@@ -1,0 +1,2455 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>C1.Blazor.DataFilter</name>
+    </assembly>
+    <members>
+        <member name="T:C1.Blazor.DataFilter.Resources.Resource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.AddCombination">
+            <summary>
+              Looks up a localized string similar to Combination.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.AddMenu">
+            <summary>
+              Looks up a localized string similar to Add.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.AddOperation">
+            <summary>
+              Looks up a localized string similar to Operation.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.And">
+            <summary>
+              Looks up a localized string similar to And.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.ApplyFilter">
+            <summary>
+              Looks up a localized string similar to Apply Filter.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.Contains">
+            <summary>
+              Looks up a localized string similar to Contains.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.EndsWith">
+            <summary>
+              Looks up a localized string similar to Ends With.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.Equal">
+            <summary>
+              Looks up a localized string similar to Equals.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.EqualText">
+            <summary>
+              Looks up a localized string similar to Equals Text.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.False">
+            <summary>
+              Looks up a localized string similar to False.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.FilterPlaceholderText">
+            <summary>
+              Looks up a localized string similar to Enter text to filter.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.From">
+            <summary>
+              Looks up a localized string similar to From.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.GreaterThan">
+            <summary>
+              Looks up a localized string similar to Greater Than.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.GreaterThanOrEqual">
+            <summary>
+              Looks up a localized string similar to Greater Than or Equal.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.IsOneOf">
+            <summary>
+              Looks up a localized string similar to Is One Of.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.LessThan">
+            <summary>
+              Looks up a localized string similar to Less Than.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.LessThanOrEqual">
+            <summary>
+              Looks up a localized string similar to Less Than or Equal.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.MatchCase">
+            <summary>
+              Looks up a localized string similar to Match Case.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.MatchWholeWord">
+            <summary>
+              Looks up a localized string similar to Match Whole Word.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.NotEqual">
+            <summary>
+              Looks up a localized string similar to Does Not Equal.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.NotEqualText">
+            <summary>
+              Looks up a localized string similar to Does Not Equal Text.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.Null">
+            <summary>
+              Looks up a localized string similar to Null.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.Or">
+            <summary>
+              Looks up a localized string similar to Or.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.ResetFilter">
+            <summary>
+              Looks up a localized string similar to Reset Filter.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.SelectAll">
+            <summary>
+              Looks up a localized string similar to Select All.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.StartsWith">
+            <summary>
+              Looks up a localized string similar to Starts With.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.To">
+            <summary>
+              Looks up a localized string similar to To.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Resources.Resource.True">
+            <summary>
+              Looks up a localized string similar to True.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.FilterPresenterFactory">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FilterPresenterFactory.CreateFilterPresenter(C1.Blazor.DataFilter.Filter,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FilterPresenterFactory.CreateConditionalFilterItemPresenter(C1.Blazor.DataFilter.ConditionalFilter,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.CombinationExpression">
+            <summary>
+            Represents the logical combination of several <see cref="T:C1.Blazor.DataFilter.OperationExpression"/>.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CombinationExpression.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.CombinationExpression"/>.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CombinationExpression.#ctor(C1.DataCollection.FilterCombination,System.Collections.Generic.IEnumerable{C1.Blazor.DataFilter.Expression})">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.CombinationExpression"/>.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CombinationExpression.Expressions">
+            <summary>
+            Gets or sets the collection of <see cref="T:C1.Blazor.DataFilter.Expression"/>.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CombinationExpression.FilterCombination">
+            <summary>
+            Gets or sets the logical operator applies between expressions of the current <see cref="T:C1.Blazor.DataFilter.CombinationExpression"/>.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CombinationExpression.GetFilterExpression">
+            <summary>
+            Converts current the <see cref="T:C1.Blazor.DataFilter.CombinationExpression"/> to the <see cref="T:C1.DataCollection.FilterExpression"/>.
+            </summary>        
+        </member>
+        <member name="T:C1.Blazor.DataFilter.Expression">
+            <summary>
+            Base class for filter expression condition.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Expression.Not">
+            <summary>
+            Gets or sets a value indicating the negation of the expression.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.Expression.GetExpression">
+            <summary>
+            Converts current the <see cref="T:C1.Blazor.DataFilter.Expression"/> to the <see cref="T:C1.DataCollection.FilterExpression"/>.
+            </summary>        
+        </member>
+        <member name="M:C1.Blazor.DataFilter.Expression.GetFilterExpression">
+            <summary>
+            Converts current the <see cref="T:C1.Blazor.DataFilter.Expression"/> to the <see cref="T:C1.DataCollection.FilterExpression"/>.
+            </summary>   
+        </member>
+        <member name="T:C1.Blazor.DataFilter.OperationExpression">
+            <summary>
+            Represents the filter operation expression.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.OperationExpression.PropertyName">
+            <summary>
+            Gets or sets the name of the data item property to which the expression applies.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.OperationExpression.Value">
+            <summary>
+            Gets or sets the value of the current filter expression.
+            </summary>        
+        </member>
+        <member name="P:C1.Blazor.DataFilter.OperationExpression.FilterOperation">
+            <summary>
+            Gets or sets the filter operation type.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.OperationExpression.GetFilterExpression">
+            <summary>
+            Converts the current <see cref="T:C1.Blazor.DataFilter.OperationExpression"/> to the <see cref="T:C1.DataCollection.FilterOperationExpression"/>.
+            </summary>        
+        </member>
+        <member name="T:C1.Blazor.DataFilter.TextExpression">
+            <summary>
+             Represents a text filter expression with match case and match whole word properties.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.TextExpression.MatchCase">
+            <summary>
+            To know MatchCase mode is enable or not
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.TextExpression.MatchWholeWord">
+            <summary>
+            To know MatchWholeWord mode is enable or not
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.TextExpression.GetFilterExpression">
+            <summary>
+            Converts the current <see cref="T:C1.Blazor.DataFilter.OperationExpression"/> to the <see cref="T:C1.DataCollection.FilterOperationExpression"/>.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.PredicateExpression">
+            <summary>
+            Represents the expression which takes a predicate as the filtering function.
+            </summary>
+            <remarks>The <see cref="T:C1.Blazor.DataFilter.PredicateExpression"/> can not be used with the <see cref="T:System.Data.DataTable"/> class.</remarks>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.PredicateExpression.Predicate">
+            <summary>
+            Gets the predicate which will filter the collection.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.PredicateExpression.GetFilterExpression">
+            <summary>
+            Converts current the <see cref="T:C1.Blazor.DataFilter.PredicateExpression"/> to the <see cref="T:C1.DataCollection.FilterExpression"/>.
+            </summary>        
+        </member>
+        <member name="T:C1.Blazor.DataFilter.DataFilterModelBase">
+            <summary>
+            Base class represents model of the C1DataFilter control.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.DataFilterModelBase"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.Dispose(System.Boolean)">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <param name="disposing">Indicates whether the method call comes from a Dispose method or from a finalizer.</param>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DataFilterModelBase.Filters">
+            <summary>
+            Gets the collection of filters.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DataFilterModelBase.ShowClearFilterButtons">
+            <summary>
+            Gets or sets a value indicating whether to show clear filter buttons in the filter headers or not.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DataFilterModelBase.AutoGenerateFilters">
+            <summary>
+            Gets or sets a value indicating whether to generate filters automatically.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DataFilterModelBase.ItemsSource">
+            <summary>
+            Gets or sets the <see cref="T:System.Collections.IEnumerable"/> used as the items source for the current C1DataFilter control.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DataFilterModelBase.AutoApply">
+            <summary>
+            Gets or sets a value indicating whether the filter should be automatically applied to the <see cref="P:C1.Blazor.DataFilter.DataFilterModelBase.ItemsSource"/> when the user changes the filter from the user interface.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DataFilterModelBase.AutoWidthMode">
+            <summary>
+            Gets or sets the mode by which the C1DataFilter automatically sets its own width.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DataFilterModelBase.HeaderText">
+            <summary>
+            Gets or sets the header text of the current C1DataFilter control.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DataFilterModelBase.View">
+            <summary>
+            Gets the result of filtering the <see cref="P:C1.Blazor.DataFilter.DataFilterModelBase.ItemsSource"/>.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DataFilterModelBase.DesignMode">
+            <summary>
+            Gets a value that indicates whether the control is currently in design mode.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DataFilterModelBase.HasSource">
+            <summary>
+            Gets a value indicating whether that the current <see cref="T:C1.Blazor.DataFilter.DataFilterModelBase"/> has items source and this source is supported of the C1CollectionView.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DataFilterModelBase.ChecklistEmptyFilterBehavior">
+            <summary>
+            Gets or sets the behavior when CheckListFilter is assigned an empty expression.
+            </summary>
+        </member>
+        <member name="E:C1.Blazor.DataFilter.DataFilterModelBase.FilterAutoGenerating">
+            <summary>
+            Occurs before the filter is added to the <see cref="P:C1.Blazor.DataFilter.DataFilterModelBase.Filters"/>. Allows to cancel the change.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.OnFilterAutoGenerating(C1.Blazor.DataFilter.FilterAutoGeneratingEventArgs)">
+            <summary>
+            Raises the <see cref="E:C1.Blazor.DataFilter.DataFilterModelBase.FilterAutoGenerating"/> event.
+            </summary>
+            <param name="e">An <see cref="T:C1.Blazor.DataFilter.FilterAutoGeneratingEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="E:C1.Blazor.DataFilter.DataFilterModelBase.FilterValueChanged">
+            <summary>
+            Occurs when a value of the filter changes.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.OnFilterValueChanged(C1.Blazor.DataFilter.FilterChangedEventArgs)">
+            <summary>
+            Raises the <see cref="E:C1.Blazor.DataFilter.DataFilterModelBase.FilterValueChanged"/> event.
+            </summary>
+            <param name="e">An <see cref="T:C1.Blazor.DataFilter.FilterChangedEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="E:C1.Blazor.DataFilter.DataFilterModelBase.FilterChanging">
+            <summary>
+            Occurs before the filter is changed. Allows to cancel the change.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.OnFilterChanging(System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Raises the <see cref="E:C1.Blazor.DataFilter.DataFilterModelBase.FilterChanging"/> event.
+            </summary>
+            <param name="e">An CancelEventArgs that contains the event data.</param>
+        </member>
+        <member name="E:C1.Blazor.DataFilter.DataFilterModelBase.FilterChanged">
+            <summary>
+            Occurs when the filter changes.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.OnFilterChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:C1.Blazor.DataFilter.DataFilterModelBase.FilterChanged"/> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="E:C1.Blazor.DataFilter.DataFilterModelBase.BeforeTooltipShow">
+            <summary>
+            Occurs before a tooltip is shown.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.OnBeforeTooltipShow(C1.Blazor.DataFilter.BeforeTooltipShowEventArgs)">
+            <summary>
+            Raises the <see cref="E:C1.Blazor.DataFilter.DataFilterModelBase.BeforeTooltipShow"/> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DataFilterModelBase.ActualChecklistEmptyFilterBehavior">
+            <summary>
+            Gets the actual value for ChecklistEmptyFilterBehavior.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.UpdateSummaries">
+            <summary>
+            Updates summaries in the filters.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.UpdateCheckListSummary(C1.Blazor.DataFilter.ChecklistFilterBase)">
+            <summary>
+            Updates summary in a checklist filter.
+            </summary>
+            <param name="filter">A filter for update the summary.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.ApplyFilterAsync">
+            <summary>
+            Applies the filter to the items source asynchronously.
+            </summary>        
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.SetExpressions(System.Collections.Generic.List{C1.Blazor.DataFilter.Expression})">
+            <summary>
+            Sets expressions for the <see cref="P:C1.Blazor.DataFilter.DataFilterModelBase.Filters"/> collection.
+            </summary>
+            <param name="expressions">The collection of expressions.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.GetFilterInitializer(System.ComponentModel.PropertyDescriptor)">
+            <summary>
+            Returns the initializer of the filter.
+            </summary>
+            <param name="property">The data item property to which the filter applies.</param>
+            <returns>The initializer of the filter.</returns>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.GetSourceProperties">
+            <summary>
+            Returns the collection of the data item properties.
+            </summary>
+            <returns>The collection of the data item properties.</returns>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.GenerateFilters(System.Boolean)">
+            <summary>
+            Generates filters for the current items source.
+            </summary>
+            <param name="forced">Ignores the AutoGenerateFilters property.</param>
+        </member>
+        <member name="E:C1.Blazor.DataFilter.DataFilterModelBase.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.OnPropertyChanged(System.String)">
+            <summary>
+            Raises the <see cref="E:C1.Blazor.DataFilter.DataFilterModelBase.PropertyChanged"/> event.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModelBase.SetField``1(``0@,``0,System.String)">
+            <summary>
+            Compares two values of property and raises an <see cref="E:C1.Blazor.DataFilter.DataFilterModelBase.PropertyChanged"/> event if they are different.
+            </summary>
+            <typeparam name="T">Type of property.</typeparam>
+            <param name="field">The previous value of property.</param>
+            <param name="value">The new value of property.</param>
+            <param name="propertyName">The name of property.</param>
+            <returns>true - if values are different.</returns>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.FilterInitializerBase">
+            <summary>
+            Base class represents the initializer of filter.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FilterInitializerBase.#ctor(System.ComponentModel.PropertyDescriptor,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="P:C1.Blazor.DataFilter.FilterInitializerBase.Filter"/> with the data item property.
+            </summary>
+            <param name="property">The property of the data item.</param>
+            <param name="isVirtualizing">Set true for virtual source.</param>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FilterInitializerBase.Filter">
+            <summary>
+            Gets the filter.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FilterInitializerBase.WrongFilter">
+            <summary>
+            Gets a value indicating whether the filter was initialized or not.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FilterInitializerBase.GetChecklistFilter(System.ComponentModel.PropertyDescriptor)">
+            <summary>
+            Returns the filter based on <see cref="T:C1.Blazor.DataFilter.ChecklistFilterBase"/> class.
+            </summary>
+            <param name="property">The property of the data item.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FilterInitializerBase.GetBoolFilter(System.ComponentModel.PropertyDescriptor)">
+            <summary>
+            Returns the filter based on <see cref="!:BoolFilterBase"/> class.
+            </summary>
+            <param name="property">The property of the data item.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FilterInitializerBase.GetRangeFilter(System.ComponentModel.PropertyDescriptor)">
+            <summary>
+            Returns the filter based on <see cref="T:C1.Blazor.DataFilter.RangeFilterBase"/> class.
+            </summary>
+            <param name="property">The property of the data item.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FilterInitializerBase.GetDateRangeFilter(System.ComponentModel.PropertyDescriptor)">
+            <summary>
+            Returns the filter based on <see cref="T:C1.Blazor.DataFilter.DateRangeFilterBase"/> class.
+            </summary>
+            <param name="property">The property of the data item.</param>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.CalendarFilterBase">
+            <summary>
+            Base class represents a filter of dates with calendar.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CalendarFilterBase.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.CalendarFilterBase"/> with the name of the data item property.
+            </summary>
+            <param name="propertyName">The name of the data item property.</param>
+            <param name="isAutoGenerated">This filter is autogenerated.</param>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CalendarFilterBase.CalendarSettings">
+            <summary>
+            Gets the settings of calendar.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CalendarFilterBase.SelectedDates">
+            <summary>
+            Gets or sets an <see cref="T:System.DateTime"/> array of selected dates.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CalendarFilterBase.MaxSelectionCount">
+            <summary>
+            Gets or sets the maximum number of days that can be selected in the calendar.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CalendarFilterBase.MaxDate">
+            <summary>
+            Gets or sets the maximum allowable date.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CalendarFilterBase.MinDate">
+            <summary>
+            Gets or sets the minimum allowable date.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CalendarFilterBase.IsApplied">
+            <summary>
+            Gets a value indicating the current filter is applied or not.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CalendarFilterBase.Expression">
+            <summary>
+            Gets the expression of the current filter.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CalendarFilterBase.SetValue(System.DateTime[],System.Boolean)">
+            <summary>
+             Sets a value of <see cref="T:C1.Blazor.DataFilter.CalendarFilterBase"/> class.
+            </summary>
+            <param name="value">The filter value.</param>
+            <param name="applyFilter">The value indicating whether the filter should be automatically applied.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CalendarFilterBase.Reset(System.Boolean)">
+            <summary>
+            Resets the filter value to the default value.
+            </summary>
+            <param name="applyFilter">The value indicating whether the filter should be automatically applied.</param>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.CalendarSettings">
+            <summary>
+            Represents a settings of filter calendar.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CalendarSettings.FirstDayOfWeek">
+            <summary>
+            Gets or sets the first day of the week as displayed in the month calendar.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CalendarSettings.Calendar">
+            <summary>
+            Gets or set the <see cref="T:System.Globalization.Calendar"/> object that represents time in divisions of calendar.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CalendarSettings.CurrentCulture">
+            <summary>
+            Get or sets current culture for the calendar.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CalendarSettings.CalendarWeekRule">
+            <summary>
+            Get or sets current calendar week rule.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CalendarSettings.ShowToday">
+            <summary>
+            Gets or sets a value that indicates whether to display today date.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CalendarSettings.ShowArrowButtons">
+            <summary>
+            Gets or sets the <see cref="T:System.Boolean"/> value indicating whether calendar displays arrow buttons.
+            </summary>        
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CalendarSettings.ShowWeekNumbers">
+            <summary>
+            Gets or sets the <see cref="T:System.Boolean"/> value indicating whether calendar displays week numbers.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CalendarSettings.VerticalOrientationLayout">
+            <summary>
+            Gets or sets the <see cref="T:System.Boolean"/> value indicating whether positioned vertically of the month.
+            </summary>
+        </member>
+        <member name="E:C1.Blazor.DataFilter.CalendarSettings.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CalendarSettings.OnPropertyChanged(System.String)">
+            <summary>
+            Raises the <see cref="E:C1.Blazor.DataFilter.CalendarSettings.PropertyChanged"/> event. 
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CalendarSettings.SetField``1(``0@,``0,System.String)">
+            <summary>
+            Compares two values of property and raises an <see cref="E:C1.Blazor.DataFilter.CalendarSettings.PropertyChanged"/> event if they are different.
+            </summary>
+            <typeparam name="T">Type of property.</typeparam>
+            <param name="field">The previous value of property.</param>
+            <param name="value">The new value of property.</param>
+            <param name="propertyName">The name of property.</param>
+            <returns>true - if values are different.</returns>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.ChecklistFilterBase">
+            <summary>
+            Base class represents a filter with checklist.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.ChecklistFilterBase._emptyFilterBehavior">
+            <summary>
+            The setting of this filter
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.ChecklistFilterBase._checkListEmptyFilterBehavior">
+            <summary>
+            The settings from parent C1DataFilter. This should never equal to Default.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistFilterBase.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.ChecklistFilterBase"/> with the name of the data item property.
+            </summary>
+            <param name="propertyName">The name of the data item property.</param>
+            <param name="isAutoGenerated">This filter is auto generated.</param>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistFilterBase.SelectAllLabel">
+            <summary>
+            Gets or sets select all checkbox label.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistFilterBase.ShowSelectAll">
+            <summary>
+            Gets or sets a value indicating whether show select all checkbox or not.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistFilterBase.ShowSearchBox">
+            <summary>
+            Gets or sets a value indicating whether show search box or not.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistFilterBase.ItemsSource">
+            <summary>
+            Gets or sets the object used as the items source for the checklist.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistFilterBase.SelectionMode">
+            <summary>
+            Gets or sets a value indicating selection method for items of checklist.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistFilterBase.DisplayMemberPath">
+            <summary>
+            Gets or sets a path to a value on the source object to serve as the visual representation of the object.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistFilterBase.ValueMemberPath">
+            <summary>
+            Gets or sets a path to a value on the source object to serve as the value representation of the object.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistFilterBase.Expression">
+            <summary>
+            Gets the expression of the current filter.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistFilterBase.IsApplied">
+            <summary>
+            Gets a value indicating the current filter is applied or not.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistFilterBase.Items">
+            <summary>
+            Gets the items collection of checklist.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistFilterBase.SelectedItems">
+            <summary>
+            Gets the collection of selected items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistFilterBase.EmptyFilterBehavior">
+            <summary>
+            Gets or sets the behavior of CheckListFilter when an empty expression is assigned.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistFilterBase.Reset(System.Boolean)">
+            <summary>
+            Resets the filter value to the default value.
+            </summary>
+            <param name="applyFilter">The value indicating whether the filter should be automatically applied.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistFilterBase.BeginItemsUpdate">
+            <summary>
+            Maintains performance while items are added to the filter one at a time.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistFilterBase.EndItemsUpdate">
+            <summary>
+            Resumes events of the filter after items updating.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistFilterBase.SelectAll(System.Boolean)">
+            <summary>
+            Selects all items in the checklist.
+            </summary>
+            <param name="applyFilter"></param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistFilterBase.UnselectAll(System.Boolean)">
+            <summary>
+            Clears the SelectedItems collection in the checklist.
+            </summary>
+            <param name="applyFilter"></param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistFilterBase.UpdateItems(System.Object)">
+            <summary>
+            Updates the items collection.
+            </summary>
+            <param name="itemsSource">The object used as the items source.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistFilterBase.SetItemsSource(System.Object)">
+            <summary>
+            Sets the object used as the items source for the checklist.
+            </summary>
+            <param name="itemsSource">The object used as the items source.</param>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.ChecklistItem">
+            <summary>
+            Represents a item of checklist.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistItem.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.ChecklistItem"/>.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistItem.#ctor(System.Object,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.ChecklistItem"/> with initial data.
+            </summary>
+            <param name="value">The value of the checklist item.</param>
+            <param name="displayValue">The text of label.</param>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistItem.Value">
+            <summary>
+            Gets or sets the value of current <see cref="T:C1.Blazor.DataFilter.ChecklistItem"/>.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistItem.DisplayValue">
+            <summary>
+            Gets or sets the text of label.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistItem.Selected">
+            <summary>
+            Gets or sets the selected state of current <see cref="T:C1.Blazor.DataFilter.ChecklistItem"/>.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistItem.SummaryValue">
+            <summary>
+            Gets or sets a value of summary for current <see cref="T:C1.Blazor.DataFilter.ChecklistItem"/>.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ChecklistItem.SummaryText">
+            <summary>
+            Gets the summary text for current <see cref="T:C1.Blazor.DataFilter.ChecklistItem"/>.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistItem.SetSelected(System.Boolean,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="selected"></param>
+            <param name="applyFilter"></param>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.ChecklistItemsCollection">
+            <summary>
+            Represents a collection of the <see cref="T:C1.Blazor.DataFilter.ChecklistItem"/>.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistItemsCollection.Contains(System.Object)">
+            <summary>
+            Returns a value that indicates whether the specified value is in this view.
+            </summary>
+            <param name="value">The value to check.</param>
+            <returns>True if item is in the view; otherwise, False.</returns>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.DateRangeFilterBase">
+            <summary>
+            Base class represents a filter of dates with range slider or editors of range.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DateRangeFilterBase.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.DateRangeFilterBase"/> with the name of the data item property.
+            </summary>
+            <param name="propertyName">The name of the data item property.</param>
+            <param name="isAutoGenerated">This filter is autogenerated.</param>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DateRangeFilterBase.Format">
+            <summary>
+            Gets or sets a custom date format.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DateRangeFilterBase.CalendarSettings">
+            <summary>
+            Gets the settings of calendar.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DateRangeFilterBase.LowerValue">
+            <summary>
+            Gets or sets the current lower magnitude of the range.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DateRangeFilterBase.UpperValue">
+            <summary>
+            Gets or sets the current upper magnitude of the range.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DateRangeFilterBase.Maximum">
+            <summary>
+            Gets or sets the maximum value of the range.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DateRangeFilterBase.Minimum">
+            <summary>
+            Gets or sets the minimum value of the range.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DateRangeFilterBase.SliderVisible">
+            <summary>
+            Gets or sets a value indicating whether show the range slider or not.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DateRangeFilterBase.EditorsVisible">
+            <summary>
+            Gets or sets a value indicating whether show the editors or not.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DateRangeFilterBase.Expression">
+            <summary>
+            Gets the expression of the current filter.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DateRangeFilterBase.SetLowerValue(System.Nullable{System.DateTime},System.Boolean)">
+            <summary>
+            Sets a lower value of <see cref="T:C1.Blazor.DataFilter.DateRangeFilterBase"/> class.
+            </summary>
+            <param name="val">The lower filter value.</param>
+            <param name="applyFilter">The value indicating whether the filter should be automatically applied.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DateRangeFilterBase.SetUpperValue(System.Nullable{System.DateTime},System.Boolean)">
+            <summary>
+            Sets a upper value of <see cref="T:C1.Blazor.DataFilter.DateRangeFilterBase"/> class.
+            </summary>
+            <param name="val">The upper filter value.</param>
+            <param name="applyFilter">The value indicating whether the filter should be automatically applied.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DateRangeFilterBase.Reset(System.Boolean)">
+            <summary>
+            Resets the filter value to the default value.
+            </summary>
+            <param name="applyFilter">The value indicating whether the filter should be automatically applied.</param>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.Filter">
+            <summary>
+            Base class represents filter of the C1DataFilter control.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.Filter.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.Filter"/> with the name of the data item property.
+            </summary>
+            <param name="propertyName">The name of the data item property.</param>
+            <param name="isAutoGenerated">This filter is auto generated.</param>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Filter.PropertyName">
+            <summary>
+            Gets or sets the name of the data item property to which the current <see cref="T:C1.Blazor.DataFilter.Filter"/> applies.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Filter.Expression">
+            <summary>
+            Gets or sets the expression of the current <see cref="T:C1.Blazor.DataFilter.Filter"/>.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Filter.IsApplied">
+            <summary>
+            Gets a value indicating the current <see cref="T:C1.Blazor.DataFilter.Filter"/> is applied or not.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Filter.HeaderText">
+            <summary>
+            Gets or sets a value of header text of the current <see cref="T:C1.Blazor.DataFilter.Filter"/>.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Filter.AttachedState">
+            <summary>
+            Filter attached state.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Filter.ActualHeaderText">
+            <summary>
+            Gets the header that will be shown in the column header. if <see cref="P:C1.Blazor.DataFilter.Filter.HeaderText"/> is not specified the <see cref="P:C1.Blazor.DataFilter.Filter.PropertyName"/> property will be used.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Filter.ToolTip">
+            <summary>
+            Gets or sets the text that appears as a ToolTip for header of this filter.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Filter.IsAutoGenerated">
+            <summary>
+            Gets a value indicating whether this filter was generated automatically.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.Filter.FilterCollection">
+            <summary>
+            Filters collection.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.Filter.Reset(System.Boolean)">
+            <summary>
+            Resets the filter value to the default value.
+            </summary>
+            <param name="applyFilter">The value indicating whether the filter should be automatically applied.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.Filter.OnAttachedStateChanged(C1.Blazor.DataFilter.AttachedFilterState)">
+            <summary>
+            Calls when the filter state was changed.
+            </summary>
+            <param name="previous">Previous state value.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.Filter.Attach(Microsoft.AspNetCore.Components.RenderHandle)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.Filter.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.Filter.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="E:C1.Blazor.DataFilter.Filter.AttachedStateChanged">
+            <summary>
+            Notifies clients that a <see cref="P:C1.Blazor.DataFilter.Filter.AttachedState"/> value has changed.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.AttachedFilterState">
+            <summary>
+            Filter state.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.AttachedFilterState.None">
+            <summary>
+            Default.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.AttachedFilterState.Attached">
+            <summary>
+            Attached to <see cref="N:C1.Blazor.DataFilter"/>.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.AttachedFilterState.Detached">
+            <summary>
+            Detached from <see cref="N:C1.Blazor.DataFilter"/>.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.FilterSummary">
+            <summary>
+            Represents the summary of <see cref="T:C1.Blazor.DataFilter.Filter"/>.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FilterSummary.#ctor(C1.Blazor.DataFilter.FilterWithSummary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.FilterSummary"/> class.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FilterSummary.Owner">
+            <summary>
+            Gets the filter owning this summary.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FilterSummary.Label">
+            <summary>
+            Gets or sets a text on the left side of the summary.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FilterSummary.AggregateType">
+            <summary>
+            Gets or sets a type of aggregate expression.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FilterSummary.PropertyName">
+            <summary>
+            Gets or sets a name of the property for which the aggregate function is applied.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FilterSummary.CustomFormat">
+            <summary>
+            Gets or sets a expression result format.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FilterSummary.GetText(System.Object)">
+            <summary>
+            Returns the formatted string with summary.
+            </summary>
+            <param name="summaryValue">A value of summary</param>
+            <returns>A text of summary</returns>
+        </member>
+        <member name="E:C1.Blazor.DataFilter.FilterSummary.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FilterSummary.OnPropertyChanged(System.String)">
+            <summary>
+            Raises the <see cref="E:C1.Blazor.DataFilter.FilterSummary.PropertyChanged"/> event. 
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FilterSummary.SetField``1(``0@,``0,System.String)">
+            <summary>
+            Compares two values of property and raises an <see cref="E:C1.Blazor.DataFilter.FilterSummary.PropertyChanged"/> event if they are different.
+            </summary>
+            <typeparam name="T">Type of property.</typeparam>
+            <param name="field">The previous value of property.</param>
+            <param name="value">The new value of property.</param>
+            <param name="propertyName">The name of property.</param>
+            <returns>true - if values are different.</returns>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.FilterWithSummary">
+            <summary>
+            Represents filter of the C1DataFilter control with summaries.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FilterWithSummary.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.FilterWithSummary"/> with the name of the data item property.
+            </summary>
+            <param name="propertyName">The name of the data item property.</param>
+            <param name="isAutoGenerated">This filter is auto generated.</param>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FilterWithSummary.FilterSummary">
+            <summary>
+            Gets the filter summary of the current filter.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.RangeFilterBase">
+            <summary>
+            Base class represents a filter with range slider or editors of range.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.RangeFilterBase.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.RangeFilterBase"/> with the name of the data item property.
+            </summary>
+            <param name="propertyName">The name of the data item property.</param>
+            <param name="isAutoGenerated">This filter is autogenerated.</param>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.RangeFilterBase.Format">
+            <summary>
+            Gets or sets the format of numeric text box
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.RangeFilterBase.Increment">
+            <summary>
+            Gets or set the the amount to increment/decrement when the user clicks up/down buttons.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.RangeFilterBase.LowerValue">
+            <summary>
+            Gets or sets the current lower magnitude of the range.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.RangeFilterBase.UpperValue">
+            <summary>
+            Gets or sets the current upper magnitude of the range.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.RangeFilterBase.Maximum">
+            <summary>
+            Gets or sets the maximum value of the range.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.RangeFilterBase.Minimum">
+            <summary>
+            Gets or sets the minimum value of the range.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.RangeFilterBase.SliderVisible">
+            <summary>
+            Gets or sets a value indicating whether show the range slider or not.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.RangeFilterBase.EditorsVisible">
+            <summary>
+            Gets or sets a value indicating whether show the editors or not.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.RangeFilterBase.EditorsType">
+            <summary>
+            Gets or sets a value indicating editors type.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.RangeFilterBase.Expression">
+            <summary>
+            Gets the expression of the current filter.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.RangeFilterBase.SetLowerValue(System.Double,System.Boolean)">
+            <summary>
+            Sets a lower value of <see cref="T:C1.Blazor.DataFilter.RangeFilterBase"/> class.
+            </summary>
+            <param name="value">The lower filter value.</param>
+            <param name="applyFilter">The value indicating whether the filter should be automatically applied.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.RangeFilterBase.SetUpperValue(System.Double,System.Boolean)">
+            <summary>
+            Sets a upper value of <see cref="T:C1.Blazor.DataFilter.RangeFilterBase"/> class.
+            </summary>
+            <param name="value">The upper filter value.</param>
+            <param name="applyFilter">The value indicating whether the filter should be automatically applied.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.RangeFilterBase.Reset(System.Boolean)">
+            <summary>
+            Resets the filter value to the default value.
+            </summary>
+            <param name="applyFilter">The value indicating whether the filter should be automatically applied.</param>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.ConditionalFilter">
+            <summary>
+            Conditional allow to customize group conditions.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ConditionalFilter.Delay">
+            <summary>
+             Gets or sets the delay that occurs between the key strokes and the value changed event.
+            </summary>
+            <remarks>
+            Setting this delay to something bigger than zero allows skipping unnecessary events when the input box is used in filtering scenarios.
+            </remarks>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ConditionalFilter.CombinationExpressions">
+            <summary>
+            Flattened CombinationExpression
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilter.#ctor">
+            <summary>
+            Initialize root combination based on PropertyName.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilter.ApplyFilterWithDelayAsync(System.Boolean)">
+            <summary>
+            Apply filter after <see cref="P:C1.Blazor.DataFilter.ConditionalFilter.Delay"/>. Cancels all previous filtering requests with delay if any.
+            </summary>
+            <param name="applyFilter"></param>
+            <returns> Filtering <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilter.Reset(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ConditionalFilter.Expression">
+            <summary>
+            Root combination expression
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilter.FlattenCombinantionExpressions(C1.Blazor.DataFilter.CombinationExpression)">
+            <summary>
+            Flattens combination expressions.
+            E.g., from 
+            Combination
+                [exp1, exp2, exp3]
+            into
+            [Combination]
+                [exp1, Combination2]
+            [Combination2]
+                [exp2, Combination3]
+            [Combination3 
+                [exp3]
+                
+            The first Combination is the root tree that can refer to all children expressions. It's returned when get expression for filter.
+            The first, second and third Combination is there for using in binding UI, each Combination is used for one ConditionalFilterItemPresenter
+            </summary>
+            <param name="expression"></param>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.TextFilter">
+            <summary>
+            Conditional filter for text data type.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.NumericFilter">
+            <summary>
+            Conditional filter for numeric data type.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.NumericFilter.Format">
+            <summary>
+            Gets or sets the format of numeric text box
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.NumericFilter.Increment">
+            <summary>
+            Gets or set the the amount to increment/decrement when the user clicks up/down buttons.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.NumericFilter.Maximum">
+            <summary>
+            Gets or sets the maximum value of the range.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.NumericFilter.Minimum">
+            <summary>
+            Gets or sets the minimum value of the range.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.DateFilter">
+            <summary>
+            Conditional filter for date data type.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.DateFilter.Format">
+            <summary>
+            Gets or sets a custom date format.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.ChecklistFilter">
+            <summary>
+            Represents a filter with checklist.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistFilter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.ChecklistFilter"/>.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistFilter.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.ChecklistFilter"/> with the name of the data item property.
+            </summary>
+            <param name="propertyName">The name of the data item property.</param>
+            <param name="isAutoGenerated">This filter is autogenerated.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistFilter.SetItemsSource(System.Object)">
+            <summary>
+            Sets the object used as the items source for the checklist.
+            </summary>
+            <param name="itemsSource">The object used as the items source.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ChecklistFilter.UpdateItems(System.Object)">
+            <summary>
+            Updates the items collection.
+            </summary>
+            <param name="itemsSource">The object used as the items source.</param>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.ThreeStateFilter">
+            <summary>
+            Represents a filter with checkboxes for bool value.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ThreeStateFilter.IsTrueChecked">
+            <summary>
+            Gets or sets the value of the true condition.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ThreeStateFilter.IsFalseChecked">
+            <summary>
+            Gets or sets the value of the false condition.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ThreeStateFilter.IsApplied">
+            <inheritdoc/>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ThreeStateFilter.IsNullChecked">
+            <summary>
+            Gets or sets the value of the null condition.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ThreeStateFilter.IsThreeState">
+            <summary>
+            Gets or sets allows filter to accept nullable bool value.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ThreeStateFilter.SelectAllLabel">
+            <summary>
+            Gets or sets the text of label of select all checkbox.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ThreeStateFilter.TrueLabel">
+            <summary>
+            Gets or sets the text of label of true checkbox.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ThreeStateFilter.FalseLabel">
+            <summary>
+            Gets or sets the text of label of false checkbox.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ThreeStateFilter.NullLabel">
+            <summary>
+            Gets or sets the text of label of null checkbox.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ThreeStateFilter.Expression">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ThreeStateFilter.Reset(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.FullTextFilter">
+            <summary>
+            Represents a filter to search text.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FullTextFilter.MatchCase">
+            <summary>
+            To know MatchCase mode is enable or not.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FullTextFilter.MatchWholeWord">
+            <summary>
+            To know MatchWholeWord mode is enable or not.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FullTextFilter.Delay">
+            <summary>
+             Gets or sets the delay that occurs between the key strokes and the value changed event.
+            </summary>
+            <remarks>
+            Setting this delay to something bigger than zero allows skipping unnecessary events when the input box is used in filtering scenarios.
+            </remarks>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FullTextFilter.Text">
+            <summary>
+            Gets or sets the current string value of this filter.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FullTextFilter.ShowMatchWholeWord">
+            <summary>
+            Gets or sets whether the MatchWholeWord checkbox is shown.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FullTextFilter.ShowMatchCase">
+            <summary>
+            Gets or sets whether the MatchCase checkbox is shown.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FullTextFilter.Expression">
+            <inheritdoc/>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FullTextFilter.IsApplied">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FullTextFilter.Reset(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.RangeFilter">
+            <summary>
+            Represents a filter with range slider or editors of range.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.RangeFilter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.RangeFilter"/>.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.RangeFilter.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.RangeFilter"/> with the name of the data item property.
+            </summary>
+            <param name="propertyName">The name of the data item property.</param>
+            <param name="isAutoGenerated">This filter is autogenerated.</param>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.DateRangeFilter">
+            <summary>
+            Represents a filter of dates with range slider or editors of range.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DateRangeFilter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.DateRangeFilter"/>.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DateRangeFilter.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.DateRangeFilter"/> with the name of the data item property.
+            </summary>
+            <param name="propertyName">The name of the data item property.</param>
+            <param name="isAutoGenerated">This filter is autogenerated.</param>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.CustomFilter">
+            <summary>
+            Represents a custom filter.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CustomFilter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.CustomFilter"/>.
+            </summary>
+            <param name="propertyName">The name of the data item property.</param>        
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CustomFilter.Template">
+            <summary>
+            Gets or sets the control template that represents the custom filter.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CustomFilter.Expression">
+            <summary>
+            Gets the expression of the current filter.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CustomFilter.GetExpression">
+            <summary>
+            Gets the expression for the current filter.
+            </summary>
+            <returns>The expression of custom filter.</returns>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CustomFilter.SetExpression(C1.Blazor.DataFilter.Expression)">
+            <summary>
+            Sets the expression for the current filter.
+            </summary>
+            <param name="expression">The expression of custom filter.</param>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.DataFilterModel">
+            <summary>
+            Represents model of the C1DataFilter control.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModel.GetFilterInitializer(System.ComponentModel.PropertyDescriptor)">
+            <summary>
+            Returns the initializer of the filter.
+            </summary>
+            <param name="property">The data item property to which the filter applies.</param>
+            <returns>The initializer of the filter.</returns>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModel.DeserializeFilterExpression(System.String)">
+            <summary>
+            Deserialize xml and add expressions to the <see cref="P:C1.Blazor.DataFilter.DataFilterModelBase.Filters"/> collection.
+            </summary>
+            <param name="xmlContent"> Xml content.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterModel.SerializeFilterExpression">
+            <summary>
+            Serialize the <see cref="P:C1.Blazor.DataFilter.DataFilterModelBase.Filters"/> collection to a xml content.
+            </summary>
+            <returns> Xml content.</returns>
+            <exception cref="T:System.InvalidOperationException"/>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.IFilterPresenterFactory`2">
+            <summary>
+            Filter's presenters creation factory.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.IFilterPresenterFactory`2.CreateFilterPresenter(C1.Blazor.DataFilter.Filter,System.Object[])">
+            <summary>
+            Create a filter presenter.
+            </summary>
+            <param name="filter"> Instance of <see cref="T:C1.Blazor.DataFilter.Filter"/>.</param>
+            <param name="args"> Arguments.</param>
+            <returns> Presenter.</returns>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.IFilterPresenterFactory`2.CreateConditionalFilterItemPresenter(C1.Blazor.DataFilter.ConditionalFilter,System.Object[])">
+            <summary>
+            Create a conditional filter item presenter.
+            </summary>
+            <param name="filter"> Instance of <see cref="T:C1.Blazor.DataFilter.ConditionalFilter"/>.</param>
+            <param name="args"> Arguments.</param>
+            <returns> Presenter.</returns>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.C1DataFilter">
+            <summary>
+            The <see cref="T:C1.Blazor.DataFilter.C1DataFilter"/> lets users filter data based on criteria's. It can be bound to any data-aware control and multiple conditional filtering could be applied.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.C1DataFilter.OnInitialized">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.C1DataFilter.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.C1DataFilter.OnItemsSourceChangedProtected(System.Collections.IEnumerable)">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.C1DataFilter._autoGenerateFilters">
+            <summary>
+            Gets or sets a value indicating whether to generate filters automatically.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.C1DataFilter._autoApply">
+            <summary>
+            Gets or sets a value indicating whether the filter should be automatically applied to the DataSource after the filter value is changed or not.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.C1DataFilter._checklistEmptyFilterBehavior">
+            <summary>
+            Gets or sets the behavior when CheckListFilter is assigned an empty expression.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.C1DataFilter.Filters">
+            <summary>
+            Gets the collection of filters.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.C1DataFilter.DataFilters">
+            <summary>
+            Filter collection.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.C1DataFilter.DataCollection">
+            <summary>
+            Gets the underlying data collection used to filter the original <see cref="!:ItemsSource"/> collection.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.C1DataFilter.GenerateFilters(System.Boolean)">
+            <summary>
+            Generates filters for the current items source.
+            </summary>
+            <param name="forced">Ignores the AutoGenerateFilters property.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.C1DataFilter.ApplyFilterAsync">
+            <summary>
+            Applies the filter to the items source asynchronously.
+            </summary>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:C1.Blazor.DataFilter.PredicateExpression"/> can not be used with the <see cref="T:System.Data.DataTable"/> class.</exception>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.C1DataFilter.DeserializeFilterExpression(System.String)">
+            <summary>
+            Deserialize xml and add expressions to the <see cref="P:C1.Blazor.DataFilter.C1DataFilter.Filters"/> collection.
+            </summary>
+            <param name="xmlContent"> Xml content.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.C1DataFilter.SerializeFilterExpression">
+            <summary>
+            Serialize the <see cref="P:C1.Blazor.DataFilter.C1DataFilter.Filters"/> collection to a xml content.
+            </summary>
+            <returns> Xml content.</returns>
+            <exception cref="T:System.InvalidOperationException"/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.C1DataFilter.Reset">
+            <summary>
+            Reset <see cref="P:C1.Blazor.DataFilter.C1DataFilter.Filters"/>.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.C1DataFilter.FilterValueChanged">
+            <summary>
+            Occurs when a value of the filter changes.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.C1DataFilter.OnFilterValueChanged(C1.Blazor.DataFilter.FilterChangedEventArgs)">
+            <summary>
+            Raises the <see cref="P:C1.Blazor.DataFilter.C1DataFilter.FilterValueChanged"/> event.
+            </summary>
+            <param name="e">An <see cref="T:C1.Blazor.DataFilter.FilterChangedEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.C1DataFilter.FilterAutoGenerating">
+            <summary>
+            Occurs before the filter is added to the <see cref="P:C1.Blazor.DataFilter.C1DataFilter.Filters"/>. Allows to cancel the change.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.C1DataFilter.OnFilterAutoGenerating(C1.Blazor.DataFilter.FilterAutoGeneratingEventArgs)">
+            <summary>
+            Raises the <see cref="P:C1.Blazor.DataFilter.C1DataFilter.FilterAutoGenerating"/> event.
+            </summary>
+            <param name="e">An <see cref="T:C1.Blazor.DataFilter.FilterAutoGeneratingEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.C1DataFilter.FilterChanging">
+            <summary>
+            Occurs before the filter is changed. Allows to cancel the change.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.C1DataFilter.OnFilterChanging(System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Raises the <see cref="P:C1.Blazor.DataFilter.C1DataFilter.FilterChanging"/> event.
+            </summary>
+            <param name="e">An <see cref="T:System.ComponentModel.CancelEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.C1DataFilter.FilterChanged">
+            <summary>
+            Occurs when the filter changes.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.C1DataFilter.OnFilterChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="P:C1.Blazor.DataFilter.C1DataFilter.FilterChanged"/> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.C1DataFilter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.C1DataFilter"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.C1DataFilter.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.C1DataFilter.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.C1DataFilter.AutoGenerateFiltersProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.C1DataFilter.AutoGenerateFilters"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.C1DataFilter.AutoGenerateFilters">
+            <summary>
+            Gets or sets a value indicating whether to generate filters automatically.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.C1DataFilter.AutoGenerateFiltersChanged">
+            <summary>
+            Gets or sets the callback called when the <see cref="P:C1.Blazor.DataFilter.C1DataFilter.AutoGenerateFilters"/> property has changed.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.C1DataFilter.AutoApplyProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.C1DataFilter.AutoApply"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.C1DataFilter.AutoApply">
+            <summary>
+            Gets or sets a value indicating whether the filter should be automatically applied to the DataSource after the filter value is changed or not.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.C1DataFilter.AutoApplyChanged">
+            <summary>
+            Gets or sets the callback called when the <see cref="P:C1.Blazor.DataFilter.C1DataFilter.AutoApply"/> property has changed.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.C1DataFilter.ChecklistEmptyFilterBehaviorProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.C1DataFilter.ChecklistEmptyFilterBehavior"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.C1DataFilter.ChecklistEmptyFilterBehavior">
+            <summary>
+            Gets or sets the behavior when CheckListFilter is assigned an empty expression.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DataFilterExpressionEx.ToDataFilterExpression(C1.DataCollection.FilterExpression)">
+            <summary>
+            Converts DataCollection's FilterExpression to the corresponding DataFilter Expression
+            </summary>
+            <param name="filterExp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.TypeEx.IsNumericType(System.Type)">
+            <summary>
+            Checks whether the type is numeric.
+            </summary>
+            <param name="type">Type to be checked.</param>
+            <returns>If true - type is numeric.</returns>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.TypeEx.GetDisplayName(System.ComponentModel.PropertyDescriptor)">
+            <summary>
+            Gets the display name from a <see cref="T:System.ComponentModel.PropertyDescriptor"/>, honoring DisplayAttribute first.
+            </summary>
+            <param name="property"></param>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.TypeEx.GetIsBrowsable(System.ComponentModel.PropertyDescriptor)">
+            <summary>
+            Checks if a <see cref="T:System.ComponentModel.PropertyDescriptor"/> is Browsable, honoring DisplayAttribute first
+            </summary>
+            <param name="property"></param>
+            <returns></returns>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.NotifyPropertyChanged">
+            <summary>
+            Notify changed abstract
+            </summary>
+        </member>
+        <member name="E:C1.Blazor.DataFilter.NotifyPropertyChanged.ValueChanged">
+            <summary>
+            Occurs when a value of current <see cref="T:C1.Blazor.DataFilter.Filter"/> changes.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.NotifyPropertyChanged.OnValueChanged(C1.Blazor.DataFilter.ValueChangedEventArgs)">
+            <summary>
+            Raises the <see cref="E:C1.Blazor.DataFilter.NotifyPropertyChanged.ValueChanged"/> event.
+            </summary>
+        </member>
+        <member name="E:C1.Blazor.DataFilter.NotifyPropertyChanged.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.NotifyPropertyChanged.OnPropertyChanged(System.String)">
+            <summary>
+            Raises the <see cref="E:C1.Blazor.DataFilter.NotifyPropertyChanged.PropertyChanged"/> event. 
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.NotifyPropertyChanged.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Raises the custom <see cref="E:C1.Blazor.DataFilter.NotifyPropertyChanged.PropertyChanged"/> event. 
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.NotifyPropertyChanged.SetField``1(``0@,``0,System.String)">
+            <summary>
+            Compares two values of property and raises an <see cref="E:C1.Blazor.DataFilter.NotifyPropertyChanged.PropertyChanged"/> event if they are different.
+            </summary>
+            <typeparam name="T">Type of property.</typeparam>
+            <param name="field">The previous value of property.</param>
+            <param name="value">The new value of property.</param>
+            <param name="propertyName">The name of property.</param>
+            <returns>true - if values are different.</returns>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.FilterCollection">
+            <summary>
+            Represents a collection of the filters.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.ObservableCollectionBase`1">
+            <summary>
+            Represents a collection with the <see cref="E:C1.Blazor.DataFilter.ObservableCollectionBase`1.CollectionResetting"/> event.
+            </summary>
+        </member>
+        <member name="E:C1.Blazor.DataFilter.ObservableCollectionBase`1.CollectionResetting">
+            <summary>
+            Occurs before all items are removed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ObservableCollectionBase`1.OnCollectionResetting(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:C1.Blazor.DataFilter.ObservableCollectionBase`1.CollectionResetting"/> event. 
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ObservableCollectionBase`1.ClearItems">
+            <summary>
+            Removes all items from the collection.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.SelectionMode">
+            <summary>
+            Defines the selection behavior.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.SelectionMode.Multiple">
+            <summary>
+            The user can select multiple items.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.SelectionMode.Single">
+            <summary>
+            The user can select only one item at a time.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.EditorsType">
+            <summary>
+            Defines the editors type.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.EditorsType.TextBox">
+            <summary>
+            The editor like a textbox.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.EditorsType.SpinEditor">
+            <summary>
+            The editor that contains a text editor and a pair of spin buttons that a user can click to adjust a value.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.AggregateType">
+            <summary>
+            Defines the type of the aggregate function expression.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.AggregateType.None">
+            <summary>
+            None.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.AggregateType.Min">
+            <summary>
+            Minimum item in collection.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.AggregateType.Max">
+            <summary>
+            Maximum item in collection.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.AggregateType.Sum">
+            <summary>
+            Sum of items in the collection.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.AggregateType.Count">
+            <summary>
+            Count of items in the collection.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.AutoWidthMode">
+            <summary>
+            Defines the auto width mode behavior.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.AutoWidthMode.None">
+            <summary>
+            None.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.AutoWidthMode.Grow">
+            <summary>
+            The C1DataFilter grows as much as necessary to fit its contents.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.EmptyFilterBehavior">
+            <summary>
+            Defines the behavior of CheckListFilter when an empty expression is assigned to it.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.EmptyFilterBehavior.Default">
+            <summary>
+            The behavior is inherited from <see cref="T:C1.Blazor.DataFilter.C1DataFilter"/>.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.EmptyFilterBehavior.All">
+            <summary>
+            All items will be checked.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.EmptyFilterBehavior.None">
+            <summary>
+            All items will be unchecked.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.FilterAutoGeneratingEventArgs">
+            <summary>
+            Provides data for the FilterAutoGenerating event of a C1DataFilter control.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FilterAutoGeneratingEventArgs.#ctor(System.ComponentModel.PropertyDescriptor,C1.Blazor.DataFilter.Filter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.FilterAutoGeneratingEventArgs"/>.
+            </summary>
+            <param name="property">The data source property to which the filter applies.</param>
+            <param name="filter">The filter.</param>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FilterAutoGeneratingEventArgs.Property">
+            <summary>
+            Gets the data item property to which the filter applies.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FilterAutoGeneratingEventArgs.Filter">
+            <summary>
+            Gets or sets the filter.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.FilterChangedEventArgs">
+            <summary>
+            Provides data for the FilterChanged event of a C1DataFilter control.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FilterChangedEventArgs.#ctor(C1.Blazor.DataFilter.Filter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.FilterChangedEventArgs"/>.
+            </summary>
+            <param name="filter">The filter.</param>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FilterChangedEventArgs.Filter">
+            <summary>
+            Gets the filter.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.BeforeTooltipShowEventArgs">
+            <summary>
+            Provides data for the BeforeTooltipShow event of the C1DataFilter control. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.BeforeTooltipShowEventArgs.Value">
+            <summary>
+            Gets a value of C1DataFilter element.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.BeforeTooltipShowEventArgs.ToolTip">
+            <summary>
+            Gets or sets tooltip text.
+            </summary>
+            <remarks>Use html encoding to format the text.</remarks>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.BeforeTooltipShowEventArgs.Filter">
+            <summary>
+            Gets the <see cref="P:C1.Blazor.DataFilter.BeforeTooltipShowEventArgs.Filter"/> for which tooltip is about to be shown.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.ValueChangedEventArgs">
+            <summary>
+            Provides data for the <see cref="E:C1.Blazor.DataFilter.NotifyPropertyChanged.ValueChanged"/> event of a <see cref="T:C1.Blazor.DataFilter.Filter"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ValueChangedEventArgs.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.ValueChangedEventArgs"/>.
+            </summary>        
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ValueChangedEventArgs.ApplyFilter">
+            <summary>
+            Gets or sets a value indicating whether the filter should be automatically applied.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.ItemPropertyChangedEventArgs">
+            <summary>
+            Provides data for the <see cref="E:C1.Blazor.DataFilter.NotifyPropertyChanged.PropertyChanged"/> event of a <see cref="T:C1.Blazor.DataFilter.ChecklistItem"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ItemPropertyChangedEventArgs.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.ItemPropertyChangedEventArgs"/>.
+            </summary>        
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ItemPropertyChangedEventArgs.ApplyFilter">
+            <summary>
+            Gets or sets a value indicating whether the filter should be automatically applied
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.ConditionalFilterPresenter">
+            <summary>
+            Presenter for Conditional Filter that allows to customize combination filters.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.ConditionalFilterPresenter._filter">
+            <summary>
+            Filter model
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterPresenter.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterPresenter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.ConditionalFilterPresenter"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterPresenter.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterPresenter.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.ConditionalFilterPresenter.FilterProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.ConditionalFilterPresenter.Filter"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ConditionalFilterPresenter.Filter">
+            <summary>
+            Filter model
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.ConditionalFilterItemPresenter">
+            <summary>
+            Conditional filter item presenter.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.ConditionalFilterItemPresenter._menuOperations">
+            <summary>
+            List of menu items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.IsFilterValueSet">
+            <summary>
+            True, if filter has a value.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.InitialFilterOperation">
+            <summary>
+            Initial <see cref="T:C1.DataCollection.FilterOperation"/> for a new added expression.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.OnParametersSet">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.DetachEvents">
+            <summary>
+            Detach events.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.InitializeValueInput">
+            <summary>
+            Initialize value input element.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.GetConditionMenuOptions">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.GetValueFragment">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.ApplyFilterWithDelay">
+            <summary>
+            Apply filter with a delay.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.FindOrCreateOperationExpression">
+            <summary>
+            Return filter's <see cref="T:C1.Blazor.DataFilter.OperationExpression"/>.
+            </summary>
+            <returns> <see cref="T:C1.DataCollection.FilterOperation"/>.</returns>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.ApplyFilterOperation(C1.DataCollection.FilterOperation)">
+            <summary>
+            Apply filter operation.
+            </summary>
+            <param name="operation"><see cref="T:C1.DataCollection.FilterOperation"/>.</param>
+            <returns> <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.HierarchicalConditionMenuOption">
+            <summary>
+            Represents a filter menu structure.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.HierarchicalConditionMenuOption.Operation">
+            <summary>
+            Operation.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.HierarchicalConditionMenuOption.SubItems">
+            <summary>
+            Subitems.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.ConditionalFilterItemPresenter"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.ConditionalFilterProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.ConditionalFilter"/> dependency property. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.ExpressionProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.ConditionalFilterItemPresenter.Expression"/> dependency property. 
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.TextFilterPresenter">
+            <inheritdoc/>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.TextFilterPresenter.InitialFilterOperation">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.TextFilterPresenter.GetValueFragment">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.TextFilterPresenter.GetConditionMenuOptions">
+            <inheritdoc/>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.DateFilterPresenter">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DateFilterPresenter.InitializeValueInput">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DateFilterPresenter.DetachEvents">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DateFilterPresenter.GetValueFragment">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DateFilterPresenter.GetConditionMenuOptions">
+            <inheritdoc/>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.NumericFilterPresenter">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.NumericFilterPresenter.InitializeValueInput">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.NumericFilterPresenter.DetachEvents">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.NumericFilterPresenter.GetValueFragment">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.NumericFilterPresenter.GetConditionMenuOptions">
+            <inheritdoc/>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.CheckListFilterPresenter">
+            <summary>
+            CheckListFilter that represents UI for <see cref="T:C1.Blazor.DataFilter.ChecklistFilter"/>.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CheckListFilterPresenter.OnInitialized">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.CheckListFilterPresenter._filter">
+            <summary>
+            Gets or sets filter associated with this element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.CheckListFilterPresenter._selectAll">
+            <summary>
+            Label for CheckAll checkbox.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CheckListFilterPresenter.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CheckListFilterPresenter.ImplementLocalization">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CheckListFilterPresenter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.CheckListFilterPresenter"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CheckListFilterPresenter.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.CheckListFilterPresenter.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.CheckListFilterPresenter.FilterProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.CheckListFilterPresenter.Filter"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CheckListFilterPresenter.Filter">
+            <summary>
+            Gets or sets filter associated with this element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.CheckListFilterPresenter.SelectAllProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.CheckListFilterPresenter.SelectAll"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.CheckListFilterPresenter.SelectAll">
+            <summary>
+            Label for CheckAll checkbox.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.ThreeStateFilterPresenter">
+            <summary>
+            Presenter for ThreeStateBoolFilter.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ThreeStateFilterPresenter.OnInitialized">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.ThreeStateFilterPresenter._filter">
+            <summary>
+            Gets or sets filter associated with this element.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ThreeStateFilterPresenter.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ThreeStateFilterPresenter.ImplementLocalization">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ThreeStateFilterPresenter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.ThreeStateFilterPresenter"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ThreeStateFilterPresenter.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ThreeStateFilterPresenter.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.ThreeStateFilterPresenter.FilterProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.ThreeStateFilterPresenter.Filter"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.ThreeStateFilterPresenter.Filter">
+            <summary>
+            Gets or sets filter associated with this element.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.FullTextFilterPresenter">
+            <summary>
+            Presenter for FullTextFilter.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.FullTextFilterPresenter._filter">
+            <summary>
+            Gets or sets filter associated with this element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.FullTextFilterPresenter._text">
+            <summary>
+            Gets or sets the text of search box.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.FullTextFilterPresenter._matchCase">
+            <summary>
+            Gets or sets value of MatchCase checkbox.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.FullTextFilterPresenter._matchWholeWord">
+            <summary>
+            Gets or sets value of MatchWholeWord checkbox.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FullTextFilterPresenter.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FullTextFilterPresenter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.FullTextFilterPresenter"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FullTextFilterPresenter.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.FullTextFilterPresenter.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.FullTextFilterPresenter.FilterProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.FullTextFilterPresenter.Filter"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FullTextFilterPresenter.Filter">
+            <summary>
+            Gets or sets filter associated with this element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.FullTextFilterPresenter.TextProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.FullTextFilterPresenter.Text"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FullTextFilterPresenter.Text">
+            <summary>
+            Gets or sets the text of search box.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.FullTextFilterPresenter.MatchCaseProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.FullTextFilterPresenter.MatchCase"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FullTextFilterPresenter.MatchCase">
+            <summary>
+            Gets or sets value of MatchCase checkbox.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.FullTextFilterPresenter.MatchWholeWordProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.FullTextFilterPresenter.MatchWholeWord"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.FullTextFilterPresenter.MatchWholeWord">
+            <summary>
+            Gets or sets value of MatchWholeWord checkbox.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.RangeFilterPresenter">
+            <summary>
+            DateRangeFilter that represents for Date filter model.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.RangeFilterPresenter._lowerEditor">
+            <summary>
+            Cached editors UI element
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.RangeFilterPresenter._upperEditor">
+            <summary>
+            Cached editors UI element
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.RangeFilterPresenter._updating">
+            <summary>
+            A flag to prevent subsequence property changed event because elements are related to each other.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.RangeFilterPresenter.SubscribeFilterEvents">
+            <summary>
+            Subscribe filter events
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.RangeFilterPresenter.UnsubscribeFilterEvents">
+            <summary>
+            Unsubscribe filter events
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.RangeFilterPresenter._filter">
+            <summary>
+            Gets or sets filter associated with this element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.RangeFilterPresenter._from">
+            <summary>
+            Label for Lower editor.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.RangeFilterPresenter._to">
+            <summary>
+            Label for upper editor
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.RangeFilterPresenter.FilterOnPropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Filter property changed event handler.
+            </summary>
+            <param name="sender">Presenter.</param>
+            <param name="e">Args.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.RangeFilterPresenter.FilterOnAttachedStateChanged(System.Object,C1.Blazor.DataFilter.AttachedFilterState)">
+            <summary>
+            Filter attached event handler.
+            </summary>
+            <param name="sender">Filter.</param>
+            <param name="e"> Attached state.</param>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.RangeFilterPresenter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.DataFilter.RangeFilterPresenter"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.RangeFilterPresenter.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.RangeFilterPresenter.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.RangeFilterPresenter.FilterProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.RangeFilterPresenter.Filter"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.RangeFilterPresenter.Filter">
+            <summary>
+            Gets or sets filter associated with this element.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.RangeFilterPresenter.FromProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.RangeFilterPresenter.From"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.RangeFilterPresenter.From">
+            <summary>
+            Label for Lower editor.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.DataFilter.RangeFilterPresenter.ToProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.DataFilter.RangeFilterPresenter.To"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.DataFilter.RangeFilterPresenter.To">
+            <summary>
+            Label for upper editor
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.NumericRangeFilterPresenter">
+            <summary>
+            Range filter for numeric range filter.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.NumericRangeFilterPresenter.#ctor">
+            <summary>
+            Ctor.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.NumericRangeFilterPresenter.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.NumericRangeFilterPresenter.ImplementLocalization">
+            <inheritdoc/>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.DateRangeFilterPresenter">
+            <summary>
+            DateRangeFilter that represents for Date filter model.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DateRangeFilterPresenter.#ctor">
+            <summary>
+            Ctor.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DateRangeFilterPresenter.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.DateRangeFilterPresenter.ImplementLocalization">
+            <inheritdoc/>
+        </member>
+        <member name="T:C1.Blazor.DataFilter.ILocalizable">
+            <summary>
+            Represent content which depends on localization resources.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.DataFilter.ILocalizable.ImplementLocalization">
+            <summary>
+            Implement localization.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,387 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Git\\c1-netcore\\Blazor\\Samples\\TreeView\\TreeViewExplorer.Server\\TreeViewExplorer.Server.csproj": {}
+  },
+  "projects": {
+    "C:\\Git\\c1-netcore\\Blazor\\Controls\\Core\\C1.Blazor.Core.csproj": {
+      "version": "6.0.20221.212",
+      "restore": {
+        "projectUniqueName": "C:\\Git\\c1-netcore\\Blazor\\Controls\\Core\\C1.Blazor.Core.csproj",
+        "projectName": "C1.Blazor.Core",
+        "projectPath": "C:\\Git\\c1-netcore\\Blazor\\Controls\\Core\\C1.Blazor.Core.csproj",
+        "packagesPath": "C:\\Users\\phillipnguyen\\.nuget\\packages\\",
+        "outputPath": "C:\\Git\\c1-netcore\\Blazor\\Controls\\Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Git\\c1-netcore\\NuGet.Config",
+          "C:\\Users\\phillipnguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "D:\\C1\\NugetLocal": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkg.grapecitydev.com/nuget/nuget-dev/": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "C1.DataCollection": {
+              "target": "Package",
+              "version": "[1.0.20221.65, )"
+            },
+            "Microsoft.AspNetCore.Components": {
+              "target": "Package",
+              "version": "[6.0.0-preview.7.21378.6, )"
+            },
+            "Microsoft.AspNetCore.Components.Web": {
+              "target": "Package",
+              "version": "[6.0.0-preview.7.21378.6, )"
+            },
+            "System.Security.Cryptography.Cng": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Git\\c1-netcore\\Blazor\\Controls\\Input\\C1.Blazor.Input.csproj": {
+      "version": "6.0.20221.212",
+      "restore": {
+        "projectUniqueName": "C:\\Git\\c1-netcore\\Blazor\\Controls\\Input\\C1.Blazor.Input.csproj",
+        "projectName": "C1.Blazor.Input",
+        "projectPath": "C:\\Git\\c1-netcore\\Blazor\\Controls\\Input\\C1.Blazor.Input.csproj",
+        "packagesPath": "C:\\Users\\phillipnguyen\\.nuget\\packages\\",
+        "outputPath": "C:\\Git\\c1-netcore\\Blazor\\Controls\\Input\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Git\\c1-netcore\\NuGet.Config",
+          "C:\\Users\\phillipnguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "D:\\C1\\NugetLocal": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkg.grapecitydev.com/nuget/nuget-dev/": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Git\\c1-netcore\\Blazor\\Controls\\Core\\C1.Blazor.Core.csproj": {
+                "projectPath": "C:\\Git\\c1-netcore\\Blazor\\Controls\\Core\\C1.Blazor.Core.csproj"
+              },
+              "C:\\Git\\c1-netcore\\Blazor\\Controls\\ListView\\C1.Blazor.ListView.csproj": {
+                "projectPath": "C:\\Git\\c1-netcore\\Blazor\\Controls\\ListView\\C1.Blazor.ListView.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "C1.DataCollection": {
+              "target": "Package",
+              "version": "[1.0.20221.65, )"
+            },
+            "Microsoft.AspNetCore.Components": {
+              "target": "Package",
+              "version": "[6.0.0-preview.7.21378.6, )"
+            },
+            "Microsoft.AspNetCore.Components.Web": {
+              "target": "Package",
+              "version": "[6.0.0-preview.7.21378.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Git\\c1-netcore\\Blazor\\Controls\\ListView\\C1.Blazor.ListView.csproj": {
+      "version": "6.0.20221.212",
+      "restore": {
+        "projectUniqueName": "C:\\Git\\c1-netcore\\Blazor\\Controls\\ListView\\C1.Blazor.ListView.csproj",
+        "projectName": "C1.Blazor.ListView",
+        "projectPath": "C:\\Git\\c1-netcore\\Blazor\\Controls\\ListView\\C1.Blazor.ListView.csproj",
+        "packagesPath": "C:\\Users\\phillipnguyen\\.nuget\\packages\\",
+        "outputPath": "C:\\Git\\c1-netcore\\Blazor\\Controls\\ListView\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Git\\c1-netcore\\NuGet.Config",
+          "C:\\Users\\phillipnguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "D:\\C1\\NugetLocal": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkg.grapecitydev.com/nuget/nuget-dev/": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Git\\c1-netcore\\Blazor\\Controls\\Core\\C1.Blazor.Core.csproj": {
+                "projectPath": "C:\\Git\\c1-netcore\\Blazor\\Controls\\Core\\C1.Blazor.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "C1.DataCollection": {
+              "target": "Package",
+              "version": "[1.0.20221.65, )"
+            },
+            "Microsoft.AspNetCore.Components": {
+              "target": "Package",
+              "version": "[6.0.0-preview.7.21378.6, )"
+            },
+            "Microsoft.AspNetCore.Components.Web": {
+              "target": "Package",
+              "version": "[6.0.0-preview.7.21378.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Git\\c1-netcore\\Blazor\\Controls\\TreeView\\C1.Blazor.TreeView.csproj": {
+      "version": "6.0.20221.212",
+      "restore": {
+        "projectUniqueName": "C:\\Git\\c1-netcore\\Blazor\\Controls\\TreeView\\C1.Blazor.TreeView.csproj",
+        "projectName": "C1.Blazor.TreeView",
+        "projectPath": "C:\\Git\\c1-netcore\\Blazor\\Controls\\TreeView\\C1.Blazor.TreeView.csproj",
+        "packagesPath": "C:\\Users\\phillipnguyen\\.nuget\\packages\\",
+        "outputPath": "C:\\Git\\c1-netcore\\Blazor\\Controls\\TreeView\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Git\\c1-netcore\\NuGet.Config",
+          "C:\\Users\\phillipnguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "D:\\C1\\NugetLocal": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkg.grapecitydev.com/nuget/nuget-dev/": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Git\\c1-netcore\\Blazor\\Controls\\Core\\C1.Blazor.Core.csproj": {
+                "projectPath": "C:\\Git\\c1-netcore\\Blazor\\Controls\\Core\\C1.Blazor.Core.csproj"
+              },
+              "C:\\Git\\c1-netcore\\Blazor\\Controls\\Input\\C1.Blazor.Input.csproj": {
+                "projectPath": "C:\\Git\\c1-netcore\\Blazor\\Controls\\Input\\C1.Blazor.Input.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Components": {
+              "target": "Package",
+              "version": "[6.0.0-preview.7.21378.6, )"
+            },
+            "Microsoft.AspNetCore.Components.Web": {
+              "target": "Package",
+              "version": "[6.0.0-preview.7.21378.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Git\\c1-netcore\\Blazor\\Samples\\TreeView\\TreeViewExplorer.Server\\TreeViewExplorer.Server.csproj": {
+      "version": "6.0.20221.212",
+      "restore": {
+        "projectUniqueName": "C:\\Git\\c1-netcore\\Blazor\\Samples\\TreeView\\TreeViewExplorer.Server\\TreeViewExplorer.Server.csproj",
+        "projectName": "TreeViewExplorer.Server",
+        "projectPath": "C:\\Git\\c1-netcore\\Blazor\\Samples\\TreeView\\TreeViewExplorer.Server\\TreeViewExplorer.Server.csproj",
+        "packagesPath": "C:\\Users\\phillipnguyen\\.nuget\\packages\\",
+        "outputPath": "C:\\Git\\c1-netcore\\Blazor\\Samples\\TreeView\\TreeViewExplorer.Server\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Git\\c1-netcore\\NuGet.Config",
+          "C:\\Users\\phillipnguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "D:\\C1\\NugetLocal": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkg.grapecitydev.com/nuget/nuget-dev/": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Git\\c1-netcore\\Blazor\\Controls\\Core\\C1.Blazor.Core.csproj": {
+                "projectPath": "C:\\Git\\c1-netcore\\Blazor\\Controls\\Core\\C1.Blazor.Core.csproj"
+              },
+              "C:\\Git\\c1-netcore\\Blazor\\Controls\\TreeView\\C1.Blazor.TreeView.csproj": {
+                "projectPath": "C:\\Git\\c1-netcore\\Blazor\\Controls\\TreeView\\C1.Blazor.TreeView.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

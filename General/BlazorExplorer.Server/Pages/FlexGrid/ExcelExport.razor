@@ -417,7 +417,8 @@
         }
         fileContent = stream.ToArray();
       }
-
+        
+      fileName = string.IsNullOrEmpty(fileName) ? "export" : fileName;
       await JsRuntime.InvokeVoidAsync("downloadFromByteArray", new
       {
         ByteArray = fileContent,

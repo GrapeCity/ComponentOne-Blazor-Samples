@@ -1,0 +1,72 @@
+﻿@page "/icontemplate"
+@using C1.Blazor.TreeView
+@using C1.Blazor.Core
+
+
+
+<C1TreeView ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name" ShowLines="true" IsExpandedPath="Expanded"
+            ItemsSource="_dataSource" Class="shadow"
+            Style="@(new C1Style{ Height = 500, Width = 300})"
+            SelectionMode="C1SelectionMode.Extended" ExpandMode="TreeViewExpandMode.Multiple" 
+            CollapsedIconTemplate="C1IconTemplate.PlusSquare" 
+            ExpandedIconTemplate="C1IconTemplate.MinusSquare"
+            ExpandedIconStyle="@("width:10px;height:10px;margin:4px;")"/>
+
+
+@code{
+    public class Directory
+    {
+        public string Name { get; set; }
+        public List<Directory> Subdirectories { get; set; }
+        public bool Expanded { get; set; } = true;
+    }
+
+
+    readonly IList<Directory> _dataSource = new List<Directory>()
+    {
+        new Directory()
+        {
+            Name = "Directory 2",
+            Subdirectories = new List<Directory>
+            {
+                new Directory
+                {
+                    Name = "Directory 2.1",
+                    Subdirectories = new List<Directory>
+                    {
+                        new Directory {Name = "Directory 2.1.1"},
+                        new Directory {Name = "Directory 2.1.2"},
+                        new Directory
+                        {
+                            Name = "Directory 2.1.3",
+                            Subdirectories = new List<Directory>()
+                            {
+                                new Directory {Name = "Directory 2.1.3.1"},
+                                new Directory
+                                {
+                                    Name = "Directory 2.1.3.2",
+                                    Subdirectories = new List<Directory>()
+                                    {
+                                        new Directory {Name = "Directory 2.1.3.2.1"},
+                                        new Directory {Name = "Directory 2.1.3.2.2"}
+                                    }
+                                },
+                            }
+                        },
+                    }
+
+                }
+            }
+        },
+        new Directory
+        {
+            Name = "Directory 3",
+            Subdirectories = new List<Directory>()
+            {
+                new Directory {Name = "Directory 3.1"}
+            }
+        },
+    };
+
+
+}

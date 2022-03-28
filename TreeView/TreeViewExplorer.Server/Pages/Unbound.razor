@@ -1,0 +1,17 @@
+﻿@page "/unbound"
+@using C1.Blazor.TreeView
+@using C1.Blazor.Core
+
+<C1TreeView Class="shadow" SelectionMode="C1SelectionMode.Extended" ExpandMode="TreeViewExpandMode.Single" ShowLines="true">
+    
+    <TreeViewItem Header="Node 1" IsExpanded="true">
+        <TreeViewItem Header="Node 1.1">
+            <TreeViewItem Header="Node 1.1.1" />
+            <TreeViewItem Header="Node 1.1.2" />
+            <TreeViewItem Header="Node 1.1.3" />
+        </TreeViewItem>
+    </TreeViewItem>
+    <TreeViewItem Header="Node 2" />
+    <TreeViewItem Header="Node 3" />
+    
+</C1TreeView>

@@ -42,7 +42,8 @@ namespace BlazorExplorer
                 await dataCollection.SortAsync(sortDescriptions.ToArray());
             }
 
-            return new Tuple<int, IReadOnlyList<FinancialData>>(financialData.Count, dataCollection.Skip(pageIndex * count + startingIndex).Take(count).Select(x => (FinancialData)x).ToList());
+            var data = dataCollection.Skip(startingIndex).Take(count);
+            return new Tuple<int, IReadOnlyList<FinancialData>>(financialData.Count, data.Select(x => (FinancialData)x).ToList());
         }
     }
 }

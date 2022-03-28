@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>C1.Blazor.ListView</name>
+    </assembly>
+    <members>
+        <member name="T:C1.Blazor.ListView.C1ListView`1">
+            <summary>
+            The ListView controls display a virtualized list of items.
+            </summary>
+            <typeparam name="T">The type of the items</typeparam>
+        </member>
+        <member name="M:C1.Blazor.ListView.C1ListView`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.ListView.C1ListView`1"/> class.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.ItemTemplate">
+            <summary>
+            Gets or sets the template used to render the items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.LoadingItem">
+            <summary>
+            Gets or sets the callback that is called when the items are being loaded.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.DisplayMemberPath">
+            <summary>
+            Gets or sets the property name or path of the item that will be used to extract the text that will be displayed.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.GroupTemplate">
+            <summary>
+            Gets or sets the template used to display groups.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.ItemsSource">
+            <summary>
+            Gets or sets the collection of items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.SelectionMode">
+            <summary>
+            Gets or sets how the cells or rows are selected.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.SeparatorWidth">
+            <summary>
+            Gets or sets the width of the line separating items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.ScrollBarVisibility">
+            <summary>
+            Gets or sets visibility of the vertical scrollbar.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.ItemStyle">
+            <summary>
+            Gets or sets the style of the items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.ItemBackgroundColor">
+            <summary>
+            Gets or sets the <see cref="T:C1.Blazor.Core.C1Color"/> that is used to paint the background of items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.ItemTextColor">
+            <summary>
+            Gets or sets the <see cref="T:C1.Blazor.Core.C1Color"/> of the items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.AlternatingItemBackgroundColor">
+            <summary>
+            Gets or sets the <see cref="T:C1.Blazor.Core.C1Color"/> that is used to paint the background of the odd items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.AlternatingItemTextColor">
+            <summary>
+            Gets or sets the <see cref="T:C1.Blazor.Core.C1Color"/> of the odd items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.GroupBackgroundColor">
+            <summary>
+            Gets or sets the <see cref="T:C1.Blazor.Core.C1Color"/> that is used to paint the background of the groups.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.GroupTextColor">
+            <summary>
+            Gets or sets the <see cref="T:C1.Blazor.Core.C1Color"/> of the group items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.SelectionStyle">
+            <summary>
+            Gets or sets the style of the selection.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.Selection">
+            <summary>
+            Gets or sets the ListView selection.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.ShowCheckboxes">
+            <summary>
+            Sets the name of the property used to control checkboxes placed next to each item.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.SelectionChanged">
+            <summary>
+            Occurs after selection changed.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.ItemTapped">
+            <summary>
+            Gets or sets the callback that will be called when an item is tapped.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.ItemDoubleTapped">
+            <summary>
+            Gets or sets the callback that will be called when an item is double tapped.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.ListView.C1ListView`1.OnItemTapped(C1.Blazor.ListView.ListViewInputEventArgs)">
+            <summary>
+            Raises the <see cref="E:ItemTapped" /> event.
+            </summary>
+            <param name="e">The <see cref="T:C1.Blazor.ListView.ListViewInputEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:C1.Blazor.ListView.C1ListView`1.OnItemDoubleTapped(C1.Blazor.ListView.ListViewInputEventArgs)">
+            <summary>
+            Raises the <see cref="E:ItemDoubleTapped" /> event.
+            </summary>
+            <param name="e">The <see cref="T:C1.Blazor.ListView.ListViewInputEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:C1.Blazor.ListView.C1ListView`1.OnLoadingItem(C1.Blazor.ListView.ListViewItemStyleEventArgs)">
+            <summary>
+            Raises the <see cref="E:LoadingItem" /> event.
+            </summary>
+            <param name="e">The <see cref="T:C1.Blazor.ListView.ListViewItemStyleEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.DataCollection">
+            <summary>
+            Gets the underlying collection.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.Items">
+            <summary>
+            Gets the collection of items displayed in the list.
+            </summary>
+            <remarks>
+            This collection is a plain list of items as shown in the list, unlike <see cref="P:C1.Blazor.ListView.C1ListView`1.DataCollection"/> which can contain grouped items.
+            </remarks>
+        </member>
+        <member name="M:C1.Blazor.ListView.C1ListView`1.ChangeViewAsync(System.Double)">
+            <summary>
+            Scrolls the list vertically to the specified offset.
+            </summary>
+            <param name="verticalOffset">The vertical offset.</param>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.ListView.C1ListView`1.Select(System.Int32)">
+            <summary>
+            Selects the specified index.
+            </summary>
+            <param name="index">The index.</param>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.ItemHeight">
+            <summary>
+            Gets the height of the items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.C1ListView`1.ViewportHeight">
+            <summary>
+            Gets the height of the viewport.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.ListView.C1ListView`1.ScrollIntoView(System.Int32)">
+            <summary>
+            Scrolls the list to the specified <paramref name="index"/>.
+            </summary>
+            <param name="index">The range that will enter into view.</param>
+        </member>
+        <member name="M:C1.Blazor.ListView.C1ListView`1.ScrollIntoViewAsync(System.Int32)">
+            <summary>
+            Scrolls the list to the specified <paramref name="index"/>.
+            </summary>
+            <param name="index">The range that will enter into view.</param>
+        </member>
+        <member name="M:C1.Blazor.ListView.C1ListView`1.Refresh">
+            <summary>
+            Refresh current view panel
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.ListView.ListViewInputEventArgs">
+            <summary>
+            Contains event information
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.ListViewInputEventArgs.Event">
+            <summary>
+            Gets the original event.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.ListView.ListViewItemRangeEventArgs">
+            <summary>
+            Contains information about an event related to an item of <see cref="T:C1.Blazor.ListView.C1ListView`1"/>
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.ListViewItemRangeEventArgs.Range">
+            <summary>
+            Gets the range related to the event.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.ListView.ListViewItemStyleEventArgs">
+            <summary>
+            Contains event information.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.ListView.ListViewItemStyleEventArgs.ItemStyle">
+            <summary>
+            Gets the item style.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.ListView.ListViewVirtualStackPanel`1">
+            <summary>
+            Component used to render a virtualized list of items.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+    </members>
+</doc>

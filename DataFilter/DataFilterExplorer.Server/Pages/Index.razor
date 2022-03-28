@@ -1,41 +1,48 @@
 ﻿@page "/"
-@using Localization
-@using C1.Blazor.DataFilter
-@using C1.Blazor.Grid
-@using C1.Blazor.Accordion
-
 <h3>@DataFilterRes.CarListTitle</h3>
 <p>@DataFilterRes.CarListDescription</p>
 
 <div style="margin: 4px;">
-    <C1.Blazor.Input.C1CheckBox @bind-IsChecked="autoApply" IsThreeState="false" /> @DataFilterRes.AutoApplyFilter
-    <button @onclick="OnApplyFilterClicked" style="margin: 4px;"><img src="Content/images/filter.png"></button>
+    <label>
+        <C1CheckBox @bind-IsChecked="_autoApply" IsThreeState="false" /> @DataFilterRes.AutoApplyFilter
+    </label>
+    <button @onclick="OnApplyFilterClicked" style="margin: 4px; padding: 2px 8px; height: 36px;">
+        <svg style="height: 16px; width: 16px; fill: currentColor;" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 402.577 402.577"><path d="M400.858 11.427C397.617 4.006 392.008.295 384.004.291H18.564c-7.993 0-13.61 3.715-16.846 11.136-3.234 7.801-1.903 14.467 3.999 19.985l140.757 140.753V310.92c0 4.955 1.809 9.232 5.424 12.854l73.085 73.083c3.429 3.614 7.71 5.428 12.851 5.428 2.282 0 4.66-.479 7.135-1.43 7.426-3.238 11.14-8.851 11.14-16.845V172.166L396.861 31.413c5.904-5.518 7.232-12.182 3.997-19.986z"/></svg>
+    </button>
+    <button @onclick="OnSaveClicked" style="margin: 4px; padding: 2px 8px; height: 36px;">
+        <svg style="height: 16px; width: 16px; fill: currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 438.533 438.533"> xml:space="preserve"><path d="M432.823 121.049c-3.806-9.132-8.377-16.367-13.709-21.695l-79.941-79.942c-5.325-5.325-12.56-9.895-21.696-13.704C308.346 1.903 299.969 0 292.357 0H27.409C19.798 0 13.325 2.663 7.995 7.993 2.665 13.32.003 19.792.003 27.407v383.719c0 7.617 2.662 14.089 7.992 19.417 5.33 5.325 11.803 7.991 19.414 7.991h383.718c7.618 0 14.089-2.666 19.417-7.991 5.325-5.328 7.987-11.8 7.987-19.417V146.178c0-7.616-1.902-15.99-5.708-25.129zM182.725 45.677c0-2.474.905-4.611 2.714-6.423 1.807-1.804 3.949-2.708 6.423-2.708h54.819c2.468 0 4.609.902 6.417 2.708 1.813 1.812 2.717 3.949 2.717 6.423v91.362c0 2.478-.91 4.618-2.717 6.427-1.808 1.803-3.949 2.708-6.417 2.708h-54.819c-2.474 0-4.617-.902-6.423-2.708-1.809-1.812-2.714-3.949-2.714-6.427V45.677zm146.181 356.314H109.633V292.355h219.273v109.636zm73.094 0h-36.559V283.218c0-7.617-2.663-14.085-7.991-19.417-5.328-5.328-11.8-7.994-19.41-7.994H100.498c-7.614 0-14.087 2.666-19.417 7.994-5.327 5.328-7.992 11.8-7.992 19.417v118.773H36.544V36.542h36.544v118.771c0 7.615 2.662 14.084 7.992 19.414 5.33 5.327 11.803 7.993 19.417 7.993h164.456c7.61 0 14.089-2.666 19.41-7.993 5.325-5.327 7.994-11.799 7.994-19.414V36.542c2.854 0 6.563.95 11.136 2.853 4.572 1.902 7.806 3.805 9.709 5.708l80.232 80.23c1.902 1.903 3.806 5.19 5.708 9.851 1.909 4.665 2.857 8.33 2.857 10.994v255.813z"/></svg>
+    </button>   
+    
+    <button @onclick="OnResetClicked" style="margin: 4px; padding: 2px 8px; height: 36px; " disabled = "@(string.IsNullOrEmpty(_filterExpressions))" >
+        <svg style="height: 16px; width: 16px; fill: currentColor;" viewBox="0 0 16 16" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M2.083 9H0v5l1.481-1.361A8.001 8.001 0 0 0 15.938 9h-2.021A6.001 6.001 0 0 1 2.97 11.271L5.441 9H2.083zM8 0A8.001 8.001 0 0 0 .062 7h2.021a6.001 6.001 0 0 1 11.041-2.124L11 7h5V2l-1.432 1.432A7.988 7.988 0 0 0 8 0z"/></svg>
+    </button>    
 </div>
 <br />
 
 <section class="sampleDataFilterSection">
     <div class="filtersSection">
-        <C1DataFilter @ref="dataFilter" AutoApply="autoApply.GetValueOrDefault()" ItemsSource="@data" FilterAutoGenerating="@FilterAutoGenerating" Style="@("max-height: inherit")" ExpandMode="@ExpandMode.One">
+        <C1DataFilter @ref="_dataFilter" AutoApply="_autoApply.GetValueOrDefault()" ItemsSource="@_data" FilterAutoGenerating="@FilterAutoGenerating" Style="@("max-height: inherit")" ExpandMode="@ExpandMode.One">
 
         </C1DataFilter>
     </div>
     <div class="dataSection">
-        <FlexGrid AutoGeneratingColumn="OnAutoGeneratingColumn" ItemsSource="@data" HeadersVisibility="GridHeadersVisibility.All" Style="@("max-height: inherit")">
+        <FlexGrid AutoGeneratingColumn="OnAutoGeneratingColumn" ItemsSource="@_data" HeadersVisibility="GridHeadersVisibility.All" Style="@("max-height: inherit")">
 
         </FlexGrid>
     </div>
 </section>
 
 @code{
-    bool? autoApply { get; set; } = true;
-    C1DataFilter dataFilter { get; set; }
-    C1.DataCollection.C1DataCollection<Car> data { get; set; }
+    bool? _autoApply = true;
+    private string _filterExpressions;
+    C1DataFilter _dataFilter;
+    C1.DataCollection.C1DataCollection<Car> _data;
 
 
     protected override void OnInitialized()
     {
         var carsTable = DataProvider.GetCarTable();
-        data = new C1.DataCollection.C1DataCollection<Car>(DataProvider.GetCarDataCollection(carsTable));
+        _data = new C1.DataCollection.C1DataCollection<Car>(DataProvider.GetCarDataCollection(carsTable));
     }
 
     void OnAutoGeneratingColumn(object sender, GridAutoGeneratingColumnEventArgs args)
@@ -62,8 +69,8 @@
         else if (e.Property.Name == nameof(Car.Price))
         {
             var priceFilter = (RangeFilter)e.Filter;
-            priceFilter.Maximum = data.Max(o => ((Car)o).Price);
-            priceFilter.Minimum = data.Min(o => ((Car)o).Price);
+            priceFilter.Maximum = _data.Max(o => ((Car)o).Price);
+            priceFilter.Minimum = _data.Min(o => ((Car)o).Price);
             priceFilter.Increment = 1000;
             priceFilter.Format = "F0";
         }
@@ -81,10 +88,27 @@
                 unset.DisplayValue = C1.Blazor.DataFilter.Resources.Resource.Null;
             }
         }
+        else if (e.Property.Name == nameof(Car.DateProductionLine))
+        {
+            var filter = e.Filter as DateRangeFilter;
+            filter.Maximum = _data.Max(o => ((Car)o).DateProductionLine);
+            filter.Minimum = _data.Min(o => ((Car)o).DateProductionLine);
+        }
     }
 
     void OnApplyFilterClicked()
     {
-        _ = dataFilter.ApplyFilterAsync();
+        _ = _dataFilter.ApplyFilterAsync();
+    }
+
+    void OnSaveClicked()
+    {
+        _filterExpressions = _dataFilter.SerializeFilterExpression();
+    }
+
+    void OnResetClicked()
+    {
+        _dataFilter.DeserializeFilterExpression(_filterExpressions);
+        _ = _dataFilter.ApplyFilterAsync();
     }
 }

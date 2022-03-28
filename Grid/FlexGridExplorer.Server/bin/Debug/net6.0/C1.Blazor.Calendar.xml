@@ -1,0 +1,1074 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>C1.Blazor.Calendar</name>
+    </assembly>
+    <members>
+        <member name="T:C1.Blazor.Calendar.C1Calendar">
+            <summary>
+            Represents a month calendar with the ability to interactively navigate
+            through months and select a specific <see cref="T:System.DateTime"/> value or a range of dates.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.MonthCount">
+            <summary>
+            The number of month will be displayed.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.MonthCountProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.MonthCount"/> dependency property. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._dayOfWeekFormat">
+            <summary>
+            Gets or sets the format used to display the day of the week.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._viewMode">
+            <summary>
+            Gets or sets a value indicating whether the calendar displays a month, year or decade view.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._displayDate">
+            <summary>
+            Gets or sets a value specifying the currently displayed date of the year.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._firstDayOfWeek">
+            <summary>
+            Gets or sets a value that represents the first day of the week, the one displayed in the first column of the calendar.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._headerMonthFormat">
+            <summary>
+            Gets or sets the format used to display the month of the year when the <see cref="P:C1.Blazor.Calendar.C1Calendar.ViewMode"/> is <see cref="F:C1.Blazor.Calendar.CalendarViewMode.Month"/>.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._minDate">
+            <summary>
+            Gets or sets the earliest date that the user can select in the calendar.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._maxDate">
+            <summary>
+            Gets or sets the latest date that the user can select in the calendar.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._orientation">
+            <summary>
+            Gets or sets a value indicating which orientation the calendar navigates.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._showAdjacentDay">
+            <summary>
+            Default is true - AdjacentDay will invisible if set false.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._selectedDate">
+            <summary>
+            Gets or sets the currently selected date.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._selectedDates">
+            <summary>
+            Gets or sets the list of selected dates.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._showNavigationButtons">
+            <summary>
+            Navigation Buttons will be shown if set,  default value is true.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._showHeader">
+            <summary>
+            Header will be shown if set, default value is true.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._prevIconTemplate">
+            <summary>
+            Gets or sets the previous icon template.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._nextIconTemplate">
+            <summary>
+            Gets or sets the next icon template.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._adjacentDayStyle">
+            <summary>
+            Gets or sets the style for the AdjacentDay slot.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._dayStyle">
+            <summary>
+            Gets or sets the style for the normal day slot.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._monthStyle">
+            <summary>
+            Gets or sets the style for the normal month slot.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._yearStyle">
+            <summary>
+            Gets or sets the style for the normal year slot.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._dayOfWeekStyle">
+            <summary>
+            Gets or sets the style for the Day of Week panel.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._headerStyle">
+            <summary>
+            Gets or sets the style for the calendar header.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._selectionStyle">
+            <summary>
+            Gets or sets the style for the selected slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._todayStyle">
+            <summary>
+            Gets or sets the style for the today slot.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._disabledStyle">
+            <summary>
+            Gets or sets the style for the disabled slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._dayOfWeekSlotTemplate">
+            <summary>
+            Gets or sets a data template that defines the UI representation for a day of the week.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._daySlotTemplate">
+            <summary>
+            Gets or sets a data template that defines the UI representation for a single day of the month.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._calendarType">
+            <summary>
+            Gets or sets the type of calendar.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._selectionMode">
+            <summary>
+            Gets or sets the selection behavior for the calendar.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._maxSelectionCount">
+            <summary>
+            Gets or sets the maximum number of days that can be selected in the control.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._dayBackground">
+            <summary>
+            Gets or sets the background for the day slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._dayForeground">
+            <summary>
+            Gets or sets the color of the text displayed in the day slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._dayBorderBrush">
+            <summary>
+            Gets or sets the color used for the border between day slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._dayBorderThickness">
+            <summary>
+            Gets or sets the border thickness between day slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._dayPadding">
+            <summary>
+            Gets or sets the padding of the day slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._dayOfWeekBackground">
+            <summary>
+            Gets or sets the background color for the day of week slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._dayOfWeekForeground">
+            <summary>
+            Gets or sets the color of the text displayed in the day of week slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._headerBackground">
+            <summary>
+            Gets or sets the background for the header.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._headerForeground">
+            <summary>
+            Gets or sets the color for the header text.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._selectionBackground">
+            <summary>
+            Gets or sets the color used to highlight selected dates.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._selectionForeground">
+            <summary>
+            Gets or sets the color for selected date text.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._todayBackground">
+            <summary>
+            Gets or sets the color used to highlight the background of the today day slot.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._todayForeground">
+            <summary>
+            Gets or sets the color for the text of the today day slot.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._disabledForeground">
+            <summary>
+            Gets or sets the color for the text of disabled slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar._adjacentDayForeground">
+            <summary>
+            Gets or sets the color of the adjacent days text.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.TodayIconTemplate">
+            <summary>
+            TodayIconTemplate button content.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.ExpandViewIconTemplate">
+            <summary>
+            Month expanse button content.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CollapseViewIconTemplate">
+            <summary>
+            Month expanse button content.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.IsFullScreen">
+            <summary>
+            The size equal browser's size in DatePicker
+            In DateTimePicker, the size + TimeSelectionPanel = browser's size
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.SelectedDateStyle">
+            <summary>
+            Gets or sets the selected date style.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.ItemValidator">
+            <summary>
+            Gets or sets the selected date style.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.OnSelectionChanged">
+            <summary>
+            Gets or sets the callback that is called when the value is changed.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.SelectedDateChanged">
+            <summary>
+            This Callback will gets and sets by Blazor framework automatically for binding feature.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DisplayDateChanged">
+            <summary>
+            Occurs when the DisplayDate property has changed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)">
+            <summary>
+            Render Blazor C1Calendar
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.OnInitialized">
+            <summary>
+            Verify lic
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.Refresh">
+            <summary>
+            Refreshes the control.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.Refresh(System.Boolean)">
+            <summary>
+            Refreshes the control.
+            </summary>
+            <param name="keepSlotContent">Keeps the slots content when a slot is already created.</param>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CanGoBack">
+            <summary>
+            Gets a value indicating whether it is possible to navigate backwards.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CanGoForward">
+            <summary>
+            Gets a value indicating whether it is possible to navigate forward.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.ActualFirstDayOfWeek">
+            <summary>
+            Gets the actual first day of week, if <see cref="P:C1.Blazor.Calendar.C1Calendar.FirstDayOfWeek"/> is not specified the value will be get from the system. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.ActualMinDate">
+            <summary>
+            Gets the actual <see cref="P:C1.Blazor.Calendar.C1Calendar.MinDate"/>.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.ActualMaxDate">
+            <summary>
+            Gets the actual <see cref="P:C1.Blazor.Calendar.C1Calendar.MaxDate"/>.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.ActualDisplayDate">
+            <summary>
+            Gets the actual <see cref="P:C1.Blazor.Calendar.C1Calendar.DisplayDate"/> considering <see cref="P:C1.Blazor.Calendar.C1Calendar.MinDate"/> and <see cref="P:C1.Blazor.Calendar.C1Calendar.MaxDate"/>.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Calendar.C1Calendar.CalendarSlotInfo">
+            <summary>
+            Contains info about slots.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CalendarSlotInfo.Row">
+            <summary>
+            Gets or sets the row of the slot.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CalendarSlotInfo.Column">
+            <summary>
+            Gets or sets the column of the slot.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CalendarSlotInfo.IsEnabled">
+            <summary>
+            Gets a value indicating whether the slot is enabled.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Calendar.C1Calendar.CalendarDayOfWeekSlotInfo">
+            <summary>
+            Contains info about day of week slots.
+            </summary>
+            <seealso cref="T:C1.Blazor.Calendar.C1Calendar.CalendarSlotInfo" />
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CalendarDayOfWeekSlotInfo.DayOfWeek">
+            <summary>
+            Gets or sets the day of week associated with the slot.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.CalendarDayOfWeekSlotInfo.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" />, is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.CalendarDayOfWeekSlotInfo.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="T:C1.Blazor.Calendar.C1Calendar.CalendarDaySlotInfo">
+            <summary>
+            Contains info about day slots.
+            </summary>
+            <seealso cref="T:C1.Blazor.Calendar.C1Calendar.CalendarSlotInfo" />
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CalendarDaySlotInfo.Date">
+            <summary>
+            Gets or sets the date associated with this slot.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CalendarDaySlotInfo.IsAdjacent">
+            <summary>
+            Gets or sets a value indicating whether the day is adjacent.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CalendarDaySlotInfo.IsSelected">
+            <summary>
+            Check the date associated with this slot is selected or not.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CalendarDaySlotInfo.IsToday">
+            <summary>
+            Check the date associated with this slot is today or not.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.CalendarDaySlotInfo.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" />, is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.CalendarDaySlotInfo.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="T:C1.Blazor.Calendar.C1Calendar.CalendarMonthSlotInfo">
+            <summary>
+            Contains info about month slots.
+            </summary>
+            <seealso cref="T:C1.Blazor.Calendar.C1Calendar.CalendarSlotInfo" />
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CalendarMonthSlotInfo.Year">
+            <summary>
+            Gets or sets the year associated to this slot.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CalendarMonthSlotInfo.Month">
+            <summary>
+            Gets or sets the month associated to this slot.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.CalendarMonthSlotInfo.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" />, is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.CalendarMonthSlotInfo.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="T:C1.Blazor.Calendar.C1Calendar.CalendarYearSlotInfo">
+            <summary>
+            Contains info about year slots.
+            </summary>
+            <seealso cref="T:C1.Blazor.Calendar.C1Calendar.CalendarSlotInfo" />
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CalendarYearSlotInfo.Year">
+            <summary>
+            Gets or sets the year associated with the slot.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CalendarYearSlotInfo.IsInDecade">
+            <summary>
+            Gets or sets a value indicating whether this year is in decade that is being displayed.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.CalendarYearSlotInfo.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" />, is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.CalendarYearSlotInfo.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="T:C1.Blazor.Calendar.C1Calendar.CalendarHeaderSlotInfo">
+            <summary>
+            Contains info about header slots.
+            </summary>
+            <seealso cref="T:C1.Blazor.Calendar.C1Calendar.CalendarHeaderSlotInfo" />
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CalendarHeaderSlotInfo.Date">
+            <summary>
+            Gets or sets the date associated with this slot.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.CalendarHeaderSlotInfo.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" />, is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.CalendarHeaderSlotInfo.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Calendar.C1Calendar"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.Calendar.C1Calendar.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.DayOfWeekFormatProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.DayOfWeekFormat"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DayOfWeekFormat">
+            <summary>
+            Gets or sets the format used to display the day of the week.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.ViewModeProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.ViewMode"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.ViewMode">
+            <summary>
+            Gets or sets a value indicating whether the calendar displays a month, year or decade view.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.DisplayDateProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.DisplayDate"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DisplayDate">
+            <summary>
+            Gets or sets a value specifying the currently displayed date of the year.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.FirstDayOfWeekProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.FirstDayOfWeek"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.FirstDayOfWeek">
+            <summary>
+            Gets or sets a value that represents the first day of the week, the one displayed in the first column of the calendar.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.HeaderMonthFormatProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.HeaderMonthFormat"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.HeaderMonthFormat">
+            <summary>
+            Gets or sets the format used to display the month of the year when the <see cref="!:ViewMode" /> is <see cref="F:C1.Blazor.Calendar.CalendarViewMode.Month" />.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.MinDateProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.MinDate"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.MinDate">
+            <summary>
+            Gets or sets the earliest date that the user can select in the calendar.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.MaxDateProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.MaxDate"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.MaxDate">
+            <summary>
+            Gets or sets the latest date that the user can select in the calendar.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.OrientationProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.Orientation"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.Orientation">
+            <summary>
+            Gets or sets a value indicating which orientation the calendar navigates.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.ShowAdjacentDayProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.ShowAdjacentDay"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.ShowAdjacentDay">
+            <summary>
+            Default is true - AdjacentDay will invisible if set false.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.SelectedDateProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.SelectedDate"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.SelectedDate">
+            <summary>
+            Gets or sets the currently selected date.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.SelectedDatesProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.SelectedDates"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.SelectedDates">
+            <summary>
+            Gets or sets the list of selected dates.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.ShowNavigationButtonsProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.ShowNavigationButtons"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.ShowNavigationButtons">
+            <summary>
+            Navigation Buttons will be shown if set,  default value is true.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.ShowHeaderProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.ShowHeader"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.ShowHeader">
+            <summary>
+            Header will be shown if set, default value is true.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.PrevIconTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.PrevIconTemplate"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.PrevIconTemplate">
+            <summary>
+            Gets or sets the previous icon template.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.NextIconTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.NextIconTemplate"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.NextIconTemplate">
+            <summary>
+            Gets or sets the next icon template.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.AdjacentDayStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.AdjacentDayStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.AdjacentDayStyle">
+            <summary>
+            Gets or sets the style for the AdjacentDay slot.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.DayStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.DayStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DayStyle">
+            <summary>
+            Gets or sets the style for the normal day slot.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.MonthStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.MonthStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.MonthStyle">
+            <summary>
+            Gets or sets the style for the normal month slot.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.YearStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.YearStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.YearStyle">
+            <summary>
+            Gets or sets the style for the normal year slot.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.DayOfWeekStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.DayOfWeekStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DayOfWeekStyle">
+            <summary>
+            Gets or sets the style for the Day of Week panel.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.HeaderStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.HeaderStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.HeaderStyle">
+            <summary>
+            Gets or sets the style for the calendar header.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.SelectionStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.SelectionStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.SelectionStyle">
+            <summary>
+            Gets or sets the style for the selected slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.TodayStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.TodayStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.TodayStyle">
+            <summary>
+            Gets or sets the style for the today slot.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.DisabledStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.DisabledStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DisabledStyle">
+            <summary>
+            Gets or sets the style for the disabled slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.DayOfWeekSlotTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.DayOfWeekSlotTemplate"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DayOfWeekSlotTemplate">
+            <summary>
+            Gets or sets a data template that defines the UI representation for a day of the week.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.DaySlotTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.DaySlotTemplate"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DaySlotTemplate">
+            <summary>
+            Gets or sets a data template that defines the UI representation for a single day of the month.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.CalendarTypeProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.CalendarType"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.CalendarType">
+            <summary>
+            Gets or sets the type of calendar.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.SelectionModeProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.SelectionMode"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.SelectionMode">
+            <summary>
+            Gets or sets the selection behavior for the calendar.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.MaxSelectionCountProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.MaxSelectionCount"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.MaxSelectionCount">
+            <summary>
+            Gets or sets the maximum number of days that can be selected in the control.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.DayBackgroundProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.DayBackground"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DayBackground">
+            <summary>
+            Gets or sets the background for the day slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.DayForegroundProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.DayForeground"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DayForeground">
+            <summary>
+            Gets or sets the color of the text displayed in the day slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.DayBorderBrushProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.DayBorderBrush"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DayBorderBrush">
+            <summary>
+            Gets or sets the color used for the border between day slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.DayBorderThicknessProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.DayBorderThickness"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DayBorderThickness">
+            <summary>
+            Gets or sets the border thickness between day slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.DayPaddingProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.DayPadding"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DayPadding">
+            <summary>
+            Gets or sets the padding of the day slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.DayOfWeekBackgroundProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.DayOfWeekBackground"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DayOfWeekBackground">
+            <summary>
+            Gets or sets the background color for the day of week slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.DayOfWeekForegroundProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.DayOfWeekForeground"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DayOfWeekForeground">
+            <summary>
+            Gets or sets the color of the text displayed in the day of week slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.HeaderBackgroundProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.HeaderBackground"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.HeaderBackground">
+            <summary>
+            Gets or sets the background for the header.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.HeaderForegroundProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.HeaderForeground"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.HeaderForeground">
+            <summary>
+            Gets or sets the color for the header text.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.SelectionBackgroundProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.SelectionBackground"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.SelectionBackground">
+            <summary>
+            Gets or sets the color used to highlight selected dates.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.SelectionForegroundProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.SelectionForeground"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.SelectionForeground">
+            <summary>
+            Gets or sets the color for selected date text.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.TodayBackgroundProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.TodayBackground"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.TodayBackground">
+            <summary>
+            Gets or sets the color used to highlight the background of the today day slot.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.TodayForegroundProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.TodayForeground"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.TodayForeground">
+            <summary>
+            Gets or sets the color for the text of the today day slot.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.DisabledForegroundProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.DisabledForeground"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.DisabledForeground">
+            <summary>
+            Gets or sets the color for the text of disabled slots.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.C1Calendar.AdjacentDayForegroundProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.Calendar.C1Calendar.AdjacentDayForeground"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.C1Calendar.AdjacentDayForeground">
+            <summary>
+            Gets or sets the color of the adjacent days text.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Calendar.CalendarViewMode">
+            <summary>
+            Specifies constants that define the different views.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.CalendarViewMode.Month">
+            <summary>
+            Displays the days of the month.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.CalendarViewMode.Year">
+            <summary>
+            Displays the months of the year.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.CalendarViewMode.Decade">
+            <summary>
+            Displays the years of the decade.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Calendar.CalendarOrientation">
+            <summary>
+            Specifies constants that define the navigation orientation
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.CalendarOrientation.Horizontal">
+            <summary>
+            The calendar is navigated horizontally.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.CalendarOrientation.Vertical">
+            <summary>
+            The calendar is navigated vertically.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Calendar.CalendarType">
+            <summary>
+            Specifies the kind of calendar displayed
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.CalendarType.Default">
+            <summary>
+            The calendar type will be determined by the platform settings.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.CalendarType.Gregorian">
+            <summary>
+            The Gregorian calendar
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Calendar.CalendarType.Japanese">
+            <summary>
+            The Japanese calendar
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.ICalendarIconCustomization.NextIconTemplate">
+            <summary>
+            NextIconTemplate button content
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.ICalendarIconCustomization.PrevIconTemplate">
+            <summary>
+            PrevIconTemplate button content.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.ICalendarIconCustomization.TodayIconTemplate">
+            <summary>
+            TodayIconTemplate button content.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.ICalendarIconCustomization.ExpandViewIconTemplate">
+            <summary>
+            Month expanse button content.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Calendar.ICalendarIconCustomization.CollapseViewIconTemplate">
+            <summary>
+            Month expanse button content.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Calendar.CalendarSelectionChangedEventArgs">
+            <summary>
+            Event information for <see cref="E:C1Calendar.SelectionChanged"/> event.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Calendar.CalendarSelectionChangedEventArgs.#ctor(System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.Calendar.CalendarSelectionChangedEventArgs"/> class.
+            </summary>
+            <param name="selectedDate">The selected date.</param>
+        </member>
+        <member name="P:C1.Blazor.Calendar.CalendarSelectionChangedEventArgs.Value">
+            <summary>
+            Gets the selected date.
+            </summary>
+        </member>
+    </members>
+</doc>

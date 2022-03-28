@@ -673,15 +673,29 @@ Specific series may override those properties and use different data sources and
     <value>損益分岐点チャートは、総コストが売上高と等しくなる販売量レベルを示すチャートです。</value>
   </data>
   <data name="BreakEvenSummary" xml:space="preserve">
-    <value>損益分岐点のプロット</value>
+    <value>損益分岐点</value>
+    <comment>Break Even Plot</comment>
   </data>
   <data name="BreakEvenTitle" xml:space="preserve">
-    <value>損益分岐点のプロット</value>
+    <value>損益分岐点</value>
+    <comment>Break Even Plot</comment>
   </data>
   <data name="NewData" xml:space="preserve">
     <value>新規データ</value>
   </data>
   <data name="UpdateData" xml:space="preserve">
     <value>データ更新</value>
+  </data>
+  <data name="TwoAxesDescription" xml:space="preserve">
+    <value>サンプルではプロットに２番目のY軸を追加する方法を示します。</value>
+    <comment>The sample shows how to add second y-axis to the plot.</comment>
+  </data>
+  <data name="TwoAxesSummary" xml:space="preserve">
+    <value>２つのY軸を持つプロット</value>
+    <comment>Plot with two y-axes</comment>
+  </data>
+  <data name="TwoAxesTitle" xml:space="preserve">
+    <value>２つのY軸</value>
+    <comment>Two Y-axes</comment>
   </data>
 </root>

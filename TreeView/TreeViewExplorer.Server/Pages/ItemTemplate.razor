@@ -1,0 +1,99 @@
+﻿@page "/itemtemplate"
+@using C1.Blazor.TreeView
+@using C1.Blazor.Core
+
+<style>
+    .item-template-style {
+        border: 1px solid green;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        font-family: fantasy;
+        font-size: 10px;
+        color: green;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+<C1TreeView ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name" ShowLines="true"
+            ItemsSource="_directories"
+            Style="@(new C1Style{ Height = 500, Width = 300, ["border"] = "1px solid #dddddd"})"
+            SelectionMode="C1SelectionMode.Extended" ExpandMode="TreeViewExpandMode.Single">
+
+
+    <ItemTemplate>
+
+        @if (context is TreeViewItem { DataItem: Directory dir } item)
+        {
+            <div class="item-template-style">
+                @dir.Name <span class="badge" style="color: yellowgreen;">Tree level: @item.TreeLevel</span>
+            </div>
+        }
+
+    </ItemTemplate>
+
+</C1TreeView>
+
+
+@code{
+    public class Directory
+    {
+        public string Name { get; set; }
+        public List<Directory> Subdirectories { get; set; }
+    }
+
+    int Random()
+    {
+        return new Random().Next(0, 5);
+    }
+
+    IList<Directory> _directories = new List<Directory>();
+
+    protected override void OnInitialized()
+    {
+
+        for (int i = 0; i < 100; i++)
+        {
+            var root = new Directory
+            {
+                Name = Guid.NewGuid().ToString().Substring(0, 5),
+                Subdirectories = new List<Directory>()
+            };
+
+
+
+            var childCount = Random();
+
+            for (int j = 0; j < childCount; j++)
+            {
+
+                var subChildCount = Random();
+
+                var subRoot = new Directory
+                {
+                    Name = Guid.NewGuid().ToString().Substring(0, 5),
+                    Subdirectories = new List<Directory>()
+                };
+
+
+                for (int k = 0; k < subChildCount; k++)
+                {
+                    subRoot.Subdirectories.Add(new Directory
+                    {
+                        Name = Guid.NewGuid().ToString().Substring(0, 5),
+                    });
+                }
+
+                root.Subdirectories.Add(subRoot);
+
+            }
+
+            _directories.Add(root);
+        }
+
+
+    }
+
+}

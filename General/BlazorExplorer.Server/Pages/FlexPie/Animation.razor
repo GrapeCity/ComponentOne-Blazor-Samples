@@ -22,8 +22,8 @@
         Inner Radius <C1ComboBox ItemsSource="innerRadiuses" @bind-SelectedItem="innerRadius" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
         Offset <C1ComboBox ItemsSource="offsets" @bind-SelectedItem="offset" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
 
-        <button class="btn btn-primary" @onclick="@(()=> NewData())">New data</button>
-        <button class="btn btn-primary" @onclick="@(()=> UpdateData())">Update data</button>
+        <button class="btn btn-primary" @onclick="@(()=> NewData())">@FlexChartRes.NewData</button>
+        <button class="btn btn-primary" @onclick="@(()=> UpdateData())">@FlexChartRes.UpdateData</button>
     </Settings>
 </_Sections>
 

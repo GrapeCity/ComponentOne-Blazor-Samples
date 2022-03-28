@@ -1,19 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <None Remove=".gclicx" />
+    <None Remove="readme.txt" />
+    <None Remove="readme_ja.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include=".gclicx" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>3.1.20213.154</Version>
+      <Version>6.0.20221.211</Version>
     </PackageReference>
     <PackageReference Include="C1.DataCollection.AdoNet">
-      <Version>1.0.20213.61</Version>
+      <Version>1.0.20221.65</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.2" />
     <PackageReference Include="SqlTableDependency" Version="8.5.8" />

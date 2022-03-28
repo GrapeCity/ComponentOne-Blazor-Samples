@@ -1,0 +1,25 @@
+﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+html, body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.content {
+    padding-top: 1.1rem;
+    display: flex;
+    justify-content: center;
+}
+.title {
+    background-color: rgb(112,173,70);
+    font-size: 32px;
+    color: white;
+    padding-left: 15px;
+}
+.content-container {
+    border: 2px solid black;
+    padding: 15px;
+}
+.flexgrid-cell span{
+    margin-right: 0 !important;
+    padding-right: 5px;
+}

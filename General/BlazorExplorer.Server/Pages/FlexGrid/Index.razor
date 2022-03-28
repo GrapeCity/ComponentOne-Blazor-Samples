@@ -64,7 +64,7 @@
     protected override void OnInitialized()
     {
         var collection = new FinancialDataCollection();
-        financialData = new C1PagedDataCollection<FinancialData>(collection);
+        financialData = new C1PagedDataCollection<FinancialData>(collection) { PageSize = 8 };
     }
 
     public void OnSelectionChanged(object sender, GridCellRangeEventArgs e)

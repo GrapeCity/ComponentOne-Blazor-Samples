@@ -176,7 +176,7 @@ namespace DataFilterExplorer.Server
                 builder.OpenRegion(11);
 
                 builder.OpenElement(11, "span");
-                builder.AddAttribute(12, "style", $"background: {C1Color.FromARGB(color.A, color.R, color.G, color.B)}; width: 30px; height: 30px; border-radius: 50%; display:inline-block; margin-left: 3px; margin-right: 3px;");
+                builder.AddAttribute(12, "style", $"background: {C1Color.FromArgb(color.A, color.R, color.G, color.B)}; width: 30px; height: 30px; border-radius: 50%; display:inline-block; margin-left: 3px; margin-right: 3px;");
                 builder.AddAttribute(13, "onclick", EventCallback.Factory.Create(this, ()=> {
                     Filter.SelectColor(color, !Filter.IsColorSelected(color));
                 }));

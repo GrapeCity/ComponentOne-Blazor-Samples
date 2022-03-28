@@ -1230,6 +1230,33 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The sample shows how to add second y-axis to the plot..
+        /// </summary>
+        public static string TwoAxesDescription {
+            get {
+                return ResourceManager.GetString("TwoAxesDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plot with two y-axes.
+        /// </summary>
+        public static string TwoAxesSummary {
+            get {
+                return ResourceManager.GetString("TwoAxesSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Two Y-axes.
+        /// </summary>
+        public static string TwoAxesTitle {
+            get {
+                return ResourceManager.GetString("TwoAxesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update Data.
         /// </summary>
         public static string UpdateData {

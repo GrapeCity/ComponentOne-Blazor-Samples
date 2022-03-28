@@ -182,7 +182,8 @@ namespace BlazorExplorer.Models
                     _refAppGroup = new ControlGroup
                     {
                         GroupNameEn = "Reference Applications",
-                        GroupNameJp = Localization.Resource.Reference_Applications
+                        GroupNameJp = Localization.Resource.Reference_Applications,
+                        IconVisible = false
                     };
                     foreach (var controlElement in root.Elements("ControlGroup"))
                     {
@@ -453,6 +454,8 @@ namespace BlazorExplorer.Models
             }
         }
         public bool Visible { get; set; }
+
+        public bool IconVisible { get; set; } = true;
 
         internal static bool IsJpCulture
         {

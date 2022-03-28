@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>C1.Blazor.Grid.Excel</name>
+    </assembly>
+    <members>
+        <member name="T:C1.Blazor.Grid.GridRowColRangesOptions">
+            <summary>
+            Specifies options available for customizing the excel output when grid is exported.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Grid.GridRowColRangesOptions.None">
+            <summary>
+            Represents an option where no options are truly set for row(s) and/or column(s).
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Grid.GridRowColRangesOptions.VisibleOnly">
+            <summary>
+            Represents an option that opts-in for rendering only visible row(s) and/or column(s) in the output file.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Grid.GridRowColRangesOptions.RenderFrozen">
+            <summary>
+            Represents an option that opts-in for rendering the frozen row(s) and/or column(s) in the output file.
+            <remarks>
+            If a combination of other flags is used as well, the frozen indexes are affected by that option as well.
+            </remarks>
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Grid.GridRowColRangesOptions.SelectedOnly">
+            <summary>
+            Represents an option that opts-in for rendering only the selected row(s) and/or column(s) in the output file.
+            <remarks>
+            If it is set for only either row(s) or column(s), only row(s) or column(s) that have a selected cell in them will be rendered in the output file.
+            If it is set for both row(s) and column(s), only the cell(s) in the selected range will be rendered in the output file.
+            </remarks>
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Grid.GridRowColRangesOptions.ExludeRange">
+            <summary>
+            Represents an option that opts-in for treating any explicit ranges as exclusive; meaning those column(s) and/or row(s) in the range will not be rendered in the output file.
+            <remarks>
+            By default, any specified range(s) are inclusive; meaning that only those column(s) and/or row(s) in the range will be rendered in the output file.
+            </remarks>
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Grid.GridRowColRangesOptions.ExcludeEmpty">
+            <summary>
+            Represents an option that opts-in for excluding empty row(s) in the rendered output file.
+            <remarks>
+            This only affects row ranges.
+            </remarks>
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.Grid.GridRowColRangesOptions.RenderGroups">
+            <summary>
+            Represents an option that opts-in for including grouped row(s) in the rendered output file.
+            <remarks>
+            This only affects row ranges.
+            </remarks>
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.Grid.Extensions">
+            <summary>
+            Exposes extension methods to export an instance of FlexGrid in excel format.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Grid.Extensions.SaveAsync(C1.Blazor.Grid.FlexGrid,System.String,System.String,GrapeCity.Documents.Excel.SaveFileFormat,C1.Blazor.Grid.GridRowColRanges,C1.Blazor.Grid.GridRowColRanges,C1.Blazor.Grid.GridHeadersVisibility,System.Boolean,System.Boolean,System.Boolean,System.Drawing.Printing.PrinterSettings)">
+            <summary>
+            Saves the contents of the grid in a desired format using GcExcel
+            </summary>
+            <param name="grid">The grid this method will be used as an extention towards.</param>
+            <param name="fileName">A String representing the name of the file to save.</param>
+            <param name="sheetName">A String representing the worksheet name.</param>
+            <param name="saveFileFormat"><see cref="T:GrapeCity.Documents.Excel.SaveFileFormat"/>A SaveFileFormat enum value that specifies the format the file should be saved into.</param>
+            <param name="rows">
+            A GridRowColRanges object representing the row settings to be taken into consideration whilst exporting.
+            <remarks>Could contain specific ranges and/or other flagged options.</remarks>
+            </param>
+            <param name="columns">
+            A GridRowColRanges object representing the column settings to be taken into consideration whilst exporting.
+            <remarks>Could contain specific ranges and/or other flagged options.</remarks>
+            </param>
+            <param name="headers">A GridHeadersVisibility enum value that represents the header visibility options to be taken in consideration whilst exporting.</param>
+            <param name="merged">A Boolean flag denoting whether to render merged ranges in the output.</param>
+            <param name="formatted">
+            A Boolean flag denoting whether to render cell values as formatted in the output.
+            <remarks>If a grid column has a data map and this flag is not true, the rendered output will render the original values.</remarks>
+            </param>
+            <param name="renderImages">
+            A Boolean flag denoting whether to render images in the output. 
+            <remarks>If this value is false, their URI's are used instead.</remarks>
+            </param>
+            <param name="printerSettings">A PrinterSettings object representing all the printer settings to be passed down to the output.</param>
+        </member>
+        <member name="M:C1.Blazor.Grid.Extensions.SaveAsync(C1.Blazor.Grid.FlexGrid,System.IO.Stream,System.String,GrapeCity.Documents.Excel.SaveFileFormat,C1.Blazor.Grid.GridRowColRanges,C1.Blazor.Grid.GridRowColRanges,C1.Blazor.Grid.GridHeadersVisibility,System.Boolean,System.Boolean,System.Boolean,System.Drawing.Printing.PrinterSettings)">
+            <summary>
+            Saves the contents of the grid in a desired format using GcExcel
+            </summary>
+            <param name="grid">The grid this method will be used as an extention towards.</param>
+            <param name="stream">A Stream for the output to be written into.</param>
+            <param name="sheetName">A String representing the worksheet name.</param>
+            <param name="saveFileFormat"><see cref="T:GrapeCity.Documents.Excel.SaveFileFormat"/>A SaveFileFormat enum value that specifies the format the file should be saved into.</param>
+            <param name="rows">
+            A GridRowColRanges object representing the row settings to be taken into consideration whilst exporting.
+            <remarks>Could contain specific ranges and/or other flagged options.</remarks>
+            </param>
+            <param name="columns">
+            A GridRowColRanges object representing the column settings to be taken into consideration whilst exporting.
+            <remarks>Could contain specific ranges and/or other flagged options.</remarks>
+            </param>
+            <param name="headers">A GridHeadersVisibility enum value that represents the header visibility options to be taken in consideration whilst exporting.</param>
+            <param name="merged">A Boolean flag denoting whether to render merged ranges in the output.</param>
+            <param name="formatted">
+            A Boolean flag denoting whether to render cell values as formatted in the output.
+            <remarks>If a grid column has a data map and this flag is not true, the rendered output will render the original values.</remarks>
+            </param>
+            <param name="renderImages">
+            A Boolean flag denoting whether to render images in the output. 
+            <remarks>If this value is false, their URI's are used instead.</remarks>
+            </param>
+            <param name="printerSettings">A PrinterSettings object representing all the printer settings to be passed down to the output.</param>
+            
+        </member>
+        <member name="T:C1.Blazor.Grid.GridRowColRanges">
+            <summary>
+            Represents a wrapper class containing row or column settings that in turn affect the output when a grid is exported though the GcExcel library.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Grid.GridRowColRanges.Options">
+            <summary>
+            Gets or Sets the flagged options than in turn affect the rendered output.
+            <see cref="T:C1.Blazor.Grid.GridRowColRangesOptions"/>
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.Grid.GridRowColRanges.Ranges">
+            <summary>
+            Gets the specified ranges to be included or excluded in the rendered output.
+            <remarks>
+            This is a read-only value and it returns the string version of the internal RangedSet.
+            </remarks>
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.Grid.GridRowColRanges.#ctor(C1.Blazor.Core.C1OrderedSet,C1.Blazor.Grid.GridRowColRangesOptions)">
+            <summary>
+            Initializes a new instance of GridRowColRanges with where both the inclusive range and the flagged options are passed as a parameter.
+            </summary>
+            <param name="ranges">The ranges specified as a <see cref="T:C1.Blazor.Core.C1OrderedSet"/>.</param>
+            <param name="options">The flagged options to be taken into consideration when rendering output.</param>
+        </member>
+        <member name="T:C1.Blazor.Grid.GridRowColRangesConverter">
+            <summary>
+            Represents a TypeConverter that converts from a string to a C1OrderedSet
+            </summary>
+        </member>
+    </members>
+</doc>

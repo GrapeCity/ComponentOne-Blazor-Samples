@@ -1,0 +1,583 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>C1.Blazor.TreeView</name>
+    </assembly>
+    <members>
+        <member name="T:C1.Blazor.TreeView.C1TreeView">
+            <summary>
+            Represents a control that displays hierarchical data in a tree structure that has items that can expand and collapse.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.Items">
+            <summary>
+            Gets the collection of tree-view items. Every tree-view items contains the sub-items.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._allowDragDrop">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:C1.Blazor.TreeView.C1TreeView"/> allows drag-and-drop operations.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._keyboardNavigation">
+            <summary>
+            Enables or disables the Keyboard navigation functionality of the C1TreeView.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._selectionMode">
+            <summary>
+            Gets or sets the selection behavior for a C1TreeView.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._expandOnClick">
+            <summary>
+            Gets or sets a value indicating whether the node is expanded when the users clicks in the C1TreeViewItem header.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._collapseOnClick">
+            <summary>
+            Gets or sets a value indicating whether the node is collapsed when the users clicks in the C1TreeViewItem header.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._expandMode">
+            <summary>
+            Gets or sets a value indicating the allowed number of expanded C1TreeViewItems.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._showLines">
+            <summary>
+            Gets or sets a value that indicates whether the connecting lines are visible.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._showCheckboxes">
+            <summary>
+            Gets or sets the treeview item has show checkbox or not.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._wholeWidthSelection">
+            <summary>
+            Gets or sets whether the selection item should take the whole width of the control or not.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._expandedIconTemplate">
+            <summary>
+            Content template for tree item expanded icon.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._expandedIconStyle">
+            <summary>
+            Gets or sets the style applied to the expanded/collapsed icon.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._collapsedIconTemplate">
+            <summary>
+            Content template for tree item collapsed icon.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._dragSourceStyle">
+            <summary>
+            Gets of sets the style of the drag source item.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._dragTargetStyle">
+            <summary>
+            Gets of sets the style of the drag target item.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._mouseOverBrush">
+            <summary>
+            Gets or sets the <see cref="T:C1.Blazor.Core.C1Color" /> used to highlight the control when it has the mouse over.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView._selectedBackground">
+            <summary>
+            Gets or sets the <see cref="T:C1.Blazor.Core.C1Color" /> used to highlight the control when it is selected.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.OnItemClick">
+            <summary>
+            This Callback will gets and sets by Blazor framework automatically for binding feature.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.OnEnter">
+            <summary>
+            This Callback will gets and sets by Blazor framework automatically for binding feature.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.OnEscape">
+            <summary>
+            This Callback will gets and sets by Blazor framework automatically for binding feature.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.OnDragStart">
+            <summary>
+            This Callback will gets and sets by Blazor framework automatically for binding feature.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.OnDragOver">
+            <summary>
+            This Callback will gets and sets by Blazor framework automatically for binding feature.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.OnDrop">
+            <summary>
+            This Callback will gets and sets by Blazor framework automatically for binding feature.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.ItemsSource">
+            <summary>
+            Gets or sets tree-view  data source.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.ItemStyle">
+            <summary>
+            Gets or sets the style of the items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.SelectedItemStyle">
+            <summary>
+            Gets or sets the style of the selected items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.IsRTL">
+            <summary>
+            Gets or sets the style of the selected items.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.TreeView.C1TreeView.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)">
+            <summary>
+            Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder"/>.
+            </summary>
+            <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder"/> that will receive the render output.</param>
+        </member>
+        <member name="M:C1.Blazor.TreeView.C1TreeView.HandleSingleExpand(C1.Blazor.TreeView.TreeViewItem)">
+            <summary>
+            Handle logic of Single ExpandMode in case item is expanded
+            </summary>
+            <param name="item">expanded item</param>
+        </member>
+        <member name="M:C1.Blazor.TreeView.C1TreeView.Refresh">
+            <summary>
+            Refresh component.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.TreeView.C1TreeView.GetAllItems">
+            <summary>
+            Get all items
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.TreeView.C1TreeView.GetSelectedItems">
+            <summary>
+            Get selected items
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Blazor.TreeView.C1TreeView.Expand(C1.Blazor.TreeView.TreeViewItem,System.Boolean)">
+            <summary>
+            Set expanded item
+            </summary>
+            <param name="item">expanded item</param>
+            <param name="select">item is selected or not</param>
+        </member>
+        <member name="M:C1.Blazor.TreeView.C1TreeView.ScrollIntoViewAsync(System.Int32)">
+            <summary>
+            Scrolls the list to the specified <paramref name="index"/>.
+            </summary>
+            <param name="index">The range that will enter into view.</param>
+        </member>
+        <member name="M:C1.Blazor.TreeView.C1TreeView.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.TreeView.C1TreeView"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.TreeView.C1TreeView.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.TreeView.C1TreeView.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.AllowDragDropProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.AllowDragDrop"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.AllowDragDrop">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:C1.Blazor.TreeView.C1TreeView" /> allows drag-and-drop operations.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.KeyboardNavigationProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.KeyboardNavigation"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.KeyboardNavigation">
+            <summary>
+            Enables or disables the Keyboard navigation functionality of the C1TreeView.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.SelectionModeProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.SelectionMode"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.SelectionMode">
+            <summary>
+            Gets or sets the selection behavior for a C1TreeView.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.SelectionModeChanged">
+            <summary>
+            Gets or sets the callback called when the <see cref="P:C1.Blazor.TreeView.C1TreeView.SelectionMode"/> property has changed.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.ExpandOnClickProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.ExpandOnClick"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.ExpandOnClick">
+            <summary>
+            Gets or sets a value indicating whether the node is expanded when the users clicks in the C1TreeViewItem header.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.CollapseOnClickProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.CollapseOnClick"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.CollapseOnClick">
+            <summary>
+            Gets or sets a value indicating whether the node is collapsed when the users clicks in the C1TreeViewItem header.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.ExpandModeProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.ExpandMode"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.ExpandMode">
+            <summary>
+            Gets or sets a value indicating the allowed number of expanded C1TreeViewItems.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.ShowLinesProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.ShowLines"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.ShowLines">
+            <summary>
+            Gets or sets a value that indicates whether the connecting lines are visible.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.ShowCheckboxesProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.ShowCheckboxes"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.ShowCheckboxes">
+            <summary>
+            Gets or sets the treeview item has show checkbox or not.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.WholeWidthSelectionProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.WholeWidthSelection"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.WholeWidthSelection">
+            <summary>
+            Gets or sets whether the selection item should take the whole width of the control or not.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.ExpandedIconTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.ExpandedIconTemplate"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.ExpandedIconTemplate">
+            <summary>
+            Content template for tree item expanded icon.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.ExpandedIconStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.ExpandedIconStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.ExpandedIconStyle">
+            <summary>
+            Gets or sets the style applied to the expanded/collapsed icon.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.CollapsedIconTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.CollapsedIconTemplate"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.CollapsedIconTemplate">
+            <summary>
+            Content template for tree item collapsed icon.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.DragSourceStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.DragSourceStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.DragSourceStyle">
+            <summary>
+            Gets of sets the style of the drag source item.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.DragTargetStyleProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.DragTargetStyle"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.DragTargetStyle">
+            <summary>
+            Gets of sets the style of the drag target item.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.MouseOverBrushProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.MouseOverBrush"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.MouseOverBrush">
+            <summary>
+            Gets or sets the <see cref="T:C1.Blazor.Core.C1Color" /> used to highlight the control when it has the mouse over.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.SelectedBackgroundProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.SelectedBackground"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.C1TreeView.SelectedBackground">
+            <summary>
+            Gets or sets the <see cref="T:C1.Blazor.Core.C1Color" /> used to highlight the control when it is selected.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.HorizontalScrollBarVisibilityProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.HorizontalScrollBarVisibility"/> dependency property. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.VerticalScrollBarVisibilityProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.VerticalScrollBarVisibility"/> dependency property. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.ItemTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.ItemTemplate"/> dependency property. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.ChildItemsPathsProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.ChildItemsPaths"/> dependency property. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.DisplayMemberPathsProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.DisplayMemberPaths"/> dependency property. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.IsSelectedPathProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.IsSelectedPath"/> dependency property. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.C1TreeView.IsExpandedPathProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.C1TreeView.IsExpandedPath"/> dependency property. 
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.TreeView.EventArgs.TreeViewDragDropEventArgs">
+            <summary>
+            Contains information about an event related to an item of <see cref="T:C1.Blazor.TreeView.C1TreeView"/>
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.TreeView.TreeViewItem">
+            <summary>
+            The Tree-view DataSource object class
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.TreeView.TreeViewItem.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.TreeView.TreeViewItem"/> class.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItem.Id">
+            <summary>
+            get node Id
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItem.DataItem">
+            <summary>
+            gets the original data item.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItem.IsExpanded">
+            <summary>
+            gets or set the node IsExpanded property
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItem.IsSelected">
+            <summary>
+            gets or sets the node IsSelected property
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItem.Header">
+            <summary>
+            gets or set the node header.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItem.Parent">
+            <summary>
+            Gets the parent tree-view, in case there is one, otherwise null is returned.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItem.Items">
+            <summary>
+            gets or sets the children of the node.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItem.TreeLevel">
+            <summary>
+            Get current tree level.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.TreeView.TreeViewItemView">
+            <summary>
+            Implements a selectable item in a C1TreeView control.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItemView.OnClick">
+            <summary>
+            This Callback will gets and sets by Blazor framework automatically for binding feature.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItemView.OnToggle">
+            <summary>
+            This Callback will gets and sets by Blazor framework automatically for binding feature.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItemView.OnMouseDown">
+            <summary>
+            This Callback will gets and sets by Blazor framework automatically for binding feature.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItemView.ExpandedIconTemplate">
+            <summary>
+            get or set ExpandedIconTemplate.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItemView.ExpandedIconStyle">
+            <summary>
+            Gets or sets the style applied to the expand/collapse button.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItemView.CollapsedIconTemplate">
+            <summary>
+            gets or sets CollapsedIconTemplate.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItemView.Header">
+            <summary>
+            gets or sets the header.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItemView.SelectedStyle">
+            <summary>
+            Gets or sets the style of the selected items.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.TreeViewItemView._isSelected">
+            <summary>
+            Gets or sets whether a <see cref="T:C1.Blazor.TreeView.TreeViewItemView"/> control is selected.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.TreeViewItemView._isExpanded">
+            <summary>
+            Gets or sets a value that indicates whether a <see cref="T:C1.Blazor.TreeView.TreeViewItemView"/> is expanded.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.TreeView.TreeViewItemView.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)">
+            <summary>
+            Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder"/>.
+            </summary>
+            <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder"/> that will receive the render output.</param>
+        </member>
+        <member name="M:C1.Blazor.TreeView.TreeViewItemView.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:C1.Blazor.TreeView.TreeViewItemView"/> class.
+            </summary>
+        </member>
+        <member name="M:C1.Blazor.TreeView.TreeViewItemView.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:C1.Blazor.TreeView.TreeViewItemView.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="F:C1.Blazor.TreeView.TreeViewItemView.IsSelectedProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.TreeViewItemView.IsSelected"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItemView.IsSelected">
+            <summary>
+            Gets or sets whether a <see cref="T:C1.Blazor.TreeView.TreeViewItemView" /> control is selected.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.TreeViewItemView.IsExpandedProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.TreeViewItemView.IsExpanded"/> dependency property. 
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewItemView.IsExpanded">
+            <summary>
+            Gets or sets a value that indicates whether a <see cref="T:C1.Blazor.TreeView.TreeViewItemView" /> is expanded.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.TreeViewItemView.ItemTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:C1.Blazor.TreeView.TreeViewItemView.ItemTemplate"/> dependency property. 
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.TreeView.TreeViewVirtualStackPanel">
+            <summary>
+            Component used to render a virtualized list of items.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewVirtualStackPanel.OnClick">
+            <summary>
+            This Callback will gets and sets by Blazor framework automatically for binding feature.
+            </summary>
+        </member>
+        <member name="P:C1.Blazor.TreeView.TreeViewVirtualStackPanel.OnMouseDown">
+            <summary>
+            This Callback will gets and sets by Blazor framework automatically for binding feature.
+            </summary>
+        </member>
+        <member name="T:C1.Blazor.TreeView.TreeViewExpandMode">
+            <summary>
+            The TreeViewExpandMode enumeration is used in C1TreeView to specify the allowed number of expanded C1TreeViewItems. 
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.TreeViewExpandMode.Single">
+            <summary>
+            Only one item can be expanded at a time.
+            </summary>
+        </member>
+        <member name="F:C1.Blazor.TreeView.TreeViewExpandMode.Multiple">
+            <summary>
+            Several items may be expanded simultaneously.
+            </summary>
+        </member>
+    </members>
+</doc>

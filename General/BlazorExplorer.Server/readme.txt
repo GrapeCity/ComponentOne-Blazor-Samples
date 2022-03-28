@@ -23,3 +23,5 @@ Shows the following samples
 	- C1TreeView
 	- DataFilter
 	- Menu
+	- C1Accordion/C1Expander
+	- C1RangeSlider

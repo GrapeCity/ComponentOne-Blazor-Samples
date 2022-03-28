@@ -178,7 +178,7 @@
     <comment>Enter text to filter</comment>
   </data>
   <data name="FilterRowTitle" xml:space="preserve">
-    <value>フィルタ</value>
+    <value>フィルタ処理</value>
     <comment>FilterRow</comment>
   </data>
   <data name="FullTextFilterSummary" xml:space="preserve">
@@ -338,7 +338,7 @@
     <comment>Custom Appearance</comment>
   </data>
   <data name="DetailsVisibiltyMode" xml:space="preserve">
-    <value>DetailsVisibiltyMode</value>
+    <value>詳細の表示モード</value>
     <comment>DetailsVisibiltyMode</comment>
   </data>
   <data name="Friday" xml:space="preserve">
@@ -418,11 +418,11 @@
     <comment>Show how to custom sort icon in header column.</comment>
   </data>
   <data name="SortIconPosition" xml:space="preserve">
-    <value>SortIconPosition</value>
+    <value>ソートアイコンの位置</value>
     <comment>Sort icon position</comment>
   </data>
   <data name="SortIconTemplate" xml:space="preserve">
-    <value>Sort Icon Template</value>
+    <value>ソートアイコンのテンプレート</value>
     <comment>Sort icon template</comment>
   </data>
   <data name="LiveUpdatesDescription" xml:space="preserve">

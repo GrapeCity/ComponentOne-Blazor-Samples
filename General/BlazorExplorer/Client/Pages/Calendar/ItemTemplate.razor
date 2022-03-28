@@ -2,7 +2,6 @@
 @using C1.Blazor.Calendar
 @using C1.Blazor.Core
 @using System;
-@using BlazorExplorer.Localization
 
 <div >
 
@@ -26,20 +25,30 @@
         <C1Calendar Style="@_calendarStyle" HeaderStyle="@_calendarHeaderStyle" DayOfWeekStyle="@_calendarDayOfWeekStyle" DayStyle="@CalendarDayStyle" TodayStyle="@_calendarToDayStyle" SelectionStyle="@_calendarSelectionStyle">
 
             <DayOfWeekSlotTemplate>
-
-                @if (context.DayOfWeek == DayOfWeek.Sunday)
+                @switch (context.DayOfWeek)
                 {
-                    <span class="oi oi-flag" style="color: orange;">&nbsp;Sunday</span>
+                    case DayOfWeek.Monday:
+                        <span class="oi">@CalendarRes.Monday</span>
+                        break;
+                    case DayOfWeek.Tuesday:
+                        <span class="oi">@CalendarRes.Tuesday</span>
+                        break;
+                    case DayOfWeek.Wednesday:
+                        <span class="oi">@CalendarRes.Wednesday</span>
+                        break;
+                    case DayOfWeek.Thursday:
+                        <span class="oi">@CalendarRes.Thursday</span>
+                        break;
+                    case DayOfWeek.Friday:
+                        <span class="oi">@CalendarRes.Friday</span>
+                        break;
+                    case DayOfWeek.Saturday:
+                        <span class="oi oi-flag" style="color: orange;">&nbsp;@CalendarRes.Saturday</span>
+                        break;
+                    case DayOfWeek.Sunday:
+                        <span class="oi oi-flag" style="color: orange;">&nbsp;@CalendarRes.Sunday</span>
+                        break;
                 }
-                else if (context.DayOfWeek == DayOfWeek.Saturday)
-                {
-                    <span class="oi oi-flag" style="color: orange;">&nbsp;Saturday</span>
-                }
-                else
-                {
-                    <span class="oi">@context.DayOfWeek.ToString()</span>
-                }
-
 
             </DayOfWeekSlotTemplate>
 

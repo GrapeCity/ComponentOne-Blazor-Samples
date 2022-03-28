@@ -1,6 +1,6 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
+# Visual Studio Version 17
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataFilterExplorer.Server", "DataFilterExplorer.Server.csproj", "{1D83FF0C-EA0F-466B-9223-CD332601E8E9}"
 EndProject
 Global

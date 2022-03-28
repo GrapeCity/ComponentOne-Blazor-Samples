@@ -133,14 +133,20 @@
     <value>車両リスト</value>
     <comment>Cars List</comment>
   </data>
+  <data name="ConditionalFiltersDescription" xml:space="preserve">
+    <value>複数の条件を受け入れる新しい条件付きフィルターと新しいフルテキストフィルターを使用してデモンストレーションします。</value>
+  </data>
+  <data name="ConditionalFiltersTitle" xml:space="preserve">
+    <value>条件付きフィルター</value>
+  </data>
   <data name="CustomFilterDescription" xml:space="preserve">
     <value>C1DataFilterコントロールを使用してカスタムフィルターを表示する方法を示します。
  ウィンドウには C1TreeView と C1DataFilter があります。
 C1TreeView は、ItemTemplate を使用してデータを表示します。
 C1DataFilter は、次のカスタムフィルターを使用します。
 CustomFilter に基づく ColorFilter: 車の色を選択することを可能にします。
-CustomFilter に基づくModelFilter: 車のモデルを選択することを可能にします。
-ChecklistFilter に基づくPriceFilter: 車の価格帯を選択できます。</value>
+CustomFilter に基づ くModelFilter: 車のモデルを選択することを可能にします。
+ChecklistFilter に基づく PriceFilter: 車の価格帯を選択できます。</value>
     <comment>Demonstrates using C1DataFilter control to show custom filters.
 There is C1TreeView and C1DataFilter on the window.
 The C1TreeView uses ItemTemplate to shows data.
@@ -162,11 +168,15 @@ PriceFilter based on ChecklistFilter, allows to choose the price range of cars.<
     <comment>Filter Summary</comment>
   </data>
   <data name="VirtualSourceDescription" xml:space="preserve">
-    <value>このサンプルは、仮想化されたソースでC1DataFilterを使用する方法を示しています。</value>
+    <value>このサンプルは、仮想化されたソースで C1DataFilter を使用する方法を示します。</value>
     <comment>This sample demonstrate how C1DataFilter can be used with a virtualized source.</comment>
   </data>
   <data name="VirtualSourceTitle" xml:space="preserve">
     <value>仮想ソース</value>
     <comment>Virtual Source</comment>
+  </data>
+  <data name="VirtualSource_TextLoading" xml:space="preserve">
+    <value>データの読み込み中...</value>
+    <comment>Loading...</comment>
   </data>
 </root>

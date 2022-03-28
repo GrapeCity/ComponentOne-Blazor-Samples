@@ -1,6 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>FlexGridExplorer</AssemblyName>
     <RootNamespace>FlexGridExplorer</RootNamespace>
   </PropertyGroup>
@@ -22,21 +23,33 @@
     <EmbeddedResource Include="Data\employees.xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="C1.Blazor.Accordion">
+      <Version>6.0.20221.211</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Calendar">
+      <Version>6.0.20221.211</Version>
+    </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>3.1.20213.154</Version>
+      <Version>6.0.20221.211</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.DataFilter">
+      <Version>6.0.20221.211</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>3.1.20213.154</Version>
+      <Version>6.0.20221.211</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.DateTimeEditors">
+      <Version>6.0.20221.211</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>3.1.20213.154</Version>
+      <Version>6.0.20221.211</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>3.1.20213.154</Version>
+      <Version>6.0.20221.211</Version>
     </PackageReference>
-    <PackageReference Include="C1.DataCollection.Serialization" Version="1.0.20213.61" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.4" PrivateAssets="all" />
+    <PackageReference Include="C1.DataCollection.Serialization" Version="1.0.20221.65" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-preview.7.21378.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-preview.7.21378.6" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="5.0.7" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>

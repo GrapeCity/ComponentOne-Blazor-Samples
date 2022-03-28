@@ -1,4 +1,4 @@
-@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -6,6 +6,38 @@ html, body {
 
 a, .btn-link {
     color: #0366d6;
+}
+span[symbol]{
+    display:inline-block;
+    min-width: 30px;
+    min-height: 20px;
+    background: rgb(135, 196, 243);
+    border-radius: 5px;
+    margin: 1px;
+    font-size: 20px;
+    color: dimgray;
+    text-align:center;
+    padding-bottom: 2px;
+}
+
+section[control-feature] {
+    padding: 4px 7px 7px 12px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #E8E9EA;
+}
+section[control-feature] div[control-feature-header] {
+        
+}
+
+section[control-feature] div[control-feature-content] {
+    padding: 12px ;
+}
+
+section[control-feature] div[control-feature-info] {
+    padding: 12px ;
+    background-color: #e7f3fe;
+    border-left: 6px solid #2196F3;
 }
 
 .btn-primary {

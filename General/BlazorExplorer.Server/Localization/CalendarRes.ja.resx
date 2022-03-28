@@ -129,6 +129,9 @@
     <value>表示日付</value>
     <comment>Display Date</comment>
   </data>
+  <data name="Friday" xml:space="preserve">
+    <value>金曜日</value>
+  </data>
   <data name="Good" xml:space="preserve">
     <value>良好</value>
   </data>
@@ -165,6 +168,9 @@
     <value>モデル連結</value>
     <comment>Model Binding</comment>
   </data>
+  <data name="Monday" xml:space="preserve">
+    <value>月曜日</value>
+  </data>
   <data name="MultipleMonthsTitle" xml:space="preserve">
     <value>複数の月</value>
     <comment>Multiple Months</comment>
@@ -185,9 +191,21 @@
     <value>概要</value>
     <comment>Overview</comment>
   </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>土曜日</value>
+  </data>
   <data name="SelectedDateText" xml:space="preserve">
     <value>選択日付</value>
     <comment>Selected Date</comment>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>日曜日</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>木曜日</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>火曜日</value>
   </data>
   <data name="UsingRangesDescription" xml:space="preserve">
     <value>C1Calendar コントロールは、ユーザーが min プロパティと max プロパティによって決定される範囲外の値を選択するのを防ぐことができます。</value>
@@ -208,5 +226,8 @@
   <data name="ValidationTitle" xml:space="preserve">
     <value>検証</value>
     <comment>Validation</comment>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>水曜日</value>
   </data>
 </root>

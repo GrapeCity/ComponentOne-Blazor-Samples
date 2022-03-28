@@ -19,7 +19,7 @@ namespace BlazorExplorer.Localization {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class DataFilterRes {
@@ -88,6 +88,24 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demonstrate using new conditional filters that accept multiple conditions and a new full text filter..
+        /// </summary>
+        public static string ConditionalFiltersDescription {
+            get {
+                return ResourceManager.GetString("ConditionalFiltersDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conditional Filters.
+        /// </summary>
+        public static string ConditionalFiltersTitle {
+            get {
+                return ResourceManager.GetString("ConditionalFiltersTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Demonstrates using C1DataFilter control to show custom filters.
         ///There is C1TreeView and C1DataFilter on the window.
         ///The C1TreeView uses ItemTemplate to shows data.
@@ -126,6 +144,15 @@ namespace BlazorExplorer.Localization {
         public static string FilterSummaryTitle {
             get {
                 return ResourceManager.GetString("FilterSummaryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading....
+        /// </summary>
+        public static string VirtualSource_TextLoading {
+            get {
+                return ResourceManager.GetString("VirtualSource_TextLoading", resourceCulture);
             }
         }
         

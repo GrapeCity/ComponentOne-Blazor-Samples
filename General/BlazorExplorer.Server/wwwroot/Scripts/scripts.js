@@ -46,10 +46,10 @@ window.expand = function (e) {
 window.downloadFromByteArray = function (options) {
     const { byteArray, fileName, contentType } = options;
     // Convert base64 string to numbers array.
-    const numArray = atob(byteArray).split('').map(c => c.charCodeAt(0));
+    //const numArray = atob(byteArray).split('').map(c => c.charCodeAt(0));
 
     // Convert numbers array to Uint8Array object.
-    const uint8Array = new Uint8Array(numArray);
+    const uint8Array = new Uint8Array(byteArray);
 
     // Wrap it by Blob object.
     const blob = new Blob([uint8Array], { type: contentType });

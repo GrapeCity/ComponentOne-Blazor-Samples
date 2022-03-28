@@ -1,32 +1,26 @@
 ﻿@page "/CustomFilters"
-@using C1.Blazor.DataFilter
-@using C1.Blazor.TreeView
-@using C1.Blazor.Core
-@using C1.Blazor.Accordion
-@using C1.DataCollection
-@using Localization
+
 @implements IDisposable
 
 <h3>@DataFilterRes.CustomFilterTitle</h3>
 <p>@DataFilterRes.CustomFilterDescription</p>
-
 <section class="sampleDataFilterSection">
     <div class="filtersSection">
-        <C1DataFilter ItemsSource="@data"
+        <C1DataFilter ItemsSource="@_data"
                       AutoGenerateFilters="false"
                       Style="@("max-height: inherit;")"
                       ExpandMode="@ExpandMode.One">
             <DataFilters>
-                <ModelFilter PropertyName="Car.Model" CarModels="@carsModels" HeaderText="Model" />
-                <PriceFilter PropertyName="Car.Price" HeaderText="Price" PriceIntervals="priceIntervals" />
+                <ModelFilter PropertyName="Car.Model" CarModels="@_carsModels" HeaderText="Model" />
+                <PriceFilter PropertyName="Car.Price" HeaderText="Price" PriceIntervals="_priceIntervals" />
                 <TransmissionFilter PropertyName="Car.TransmissAutomatic" HeaderText="Automatic transmission" />
-                <ColorFilter PropertyName="Color" Colors="@colors" />
+                <ColorFilter PropertyName="Color" Colors="@_colors" />
             </DataFilters>
         </C1DataFilter>
     </div>
     <div class="dataSection">
-        <C1TreeView @ref="treeView" ChildItemsPaths="CountInStores" DisplayMemberPaths="Name" ShowLines="true"
-                    ItemsSource="treeViewSource"
+        <C1TreeView @ref="_treeView" ChildItemsPaths="CountInStores" DisplayMemberPaths="Name" ShowLines="true"
+                    ItemsSource="_treeViewSource"
                     Style="@("max-height: inherit; width: auto; overflow: auto;")"
                     ItemStyle=@("height: 150px;")
                     SelectionMode="C1SelectionMode.Extended" ExpandMode="TreeViewExpandMode.Single">
@@ -44,7 +38,7 @@
                             <div style="text-overflow: ellipsis;">
                                 Number of cars: @info.Count
                             </div>
-                            <div style="@($"width: 70px; height: 20px; background-color:{C1Color.FromARGB(info.Color.A, info.Color.R, info.Color.G, info.Color.B)}")"></div>
+                            <div style="@($"width: 70px; height: 20px; background-color:{C1Color.FromArgb(info.Color.A, info.Color.R, info.Color.G, info.Color.B)}")"></div>
                         </div>
                     </div>
                 }
@@ -57,7 +51,7 @@
                             <div style="padding:4px;">
                                 @foreach (var color in groupInfo.Colors)
                                 {
-                                    <span style="@($"background: {C1Color.FromARGB(color.A, color.R, color.G, color.B)}; width: 15px; height: 15px; border-radius: 50%; display:inline-block; margin-left: 3px; margin-right: 3px;")"></span>
+                                    <span style="@($"background: {C1Color.FromArgb(color.A, color.R, color.G, color.B)}; width: 15px; height: 15px; border-radius: 50%; display:inline-block; margin-left: 3px; margin-right: 3px;")"></span>
                                 }
                             </div>
                         </div>
@@ -80,22 +74,23 @@
     </div>
 </section>
 
-@code{
-    C1DataCollection<CountInStore> data;
 
-    List<System.Drawing.Color> colors;
-    List<Car> carsModels;
-    List<CarStoreGroup> treeViewSource;
-    C1TreeView treeView;
-    List<PriceInterval> priceIntervals;
+@code{
+    C1.DataCollection.C1DataCollection<CountInStore> _data;
+
+    List<System.Drawing.Color> _colors;
+    List<Car> _carsModels;
+    List<CarStoreGroup> _treeViewSource;
+    C1TreeView _treeView;
+    List<PriceInterval> _priceIntervals;
 
     protected override void OnInitialized()
     {
         var source = DataProvider.GetCarsInStores().ToList();
-        data = new C1.DataCollection.C1DataCollection<CountInStore>(source);
-        colors = DataProvider.Colors.Select(x => System.Drawing.Color.FromName(x)).ToList();
-        carsModels = source.GroupBy(x => ((CountInStore)x).Car).Select(g => g.Key).ToList();
-        priceIntervals = new List<PriceInterval>
+        _data = new C1.DataCollection.C1DataCollection<CountInStore>(source);
+        _colors = DataProvider.Colors.Select(x => System.Drawing.Color.FromName(x)).ToList();
+        _carsModels = source.GroupBy(x => ((CountInStore)x).Car).Select(g => g.Key).ToList();
+        _priceIntervals = new List<PriceInterval>
 {
             new PriceInterval { MaxPrice = 20000 },
             new PriceInterval { MinPrice = 20000, MaxPrice = 40000 },
@@ -111,7 +106,7 @@
         base.OnAfterRender(firstRender);
         if (firstRender)
         {
-            data.FilterChanged += OnFilterChanged;
+            _data.FilterChanged += OnFilterChanged;
         }
     }
 
@@ -123,19 +118,15 @@
 
     void UpdateTreeViewData()
     {
-        treeViewSource = data.GroupBy(x => ((CountInStore)x).Car)
-            .Select(g => new CarStoreGroup
-            {
-                Car = g.Key,
-                CountInStores = g.Cast<CountInStore>().Select(t => (CountInStore)t).ToList(),
-            }).ToList();
+        _treeViewSource = _data.GroupBy(x => ((CountInStore)x).Car)
+            .Select(g => new CarStoreGroup { Car = g.Key, CountInStores = g.Cast<CountInStore>().ToList() }).ToList();
     }
 
     public void Dispose()
     {
-        if (data != null)
+        if (_data != null)
         {
-            data.FilterChanged -= OnFilterChanged;
+            _data.FilterChanged -= OnFilterChanged;
         }
     }
 }

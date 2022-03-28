@@ -1,0 +1,199 @@
+﻿@page "/"
+@using System.Net.Http;
+@using System.Text;
+@using System.Text.Json;
+@using C1.Blazor.Grid
+@using C1.Blazor.Input
+@using InvestmentCalculator.Shared
+@using Localization 
+@inject IJSRuntime JsRuntime
+@inject HttpClient Http
+
+<div style="width: 725px;">
+    <div class="title">@Resource.InvestmentCalculator</div>
+    <div class="content-container">
+        <FlexGrid @ref="grid"
+                  CellFactory="@cellFactory"
+                  CellEditEnded="OnCellEditEnded" 
+                  MergeManager="@custommergemanager"
+                  CellTapped="OnCellTapped"
+                  CellDoubleTapped="OnCellDoubleTapped"
+                  SelectionMode="GridSelectionMode.Cell"
+                  HeadersVisibility="GridHeadersVisibility.None"
+                  GridLinesVisibility="GridLinesVisibility.None">
+            <FlexGridColumns>
+                <GridColumn Width="214" IsReadOnly="true" />
+                <GridColumn Width="294" IsReadOnly="true" />
+                <GridColumn Width="GridLength.Star" Format="c2" InputType="TextBoxType.Number"/>
+            </FlexGridColumns>
+            <FlexGridRows>
+                @for (int i = 0; i < 11; i++)
+                {
+                    if(i == 3 || i == 7 || i == 10)
+                    {
+                        <GridRow Height="25" />
+                    }
+                    else
+                    {
+                        <GridRow Height="32" />
+                    }
+                }
+            </FlexGridRows>
+        </FlexGrid>
+
+        <FlexGrid MaxRowHeight="25"
+                  AllowSorting="false"
+                  ItemsSource="dataSource"
+                  AutoGenerateColumns="false"
+                  Style="@("max-height:50vh")" 
+                  CellFactory="@detailCellFactory"
+                  DefaultColumnHeaderRowHeight="25"
+                  SelectionMode="GridSelectionMode.Cell"
+                  HeadersVisibility="GridHeadersVisibility.Column">
+            <FlexGridColumns>
+                <GridColumn Width="67" Binding="Period" Header="@Resource.Period" IsReadOnly="true" />
+                <GridColumn Width="147" Binding="InitialBalance" Header="@Resource.InitialBalance" Format="c2" IsReadOnly="true" />
+                <GridColumn Width="147" Binding="InterestEarned" Header="@Resource.InterestEarned" Format="c2" IsReadOnly="true" />
+                <GridColumn Width="147" Binding="NewDeposit" Header="@Resource.NewDeposit" Format="c2" IsReadOnly="true" />
+                <GridColumn Width="164" Binding="NewBalance" Header="@Resource.NewBalance" Format="c2" IsReadOnly="true" />
+            </FlexGridColumns>
+            <FlexGridRows />
+        </FlexGrid>
+    </div>
+</div>
+
+@code
+{
+    FlexGrid grid;
+    InvestmentResultDetailDataCollection dataSource;
+    int investmentYears = 30, numDeposits = 12;
+    double initialAmt = 5000, rate = 10, depositAmt = 100;
+    GridCellFactory cellFactory = new InvestmentCalculatorCellFactory();
+    GridCellFactory detailCellFactory = new InvestmentResultDetailCellFactory();
+    CustomMergeManager custommergemanager = new CustomMergeManager();
+
+    //Override AfterRender method to populate grid for Calculator fields
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            GenerateCalculator();
+        }
+    }
+
+    // Fill unbound grid to showcase calculator fields and results
+    private void GenerateCalculator()
+    {
+        grid[0, 0] = Resource.CalculateInvReturns;
+        grid[4, 0] = Resource.EnterValues;
+        grid[8, 0] = Resource.ResultsShownGreenBoxes;
+
+        grid[0, 1] = Resource.InitialInvAmount;
+        grid[1, 1] = Resource.AnnualRate;
+        grid[2, 1] = Resource.DepositAmountPerPeriod;
+
+        grid[4, 1] = Resource.DurationOfInvestment;
+        grid[5, 1] = Resource.NumberDepositsPerYear;
+        grid[6, 1] = Resource.TotalNumOfPeriods;
+
+        grid[8, 1] = Resource.TotalIncome;
+        grid[9, 1] = Resource.EndingBalance;
+
+        //Populate initial values for initial investment Amount, Return rate and deposit amount per period
+        grid[0, 2] = initialAmt;
+        grid[1, 2] = Convert.ToString(rate) + "%";
+        grid[2, 2] = depositAmt;
+
+        //Populate initial values for Investment duration(in years), number of deposits per year
+        grid[4, 2] = Convert.ToString(investmentYears);
+        grid[5, 2] = Convert.ToString(numDeposits);
+
+        //Invoke method to calculate investment return
+        CalculateReturn();
+    }
+
+    //Handle to OnCellDoubleTapped.
+    public void OnCellDoubleTapped(object sender, GridCellRangeEventArgs e)
+    {
+        if (e.CellRange.Row == 1 && e.CellRange.Column == 2)
+        {
+            grid[1, 2] =  Convert.ToDouble(grid[1, 2].ToString().Replace("%", ""));
+        }
+
+        //Handle to prevent cell edited of label cell.
+        OnPreventEdit(sender, e);
+    }
+
+    //Handle to OnCellTapped.
+    public void OnCellTapped(object sender, GridCellRangeEventArgs e)
+    {
+        //Handle to prevent cell edited of label cell.
+        //OnPreventEdit(sender, e);
+    }
+
+    //Handle to prevent cell edited of label cell.
+    private void OnPreventEdit(object sender, GridCellRangeEventArgs e)
+    {
+        var labelCell = (e.CellRange.Row == 3 || !(e.CellRange.Row >= 0 && e.CellRange.Row <= 5))
+                        || e.CellRange.Column == 0 || e.CellRange.Column == 1;
+        if (labelCell)
+        {
+            e.Cancel = true;
+        }
+    }
+
+    //Handle Flexgrid's CellEditEdited event to recalcuate investment return
+    //when either of the values Rate of Return, Deposit Amount etc. are changed
+    public async void OnCellEditEnded(object sender, GridCellRangeEventArgs e)
+    {
+        var value = grid[e.CellRange.Row, e.CellRange.Column].ToString();
+        if (value == "") value = "0";
+        //Parse string input value to int and assign to cell
+        if (e.CellRange.Row == 0 || e.CellRange.Row == 2)
+        {
+            grid[e.CellRange.Row, e.CellRange.Column] = Convert.ToInt32(value);
+        }
+        //Add percentage sign to Rate of Return
+        else if (e.CellRange.Row == 1)
+        {
+            grid[e.CellRange.Row, e.CellRange.Column] =  value + "%";
+        }
+        else 
+        {
+            grid[e.CellRange.Row, e.CellRange.Column] = value;
+        }
+
+        initialAmt = Convert.ToDouble(grid[0, 2].ToString());
+        rate = Convert.ToDouble(grid[1, 2].ToString().Replace("%", ""));
+        depositAmt = Convert.ToDouble(grid[2, 2].ToString());
+        investmentYears = Convert.ToInt32(grid[4, 2].ToString());
+        numDeposits = Convert.ToInt32(grid[5, 2].ToString());
+
+        //Invoke method to reclaculate investment return based on new values.
+        await CalculateReturn();
+    }
+
+    public async Task CalculateReturn()
+    {
+        string url = $"InvestmentResult?initialAmt={initialAmt}&rate={rate}&depositAmt={depositAmt}&investmentYears={investmentYears}&numDeposits={numDeposits}";
+        InvestmentResult result = await Http.GetFromJsonAsync<InvestmentResult>(new Uri(url, UriKind.Relative));
+
+        if (result.Status)
+        {
+            grid[6, 2] = Convert.ToString(result.TotalPeriod);
+            grid[8, 2] = Math.Round(result.TotalInterestIncome, 2);
+            grid[9, 2] = Math.Round(result.EndingBalance, 2);
+
+            dataSource = new InvestmentResultDetailDataCollection()
+            {
+                Http = Http,
+                PageSize = 20
+            };
+            StateHasChanged();
+        }
+        else
+        {
+            await JsRuntime.InvokeVoidAsync("alert", Resource.Alert);
+        }
+    }
+}

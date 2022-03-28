@@ -9,15 +9,15 @@
     <p>@AppResources.CustomSortIconDescription</p>
 
     <p>
-        @AppResources.SortIconPosition <C1ComboBox ItemsSource="sortIconPositions" @bind-SelectedItem="@sortIconPosition" />
+        Sort Icon Position <C1ComboBox ItemsSource="sortIconPositions" @bind-SelectedItem="@sortIconPosition" />
     </p>
     <p>
-        @AppResources.SortIconTemplate <C1ComboBox SelectedIndexChanged="SortIconTemplateChanged" ItemsSource="sortTemplates" DisplayMemberPath="Value" ValueMemberPath="Key"
+        Sort Icon Template <C1ComboBox SelectedIndexChanged="SortIconTemplateChanged" ItemsSource="sortTemplates" DisplayMemberPath="Value" ValueMemberPath="Key"
                                                    @bind-SelectedItem="@selectedTemplate" />
 
     </p>
     <p>
-        @AppResources.ShowSort <C1CheckBox @bind-IsChecked="showSort" />
+        Show Sort <C1CheckBox @bind-IsChecked="showSort" />
     </p>
 
 <FlexGrid @ref="grid" ItemsSource="source" ShowSort="@(showSort ?? false)" SortIconPosition="sortIconPosition"

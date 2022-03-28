@@ -51,7 +51,7 @@
                 var cellValue = Grid[range.Row, range.Column] as int?;
                 if (cellValue.HasValue)
                 {
-                    style.BackgroundColor = cellValue < 50.0 ? C1Color.FromARGB(0xFF, 0xFF, 0x70, 0x70) : C1Color.FromARGB(0xFF, 0x8E, 0xE9, 0x8E);
+                    style.BackgroundColor = cellValue < 50.0 ? C1Color.FromArgb(0xFF, 0xFF, 0x70, 0x70) : C1Color.FromArgb(0xFF, 0x8E, 0xE9, 0x8E);
                     style.Color = C1Color.Black;
                 }
             }
