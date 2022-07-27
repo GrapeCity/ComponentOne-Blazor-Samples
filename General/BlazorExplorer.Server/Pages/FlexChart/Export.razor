@@ -1,0 +1,76 @@
+﻿@page "/FlexChart/Export"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Input;
+
+<FlexChart @ref="chart" Class="chart" ChartType="ChartType.Scatter" 
+        HeaderContent="Phase II Test Results" HeaderStyle="font-size:24px"
+        BindingX="X" Binding="Y">
+      <SeriesCollection>
+        <Series Name="Experiment 1" ItemsSource="Data1" />
+        <Series Name="Experiment 2" ItemsSource="Data2" />
+        <Series Name="Experiment 3" ItemsSource="Data3" />
+    </SeriesCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.ExportTitle</Title>
+    <Settings>Save as:
+        <button @onclick="SavePng">PNG</button>
+        <button @onclick="SaveJpeg">JPEG</button>
+        <button @onclick="SaveSvg">SVG</button>
+    </Settings>
+    <Summary>@FlexChartRes.ExportSummary</Summary>
+    <Description>@FlexChartRes.ExportDescription</Description>
+</_Sections>
+
+@code {
+    FlexChart chart;
+
+    List<C1Point> Data1 { get; set; }
+    List<C1Point> Data2 { get; set; }
+    List<C1Point> Data3 { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Data1 = DataSource.GetData(50,0,3);
+        Data2 = DataSource.GetData(40,100,12);
+        Data3 = DataSource.GetData(30,-100,24);
+    }
+
+    void SavePng()
+    {
+        chart.SaveImage("chart", ImageFormat.Png);
+    }
+
+    void SaveJpeg()
+    {
+        chart.SaveImage("chart", ImageFormat.Jpeg);
+    }
+
+    void SaveSvg()
+    {
+        chart.SaveImage("chart", ImageFormat.Svg);
+    }
+
+    public class DataSource
+    {
+        private static Random rnd = new Random();
+
+        public static List<C1Point> GetData(int cnt, double a, double b)
+        {
+            var data = new List<C1Point>();
+
+            var  x = -2.5 * cnt;
+            for (var i = 0; i < cnt; i++)
+            {
+                var val = rnd.NextDouble() * cnt - cnt / 2;
+        
+                data.Add(new C1Point( x, a + x * (b + val) + val));
+                x += .5 + rnd.NextDouble() * 10;
+            }
+            return data;
+        }
+    }
+}

@@ -135,7 +135,7 @@
   </data>
   <data name="SliderText02" xml:space="preserve">
     <value>トラックラインの両端には、クリック可能な領域があります。ユーザーがポインターを押し続けると、クリックロジックが実行されます。動作を管理するには、スライダーの &lt;code&gt;ScrollBehavior&lt;/code&gt; パラメーターを設定します。したがって、&lt;code&gt;RangeSliderScrollBehavior.Thumb&lt;/code&gt; ロジックは、ポインタに近い方のつまみを１つ移動させます。そして、&lt;code&gt;RangeSliderScrollBehavior.Range&lt;/code&gt; ロジックは、範囲全体（両方のつまみ）を移動させます。&lt;br/&gt;
-        &lt;code&gt;Delay&lt;/ code&gt; パラメータは、最初のクリックが発生するまでの保持期間（ミリ秒単位）を定義します。 &lt;br/&gt;
+        &lt;code&gt;Delay&lt;/code&gt; パラメータは、最初のクリックが発生するまでの保持期間（ミリ秒単位）を定義します。 &lt;br/&gt;
         &lt;code&gt;Interval&lt;/code&gt; パラメータは、最初のクリックの後に繰り返されるクリックの割合を設定することができます。</value>
     <comment>There are clickable areas at the ends of the track line. If user press and hold the pointer clicks logic will execute. For managing behavior set &lt;code&gt;ScrollBehavior&lt;/code&gt; parameter of the slider. Thus, the &lt;code&gt;RangeSliderScrollBehavior.Thumb&lt;/code&gt; logic will move a single thumb, which closer to the pointer. And &lt;code&gt;RangeSliderScrollBehavior.Range&lt;/code&gt; logic moves the whole range (both thumbs).&lt;br/&gt;
         &lt;code&gt;Delay&lt;/code&gt; parameter defines the duration (in milliseconds) of holding before first click will occurs. &lt;br/&gt;

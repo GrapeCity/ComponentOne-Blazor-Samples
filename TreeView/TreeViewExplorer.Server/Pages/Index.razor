@@ -2,12 +2,16 @@
 @using C1.Blazor.Core
 @using C1.Blazor.TreeView
 
+<h3>@((MarkupString)Localization.Resource.Overview)</h3>
+
 <style>
     .msg {
         color: orange;
         margin-bottom: 15px;
     }
 </style>
+
+<p>@((MarkupString)Localization.Resource.Navigation_Description)</p>
 
 <div class="msg">
     @((MarkupString)selectedItemName)

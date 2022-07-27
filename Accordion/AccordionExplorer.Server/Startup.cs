@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace AccordionExplorer.Server
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -26,6 +27,7 @@ namespace AccordionExplorer.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
@@ -50,6 +52,12 @@ namespace AccordionExplorer.Server
 
             app.UseRouting();
 
+            var localizationOptions = new RequestLocalizationOptions()
+                .AddSupportedCultures("en-us")
+                .AddSupportedUICultures(new[] { "en", "ja"})
+                .SetDefaultCulture("en-us");
+            app.UseRequestLocalization(localizationOptions);
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
@@ -57,4 +65,5 @@ namespace AccordionExplorer.Server
             });
         }
     }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }

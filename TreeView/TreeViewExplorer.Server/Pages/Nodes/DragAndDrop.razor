@@ -3,6 +3,10 @@
 @using C1.Blazor.TreeView
 @using System.Collections.ObjectModel
 
+<h3>@((MarkupString)Localization.Resource.DragDropIndex)</h3>
+
+<p>@((MarkupString)Localization.Resource.DragDropDescription)</p>
+
 <C1TreeView Class="shadow" ShowLines="true" AllowDragDrop="true" IsExpandedPath="Expanded" ItemsSource="@_dataSource" ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name"
             Style="@_c1Style" KeyboardNavigation="true" SelectionMode="C1SelectionMode.Extended" />
 

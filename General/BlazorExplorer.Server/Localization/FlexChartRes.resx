@@ -550,4 +550,13 @@ Specific series may override those properties and use different data sources and
   <data name="TwoAxesTitle" xml:space="preserve">
     <value>Two Y-axes</value>
   </data>
+  <data name="ExportDescription" xml:space="preserve">
+    <value>This demo shows how to save chart as an image.</value>
+  </data>
+  <data name="ExportSummary" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportTitle" xml:space="preserve">
+    <value>Image Export</value>
+  </data>
 </root>

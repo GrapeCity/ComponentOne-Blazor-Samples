@@ -3,7 +3,7 @@
 @using C1.Blazor.Core
 @using C1.Blazor.Grid
 
-<FlexGrid @ref="grid" IsReadOnly="true" MinColumnWidth="80" DefaultColumnWidth="GridLength.Star" AllowMerging="GridAllowMerging.All" HeadersVisibility="GridHeadersVisibility.All" RowHeaderGridLinesVisibility="GridLinesVisibility.All" GridLinesVisibility="GridLinesVisibility.All" SelectionMode="GridSelectionMode.CellRange" Style="@("border: 1px solid #C7C7CC;border-radius: 8px;")" IsVirtualizationEnabled="false">
+<FlexGrid @ref="grid" ColumnOptionsMenuVisibility="GridColumnOptionsMenuVisibility.Collapsed" IsReadOnly="true" MinColumnWidth="80" DefaultColumnWidth="GridLength.Star" AllowMerging="GridAllowMerging.All" HeadersVisibility="GridHeadersVisibility.All" RowHeaderGridLinesVisibility="GridLinesVisibility.All" GridLinesVisibility="GridLinesVisibility.All" SelectionMode="GridSelectionMode.CellRange" Style="@("border: 1px solid #C7C7CC;border-radius: 8px;")" IsVirtualizationEnabled="false">
     <FlexGridColumns>
         <GridColumn Header="@FlexGridRes.Monday" AllowMerging="true" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" HorizontalAlignment="C1HorizontalAlignment.Center" />
         <GridColumn Header="@FlexGridRes.Tuesday" AllowMerging="true" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" HorizontalAlignment="C1HorizontalAlignment.Center" />

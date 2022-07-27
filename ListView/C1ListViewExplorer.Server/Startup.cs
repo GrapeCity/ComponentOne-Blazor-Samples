@@ -12,6 +12,7 @@ using C1ListViewExplorer.Data;
 
 namespace C1ListViewExplorer
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class Startup
     {
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -49,4 +50,5 @@ namespace C1ListViewExplorer
             });
         }
     }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }

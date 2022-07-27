@@ -403,6 +403,33 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This demo shows how to save chart as an image..
+        /// </summary>
+        public static string ExportDescription {
+            get {
+                return ResourceManager.GetString("ExportDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export.
+        /// </summary>
+        public static string ExportSummary {
+            get {
+                return ResourceManager.GetString("ExportSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image Export.
+        /// </summary>
+        public static string ExportTitle {
+            get {
+                return ResourceManager.GetString("ExportTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Funnel charts show values along multiple stages in a process.
         ///
         ///For example, you could use a funnel chart to show the number of sales prospects at each stage in a sales pipeline. Typically, the values decrease gradually, making the bars resemble a funnel..

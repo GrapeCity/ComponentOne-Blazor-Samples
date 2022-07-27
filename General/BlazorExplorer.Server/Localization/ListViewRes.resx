@@ -162,6 +162,9 @@
   <data name="PagingTitle" xml:space="preserve">
     <value>Paging</value>
   </data>
+  <data name="SelectedItemText" xml:space="preserve">
+    <value>Checked Items</value>
+  </data>
   <data name="SelectionModesDescription" xml:space="preserve">
     <value>Manage how items are selected by setting the selection mode. C1ListView supports single item and ranges when the user holds the SHIFT key. The selected items data can then be easily retrieved through the control’s Selection property.</value>
   </data>

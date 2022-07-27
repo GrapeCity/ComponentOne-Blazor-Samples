@@ -12,6 +12,7 @@ namespace C1DateTimeEditorsExplorer.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
@@ -35,6 +36,11 @@ namespace C1DateTimeEditorsExplorer.Server
             app.UseStaticFiles();
 
             app.UseRouting();
+            var localizationOptions = new RequestLocalizationOptions()
+                    .AddSupportedCultures("en-us")
+                    .AddSupportedUICultures(new[] { "en", "ja"})
+                    .SetDefaultCulture("en-us");
+            app.UseRequestLocalization(localizationOptions);
 
             app.UseEndpoints(endpoints =>
             {

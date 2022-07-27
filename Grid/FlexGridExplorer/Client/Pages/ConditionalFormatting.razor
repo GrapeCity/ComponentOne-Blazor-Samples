@@ -15,7 +15,7 @@
         <GridColumn Binding="OrderTotal" Format="C2" InputType="TextBoxType.Number" />
         <GridColumn Binding="OrderCount" Format="N1" InputType="TextBoxType.Number" />
         <GridDateTimeColumn Binding="LastOrderDate" Format="d" Mode="GridDateTimeColumnMode.Date" />
-        <GridDateTimeColumn Binding="LastOrderDate" Header="Last Order Time" Format="t" Mode="GridDateTimeColumnMode.Time" />
+        <GridDateTimeColumn Binding="LastOrderDate" AllowFiltering="false" Header="Last Order Time" Format="t" Mode="GridDateTimeColumnMode.Time" />
     </FlexGridColumns>
 </FlexGrid>
 

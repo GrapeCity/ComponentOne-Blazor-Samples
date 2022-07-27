@@ -3,6 +3,10 @@
 @using C1.Blazor.TreeView
 @using System.Collections.ObjectModel
 
+<h3>@((MarkupString)Localization.Resource.Removing)</h3>
+
+<p>@((MarkupString)Localization.Resource.RemovingDescription)</p>
+
 <div class="d-flex flex-row">
     <div class="p-2 shadow">
         <C1TreeView @ref="treeView" ShowLines="true" ItemsSource="@_dataSource"

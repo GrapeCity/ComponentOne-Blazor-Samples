@@ -31,8 +31,8 @@
 </C1Menu>
 
 <div style="margin-top: 2em">DropDown</div>
-<C1DropDown @ref="dropdown">
-    <Header>File</Header>
+<C1DropDown @ref="dropdown" DropDownBehavior="DropDownBehavior.HeaderTap">
+    <Header><span style="padding:0 8px;">File</span></Header>
     <ChildContent>
         <C1MenuList ItemsSource="@_dataSource[0].Subdirectories" Orientation="Orientation.Vertical"
                     ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name" OnItemSelected="OnDropDownItemSelected">

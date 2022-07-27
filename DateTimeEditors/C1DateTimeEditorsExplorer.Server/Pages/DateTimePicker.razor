@@ -5,26 +5,26 @@
 @using System;
 @using C1.Blazor.DateTimeEditors.EventArgs
 @using C1.Blazor.Input
-
-
-Placeholder
+@using Localization
+<p> @DateTimePickerRes.OverviewDescription</p>
 <br />
-<C1DateTimePicker Placeholder="any text"
+    @DateTimePickerRes.Placeholder
+<br />
+<C1DateTimePicker Placeholder="@DateTimePickerRes.Placeholder.ToLower()"
               DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
 
 <br />
 <br />
 
-
-Multiple Calendar
+@DateTimePickerRes.MultipleCalendar
 <br />
-<C1DateTimePicker Placeholder="any text" MonthCount="2"
+<C1DateTimePicker Placeholder="@DateTimePickerRes.Placeholder.ToLower()" MonthCount="2"
               DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
 
 <br />
 <br />
 
-Binding & Min-Max
+@DateTimePickerRes.BindingAndMinMax
 <br />
 <C1DateTimePicker MinDate="@(DateTime.Today.AddDays(-10))"
               MaxDate="@(DateTime.Today.AddDays(10))"
@@ -39,7 +39,7 @@ Binding & Min-Max
 <br />
 
 
-ViewModes & Custom Styles
+@DateTimePickerRes.ViewModesAndCustomStyles
 <br />
 
 <C1DateTimePicker Value="@DateTime.Today" 
@@ -72,17 +72,19 @@ ViewModes & Custom Styles
 <br />
 
 
-Readonly
+@DateTimePickerRes.IsReadOnly  <C1CheckBox @bind-IsChecked="@IsReadOnly"></C1CheckBox>
 <br />
-<C1DateTimePicker Placeholder="any text" MonthCount="2" IsReadOnly="true"
+<C1DateTimePicker Placeholder="@DateTimePickerRes.Placeholder.ToLower()" MonthCount="2"
+                  IsReadOnly="@IsReadOnly.GetValueOrDefault()"
                   DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
 
 <br />
 <br />
 
-Disabled
+@DateTimePickerRes.IsEnabled <C1CheckBox @bind-IsChecked="@IsEnabled"></C1CheckBox>
 <br />
-<C1DateTimePicker Placeholder="any text" MonthCount="2" IsEnabled="false"
+<C1DateTimePicker Placeholder="@DateTimePickerRes.Placeholder.ToLower()" MonthCount="2" 
+                  IsEnabled="@IsEnabled.GetValueOrDefault()"
                   DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateTimePicker>
 
 <br />
@@ -92,4 +94,6 @@ Disabled
 @code {
     C1DateTimePicker _c1DatePicker;
     DateTime? _time = DateTime.Today;
+    public bool? IsReadOnly { get; set; } = false;
+    public bool? IsEnabled { get; set; } = true;
 }                

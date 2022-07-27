@@ -1,17 +1,7 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.352
-MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1ListViewExplorer", "C1ListViewExplorer.csproj", "{CC70966A-664A-43F9-B22D-DAAA611AB301}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1.Blazor.Core", "..\..\..\Controls\Core\C1.Blazor.Core.csproj", "{3ACB9ED0-59E2-4599-87F4-FB2E2C4D2134}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1.Blazor.ListView", "..\..\..\Controls\ListView\C1.Blazor.ListView.csproj", "{DE16FB27-85EA-4A97-908D-7EDFA33D358C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1.Blazor.DataPager", "..\..\..\Controls\DataPager\C1.Blazor.DataPager.csproj", "{492DBD04-CF67-44C6-9BD0-5281A5E02E24}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1.Blazor.Input", "..\..\..\Controls\Input\C1.Blazor.Input.csproj", "{E7A28B7B-29C6-4901-AABB-2F24D582B91A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,55 +16,11 @@ Global
 		{CC70966A-664A-43F9-B22D-DAAA611AB301}.GRAPECITY|Any CPU.Build.0 = Release|Any CPU
 		{CC70966A-664A-43F9-B22D-DAAA611AB301}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC70966A-664A-43F9-B22D-DAAA611AB301}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3ACB9ED0-59E2-4599-87F4-FB2E2C4D2134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3ACB9ED0-59E2-4599-87F4-FB2E2C4D2134}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3ACB9ED0-59E2-4599-87F4-FB2E2C4D2134}.GRAPECITY|Any CPU.ActiveCfg = Debug|Any CPU
-		{3ACB9ED0-59E2-4599-87F4-FB2E2C4D2134}.GRAPECITY|Any CPU.Build.0 = Debug|Any CPU
-		{3ACB9ED0-59E2-4599-87F4-FB2E2C4D2134}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3ACB9ED0-59E2-4599-87F4-FB2E2C4D2134}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE16FB27-85EA-4A97-908D-7EDFA33D358C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE16FB27-85EA-4A97-908D-7EDFA33D358C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE16FB27-85EA-4A97-908D-7EDFA33D358C}.GRAPECITY|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE16FB27-85EA-4A97-908D-7EDFA33D358C}.GRAPECITY|Any CPU.Build.0 = Debug|Any CPU
-		{DE16FB27-85EA-4A97-908D-7EDFA33D358C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE16FB27-85EA-4A97-908D-7EDFA33D358C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{492DBD04-CF67-44C6-9BD0-5281A5E02E24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{492DBD04-CF67-44C6-9BD0-5281A5E02E24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{492DBD04-CF67-44C6-9BD0-5281A5E02E24}.GRAPECITY|Any CPU.ActiveCfg = Debug|Any CPU
-		{492DBD04-CF67-44C6-9BD0-5281A5E02E24}.GRAPECITY|Any CPU.Build.0 = Debug|Any CPU
-		{492DBD04-CF67-44C6-9BD0-5281A5E02E24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{492DBD04-CF67-44C6-9BD0-5281A5E02E24}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E7A28B7B-29C6-4901-AABB-2F24D582B91A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7A28B7B-29C6-4901-AABB-2F24D582B91A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7A28B7B-29C6-4901-AABB-2F24D582B91A}.GRAPECITY|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7A28B7B-29C6-4901-AABB-2F24D582B91A}.GRAPECITY|Any CPU.Build.0 = Debug|Any CPU
-		{E7A28B7B-29C6-4901-AABB-2F24D582B91A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E7A28B7B-29C6-4901-AABB-2F24D582B91A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {35CAAC8D-373C-46B5-8918-94278057CB60}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfsdevel.componentone.com:8090/tfs/defaultcollection
-		SccProjectUniqueName0 = ..\\..\\Controls\\Core\\C1.Blazor.Core.csproj
-		SccProjectName0 = ../../Controls/Core
-		SccLocalPath0 = ..\\..\\Controls\\Core
-		SccProjectUniqueName1 = ..\\..\\Controls\\ListView\\C1.Blazor.ListView.csproj
-		SccProjectName1 = ../../Controls/ListView
-		SccLocalPath1 = ..\\..\\Controls\\ListView
-		SccProjectUniqueName2 = ..\\..\\Controls\\DataPager\\C1.Blazor.DataPager.csproj
-		SccProjectName2 = ../../Controls/DataPager
-		SccLocalPath2 = ..\\..\\Controls\\DataPager
-		SccProjectUniqueName3 = ..\\..\\Controls\\Input\\C1.Blazor.Input.csproj
-		SccProjectName3 = ../../Controls/Input
-		SccLocalPath3 = ..\\..\\Controls\\Input
-		SccLocalPath4 = .
-		SccProjectUniqueName5 = C1ListViewExplorer.csproj
-		SccLocalPath5 = .
 	EndGlobalSection
 EndGlobal

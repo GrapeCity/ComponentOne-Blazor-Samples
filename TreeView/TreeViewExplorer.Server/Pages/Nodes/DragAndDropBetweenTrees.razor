@@ -4,6 +4,10 @@
 @using C1.Blazor.Input
 @using System.Collections.ObjectModel
 
+<h3>@((MarkupString)Localization.Resource.DragDropBtwTreesIndex)</h3>
+
+<p><p>@((MarkupString)Localization.Resource.DragDropBtwTreesDescription)</p></p>
+
 <div class="mb-5">
     <div>Allow dragging within trees <C1CheckBox @bind-IsChecked="@dragWithin" /></div>
     <div>Allow dragging between trees <C1CheckBox @bind-IsChecked="@dragBetween" /></div>

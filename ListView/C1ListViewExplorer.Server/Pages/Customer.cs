@@ -8,10 +8,11 @@ using System.Runtime.CompilerServices;
 
 namespace C1ListViewExplorer.Pages
 {
+
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     /// <summary>
     /// Simple data class generator.
     /// </summary>
-    /// <remarks>
     public class Customer : INotifyPropertyChanged, IEditableObject
     {
         #region ** fields
@@ -346,4 +347,5 @@ namespace C1ListViewExplorer.Pages
         public string Name { get; set; }
         public string Country { get; set; }
     }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }

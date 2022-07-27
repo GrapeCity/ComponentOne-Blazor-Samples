@@ -3,12 +3,21 @@
 @using C1.Blazor.ListView
 @using Localization
 
-<C1ListView ItemsSource="countries" T="Country" Style="@("max-height:50vh")">
+<C1ListView ItemsSource="countries" T="Country" Style="@("max-height:50vh")" SelectionChanged="SelectionChanged">
     <ItemTemplate>
         <img src="@context.FlagUrl" style="height:32px;width:32px" />
         <span style="margin-left:8px;white-space:nowrap;word-break:break-all">@context.Name</span>
     </ItemTemplate>
 </C1ListView>
+<p></p>
+<div>
+    <p>
+        <b>@_App.HtmlRaw(@ListViewRes.SelectedItemText):</b>
+    </p>
+    <ul id="checkedItems">
+        @SelectionRender
+    </ul>
+</div>
 
 <_Sections>
     <Title>@ListViewRes.OverviewTitle</Title>
@@ -22,5 +31,21 @@
     protected override void OnInitialized()
     {
         countries = Country.GetCountries();
+    }
+
+      RenderFragment SelectionRender;
+    protected void SelectionChanged(object obj)
+    {
+        var selectionIndexes = obj as IEnumerable<int>;
+        SelectionRender = new RenderFragment(builder =>
+        {
+            for (int i = 0; i < selectionIndexes.Count(); i++)
+            {
+                int seq = i * 2;
+                builder.OpenElement(seq, "li");
+                builder.AddContent(seq + 1, countries.ElementAt(selectionIndexes.ElementAt(i)).Name);
+                builder.CloseElement();
+            }
+        });
     }
 }

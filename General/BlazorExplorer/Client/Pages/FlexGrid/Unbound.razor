@@ -4,7 +4,8 @@
 @using C1.Blazor.Core
 @using C1.Blazor.Grid
 
-<FlexGrid @ref="grid" 
+<FlexGrid @ref="grid"
+          ColumnOptionsMenuVisibility="GridColumnOptionsMenuVisibility.Collapsed"
           CellFactory="@cellFactory"
           AllowMerging="GridAllowMerging.All" 
           HeadersVisibility="GridHeadersVisibility.All" 

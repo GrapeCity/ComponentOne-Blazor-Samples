@@ -1,6 +1,6 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
+# Visual Studio Version 17
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightStatistics.Server", "Server\FlightStatistics.Server.csproj", "{8C829E10-0477-4CC4-BCC4-652F52BC74C1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightStatistics.Client", "Client\FlightStatistics.Client.csproj", "{4B95A1E8-E41F-47E9-A4EA-6E7A72CD7F1F}"

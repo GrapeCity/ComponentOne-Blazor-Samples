@@ -2,7 +2,9 @@
 @using C1.Blazor.TreeView
 @using C1.Blazor.Core
 
+<h3>IconTemplate</h3>
 
+<p>@((MarkupString)Localization.Resource.IconTemplateDescription)</p>
 
 <C1TreeView ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name" ShowLines="true" IsExpandedPath="Expanded"
             ItemsSource="_dataSource" Class="shadow"

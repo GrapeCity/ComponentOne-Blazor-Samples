@@ -1,18 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20221.211</Version>
-    </PackageReference>
-    <PackageReference Include="C1.Blazor.TreeView">
-      <Version>6.0.20221.211</Version>
-    </PackageReference>
-  </ItemGroup>
-
   <ItemGroup>
     <Compile Update="Localization\Resource.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -20,12 +9,18 @@
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Update="Localization\Resource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>6.0.20222.267</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.TreeView">
+      <Version>6.0.20222.267</Version>
+    </PackageReference>
+  </ItemGroup>
 </Project>

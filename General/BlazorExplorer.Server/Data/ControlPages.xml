@@ -31,6 +31,7 @@
         <subactions>
           <action text="Column Definition" text.ja="列の定義" name="ColumnDefinitions"></action>
           <action text="Custom columns" text.ja="カスタム列" name="CustomColumns"></action>
+          <action text="GridColumn customization" text.ja="GridColumn customization" name="CustomDropDownColumn"></action>
           <!--<action text="Custom Header Template" text.ja="カスタムヘッダーテンプレート" name="CustomHeaderTemplate"></action>
           <action text="Column Layout" text.ja="列のレイアウト" name="ColumnLayout"></action>
           <action text="Custom Footers" text.ja="カスタムフッター" name="CustomFooters"></action>-->
@@ -132,6 +133,7 @@
         <subactions>
           <action text="Combination" name="ColumnLine" text.ja="組み合わせ"></action>
           <action text="Two Y-axes" name="TwoAxes" text.ja="２つのY軸"></action>
+	      <action text="Export" name="Export" text.ja="エクスポート"></action>
           <action text="Multiple Plot Areas" name="PlotAreas" text.ja="複数のプロット領域"></action>
           <action text="Funnel Chart" name="Funnel" text.ja="ファンネルチャート"></action>
           <action text="Trend Line" name="TrendLines" text.ja="傾向線"></action>

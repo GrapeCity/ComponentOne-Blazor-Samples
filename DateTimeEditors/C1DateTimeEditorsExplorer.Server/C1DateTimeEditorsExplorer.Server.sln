@@ -1,17 +1,7 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.352
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio Version 17
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1DateTimeEditorsExplorer.Server", "C1DateTimeEditorsExplorer.Server.csproj", "{B729961A-00A5-452F-A105-366837FFBED9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1.Blazor.Core", "..\..\..\Controls\Core\C1.Blazor.Core.csproj", "{D291E39F-A742-48B4-B3C6-FEA6DB6F22F6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1.Blazor.Calendar", "..\..\..\Controls\Calendar\C1.Blazor.Calendar.csproj", "{690D2EE4-A339-4864-8F5B-ABA68AF16767}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1.Blazor.Input", "..\..\..\Controls\Input\C1.Blazor.Input.csproj", "{6732D343-7EBE-4518-871E-9FA41486ABB5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1.Blazor.DateTimeEditors", "..\..\..\Controls\DateTimeEditors\C1.Blazor.DateTimeEditors.csproj", "{BABDBE20-C6B5-434F-82D9-589EBA3C73C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,30 +16,6 @@ Global
 		{B729961A-00A5-452F-A105-366837FFBED9}.GRAPECITY|Any CPU.Build.0 = Debug|Any CPU
 		{B729961A-00A5-452F-A105-366837FFBED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B729961A-00A5-452F-A105-366837FFBED9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D291E39F-A742-48B4-B3C6-FEA6DB6F22F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D291E39F-A742-48B4-B3C6-FEA6DB6F22F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D291E39F-A742-48B4-B3C6-FEA6DB6F22F6}.GRAPECITY|Any CPU.ActiveCfg = Debug|Any CPU
-		{D291E39F-A742-48B4-B3C6-FEA6DB6F22F6}.GRAPECITY|Any CPU.Build.0 = Debug|Any CPU
-		{D291E39F-A742-48B4-B3C6-FEA6DB6F22F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D291E39F-A742-48B4-B3C6-FEA6DB6F22F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{690D2EE4-A339-4864-8F5B-ABA68AF16767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{690D2EE4-A339-4864-8F5B-ABA68AF16767}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{690D2EE4-A339-4864-8F5B-ABA68AF16767}.GRAPECITY|Any CPU.ActiveCfg = GRAPECITY|Any CPU
-		{690D2EE4-A339-4864-8F5B-ABA68AF16767}.GRAPECITY|Any CPU.Build.0 = GRAPECITY|Any CPU
-		{690D2EE4-A339-4864-8F5B-ABA68AF16767}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{690D2EE4-A339-4864-8F5B-ABA68AF16767}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6732D343-7EBE-4518-871E-9FA41486ABB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6732D343-7EBE-4518-871E-9FA41486ABB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6732D343-7EBE-4518-871E-9FA41486ABB5}.GRAPECITY|Any CPU.ActiveCfg = GRAPECITY|Any CPU
-		{6732D343-7EBE-4518-871E-9FA41486ABB5}.GRAPECITY|Any CPU.Build.0 = GRAPECITY|Any CPU
-		{6732D343-7EBE-4518-871E-9FA41486ABB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6732D343-7EBE-4518-871E-9FA41486ABB5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BABDBE20-C6B5-434F-82D9-589EBA3C73C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BABDBE20-C6B5-434F-82D9-589EBA3C73C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BABDBE20-C6B5-434F-82D9-589EBA3C73C7}.GRAPECITY|Any CPU.ActiveCfg = GRAPECITY|Any CPU
-		{BABDBE20-C6B5-434F-82D9-589EBA3C73C7}.GRAPECITY|Any CPU.Build.0 = GRAPECITY|Any CPU
-		{BABDBE20-C6B5-434F-82D9-589EBA3C73C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BABDBE20-C6B5-434F-82D9-589EBA3C73C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

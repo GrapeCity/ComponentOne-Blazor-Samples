@@ -4,13 +4,20 @@ using System.Threading.Tasks;
 
 namespace AccordionExplorer.Server.Data
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class WeatherForecastService
     {
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="startDate"></param>
+        /// <returns></returns>
         public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
         {
             var rng = new Random();

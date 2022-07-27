@@ -687,15 +687,24 @@ Specific series may override those properties and use different data sources and
     <value>データ更新</value>
   </data>
   <data name="TwoAxesDescription" xml:space="preserve">
-    <value>サンプルではプロットに２番目のY軸を追加する方法を示します。</value>
+    <value>サンプルは、プロットに２番目のY 軸を追加する方法を示しています。</value>
     <comment>The sample shows how to add second y-axis to the plot.</comment>
   </data>
   <data name="TwoAxesSummary" xml:space="preserve">
-    <value>２つのY軸を持つプロット</value>
+    <value>２つの Y 軸によるプロット</value>
     <comment>Plot with two y-axes</comment>
   </data>
   <data name="TwoAxesTitle" xml:space="preserve">
-    <value>２つのY軸</value>
+    <value>２つの Y 軸</value>
     <comment>Two Y-axes</comment>
+  </data>
+  <data name="ExportDescription" xml:space="preserve">
+    <value>This demo shows how to save chart as an image.</value>
+  </data>
+  <data name="ExportSummary" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportTitle" xml:space="preserve">
+    <value>Image Export</value>
   </data>
 </root>

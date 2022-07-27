@@ -11,6 +11,11 @@
         border-color: rgba(128, 4, 77, 0.3) !important;
     }
 </style>
+
+<h3>@((MarkupString)Localization.Resource.Styling)</h3>
+
+<p>@((MarkupString)Localization.Resource.StylingDescription)</p>
+
 <C1TreeView Class="c1-treeview p-2" ShowLines="true" ItemsSource="@_dataSource" ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name"
             Style="@_c1Style" KeyboardNavigation="true" SelectionMode="C1SelectionMode.Extended" ExpandMode="TreeViewExpandMode.Multiple"
             SelectedItemStyle="@_selectedItemStyle"/>

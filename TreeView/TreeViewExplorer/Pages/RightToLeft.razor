@@ -2,6 +2,10 @@
 @using C1.Blazor.Core
 @using C1.Blazor.TreeView
 
+<h3>@((MarkupString)Localization.Resource.RightToLeft)</h3>
+
+<p>@((MarkupString)Localization.Resource.RTLDescription)</p>
+
 <C1TreeView Class="shadow" IsRTL="true" ShowLines="true" IsSelectedPath="Selected" IsExpandedPath="Expanded" ItemsSource="@_dataSource" ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name"
             Style="@_c1Style" KeyboardNavigation="true" SelectionMode="C1SelectionMode.Extended"/>
 

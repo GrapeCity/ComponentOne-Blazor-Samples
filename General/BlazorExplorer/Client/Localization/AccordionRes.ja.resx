@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccordionDescription" xml:space="preserve">
-    <value>Accordion コントロールを使用すると、コンテンツを折りたたみ可能なパネルに整理できます。このサンプルは、 Accordion コントロールの使用法と主なプロパティを示しています。</value>
+    <value>Accordion コントロールを使用すると、コンテンツを折りたたみ可能なパネルに整理できます。このサンプルは、Accordion コントロールの使い方と主なプロパティを示しています。</value>
     <comment>The Accordion control allows you to organize content into collapsible panels. This sample demonstrates the usage and main properties of the Accordion control.</comment>
   </data>
   <data name="AccordionSummary" xml:space="preserve">
-    <value>アコーディオンにいくつかの折りたたみ可能なパネルが含まれていることを示します。</value>
+    <value>いくつかの折りたたみ可能なパネルを含むアコーディオンを表示します。</value>
     <comment>Displays an accordion contains some collapsible panels.</comment>
   </data>
   <data name="AccordionTitle" xml:space="preserve">
@@ -134,16 +134,19 @@
     <comment>The expander control allows you add content into a panel that collapsible.</comment>
   </data>
   <data name="ExpanderExpandLeft" xml:space="preserve">
-    <value>左に展開する Expander です</value>
+    <value>左に拡張する Expander</value>
+    <comment>The expander that expand to the Left</comment>
   </data>
   <data name="ExpanderExpandRight" xml:space="preserve">
-    <value>右に展開する Expander です</value>
+    <value>右に拡張する Expander</value>
+    <comment>The expander that expand to the Right</comment>
   </data>
   <data name="ExpanderExpandTop" xml:space="preserve">
-    <value>上に展開する Expander です</value>
+    <value>上に拡張する Expander</value>
+    <comment>The expander that expand to the Top</comment>
   </data>
   <data name="ExpanderSummary" xml:space="preserve">
-    <value>Expander がどのように機能するかを示します。</value>
+    <value>Expander がどのように機能するかを表示します。</value>
     <comment>Display how the Expander works.</comment>
   </data>
   <data name="ExpanderTitle" xml:space="preserve">

@@ -9,6 +9,7 @@ using C1.DataCollection;
 
 namespace C1ListViewExplorer.Pages
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class YouTubeDataCollection : C1CursorDataCollection<YouTubeVideo>
     {
         private string _q;
@@ -47,7 +48,7 @@ namespace C1ListViewExplorer.Pages
         {
             if (q == null) q = "";
 
-            var youtubeUrl = string.Format("https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q={0}&order={1}&maxResults={2}{3}&key={4}", Uri.EscapeUriString(q), orderBy, maxResults, string.IsNullOrWhiteSpace(pageToken) ? "" : "&pageToken=" + pageToken, "AIzaSyCGIvlreIsHaOVVoR2JAPJnbHkSUv3v4y0");
+            var youtubeUrl = string.Format("https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q={0}&order={1}&maxResults={2}{3}&key={4}", Uri.EscapeDataString(q), orderBy, maxResults, string.IsNullOrWhiteSpace(pageToken) ? "" : "&pageToken=" + pageToken, "AIzaSyCGIvlreIsHaOVVoR2JAPJnbHkSUv3v4y0");
 
             var client = new HttpClient();
             var response = await client.GetAsync(youtubeUrl, cancellationToken);
@@ -143,4 +144,5 @@ namespace C1ListViewExplorer.Pages
         public string Link { get; set; }
         public string ChannelTitle { get; set; }
     }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }

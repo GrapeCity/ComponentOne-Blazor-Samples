@@ -1,40 +1,54 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup Label="Globals">
-    <SccProjectName>SAK</SccProjectName>
-    <SccProvider>SAK</SccProvider>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccLocalPath>SAK</SccLocalPath>
-  </PropertyGroup>
-
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>7.3</LangVersion>
     <AssemblyName>C1DateTimeEditorsExplorer.Server</AssemblyName>
     <RootNamespace>C1DateTimeEditorsExplorer.Server</RootNamespace>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove=".gclicx" />
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Include=".gclicx" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Folder Include="Localization\" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Calendar">
-      <Version>6.0.20221.211</Version>
+      <Version>6.0.20222.267</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20221.211</Version>
+      <Version>6.0.20222.267</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>6.0.20221.211</Version>
+      <Version>6.0.20222.267</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>6.0.20221.211</Version>
+      <Version>6.0.20222.267</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.0" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Compile Update="Localization\DatePickerRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DatePickerRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\DateTimePickerRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DateTimePickerRes.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Localization\DatePickerRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DatePickerRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\DateTimePickerRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DateTimePickerRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

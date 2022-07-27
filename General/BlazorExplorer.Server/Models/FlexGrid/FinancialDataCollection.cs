@@ -43,7 +43,7 @@ namespace BlazorExplorer
             }
 
             var data = dataCollection.Skip(startingIndex).Take(count);
-            return new Tuple<int, IReadOnlyList<FinancialData>>(financialData.Count, data.Select(x => (FinancialData)x).ToList());
+            return new Tuple<int, IReadOnlyList<FinancialData>>(dataCollection.Count, data.Select(x => (FinancialData)x).ToList());
         }
     }
 }

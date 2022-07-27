@@ -31,9 +31,9 @@
                       Style="@("width:100%;max-height:780px;height:780px;font-size:12px;")">
                 <FlexGridColumns>
                     <GridColumn Header="Airport Code" Binding="AirportCode" WordWrap="false" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" MinWidth="40"/>
-                    <GridColumn Header="City" WordWrap="false" AllowResizing="false" HorizontalAlignment="C1HorizontalAlignment.Left" HeaderHorizontalAlignment="C1HorizontalAlignment.Left" MinWidth="170" />
+                    <GridColumn Header="City" Binding="AirportCity" WordWrap="false" AllowResizing="false" HorizontalAlignment="C1HorizontalAlignment.Left" HeaderHorizontalAlignment="C1HorizontalAlignment.Left" MinWidth="170" />
                     <GridColumn Header="Rank" Binding="OnTimeRanking" WordWrap="false" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" MinWidth="30"/>
-                    <GridColumn Header="Delay Trend" Binding="AirportMonthlyData" WordWrap="false" AllowResizing="false" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" MinWidth="150">
+                    <GridColumn Header="Delay Trend" OptionsMenuVisibility="GridColumnOptionsMenuVisibility.Collapsed" Binding="AirportMonthlyData" WordWrap="false" AllowResizing="false" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" MinWidth="150">
                         <CellTemplate>
                             <FlexChart Class="chart monthlyDataChart"
                                        ChartType="ChartType.Line"

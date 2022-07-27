@@ -19,7 +19,7 @@ namespace TreeViewExplorer.Server.Localization {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resource {
@@ -75,6 +75,15 @@ namespace TreeViewExplorer.Server.Localization {
         public static string Accordion_Tree {
             get {
                 return ResourceManager.GetString("Accordion_Tree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accordions are multi-pane panels that keep only one panel expanded at a time. They are commonly used for navigation. You can use the C1TreeView control to implement accordions. This sample creates an Accordion using the C1TreeView and CSS by customizing the header display..
+        /// </summary>
+        public static string AccordionTreesDescription {
+            get {
+                return ResourceManager.GetString("AccordionTreesDescription", resourceCulture);
             }
         }
         
@@ -142,11 +151,99 @@ namespace TreeViewExplorer.Server.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The control provides several properties that customize its behavior.&lt;br/&gt;
+        ///&lt;b&gt;ShowLines:&lt;/b&gt; Gets or sets a value that indicates whether the connecting lines are visible.&lt;br/&gt;
+        ///&lt;b&gt;WholeWidthSelection:&lt;/b&gt; Gets or sets whether the selection item should take the whole width of the control or not.&lt;br/&gt;
+        ///&lt;b&gt;ExpandMode:&lt;/b&gt; Gets or sets a value indicating the allowed number of expanded C1TreeViewItems.&lt;br/&gt;
+        ///&lt;ul&gt;
+        ///	&lt;li&gt;ExpandMode.Single: Gets or sets a value that determines if sibling nodes should be collapsed w [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string BehaviorDescription {
+            get {
+                return ResourceManager.GetString("BehaviorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clean Accordion.
         /// </summary>
         public static string Clean_Accordion {
             get {
                 return ResourceManager.GetString("Clean_Accordion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This sample creates an Accordion from the C1TreeView control using CSS. It also uses the ItemTemplate to customize the appearance..
+        /// </summary>
+        public static string CleanAccordionDescription {
+            get {
+                return ResourceManager.GetString("CleanAccordionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can also drag and drop nodes between different TreeView controls. To do this, add an event handler for the &lt;b&gt;OnDragOver&lt;/b&gt; event to configure the behavior..
+        /// </summary>
+        public static string DragDropBtwTreesDescription {
+            get {
+                return ResourceManager.GetString("DragDropBtwTreesDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drag and Drop Between Trees.
+        /// </summary>
+        public static string DragDropBtwTreesIndex {
+            get {
+                return ResourceManager.GetString("DragDropBtwTreesIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The TreeView control supports Drag and Drop behavior. To enable this, set the &lt;b&gt;AllowDragDrop&lt;/b&gt; property to &lt;b&gt;true&lt;/b&gt;. This sample allows users to drag nodes to different positions in the TreeView..
+        /// </summary>
+        public static string DragDropDescription {
+            get {
+                return ResourceManager.GetString("DragDropDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drag and Drop.
+        /// </summary>
+        public static string DragDropIndex {
+            get {
+                return ResourceManager.GetString("DragDropIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;b&gt;ExpandedIconTemplate:&lt;/b&gt; Content template for tree item expanded icon.&lt;br/&gt;
+        ///&lt;b&gt;CollapsedIconTemplate:&lt;/b&gt; Content template for tree item collapsed icon.&lt;br/&gt;
+        ///&lt;b&gt;ExpandedIconStyle:&lt;/b&gt; Gets or sets the style applied to the expanded/collapsed icon.&lt;br/&gt;.
+        /// </summary>
+        public static string IconTemplateDescription {
+            get {
+                return ResourceManager.GetString("IconTemplateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can customize your own view for C1TreeView item by defining in ItemTemplate tag..
+        /// </summary>
+        public static string ItemTemplate_Description {
+            get {
+                return ResourceManager.GetString("ItemTemplate_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When selecting nodes or traversing the C1TreeView control with the mouse or arrow keys, the OnItemSelected event may be triggered. You can use this event to control navigation. This example uses the OnItemSelected to display the selected node..
+        /// </summary>
+        public static string Navigation_Description {
+            get {
+                return ResourceManager.GetString("Navigation_Description", resourceCulture);
             }
         }
         
@@ -162,9 +259,18 @@ namespace TreeViewExplorer.Server.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Node Borders.
         /// </summary>
-        public static string Node_Borders {
+        public static string NodeBorders {
             get {
-                return ResourceManager.GetString("Node Borders", resourceCulture);
+                return ResourceManager.GetString("NodeBorders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Using CSS, this example adds a bottom border to the tree nodes in the C1TreeView..
+        /// </summary>
+        public static string NodeBordersDescription {
+            get {
+                return ResourceManager.GetString("NodeBordersDescription", resourceCulture);
             }
         }
         
@@ -214,11 +320,29 @@ namespace TreeViewExplorer.Server.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This sample demonstrates how to remove nodes from the C1TreeView.
+        /// </summary>
+        public static string RemovingDescription {
+            get {
+                return ResourceManager.GetString("RemovingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Right to Left.
         /// </summary>
         public static string RightToLeft {
             get {
                 return ResourceManager.GetString("RightToLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The C1TreeView supports the element&apos;s content to flow from right to left. To do this, the IsRTL property is set &quot;True&quot;.
+        /// </summary>
+        public static string RTLDescription {
+            get {
+                return ResourceManager.GetString("RTLDescription", resourceCulture);
             }
         }
         
@@ -232,11 +356,48 @@ namespace TreeViewExplorer.Server.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The C1AutoComplete control provides a good way to implement a search box to be used with the C1TreeView. In this sample, we call GetAllItems API to get all TreeViewItems and use that as an itemsSource for searching through the C1TreeView..
+        /// </summary>
+        public static string SearchingDescription {
+            get {
+                return ResourceManager.GetString("SearchingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The TreeNodes can be displayed with a Checkbox by setting the ShowCheckboxes property to true.
+        ///You can use the OnItemSelected to get or set the list of checked items..
+        /// </summary>
+        public static string ShowCheckboxesDescription {
+            get {
+                return ResourceManager.GetString("ShowCheckboxesDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Styling.
         /// </summary>
         public static string Styling {
             get {
                 return ResourceManager.GetString("Styling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can customize the appearance of the C1TreeView using CSS. This example changes the style of selected item and color of each TreeNode..
+        /// </summary>
+        public static string StylingDescription {
+            get {
+                return ResourceManager.GetString("StylingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This sample shows to how to define Unbound C1TreeView.
+        /// </summary>
+        public static string UnBoundTree_Description {
+            get {
+                return ResourceManager.GetString("UnBoundTree_Description", resourceCulture);
             }
         }
     }

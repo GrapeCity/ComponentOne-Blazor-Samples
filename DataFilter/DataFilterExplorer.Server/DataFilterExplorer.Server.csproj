@@ -16,27 +16,27 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Accordion">
-      <Version>6.0.20221.211</Version>
+      <Version>6.0.20222.267</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20221.211</Version>
+      <Version>6.0.20222.267</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>6.0.20221.211</Version>
+      <Version>6.0.20222.267</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>6.0.20221.211</Version>
+      <Version>6.0.20222.267</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>6.0.20221.211</Version>
+      <Version>6.0.20222.267</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.TreeView">
-      <Version>6.0.20221.211</Version>
+      <Version>6.0.20222.267</Version>
     </PackageReference>
-    <PackageReference Include="C1.DataCollection" Version="1.0.20221.65" />
-    <PackageReference Include="C1.DataCollection.BindingList" Version="1.0.20221.65" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.1" />
+    <PackageReference Include="C1.DataCollection" Version="1.0.20222.106" />
+    <PackageReference Include="C1.DataCollection.BindingList" Version="1.0.20222.106" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.6" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include=".gclicx" />

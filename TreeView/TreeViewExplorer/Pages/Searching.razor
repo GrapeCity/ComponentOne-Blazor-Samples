@@ -4,6 +4,10 @@
 @using C1.Blazor.Input
 @using C1.DataCollection
 
+<h3>@((MarkupString)Localization.Resource.Searching)</h3>
+
+<p>@((MarkupString)Localization.Resource.SearchingDescription)</p>
+
 <C1AutoComplete @ref="ac" DisplayMemberPath="FullPathHeader" T="TreeViewItemViewModel" HighlightStyle="@("color:#428bca;font-weight:bold")"
                 Placeholder="Input TreeNode name" Style="@("margin:8px 0; width: 400px;")" SelectedItemChanged="OnSelectedChanged" />
 

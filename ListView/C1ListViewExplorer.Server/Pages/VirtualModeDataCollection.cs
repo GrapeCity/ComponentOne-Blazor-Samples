@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace C1ListViewExplorer.Pages
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class VirtualModeDataCollection : C1VirtualDataCollection<Customer>
     {
         protected override async Task<Tuple<int, IReadOnlyList<Customer>>> GetPageAsync(int pageIndex, int startingIndex, int count, IReadOnlyList<SortDescription> sortDescriptions = null, FilterExpression filterExpression = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -15,4 +16,5 @@ namespace C1ListViewExplorer.Pages
             return new Tuple<int, IReadOnlyList<Customer>>(10_000, Enumerable.Range(startingIndex, count).Select(i => new Customer(i)).ToList());
         }
     }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }

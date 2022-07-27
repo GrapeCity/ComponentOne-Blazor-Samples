@@ -120,6 +120,9 @@
   <data name="About" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="AccordionTreesDescription" xml:space="preserve">
+    <value>Accordions are multi-pane panels that keep only one panel expanded at a time. They are commonly used for navigation. You can use the C1TreeView control to implement accordions. This sample creates an Accordion using the C1TreeView and CSS by customizing the header display.</value>
+  </data>
   <data name="Accordion_Tree" xml:space="preserve">
     <value>Accordion Tree</value>
   </data>
@@ -144,14 +147,60 @@
   <data name="Behavior" xml:space="preserve">
     <value>Behavior</value>
   </data>
+  <data name="BehaviorDescription" xml:space="preserve">
+    <value>The control provides several properties that customize its behavior.&lt;br/&gt;
+&lt;b&gt;ShowLines:&lt;/b&gt; Gets or sets a value that indicates whether the connecting lines are visible.&lt;br/&gt;
+&lt;b&gt;WholeWidthSelection:&lt;/b&gt; Gets or sets whether the selection item should take the whole width of the control or not.&lt;br/&gt;
+&lt;b&gt;ExpandMode:&lt;/b&gt; Gets or sets a value indicating the allowed number of expanded C1TreeViewItems.&lt;br/&gt;
+&lt;ul&gt;
+	&lt;li&gt;ExpandMode.Single: Gets or sets a value that determines if sibling nodes should be collapsed when a node is expanded.&lt;/li&gt;
+	&lt;li&gt;ExpandMode.Multiple: Several items may be expanded simultaneously.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;b&gt;SelectionMode:&lt;/b&gt; Gets or sets the selection behavior for a C1TreeView.&lt;br/&gt;
+&lt;ul&gt;
+	&lt;li&gt;SelectionMode.None: The user can not select any item.&lt;/li&gt;
+	&lt;li&gt;SelectionMode.Single: The user can select only one item at a time. &lt;/li&gt;
+	&lt;li&gt;SelectionMode.Multiple: The user can select multiple items without holding down a modifier key.&lt;/li&gt;
+	&lt;li&gt;SelectionMode.Extended: The user can select multiple consecutive items while holding down the corresponding modifier key.&lt;/li&gt;
+&lt;/ul&gt;</value>
+  </data>
+  <data name="CleanAccordionDescription" xml:space="preserve">
+    <value>This sample creates an Accordion from the C1TreeView control using CSS. It also uses the ItemTemplate to customize the appearance.</value>
+  </data>
   <data name="Clean_Accordion" xml:space="preserve">
     <value>Clean Accordion</value>
+  </data>
+  <data name="DragDropBtwTreesDescription" xml:space="preserve">
+    <value>You can also drag and drop nodes between different TreeView controls. To do this, add an event handler for the &lt;b&gt;OnDragOver&lt;/b&gt; event to configure the behavior.</value>
+  </data>
+  <data name="DragDropBtwTreesIndex" xml:space="preserve">
+    <value>Drag and Drop Between Trees</value>
+  </data>
+  <data name="DragDropDescription" xml:space="preserve">
+    <value>The TreeView control supports Drag and Drop behavior. To enable this, set the &lt;b&gt;AllowDragDrop&lt;/b&gt; property to &lt;b&gt;true&lt;/b&gt;. This sample allows users to drag nodes to different positions in the TreeView.</value>
+  </data>
+  <data name="DragDropIndex" xml:space="preserve">
+    <value>Drag and Drop</value>
+  </data>
+  <data name="IconTemplateDescription" xml:space="preserve">
+    <value>&lt;b&gt;ExpandedIconTemplate:&lt;/b&gt; Content template for tree item expanded icon.&lt;br/&gt;
+&lt;b&gt;CollapsedIconTemplate:&lt;/b&gt; Content template for tree item collapsed icon.&lt;br/&gt;
+&lt;b&gt;ExpandedIconStyle:&lt;/b&gt; Gets or sets the style applied to the expanded/collapsed icon.&lt;br/&gt;</value>
+  </data>
+  <data name="ItemTemplate_Description" xml:space="preserve">
+    <value>You can customize your own view for C1TreeView item by defining in ItemTemplate tag.</value>
   </data>
   <data name="NavigationTo" xml:space="preserve">
     <value>Navigating to &lt;b&gt;** {0} **&lt;/b&gt;</value>
   </data>
+  <data name="Navigation_Description" xml:space="preserve">
+    <value>When selecting nodes or traversing the C1TreeView control with the mouse or arrow keys, the OnItemSelected event may be triggered. You can use this event to control navigation. This example uses the OnItemSelected to display the selected node.</value>
+  </data>
   <data name="Node Borders" xml:space="preserve">
     <value>Node Borders</value>
+  </data>
+  <data name="NodeBordersDescription" xml:space="preserve">
+    <value>Using CSS, this example adds a bottom border to the tree nodes in the C1TreeView.</value>
   </data>
   <data name="Nodes" xml:space="preserve">
     <value>Nodes</value>
@@ -168,13 +217,32 @@
   <data name="RemovingBtn" xml:space="preserve">
     <value>Remove selected item</value>
   </data>
+  <data name="RemovingDescription" xml:space="preserve">
+    <value>This sample demonstrates how to remove nodes from the C1TreeView</value>
+  </data>
   <data name="RightToLeft" xml:space="preserve">
     <value>Right to Left</value>
+  </data>
+  <data name="RTLDescription" xml:space="preserve">
+    <value>The C1TreeView supports the element's content to flow from right to left. To do this, the IsRTL property is set "True"</value>
   </data>
   <data name="Searching" xml:space="preserve">
     <value>Searching</value>
   </data>
+  <data name="SearchingDescription" xml:space="preserve">
+    <value>The C1AutoComplete control provides a good way to implement a search box to be used with the C1TreeView. In this sample, we call GetAllItems API to get all TreeViewItems and use that as an itemsSource for searching through the C1TreeView.</value>
+  </data>
+  <data name="ShowCheckboxesDescription" xml:space="preserve">
+    <value>The TreeNodes can be displayed with a Checkbox by setting the ShowCheckboxes property to true.
+You can use the OnItemSelected to get or set the list of checked items.</value>
+  </data>
   <data name="Styling" xml:space="preserve">
     <value>Styling</value>
+  </data>
+  <data name="StylingDescription" xml:space="preserve">
+    <value>You can customize the appearance of the C1TreeView using CSS. This example changes the style of selected item and color of each TreeNode.</value>
+  </data>
+  <data name="UnBoundTree_Description" xml:space="preserve">
+    <value>This sample shows to how to define Unbound C1TreeView</value>
   </data>
 </root>

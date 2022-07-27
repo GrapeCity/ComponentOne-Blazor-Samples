@@ -3,8 +3,14 @@
 @using C1.Blazor.Accordion
 @using C1.Blazor.Core
 @using C1.Blazor.Grid
+@using AccordionExplorer.Server.Localization
 
-<C1Expander Header="@("Header")" Style="@("border-radius:8px;margin:13px;overflow:hidden;box-shadow:0px 6px 13px rgba(0,0,0,0.2)")">
+<h3>Expander</h3>
+
+<p>
+    @AccordionRes.ExpanderDescription
+</p>
+<C1Expander Header="@AccordionRes.Header" Style="@("border-radius:8px;margin:13px;overflow:hidden;box-shadow:0px 6px 13px rgba(0,0,0,0.2)")">
     <FlexGrid ItemsSource="@customers" Style="@("max-height:50vh")" />
 </C1Expander>
 

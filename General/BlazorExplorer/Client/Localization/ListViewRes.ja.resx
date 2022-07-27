@@ -177,6 +177,10 @@
     <value>ページング</value>
     <comment>Paging</comment>
   </data>
+  <data name="SelectedItemText" xml:space="preserve">
+    <value>選択された項目</value>
+    <comment>CheckedItems</comment>
+  </data>
   <data name="SelectionModesDescription" xml:space="preserve">
     <value>選択モードを設定して、アイテムの選択方法を管理します。C1ListView は、ユーザーが Shift キーを押したときに単一の項目と範囲をサポートします。選択したアイテムのデータは、コントロールの[選択]プロパティから簡単に取得できます。</value>
     <comment>Manage how items are selected by setting the selection mode. C1ListView supports single item and ranges when the user holds the SHIFT key. The selected items data can then be easily retrieved through the control’s Selection property.</comment>

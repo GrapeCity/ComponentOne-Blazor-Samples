@@ -8,10 +8,10 @@ using System.Runtime.CompilerServices;
 
 namespace AccordionExplorer
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     /// <summary>
     /// Simple data class generator.
     /// </summary>
-    /// <remarks>
     public class Customer : INotifyPropertyChanged, IEditableObject
     {
         #region ** fields
@@ -313,7 +313,9 @@ namespace AccordionExplorer
         // this interface allows transacted edits (user can press escape to restore previous values).
 
         Customer _clone;
+
         public void BeginEdit()
+
         {
             _clone = (Customer)this.MemberwiseClone();
         }
@@ -346,4 +348,5 @@ namespace AccordionExplorer
         public string Name { get; set; }
         public string Country { get; set; }
     }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }

@@ -5,26 +5,27 @@
 @using System;
 @using C1.Blazor.DateTimeEditors.EventArgs
 @using C1.Blazor.Input
-
-
-Placeholder
+@using Localization
+<p>@DatePickerRes.OverviewDescription</p>
 <br />
-<C1DatePicker Placeholder="any text"
+@DatePickerRes.Placeholder
+<br />
+<C1DatePicker Placeholder="@DatePickerRes.Placeholder.ToLower()"
               DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DatePicker>
 
 <br />
 <br />
 
 
-Multiple Calendar
+@DatePickerRes.MultipleCalendar
 <br />
-<C1DatePicker Placeholder="any text" MonthCount="2"
+<C1DatePicker Placeholder="@DatePickerRes.Placeholder.ToLower()" MonthCount="2"
               DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DatePicker>
 
 <br />
 <br />
 
-Binding & Min-Max
+@DatePickerRes.BindingAndMinMax
 <br />
 <C1DatePicker MinDate="@(DateTime.Today.AddDays(-10))"
               MaxDate="@(DateTime.Today.AddDays(10))"
@@ -39,7 +40,7 @@ Binding & Min-Max
 <br />
 
 
-Custom Dropdown Calendar Styles
+@DatePickerRes.ViewModesAndCustomStyles
 <br />
 
 
@@ -83,25 +84,26 @@ Custom Dropdown Calendar Styles
 <br />
 <br />
 
-
-Readonly
+@DatePickerRes.IsReadOnly  <C1CheckBox @bind-IsChecked="@IsReadOnly"></C1CheckBox>
 <br />
-<C1DatePicker Placeholder="any text" IsReadOnly="true"
+<C1DatePicker Placeholder="@DatePickerRes.Placeholder.ToLower()"
+              IsReadOnly="@IsReadOnly.GetValueOrDefault()"
               DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DatePicker>
-
 <br />
 <br />
 
 
-Disabled
+@DatePickerRes.IsEnabled <C1CheckBox @bind-IsChecked="@IsEnabled"></C1CheckBox>
 <br />
-<C1DatePicker Placeholder="any text" IsEnabled="false"
+<C1DatePicker Placeholder="@DatePickerRes.Placeholder.ToLower()"
+              IsEnabled="@IsEnabled.GetValueOrDefault()"
               DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DatePicker>
-
 
 
 @code {
     C1DatePicker _c1DatePicker;
     DateTime? _time = DateTime.Today;
+    public bool? IsEnabled { get; set; } = true;
+    public bool? IsReadOnly { get; set; } = false;
 }
 

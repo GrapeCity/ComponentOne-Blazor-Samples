@@ -4,7 +4,9 @@ using System.Threading.Tasks;
 
 namespace C1ListViewExplorer.Data
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class WeatherForecastService
+
     {
         private static string[] Summaries = new[]
         {
@@ -22,4 +24,5 @@ namespace C1ListViewExplorer.Data
             }).ToArray());
         }
     }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }

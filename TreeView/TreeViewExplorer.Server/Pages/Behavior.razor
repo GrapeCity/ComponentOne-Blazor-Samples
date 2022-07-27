@@ -3,6 +3,10 @@
 @using C1.Blazor.TreeView
 @using C1.Blazor.Input
 
+<h3>@((MarkupString)Localization.Resource.Behavior)</h3>
+
+<p>@((MarkupString)Localization.Resource.BehaviorDescription)</p>
+
 <div class="d-flex flex-row">
     <div class="pr-2">
         <div class="pb-2">ExpandMode <C1ComboBox ItemsSource="expandModes" @bind-SelectedItem="expandMode" /></div>

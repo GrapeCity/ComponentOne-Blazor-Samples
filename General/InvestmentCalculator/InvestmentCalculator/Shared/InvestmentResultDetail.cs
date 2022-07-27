@@ -41,20 +41,20 @@ namespace InvestmentCalculator.Shared
                 investmentResultDetail.Period = period;
                 if (period == 1)
                 {
-                    investmentResultDetail.InitialBalance = initialAmt;
+                    investmentResultDetail.InitialBalance = Math.Round(initialAmt, 2);
                 }
                 else
                 {
-                    investmentResultDetail.InitialBalance = DetailList.Last().NewBalance;
+                    investmentResultDetail.InitialBalance = Math.Round(DetailList.Last().NewBalance, 2);
                 }
-                investmentResultDetail.InterestEarned = (((rate / numDeposits) * investmentResultDetail.InitialBalance) / 100);
-                investmentResultDetail.NewDeposit = depositAmt;
-                investmentResultDetail.NewBalance = investmentResultDetail.InitialBalance 
-                    + investmentResultDetail.InterestEarned + investmentResultDetail.NewDeposit;
+                investmentResultDetail.InterestEarned = Math.Round(rate / numDeposits * investmentResultDetail.InitialBalance / 100, 2);
+                investmentResultDetail.NewDeposit = Math.Round(depositAmt, 2);
+                investmentResultDetail.NewBalance = Math.Round(investmentResultDetail.InitialBalance
+                    + investmentResultDetail.InterestEarned + investmentResultDetail.NewDeposit, 2);
                 DetailList.Add(investmentResultDetail);
             }
 
-            //Calculat Future Value of investment/Ending Balance
+            //Calculate Future Value of investment/Ending Balance
             double Rate = rate / (numDeposits * 100);
             double NPer = Convert.ToDouble(totalPeriods);
             double Pmt = Convert.ToInt32(depositAmt);
