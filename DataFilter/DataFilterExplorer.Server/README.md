@@ -8,4 +8,5 @@ ____
 * AutoApply
 * FiltersSummary
 * CustomFilter
+* ConditionalFilter
 
