@@ -167,4 +167,7 @@
     <value>IsReadOnly</value>
     <comment>property name caption</comment>
   </data>
+  <data name="ModelBindingSummary" xml:space="preserve">
+    <value>Shows how to bind NumericBox to strongly typed object.</value>
+  </data>	
 </root>

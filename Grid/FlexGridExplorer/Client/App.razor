@@ -1,4 +1,5 @@
-﻿<Router AppAssembly="@typeof(Program).Assembly">
+﻿@using System.Globalization
+<Router AppAssembly="@typeof(Program).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
     </Found>
@@ -12,20 +13,27 @@
 @code{      
     protected override void OnInitialized()
     {
-        SetDefaultSpecificCulture();
+        SetSpecificCulture();
 
         base.OnInitialized();
     }
 
-    void SetDefaultSpecificCulture()
+    void SetSpecificCulture()
     {
-        const string defaultCulture = "en-us";
-        var culture = System.Globalization.CultureInfo.DefaultThreadCurrentCulture;
-        if (string.Equals(culture?.Name, defaultCulture, StringComparison.OrdinalIgnoreCase))
+        var culture = CultureInfo.CurrentCulture;
+        if (!culture.IsNeutralCulture)
         {
+            // Current culture is specific. Nothing needs to do.
             return;
         }
 
-        System.Globalization.CultureInfo.DefaultThreadCurrentCulture = new System.Globalization.CultureInfo(defaultCulture);
+        try
+        {
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.CreateSpecificCulture(culture.Name);
+        }
+        catch (Exception ex) when (ex is CultureNotFoundException || ex is ArgumentException)
+        {
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-us");
+        }
     }
 }

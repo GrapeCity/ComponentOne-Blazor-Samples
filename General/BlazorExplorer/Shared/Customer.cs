@@ -1,4 +1,5 @@
-﻿using System;
+﻿using C1.DataCollection;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -368,6 +369,14 @@ namespace BlazorExplorer.Pages
         public bool Selected { get; set; }
         public string Name { get; set; }
         public string Country { get; set; }
+    }
+
+    public class CustomerRequest
+    {
+        public int Skip { get; set; }
+        public int Take { get; set; }
+        public FilterExpression FilterExpression { get; set; }
+        public IReadOnlyList<SortDescription> SortDescriptions { get; set; }
     }
 
     public class CustomerResponse

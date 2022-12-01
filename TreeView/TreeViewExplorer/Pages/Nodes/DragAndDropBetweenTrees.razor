@@ -9,8 +9,8 @@
 <p>@((MarkupString)Localization.Resource.DragDropBtwTreesDescription)</p>
 
 <div class="mb-5">
-    <div>Allow dragging within trees <C1CheckBox @bind-IsChecked="@dragWithin" /></div>
-    <div>Allow dragging between trees <C1CheckBox @bind-IsChecked="@dragBetween" /></div>
+    <div>@Localization.Resource.AllowDraggingWithinTrees <C1CheckBox @bind-IsChecked="@dragWithin" /></div>
+    <div>@Localization.Resource.AllowDraggingBetweenTrees <C1CheckBox @bind-IsChecked="@dragBetween" /></div>
 </div>
 
 <div class="d-flex flex-row">

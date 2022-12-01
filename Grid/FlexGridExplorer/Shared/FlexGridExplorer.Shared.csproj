@@ -7,7 +7,7 @@
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="C1.DataCollection" Version="1.0.20222.106" />
+    <PackageReference Include="C1.DataCollection" Version="1.0.20223.116" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.Text.Json" Version="6.0.5" />
   </ItemGroup>

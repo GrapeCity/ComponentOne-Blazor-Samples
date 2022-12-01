@@ -152,6 +152,24 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allow dragging between trees.
+        /// </summary>
+        public static string AllowDraggingBetweenTrees {
+            get {
+                return ResourceManager.GetString("AllowDraggingBetweenTrees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allow dragging within trees.
+        /// </summary>
+        public static string AllowDraggingWithinTrees {
+            get {
+                return ResourceManager.GetString("AllowDraggingWithinTrees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The control provides several properties that customize its behavior.&lt;br/&gt;
         ///&lt;b&gt;ShowLines:&lt;/b&gt; Gets or sets a value that indicates whether the connecting lines are visible.&lt;br/&gt;
         ///&lt;b&gt;WholeWidthSelection:&lt;/b&gt; Gets or sets whether the selection item should take the whole width of the control or not.&lt;br/&gt;

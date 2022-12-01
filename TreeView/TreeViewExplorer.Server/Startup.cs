@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,6 +26,7 @@ namespace TreeViewExplorer.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization();
             services.AddRazorPages();
             services.AddServerSideBlazor();
         }
@@ -47,6 +49,13 @@ namespace TreeViewExplorer.Server
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            var allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Select(c => c.Name).ToArray();
+            var localizationOptions = new RequestLocalizationOptions()
+                .AddSupportedCultures(allCultures)
+                .AddSupportedUICultures(new[] { "en", "ja" })
+                .SetDefaultCulture("en");
+            app.UseRequestLocalization(localizationOptions);
 
             app.UseEndpoints(endpoints =>
             {

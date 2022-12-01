@@ -9,19 +9,19 @@
 <p>@((MarkupString)Localization.Resource.SearchingDescription)</p>
 
 <C1AutoComplete @ref="ac" DisplayMemberPath="FullPathHeader" T="TreeViewItemViewModel" HighlightStyle="@("color:#428bca;font-weight:bold")"
-                Placeholder="Input TreeNode name" Style="@("margin:8px 0; width: 400px;")" SelectedItemChanged="OnSelectedChanged" />
+                Placeholder="@Localization.Resource.Search_AutoComplete_Placeholder" Style="@("margin:8px 0; width: 400px;")" SelectedItemChanged="OnSelectedChanged" />
 
 
-<C1TreeView @ref="treeview" Class="shadow" ShowLines="true" IsExpandedPath="Expanded" ItemsSource="@_dataSource" ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name"
+<C1TreeView Class="shadow" @ref="treeview" ShowLines="true" IsExpandedPath="Expanded" ItemsSource="@_dataSource" ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name"
             Style="@_c1Style" KeyboardNavigation="true" SelectionMode="C1SelectionMode.Extended" ExpandMode="TreeViewExpandMode.Single" />
 
 
-@code{
+@code {
     readonly C1Style _c1Style = new C1Style
-    {
-        Height = 600,
-        Width = 300
-    };
+        {
+            Height = 600,
+            Width = 300
+        };
 
     C1TreeView treeview;
     C1AutoComplete<TreeViewItemViewModel> ac;
@@ -50,7 +50,7 @@
                     Name = "Phones",
                     Expanded = true,
                     Subdirectories = new List<Directory>
-                {
+                    {
                         new Directory { Name = "Apple" },
                         new Directory { Name = "Motorola" },
                         new Directory { Name = "Nokia" },
@@ -77,7 +77,7 @@
         {
             Name = "Home",
             Subdirectories = new List<Directory>()
-        {
+            {
                 new Directory {Name = "Coffee Maker"},
                 new Directory {Name = "Breadmaker"},
                 new Directory {Name = "Solar Panel"},

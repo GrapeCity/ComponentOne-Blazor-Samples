@@ -699,12 +699,15 @@ Specific series may override those properties and use different data sources and
     <comment>Two Y-axes</comment>
   </data>
   <data name="ExportDescription" xml:space="preserve">
-    <value>This demo shows how to save chart as an image.</value>
+    <value>このデモでは、チャートを画像として保存する方法を示します。</value>
+    <comment>This demo shows how to save chart as an image.</comment>
   </data>
   <data name="ExportSummary" xml:space="preserve">
-    <value>Export</value>
+    <value>エクスポート</value>
+    <comment>Export</comment>
   </data>
   <data name="ExportTitle" xml:space="preserve">
-    <value>Image Export</value>
+    <value>画像のエクスポート</value>
+    <comment>Image Export</comment>
   </data>
 </root>

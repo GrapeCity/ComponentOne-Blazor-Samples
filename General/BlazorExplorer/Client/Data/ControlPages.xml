@@ -31,7 +31,7 @@
         <subactions>
           <action text="Column Definition" text.ja="列の定義" name="ColumnDefinitions"></action>
           <action text="Custom columns" text.ja="カスタム列" name="CustomColumns"></action>
-		  <action text="GridColumn customization" text.ja="GridColumn customization" name="CustomDropDownColumn"></action>
+		  <action text="GridColumn customization" text.ja="GridColumn カスタマイズ" name="CustomDropDownColumn"></action>
           <!--<action text="Custom Header Template" text.ja="カスタムヘッダーテンプレート" name="CustomHeaderTemplate"></action>
           <action text="Column Layout" text.ja="列のレイアウト" name="ColumnLayout"></action>
           <action text="Custom Footers" text.ja="カスタムフッター" name="CustomFooters"></action>-->
@@ -299,9 +299,9 @@
     </Control>
     <Control name="Menu">
       <action text="Overview" text.ja="概要" name="Index"></action>
-      <action text="Unbound" text.ja="Unbound" name="Unbound"></action>
-      <action text="HeaderTemplate" text.ja="HeaderTemplate" name="HeaderTemplate"></action>
-      <action text="ItemTemplate" text.ja="ItemTemplate" name="ItemTemplate"></action>
+      <action text="Unbound" text.ja="アンバウンド" name="Unbound"></action>
+      <action text="HeaderTemplate" text.ja="ヘッダーテンプレート" name="HeaderTemplate"></action>
+      <action text="ItemTemplate" text.ja="項目テンプレート" name="ItemTemplate"></action>
     </Control>
     <Control name="Accordion" new="true">
       <action text="Overview" text.ja="概要" name="Index"></action>

@@ -54,11 +54,12 @@ namespace BlazorExplorer
             app.UseStaticFiles();
 
             app.UseRouting();
-            
+            // Allowed using of date, number formats for all available cultures.
+            var allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Select(c=>c.Name).ToArray();
             var localizationOptions = new RequestLocalizationOptions()
-                .AddSupportedCultures("en-us")
-                .AddSupportedUICultures(new[] { "en", "ja", "ko", "zh-Hans" })
-                .SetDefaultCulture("en-us");
+                .AddSupportedCultures(allCultures)
+                .AddSupportedUICultures(allCultures)
+                .SetDefaultCulture("en");
             app.UseRequestLocalization(localizationOptions);
 
             app.UseEndpoints(endpoints =>

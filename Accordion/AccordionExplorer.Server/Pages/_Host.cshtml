@@ -1,5 +1,6 @@
 ﻿@page "/"
 @namespace AccordionExplorer.Server.Pages
+@using System.Globalization
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = null;
@@ -24,6 +25,28 @@
     <link rel="stylesheet" href="~/_content/C1.Blazor.DateTimeEditors/styles.css" />
 </head>
 <body>
+    @{
+        CultureInfo specificCulture = CultureInfo.CurrentCulture;
+        if (specificCulture.IsNeutralCulture)
+        {
+            try
+            {
+                specificCulture = CultureInfo.CreateSpecificCulture(CultureInfo.CurrentCulture.Name);
+            }
+            catch (Exception ex) when (ex is CultureNotFoundException || ex is ArgumentException)
+            {
+                specificCulture = new CultureInfo("en-us");
+            }
+        }
+
+        this.HttpContext.Response.Cookies.Append(
+        Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.DefaultCookieName,
+        Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.MakeCookieValue(
+        new Microsoft.AspNetCore.Localization.RequestCulture(
+        specificCulture,
+        CultureInfo.CurrentUICulture)));
+    }
+
     <app>
         <component type="typeof(App)" render-mode="ServerPrerendered" />
     </app>

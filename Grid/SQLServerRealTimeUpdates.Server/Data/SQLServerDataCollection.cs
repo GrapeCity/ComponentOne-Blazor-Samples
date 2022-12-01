@@ -135,12 +135,12 @@ namespace SQLServerRealTimeUpdates.Data
             }
         }
 
-        protected override async Task ReplaceAsyncOverride(int index, T item, CancellationToken cancellationToken)
+        protected override async Task<int> ReplaceAsyncOverride(int index, T item, CancellationToken cancellationToken)
         {
             try
             {
                 Notifier?.Stop();
-                await base.ReplaceAsyncOverride(index, item, cancellationToken);
+                return await base.ReplaceAsyncOverride(index, item, cancellationToken);
             }
             finally
             {

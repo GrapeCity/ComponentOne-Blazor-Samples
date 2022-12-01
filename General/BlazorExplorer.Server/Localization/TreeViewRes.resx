@@ -148,6 +148,12 @@ In this sample, we use ObservableCollection&amp;lt;T&amp;gt; which is a built-in
   <data name="AddNewNode" xml:space="preserve">
     <value>Add New Node</value>
   </data>
+  <data name="AllowDraggingBetweenTrees" xml:space="preserve">
+    <value>Allow dragging between trees</value>
+  </data>
+  <data name="AllowDraggingWithinTrees" xml:space="preserve">
+    <value>Allow dragging within trees</value>
+  </data>
   <data name="BehaviorDescription" xml:space="preserve">
     <value>The control provides several properties that customize its behavior.&lt;br/&gt;
 &lt;b&gt;ShowLines:&lt;/b&gt; Gets or sets a value that indicates whether the connecting lines are visible.&lt;br/&gt;

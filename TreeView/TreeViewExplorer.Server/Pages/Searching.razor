@@ -9,7 +9,7 @@
 <p>@((MarkupString)Localization.Resource.SearchingDescription)</p>
 
 <C1AutoComplete @ref="ac" DisplayMemberPath="FullPathHeader" T="TreeViewItemViewModel" HighlightStyle="@("color:#428bca;font-weight:bold")"
-                Placeholder="Input TreeNode name" Style="@("margin:8px 0; width: 400px;")" SelectedItemChanged="OnSelectedChanged" />
+                Placeholder="@Localization.Resource.Search_AutoComplete_Placeholder" Style="@("margin:8px 0; width: 400px;")" SelectedItemChanged="OnSelectedChanged" />
 
 
 <C1TreeView Class="shadow" @ref="treeview" ShowLines="true" IsExpandedPath="Expanded" ItemsSource="@_dataSource" ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name"

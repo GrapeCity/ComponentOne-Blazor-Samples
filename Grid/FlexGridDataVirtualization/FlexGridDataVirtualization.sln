@@ -1,6 +1,6 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
+# Visual Studio Version 17
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlexGridDataVirtualization.Server", "Server\FlexGridDataVirtualization.Server.csproj", "{373D0F88-9F05-4A5C-9D76-4B0D63AB291E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlexGridDataVirtualization.Client", "Client\FlexGridDataVirtualization.Client.csproj", "{4D413165-F8BF-445B-B46A-DD9B1854352C}"

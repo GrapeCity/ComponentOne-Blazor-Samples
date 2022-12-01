@@ -1,12 +1,9 @@
 using System;
 using System.Net.Http;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Text;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using System.Globalization;
 
 namespace BlazorExplorer
 {
@@ -20,8 +17,27 @@ namespace BlazorExplorer
             builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddSingleton<ViewBagService>();
             builder.Services.AddLocalization();
+            SetSpecificCulture();
 
             await builder.Build().RunAsync();
+        }
+        private static void SetSpecificCulture()
+        {
+            var culture = CultureInfo.CurrentCulture;
+            if (!culture.IsNeutralCulture)
+            {
+                // Current culture is specific. Nothing needs to do.
+                return;
+            }
+
+            try
+            {
+                CultureInfo.DefaultThreadCurrentCulture = CultureInfo.CreateSpecificCulture(culture.Name);
+            }
+            catch (Exception ex) when (ex is CultureNotFoundException || ex is ArgumentException)
+            {
+                CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-us");
+            }
         }
     }
 }

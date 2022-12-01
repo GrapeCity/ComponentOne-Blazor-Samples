@@ -16,18 +16,18 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Calendar">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.6" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Localization\DatePickerRes.Designer.cs">

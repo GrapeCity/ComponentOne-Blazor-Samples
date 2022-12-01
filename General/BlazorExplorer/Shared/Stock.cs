@@ -1,4 +1,5 @@
-﻿using System;
+﻿using C1.DataCollection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
@@ -29,6 +30,14 @@ namespace BlazorExplorer
         public int Volume { get; set; }
         public DateTime QuoteTime { get; set; }
         public DateTime TradeTime { get; set; }
+    }
+
+    public class StockRequest
+    {
+        public int Skip { get; set; }
+        public int Take { get; set; }
+        public FilterExpression FilterExpression { get; set; }
+        public IReadOnlyList<SortDescription> SortDescriptions { get; set; }
     }
 
     public class StockResponse

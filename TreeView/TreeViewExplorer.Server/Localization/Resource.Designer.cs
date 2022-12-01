@@ -142,6 +142,33 @@ namespace TreeViewExplorer.Server.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Node.
+        /// </summary>
+        public static string AddNewNode {
+            get {
+                return ResourceManager.GetString("AddNewNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allow dragging between trees.
+        /// </summary>
+        public static string AllowDraggingBetweenTrees {
+            get {
+                return ResourceManager.GetString("AllowDraggingBetweenTrees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allow dragging within trees.
+        /// </summary>
+        public static string AllowDraggingWithinTrees {
+            get {
+                return ResourceManager.GetString("AllowDraggingWithinTrees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Behavior.
         /// </summary>
         public static string Behavior {
@@ -183,6 +210,15 @@ namespace TreeViewExplorer.Server.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom CSS.
+        /// </summary>
+        public static string CustomCss {
+            get {
+                return ResourceManager.GetString("CustomCss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can also drag and drop nodes between different TreeView controls. To do this, add an event handler for the &lt;b&gt;OnDragOver&lt;/b&gt; event to configure the behavior..
         /// </summary>
         public static string DragDropBtwTreesDescription {
@@ -219,6 +255,15 @@ namespace TreeViewExplorer.Server.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IconTemplate.
+        /// </summary>
+        public static string IconTemplate {
+            get {
+                return ResourceManager.GetString("IconTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;b&gt;ExpandedIconTemplate:&lt;/b&gt; Content template for tree item expanded icon.&lt;br/&gt;
         ///&lt;b&gt;CollapsedIconTemplate:&lt;/b&gt; Content template for tree item collapsed icon.&lt;br/&gt;
         ///&lt;b&gt;ExpandedIconStyle:&lt;/b&gt; Gets or sets the style applied to the expanded/collapsed icon.&lt;br/&gt;.
@@ -226,6 +271,15 @@ namespace TreeViewExplorer.Server.Localization {
         public static string IconTemplateDescription {
             get {
                 return ResourceManager.GetString("IconTemplateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ItemTemplate.
+        /// </summary>
+        public static string ItemTemplate {
+            get {
+                return ResourceManager.GetString("ItemTemplate", resourceCulture);
             }
         }
         
@@ -347,6 +401,15 @@ namespace TreeViewExplorer.Server.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Input TreeNode name.
+        /// </summary>
+        public static string Search_AutoComplete_Placeholder {
+            get {
+                return ResourceManager.GetString("Search_AutoComplete_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Searching.
         /// </summary>
         public static string Searching {
@@ -361,6 +424,15 @@ namespace TreeViewExplorer.Server.Localization {
         public static string SearchingDescription {
             get {
                 return ResourceManager.GetString("SearchingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ShowCheckboxes.
+        /// </summary>
+        public static string ShowCheckboxes {
+            get {
+                return ResourceManager.GetString("ShowCheckboxes", resourceCulture);
             }
         }
         
@@ -389,6 +461,15 @@ namespace TreeViewExplorer.Server.Localization {
         public static string StylingDescription {
             get {
                 return ResourceManager.GetString("StylingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unbound.
+        /// </summary>
+        public static string Unbound {
+            get {
+                return ResourceManager.GetString("Unbound", resourceCulture);
             }
         }
         

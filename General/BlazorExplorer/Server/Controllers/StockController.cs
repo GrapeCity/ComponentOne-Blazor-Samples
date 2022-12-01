@@ -24,43 +24,35 @@ namespace BlazorExplorer.Server.Controllers
             this.logger = logger;
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<StockResponse> Get()
         {
-            var skip = 0;
-            var take = 10;
-            int.TryParse(Request.Query?["skip"].FirstOrDefault(), out skip);
-            int.TryParse(Request.Query?["take"].FirstOrDefault(), out take);
+            var options = new JsonSerializerOptions { Converters = { new FilterExpressionJsonConverter(), new SortDescriptionJsonConverter() } };
+            var stockRequest = await JsonSerializer.DeserializeAsync<StockRequest>(Request.Body, options);
 
             var stocks = _stocks;
 
             #region filter
-            var filter = Request.Query?["filter"].FirstOrDefault();
 
-            if (!string.IsNullOrWhiteSpace(filter))
+            if (stockRequest.FilterExpression != null)
             {
-                var options = new JsonSerializerOptions { Converters = { new FilterExpressionJsonConverter() } };
-                var filterExpression = JsonSerializer.Deserialize<FilterExpression>(filter, options);
                 var filterCollection = new C1FilterDataCollection<Stock>(stocks);
-                await filterCollection.FilterAsync(filterExpression);
+                await filterCollection.FilterAsync(stockRequest.FilterExpression);
                 stocks = filterCollection.ToList();
             }
             #endregion
 
             #region sorting
-            var sort = Request.Query?["sort"].FirstOrDefault();
 
-            if (!string.IsNullOrWhiteSpace(sort))
+            if (stockRequest.SortDescriptions?.Count > 0)
             {
-                var options = new JsonSerializerOptions { Converters = { new SortDescriptionJsonConverter() } };
-                var sortDescriptions = JsonSerializer.Deserialize<SortDescription[]>(sort, options);
                 var sortCollection = new C1SortDataCollection<Stock>(stocks);
-                await sortCollection.SortAsync(sortDescriptions);
+                await sortCollection.SortAsync(stockRequest.SortDescriptions.ToArray());
                 stocks = sortCollection.ToList();
             }
             #endregion
 
-            return new StockResponse { TotalCount = stocks.Count, Stocks = stocks.Skip(skip).Take(take) };
+            return new StockResponse { TotalCount = stocks.Count, Stocks = stocks.Skip(stockRequest.Skip).Take(stockRequest.Take) };
         }
 
         public static List<Stock> GetFinancialData()

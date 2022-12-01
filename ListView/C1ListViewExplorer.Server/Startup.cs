@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using C1ListViewExplorer.Data;
+using System.Globalization;
 
 namespace C1ListViewExplorer
 {
@@ -19,6 +20,7 @@ namespace C1ListViewExplorer
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
@@ -42,6 +44,14 @@ namespace C1ListViewExplorer
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            // Allowed using of date, number formats for all available cultures.
+            var allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Select(c => c.Name).ToArray();
+            var localizationOptions = new RequestLocalizationOptions()
+                .AddSupportedCultures(allCultures)
+                .AddSupportedUICultures(allCultures)
+                .SetDefaultCulture("en");
+            app.UseRequestLocalization(localizationOptions);
 
             app.UseEndpoints(endpoints =>
             {

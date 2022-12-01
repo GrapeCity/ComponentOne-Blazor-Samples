@@ -125,37 +125,37 @@
   &lt;button class="btn btn-default" id="btnOpenPopup"&gt;Hover me!&lt;/button&gt;</value>
   </data>
   <data name="Index_Text10" xml:space="preserve">
-    <value>A tooltip is Below and aligned to the left of the reference element.</value>
+    <value>The tooltip is at the Bottom and aligned to the Left of the referenced element.</value>
   </data>
   <data name="Index_Text11" xml:space="preserve">
-    <value>A tooltip below the reference element.</value>
+    <value>The tooltip is at the Bottom of the referenced element.</value>
   </data>
   <data name="Index_Text12" xml:space="preserve">
-    <value>A tooltip is Below and aligned to the Right of the reference element.</value>
+    <value>The tooltip is at the Bottom and aligned to the Right of the referenced element.</value>
   </data>
   <data name="Index_Text13" xml:space="preserve">
-    <value>A tooltip is at Left and aligned to the top of the reference element.</value>
+    <value>The tooltip is on the Left and aligned to the Top of the referenced element.</value>
   </data>
   <data name="Index_Text14" xml:space="preserve">
-    <value>A tooltip is at Left of the reference element.</value>
+    <value>The tooltip is on the Left of the referenced element.</value>
   </data>
   <data name="Index_Text15" xml:space="preserve">
-    <value>A tooltip is at Left and aligned to the bottom of the reference element.</value>
+    <value>The tooltip is on the Left and aligned to the Bottom of the referenced element.</value>
   </data>
   <data name="Index_Text16" xml:space="preserve">
-    <value>A tooltip is at Right and aligned to the top ofthe reference element.</value>
+	  <value>The tooltip is on the Right and aligned to the Top of the referenced element.</value>
   </data>
   <data name="Index_Text17" xml:space="preserve">
-    <value>A tooltip is at Right the reference element.</value>
+    <value>The tooltip is on the Right of the referenced element.</value>
   </data>
   <data name="Index_Text18" xml:space="preserve">
-    <value>A tooltip is at Right and aligned to the bottom of the reference element.</value>
+    <value>The tooltip is on the Right and aligned to the Bottom of the referenced element.</value>
   </data>
   <data name="Index_Text2" xml:space="preserve">
-    <value>We can display a tooltip with the content is customized. Hover this &lt;span id="ttcustom" style="font:bolder;color:brown"&gt;span&lt;/span&gt; for sample.</value>
+    <value>We can display a tooltip with the custom content. Hover this &lt;span id="ttcustom" style="font:bolder;color:brown"&gt;span&lt;/span&gt; for sample.</value>
   </data>
   <data name="Index_Text3" xml:space="preserve">
-    <value>We support 12 positions that tooltip will be displayed arround the target element like below.</value>
+    <value>The tooltip can be displayed at different positions around the target element like it is shown below.</value>
   </data>
   <data name="Index_Text4" xml:space="preserve">
     <value>This is text content</value>
@@ -170,13 +170,13 @@
     &lt;/div&gt;</value>
   </data>
   <data name="Index_Text7" xml:space="preserve">
-    <value>A tooltip is at Above and aligned to the Left of the reference element.</value>
+    <value>The tooltip is at the Top and aligned to the Left of the referenced element.</value>
   </data>
   <data name="Index_Text8" xml:space="preserve">
-    <value>A tooltip is Above the reference element.</value>
+    <value>The tooltip is at the Top of the referenced element.</value>
   </data>
   <data name="Index_Text9" xml:space="preserve">
-    <value>A tooltip is at Above and aligned to the Right of the reference element.</value>
+    <value>The tooltip is at the Top and aligned to the Right of the referenced element.</value>
   </data>
   <data name="InputFormDesc" xml:space="preserve">
     <value>Tooltips for validating input fields.</value>

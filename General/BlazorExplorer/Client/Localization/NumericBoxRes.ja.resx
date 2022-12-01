@@ -179,4 +179,8 @@
     <value>読み取り専用</value>
     <comment>property name caption</comment>
   </data>
+	<data name="ModelBindingSummary" xml:space="preserve">
+    <value>強く型付けされたオブジェクトに NumericBox をバインドする方法を示します。</value>
+    <comment>Shows how to bind NumericBox to strongly typed object.</comment>
+  </data>	
 </root>

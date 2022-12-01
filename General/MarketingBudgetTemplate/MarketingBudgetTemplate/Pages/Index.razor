@@ -2,7 +2,6 @@
 @using C1.Blazor.Core
 @using C1.Blazor.Grid
 @using C1.Blazor.Input
-
 <FlexGrid @ref="grid"
           CellFactory="@cellFactory"
           MergeManager="@custommergemanager"
@@ -21,11 +20,11 @@
             }
             else if (i == 1)
             {
-                <GridColumn Width="60" HorizontalAlignment="C1HorizontalAlignment.Center" InputType="TextBoxType.Number"/>
+                <GridColumn Width="60" HorizontalAlignment="C1HorizontalAlignment.Center" InputType="TextBoxType.Number" />
             }
             else if (i < 14)
             {
-                <GridColumn Width="100" HorizontalAlignment="C1HorizontalAlignment.Right" InputType="TextBoxType.Number"/>
+                <GridColumn Width="100" HorizontalAlignment="C1HorizontalAlignment.Right" InputType="TextBoxType.Number" />
             }
             else if (i == 14)
             {
@@ -162,7 +161,7 @@
     public async void OnCellEditEnded(object sender, GridCellRangeEventArgs e)
     {
         if (grid.Columns[e.CellRange.Column].InputType == TextBoxType.Number &&
-           (string) grid[e.CellRange.Row, e.CellRange.Column] == "")
+           (string)grid[e.CellRange.Row, e.CellRange.Column] == "")
         {
             grid[e.CellRange.Row, e.CellRange.Column] = "0";
         }
@@ -170,6 +169,11 @@
         //Add percentage sign to Rate column
         if (e.CellRange.Column == 1)
         {
+            if (Array.IndexOf(new int[] { 15, 16, 4, 10 }, e.CellRange.Row) >= 0)
+            {
+                grid[e.CellRange.Row, e.CellRange.Column] = CoerceToInt(grid[e.CellRange.Row, e.CellRange.Column]?.ToString()).ToString();
+            }
+
             if (e.CellRange.Row == 6 || e.CellRange.Row == 12 || e.CellRange.Row == 31
             || e.CellRange.Row == 32 || e.CellRange.Row == 38 || e.CellRange.Row == 44)
             {
@@ -187,6 +191,10 @@
         //Format cell values with percentage sign
         if (e.CellRange.Column >= 2 && e.CellRange.Column <= 13)
         {
+            if (Array.IndexOf(new int[] { 4, 2, 8, 27, 34, 40, 9 }, e.CellRange.Row) >= 0)
+            {
+                grid[e.CellRange.Row, e.CellRange.Column] = CoerceToInt(grid[e.CellRange.Row, e.CellRange.Column]?.ToString()).ToString();
+            }
             if (e.CellRange.Row == 8 || e.CellRange.Row == 9 || e.CellRange.Row == 15
             || e.CellRange.Row == 27 || e.CellRange.Row == 34 || e.CellRange.Row == 40)
             {
@@ -611,6 +619,23 @@
         return true;
     }
 
+    private static int CoerceToInt(string? value)
+    {
+        int result = default;
+        if (!string.IsNullOrEmpty(value))
+        {
+            if (!int.TryParse(value, out result))
+            {
+                if (double.TryParse(value, out double d))
+                {
+                    result = (int)d;
+                }
+            }
+        }
+
+        return result;
+    }
+
     //Define custom CellFactory to apply style/formatting to cells
     public class CustomCellFactory : GridCellFactory
     {
@@ -776,4 +801,4 @@
             return base.GetMergedRange(cellType, range);
         }
     }
-    }
+}

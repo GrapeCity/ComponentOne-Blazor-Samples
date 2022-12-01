@@ -6,8 +6,8 @@
 @using Localization 
 
 <div style="margin-bottom: 3rem;">
-    <div>Allow dragging within trees <C1CheckBox @bind-IsChecked="@dragWithin" /></div>
-    <div>Allow dragging between trees <C1CheckBox @bind-IsChecked="@dragBetween" /></div>
+    <div>@Localization.TreeViewRes.AllowDraggingWithinTrees <C1CheckBox @bind-IsChecked="@dragWithin" /></div>
+    <div>@Localization.TreeViewRes.AllowDraggingBetweenTrees <C1CheckBox @bind-IsChecked="@dragBetween" /></div>
 </div>
 
 <div>

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Globalization;
+using System.Linq;
 
 namespace C1DateTimeEditorsExplorer.Server
 {
@@ -36,9 +38,11 @@ namespace C1DateTimeEditorsExplorer.Server
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            var allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Select(c => c.Name).ToArray();
             var localizationOptions = new RequestLocalizationOptions()
-                    .AddSupportedCultures("en-us")
-                    .AddSupportedUICultures(new[] { "en", "ja"})
+                    .AddSupportedCultures(allCultures)
+                    .AddSupportedUICultures(allCultures)
                     .SetDefaultCulture("en-us");
             app.UseRequestLocalization(localizationOptions);
 

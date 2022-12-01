@@ -85,7 +85,7 @@
             var unset = filter.Items.FirstOrDefault(i => string.IsNullOrEmpty(i.DisplayValue));
             if (unset != null)
             {
-                unset.DisplayValue = C1.Blazor.DataFilter.Resources.Resource.Null;
+                unset.DisplayValue = DataFilterResources.Null;
             }
         }
         else if (e.Property.Name == nameof(Car.DateProductionLine))

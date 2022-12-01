@@ -19,7 +19,7 @@ namespace BlazorExplorer.Localization {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class TooltipRes {
@@ -80,7 +80,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tooltip is Below and aligned to the left of the reference element..
+        ///   Looks up a localized string similar to The tooltip is at the Bottom and aligned to the Left of the referenced element..
         /// </summary>
         public static string Index_Text10 {
             get {
@@ -89,7 +89,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tooltip below the reference element..
+        ///   Looks up a localized string similar to The tooltip is at the Bottom of the referenced element..
         /// </summary>
         public static string Index_Text11 {
             get {
@@ -98,7 +98,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tooltip is Below and aligned to the Right of the reference element..
+        ///   Looks up a localized string similar to The tooltip is at the Bottom and aligned to the Right of the referenced element..
         /// </summary>
         public static string Index_Text12 {
             get {
@@ -107,7 +107,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tooltip is at Left and aligned to the top of the reference element..
+        ///   Looks up a localized string similar to The tooltip is on the Left and aligned to the Top of the referenced element..
         /// </summary>
         public static string Index_Text13 {
             get {
@@ -116,7 +116,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tooltip is at Left of the reference element..
+        ///   Looks up a localized string similar to The tooltip is on the Left of the referenced element..
         /// </summary>
         public static string Index_Text14 {
             get {
@@ -125,7 +125,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tooltip is at Left and aligned to the bottom of the reference element..
+        ///   Looks up a localized string similar to The tooltip is on the Left and aligned to the Bottom of the referenced element..
         /// </summary>
         public static string Index_Text15 {
             get {
@@ -134,7 +134,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tooltip is at Right and aligned to the top ofthe reference element..
+        ///   Looks up a localized string similar to The tooltip is on the Right and aligned to the Top of the referenced element..
         /// </summary>
         public static string Index_Text16 {
             get {
@@ -143,7 +143,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tooltip is at Right the reference element..
+        ///   Looks up a localized string similar to The tooltip is on the Right of the referenced element..
         /// </summary>
         public static string Index_Text17 {
             get {
@@ -152,7 +152,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tooltip is at Right and aligned to the bottom of the reference element..
+        ///   Looks up a localized string similar to The tooltip is on the Right and aligned to the Bottom of the referenced element..
         /// </summary>
         public static string Index_Text18 {
             get {
@@ -161,7 +161,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We can display a tooltip with the content is customized. Hover this &lt;span id=&quot;ttcustom&quot; style=&quot;font:bolder;color:brown&quot;&gt;span&lt;/span&gt; for sample..
+        ///   Looks up a localized string similar to We can display a tooltip with the custom content. Hover this &lt;span id=&quot;ttcustom&quot; style=&quot;font:bolder;color:brown&quot;&gt;span&lt;/span&gt; for sample..
         /// </summary>
         public static string Index_Text2 {
             get {
@@ -170,7 +170,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We support 12 positions that tooltip will be displayed arround the target element like below..
+        ///   Looks up a localized string similar to The tooltip can be displayed at different positions around the target element like it is shown below..
         /// </summary>
         public static string Index_Text3 {
             get {
@@ -209,7 +209,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tooltip is at Above and aligned to the Left of the reference element..
+        ///   Looks up a localized string similar to The tooltip is at the Top and aligned to the Left of the referenced element..
         /// </summary>
         public static string Index_Text7 {
             get {
@@ -218,7 +218,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tooltip is Above the reference element..
+        ///   Looks up a localized string similar to The tooltip is at the Top of the referenced element..
         /// </summary>
         public static string Index_Text8 {
             get {
@@ -227,7 +227,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tooltip is at Above and aligned to the Right of the reference element..
+        ///   Looks up a localized string similar to The tooltip is at the Top and aligned to the Right of the referenced element..
         /// </summary>
         public static string Index_Text9 {
             get {

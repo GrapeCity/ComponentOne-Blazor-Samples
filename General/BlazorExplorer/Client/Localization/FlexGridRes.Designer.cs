@@ -19,7 +19,7 @@ namespace BlazorExplorer.Localization {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class FlexGridRes {
@@ -660,6 +660,24 @@ namespace BlazorExplorer.Localization {
         public static string GettingStartedTitle {
             get {
                 return ResourceManager.GetString("GettingStartedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The sample demos how to customize a GridColumn of FlexGrid. The &quot;Country&quot; column has edited using a dropdown instead of textbox editor..
+        /// </summary>
+        public static string GridColumnCustomizationDescription {
+            get {
+                return ResourceManager.GetString("GridColumnCustomizationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GridColumn customization.
+        /// </summary>
+        public static string GridColumnCustomizationTitle {
+            get {
+                return ResourceManager.GetString("GridColumnCustomizationTitle", resourceCulture);
             }
         }
         

@@ -3,6 +3,15 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>6.0.20223.374</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.TreeView">
+      <Version>6.0.20223.374</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Update="Localization\Resource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -14,13 +23,5 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20222.267</Version>
-    </PackageReference>
-    <PackageReference Include="C1.Blazor.TreeView">
-      <Version>6.0.20222.267</Version>
-    </PackageReference>
   </ItemGroup>
 </Project>

@@ -11,30 +11,30 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Accordion">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.GridControl">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.6" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Localization\AccordionRes.Designer.cs">
@@ -51,5 +51,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccordionRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Folder Include="Localization\" />
   </ItemGroup>
 </Project>

@@ -27,18 +27,18 @@ namespace FlexGridExplorer.Pages
 
         protected override async Task<Tuple<int, IReadOnlyList<Customer>>> GetPageAsync(int pageIndex, int startingIndex, int count, IReadOnlyList<SortDescription> sortDescriptions = null, FilterExpression filterExpression = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            string url = $"Customer?skip={startingIndex}&take={count}";
-            if (sortDescriptions?.Count > 0)
+            var request = new CustomerRequest()
             {
-                url += $"&sort={Uri.EscapeUriString(JsonSerializer.Serialize<IReadOnlyList<SortDescription>>(sortDescriptions))}";
-            }
-            if (filterExpression != null)
-            {
-                var options = new JsonSerializerOptions { Converters = { new FilterExpressionJsonConverter() } };
-                url += $"&filter={Uri.EscapeUriString(JsonSerializer.Serialize(filterExpression, options))}";
-            }
-            var response = await Http.GetFromJsonAsync<CustomerResponse>(new Uri(url, UriKind.Relative), cancellationToken);
-            return new Tuple<int, IReadOnlyList<Customer>>(response.TotalCount, response.Customers.ToList());
+                Skip = startingIndex,
+                Take = count,
+                FilterExpression = filterExpression,
+                SortDescriptions = sortDescriptions,
+            };
+            var options = new JsonSerializerOptions { Converters = { new FilterExpressionJsonConverter() } };
+            var content = JsonContent.Create(request, options: options);
+            var response = await Http.PostAsync(new Uri("Customer", UriKind.Relative), content, cancellationToken);
+            var response2 = await response.Content.ReadFromJsonAsync<CustomerResponse>(cancellationToken: cancellationToken);
+            return new Tuple<int, IReadOnlyList<Customer>>(response2.TotalCount, response2.Customers.ToList());
         }
     }
 }

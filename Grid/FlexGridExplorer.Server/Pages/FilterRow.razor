@@ -6,7 +6,7 @@
 <h1>@AppResources.FilterRowTitle</h1>
 <p>@AppResources.FilterRowDescription</p>
 
-<FlexGrid AutoGenerateColumns="false" ItemsSource="_customers" HeadersVisibility="GridHeadersVisibility.All" FrozenRows="1" Style="@("max-height:50vh")">
+<FlexGrid AutoGenerateColumns="false" ItemsSource="_customers" HeadersVisibility="GridHeadersVisibility.All" FrozenRows="1" AllowFiltering="false" Style="@("max-height:50vh")">
     <FlexGridRows>
         <GridFilterRow Placeholder="@AppResources.FilterPlaceholderText" AutoComplete="true" />
     </FlexGridRows>

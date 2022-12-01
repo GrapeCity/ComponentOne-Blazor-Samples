@@ -502,4 +502,10 @@
   <data name="ShowSort" xml:space="preserve">
     <value>Show sort icons</value>
   </data>
+  <data name="GridColumnCustomizationDescription" xml:space="preserve">
+    <value>The sample demos how to customize a GridColumn of FlexGrid. The "Country" column has edited using a dropdown instead of textbox editor.</value>
+  </data>
+  <data name="GridColumnCustomizationTitle" xml:space="preserve">
+    <value>GridColumn customization</value>
+  </data>
 </root>

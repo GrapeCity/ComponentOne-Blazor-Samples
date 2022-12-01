@@ -27,12 +27,25 @@
 </head>
 <body>
     @{
+        CultureInfo specificCulture = CultureInfo.CurrentCulture;
+        if (specificCulture.IsNeutralCulture)
+        {
+            try
+            {
+                specificCulture = CultureInfo.CreateSpecificCulture(CultureInfo.CurrentCulture.Name);
+            }
+            catch (Exception ex) when (ex is CultureNotFoundException || ex is ArgumentException)
+            {
+                specificCulture = new CultureInfo("en-us");
+            }
+        }
+
         this.HttpContext.Response.Cookies.Append(
         Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.DefaultCookieName,
         Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.MakeCookieValue(
-            new Microsoft.AspNetCore.Localization.RequestCulture(
-                new System.Globalization.CultureInfo("en"),
-                System.Globalization.CultureInfo.CurrentUICulture)));
+        new Microsoft.AspNetCore.Localization.RequestCulture(
+        specificCulture,
+        CultureInfo.CurrentUICulture)));
     }
 
     <app>

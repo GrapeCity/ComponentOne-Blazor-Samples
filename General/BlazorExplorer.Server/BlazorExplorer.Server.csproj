@@ -60,43 +60,43 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Accordion">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Calendar">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Chart">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid.Excel">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Menu">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.TreeView">
-      <Version>6.0.20222.267</Version>
+      <Version>6.0.20223.374</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.6" />
   </ItemGroup>

@@ -4,13 +4,13 @@
 @using C1.Blazor.Input
 
 
-<h3>ShowCheckboxes</h3>
+<h3>@Localization.Resource.ShowCheckboxes</h3>
 
 <p>@((MarkupString)Localization.Resource.ShowCheckboxesDescription)</p>
 
 <style>
 </style>
-<div class="pb-2">ShowCheckboxes <C1CheckBox @bind-IsChecked="@showCheckboxes" /></div>
+<div class="pb-2">@Localization.Resource.ShowCheckboxes <C1CheckBox @bind-IsChecked="@showCheckboxes" /></div>
 
 <div class="d-flex flex-row">
     <div class="p-2">

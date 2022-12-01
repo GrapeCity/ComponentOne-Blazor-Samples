@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Globalization;
+using System.Linq;
 
 namespace DataFilterExplorer.Server
 {
@@ -45,10 +47,13 @@ namespace DataFilterExplorer.Server
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            var allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Select(c => c.Name).ToArray();
             app.UseRequestLocalization(new RequestLocalizationOptions()
-                .AddSupportedCultures(new[] { "en-US"})
-                .AddSupportedUICultures(new[] { "en", "ru", "zh","ko","ja","de" })
+                .AddSupportedCultures(allCultures)
+                .AddSupportedUICultures(allCultures)
                 .SetDefaultCulture("en-us"));
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();

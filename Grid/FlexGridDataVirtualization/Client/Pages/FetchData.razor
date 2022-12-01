@@ -32,12 +32,12 @@ else
 }
 
 @code {
-    private VirtualModeCollectionView customers;
+    private VirtualModeDataCollection customers;
     private string filter;
 
     protected override async Task OnInitializedAsync()
     {
-        var collection = new VirtualModeCollectionView() { Http = Http };
+        var collection = new VirtualModeDataCollection() { Http = Http };
         await collection.LoadAsync(0, 0);
         customers = collection;
     }

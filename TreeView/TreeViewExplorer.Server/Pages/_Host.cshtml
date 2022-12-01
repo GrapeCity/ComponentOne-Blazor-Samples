@@ -1,6 +1,7 @@
 ﻿@page "/"
 @namespace TreeViewExplorer.Server.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Globalization
 @{
     Layout = null;
 }
@@ -38,5 +39,26 @@
     <script src="_content/C1.Blazor.TreeView/scripts.js"></script>
     <script src="_content/C1.Blazor.Input/scripts.js"></script>
     <script src="_framework/blazor.server.js"></script>
+    @{
+        CultureInfo specificCulture = CultureInfo.CurrentCulture;
+        if (specificCulture.IsNeutralCulture)
+        {
+            try
+            {
+                specificCulture = CultureInfo.CreateSpecificCulture(CultureInfo.CurrentCulture.Name);
+            }
+            catch (Exception ex) when (ex is CultureNotFoundException || ex is ArgumentException)
+            {
+                specificCulture = new CultureInfo("en-us");
+            }
+        }
+
+        this.HttpContext.Response.Cookies.Append(
+        Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.DefaultCookieName,
+        Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.MakeCookieValue(
+        new Microsoft.AspNetCore.Localization.RequestCulture(
+        specificCulture,
+        CultureInfo.CurrentUICulture)));
+    }
 </body>
 </html>

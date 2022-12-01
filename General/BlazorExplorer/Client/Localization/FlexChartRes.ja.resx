@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
+	<!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,149 +59,149 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <data name="BasicLineDescription" xml:space="preserve">
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="BasicLineDescription" xml:space="preserve">
     <value>このデモは、複数の系列を持つ基本的な折れ線グラフを示します。</value>
     <comment>This demo shows a basic line chart with multiple series.</comment>
   </data>
-  <data name="BasicLineSummary" xml:space="preserve">
+	<data name="BasicLineSummary" xml:space="preserve">
     <value>基本の折れ線グラフ</value>
     <comment>Basic Line Chart</comment>
   </data>
-  <data name="BasicLineTitle" xml:space="preserve">
+	<data name="BasicLineTitle" xml:space="preserve">
     <value>基本の折れ線グラフ</value>
     <comment>Basic Line Chart</comment>
   </data>
-  <data name="BubbleDescription" xml:space="preserve">
+	<data name="BubbleDescription" xml:space="preserve">
     <value>このデモは、複数の系列を持つバブルチャートを示します。</value>
     <comment>This demo shows a bubble chart with multiple series.</comment>
   </data>
-  <data name="BubbleSummary" xml:space="preserve">
+	<data name="BubbleSummary" xml:space="preserve">
     <value>バブルのプロット</value>
     <comment>Bubble Plot</comment>
   </data>
-  <data name="BubbleTitle" xml:space="preserve">
+	<data name="BubbleTitle" xml:space="preserve">
     <value>バブルのプロット</value>
     <comment>Bubble Plot</comment>
   </data>
-  <data name="ColumnLineDescription" xml:space="preserve">
+	<data name="ColumnLineDescription" xml:space="preserve">
     <value>このデモは、ColumnSymbols チャートタイプと LineSymbols チャートタイプの組み合わせを示します。グラフには２つの系列があります。最初の系列は列（親チャートから継承）で、２番目の系列は LineSymbols です。</value>
     <comment>This demo shows a combination of Column and LineSymbols chart types. The chart has two series: the first one is Column (inherited from parent chart) and the second series is LineSymbols.</comment>
   </data>
-  <data name="ColumnLineSummary" xml:space="preserve">
+	<data name="ColumnLineSummary" xml:space="preserve">
     <value>Column と LineSymbols の組み合わせ</value>
     <comment>Column and LineSymbols Combination</comment>
   </data>
-  <data name="ColumnLineTitle" xml:space="preserve">
+	<data name="ColumnLineTitle" xml:space="preserve">
     <value>組み合わせ</value>
     <comment>Combination</comment>
   </data>
-  <data name="ColumnWithDataLabelsDescription" xml:space="preserve">
+	<data name="ColumnWithDataLabelsDescription" xml:space="preserve">
     <value>このデモは、データラベル付きの縦棒グラフを示します。</value>
     <comment>This demo shows a column chart with data labels.</comment>
   </data>
-  <data name="ColumnWithDataLabelsSummary" xml:space="preserve">
+	<data name="ColumnWithDataLabelsSummary" xml:space="preserve">
     <value>データラベル付きの縦棒グラフ</value>
     <comment>Column Chart With Data Labels</comment>
   </data>
-  <data name="ColumnWithDataLabelsTitle" xml:space="preserve">
+	<data name="ColumnWithDataLabelsTitle" xml:space="preserve">
     <value>データラベル付きの縦棒グラフ</value>
     <comment>Column With Data Labels</comment>
   </data>
-  <data name="ColumnWithNegativeValuesDescription" xml:space="preserve">
+	<data name="ColumnWithNegativeValuesDescription" xml:space="preserve">
     <value>このデモは、X 軸の下に負の値を描画する縦棒グラフを示します。</value>
     <comment>This demo shows a column chart with negative values to show drawing below the X axis.</comment>
   </data>
-  <data name="ColumnWithNegativeValuesSummary" xml:space="preserve">
+	<data name="ColumnWithNegativeValuesSummary" xml:space="preserve">
     <value>負の値を持つ縦棒グラフ</value>
     <comment>Column Chart With Negative Values</comment>
   </data>
-  <data name="ColumnWithNegativeValuesTitle" xml:space="preserve">
+	<data name="ColumnWithNegativeValuesTitle" xml:space="preserve">
     <value>負の値を持つ縦棒グラフ</value>
     <comment>Column With Negative Values</comment>
   </data>
-  <data name="IndexChartType" xml:space="preserve">
+	<data name="IndexChartType" xml:space="preserve">
     <value>チャートタイプ:</value>
     <comment>Chart type:</comment>
   </data>
-  <data name="IndexDescription" xml:space="preserve">
+	<data name="IndexDescription" xml:space="preserve">
     <value>チャートをデータソースにバインドし、チャートタイプ、系列の積層化、パレット、および回転を選択できるようにします。</value>
     <comment>It binds the chart to a data source and allows you to select the chart type, series stacking, palette and rotation.</comment>
   </data>
-  <data name="IndexPalette" xml:space="preserve">
+	<data name="IndexPalette" xml:space="preserve">
     <value>パレット:</value>
     <comment>Palette:</comment>
   </data>
-  <data name="IndexStacking" xml:space="preserve">
+	<data name="IndexStacking" xml:space="preserve">
     <value>積層化:</value>
     <comment>Stacking:</comment>
   </data>
-  <data name="IndexSummary" xml:space="preserve">
+	<data name="IndexSummary" xml:space="preserve">
     <value>FlexChart の基本的な機能</value>
     <comment>Shows basic FlexChart features.</comment>
   </data>
-  <data name="IndexTitle" xml:space="preserve">
+	<data name="IndexTitle" xml:space="preserve">
     <value>FlexChart の概要</value>
     <comment>FlexChart Overview.</comment>
   </data>
-  <data name="FunnelDescription" xml:space="preserve">
+	<data name="FunnelDescription" xml:space="preserve">
     <value>ファンネルチャートは、プロセスの複数の段階に沿った値を示します。
 
 たとえば、目標到達プロセスチャートを使用して、販売パイプラインの各段階での販売見込み客の数を表示できます。通常、値は徐々に減少し、バーはじょうごのようになります。</value>
@@ -209,43 +209,43 @@
 
 For example, you could use a funnel chart to show the number of sales prospects at each stage in a sales pipeline. Typically, the values decrease gradually, making the bars resemble a funnel.</comment>
   </data>
-  <data name="FunnelNeckHeight" xml:space="preserve">
+	<data name="FunnelNeckHeight" xml:space="preserve">
     <value>首の高さ:</value>
     <comment>Neck Height:</comment>
   </data>
-  <data name="FunnelNeckWidth" xml:space="preserve">
+	<data name="FunnelNeckWidth" xml:space="preserve">
     <value>首の幅:</value>
     <comment>Neck Width:</comment>
   </data>
-  <data name="FunnelSummary" xml:space="preserve">
+	<data name="FunnelSummary" xml:space="preserve">
     <value>ファンネルチャート</value>
     <comment>Funnel Chart</comment>
   </data>
-  <data name="FunnelType" xml:space="preserve">
+	<data name="FunnelType" xml:space="preserve">
     <value>ファンネルタイプ:</value>
     <comment>Funnel Type:</comment>
   </data>
-  <data name="FunnelTitle" xml:space="preserve">
+	<data name="FunnelTitle" xml:space="preserve">
     <value>ファンネルチャート</value>
     <comment>Funnel Chart</comment>
   </data>
-  <data name="LineWithGapsDescription" xml:space="preserve">
+	<data name="LineWithGapsDescription" xml:space="preserve">
     <value>このサンプルは、ポイントが欠落している折れ線グラフを示します（null を補間します）。</value>
     <comment>The sample shows a line chart with missing points (interpolate nulls).</comment>
   </data>
-  <data name="LineWithGapsInterpolateNulls" xml:space="preserve">
+	<data name="LineWithGapsInterpolateNulls" xml:space="preserve">
     <value>Null 値の補完</value>
     <comment>Interpolate Nulls</comment>
   </data>
-  <data name="LineWithGapsSummary" xml:space="preserve">
+	<data name="LineWithGapsSummary" xml:space="preserve">
     <value>ギャップのある折れ線グラフ</value>
     <comment>Line Chart With Gaps</comment>
   </data>
-  <data name="LineWithGapsTitle" xml:space="preserve">
+	<data name="LineWithGapsTitle" xml:space="preserve">
     <value>ギャップのある折れ線グラフ</value>
     <comment>Line With Gaps</comment>
   </data>
-  <data name="MultiplePiesDescription" xml:space="preserve">
+	<data name="MultiplePiesDescription" xml:space="preserve">
     <value>このサンプルは、同じデータソースに基づいて複数の円グラフを作成する方法を示します。
 
 複数の円グラフを作成するには、FlexPie.binding でいくつかのコンマ区切りのプロパティを指定するだけです。</value>
@@ -253,63 +253,63 @@ For example, you could use a funnel chart to show the number of sales prospects 
 
 To create multiple pie charts, just specify several comma-separated properties in FlexPie.binding.</comment>
   </data>
-  <data name="MultiplePiesSummary" xml:space="preserve">
+	<data name="MultiplePiesSummary" xml:space="preserve">
     <value>複数の円グラフ</value>
     <comment>Multiple Pie Charts</comment>
   </data>
-  <data name="MultiplePiesTitle" xml:space="preserve">
+	<data name="MultiplePiesTitle" xml:space="preserve">
     <value>複数の円グラフ</value>
     <comment>Multiple Pie Charts</comment>
   </data>
-  <data name="PieIndexDescription" xml:space="preserve">
+	<data name="PieIndexDescription" xml:space="preserve">
     <value>チャートをデータソースにバインドし、パレットを選択してさまざまなオプションを変更できるようにします。</value>
     <comment>It binds the chart to a data source and allows you to select palette and change various options.</comment>
   </data>
-  <data name="PieIndexInnerRadius" xml:space="preserve">
+	<data name="PieIndexInnerRadius" xml:space="preserve">
     <value>内半径:</value>
     <comment>InnerRadius:</comment>
   </data>
-  <data name="PieIndexOffset" xml:space="preserve">
+	<data name="PieIndexOffset" xml:space="preserve">
     <value>オフセット:</value>
     <comment>Offset:</comment>
   </data>
-  <data name="PieIndexPalette" xml:space="preserve">
+	<data name="PieIndexPalette" xml:space="preserve">
     <value>パレット:</value>
     <comment>Palette:</comment>
   </data>
-  <data name="PieIndexSummary" xml:space="preserve">
+	<data name="PieIndexSummary" xml:space="preserve">
     <value>FlexPie の基本的な機能</value>
     <comment>Shows basic FlexPie features.</comment>
   </data>
-  <data name="PieIndexTitle" xml:space="preserve">
+	<data name="PieIndexTitle" xml:space="preserve">
     <value>円グラフの概要</value>
     <comment>Pie chart overview.</comment>
   </data>
-  <data name="RangeColumnDescription" xml:space="preserve">
+	<data name="RangeColumnDescription" xml:space="preserve">
     <value>このデモは、ガントチャートに似た範囲縦棒のシナリオを示します。</value>
     <comment>This demo shows a range column scenario similar to a Gantt chart.</comment>
   </data>
-  <data name="RangeColumnSummary" xml:space="preserve">
+	<data name="RangeColumnSummary" xml:space="preserve">
     <value>範囲縦棒グラフ</value>
     <comment>Range Column Chart</comment>
   </data>
-  <data name="RangeColumnTitle" xml:space="preserve">
+	<data name="RangeColumnTitle" xml:space="preserve">
     <value>範囲縦棒グラフ</value>
     <comment>Range Column</comment>
   </data>
-  <data name="Stacked100pcAreaDescription" xml:space="preserve">
+	<data name="Stacked100pcAreaDescription" xml:space="preserve">
     <value>サンプルは、100% 積層面グラフを示します。</value>
     <comment>The sample shows stacked area 100% chart.</comment>
   </data>
-  <data name="Stacked100pcAreaSummary" xml:space="preserve">
+	<data name="Stacked100pcAreaSummary" xml:space="preserve">
     <value>100% 積層面グラフ</value>
     <comment>Stacked 100% Area Chart</comment>
   </data>
-  <data name="Stacked100pcAreaTitle" xml:space="preserve">
+	<data name="Stacked100pcAreaTitle" xml:space="preserve">
     <value>100% 積層面グラフ</value>
     <comment>Stacked 100% Area</comment>
   </data>
-  <data name="StackedBarDescription" xml:space="preserve">
+	<data name="StackedBarDescription" xml:space="preserve">
     <value>このデモは、回転した縦棒グラフに似た横棒グラフに適用された積層化を示します。
 
 デフォルトでは、Y軸のアイテムはチャートの下から開始するため、最初の項目が下に表示され、最後の項目が上に表示されます。
@@ -321,27 +321,27 @@ By default, items on the Y axis start from the bottom of the chart, so the first
 
 If you reverse the Y axis, items will start at the top of the, which is often a more natural order.</comment>
   </data>
-  <data name="StackedBarSummary" xml:space="preserve">
+	<data name="StackedBarSummary" xml:space="preserve">
     <value>積層横棒</value>
     <comment>Stacked Bar</comment>
   </data>
-  <data name="StackedBarTitle" xml:space="preserve">
+	<data name="StackedBarTitle" xml:space="preserve">
     <value>積層横棒</value>
     <comment>Stacked Bar</comment>
   </data>
-  <data name="StepChartDescription" xml:space="preserve">
+	<data name="StepChartDescription" xml:space="preserve">
     <value>このデモは、折れ線および面のステップチャートを示します。</value>
     <comment>This demo shows line and area step charts.</comment>
   </data>
-  <data name="StepChartSummary" xml:space="preserve">
+	<data name="StepChartSummary" xml:space="preserve">
     <value>ステップチャート</value>
     <comment>Step Charts</comment>
   </data>
-  <data name="StepChartTitle" xml:space="preserve">
+	<data name="StepChartTitle" xml:space="preserve">
     <value>ステップチャート</value>
     <comment>Step Charts</comment>
   </data>
-  <data name="XYScatterDescription" xml:space="preserve">
+	<data name="XYScatterDescription" xml:space="preserve">
     <value>FlexChartのitemsSource および binding/bindingX プロパティは、デフォルトでチャート内のすべてのシリーズに適用されます。
 
 特定の系列は、これらのプロパティをオーバーライドし、異なるデータソースとバインディングを使用する場合があります。 これにより、同じグラフで複数のデータソースを使用できるようになり、グラフを作成するためにデータを前処理する必要が少なくなります。</value>
@@ -349,362 +349,365 @@ If you reverse the Y axis, items will start at the top of the, which is often a 
 
 Specific series may override those properties and use different data sources and bindings. This allows you to use multiple data sources on the same chart, and reduces the need to pre-process data for charting.</comment>
   </data>
-  <data name="XYScatterSummary" xml:space="preserve">
+	<data name="XYScatterSummary" xml:space="preserve">
     <value>XY 散布図</value>
     <comment>XY Scatter Plot</comment>
   </data>
-  <data name="XYScatterTitle" xml:space="preserve">
+	<data name="XYScatterTitle" xml:space="preserve">
     <value>XY 散布図</value>
     <comment>XY Scatter Plot</comment>
   </data>
-  <data name="TreeMapDescription" xml:space="preserve">
+	<data name="TreeMapDescription" xml:space="preserve">
     <value>このデモは、階層データを含む TreeMap チャートを示しています。</value>
     <comment>This demo shows TreeMap chart with hierarchical data.</comment>
   </data>
-  <data name="TreeMapSummary" xml:space="preserve">
+	<data name="TreeMapSummary" xml:space="preserve">
     <value>TreeMap チャートの表示</value>
     <comment>Shows TreeMap chart</comment>
   </data>
-  <data name="TreeMapTitle" xml:space="preserve">
+	<data name="TreeMapTitle" xml:space="preserve">
     <value>TreeMap チャート</value>
     <comment>TreeMap overview</comment>
   </data>
-  <data name="SunburstDescription" xml:space="preserve">
+	<data name="SunburstDescription" xml:space="preserve">
     <value>このデモは、階層データを視覚化するサンバーストチャートを示します。</value>
     <comment>This demo shows Sunburst chart that visualizes hierarchical data.</comment>
   </data>
-  <data name="SunburstSummary" xml:space="preserve">
+	<data name="SunburstSummary" xml:space="preserve">
     <value>サンバーストチャートの表示</value>
     <comment>Shows Sunburst chart</comment>
   </data>
-  <data name="SunburstTitle" xml:space="preserve">
+	<data name="SunburstTitle" xml:space="preserve">
     <value>サンバーストチャート</value>
     <comment>Sunburst chart</comment>
   </data>
-  <data name="PlotAreasDescription" xml:space="preserve">
+	<data name="PlotAreasDescription" xml:space="preserve">
     <value>このデモは、３つのプロット領域を持つ FlexChart を示します。</value>
     <comment>This demos shows FlexChart with three plot areas.</comment>
   </data>
-  <data name="PlotAreasSummary" xml:space="preserve">
+	<data name="PlotAreasSummary" xml:space="preserve">
     <value>複数のプロット領域を持つチャートの表示</value>
     <comment>Shows chart with multiple plot areas</comment>
   </data>
-  <data name="PlotAreasTitle" xml:space="preserve">
+	<data name="PlotAreasTitle" xml:space="preserve">
     <value>複数のプロット領域</value>
     <comment>Multiple Plot Areas</comment>
   </data>
-  <data name="SelectionDescription" xml:space="preserve">
+	<data name="SelectionDescription" xml:space="preserve">
     <value>サンプルは、FlexChart の選択機能を示します。FlexChart には、２つの異なる選択モードがあります。ポイントモードでデータポイントをクリックすると、現在の SelectionStyle で選択されたものとして表示されます。系列モードでは、データポイントをクリックすると、現在の SelectionStyle で選択されたそのシリーズのすべてのデータポイントが表示されます。</value>
     <comment>The sample demonstrates FlexChart's selection feature. FlexChart provides two different selection modes: in Point mode, clicking a data point would show it as selected with the current SelectionStyle. In Series mode, clicking a data point would show all the data points in that series as selected with the current SelectionStyle.</comment>
   </data>
-  <data name="SelectionMode" xml:space="preserve">
+	<data name="SelectionMode" xml:space="preserve">
     <value>選択モード:</value>
     <comment>Selection Mode:</comment>
   </data>
-  <data name="SelectionSummary" xml:space="preserve">
+	<data name="SelectionSummary" xml:space="preserve">
     <value>FlexChart での選択</value>
     <comment>Selection in FlexChart</comment>
   </data>
-  <data name="SelectionTitle" xml:space="preserve">
+	<data name="SelectionTitle" xml:space="preserve">
     <value>選択（FlexChart）</value>
     <comment>Selection</comment>
   </data>
-  <data name="PieSelectionDescription" xml:space="preserve">
+	<data name="PieSelectionDescription" xml:space="preserve">
     <value>以下のサンプルは、FlexPie の選択機能を示します。FlexPie での選択を有効にするには、「SelectionMode」プロパティを「Point」に設定します。</value>
     <comment>The sample below shows FlexPie's selection feature. To enable selection in FlexPie, set the 'SelectionMode' property to 'Point'.</comment>
   </data>
-  <data name="PieSelectionOffset" xml:space="preserve">
+	<data name="PieSelectionOffset" xml:space="preserve">
     <value>選択項目のオフセット:</value>
     <comment>Selected Item Offset:</comment>
   </data>
-  <data name="PieSelectionPosition" xml:space="preserve">
+	<data name="PieSelectionPosition" xml:space="preserve">
     <value>選択項目の位置:</value>
     <comment>Selected Item Position:</comment>
   </data>
-  <data name="PieSelectionSummary" xml:space="preserve">
+	<data name="PieSelectionSummary" xml:space="preserve">
     <value>FlexPie での選択</value>
     <comment>Selection in FlexPie</comment>
   </data>
-  <data name="PieSelectionTitle" xml:space="preserve">
+	<data name="PieSelectionTitle" xml:space="preserve">
     <value>選択（FlexPie）</value>
     <comment>FlexPie Selection</comment>
   </data>
-  <data name="BoxWhiskerDescription" xml:space="preserve">
+	<data name="BoxWhiskerDescription" xml:space="preserve">
     <value>箱ひげ図は、四分位数で数値データのグループを示します。それらには、ボックス（ひげ）から垂直に伸びる線があり、上下の四分位数の外側の変動を示しています。</value>
     <comment>Box and Whisker series (AKA boxplots) show groups of numerical data through their quartiles. They have lines extending vertically from the boxes (whiskers) indicating variability outside the upper and lower quartiles.</comment>
   </data>
-  <data name="BoxWhiskerInnerPoints" xml:space="preserve">
+	<data name="BoxWhiskerInnerPoints" xml:space="preserve">
     <value>内部ポイントの表示</value>
     <comment>Show Inner Points</comment>
   </data>
-  <data name="BoxWhiskerMeanLine" xml:space="preserve">
+	<data name="BoxWhiskerMeanLine" xml:space="preserve">
     <value>平均線を表示</value>
     <comment>Show Mean Line</comment>
   </data>
-  <data name="BoxWhiskerMeanMarks" xml:space="preserve">
+	<data name="BoxWhiskerMeanMarks" xml:space="preserve">
     <value>平均マークを表示</value>
     <comment>Show Mean Marks</comment>
   </data>
-  <data name="BoxWhiskerOutliers" xml:space="preserve">
+	<data name="BoxWhiskerOutliers" xml:space="preserve">
     <value>外れ値ポイントを表示</value>
     <comment>Show Outliers</comment>
   </data>
-  <data name="BoxWhiskerSummary" xml:space="preserve">
+	<data name="BoxWhiskerSummary" xml:space="preserve">
     <value>箱ひげ図の表示</value>
     <comment>Show Box &amp; Whisker Chart</comment>
   </data>
-  <data name="BoxWhiskerTitle" xml:space="preserve">
+	<data name="BoxWhiskerTitle" xml:space="preserve">
     <value>箱ひげ図</value>
     <comment>Box &amp; Whisker Chart</comment>
   </data>
-  <data name="ErrorBarDescription" xml:space="preserve">
+	<data name="ErrorBarDescription" xml:space="preserve">
     <value>ErrorBar クラスは、通常の Series クラスを拡張して、通常の系列データの上に追加できるエラーバーを提供します。</value>
     <comment>The ErrorBar class extends the regular Series class to provide error bars that can be added on top of the regular series data.</comment>
   </data>
-  <data name="ErrorBarErrorAmount" xml:space="preserve">
+	<data name="ErrorBarErrorAmount" xml:space="preserve">
     <value>エラー数:</value>
     <comment>Error Amount:</comment>
   </data>
-  <data name="ErrorBarSummary" xml:space="preserve">
+	<data name="ErrorBarSummary" xml:space="preserve">
     <value>エラーバーチャートの表示</value>
     <comment>Show ErrorBar chart</comment>
   </data>
-  <data name="ErrorBarTitle" xml:space="preserve">
+	<data name="ErrorBarTitle" xml:space="preserve">
     <value>エラーバーチャート</value>
     <comment>ErrorBar Chart</comment>
   </data>
-  <data name="HistogramAppearance" xml:space="preserve">
+	<data name="HistogramAppearance" xml:space="preserve">
     <value>外観:</value>
     <comment>Appearance:</comment>
   </data>
-  <data name="HistogramBinSize" xml:space="preserve">
+	<data name="HistogramBinSize" xml:space="preserve">
     <value>ビンのサイズ:</value>
     <comment>Bin Size:</comment>
   </data>
-  <data name="HistogramCumulativeMode" xml:space="preserve">
+	<data name="HistogramCumulativeMode" xml:space="preserve">
     <value>累積モード</value>
     <comment>Cumulative Mode</comment>
   </data>
-  <data name="HistogramDescription" xml:space="preserve">
+	<data name="HistogramDescription" xml:space="preserve">
     <value>ヒストグラムチャートは、非カテゴリデータを指定された幅のビンに分割することにより、その分布を調査するために使用されます。これらの各ビンに分類されるデータ項目の頻度をプロットします。</value>
     <comment>A Histogram chart is used to study the distribution of non-categorical data by dividing it into bins of specified width. It plots the frequency of data items that fall in each of these bins.</comment>
   </data>
-  <data name="HistogramSummary" xml:space="preserve">
+	<data name="HistogramSummary" xml:space="preserve">
     <value>ヒストグラムチャートの表示</value>
     <comment>Shows Histogram Chart</comment>
   </data>
-  <data name="HistogramTitle" xml:space="preserve">
+	<data name="HistogramTitle" xml:space="preserve">
     <value>ヒストグラムチャート</value>
     <comment>Histogram Chart</comment>
   </data>
-  <data name="HistogramNormalCurve" xml:space="preserve">
+	<data name="HistogramNormalCurve" xml:space="preserve">
     <value>正規曲線</value>
     <comment>Normal Curve</comment>
   </data>
-  <data name="RangedHistogramBinMode" xml:space="preserve">
+	<data name="RangedHistogramBinMode" xml:space="preserve">
     <value>ビンモード:</value>
     <comment>Bin Mode:</comment>
   </data>
-  <data name="RangedHistogramBinWidth" xml:space="preserve">
+	<data name="RangedHistogramBinWidth" xml:space="preserve">
     <value>ビンの幅:</value>
     <comment>Bin Width:</comment>
   </data>
-  <data name="RangedHistogramByCategory" xml:space="preserve">
+	<data name="RangedHistogramByCategory" xml:space="preserve">
     <value>カテゴリ別</value>
     <comment>By Category</comment>
   </data>
-  <data name="RangedHistogramDescription" xml:space="preserve">
+	<data name="RangedHistogramDescription" xml:space="preserve">
     <value>カテゴリデータと非カテゴリデータの調査に使用できる独自のヒストグラムチャートです。複数のビニングオプションを提供し、オーバーフロービンとアンダーフロービンをサポートします。</value>
     <comment>An unique Histogram chart that can be used to study categorical as well as non-categorical data. Provides multiple binning options as well as support for Overflow and Underflow bins.</comment>
   </data>
-  <data name="RangedHistogramNumBins" xml:space="preserve">
+	<data name="RangedHistogramNumBins" xml:space="preserve">
     <value>ビンの数:</value>
     <comment>Number of Bins:</comment>
   </data>
-  <data name="RangedHistogramSummary" xml:space="preserve">
+	<data name="RangedHistogramSummary" xml:space="preserve">
     <value>範囲ヒストグラムチャート</value>
     <comment>Shows Ranged Histogram Chart</comment>
   </data>
-  <data name="RangedHistogramTitle" xml:space="preserve">
+	<data name="RangedHistogramTitle" xml:space="preserve">
     <value>範囲ヒストグラムチャート</value>
     <comment>Ranged Histogram Chart</comment>
   </data>
-  <data name="RadarDescription" xml:space="preserve">
+	<data name="RadarDescription" xml:space="preserve">
     <value>このサンプルは、複数の系列を持つ FlexRadar コントロールを示します。</value>
     <comment>This sample shows a FlexRadar control with multiple series.</comment>
   </data>
-  <data name="RadarSummary" xml:space="preserve">
+	<data name="RadarSummary" xml:space="preserve">
     <value>FlexRadar の基本的な機能</value>
     <comment>Show Basic FlexRadar features</comment>
   </data>
-  <data name="RadarTitle" xml:space="preserve">
+	<data name="RadarTitle" xml:space="preserve">
     <value>レーダーチャート</value>
     <comment>Radar Chart</comment>
   </data>
-  <data name="TrendLineDescription" xml:space="preserve">
+	<data name="TrendLineDescription" xml:space="preserve">
     <value>TrendLine クラスは、通常の Series クラスを拡張して、選択したデータとパラメーターに基づいて計算された系列を提供します。</value>
     <comment>The TrendLine class extends the regular Series class to provide a calculated series based on the data and parameters you select.</comment>
   </data>
-  <data name="TrendLineFitType" xml:space="preserve">
+	<data name="TrendLineFitType" xml:space="preserve">
     <value>フィットタイプ:</value>
     <comment>Fit Type:</comment>
   </data>
-  <data name="TrendLineOrder" xml:space="preserve">
+	<data name="TrendLineOrder" xml:space="preserve">
     <value>順序:</value>
     <comment>Order:</comment>
   </data>
-  <data name="TrendLineSummary" xml:space="preserve">
+	<data name="TrendLineSummary" xml:space="preserve">
     <value>傾向線によるプロットの表示</value>
     <comment>Shows plot with trend Line</comment>
   </data>
-  <data name="TrendLineTitle" xml:space="preserve">
+	<data name="TrendLineTitle" xml:space="preserve">
     <value>傾向線</value>
     <comment>Trend Line</comment>
   </data>
-  <data name="WaterfallDescription" xml:space="preserve">
+	<data name="WaterfallDescription" xml:space="preserve">
     <value>ウォーターフォールチャートは、順次導入された正または負の値の累積効果を理解するのに役立ちます。ウォーターフォールチャートは、空中で柱が明らかに停止しているため、「フライングブリック」チャートまたはマリオチャートとしても知られています。</value>
     <comment>Waterfall charts help in understanding the cumulative effect of sequentially introduced positive or negative values. The Waterfall chart is also known as a "flying bricks" chart or Mario chart due to the apparent suspension of columns in mid-air.</comment>
   </data>
-  <data name="WaterfallLines" xml:space="preserve">
+	<data name="WaterfallLines" xml:space="preserve">
     <value>線の表示</value>
     <comment>Show Lines</comment>
   </data>
-  <data name="WaterfallSummary" xml:space="preserve">
+	<data name="WaterfallSummary" xml:space="preserve">
     <value>ウォーターフォールチャートの表示</value>
     <comment>Shows Waterfall Chart</comment>
   </data>
-  <data name="WaterfallTitle" xml:space="preserve">
+	<data name="WaterfallTitle" xml:space="preserve">
     <value>ウォーターフォールチャート</value>
     <comment>Waterfall Chart</comment>
   </data>
-  <data name="WaterfallTotal" xml:space="preserve">
+	<data name="WaterfallTotal" xml:space="preserve">
     <value>合計の表示</value>
     <comment>Show Totals</comment>
   </data>
-  <data name="MarkerTitle" xml:space="preserve">
+	<data name="MarkerTitle" xml:space="preserve">
     <value>ラインマーカー</value>
     <comment>Line Marker</comment>
   </data>
-  <data name="MarkerDescription" xml:space="preserve">
+	<data name="MarkerDescription" xml:space="preserve">
     <value>LineMarker クラスを使用して、マウス駆動のカーソルをチャートに追加できます。カーソルは、マウスの下のポイントに関する情報を表示するために使用されるテキスト要素と、マウスの正確な位置を示すオプションの線で構成されます。</value>
     <comment>The LineMarker class allows you to add a mouse-driven cursor to your charts. The cursor consists of a text element used to display information about the point under the mouse and optional lines to indicate the exact position of the mouse.</comment>
   </data>
-  <data name="MarkerSummary" xml:space="preserve">
+	<data name="MarkerSummary" xml:space="preserve">
     <value>ラインマーカーでプロットを表示</value>
     <comment>Shows plot with line marker</comment>
   </data>
-  <data name="AnimationDescription" xml:space="preserve">
+	<data name="AnimationDescription" xml:space="preserve">
     <value>FlexChart は、データのロードまたは更新時のアニメーションをサポートしています。</value>
     <comment>FlexChart supports animation when loading or updating data.</comment>
   </data>
-  <data name="AnimationSummary" xml:space="preserve">
+	<data name="AnimationSummary" xml:space="preserve">
     <value>FlexChart アニメーション</value>
     <comment>FlexChart Animation</comment>
   </data>
-  <data name="AnimationTitle" xml:space="preserve">
+	<data name="AnimationTitle" xml:space="preserve">
     <value>アニメーション</value>
     <comment>Animation</comment>
   </data>
-  <data name="AnnotationsDescription" xml:space="preserve">
+	<data name="AnnotationsDescription" xml:space="preserve">
     <value>FlexChart コントロールは、長方形、正方形、円、楕円、線、多角形、画像、テキストなどのさまざまな組み込みの注釈をサポートしています。このデモでは、注釈を使用して、プロットの象限と国のフラグを表示します。</value>
     <comment>The FlexChart control supports various built-in annotations such as Rectangle, Square, Circle, Ellipse, Line, Polygon, Image, and Text. In this demo the annotations are used to display plot quadrants as well as country flags.</comment>
   </data>
-  <data name="AnnotationsSummary" xml:space="preserve">
+	<data name="AnnotationsSummary" xml:space="preserve">
     <value>リッチな注釈付きの FlexChart を表示します</value>
     <comment>Shows FlexChart with rich annotations</comment>
   </data>
-  <data name="AnnotationsTitle" xml:space="preserve">
+	<data name="AnnotationsTitle" xml:space="preserve">
     <value>注釈</value>
     <comment>Annotations</comment>
   </data>
-  <data name="AxisScrollbarDescription" xml:space="preserve">
+	<data name="AxisScrollbarDescription" xml:space="preserve">
     <value>軸スクロールバーを使用すると、スケールを選択してデータ範囲をスクロールできます。</value>
     <comment>Axis scrollbar allows to select scale and scroll through the data range.</comment>
   </data>
-  <data name="AxisScrollbarSummary" xml:space="preserve">
+	<data name="AxisScrollbarSummary" xml:space="preserve">
     <value>軸スクロールバー</value>
     <comment>Axis Scrollbar</comment>
   </data>
-  <data name="AxisScrollbarTitle" xml:space="preserve">
+	<data name="AxisScrollbarTitle" xml:space="preserve">
     <value>軸スクロールバー</value>
     <comment>Axis Scrollbar</comment>
   </data>
-  <data name="LegendDescription" xml:space="preserve">
+	<data name="LegendDescription" xml:space="preserve">
     <value>このデモでは、スクロールやグループ化など、いくつかの高度な凡例機能を示します。</value>
     <comment>This demo shows several advanced legend features, like scrolling and grouping.</comment>
   </data>
-  <data name="LegendSummary" xml:space="preserve">
+	<data name="LegendSummary" xml:space="preserve">
     <value>高度な凡例機能</value>
     <comment>Advanced Legend Features</comment>
   </data>
-  <data name="LegendTitle" xml:space="preserve">
+	<data name="LegendTitle" xml:space="preserve">
     <value>凡例</value>
     <comment>Legend</comment>
   </data>
-  <data name="MarkerInteraction" xml:space="preserve">
+	<data name="MarkerInteraction" xml:space="preserve">
     <value>対話</value>
     <comment>Interaction</comment>
   </data>
-  <data name="PieAnimationDescription" xml:space="preserve">
+	<data name="PieAnimationDescription" xml:space="preserve">
     <value>FlexPie は、データのロードまたは更新時のアニメーションをサポートしています。FlexPie.AnimationSettings プロパティを使用して、アニメーションを有効にします。</value>
     <comment>FlexPie supports animation when loading or updating data. Use FlexPie.AnimationSettings property to enable animation.</comment>
   </data>
-  <data name="PieAnimationSummary" xml:space="preserve">
+	<data name="PieAnimationSummary" xml:space="preserve">
     <value>FlexPie アニメーション</value>
     <comment>FlexPie Animation</comment>
   </data>
-  <data name="PieAnimationTitle" xml:space="preserve">
+	<data name="PieAnimationTitle" xml:space="preserve">
     <value>FlexPie アニメーション</value>
     <comment>Pie Animation</comment>
   </data>
-  <data name="RangeSelectorDescription" xml:space="preserve">
+	<data name="RangeSelectorDescription" xml:space="preserve">
     <value>RangeSelector を使用すると、別のチャートに表示される範囲を選択できます。</value>
     <comment>RangeSelector allows to choose displayed range on another chart.</comment>
   </data>
-  <data name="RangeSelectorSummary" xml:space="preserve">
+	<data name="RangeSelectorSummary" xml:space="preserve">
     <value>FlexChart 範囲セレクター</value>
     <comment>FlexChart Range Selector</comment>
   </data>
-  <data name="RangeSelectorTitle" xml:space="preserve">
+	<data name="RangeSelectorTitle" xml:space="preserve">
     <value>範囲セレクター</value>
     <comment>Range Selector</comment>
   </data>
-  <data name="BreakEvenDescription" xml:space="preserve">
+	<data name="BreakEvenDescription" xml:space="preserve">
     <value>損益分岐点チャートは、総コストが売上高と等しくなる販売量レベルを示すチャートです。</value>
   </data>
-  <data name="BreakEvenSummary" xml:space="preserve">
+	<data name="BreakEvenSummary" xml:space="preserve">
     <value>損益分岐点</value>
     <comment>Break Even Plot</comment>
   </data>
-  <data name="BreakEvenTitle" xml:space="preserve">
+	<data name="BreakEvenTitle" xml:space="preserve">
     <value>損益分岐点</value>
     <comment>Break Even Plot</comment>
   </data>
-  <data name="NewData" xml:space="preserve">
+	<data name="NewData" xml:space="preserve">
     <value>新規データ</value>
   </data>
-  <data name="UpdateData" xml:space="preserve">
+	<data name="UpdateData" xml:space="preserve">
     <value>データ更新</value>
   </data>
-  <data name="TwoAxesDescription" xml:space="preserve">
+	<data name="TwoAxesDescription" xml:space="preserve">
     <value>サンプルは、プロットに２番目のY 軸を追加する方法を示しています。</value>
     <comment>The sample shows how to add second y-axis to the plot.</comment>
   </data>
-  <data name="TwoAxesSummary" xml:space="preserve">
+	<data name="TwoAxesSummary" xml:space="preserve">
     <value>２つの Y 軸によるプロット</value>
     <comment>Plot with two y-axes</comment>
   </data>
-  <data name="TwoAxesTitle" xml:space="preserve">
+	<data name="TwoAxesTitle" xml:space="preserve">
     <value>２つの Y 軸</value>
     <comment>Two Y-axes</comment>
   </data>
-  <data name="ExportDescription" xml:space="preserve">
-    <value>This demo shows how to save chart as an image.</value>
+	<data name="ExportDescription" xml:space="preserve">
+    <value>このデモでは、チャートを画像として保存する方法を示します。</value>
+    <comment>This demo shows how to save chart as an image.</comment>
   </data>
-  <data name="ExportSummary" xml:space="preserve">
-    <value>Export</value>
+	<data name="ExportSummary" xml:space="preserve">
+    <value>エクスポート</value>
+    <comment>Export</comment>
   </data>
-  <data name="ExportTitle" xml:space="preserve">
-    <value>Image Export</value>
+	<data name="ExportTitle" xml:space="preserve">
+    <value>画像のエクスポート</value>
+    <comment>Image Export</comment>
   </data>
 </root>

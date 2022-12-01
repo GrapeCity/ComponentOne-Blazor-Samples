@@ -377,4 +377,82 @@
   <data name="PopupEditingTitle" xml:space="preserve">
     <value>Popup Editing</value>
   </data>
+  <data name="SelectRowMessage" xml:space="preserve">
+    <value>Please select a row first or double-tap the row directly.</value>
+  </data>
+  <data name="DetailVisibiltyMode" xml:space="preserve">
+    <value>DetailVisibilityMode</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Friday</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Monday</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Saturday</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Sunday</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Wednesday</value>
+  </data>
+  <data name="Weekday" xml:space="preserve">
+    <value>Weekday</value>
+  </data>
+  <data name="Weekend" xml:space="preserve">
+    <value>Weekend</value>
+  </data>
+  <data name="ShowMarquee" xml:space="preserve">
+    <value>ShowMarquee</value>
+  </data>
+  <data name="NewRowDescription" xml:space="preserve">
+    <value>Shows adding new rows.</value>
+  </data>
+  <data name="NewRowTitle" xml:space="preserve">
+    <value>New Row</value>
+  </data>
+  <data name="NewRowPlaceholder" xml:space="preserve">
+    <value>Click here to add a new row</value>
+  </data>
+  <data name="MatchCaseLabel" xml:space="preserve">
+    <value>Match Case</value>
+  </data>
+  <data name="MatchWholeWordLabel" xml:space="preserve">
+    <value>Match Whole Word</value>
+  </data>
+  <data name="CheckListDescription" xml:space="preserve">
+    <value>Show how to select flexgrid rows through checkboxes.</value>
+  </data>
+  <data name="CheckListTitle" xml:space="preserve">
+    <value>Check-List</value>
+  </data>
+  <data name="PagingDescription" xml:space="preserve">
+    <value>Shows how to use C1DataPager to navigate through different  pages of data bound to FlexGrid</value>
+  </data>
+  <data name="PagingTitle" xml:space="preserve">
+    <value>Paging</value>
+  </data>
+  <data name="VirtualModeDescription" xml:space="preserve">
+    <value>Shows how to bind FlexGrid to a data source whose items are fetch as the user scroll down.</value>
+  </data>
+  <data name="VirtualModeTitle" xml:space="preserve">
+    <value>Virtual Mode</value>
+  </data>
+  <data name="AllowResizing" xml:space="preserve">
+    <value>Allow Resizing</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="ShowSort" xml:space="preserve">
+    <value>Show sort icons</value>
+  </data>
 </root>

@@ -637,4 +637,12 @@
     <value>並べ替えアイコンの表示</value>
     <comment>Show sort icons</comment>
   </data>
+  <data name="GridColumnCustomizationDescription" xml:space="preserve">
+    <value>サンプルは、FlexGrid の GridColumn をカスタマイズする方法を示します。"Country" 列は、テキストボックスエディタの代わりにドロップダウンを使用して編集されます。</value>
+    <comment>The sample demos how to customize a GridColumn of FlexGrid. The "Country" column has edited using a dropdown instead of textbox editor.</comment>
+  </data>
+  <data name="GridColumnCustomizationTitle" xml:space="preserve">
+    <value>GridColumn カスタマイズ</value>
+    <comment>GridColumn customization</comment>
+  </data>
 </root>

@@ -23,43 +23,35 @@ namespace BlazorExplorer.Server.Controllers
             this.logger = logger;
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<CustomerResponse> Get()
         {
-            var skip = 0;
-            var take = 10;
-            int.TryParse(Request.Query?["skip"].FirstOrDefault(), out skip);
-            int.TryParse(Request.Query?["take"].FirstOrDefault(), out take);
+            var options = new JsonSerializerOptions { Converters = { new FilterExpressionJsonConverter(), new SortDescriptionJsonConverter() } };
+            var customerRequest = await JsonSerializer.DeserializeAsync<CustomerRequest>(Request.Body, options);
 
             var customers = _customers;
 
             #region filter
-            var filter = Request.Query?["filter"].FirstOrDefault();
 
-            if (!string.IsNullOrWhiteSpace(filter))
+            if (customerRequest.FilterExpression != null)
             {
-                var options = new JsonSerializerOptions { Converters = { new FilterExpressionJsonConverter() } };
-                var filterExpression = JsonSerializer.Deserialize<FilterExpression>(filter, options);
                 var filterCollection = new C1FilterDataCollection<Customer>(customers);
-                await filterCollection.FilterAsync(filterExpression);
+                await filterCollection.FilterAsync(customerRequest.FilterExpression);
                 customers = filterCollection.ToList();
             }
             #endregion
 
             #region sorting
-            var sort = Request.Query?["sort"].FirstOrDefault();
 
-            if (!string.IsNullOrWhiteSpace(sort))
+            if (customerRequest.SortDescriptions?.Count > 0)
             {
-                var options = new JsonSerializerOptions { Converters = { new SortDescriptionJsonConverter() } };
-                var sortDescriptions = JsonSerializer.Deserialize<SortDescription[]>(sort, options);
                 var sortCollection = new C1SortDataCollection<Customer>(customers);
-                await sortCollection.SortAsync(sortDescriptions);
+                await sortCollection.SortAsync(customerRequest.SortDescriptions.ToArray());
                 customers = sortCollection.ToList();
             }
             #endregion
 
-            return new CustomerResponse { TotalCount = customers.Count, Customers = customers.Skip(skip).Take(take) };
+            return new CustomerResponse { TotalCount = customers.Count, Customers = customers.Skip(customerRequest.Skip).Take(customerRequest.Take) };
         }
     }
 }
