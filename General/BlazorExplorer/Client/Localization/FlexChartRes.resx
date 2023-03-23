@@ -178,7 +178,7 @@
     <value>Shows basic FlexChart features.</value>
   </data>
   <data name="IndexTitle" xml:space="preserve">
-    <value>FlexChart Overview.</value>
+    <value>Overview</value>
   </data>
   <data name="FunnelDescription" xml:space="preserve">
     <value>Funnel charts show values along multiple stages in a process.
@@ -239,7 +239,7 @@ To create multiple pie charts, just specify several comma-separated properties i
     <value>Shows basic FlexPie features.</value>
   </data>
   <data name="PieIndexTitle" xml:space="preserve">
-    <value>Pie chart overview.</value>
+    <value>Overview</value>
   </data>
   <data name="RangeColumnDescription" xml:space="preserve">
     <value>This demo shows a range column scenario similar to a Gantt chart.</value>
@@ -299,7 +299,7 @@ Specific series may override those properties and use different data sources and
     <value>Shows TreeMap chart</value>
   </data>
   <data name="TreeMapTitle" xml:space="preserve">
-    <value>TreeMap overview</value>
+    <value>Overview</value>
   </data>
   <data name="SunburstDescription" xml:space="preserve">
     <value>This demo shows Sunburst chart that visualizes hierarchical data.</value>

@@ -8,21 +8,24 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.GridControl">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.6" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include=".gclicx" />
   </ItemGroup>
 </Project>

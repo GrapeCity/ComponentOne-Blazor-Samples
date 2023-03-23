@@ -350,13 +350,16 @@ namespace BlazorExplorer.Models
                 {
                     bool.TryParse(enhancedAttr.Value, out isEnhanced);
                 }
-
+                var name = e.Attribute("name") != null ? e.Attribute("name").Value : "";
                 ControlPage page = new ControlPage
                 {
                     TextEn = e.Attribute("text").Value,
                     TextJp = e.Attribute("text.ja")?.Value,
-                    Name = e.Attribute("name") != null ? e.Attribute("name").Value : "",
+                    Name = name,
                     ControlName = controlName,
+                    SourcesRoute = string.IsNullOrEmpty(e.Attribute("sourcesRoute")?.Value) ?
+                      $"{controlName}/{name}"
+                      : e.Attribute("sourcesRoute").Value,
                     IsEnhanced = isEnhanced,
                     EnhanceTipEn = e.Attribute("enhancetip")?.Value,
                     EnhanceTipJp = e.Attribute("enhancetip.ja")?.Value
@@ -563,6 +566,7 @@ namespace BlazorExplorer.Models
 
     public class ControlPage
     {
+        public string SourcesRoute { get; set; }
         public string Name { get; set; }
         internal string TextEn { get; set; }
         internal string TextJp { get; set; }

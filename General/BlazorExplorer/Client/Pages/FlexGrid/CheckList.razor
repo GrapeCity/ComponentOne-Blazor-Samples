@@ -3,7 +3,7 @@
 @using C1.Blazor.Core
 @using C1.Blazor.Grid
 
-<FlexGrid ItemsSource="cities" Style="@("max-height:50vh")">
+<FlexGrid ItemsSource="cities" Style="@("max-height:50vh")" IsVirtualizationEnabled="false">
     <FlexGridBehaviors>
         <CheckListBehavior SelectionBinding="Selected" />
     </FlexGridBehaviors>

@@ -64,7 +64,8 @@
       <action text="Export" text.ja="エクスポート">
         <subactions>
           <action text="Html/CSV/Text Export" text.ja="Html/CSV/Text エクスポート" name="Export"></action>
-        </subactions>
+          <action text="XLSX/XLS/CSV Export" text.ja="XLSX/XLS/CSV エクスポート" name="ExportExcel" sourcesRoute="Excel/Export"></action>
+		</subactions>
       </action>
     </Control>
     <Control name="ListView">
@@ -93,14 +94,13 @@
         </subactions>
       </action>
     </Control>    
-	<Control name="DataFilter" new="true">
+	<Control name="DataFilter">
 		  <action text="Cars List" text.ja="車両リスト" name="Index"></action>
 		  <action text="Filter Summary" text.ja="フィルターの概要" name="FiltersSummary"></action>
 		  <action text="Conditional Filters" text.ja="条件付きフィルター" name="ConditionalFilters"></action>
 		  <action text="Custom Filters" text.ja="カスタムフィルター" name="CustomFilters"></action>
 		  <action text="Virtual Source" text.ja="仮想ソース" name="VirtualSource"></action>
     </Control>
-
   </ControlGroup>
   <ControlGroup name="Data Visualization" name.ja="データの視覚化">
     <Control name="FlexChart" popular="true">
@@ -175,9 +175,9 @@
       <action text="TreeMap" text.ja="ツリーマップ" name="Index"></action>
     </Control>
   </ControlGroup>
-
+  
   <ControlGroup name="Scheduling" name.ja="スケジュール">
-    <Control name="Calendar">
+    <Control name="Calendar" documentation="https://www.grapecity.com/componentone/docs/blazor/online-blazor/C1.Blazor.Calendar~C1.Blazor.Calendar_namespace.html">
       <action text="General" text.ja="一般">
         <subactions>
           <action text="Overview" text.ja="概要" name="Index"></action>
@@ -191,6 +191,7 @@
           <action text="Custom Styles" text.ja="カスタムスタイル" name="Styling"></action>
           <action text="Icon Template" text.ja="アイコンテンプレート" name="IconTemplate"></action>
           <action text="Item Template" text.ja="項目テンプレート" name="ItemTemplate"></action>
+          <action text="Custom Slots" text.ja="Custom Slots" name="CustomSlots"></action>
         </subactions>
       </action>
       <action text="Validation" text.ja="検証" name="Validation"></action>
@@ -261,7 +262,7 @@
       <!--<action text="Working with grid" text.ja="Tooltips JP" name="Integrate"></action>-->
     </Control>
     
-    <Control name="RangeSlider" new="true">
+    <Control name="RangeSlider">
       <action text="Overview" text.ja="概要" name="Index"></action>
     </Control>
   </ControlGroup>
@@ -303,7 +304,7 @@
       <action text="HeaderTemplate" text.ja="ヘッダーテンプレート" name="HeaderTemplate"></action>
       <action text="ItemTemplate" text.ja="項目テンプレート" name="ItemTemplate"></action>
     </Control>
-    <Control name="Accordion" new="true">
+    <Control name="Accordion">
       <action text="Overview" text.ja="概要" name="Index"></action>
       <action text="Expander" text.ja="Expander" name="Expander"></action>
     </Control>
@@ -312,6 +313,27 @@
     <Control referenceApplication="true" name="FlightStatistic" name.ja="FlightStatistic" link="https://www.grapecity.com/componentone/demos/blazor/flightstatistics/" link.ja="https://www.grapecity.com/componentone/demos/blazor/flightstatistics/" />
     <Control referenceApplication="true" name="InvestmentCalculator" name.ja="InvestmentCalculator" link="https://www.grapecity.com/componentone/demos/blazor/investmentcalculator/" link.ja="https://www.grapecity.com/componentone/demos/blazor/investmentcalculator/" />
     <Control referenceApplication="true" name="MarketingBudgetTemplate" name.ja="MarketingBudgetTemplate" link="https://www.grapecity.com/componentone/demos/blazor/marketingbudgettemplate/" link.ja="https://www.grapecity.com/componentone/demos/blazor/marketingbudgettemplate/" />
+  </ControlGroup>
+
+  <ControlGroup name="Documents">
+    <Control name="Excel" new="true">
+      <action text="General" text.ja="一般">
+        <subactions>
+          <action text="Overview" text.ja="概要" name="Index"></action>
+        </subactions>
+      </action>
+      <action text="Fetch weather" text.ja="">
+        <subactions>
+          <action text="Fetch data" text.ja="" name="FetchData"></action>
+          <action text="Fetch Excel file" text.ja="" name="FetchExcel"></action>
+        </subactions>
+      </action>
+      <action text="Export" text.ja="エクスポート">
+        <subactions>
+          <action text="XLSX/XLS/CSV Export" text.ja="XLSX/XLS/CSV エクスポート" name="Export"></action>
+        </subactions>
+      </action>
+    </Control>
   </ControlGroup>
   
 </Controls>

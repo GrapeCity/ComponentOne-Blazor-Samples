@@ -101,7 +101,7 @@
             if (e.CellRange.Row == 8 || e.CellRange.Row == 9 || e.CellRange.Row == 15
             || e.CellRange.Row == 27 || e.CellRange.Row == 34 || e.CellRange.Row == 40)
             {
-                string cellVal = (string)grid[e.CellRange.Row, e.CellRange.Column] ?? "0";
+                string cellVal = grid[e.CellRange.Row, e.CellRange.Column]?.ToString() ?? "0";
                 grid[e.CellRange.Row, e.CellRange.Column] = Convert.ToDouble(cellVal.Replace("%", ""));
             }
         }
@@ -119,7 +119,7 @@
             if (e.CellRange.Row == 6 || e.CellRange.Row == 12 || e.CellRange.Row == 31
             || e.CellRange.Row == 32 || e.CellRange.Row == 38 || e.CellRange.Row == 44)
             {
-                string cellVal = (string)grid[e.CellRange.Row, e.CellRange.Column] ?? "0";
+                string cellVal = grid[e.CellRange.Row, e.CellRange.Column]?.ToString() ?? "0";
                 grid[e.CellRange.Row, e.CellRange.Column] = Convert.ToDouble(cellVal.Replace("%", ""));
             }
         }
@@ -161,7 +161,7 @@
     public async void OnCellEditEnded(object sender, GridCellRangeEventArgs e)
     {
         if (grid.Columns[e.CellRange.Column].InputType == TextBoxType.Number &&
-           (string)grid[e.CellRange.Row, e.CellRange.Column] == "")
+           string.IsNullOrEmpty(grid[e.CellRange.Row, e.CellRange.Column]?.ToString()))
         {
             grid[e.CellRange.Row, e.CellRange.Column] = "0";
         }
@@ -177,9 +177,9 @@
             if (e.CellRange.Row == 6 || e.CellRange.Row == 12 || e.CellRange.Row == 31
             || e.CellRange.Row == 32 || e.CellRange.Row == 38 || e.CellRange.Row == 44)
             {
-                if ((string)grid[e.CellRange.Row, e.CellRange.Column] != "")
+                string? cellVal = grid[e.CellRange.Row, e.CellRange.Column]?.ToString();
+                if (!string.IsNullOrEmpty(cellVal))
                 {
-                    string cellVal = (string)grid[e.CellRange.Row, e.CellRange.Column];
                     if (!(cellVal.Contains('%')))
                         grid[e.CellRange.Row, e.CellRange.Column] = string.Format("{0:0.00}", Convert.ToDouble(cellVal)) + "%";
                     else
@@ -198,9 +198,9 @@
             if (e.CellRange.Row == 8 || e.CellRange.Row == 9 || e.CellRange.Row == 15
             || e.CellRange.Row == 27 || e.CellRange.Row == 34 || e.CellRange.Row == 40)
             {
-                if ((string)grid[e.CellRange.Row, e.CellRange.Column] != "")
+                string? cellVal = grid[e.CellRange.Row, e.CellRange.Column]?.ToString();
+                if (!string.IsNullOrEmpty(cellVal))
                 {
-                    string cellVal = (string)grid[e.CellRange.Row, e.CellRange.Column];
                     if (!(cellVal.Contains('%')))
                         grid[e.CellRange.Row, e.CellRange.Column] = cellVal + "%";
                 }
@@ -215,16 +215,16 @@
             || e.CellRange.Row == 37 || e.CellRange.Row == 42 || e.CellRange.Row == 48
             || e.CellRange.Row == 53)
             {
-                if ((string)grid[e.CellRange.Row, e.CellRange.Column] != "")
+                string? cellVal = grid[e.CellRange.Row, e.CellRange.Column]?.ToString();
+                if (!string.IsNullOrEmpty(cellVal))
                 {
-                    string cellVal = (string)grid[e.CellRange.Row, e.CellRange.Column];
                     grid[e.CellRange.Row, e.CellRange.Column] = string.Format("{0:0.00}", Convert.ToDouble(cellVal));
                 }
             }
         }
 
         //Invoke method to reclaculate budget based on new values.
-        await CalculateBudget();
+        CalculateBudget();
     }
 
     //Populate budget fields labels
@@ -442,7 +442,7 @@
     }
 
     //Method to calculate budget
-    private async Task<bool> CalculateBudget()
+    private bool CalculateBudget()
     {
         for (int c = 2; c <= 13; c++)
         {
@@ -624,6 +624,7 @@
         int result = default;
         if (!string.IsNullOrEmpty(value))
         {
+            value = value.Replace("%", "");
             if (!int.TryParse(value, out result))
             {
                 if (double.TryParse(value, out double d))

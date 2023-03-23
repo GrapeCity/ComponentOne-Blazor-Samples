@@ -61,6 +61,24 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Shows how to customize &lt;mark code&gt;C1Calendar&lt;/mark&gt; throughout the Adapter..
+        /// </summary>
+        public static string CustomSlotsDescription {
+            get {
+                return ResourceManager.GetString("CustomSlotsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom Slots.
+        /// </summary>
+        public static string CustomSlotsTitle {
+            get {
+                return ResourceManager.GetString("CustomSlotsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to C1Calendar supports customising the style and appearance of the C1Calendar including slot border and color..
         /// </summary>
         public static string CustomStylesDescription {

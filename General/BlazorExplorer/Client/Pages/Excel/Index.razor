@@ -1,0 +1,385 @@
+﻿@page "/Excel/Index"
+@inject IJSRuntime JsRuntime
+@using Localization
+@using System.Drawing
+@using System.Globalization
+@using System.IO
+@using System.Text
+@using C1.Excel
+@using GrapeCity.Documents.Imaging
+@using C1.Blazor.Input;
+
+@ExcelRes.IndexSheets <C1ComboBox ItemsSource="sheetNames" @bind-SelectedItem="sheetName" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+<h4>@ExcelRes.Download</h4>
+<p style="display:flex">
+    <C1TextBox @bind-Text="@fileName" Style="@("width:170px;border-width:1px 0 1px 1px;border-radius:4px 0 0 4px;")" />
+    <C1ComboBox ItemsSource="fileTypes" @bind-SelectedItem="fileType" Style="@("width:80px;border-radius: 0 4px 4px 0;")" />
+    <button class="btn btn-primary" @onclick="OnSave" style="margin-left: 8px;">@ExcelRes.Save</button>
+</p>
+
+<_Sections>
+    <Title>@ExcelRes.IndexTitle</Title>
+    <Summary>@ExcelRes.IndexSummary</Summary>
+    <Description>@ExcelRes.IndexDescription</Description>
+</_Sections>
+
+@code {
+    string[] sheetNames = new string[] { "All", "Copyright", "Data Types", "Formats", "Styles", "Formulas", "Named Ranges" };
+    string sheetName = "All";
+    string[] fileTypes = { "CSV", "XLS", "XLSX" };
+    string fileName = "ExcelDemo";
+    string fileType = "XLSX";
+
+    async void OnSave()
+    {
+        C1XLBook book = ToExcel(sheetName);
+        var fileContent = "";
+        using (var ms = new MemoryStream())
+        {
+            switch (fileType)
+            {
+                case "CSV":
+                    book.Save(ms, FileFormat.Csv);
+                    break;
+                case "XLS":
+                    book.Save(ms, FileFormat.Biff8);
+                    break;
+                default:
+                    book.Save(ms, FileFormat.OpenXml);
+                    break;
+            }
+            fileContent = Convert.ToBase64String(ms.ToArray());
+        }
+        fileName = string.IsNullOrEmpty(fileName) ? "export" : fileName;
+        await JsRuntime.InvokeVoidAsync("saveBase64File", fileName + '.' + fileType.ToLower(), fileContent);
+    }
+
+    C1XLBook ToExcel(string sheetName)
+    {
+        // initialize
+        C1XLBook book = new();
+
+        // get the sheet that was created by default, give it a name
+        XLSheet sheet = book.Sheets[0];
+
+        if (sheetName == "Copyright" || sheetName == "All")
+        {
+            // short sheet name
+            sheet.Name = "C1";
+
+            // title style
+            XLStyle titleStyle = new XLStyle(book);
+            titleStyle.Font = new XLFont("Tahoma", 24, true, false);
+            titleStyle.AlignHorz = XLAlignHorz.Center;
+            titleStyle.AlignVert = XLAlignVert.Center;
+
+            // version style
+            XLStyle textStyle = new XLStyle(book);
+            textStyle.Font = new XLFont("Tahoma", 8, false, true);
+            textStyle.AlignHorz = XLAlignHorz.Center;
+
+            // title
+            sheet[1, 1].Value = "GrapeCity C1.Excel";
+            sheet[1, 1].Style = titleStyle;
+            sheet.MergedCells.Add(1, 1, 10, 7);
+
+            // full name with version
+            Type type = typeof(C1XLBook);
+            sheet[11, 0].Value = type.Assembly.FullName;
+            sheet[11, 0].Style = textStyle;
+            sheet.MergedCells.Add(11, 0, 1, 9);
+
+            // set print area
+            book.NamedRanges.Add("Print_Area", new XLCellRange(sheet, 1, 10, 1, 7));
+        }
+        else if (sheetName != "All")
+        {
+            book.Sheets.Remove(sheet);
+        }
+
+        if (sheetName == "Data Types" || sheetName == "All")
+        {
+            // add the sheet with name
+            sheet = book.Sheets.Add("data types");
+
+            // column width in twips
+            sheet.Columns[2].Width = 1200;
+            sheet.Columns[3].Width = 900;
+
+            // create style for comments
+            XLStyle commentStyle = new XLStyle(book);
+            commentStyle.Font = new XLFont("Tahoma", 9, false, true);
+            commentStyle.ForeColor = Color.Navy;
+
+            // create style for money values
+            XLStyle floatStyle = new XLStyle(book);
+            floatStyle.Format = "#,##0.00";
+
+            // create style for date values
+            XLStyle dateStyle = new XLStyle(book);
+            dateStyle.Format = XLStyle.FormatDotNetToXL(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern);
+
+            // create style for time values
+            XLStyle timeStyle = new XLStyle(book);
+            timeStyle.Format = XLStyle.FormatDotNetToXL(CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern);
+
+            // integer data type
+            sheet[1, 0].Value = "Integer:";
+            sheet[1, 0].Style = commentStyle;
+            sheet[1, 2].Value = 123;
+
+            // float data type
+            sheet[2, 0].Value = "Float:";
+            sheet[2, 0].Style = commentStyle;
+            sheet[2, 2].Value = 123.0089;
+            sheet[2, 3].Value = 123.0089;
+            sheet[2, 3].Style = floatStyle;
+
+            // date and time data type
+            sheet[3, 0].Value = "Date & time:";
+            sheet[3, 0].Style = commentStyle;
+            sheet[3, 2].Value = DateTime.Now;
+            sheet[3, 2].Style = dateStyle;
+            sheet[3, 3].Value = DateTime.Now;
+            sheet[3, 3].Style = timeStyle;
+
+            // Boolean data type
+            sheet[4, 0].Value = "Boolean:";
+            sheet[4, 0].Style = commentStyle;
+            sheet[4, 2].Value = true;
+            sheet[4, 3].Value = false;
+
+            // error
+            sheet[5, 0].Value = "Error:";
+            sheet[5, 0].Style = commentStyle;
+            sheet[5, 2].Value = new Exception("#N/A");
+
+            // TODO: pictures
+
+            // vertical orientation for CJK font (it is necessary using vertical font with @ prefix)
+            XLStyle cjkStyle = new XLStyle(book);
+            cjkStyle.Font = new XLFont("@MS UI Gothic", 10);
+            cjkStyle.Rotation = 180;
+            sheet[1, 5].Value = "CJK:";
+            sheet[1, 5].Style = commentStyle;
+            sheet[2, 5].Value = "わたしわ　さらさんだすえ";
+            sheet[2, 5].Style = cjkStyle;
+            sheet.MergedCells.Add(2, 5, 8, 1);
+
+            // rich text format (RTF)
+            sheet[6, 0].Value = "RTF:";
+            sheet[6, 0].Style = commentStyle;
+            var sb = new StringBuilder();
+            sb.Append(@"{\rtf1{\fonttbl{\f0\fnil Arial;}{\f1\fnil Calibri;}}");
+            sb.Append(@"{\colortbl \red0\green0\blue0;\red255\green0\blue0;\red0\green0\blue0;}");
+            sb.Append(@"\pard\cf0\f0\fs20\u1055 ?\u1088 ?\cf1 \u1080 ?\u1074 ?\u1077 ?\cf2 \u1090 ?");
+            sb.Append(@" \b bold\b0  \i\fs28\f1 \u1090 ?\u1077 ?\u1089 ?\u1090 ?\i0\fs20\f0  \u12469 ?");
+            sb.Append(@"\b \u12509 ?\u12540 ?\u12488 ?\u24773 ?\b0\ul \u22577 ?\ulnone  isn't\par 1\par 3\par 3\par end\par}");
+            sheet[6, 1].Value = sb.ToString();
+            sheet.MergedCells.Add(6, 1, 2, 4);
+        }
+
+        if (sheetName == "Formats" || sheetName == "All")
+        {
+            // add the sheet with name
+            sheet = book.Sheets.Add("formats");
+
+            // column width in twips
+            sheet.Columns[0].Width = 2300;
+            sheet.Columns[1].Width = 2000;
+
+            // add some styles
+            XLStyle s1 = new XLStyle(book);
+            XLStyle s2 = new XLStyle(book);
+            XLStyle s3 = new XLStyle(book);
+            s1.Format = "#,##0.00000";
+            s2.Format = "#,##0.00000";
+            s2.Font = new XLFont("Courier New", 14);
+            s3.Format = "dd-MMM-yy";
+
+            // populate sheet with some random values
+            Random r = new Random();
+            for (int i = 0; i < 100; i++)
+            {
+                sheet[i, 0].Value = r.NextDouble() * 100000;
+                sheet[i, 0].Style = (i % 13 == 0) ? s2 : s1;
+            }
+            for (int i = 0; i < 100; i++)
+            {
+                sheet[i, 1].Value = new DateTime(2005, r.Next(1, 12), r.Next(1, 28));
+                sheet[i, 1].Style = s3;
+            }
+        }
+
+        if (sheetName == "Styles" || sheetName == "All")
+        {
+            // add the sheet with name
+            sheet = book.Sheets.Add("styles");
+
+            // create styles for odd and even values
+            XLStyle styleOdd = new XLStyle(book);
+            styleOdd.Font = new XLFont("Tahoma", 9, false, true);
+            styleOdd.ForeColor = Color.Blue;
+            XLStyle styleEven = new XLStyle(book);
+            styleEven.Font = new XLFont("Tahoma", 9, true, false);
+            styleEven.ForeColor = Color.Red;
+
+            // write content and format into some cells
+            for (int i = 0; i < 10; i++)
+            {
+                XLCell cell = sheet[i, 0];
+                cell.Value = i + 1;
+                cell.Style = ((i + 1) % 2 == 0) ? styleEven : styleOdd;
+            }
+        }
+
+        if (sheetName == "Formulas" || sheetName == "All")
+        {
+            // add the sheet with name
+            sheet = book.Sheets.Add("formulas");
+
+            // column width in twips
+            sheet.Columns[0].Width = 2000;
+            sheet.Columns[1].Width = 2200;
+
+            // string formulas
+            string s = "String:";
+            sheet[0, 0].Value = s;
+            sheet[1, 0].Value = s;
+            sheet[2, 0].Value = s;
+
+            sheet[0, 1].Value = "apples";
+            sheet[1, 1].Value = "and";
+            sheet[2, 1].Value = "oranges";
+
+            s = "String formula:";
+            sheet[4, 0].Value = s;
+            sheet[5, 0].Value = s;
+
+            sheet[4, 1].Value = "apples and oranges";
+            sheet[5, 1].Value = "apples an";
+            sheet[4, 1].Formula = "CONCATENATE(B1,\" \",B2, \" \",B3)";
+            sheet[5, 1].Formula = "LEFT(B5,9)";
+
+            // simple formulas
+            sheet[7, 0].Value = "Formula: 5!";
+            sheet[7, 1].Value = 120;
+            sheet[7, 1].Formula = "1*2*3*4*5";
+
+            sheet[8, 0].Value = "Formula: 12/0";
+            sheet[8, 1].Value = 0;
+            sheet[8, 1].Formula = "12/0";
+
+            sheet[9, 0].Value = "Formula: 1 = 1";
+            sheet[9, 1].Value = true;
+            sheet[9, 1].Formula = "1=1";
+
+            sheet[10, 0].Value = "Formula: 1 = 2";
+            sheet[10, 1].Value = false;
+            sheet[10, 1].Formula = "1 = 2";
+
+            // now function
+            sheet[12, 0].Value = "Formula: Now()";
+            sheet[12, 1].Value = DateTime.Now;
+            sheet[12, 1].Formula = "Now()";
+
+            XLStyle style = new XLStyle(book);
+            DateTimeFormatInfo dtfi = CultureInfo.CurrentCulture.DateTimeFormat;
+            style.Format = XLStyle.FormatDotNetToXL(dtfi.ShortDatePattern + " " + dtfi.ShortTimePattern);
+            sheet[12, 1].Style = style;
+
+            // copy of formulas
+            int count = 33;
+            for (int i = 0; i < count; i++)
+            {
+                sheet[i, 4].Value = i + 1;
+                sheet[i, 5].Value = count - i;
+            }
+            sheet[0, 6].Formula = "$E1+F1";
+            for (int i = 1; i < count; i++)
+            {
+                sheet.CopyFormula(0, 6, i, 6);
+                sheet.CopyFormula(0, 6, i, 7);
+                sheet.CopyFormula(0, 6, i, 8);
+            }
+        }
+
+        if (sheetName == "Named Ranges" || sheetName == "All")
+        {
+            // add the sheet with name
+            sheet = book.Sheets.Add("named ranges");
+
+            // write content and format into some cells
+            for (int i = 0; i < 10; i++)
+            {
+                XLCell cell = sheet[i, 0];
+                cell.Value = i + 1;
+            }
+
+            book.NamedRanges.Add("NRTest", sheet, 7, 0);
+
+            sheet[12, 0].Value = 0;
+            sheet[12, 0].Formula = "NRTest + 5";
+
+            // add named ranges
+            book.NamedRanges.Add("FTest", sheet, 12, 2);
+            book.NamedRanges.Add("STest", sheet, 14, 2, 2, 3);
+
+            // cell range test
+            var cr1 = new XLCellRange(book, "FTest:STest");
+            cr1.Value = 10;
+            var cr2 = new XLCellRange(book, "STest");
+            cr2.Value = 20;
+
+            // Bernardo's test for named range
+            var nrFirst = book.NamedRanges.Add("Values.First", sheet, 1, 8);
+            var nrSecond = book.NamedRanges.Add("Values.Second", sheet, 2, 8);
+            var nrSum = book.NamedRanges.Add("SumOfThree", sheet, 1, 8, 3, 1);
+            var crFirst = new XLCellRange(sheet, "Values.First");
+            crFirst.Value = 300;
+            var crSecond = new XLCellRange(sheet, "Values.Second");
+            crSecond.Value = 200;
+            sheet[3, 8].Value = 500;
+            sheet[1, 9].Value = 500;
+            sheet[1, 9].Formula = "Values.First + Values.Second";
+            sheet[1, 10].Value = 1000;
+            sheet[1, 10].Formula = "SUM(SumOfThree)";
+
+            // Bernardo's test (ReferenceMode = XLReferenceMode.A1)
+            var range1 = new XLCellRange(book, "Values.First");
+            if (range1.RowFrom < 0 || range1.ColumnFrom > 1000)
+                throw new Exception("bad range");
+            var range2 = new XLCellRange(sheet, "Values.First");
+            if (range2.RowFrom < 0 || range2.ColumnFrom > 1000)
+                throw new Exception("bad range");
+            range1 = new XLCellRange(book, "named ranges!I1:I11");
+            if (range1.RowFrom < 0 || range1.ColumnFrom > 1000)
+                throw new Exception("bad range");
+            range2 = new XLCellRange(book.Sheets[0], "named ranges!I1:I11");
+            if (range2.RowFrom < 0 || range2.ColumnFrom > 1000)
+                throw new Exception("bad range");
+
+            // print area
+            sheet[17, 2].Value = "Used of a print areas in first and this worksheets.";
+            book.NamedRanges.Add("Print_Area", new XLCellRange(sheet, 12, 15, 2, 4));
+
+            // conditional formatting
+            var item = new XLConditionalFormatting();
+            var rule = new XLConditionalFormattingRule();
+            rule.Font = new XLFontFormatting();
+            rule.Font.FontColor = Color.FromArgb(255, 255, 0, 10);  // red
+            rule.Font.Bold = true;
+            rule.Pattern = new XLPatternFormatting();
+            rule.Pattern.Pattern = XLPattern.Solid;
+            rule.Pattern.BackColor = Color.FromArgb(255, 200, 255, 200);
+            rule.Operator = XLConditionalFormattingOperator.GreaterThanOrEqual;
+            rule.FirstFormula = "7";
+            item.Rules.Add(rule);
+            item.Ranges.Add(new XLRange(0, 0, 9, 0));
+            sheet.ConditionalFormattings.Add(item);
+        }
+
+        // done
+        return book;
+    }
+}

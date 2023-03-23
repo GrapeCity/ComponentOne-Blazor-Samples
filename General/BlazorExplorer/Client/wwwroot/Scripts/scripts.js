@@ -10,6 +10,34 @@ window.openSaveFile = function (fileName, fileType, fileContent) {
 };
 
 /**
+* Saves the Base64 object as a file.
+* @param filename The name with which the file is saved.
+* @param base64 The Base64 object to save.
+*/
+window.saveBase64File = function (filename, base64) {
+    //alert(filename);
+    if (navigator.msSaveBlob) {
+        // download document in Edge browser
+        var data = window.atob(base64);
+        var bytes = new Uint8Array(data.length);
+        for (var i = 0; i < data.length; i++) {
+            bytes[i] = data.charCodeAt(i);
+        }
+        var blob = new Blob([bytes.buffer], { type: "application/octet-stream" });
+        navigator.msSaveBlob(blob, filename);
+    }
+    else {
+        // other browser
+        var link = document.createElement('a');
+        link.download = filename;
+        link.href = "data:application/octet-stream;base64," + base64;
+        document.body.appendChild(link); // Needed for Firefox
+        link.click();
+        document.body.removeChild(link);
+    }
+};
+
+/**
 * Open content in new window.
 * @param title The title of new window.
 * @param content The content to open.

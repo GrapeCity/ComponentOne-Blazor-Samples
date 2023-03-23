@@ -84,7 +84,7 @@
                          Tooltip="<b>{name}</b><br><b>Total flights:</b>{value:n0}"
                          LegendPosition="Position.None" SelectionMode="ChartSelectionMode.Point">
                     <Label>
-                        <DataLabel Position="LabelPosition.Center" Content="{name}" />
+                        <DataLabel Style="color:rgb(250,250,250)" Position="LabelPosition.Center" Content="{name}" />
                     </Label>
                 </TreeMap>
             </div>
@@ -343,13 +343,14 @@
     {
         if (item == "Regions")
         {
-            RenderTreeMap(AirportsGroupedDatas);
-            RenderRegionsChart(AirportsGroupedDatas);
             currentItem.Clear();
-            RenderBreadCrumbs();
-            grid.Selection = null;
+            grid.Select(-1, -1);
             expandedRows = 0;
             airportsFlexChart.SelectedSeries = null;
+
+            RenderTreeMap(AirportsGroupedDatas);
+            RenderRegionsChart(AirportsGroupedDatas);
+            RenderBreadCrumbs();
         }
         else
         {
@@ -434,6 +435,8 @@
     {
         TreeMap chart = (TreeMap)sender;
         var selectedItem = chart.SelectedItem;
+        if (selectedItem == null)
+            return;
 
         if (breadCrumbDatas.Count == 1)
         {

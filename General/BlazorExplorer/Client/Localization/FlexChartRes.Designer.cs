@@ -594,7 +594,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FlexChart Overview..
+        ///   Looks up a localized string similar to Overview.
         /// </summary>
         public static string IndexTitle {
             get {
@@ -812,7 +812,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pie chart overview..
+        ///   Looks up a localized string similar to Overview.
         /// </summary>
         public static string PieIndexTitle {
             get {
@@ -1203,7 +1203,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TreeMap overview.
+        ///   Looks up a localized string similar to Overview.
         /// </summary>
         public static string TreeMapTitle {
             get {

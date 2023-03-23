@@ -13,9 +13,9 @@
 
     if (currentPage != null)
     {
+        var sources = currentPage.SourcesRoute.Split("/");
         var pageText = ControlPages.GetPageText(controlName, actionName);
         var group = ControlPages.GetControlPageGroup(controlName);
-
         foreach (var page in group.Pages)
         {
             SetPagePath(page, controlName);
@@ -41,7 +41,7 @@
         <div class="col-md-9">
             <div class="padder">
                 <_Sections RenderSections="Title" Tag="h3" Class="wide-screen" NullHtml="@pageText"></_Sections>
-                <_ControlTabs Body="@Body" ControlName="@controlName" ActionName="@actionName" DocLink="@group.Documentation"></_ControlTabs>
+                <_ControlTabs Body="@Body" ControlName="@sources[0]" ActionName="@sources[1]" DocLink="@group.Documentation"></_ControlTabs>
             </div>
         </div>
     }

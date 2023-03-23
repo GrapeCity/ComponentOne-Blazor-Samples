@@ -43,38 +43,38 @@ namespace BlazorExplorer.Models
         }
     }
 
-    public static IDictionary<string, string> GetPageSources(string controllerName, string actionName)
-		{
-		    var pageSources = new Dictionary<string, string>();
+        public static IDictionary<string, string> GetPageSources(string controllerName, string actionName)
+        {
+            var pageSources = new Dictionary<string, string>();
 
-		    string key, sourceCode;
-		    List<string> filePaths = new List<string>
-		    {
-				    string.Format("{0}/{1}/{2}{3}", "Pages", controllerName, actionName, ".razor"),
-				    string.Format("{0}/{1}/{2}{3}", "Controllers", controllerName, actionName, ".cs"),
-				    string.Format("{0}/{1}/{2}{3}", "Models", controllerName, actionName, ".cs")
-		    };
+            string key, sourceCode;
+            List<string> filePaths = new List<string>
+            {
+                    string.Format("{0}/{1}/{2}{3}", "Pages", controllerName, actionName, ".razor"),
+                    string.Format("{0}/{1}/{2}{3}", "Controllers", controllerName, actionName, ".cs"),
+                    string.Format("{0}/{1}/{2}{3}", "Models", controllerName, actionName, ".cs")
+            };
 
-        /*
-        string folderPath = string.Format("{0}/{1}", "Models", controllerName);
-        var files = Directory.GetFiles(folderPath, "*.cs", SearchOption.TopDirectoryOnly);
-        foreach (var file in files)
-          filePaths.Add(file.Replace("\\","/"));
-        */
-        
-        foreach (var filePath in filePaths)
-		    {
-			      sourceCode = GetFileResContent(filePath);
-			      if (!String.IsNullOrEmpty(sourceCode))
-			      {
-			        key = filePath.Substring(filePath.LastIndexOf("/") + 1);
-              if (pageSources.ContainsKey(key))
-                  key = filePath;
-			        pageSources.Add(key, sourceCode);
-			      }
-		    }
-		    return pageSources;
-		}
+            /*
+            string folderPath = string.Format("{0}/{1}", "Models", controllerName);
+            var files = Directory.GetFiles(folderPath, "*.cs", SearchOption.TopDirectoryOnly);
+            foreach (var file in files)
+              filePaths.Add(file.Replace("\\","/"));
+            */
+
+            foreach (var filePath in filePaths)
+            {
+                sourceCode = GetFileResContent(filePath);
+                if (!String.IsNullOrEmpty(sourceCode))
+                {
+                    key = filePath.Substring(filePath.LastIndexOf("/") + 1);
+                    if (pageSources.ContainsKey(key))
+                        key = filePath;
+                    pageSources.Add(key, sourceCode);
+                }
+            }
+            return pageSources;
+        }
 
 	      public static ControlPageGroup GetControlPageGroup(string controlName)
         {
@@ -351,13 +351,17 @@ namespace BlazorExplorer.Models
                 {
                     bool.TryParse(enhancedAttr.Value, out isEnhanced);
                 }
-
+                
+                var name = e.Attribute("name") != null ? e.Attribute("name").Value : "";
                 ControlPage page = new ControlPage
                 {
                     TextEn = e.Attribute("text").Value,
                     TextJp = e.Attribute("text.ja")?.Value,
-                    Name = e.Attribute("name") != null ? e.Attribute("name").Value : "",
+                    Name = name,
                     ControlName = controlName,
+                    SourcesRoute = string.IsNullOrEmpty(e.Attribute("sourcesRoute")?.Value) ?
+                      $"{controlName}/{name}"
+                      : e.Attribute("sourcesRoute").Value,
                     IsEnhanced = isEnhanced,
                     EnhanceTipEn = e.Attribute("enhancetip")?.Value,
                     EnhanceTipJp = e.Attribute("enhancetip.ja")?.Value
@@ -562,6 +566,7 @@ namespace BlazorExplorer.Models
 
     public class ControlPage
     {
+        public string SourcesRoute { get; set; }
         public string Name { get; set; }
         internal string TextEn { get; set; }
         internal string TextJp { get; set; }

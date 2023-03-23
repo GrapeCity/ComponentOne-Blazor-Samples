@@ -210,4 +210,10 @@
   <data name="Wednesday" xml:space="preserve">
     <value>Wednesday</value>
   </data>
+  <data name="CustomSlotsDescription" xml:space="preserve">
+    <value>Shows how to customize &lt;mark code&gt;C1Calendar&lt;/mark&gt; throughout the Adapter.</value>
+  </data>
+  <data name="CustomSlotsTitle" xml:space="preserve">
+    <value>Custom Slots</value>
+  </data>
 </root>

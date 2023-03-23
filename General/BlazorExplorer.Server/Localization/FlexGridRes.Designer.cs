@@ -1033,7 +1033,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manage how cells are selected by setting the selection mode. FlexGrid supports single row and cell selection modes, (plus row and cell ranges when the user holds the SHIFT key.) The selected cell data can then be easily retrieved through the control’s Selection property..
+        ///   Looks up a localized string similar to Manage how cells are selected by setting the selection mode. FlexGrid supports single row, column and cell selection modes, (plus ranges when the user holds the SHIFT key, and multiple ranges by pressing CTRL key) The selected cell data can then be easily retrieved through the control’s Selection and SeletedRanges properties..
         /// </summary>
         public static string SelectionModesDescription {
             get {

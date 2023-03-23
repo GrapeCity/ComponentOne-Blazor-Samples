@@ -24,30 +24,30 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Accordion">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Calendar">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
-    <PackageReference Include="C1.DataCollection.Serialization" Version="1.0.20223.116" />
+    <PackageReference Include="C1.DataCollection.Serialization" Version="1.0.20231.129" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.6" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.6" />

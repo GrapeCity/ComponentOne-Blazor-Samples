@@ -20,6 +20,14 @@ span[symbol]{
     padding-bottom: 2px;
 }
 
+mark[code] {
+    background: #ecedf0;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 3px;
+    color: #575757;
+}
+
 section[control-feature] {
     padding: 4px 7px 7px 12px;
     margin-top: 12px;

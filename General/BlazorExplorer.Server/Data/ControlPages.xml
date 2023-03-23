@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Controls>
   <ControlGroup name="Data Management" name.ja="データ管理">
-    <Control name="FlexGrid" popular="true" new="true">
+    <Control name="FlexGrid" popular="true">
       <action text="General" text.ja="一般">
         <subactions>
           <action text="Overview" text.ja="概要" name="Index"></action>
@@ -91,14 +91,13 @@
         </subactions>
       </action>
     </Control>  
-	<Control name="DataFilter" new="true">
+	<Control name="DataFilter">
 		  <action text="Cars List" text.ja="車両リスト" name="Index"></action>
 		  <action text="Filter Summary" text.ja="フィルターの概要" name="FiltersSummary"></action>
 		  <action text="Conditional Filters" text.ja="条件付きフィルター" name="ConditionalFilters"></action>
 		  <action text="Custom Filters" text.ja="カスタムフィルター" name="CustomFilters"></action>
 		  <action text="Virtual Source" text.ja="仮想ソース" name="VirtualSource"></action>
     </Control>
-
   </ControlGroup>
   <ControlGroup name="Data Visualization" name.ja="データの視覚化">
     <Control name="FlexChart" popular="true">
@@ -175,7 +174,7 @@
   </ControlGroup>
   
   <ControlGroup name="Scheduling" name.ja="スケジュール">
-    <Control name="Calendar">
+    <Control name="Calendar" documentation="https://www.grapecity.com/componentone/docs/blazor/online-blazor/C1.Blazor.Calendar~C1.Blazor.Calendar_namespace.html">
       <action text="General" text.ja="一般">
         <subactions>
           <action text="Overview" text.ja="概要" name="Index"></action>
@@ -189,6 +188,7 @@
           <action text="Custom Styles" text.ja="カスタムスタイル" name="Styling"></action>
           <action text="Icon Template" text.ja="アイコンテンプレート" name="IconTemplate"></action>
           <action text="Item Template" text.ja="項目テンプレート" name="ItemTemplate"></action>
+          <action text="Custom Slots" text.ja="Custom Slots" name="CustomSlots"></action>
         </subactions>
       </action>
       <action text="Validation" text.ja="検証" name="Validation"></action>
@@ -293,7 +293,7 @@
       <action text="Dialog Result" text.ja="ダイアログ結果" name="DialogResult"></action>
       <action text="Open With Owner" text.ja="所有者要素を持つ C1Window" name="OpenWithOwner"></action>
     </Control>
-    <Control name="Menu" new="true">
+    <Control name="Menu">
       <action text="Overview" text.ja="概要" name="Index"></action>
       <action text="Unbound" text.ja="アンバウンド" name="Unbound"></action>
       <action text="HeaderTemplate" text.ja="ヘッダーテンプレート" name="HeaderTemplate"></action>
@@ -309,4 +309,26 @@
     <Control referenceApplication="true" name="InvestmentCalculator" name.ja="InvestmentCalculator" link="https://www.grapecity.com/componentone/demos/blazor/investmentcalculator/" link.ja="https://www.grapecity.com/componentone/demos/blazor/investmentcalculator/" />
     <Control referenceApplication="true" name="MarketingBudgetTemplate" name.ja="MarketingBudgetTemplate" link="https://www.grapecity.com/componentone/demos/blazor/marketingbudgettemplate/" link.ja="https://www.grapecity.com/componentone/demos/blazor/marketingbudgettemplate/" />
   </ControlGroup>
+
+  <ControlGroup name="Documents">
+    <Control name="Excel" new="true">
+      <action text="General" text.ja="一般">
+        <subactions>
+          <action text="Overview" text.ja="概要" name="Index"></action>
+        </subactions>
+      </action>
+      <action text="Fetch weather" text.ja="">
+        <subactions>
+          <action text="Fetch data" text.ja="" name="FetchData"></action>
+          <action text="Fetch Excel file" text.ja="" name="FetchExcel"></action>
+        </subactions>
+      </action>
+      <action text="Export" text.ja="エクスポート">
+        <subactions>
+          <action text="XLSX/XLS/CSV Export" text.ja="XLSX/XLS/CSV エクスポート" name="Export"></action>
+        </subactions>
+      </action>
+    </Control>
+  </ControlGroup>
+
 </Controls>

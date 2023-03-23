@@ -40,19 +40,17 @@
         _originalValue = grid[e.CellRange.Row, e.CellRange.Column];
     }
 
-    private void OnCellEditEnded(object sender, GridCellEditEventArgs e)
+    private async void OnCellEditEnded(object sender, GridCellEditEventArgs e)
     {
         var originalValue = _originalValue;
         var currentValue = grid[e.CellRange.Row, e.CellRange.Column];
         if (!e.CancelEdits && (originalValue == null && currentValue != null || !originalValue.Equals(currentValue)))
         {
-            DisplayAlert(FlexGridRes.EditConfirmationQuestion).ContinueWith(t =>
+            var confirmed = await DisplayAlert(FlexGridRes.EditConfirmationQuestion);
+            if (!confirmed)
             {
-                if (!t.Result)
-                {
-                    grid[e.CellRange.Row, e.CellRange.Column] = originalValue;
-                }
-            }, TaskScheduler.FromCurrentSynchronizationContext());
+                grid[e.CellRange.Row, e.CellRange.Column] = originalValue;
+            }
         }
     }
 

@@ -121,6 +121,10 @@
     <value>バインディング &amp; 最大・最小</value>
     <comment>Binding &amp; Min-Max</comment>
   </data>
+  <data name="CustomStyles" xml:space="preserve">
+    <value>カスタムスタイル</value>
+    <comment>Custom Styles</comment>
+  </data>
   <data name="IsEnabled" xml:space="preserve">
     <value>有効</value>
     <comment>IsEnabled property</comment>
@@ -148,9 +152,5 @@
   <data name="Placeholder" xml:space="preserve">
     <value>プレースホルダ</value>
     <comment>Placeholder</comment>
-  </data>
-  <data name="ViewModesAndCustomStyles" xml:space="preserve">
-    <value>表示モード &amp; カスタムスタイル</value>
-    <comment>ViewModes &amp; Custom Styles</comment>
   </data>
 </root>

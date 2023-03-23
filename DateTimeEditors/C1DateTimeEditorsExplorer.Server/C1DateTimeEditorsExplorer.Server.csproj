@@ -16,16 +16,16 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Calendar">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.6" />
   </ItemGroup>

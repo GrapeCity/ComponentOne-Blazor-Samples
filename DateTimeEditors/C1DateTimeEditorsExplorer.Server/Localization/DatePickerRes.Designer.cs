@@ -70,6 +70,15 @@ namespace C1DateTimeEditorsExplorer.Server.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom Styles.
+        /// </summary>
+        public static string CustomStyles {
+            get {
+                return ResourceManager.GetString("CustomStyles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IsEnabled.
         /// </summary>
         public static string IsEnabled {
@@ -111,15 +120,6 @@ namespace C1DateTimeEditorsExplorer.Server.Localization {
         public static string Placeholder {
             get {
                 return ResourceManager.GetString("Placeholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ViewModes &amp; Custom Styles.
-        /// </summary>
-        public static string ViewModesAndCustomStyles {
-            get {
-                return ResourceManager.GetString("ViewModesAndCustomStyles", resourceCulture);
             }
         }
     }

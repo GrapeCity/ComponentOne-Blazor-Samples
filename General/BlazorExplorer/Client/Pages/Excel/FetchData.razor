@@ -1,0 +1,166 @@
+﻿@page "/Excel/FetchData"
+@inject IJSRuntime JsRuntime
+@using Localization
+@using System.Drawing
+@using System.Globalization
+@using System.IO
+@using System.Text
+@using C1.Excel
+@using GrapeCity.Documents.Imaging
+@using C1.Blazor.Input;
+@inject HttpClient Http
+
+<h4>@ExcelRes.WeatherForecast</h4>
+
+@if (forecasts == null)
+{
+    <p><em>@ExcelRes.Loading</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@ExcelRes.Date</th>
+                <th>@ExcelRes.CTemp</th>
+                <th>@ExcelRes.FTemp</th>
+                <th>@ExcelRes.Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in forecasts)
+            {
+                <tr>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<h4>@ExcelRes.Download</h4>
+
+<p style="display:flex">
+    <C1TextBox @bind-Text="@fileName" Style="@("width:170px;border-width:1px 0 1px 1px;border-radius:4px 0 0 4px;")" />
+    <C1ComboBox ItemsSource="fileTypes" @bind-SelectedItem="fileType" Style="@("width:80px;border-radius: 0 4px 4px 0;")" />
+    <button class="btn btn-primary" @onclick="OnSave" style="margin-left: 8px;">@ExcelRes.Save</button>
+</p>
+
+<_Sections>
+    <Title>@ExcelRes.FetchDataTitle</Title>
+    <Summary>@ExcelRes.FetchDataSummary</Summary>
+    <Description>@ExcelRes.FetchDataDescription</Description>
+</_Sections>
+
+@code {
+    WeatherForecast[]? forecasts;
+    string[] fileTypes = { "CSV", "XLS", "XLSX" };
+    string fileName = "FetchData";
+    string fileType = "XLSX";
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+    }
+
+    async void OnSave()
+    {
+        C1XLBook book = ToExcel();
+        var fileContent = "";
+        using (var ms = new MemoryStream())
+        {
+            switch (fileType)
+            {
+                case "CSV":
+                    book.Save(ms, FileFormat.Csv);
+                    break;
+                case "XLS":
+                    book.Save(ms, FileFormat.Biff8);
+                    break;
+                default:
+                    book.Save(ms, FileFormat.OpenXml);
+                    break;
+            }
+            fileContent = Convert.ToBase64String(ms.ToArray());
+        }
+        fileName = string.IsNullOrEmpty(fileName) ? "export" : fileName;
+        await JsRuntime.InvokeVoidAsync("saveBase64File", fileName + '.' + fileType.ToLower(), fileContent);
+    }
+
+    C1XLBook ToExcel()
+    {
+        // initialize
+        C1XLBook book = new();
+
+        book.Author = "GrapeCity";
+
+        var sheet = book.Sheets[0];
+        sheet.Name = "Weather Forecast";
+
+        sheet.Columns[1].Width = 1200;
+        sheet.Columns[2].Width = 1000;
+        sheet.Columns[3].Width = 1000;
+        sheet.Columns[4].Width = 2000;
+
+        var dtf = CultureInfo.CurrentUICulture.DateTimeFormat;
+        var dateStyle = new XLStyle(book);
+        dateStyle.Font = new XLFont("Helvertica", 11, Color.DarkGray);
+        dateStyle.Format = XLStyle.FormatXLToDotNet(dtf.ShortDatePattern);
+
+        var tempStyle = new XLStyle(book);
+        tempStyle.Font = new XLFont("Helvertica", 11, Color.DarkCyan);
+
+        var summaryStyle = new XLStyle(book);
+        summaryStyle.Font = new XLFont("Helvertica", 11, Color.Black);
+
+        var headerStyle = new XLStyle(book);
+        headerStyle.BorderBottom = XLLineStyle.Thick;
+        headerStyle.BorderColorBottom = Color.Black;
+        headerStyle.Font = new XLFont("Helvertica", 11, true, false);
+
+        sheet[1, 1].Style = headerStyle;
+        sheet[1, 2].Style = headerStyle;
+        sheet[1, 3].Style = headerStyle;
+        sheet[1, 4].Style = headerStyle;
+
+        sheet[1, 1].Value = ExcelRes.Date;
+        sheet[1, 2].Value = ExcelRes.CTemp;
+        sheet[1, 3].Value = ExcelRes.FTemp;
+        sheet[1, 4].Value = ExcelRes.Summary;
+
+        if (forecasts != null)
+        {
+            for (int r = 0; r < forecasts.Length; r++)
+            {
+                int row = r + 2;
+
+                sheet[row, 1].Style = dateStyle;
+                sheet[row, 2].Style = tempStyle;
+                sheet[row, 3].Style = tempStyle;
+                sheet[row, 4].Style = summaryStyle;
+
+                sheet[row, 1].Value = forecasts[r].Date;
+                sheet[row, 2].Value = forecasts[r].TemperatureC;
+                sheet[row, 3].Value = forecasts[r].TemperatureF;
+                sheet[row, 4].Value = forecasts[r].Summary;
+            }
+        }
+
+        // done
+        return book;
+    }
+
+    public class WeatherForecast
+    {
+        public DateTime Date { get; set; }
+
+        public int TemperatureC { get; set; }
+
+        public string? Summary { get; set; }
+
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+}

@@ -63,7 +63,7 @@ namespace BlazorExplorer
                     }
                     ));
                     b.AddAttribute(7, nameof(FlexGrid.ItemsSource), Country.GetCountries());
-                    b.AddAttribute(8, nameof(FlexGrid.SelectionChanged), (EventHandler<GridCellRangeEventArgs>)OnSelectionChanged);
+                    b.AddAttribute(8, nameof(FlexGrid.SelectionChanged), (EventHandler<GridSelectionEventArgs>)OnSelectionChanged);
                     b.CloseComponent();
                 }));
                 builder.AddAttribute(4, nameof(C1DropDown.IsEditable), true);
@@ -76,7 +76,7 @@ namespace BlazorExplorer
             });
         }
 
-        private void OnSelectionChanged(object sender, GridCellRangeEventArgs e)
+        private void OnSelectionChanged(object sender, GridSelectionEventArgs e)
         {
             if (CurrentDropDown != null)
             {

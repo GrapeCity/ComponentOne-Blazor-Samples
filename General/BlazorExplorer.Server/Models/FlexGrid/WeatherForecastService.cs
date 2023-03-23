@@ -13,13 +13,18 @@ namespace BlazorExplorer
 
         public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
         {
-            var rng = new Random();
-            return Task.FromResult(Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            return Task.FromResult(GetForecast(startDate));
+        }
+
+        internal static WeatherForecast[] GetForecast(DateTime startDate)
+        {
+            return Enumerable.Range(1, 9).Select(index => new WeatherForecast
             {
                 Date = startDate.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            }).ToArray());
+                TemperatureC = Random.Shared.Next(-20, 55),
+                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+            }).ToArray();
         }
+
     }
 }

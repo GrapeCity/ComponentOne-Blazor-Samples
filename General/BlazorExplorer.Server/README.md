@@ -27,3 +27,4 @@ Shows the following samples
 * Menu
 * C1Accordion/C1Expander
 * C1RangeSlider
+* C1Excel

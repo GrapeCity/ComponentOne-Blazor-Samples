@@ -7,7 +7,7 @@
 <h1>@AppResources.CellMergingTitle</h1>
 <p>@AppResources.CellMergingDescription</p>
 
-<FlexGrid @ref="grid" IsReadOnly="true" ColumnOptionsMenuVisibility="GridColumnOptionsMenuVisibility.Collapsed" MinColumnWidth="80" DefaultColumnWidth="GridLength.Star" AllowMerging="GridAllowMerging.All" HeadersVisibility="GridHeadersVisibility.All" RowHeaderGridLinesVisibility="GridLinesVisibility.All" GridLinesVisibility="GridLinesVisibility.All" SelectionMode="GridSelectionMode.CellRange" Style="@("border: 1px solid #C7C7CC;border-radius: 8px;")">
+<FlexGrid @ref="grid" IsReadOnly="true" IsVirtualizationEnabled="false" ColumnOptionsMenuVisibility="GridColumnOptionsMenuVisibility.Collapsed" MinColumnWidth="80" DefaultColumnWidth="GridLength.Star" AllowMerging="GridAllowMerging.All" HeadersVisibility="GridHeadersVisibility.All" RowHeaderGridLinesVisibility="GridLinesVisibility.All" GridLinesVisibility="GridLinesVisibility.All" SelectionMode="GridSelectionMode.CellRange" Style="@("border: 1px solid #C7C7CC;border-radius: 8px;")">
     <FlexGridColumns>
         <GridColumn Header="@AppResources.Monday" AllowMerging="true" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" HorizontalAlignment="C1HorizontalAlignment.Center" />
         <GridColumn Header="@AppResources.Tuesday" AllowMerging="true" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" HorizontalAlignment="C1HorizontalAlignment.Center" />

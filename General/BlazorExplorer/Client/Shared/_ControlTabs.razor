@@ -17,7 +17,7 @@
                 <_DemoSource Model="@ControlPages.GetPageSources(ControlName, ActionName)"></_DemoSource>
             </div>
             <div class="demo-control @(TabIndex==0?"expand-fade":"collapse-fade")">
-               <_RenderAsync Content="@Body"></_RenderAsync>
+                <_RenderAsync Content="@Body"></_RenderAsync>
             </div>
         </div>
     </div>
@@ -32,9 +32,9 @@
     public string DocLink { get; set; }
     [Parameter]
     public RenderFragment Body { get; set; }
-     
+
     private int TabIndex = 0;
-     
+
     private void OnTabClick(MouseEventArgs e, int tabIndex)
     {
         if (tabIndex < 2)

@@ -23,8 +23,8 @@
 @code {
     ObservableCollection<Customer> customers;
     string selectedCells;
-    GridSelectionMode selectionMode = GridSelectionMode.CellRange;
-    GridSelectionMode[] selectionModes = new GridSelectionMode[] { GridSelectionMode.None, GridSelectionMode.Cell, GridSelectionMode.CellRange, GridSelectionMode.Row, GridSelectionMode.RowRange, GridSelectionMode.Column, GridSelectionMode.ColumnRange };
+    GridSelectionMode selectionMode = GridSelectionMode.MultiRange;
+    GridSelectionMode[] selectionModes = Enum.GetValues<GridSelectionMode>();
     GridAllowResizing allowResizing = GridAllowResizing.Columns;
     GridAllowResizing[] allowResizingModes = new GridAllowResizing[] { GridAllowResizing.None, GridAllowResizing.Columns, GridAllowResizing.Rows, GridAllowResizing.Both, };
     GridAllowDragging allowDragging = GridAllowDragging.Columns;

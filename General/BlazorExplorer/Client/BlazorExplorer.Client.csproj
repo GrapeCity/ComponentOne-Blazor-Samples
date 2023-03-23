@@ -17,42 +17,43 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Accordion">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Calendar">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Chart">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Menu">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.TreeView">
-      <Version>6.0.20223.374</Version>
+      <Version>6.0.20231.491</Version>
     </PackageReference>
-    <PackageReference Include="C1.DataCollection.Serialization" Version="1.0.20223.116" />
+    <PackageReference Include="C1.DataCollection.Serialization" Version="1.0.20231.129" />
+    <PackageReference Include="C1.Excel" Version="5.0.20223.11" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.6" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.6" />
@@ -125,6 +126,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>DateTimePickerRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\ExcelRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ExcelRes.resx</DependentUpon>
     </Compile>
     <Compile Update="Localization\FlexChartRes.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -228,6 +234,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DateTimePickerRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Localization\ExcelRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExcelRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Localization\MaskedTextBoxRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MaskedTextBoxRes.Designer.cs</LastGenOutput>
@@ -284,5 +294,8 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SliderRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Excel\" />
   </ItemGroup>
 </Project>

@@ -482,8 +482,8 @@
     <comment>Overview</comment>
   </data>
   <data name="SelectionModesDescription" xml:space="preserve">
-    <value>選択モードを設定して、セルの選択方法を管理します。FlexGrid は、単一行およびセル選択モードをサポートします（ユーザーが SHIFT キーを押した場合、行とセルの範囲に加えて）。選択したセルデータは、コントロールの Selection プロパティを通じて簡単に取得できます。</value>
-    <comment>Manage how cells are selected by setting the selection mode. FlexGrid supports single row and cell selection modes, (plus row and cell ranges when the user holds the SHIFT key.) The selected cell data can then be easily retrieved through the control’s Selection property.</comment>
+    <value>選択モードを設定して、セルの選択方法を管理します。 FlexGrid は、単一の行、列、およびセルの選択モードをサポートします (加えて、ユーザーが SHIFT キーを押下しながらだと範囲が、CTRL キーを押下しながらだと複数の範囲が選択されます)。選択されたセルデータは、コントロールの Selection および SeletedRanges プロパティを介して簡単に取得できます。</value>
+    <comment>Manage how cells are selected by setting the selection mode. FlexGrid supports single row, column and cell selection modes, (plus ranges when the user holds the SHIFT key, and multiple ranges by pressing CTRL key) The selected cell data can then be easily retrieved through the control’s Selection and SeletedRanges properties.</comment>
   </data>
   <data name="CellFreezingDescription" xml:space="preserve">
     <value>FlexGrid は、行と列の固定をサポートしており、ユーザーがスクロールしても静的なままにできます。</value>

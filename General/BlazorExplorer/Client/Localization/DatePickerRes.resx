@@ -141,7 +141,7 @@
   <data name="Placeholder" xml:space="preserve">
     <value>Placeholder</value>
   </data>
-  <data name="ViewModesAndCustomStyles" xml:space="preserve">
-    <value>ViewModes &amp; Custom Styles</value>
+  <data name="CustomStyles" xml:space="preserve">
+    <value>Custom Styles</value>
   </data>
 </root>
