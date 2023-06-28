@@ -8,7 +8,7 @@ The samples reference but do not include the control packages. The control packa
 
 ## Building a Sample 
 
-Blazor samples will require [.NET Core SDK 3.0](https://www.microsoft.com/net/download) and Visual Studio 2019 and above.
+Blazor samples will require [.NET 6.0 SDK](https://www.microsoft.com/net/download) and Visual Studio 2019 and above.
 
 Then run these commands from the CLI in the directory of any sample: 
 
