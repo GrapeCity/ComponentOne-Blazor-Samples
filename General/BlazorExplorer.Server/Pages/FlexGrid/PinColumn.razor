@@ -1,0 +1,57 @@
+﻿@page "/FlexGrid/pincolumn"
+
+<FlexGrid ColumnOptionsLoading="@OnColumnOptionsLoading" ItemsSource="@customers" Style="@("max-height:50vh; max-width: 800px;")" />
+<_Sections>
+    <Title>@FlexGridRes.PinColumnTitle</Title>
+    <Summary></Summary>
+    <Description>@FlexGridRes.PinColumnDescription</Description>
+</_Sections>
+@code {
+    ObservableCollection<Customer> customers = Customer.GetCustomerList(100);
+
+    async void OnColumnOptionsLoading(object sender, GridColumnOptionsLoadingEventArgs e)
+    {
+        var menu = await e.Menu;
+
+        var grid = sender as FlexGrid;
+        var column = e.Column;
+        var isFrozen = column.Index < grid.FrozenColumns;
+        var menuItem = new C1MenuItem();
+        var pathData = isFrozen 
+                    ? "M 3.71875 2.28125 L 2.28125 3.71875 L 28.28125 29.71875 L 29.71875 28.28125 L 21.75 20.3125 C 21.988678 19.231627 22.072023 18.111911 21.875 17 L 29.4375 11.46875 L 20.53125 2.5625 L 15 10.125 C 13.889037 9.9274235 12.764228 10.013944 11.6875 10.25 L 3.71875 2.28125 z M 20.78125 5.625 L 26.375 11.21875 L 19.59375 16.1875 L 19.78125 16.84375 C 19.930164 17.410929 20.006357 17.989892 20 18.5625 L 13.4375 12 C 14.010039 11.993776 14.588137 12.069369 15.15625 12.21875 L 15.8125 12.40625 L 20.78125 5.625 z M 8.21875 11.84375 C 7.96575 12.04475 7.732 12.269 7.5 12.5 L 6.78125 13.1875 L 12.09375 18.5 L 4 26.59375 L 4 28 L 5.40625 28 L 13.5 19.90625 L 18.8125 25.21875 L 19.5 24.5 C 19.731 24.269 19.95625 24.03425 20.15625 23.78125 L 8.21875 11.84375 z"
+                    : "M 20.53125 2.5625 L 19.84375 3.5 L 14.9375 10.1875 C 12.306897 9.7319347 9.5276177 10.472382 7.5 12.5 L 6.78125 13.1875 L 7.5 13.90625 L 12.09375 18.5 L 4 26.59375 L 4 28 L 5.40625 28 L 13.5 19.90625 L 18.09375 24.5 L 18.8125 25.21875 L 19.5 24.5 C 21.527618 22.472382 22.268065 19.693103 21.8125 17.0625 L 28.5 12.15625 L 29.4375 11.46875 L 28.625 10.65625 L 21.34375 3.375 L 20.53125 2.5625 z M 20.78125 5.625 L 26.375 11.21875 L 20.15625 15.78125 L 19.59375 16.1875 L 19.78125 16.84375 C 20.263326 18.677254 19.73729 20.586311 18.59375 22.1875 L 9.8125 13.40625 C 11.413689 12.262708 13.322746 11.736674 15.15625 12.21875 L 15.8125 12.40625 L 16.21875 11.84375 L 20.78125 5.625 z";
+
+        menuItem.Header = isFrozen ? FlexGridRes.UnpinColumn : FlexGridRes.PinColumn;
+        menuItem.IconTemplate = style => builder =>
+        {
+            builder.OpenComponent<C1PathIcon>(0);
+            builder.AddAttribute(1, nameof(C1Icon.Style), style);
+            builder.AddAttribute(2, nameof(C1PathIcon.ViewBox), new C1Rect(0, 0, 32, 32));
+            builder.AddAttribute(3, nameof(C1PathIcon.Data), pathData);
+            builder.CloseComponent();
+        };
+
+        menuItem.Click += (s, e2) =>
+        {
+            if (isFrozen)
+            {
+                grid.FrozenColumns--;
+                grid.Columns.Move(column.Index, column.Grid.FrozenColumns);
+            }
+            else
+            {
+                grid.Columns.Move(column.Index, column.Grid.FrozenColumns);
+                grid.FrozenColumns++;
+            }
+            e.Close();
+        };
+
+        menu.MenuItems.Insert(0, menuItem);
+
+        if (menu.MenuItems.Count > 1)
+        {
+            menu.MenuItems.Insert(1, new C1MenuSeparator());
+        }
+        menu.Refresh();
+    }
+}

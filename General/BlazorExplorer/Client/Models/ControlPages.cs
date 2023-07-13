@@ -30,18 +30,17 @@ namespace BlazorExplorer.Models
         }
 
 
-    public static string GetFileResContent(string filePath)
-    {
-        var absFilePath = Path.Combine(MapPath, filePath);
-        if (File.Exists(absFilePath))
+        public static string GetFileResContent(string filePath)
         {
-            return GetFileAsHtmlContent(absFilePath);
-        } else
-        {
-            var resPath = filePath.Replace('/', '.');
-        return GetResourceContent(resPath, false);
+            var absFilePath = Path.Combine(MapPath, filePath);
+            if (File.Exists(absFilePath)) {
+                return GetFileAsHtmlContent(absFilePath);
+            }
+            else {
+                var resPath = filePath.Replace('/', '.');
+                return GetResourceContent(resPath, false);
+            }
         }
-    }
 
         public static IDictionary<string, string> GetPageSources(string controllerName, string actionName)
         {
@@ -315,7 +314,7 @@ namespace BlazorExplorer.Models
         private static Stream GetResourceStream(string name, bool throwExceptionIfNotFound = true)
         {
             var assembly = typeof(ControlPages).GetTypeInfo().Assembly;
-            var res = assembly.GetManifestResourceNames().Where(resName => resName.Contains(name)).ToList();
+            var res = assembly.GetManifestResourceNames().Where(resName => resName.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
             if (res.Count == 0)
             {
                 if (throwExceptionIfNotFound)

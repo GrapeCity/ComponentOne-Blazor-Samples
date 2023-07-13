@@ -1,21 +1,20 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 
 namespace FlexGridExplorer
 {
     /// <summary>
     /// Simple data class generator.
     /// </summary>
-    /// <remarks>
-    public class Customer : INotifyPropertyChanged, IEditableObject
+    public class Customer : ObservableValidator, IEditableObject
     {
-        #region ** fields
+        #region fields
 
         int _id, _countryId, _orderCount;
         string _first, _last;
@@ -35,7 +34,7 @@ namespace FlexGridExplorer
 
         #endregion
 
-        #region ** initialization
+        #region initialization
 
         public Customer()
         {
@@ -60,60 +59,48 @@ namespace FlexGridExplorer
 
         #endregion
 
-        #region ** object model
+        #region object model
 
         [Display(AutoGenerateField = false)]
+        [JsonIgnore]
         public int Id
         {
             get { return _id; }
             set
             {
-                if (value != _id)
-                {
-                    _id = value;
-                    OnPropertyChanged();
-                }
+                SetProperty(ref _id, value, true);
             }
         }
 
+        [Required]
         public string FirstName
         {
             get { return _first; }
             set
             {
-                if (value != _first)
-                {
-                    _first = value;
-                    OnPropertyChanged();
-                    OnPropertyChanged("Name");
-                }
+                SetProperty(ref _first, value, true);
+                OnPropertyChanged(nameof(Name));
             }
         }
 
+        [Required]
         public string LastName
         {
             get { return _last; }
             set
             {
-                if (value != _last)
-                {
-                    _last = value;
-                    OnPropertyChanged();
-                    OnPropertyChanged("Name");
-                }
+                SetProperty(ref _last, value, true);
+                OnPropertyChanged(nameof(Name));
             }
         }
 
+        [MinLength(2)]
         public string Address
         {
             get { return _address; }
             set
             {
-                if (value != _address)
-                {
-                    _address = value;
-                    OnPropertyChanged();
-                }
+                SetProperty(ref _address, value, true);
             }
         }
 
@@ -122,27 +109,22 @@ namespace FlexGridExplorer
             get { return _city; }
             set
             {
-                if (value != _city)
-                {
-                    _city = value;
-                    OnPropertyChanged();
-                }
+                SetProperty(ref _city, value, true);
             }
         }
 
         [Display(AutoGenerateField = false)]
+        [JsonIgnore]
         public int CountryId
         {
             get { return _countryId; }
             set
             {
-                if (value != _countryId && value > -1 && value < _countries.Length)
+                if (value > -1 && value < _countries.Length)
                 {
-                    _countryId = value;
-                    //_city = _countries[_countryId].Value.First();
-                    OnPropertyChanged();
-                    OnPropertyChanged("Country");
-                    OnPropertyChanged("City");
+                    SetProperty(ref _countryId, value, true);
+                    OnPropertyChanged(nameof(Country));
+                    OnPropertyChanged(nameof(City));
                 }
             }
         }
@@ -152,43 +134,34 @@ namespace FlexGridExplorer
             get { return _postalCode; }
             set
             {
-                if (value != _postalCode)
-                {
-                    _postalCode = value;
-                    OnPropertyChanged();
-                }
+                SetProperty(ref _postalCode, value, true);
             }
         }
 
         [Display(Name = "e-mail")]
+        [EmailAddress]
         public string Email
         {
             get { return _email; }
             set
             {
-                if (value != _email)
-                {
-                    _email = value;
-                    OnPropertyChanged();
-                }
+                SetProperty(ref _email, value, true);
             }
         }
 
         [Display(AutoGenerateField = false)]
+        [JsonIgnore]
         public DateTime LastOrderDate
         {
             get { return _lastOrderDate; }
             set
             {
-                if (value != _lastOrderDate)
-                {
-                    _lastOrderDate = value;
-                    OnPropertyChanged();
-                }
+                SetProperty(ref _lastOrderDate, value, true);
             }
         }
 
         [Display(AutoGenerateField = false)]
+        [JsonIgnore]
         public TimeSpan LastOrderTime
         {
             get
@@ -198,60 +171,54 @@ namespace FlexGridExplorer
         }
 
         [Display(AutoGenerateField = false)]
+        [JsonIgnore]
         public int OrderCount
         {
             get { return _orderCount; }
             set
             {
-                if (value != _orderCount)
-                {
-                    _orderCount = value;
-                    OnPropertyChanged();
-                }
+                SetProperty(ref _orderCount, value, true);
             }
         }
 
         [Display(AutoGenerateField = false)]
+        [JsonIgnore]
         public double OrderTotal
         {
             get { return _orderTotal; }
             set
             {
-                if (value != _orderTotal)
-                {
-                    _orderTotal = value;
-                    OnPropertyChanged();
-                }
+                SetProperty(ref _orderTotal, value, true);
             }
         }
 
         [Display(AutoGenerateField = false)]
+        [JsonIgnore]
         public bool Active
         {
             get { return _active; }
             set
             {
-                if (value != _active)
-                {
-                    _active = value;
-                    OnPropertyChanged();
-                }
+                SetProperty(ref _active, value, true);
             }
         }
 
         [Display(AutoGenerateField = false)]
+        [JsonIgnore]
         public string Name
         {
             get { return string.Format("{0} {1}", FirstName, LastName); }
         }
 
         [Display(AutoGenerateField = false)]
+        [JsonIgnore]
         public string Country
         {
             get { return _countries[_countryId].Key; }
         }
 
         [Display(AutoGenerateField = false)]
+        [JsonIgnore]
         public double OrderAverage
         {
             get { return OrderTotal / (double)OrderCount; }
@@ -259,7 +226,7 @@ namespace FlexGridExplorer
 
         #endregion
 
-        #region ** implementation
+        #region implementation
 
         // ** utilities
         static string GetRandomString(string[] arr)
@@ -295,29 +262,6 @@ namespace FlexGridExplorer
         public static string[] GetFirstNames() { return _firstNames; }
         public static string[] GetLastNames() { return _lastNames; }
 
-        public static IEnumerable<City> GetCities()
-        {
-            return _countries.SelectMany(country => country.Value, (pair, city) => new City() { Name = city, Country = pair.Key });
-        }
-
-        #endregion
-
-        #region ** INotifyPropertyChanged Members
-
-        // this interface allows bounds controls to react to changes in the data objects.
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, e);
-        }
-
         #endregion
 
         #region IEditableObject Members
@@ -339,7 +283,7 @@ namespace FlexGridExplorer
         {
             if (_clone != null)
             {
-                foreach (var p in this.GetType().GetRuntimeProperties())
+                foreach (var p in this.GetType().GetProperties())
                 {
                     if (p.CanRead && p.CanWrite)
                     {
@@ -350,10 +294,22 @@ namespace FlexGridExplorer
         }
 
         #endregion
+
+        public static IEnumerable<City> GetCities()
+        {
+            return _countries.SelectMany(country => country.Value, (pair, city) => new City() { Name = city, Country = pair.Key });
+        }
+
+        public bool Validate()
+        {
+            ValidateAllProperties();
+            return !HasErrors;
+        }
     }
 
     public class City
     {
+        [Display(AutoGenerateField = false)]
         public bool Selected { get; set; }
         public string Name { get; set; }
         public string Country { get; set; }

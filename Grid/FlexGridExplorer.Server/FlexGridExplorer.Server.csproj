@@ -9,6 +9,25 @@
     <UserSecretsId>bdb8a8e0-47d8-4c2e-9b0c-dc473ba95239</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>6.0.20232.589</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.DataFilter">
+      <Version>6.0.20232.589</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.DataPager">
+      <Version>6.0.20232.589</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Grid">
+      <Version>6.0.20232.589</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Grid.Excel">
+      <Version>6.0.20232.589</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.6" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Data\departments.xml" />
     <None Remove="Data\employees.xml" />
   </ItemGroup>
@@ -72,24 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20231.491</Version>
-    </PackageReference>
-    <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>6.0.20231.491</Version>
-    </PackageReference>
-    <PackageReference Include="C1.Blazor.DataPager">
-      <Version>6.0.20231.491</Version>
-    </PackageReference>
-    <PackageReference Include="C1.Blazor.Grid">
-      <Version>6.0.20231.491</Version>
-    </PackageReference>
-    <PackageReference Include="C1.Blazor.Grid.Excel">
-      <Version>6.0.20231.491</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.6" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include=".gclicx" />

@@ -48,7 +48,8 @@ namespace FlexGridExplorer
             app.UseRouting();
 
             // Allowed using of date, number formats for all available cultures.
-            var allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Select(c => c.Name).ToArray();
+            var allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Select(c => c.Name)
+                                .Append("zh-CN").ToArray();
             var localizationOptions = new RequestLocalizationOptions()
                 .AddSupportedCultures(allCultures)
                 .AddSupportedUICultures(allCultures)

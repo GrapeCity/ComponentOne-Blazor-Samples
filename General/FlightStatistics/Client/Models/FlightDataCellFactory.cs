@@ -2,6 +2,7 @@
 using C1.Blazor.Grid;
 using FlightStatistics.Shared;
 using Microsoft.AspNetCore.Components;
+using System.Linq;
 
 namespace FlightStatistics.Client.Models
 {
@@ -20,9 +21,9 @@ namespace FlightStatistics.Client.Models
 
         public override RenderFragment GetCellContentRenderFragment(GridCellType cellType, GridCellRange range)
         {
-            if (cellType == GridCellType.Cell && range.Row != 0)
+            if (Grid.Rows.Any() && Grid.Rows[range.Row] is not GridGroupRow && cellType == GridCellType.Cell && range.Row != 0)
             {
-                if (range.Column == 1)
+                if (Grid.Columns[range.Column].Binding == nameof(Airport.AirportCity))
                 {
                     var row = (Airport)Grid.Rows[range.Row].DataItem;
 
@@ -38,7 +39,7 @@ namespace FlightStatistics.Client.Models
                 }
                 else
                 {
-                    var userRating = Grid.Columns["UserRating"];
+                    var userRating = Grid.Columns[nameof(Airport.UserRating)];
                     if (range.Column == userRating.Index)
                     {
                         var cellValue = (int)Grid[range.Row, range.Column];

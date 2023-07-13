@@ -230,4 +230,12 @@
   <data name="Wednesday" xml:space="preserve">
     <value>水曜日</value>
   </data>
+  <data name="CustomSlotsDescription" xml:space="preserve">
+    <value>アダプタ全体で &lt;mark code&gt;C1Calendar&lt;/mark&gt; をカスタマイズする方法を示します。</value>
+    <comment>Shows how to customize &lt;mark code&gt;C1Calendar&lt;/mark&gt; throughout the Adapter.</comment>
+  </data>
+  <data name="CustomSlotsTitle" xml:space="preserve">
+    <value>カスタムスロット</value>
+    <comment>Custom Slots</comment>
+  </data>
 </root>

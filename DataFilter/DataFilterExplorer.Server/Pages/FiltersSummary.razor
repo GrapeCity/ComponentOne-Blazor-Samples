@@ -27,7 +27,7 @@
         var carsTable = DataProvider.GetCarTable();
         _data = new C1.DataCollection.C1DataCollection<Car>(DataProvider.GetCarDataCollection(carsTable));
     }
-    
+
     void OnAutoGeneratingColumn(object sender, GridAutoGeneratingColumnEventArgs args)
     {
         if (args.Property.Name == nameof(Car.Picture))
@@ -44,7 +44,13 @@
 
     void FilterAutoGenerating(object sender, FilterAutoGeneratingEventArgs e)
     {
-        if (e.Property.Name == nameof(Car.Brand))
+        if (e.Property.Name == nameof(Car.Price))
+        {
+            var filter = e.Filter as RangeFilter;
+            filter.Maximum = _data.Max(o => ((Car)o).Price);
+            filter.Minimum = _data.Min(o => ((Car)o).Price);
+        }
+        else if (e.Property.Name == nameof(Car.Brand))
         {
             var filter = e.Filter as ChecklistFilter;
             filter.FilterSummary.PropertyName = nameof(Car.Brand);

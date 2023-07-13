@@ -898,6 +898,33 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pin Column.
+        /// </summary>
+        public static string PinColumn {
+            get {
+                return ResourceManager.GetString("PinColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shows how to implement pin/unpin columns so they become frozen at the left edge of the grid while scrolling horizontally..
+        /// </summary>
+        public static string PinColumnDescription {
+            get {
+                return ResourceManager.GetString("PinColumnDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pin Column.
+        /// </summary>
+        public static string PinColumnTitle {
+            get {
+                return ResourceManager.GetString("PinColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Postal code.
         /// </summary>
         public static string PostalCode {
@@ -1164,6 +1191,15 @@ namespace BlazorExplorer.Localization {
         public static string UnboundTitle {
             get {
                 return ResourceManager.GetString("UnboundTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unpin Column.
+        /// </summary>
+        public static string UnpinColumn {
+            get {
+                return ResourceManager.GetString("UnpinColumn", resourceCulture);
             }
         }
         

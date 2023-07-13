@@ -451,4 +451,22 @@
   <data name="PopupEditingTitle" xml:space="preserve">
     <value>Popup Editing</value>
   </data>
+  <data name="ValidationDescription" xml:space="preserve">
+    <value>Show how to display and style validation</value>
+  </data>
+  <data name="ValidationTitle" xml:space="preserve">
+    <value>Validation</value>
+  </data>
+  <data name="PinColumn" xml:space="preserve">
+    <value>Pin Column</value>
+  </data>
+  <data name="PinColumnDescription" xml:space="preserve">
+    <value>Shows how to implement pin/unpin columns so they become frozen at the left edge of the grid while scrolling horizontally.</value>
+  </data>
+  <data name="PinColumnTitle" xml:space="preserve">
+    <value>Pin Column</value>
+  </data>
+  <data name="UnpinColumn" xml:space="preserve">
+    <value>Unpin Column</value>
+  </data>
 </root>

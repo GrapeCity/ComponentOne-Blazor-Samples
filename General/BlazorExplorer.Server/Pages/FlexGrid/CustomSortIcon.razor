@@ -5,35 +5,53 @@
 @using C1.Blazor.Input
 @using C1.Blazor.Grid
 
-<FlexGrid @ref="grid" ItemsSource="source" ShowSort="@(showSort ?? false)" SortIconPosition="sortIconPosition" IsVirtualizationEnabled="false"
-          Style="@("max-height:50vh")">
+<FlexGrid @ref="grid" 
+    ItemsSource="source" 
+    ShowSort="@(showSort ?? false)" 
+    SortAscendingIconTemplate="sortAscendingIconTemplate"
+    SortDescendingIconTemplate="sortDescendingIconTemplate"
+    SortIndeterminateIconTemplate="sortIndeterminateIconTemplate"
+    SortIconPosition="sortIconPosition" 
+    IsVirtualizationEnabled="false"
+    Style="@("max-height: 50vh")">
 </FlexGrid>
+
 <_Sections>
     <Title>@FlexGridRes.CustomSortIconTitle</Title>
     <Settings>
         Sort Icon Position <C1ComboBox ItemsSource="sortIconPositions" @bind-SelectedItem="@sortIconPosition" />
-        Sort Icon Template  <C1ComboBox SelectedIndexChanged="SortIconTemplateChanged" ItemsSource="sortTemplates" DisplayMemberPath="Value" ValueMemberPath="Key" @bind-SelectedItem="@selectedTemplate" />
+        Sort Icon Template  <C1ComboBox T="IconsTemplateSet" 
+                                DisplayMemberPath="@nameof(IconsTemplateSet.Title)" 
+                                ValueMemberPath="@nameof(IconsTemplateSet.Id)" 
+                                ItemsSource="sortTemplates" 
+                                SelectedValue="@selectedTemplateSet"
+                                SelectedValueChanged="@(v=> {selectedTemplateSet = v; InvalidateIconsTemplateSet();})" />
         Show Sort <C1CheckBox @bind-IsChecked="showSort" />
     </Settings>
     <Summary>@FlexGridRes.CustomSortIconSummary</Summary>
     <Description>@FlexGridRes.CustomSortIconDescription</Description>
 </_Sections>
 @code {
+
     FlexGrid grid;
-    int selectedTemplate = 1;
+    object selectedTemplateSet;
     bool? showSort = true;
+    RenderFragment<C1Style> sortAscendingIconTemplate;
+    RenderFragment<C1Style> sortDescendingIconTemplate;
+    RenderFragment<C1Style> sortIndeterminateIconTemplate;
+
     C1DataCollection<Customer> source;
     GridSortIconPosition[] sortIconPositions = { GridSortIconPosition.Inline, GridSortIconPosition.Left, GridSortIconPosition.Right };
     GridSortIconPosition sortIconPosition = GridSortIconPosition.Inline;
 
-    Dictionary<int, string> sortTemplates = new Dictionary<int, string>()
+    IconsTemplateSet[] sortTemplates = new IconsTemplateSet[]
     {
-        {0, "Custom 1"},
-        {1, "Custom 2"},
-        {2, nameof(C1IconTemplate.TriangleUp) },
-        {3, nameof(C1IconTemplate.TriangleNorth) },
-        {4, nameof(C1IconTemplate.ChevronUp) },
-        {5, nameof(C1IconTemplate.ArrowUp) },
+        new (0, "Custom 1"),
+        new (1, "Custom 2"),
+        new (2, nameof(C1IconTemplate.TriangleUp)),
+        new (3, nameof(C1IconTemplate.TriangleNorth)),
+        new (4, nameof(C1IconTemplate.ChevronUp)),
+        new (5, nameof(C1IconTemplate.ArrowUp))
     };
 
     protected override async Task OnInitializedAsync()
@@ -42,32 +60,33 @@
         var dataCollection = new C1DataCollection<Customer>(customers);
         await dataCollection.SortAsync(new SortDescription(nameof(Customer.FirstName), SortDirection.Ascending), new SortDescription(nameof(Customer.LastName), SortDirection.Descending));
         source = dataCollection;
-
-        SortIconTemplateChanged(selectedTemplate);
+        selectedTemplateSet = 1;
+        InvalidateIconsTemplateSet();
     }
-    private void SortIconTemplateChanged(int obj)
+
+    private void InvalidateIconsTemplateSet()
     {
-        switch (obj)
+        switch ((int)selectedTemplateSet)
         {
             case 0:
-                grid.SortAscendingIconTemplate = (s =>
+                sortAscendingIconTemplate = (s =>
                 {
                     return (@<svg style="@s" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-up-alt" viewBox="0 0 16 16">
                                 <path d="M3.5 13.5a.5.5 0 0 1-1 0V4.707L1.354 5.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.498.498 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L3.5 4.707V13.5zm4-9.5a.5.5 0 0 1 0-1h1a.5.5 0 0 1 0 1h-1zm0 3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 0 1h-3zm0 3a.5.5 0 0 1 0-1h5a.5.5 0 0 1 0 1h-5zM7 12.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5z" />
                             </svg>);
                 });
-                grid.SortDescendingIconTemplate = (s =>
+                sortDescendingIconTemplate = (s =>
                 {
                     return (@<svg style="@s" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-down" viewBox="0 0 16 16">
                                 <path d="M3.5 2.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 11.293V2.5zm3.5 1a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z" />
                             </svg>
                         );
                 });
-                grid.SortIndeterminateIconTemplate = null;
-                selectedTemplate = 0;
+                sortIndeterminateIconTemplate = null;
                 break;
+
             case 1:
-                grid.SortAscendingIconTemplate = (s =>
+                sortAscendingIconTemplate = (s =>
                 {
                     return (@<svg style="@s" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16">
                                 <g transform="matrix(0.008928573 0 0 0.008928573 0 0)">
@@ -81,7 +100,7 @@
                             </svg>
                         );
                 });
-                grid.SortDescendingIconTemplate = (s =>
+                sortDescendingIconTemplate = (s =>
                 {
                     return (@<svg style="@s" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16">
                                 <g transform="matrix(0.008928573 0 0 0.008928573 0 0)">
@@ -95,7 +114,7 @@
                             </svg>
                             );
                 });
-                grid.SortIndeterminateIconTemplate = (s =>
+                sortIndeterminateIconTemplate = (s =>
                 {
                     return (@<svg style="@s" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16">
                                 <g transform="matrix(0.008928573 0 0 0.008928573 0 0)">
@@ -109,33 +128,33 @@
                             </svg>
                         );
                 });
+                break;
 
-                selectedTemplate = 1;
-                break;
             case 2:
-                grid.SortAscendingIconTemplate = C1IconTemplate.TriangleUp;
-                grid.SortDescendingIconTemplate = null;
-                grid.SortIndeterminateIconTemplate = null;
-                selectedTemplate = 2;
+                sortAscendingIconTemplate = C1IconTemplate.TriangleUp;
+                sortDescendingIconTemplate = null;
+                sortIndeterminateIconTemplate = null;
                 break;
+
             case 3:
-                grid.SortAscendingIconTemplate = C1IconTemplate.TriangleNorth;
-                grid.SortDescendingIconTemplate = null;
-                grid.SortIndeterminateIconTemplate = null;
-                selectedTemplate = 3;
+                sortAscendingIconTemplate = C1IconTemplate.TriangleNorth;
+                sortDescendingIconTemplate = null;
+                sortIndeterminateIconTemplate = null;
                 break;
+
             case 4:
-                grid.SortAscendingIconTemplate = C1IconTemplate.ChevronUp;
-                grid.SortDescendingIconTemplate = null;
-                grid.SortIndeterminateIconTemplate = null;
-                selectedTemplate = 4;
+                sortAscendingIconTemplate = C1IconTemplate.ChevronUp;
+                sortDescendingIconTemplate = null;
+                sortIndeterminateIconTemplate = null;
                 break;
+
             case 5:
-                grid.SortAscendingIconTemplate = C1IconTemplate.ArrowUp;
-                grid.SortDescendingIconTemplate = null;
-                grid.SortIndeterminateIconTemplate = null;
-                selectedTemplate = 5;
+                sortAscendingIconTemplate = C1IconTemplate.ArrowUp;
+                sortDescendingIconTemplate = null;
+                sortIndeterminateIconTemplate = null;
                 break;
         }
     }
+
+    record IconsTemplateSet(int Id, string Title);
 }

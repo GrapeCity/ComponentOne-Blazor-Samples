@@ -508,4 +508,16 @@
   <data name="GridColumnCustomizationTitle" xml:space="preserve">
     <value>GridColumn customization</value>
   </data>
+	<data name="PinColumn" xml:space="preserve">
+    <value>Pin Column</value>
+  </data>
+	<data name="PinColumnDescription" xml:space="preserve">
+    <value>Shows how to implement pin/unpin columns so they become frozen at the left edge of the grid while scrolling horizontally.</value>
+  </data>
+	<data name="PinColumnTitle" xml:space="preserve">
+    <value>Pin Column</value>
+  </data>
+	<data name="UnpinColumn" xml:space="preserve">
+    <value>Unpin Column</value>
+  </data>
 </root>

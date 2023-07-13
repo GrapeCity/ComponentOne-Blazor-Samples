@@ -121,4 +121,100 @@
     <value>概要</value>
     <comment>Overview</comment>
   </data>
+  <data name="ClientFetch" xml:space="preserve">
+    <value>このページでは、クライアントからのデータのフェッチについて説明します。</value>
+    <comment>This page demonstrates fetching data from the client.</comment>
+  </data>
+  <data name="CTemp" xml:space="preserve">
+    <value>温度 (C)</value>
+    <comment>Temp. (C)</comment>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>日付</value>
+    <comment>Date</comment>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Excel ファイル名と形式を選択</value>
+    <comment>Select Excel file name and format</comment>
+  </data>
+  <data name="ExcelFetch" xml:space="preserve">
+    <value>このページでは、サーバーから Excel ファイル データをフェッチする方法を示します。</value>
+    <comment>This page demonstrates fetching Excel file data from the server.</comment>
+  </data>
+  <data name="ExportDescription" xml:space="preserve">
+    <value>Save メソッドを使用して、FlexGrid に表示されているデータを Excel 形式にエクスポートできます。</value>
+    <comment>The Save method allows exporting the data shown in the FlexGrid to Excel formats.</comment>
+  </data>
+  <data name="ExportSummary" xml:space="preserve">
+    <value>FlexGrid データを Excel 形式にエクスポートする方法を示します。</value>
+    <comment>Shows how to export FlexGrid data to Excel formats.</comment>
+  </data>
+  <data name="ExportTitle" xml:space="preserve">
+    <value>エクスポート</value>
+    <comment>Export</comment>
+  </data>
+  <data name="FetchDataSummary" xml:space="preserve">
+    <value>サンプル データを Excel 形式にエクスポートする方法を示します。</value>
+    <comment>Shows how to export sample data to Excel formats.</comment>
+  </data>
+  <data name="FetchDataDescription" xml:space="preserve">
+    <value>このサンプルでは、データを取得してクライアント上の Excel ファイルに保存する方法を示します。</value>
+    <comment>This sample shows how to fetch data and save them into Excel file on the client.</comment>
+  </data>
+  <data name="FetchDataTitle" xml:space="preserve">
+    <value>データを取得する</value>
+    <comment>Fetch Data</comment>
+  </data>
+  <data name="FetchExcelDescription" xml:space="preserve">
+    <value>このサンプルでは、クライアント側でダウンロードした Excel ファイルからデータを読み取る方法を示します。</value>
+    <comment>This sample shows how you can read data from the downloaded Excel file on the client side.</comment>
+  </data>
+  <data name="FetchExcelSummary" xml:space="preserve">
+    <value>クライアントで Excel ファイルを読み取る方法を示します。</value>
+    <comment>Shows how to read Excel file on the client.</comment>
+  </data>
+  <data name="FetchExcelTitle" xml:space="preserve">
+    <value>Excel ファイルを取得する</value>
+    <comment>Fetch Excel file</comment>
+  </data>
+  <data name="FTemp" xml:space="preserve">
+    <value>温度 (F)</value>
+    <comment>Temp. (F)</comment>
+  </data>
+  <data name="IndexDescription" xml:space="preserve">
+    <value>C1.Excel ライブラリを使用して、データを XLSX (Open XML 形式)、XLS (バイナリ BIFF8 形式)、および CSV (カンマ区切り値形式) に保存できます。</value>
+    <comment>The C1.Excel library allows to save data into XLSX (Open XML format), XLS (Binary BIFF8 format) and CSV (Comma Separated Values format).</comment>
+  </data>
+  <data name="IndexSheets" xml:space="preserve">
+    <value>単一またはすべてのシートを選択</value>
+    <comment>Select one sheet or all</comment>
+  </data>
+  <data name="IndexSummary" xml:space="preserve">
+    <value>C1.Excel ライブラリを使用して Excel ファイルを作成および保存する方法を示します。</value>
+    <comment>Shows how to create and save Excel file using C1.Excel library.</comment>
+  </data>
+  <data name="IndexTitle" xml:space="preserve">
+    <value>概要</value>
+    <comment>Overview</comment>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>読み込んでいます...</value>
+    <comment>Loading...</comment>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+    <comment>Save</comment>
+  </data>
+  <data name="ServerFetch" xml:space="preserve">
+    <value>このページでは、サーバーからデータをフェッチする方法を示します。</value>
+    <comment>This page demonstrates fetching data from the server.</comment>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>サマリー</value>
+    <comment>Summary</comment>
+  </data>
+  <data name="WeatherForecast" xml:space="preserve">
+    <value>天気予報</value>
+    <comment>Weather forecast</comment>
+  </data>
 </root>

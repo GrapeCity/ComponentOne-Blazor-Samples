@@ -160,6 +160,23 @@ app {
     margin-bottom: 12px;
 }
 
+.gauge {
+    width: 100%;
+    height: 100px;
+    font-family: Arial;
+    margin-bottom: 12px;
+}
+
+.radialGauge {
+    height: 200px;
+}
+
+.gaugeFrame {
+    padding: 15px 10px;
+    border: 1px solid #e4e4e4;
+    margin-bottom: 12px;
+}
+
 .chart-small {
     height:100px;
 }

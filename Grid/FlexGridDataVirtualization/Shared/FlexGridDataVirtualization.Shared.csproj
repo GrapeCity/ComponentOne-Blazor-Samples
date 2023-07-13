@@ -8,7 +8,7 @@
 	<ItemGroup>
 		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
 		<PackageReference Include="System.Text.Json" Version="5.0.1" />
-		<PackageReference Include="C1.DataCollection" Version="1.0.20231.129" />
+		<PackageReference Include="C1.DataCollection" Version="1.0.20232.161" />
 	</ItemGroup>
 
 </Project>

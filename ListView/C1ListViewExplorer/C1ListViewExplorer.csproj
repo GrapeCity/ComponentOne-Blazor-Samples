@@ -10,16 +10,16 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20231.491</Version>
+      <Version>6.0.20232.589</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>6.0.20231.491</Version>
+      <Version>6.0.20232.589</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>6.0.20231.491</Version>
+      <Version>6.0.20232.589</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>6.0.20231.491</Version>
+      <Version>6.0.20232.589</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.6" PrivateAssets="all" />

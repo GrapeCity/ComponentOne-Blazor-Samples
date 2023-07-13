@@ -22,20 +22,34 @@ namespace DataFilterExplorer.Server
         public ModelFilter()
         {
             Template = builder =>
-             {
-                 builder.OpenComponent<C1ListView<Car>>(10);
-                 builder.AddAttribute(12, nameof(C1ListView<Car>.ItemsSource), _carsModels);
-                 builder.AddAttribute(13, nameof(C1ListView<Car>.SelectionMode), C1SelectionMode.Multiple);
-                 builder.AddAttribute(14, nameof(C1ListView<Car>.DisplayMemberPath), nameof(Car.Model));
-                 builder.AddAttribute(15, nameof(C1ListView<Car>.Style), new C1Style("max-height: 200px; padding:16px;"));
-                 builder.AddAttribute(16, nameof(C1ListView<Car>.SelectionChanged), EventCallback.Factory.Create<IEnumerable<int>>(this,  indexes=>
-                 {
-                     _selectedIndexes = indexes;
-                     this.OnValueChanged(new ValueChangedEventArgs() { ApplyFilter = true }); 
-                 }));
+            {
+                builder.OpenComponent<C1ListView<Car>>(10);
+                builder.AddAttribute(12, nameof(C1ListView<Car>.ItemsSource), _carsModels);
+                builder.AddAttribute(13, nameof(C1ListView<Car>.SelectionMode), C1SelectionMode.Multiple);
+                builder.AddAttribute(14, nameof(C1ListView<Car>.DisplayMemberPath), nameof(Car.Model));
+                builder.AddAttribute(15, nameof(C1ListView<Car>.Style), new C1Style("max-height: 200px; padding:16px;"));
+                builder.AddAttribute(16, nameof(C1ListView<Car>.SelectionChanged), EventCallback.Factory.Create<IEnumerable<int>>(this, indexes =>
+                {
+                    _selectedIndexes = indexes;
+                    this.OnValueChanged(new ValueChangedEventArgs() { ApplyFilter = true });
+                }));
+                builder.AddComponentReferenceCapture(20, r =>
+                {
+                    var listView = (C1ListView<Car>)r;
+                    listView.Selection = GetSelection();
+                });
+                builder.CloseComponent();
+            };
+        }
 
-                 builder.CloseComponent();
-             };
+        private C1OrderedSet GetSelection()
+        {
+            var result = new C1OrderedSet();
+            foreach (var index in _selectedIndexes)
+            {
+                result.Add(index);
+            }
+            return result;
         }
 
         public override Expression Expression
@@ -57,7 +71,7 @@ namespace DataFilterExplorer.Server
 
         public override bool IsApplied => _selectedIndexes.Any();
 
-        
+
         [Parameter]
         public List<Car> CarModels
         {

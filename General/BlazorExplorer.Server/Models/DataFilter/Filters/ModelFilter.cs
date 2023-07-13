@@ -15,7 +15,7 @@ namespace BlazorExplorer
     {
         private List<Car> _carsModels = new List<Car>();
         private IEnumerable<int> _selectedIndexes = new List<int>();
-
+        
         /// <summary>
         /// ctor.
         /// </summary>
@@ -33,9 +33,23 @@ namespace BlazorExplorer
                      _selectedIndexes = indexes;
                      this.OnValueChanged(new ValueChangedEventArgs() { ApplyFilter = true }); 
                  }));
-
+                 builder.AddComponentReferenceCapture(20, r =>
+                 {
+                     var listView = (C1ListView<Car>)r;
+                     listView.Selection = GetSelection();
+                 });
                  builder.CloseComponent();
              };
+        }
+
+        private C1OrderedSet GetSelection()
+        {
+            var result = new C1OrderedSet();
+            foreach (var index in _selectedIndexes)
+            {
+                result.Add(index);
+            }
+            return result;
         }
 
         public override Expression Expression

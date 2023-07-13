@@ -36,6 +36,7 @@
           <action text="Column Layout" text.ja="列のレイアウト" name="ColumnLayout"></action>
           <action text="Custom Footers" text.ja="カスタムフッター" name="CustomFooters"></action>-->
           <action text="Responsive Sizing" text.ja="スターサイズ" name="ResponsiveSizing"></action>
+          <action text="Pin Column" text.ja="Pin Column" name="pincolumn"></action>
         </subactions>
       </action>
       <action text="Cells" text.ja="セル">
@@ -161,7 +162,10 @@
         </subactions>
       </action>
     </Control>
-    <Control name="FlexPie" popular="true">
+	<Control name="Gauge" new="true">
+		<action text="Overview" text.ja="概要" name="Index"></action>
+	</Control>
+	<Control name="FlexPie" popular="true">
       <action text="Pie" text.ja="概要" name="Index"></action>
       <action text="Selection" text.ja="選択" name="Selection"></action>
       <action text="Multiple Pies" text.ja="複数の円" name="MultiplePies" ></action>
@@ -188,7 +192,7 @@
           <action text="Custom Styles" text.ja="カスタムスタイル" name="Styling"></action>
           <action text="Icon Template" text.ja="アイコンテンプレート" name="IconTemplate"></action>
           <action text="Item Template" text.ja="項目テンプレート" name="ItemTemplate"></action>
-          <action text="Custom Slots" text.ja="Custom Slots" name="CustomSlots"></action>
+          <action text="Custom Slots" text.ja="カスタムスロット" name="CustomSlots"></action>
         </subactions>
       </action>
       <action text="Validation" text.ja="検証" name="Validation"></action>
@@ -310,17 +314,17 @@
     <Control referenceApplication="true" name="MarketingBudgetTemplate" name.ja="MarketingBudgetTemplate" link="https://www.grapecity.com/componentone/demos/blazor/marketingbudgettemplate/" link.ja="https://www.grapecity.com/componentone/demos/blazor/marketingbudgettemplate/" />
   </ControlGroup>
 
-  <ControlGroup name="Documents">
+  <ControlGroup name="Documents" name.ja="ドキュメント">
     <Control name="Excel" new="true">
       <action text="General" text.ja="一般">
         <subactions>
           <action text="Overview" text.ja="概要" name="Index"></action>
         </subactions>
       </action>
-      <action text="Fetch weather" text.ja="">
+      <action text="Fetch weather" text.ja="天気の取得">
         <subactions>
-          <action text="Fetch data" text.ja="" name="FetchData"></action>
-          <action text="Fetch Excel file" text.ja="" name="FetchExcel"></action>
+          <action text="Fetch data" text.ja="データの取得" name="FetchData"></action>
+          <action text="Fetch Excel file" text.ja="Excel ファイルの取得" name="FetchExcel"></action>
         </subactions>
       </action>
       <action text="Export" text.ja="エクスポート">

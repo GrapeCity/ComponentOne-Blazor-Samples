@@ -48,7 +48,8 @@ namespace DataFilterExplorer.Server
 
             app.UseRouting();
 
-            var allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Select(c => c.Name).ToArray();
+            var allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Select(c => c.Name)
+                                .Append("zh-CN").ToArray();
             app.UseRequestLocalization(new RequestLocalizationOptions()
                 .AddSupportedCultures(allCultures)
                 .AddSupportedUICultures(allCultures)
