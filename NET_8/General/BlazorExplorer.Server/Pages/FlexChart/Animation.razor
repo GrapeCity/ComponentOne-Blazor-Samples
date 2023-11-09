@@ -1,0 +1,199 @@
+﻿@page "/FlexChart/Animation"
+@using Localization;
+@using System.Collections.ObjectModel;
+@using System.Collections;
+@using System.Drawing;
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Input;
+
+<FlexChart @ref="chart" Class="chart chart-middle" ChartType="chartType ?? ChartType.Column" 
+           LegendPosition="Position.None" Tooltip=""
+           AnimationSettings="AnimationSettings.All">
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.AnimationTitle</Title>
+    <Settings>
+        Chart Type <C1ComboBox ItemsSource="chartTypes" @bind-SelectedItem="chartType" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+
+        <button class="btn btn-primary" @onclick="@(()=> NewData())">@FlexChartRes.NewData</button>
+        <button class="btn btn-primary" @onclick="@(()=> UpdateData())">@FlexChartRes.UpdateData</button>
+    </Settings>
+    <Summary>@FlexChartRes.AnimationSummary</Summary>
+    <Description>@FlexChartRes.AnimationDescription</Description>
+</_Sections>
+
+@code {
+    ChartType[] chartTypes = new ChartType[] { ChartType.Column, ChartType.Bar, ChartType.Line, ChartType.LineSymbols,
+        ChartType.Scatter, ChartType.Area,
+        ChartType.Step, ChartType.StepArea, ChartType.StepSymbols};
+    ChartType? chartType = ChartType.Column;
+
+    FlexChart chart;
+    IDataSource dataSource;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            dataSource = new PointDataSource(chart);
+            dataSource.NewData();
+        };
+
+        base.OnAfterRender(firstRender);
+    }
+
+    private void NewData()
+    {
+        dataSource.NewData();
+    }
+
+    private void UpdateData()
+    {
+        dataSource.UpdateData();
+    }
+
+    interface IDataSource
+    {
+        void NewData();
+        void UpdateData();
+
+        void AddSeries();
+
+        void AddPoint();
+        void RemovePoint();
+    }
+
+    class BaseDataSource
+    {
+        protected static Random rnd = new Random();
+
+        protected FlexChart chart;
+        protected int nser;
+        protected int npts;
+    }
+
+    class PointDataSource : BaseDataSource, IDataSource
+    {
+        public PointDataSource(FlexChart chart, int nser = 3, int npts = 10)
+        {
+            this.chart = chart;
+            this.nser = nser;
+            this.npts = npts;
+        }
+
+        public void NewData()
+        {
+            chart.BeginUpdate();
+            chart.Series.Clear();
+            for (var i = 0; i < nser; i++)
+                chart.Series.Add(CreateSeries(npts, i.ToString()));
+            chart.EndUpdate();
+        }
+
+        public void UpdateData()
+        {
+            chart.BeginUpdate();
+            var nser = chart.Series.Count;
+            for (var i = 0; i < nser; i++)
+                UpdateSeries(chart.Series[i], npts);
+            chart.EndUpdate();
+        }
+
+        public void AddSeries()
+        {
+            chart.Series.Add(CreateSeries(npts, chart.Series.Count.ToString()));
+        }
+
+        public void AddPoint()
+        {
+            var max = (1 + (int)(rnd.NextDouble() * 5)) * 100;
+            foreach (var ser in chart.Series)
+            {
+                var col = (ObservableCollection<PointF>)ser.ItemsSource;
+                col.Add(new PointF(col.Count, (float)rnd.NextDouble() * max));
+            }
+        }
+
+        public void RemovePoint()
+        {
+            foreach (var ser in chart.Series)
+            {
+                var col = (IList)ser.ItemsSource;
+                if (col.Count > 0)
+                    col.RemoveAt(col.Count - 1);
+            }
+        }
+
+        public Series CreateSeries(int npts, string name)
+        {
+            var max = (1 + (int)(rnd.NextDouble() * 5)) * 100;
+
+            return new Series()
+            {
+                Binding = "Y",
+                BindingX = "X",
+                ItemsSource = DataHelper.Create(DataShape.Random, npts, max),
+                Name = name
+            };
+        }
+
+        public void UpdateSeries(Series ser, int npts)
+        {
+            var max = (1 + (int)(rnd.NextDouble() * 5)) * 100;
+            ser.ItemsSource = DataHelper.Create(DataShape.Random, npts, max);
+        }
+    }
+
+    public enum DataShape
+    {
+        Line,
+        Sin,
+        Random,
+        Ellipse,
+        Spiral,
+        Grid
+    }
+
+    class DataHelper
+    {
+        static Random rnd = new Random();
+
+        public static ObservableCollection<PointF> Create(DataShape shape, int npts, float max = 100)
+        {
+            var pts = new PointF[npts];
+
+            Func<int, PointF> f = null;
+
+            switch (shape)
+            {
+                case DataShape.Line:
+                    f = (i) => new PointF(i, i);
+                    break;
+                case DataShape.Sin:
+                    f = (i) => new PointF(i, (float)Math.Sin(0.1 * i));
+                    break;
+                case DataShape.Random:
+                    f = (i) => new PointF(i, (int)(rnd.NextDouble() * max));
+                    break;
+                case DataShape.Ellipse:
+                    f = (i) => new PointF((float)Math.Sin((2 * Math.PI * i) / npts), (float)Math.Cos((2 * Math.PI * i) / npts));
+                    break;
+                case DataShape.Spiral:
+                    f = (i) => new PointF(i * (float)Math.Sin((4 * Math.PI * i) / npts), i * (float)Math.Cos((4 * Math.PI * i) / npts));
+                    break;
+                case DataShape.Grid:
+                    var l = (int)Math.Sqrt(npts);
+                    f = (i) => new PointF(i % l, (int)(i / l));
+                    break;
+            }
+
+            for (var i = 0; i < npts; i++)
+                pts[i] = f(i);
+
+            return new ObservableCollection<PointF>(pts);
+        }
+    }
+
+}

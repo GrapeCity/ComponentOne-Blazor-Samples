@@ -1,0 +1,50 @@
+﻿@page "/"
+@namespace C1ListViewExplorer.Pages
+@using System.Globalization
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ListViewExplorer.Server</title>
+    <base href="~/" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href="css/site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/_content/C1.Blazor.Core/styles.css" />
+    <link rel="stylesheet" href="~/_content/C1.Blazor.ListView/styles.css" />
+    <link rel="stylesheet" href="~/_content/C1.Blazor.Input/styles.css" />
+    <link rel="stylesheet" href="~/_content/C1.Blazor.DataPager/styles.css" />
+</head>
+<body>
+    @{
+        CultureInfo specificCulture = CultureInfo.CurrentCulture;
+        if (specificCulture.IsNeutralCulture)
+        {
+            try
+            {
+                specificCulture = CultureInfo.CreateSpecificCulture(CultureInfo.CurrentCulture.Name);
+            }
+            catch (Exception ex) when (ex is CultureNotFoundException || ex is ArgumentException)
+            {
+                specificCulture = new CultureInfo("en-us");
+            }
+        }
+
+        this.HttpContext.Response.Cookies.Append(
+        Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.DefaultCookieName,
+        Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.MakeCookieValue(
+        new Microsoft.AspNetCore.Localization.RequestCulture(
+        specificCulture,
+        CultureInfo.CurrentUICulture)));
+    }
+    <app>
+        @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))
+    </app>
+
+    <script src="_framework/blazor.server.js"></script>
+    <script src="~/_content/C1.Blazor.Core/scripts.js"></script>
+    <script src="~/_content/C1.Blazor.Input/scripts.js"></script>
+</body>
+</html>

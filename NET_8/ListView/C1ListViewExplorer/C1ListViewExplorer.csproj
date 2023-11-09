@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RazorLangVersion>3.0</RazorLangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="readme.txt" />
+    <None Remove="readme_ja.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>8.0.20233.668</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.DataPager">
+      <Version>8.0.20233.668</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Input">
+      <Version>8.0.20233.668</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.ListView">
+      <Version>8.0.20233.668</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0-rc.2.23480.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0-rc.2.23480.2" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="7.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\AppResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include=".gclicx" />
+  </ItemGroup>
+</Project>

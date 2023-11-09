@@ -1,0 +1,31 @@
+﻿@page "/ListView/SelectionModes"
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using C1.Blazor.ListView
+@using Localization
+
+
+<p>
+    Selection Modes <C1ComboBox ItemsSource="selectionModes" @bind-SelectedItem="selectionMode" Class="filled-drop-down" />
+    Show Checkboxes <C1CheckBox @bind-IsChecked="showCheckboxes" />
+</p>
+
+<C1ListView ItemsSource="@customers" T="Customer" SelectionMode="selectionMode" ShowCheckboxes="showCheckboxes ?? false" DisplayMemberPath="Name" Style="@("max-height:50vh")" />
+
+
+<_Sections>
+    <Description>@ListViewRes.SelectionModesDescription</Description>
+</_Sections>
+
+@code
+{
+    IEnumerable<Customer> customers;
+    C1SelectionMode selectionMode = C1SelectionMode.Single;
+    C1SelectionMode[] selectionModes = new C1SelectionMode[] { C1SelectionMode.None, C1SelectionMode.Single, C1SelectionMode.Multiple, C1SelectionMode.Extended };
+    bool? showCheckboxes = false;
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+}

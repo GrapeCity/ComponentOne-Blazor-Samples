@@ -61,6 +61,15 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auto-Size Column.
+        /// </summary>
+        public static string AutoSizeColumn {
+            get {
+                return ResourceManager.GetString("AutoSizeColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a new file.
         /// </summary>
         public static string CreateFile {
@@ -170,6 +179,24 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Match Case.
+        /// </summary>
+        public static string MatchCase {
+            get {
+                return ResourceManager.GetString("MatchCase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Match Whole Word.
+        /// </summary>
+        public static string MatchWholeWord {
+            get {
+                return ResourceManager.GetString("MatchWholeWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New.
         /// </summary>
         public static string New {
@@ -229,6 +256,24 @@ namespace BlazorExplorer.Localization {
         public static string SideBar {
             get {
                 return ResourceManager.GetString("SideBar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort Ascending.
+        /// </summary>
+        public static string SortAscending {
+            get {
+                return ResourceManager.GetString("SortAscending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort Descending.
+        /// </summary>
+        public static string SortDescending {
+            get {
+                return ResourceManager.GetString("SortDescending", resourceCulture);
             }
         }
         

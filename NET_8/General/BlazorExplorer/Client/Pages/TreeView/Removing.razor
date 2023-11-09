@@ -1,0 +1,94 @@
+﻿@page "/TreeView/Removing"
+@using C1.Blazor.Core
+@using C1.Blazor.TreeView
+@using System.Collections.ObjectModel
+@using Localization
+
+<div style="margin-bottom: 15px;">
+    <button @onclick="RemoveItem" disabled="@isBtnDisable" class="btn btn-default btn-outline-dark">@TreeViewRes.RemovingBtn</button>
+</div>
+<div>
+    <C1TreeView @ref="treeView" ShowLines="true" ItemsSource="@_dataSource"
+                ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name"
+                Style="@_c1Style" KeyboardNavigation="true" SelectionMode="C1SelectionMode.Single" OnItemSelected="OnSelectedItemChanged" />
+</div>
+
+<_Sections>
+    <Title>@TreeViewRes.RemovingTitle</Title>
+    <Summary>@TreeViewRes.RemovingDescription</Summary>
+    <Description>@TreeViewRes.RemovingDescription</Description>
+</_Sections>
+
+@code{
+    bool isBtnDisable = false;
+    C1TreeView treeView;
+    TreeViewItem selectedItem;
+    readonly C1Style _c1Style = new C1Style
+    {
+        Height = 300,
+        Width = 300,
+        BackgroundColor = "#f0f0f0"
+    };
+
+    readonly ObservableCollection<Directory> _dataSource = new ObservableCollection<Directory>()
+    {
+        new Directory()
+        {
+            Name = "Node 1",
+            Subdirectories = new ObservableCollection<Directory>
+            {
+                new Directory
+                {
+                    Name = "Node 1.1",
+                    Subdirectories = new ObservableCollection<Directory>
+                    {
+                        new Directory {Name = "Node 1.1.1"},
+                        new Directory {Name = "Node 1.1.2"},
+                        new Directory {Name = "Node 1.1.3"}
+                    }
+
+                }
+            }
+        },
+        new Directory
+        {
+            Name = "Node 2",
+        },
+        new Directory
+        {
+            Name = "Node 3",
+            Subdirectories = new ObservableCollection<Directory>()
+        }
+    };
+
+    public class Directory
+    {
+        public string Name { get; set; }
+        public ObservableCollection<Directory> Subdirectories { get; set; }
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+            treeView.Expand(treeView.GetAllItems().First());
+    }
+
+    public void OnSelectedItemChanged(TreeViewItem item)
+    {
+        selectedItem = item;
+        isBtnDisable = false;
+    }
+
+    public void RemoveItem()
+    {
+        if (selectedItem != null)
+        {
+            bool isRemoved = selectedItem.ParentCollection.Remove(selectedItem);
+            if (isRemoved)
+            {
+                selectedItem = null;
+                isBtnDisable = true;
+            }
+        }
+    }
+}

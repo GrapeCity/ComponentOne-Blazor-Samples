@@ -1,0 +1,449 @@
+﻿@page "/excelexport"
+@inject IJSRuntime JsRuntime
+@using Resources
+@using System.IO
+@using C1.Blazor.Grid
+@using C1.Blazor.Input
+@using C1.Blazor.Core
+@using GrapeCity.Documents.Excel
+@using C1.DataCollection
+@using FlexGridExplorer
+
+<h1>@AppResources.ExcelExportTitle</h1>
+<p>@AppResources.ExcelExportDescription</p>
+
+<div>
+    <div style="width: 100%; display: flex; flex-direction: row;padding-top:5px;padding-bottom:5px;">
+        <div style="display: flex; flex-direction: column; flex: 1">
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <span>File Name: </span>
+                <C1TextBox @bind-Text="@fileName" Style="@("width:170px;border-width:1px 0 1px 1px;border-radius:4px 0 0 4px;height:36px;margin-left:5px;")" />
+                <C1ComboBox ItemsSource="fileTypes" @bind-SelectedItem="fileType" Style="@("width:80px;border-radius: 0 4px 4px 0;")" />
+                <button class="btn btn-primary" @onclick="OnSave" style="margin-left: 5px;height: 36px;">@AppResources.Save</button>
+            </div>
+        </div>
+        <div style="display: flex; flex-direction: column; flex: 1; align-items: flex-end;">
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <span>Theme(s): </span>
+                <C1ComboBox ItemsSource="@SampleThemes.ThemeVariations" SelectedItemChanged="@ThemeChanged" T="string" Style="@("margin-left:5px;")" @ref="themeVariations" />
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%; display: flex; flex-direction: row;">
+        <div style="display: flex; flex-direction: column; width: 20%; min-height: 500px; max-height: 500px;padding-right:5px;">
+            <div style="display:flex; flex-direction:row;">
+                <div style="display: flex; flex-direction: column;">
+                    <div style="display: flex; flex-direction: column;">
+                        <span style="font-weight:600;text-decoration:underline;">Row(s) Export Options:</span>
+                        <div style="font-size: 12px;">
+                            <div>
+                                <C1CheckBox @ref="rowExportVisibleOnly" IsChecked="false" />
+                                <span class="checkBoxSpan">Visible Only</span>
+                            </div>
+                            <div>
+                                <C1CheckBox @ref="rowExportRenderFrozen" IsChecked="false" />
+                                <span class="checkBoxSpan">Render Frozen</span>
+                            </div>
+                            <div>
+                                <C1CheckBox @ref="rowExportSelectedOnly" IsChecked="false" />
+                                <span class="checkBoxSpan">Selected Only</span>
+                            </div>
+                            <div>
+                                <C1CheckBox @ref="rowExportExcludeEmpty" IsChecked="false" />
+                                <span class="checkBoxSpan">Exclude Empty</span>
+                            </div>
+                            <div>
+                                <C1CheckBox @ref="rowExportRenderGroups" IsChecked="false" />
+                                <span class="checkBoxSpan">Render Groups</span>
+                            </div>
+                            <div>
+                                <span>Specific Ranges:</span>
+                                <C1TextBox @ref="rowExportRanges" />
+                                <div style="padding-top: 5px;">
+                                    <C1CheckBox @ref="rowExportExclusiveRange" IsChecked="false" />
+                                    <span class="checkBoxSpan">Exclude Range</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                        <span style="font-weight:600;text-decoration:underline;">Column(s) Export Options:</span>
+                        <div style="font-size:12px;">
+                            <div>
+                                <C1CheckBox @ref="columnExportVisibleOnly" IsChecked="false" />
+                                <span class="checkBoxSpan">Visible Only</span>
+                            </div>
+                            <div>
+                                <C1CheckBox @ref="columnExportRenderFrozen" IsChecked="false" />
+                                <span class="checkBoxSpan">Render Frozen</span>
+                            </div>
+                            <div>
+                                <C1CheckBox @ref="columnExportSelectedOnly" IsChecked="false" />
+                                <span class="checkBoxSpan">Selected Only</span>
+                            </div>
+                            <div>
+                                <span>Specific Ranges:</span>
+                                <C1TextBox @ref="columnExportRanges" />
+                                <div style="padding-top: 5px;">
+                                    <C1CheckBox @ref="columnExportExclusiveRange" IsChecked="false" />
+                                    <span class="checkBoxSpan">Exclude Range</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                        <span style="font-weight:600;text-decoration:underline;">Grid Header Visibility Options:</span>
+                        <div style="font-size:12px;">
+                            <div>
+                                <C1CheckBox @ref="headerVisibilityAll" IsChecked="false" />
+                                <span class="checkBoxSpan">All</span>
+                            </div>
+                            <div>
+                                <C1CheckBox @ref="@headerVisibilityRow" IsChecked="false" />
+                                <span class="checkBoxSpan">Row</span>
+                            </div>
+                            <div>
+                                <C1CheckBox @ref="@headerVisibilityColumn" IsChecked="true" />
+                                <span class="checkBoxSpan">Column</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                        <span style="font-weight:600;text-decoration:underline;">Other Options:</span>
+                        <div style="font-size:12px;">
+                            <div>
+                                <C1CheckBox @ref="@renderMergedRanges" IsChecked="false" />
+                                <span class="checkBoxSpan">Render Merged Ranges</span>
+                            </div>
+                            <div>
+                                <C1CheckBox @ref="@renderAsFormatted" IsChecked="true" />
+                                <span class="checkBoxSpan">Render Cell Values as Formatted</span>
+                            </div>
+                            <div>
+                                <C1CheckBox @ref="@renderImages" IsChecked="false" />
+                                <span class="checkBoxSpan">Render Images</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; width: 25px; min-height: 500px; max-height: 500px; border: 2px solid #e6e6e6; align-items: center;">
+                    <span class="oi oi-expand-right" aria-hidden="true" style=" margin-top: 242px;cursor:pointer;" onclick="expand(event);"></span>
+                </div>
+            </div>
+        </div>
+        <div style="display:flex;flex-direction:column;flex:1;">
+            <FlexGrid @ref="grid"
+                      AllowMerging="@GridAllowMerging.Cells"
+                      AutoGenerateColumns="false"
+                      FrozenColumns="3"
+                      FrozenRows="2"
+                      HeadersVisibility="@GridHeadersVisibility.All"
+                      HorizontalScrollBarVisibility="@ScrollBarVisibility.Visible"
+                      ItemsSource="@collection"
+                      SelectionMode="@GridSelectionMode.CellRange"
+                      ShowMarquee="true"
+                      Style="@("max-height:500px;")">
+                <FlexGridColumns>
+                    <GridColumn Binding="Id" IsReadOnly="true" />
+                    <GridColumn Binding="FirstName" />
+                    <GridColumn Binding="LastName" />
+                    <GridColumn Binding="Address" />
+                    <GridColumn Binding="City" />
+                    <GridColumn Binding="CountryId" DataMap="@countryDataMap" AllowMerging="true" />
+                    <GridColumn Binding="Email" />
+                    <GridColumn Binding="PostalCode" />
+                    <GridColumn Binding="Active" />
+                    <GridDateTimeColumn Binding="LastOrderDate"
+                                        Mode="@GridDateTimeColumnMode.Date"
+                                        HorizontalAlignment="@C1HorizontalAlignment.Right"
+                                        HeaderHorizontalAlignment="@C1HorizontalAlignment.Right" />
+                    <GridDateTimeColumn Binding="LastOrderDate"
+                                        Mode="@GridDateTimeColumnMode.Time"
+                                        HorizontalAlignment="@C1HorizontalAlignment.Right"
+                                        HeaderHorizontalAlignment="@C1HorizontalAlignment.Right" />
+                    <GridColumn Binding="OrderTotal" />
+                    <GridImageColumn Binding="SampledImage" />
+                </FlexGridColumns>
+            </FlexGrid>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .checkBoxSpan {
+        display: inline-block;
+        margin-top: -2px;
+        position: absolute;
+        margin-left: 5px;
+    }
+</style>
+@code {
+    FlexGrid grid;
+    C1ComboBox<string> themeVariations;
+    C1DataCollection<ExtendedCustomer> collection;
+    GridDataMap countryDataMap;
+
+    string fileType = "HTML";
+    string[] fileTypes = { "CSV", "PDF", "HTML", "XLSX" };
+    string fileName = "ExportedGrid";
+    string mimeType = "";
+
+    #region RowExportOptions
+    C1CheckBox rowExportVisibleOnly;
+    C1CheckBox rowExportRenderFrozen;
+    C1CheckBox rowExportSelectedOnly;
+    C1CheckBox rowExportExcludeEmpty;
+    C1CheckBox rowExportRenderGroups;
+    C1CheckBox rowExportExclusiveRange;
+
+    C1TextBox rowExportRanges;
+    #endregion
+
+    #region ColumnExportOptions
+    C1CheckBox columnExportVisibleOnly;
+    C1CheckBox columnExportRenderFrozen;
+    C1CheckBox columnExportSelectedOnly;
+    C1CheckBox columnExportExclusiveRange;
+
+    C1TextBox columnExportRanges;
+    #endregion
+
+    #region Header Visibility
+    C1CheckBox headerVisibilityAll;
+    C1CheckBox headerVisibilityRow;
+    C1CheckBox headerVisibilityColumn;
+    #endregion
+
+    #region Other Options
+    C1CheckBox renderMergedRanges;
+    C1CheckBox renderAsFormatted;
+    C1CheckBox renderImages;
+    #endregion
+    Dictionary<C1CheckBox, GridRowColRangesOptions> RowOptions;
+    Dictionary<C1CheckBox, GridRowColRangesOptions> ColumnOptions;
+
+    protected override void OnInitialized()
+    {
+        var customers = Customer.GetCustomerList(100);
+
+        #region Binding
+
+        var list = Customer.GetCustomerList(100);
+        var actualData = list.Select(data => new ExtendedCustomer()
+        {
+            Id = data.Id,
+            FirstName = data.FirstName,
+            LastName = data.LastName,
+            Address = data.Address,
+            City = data.City,
+            CountryId = data.CountryId,
+            Email = data.Email,
+            PostalCode = data.PostalCode,
+            Active = data.Active,
+            LastOrderDate = data.LastOrderDate,
+            OrderTotal = data.OrderTotal,
+            SampleHyperlink = "https://media-exp1.licdn.com/dms/image/C560BAQE2UbhekqtLAg/company-logo_200_200/0/1519856432286?e=2159024400&v=beta&t=HP2cnfQvlv4mYMh2ouJShTcs4bsKyMQErk2u_kLDjtM",
+            SampleHyperlinkContent = $"Hyperlink - {data.Id}",
+            SampledImage = "https://media-exp1.licdn.com/dms/image/C560BAQE2UbhekqtLAg/company-logo_200_200/0/1519856432286?e=2159024400&v=beta&t=HP2cnfQvlv4mYMh2ouJShTcs4bsKyMQErk2u_kLDjtM"
+        }).ToList();
+        collection = new C1DataCollection<ExtendedCustomer>(actualData);
+
+        Dictionary<int, string> dct = new Dictionary<int, string>();
+        foreach (var country in Customer.GetCountries())
+        {
+            dct[dct.Count] = country.Value;
+        }
+        countryDataMap = new GridDataMap { ItemsSource = dct, SelectedValuePath = "Key", DisplayMemberPath = "Value" };
+
+        #endregion
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            #region Options(s)
+
+            RowOptions = new Dictionary<C1CheckBox, GridRowColRangesOptions>() {
+                { rowExportVisibleOnly, GridRowColRangesOptions.VisibleOnly },
+                { rowExportRenderFrozen, GridRowColRangesOptions.RenderFrozen },
+                { rowExportSelectedOnly, GridRowColRangesOptions.SelectedOnly },
+                { rowExportExcludeEmpty, GridRowColRangesOptions.ExcludeEmpty },
+                { rowExportRenderGroups, GridRowColRangesOptions.RenderGroups },
+                { rowExportExclusiveRange, GridRowColRangesOptions.ExludeRange }
+            };
+
+            ColumnOptions = new Dictionary<C1CheckBox, GridRowColRangesOptions>() {
+                { columnExportVisibleOnly, GridRowColRangesOptions.VisibleOnly },
+                { columnExportRenderFrozen, GridRowColRangesOptions.RenderFrozen },
+                { columnExportSelectedOnly, GridRowColRangesOptions.SelectedOnly },
+                { columnExportExclusiveRange, GridRowColRangesOptions.ExludeRange }
+            };
+
+            #endregion
+
+            #region Add Merged Column Headers
+
+            var gridColumnHeaders = grid.ColumnHeaders;
+            gridColumnHeaders.Rows.Add(new GridRow());
+            for (int c = 0; c < gridColumnHeaders.Columns.Count; c++)
+            {
+                gridColumnHeaders[1, c] = $"Sampled {(c < 3 ? 0 : c)}";
+                if (c < 3)
+                {
+                    grid.Columns[c].HeaderHorizontalAlignment = C1HorizontalAlignment.Center;
+                }
+            }
+            grid.AllowMerging = GridAllowMerging.All;
+            gridColumnHeaders.Rows[1].AllowMerging = true;
+
+            #endregion
+
+            #region Add Merged Row Headers
+
+            var gridRowHeaders = grid.RowHeaders;
+            gridRowHeaders.Columns.Add(new GridColumn());
+            gridRowHeaders.Columns[1].HorizontalAlignment = C1HorizontalAlignment.Right;
+            gridRowHeaders.Columns[1].Width = 75;
+            for (int c = 0; c < gridRowHeaders.Rows.Count; c++)
+            {
+                gridRowHeaders[c, 1] = $"S {(c < 3 ? 0 : c)}";
+            }
+            grid.AllowMerging = GridAllowMerging.All;
+            gridRowHeaders.Columns[1].AllowMerging = true;
+
+            #endregion
+
+            #region Themes
+
+            themeVariations.SelectedItem = "Material Dark";
+
+            #endregion
+        }
+    }
+
+    public class ExtendedCustomer : Customer
+    {
+        public string SampleHyperlink { get; set; }
+        public string SampleHyperlinkContent { get; set; }
+        public string SampledImage { get; set; }
+    }
+
+    async void OnSave()
+    {
+        var rowOptions = RowOptions.Keys.ToList().Where(check => check.IsChecked ?? false).Select(check => RowOptions[check]).ToList();
+        var rows = GridRowColRangesOptions.None;
+        if (rowOptions.Count > 0)
+        {
+            rows |= rowOptions.Aggregate((x, y) => x | y);
+        }
+
+        var columnOptions = ColumnOptions.Keys.ToList().Where(check => check.IsChecked ?? false).Select(check => ColumnOptions[check]).ToList();
+        var columns = GridRowColRangesOptions.None;
+        if (columnOptions.Count > 0)
+        {
+            columns |= columnOptions.Aggregate((x, y) => x | y);
+        }
+
+        var headers = GridHeadersVisibility.None;
+        if (headerVisibilityAll.IsChecked ?? false)
+        {
+            headers = GridHeadersVisibility.All;
+        }
+        else if (headerVisibilityColumn.IsChecked ?? false)
+        {
+            headers = GridHeadersVisibility.Column;
+        }
+        else if (headerVisibilityRow.IsChecked ?? false)
+        {
+            headers = GridHeadersVisibility.Row;
+        }
+
+        var merged = renderMergedRanges.IsChecked;
+        var formatted = renderAsFormatted.IsChecked;
+        var images = renderImages.IsChecked;
+        try
+        {
+            byte[] fileContent = null;
+            using (var stream = new MemoryStream())
+            {
+                switch (fileType)
+                {
+                    case "CSV":
+                        await grid.SaveAsync(stream, "FlexGrid Sheet", SaveFileFormat.Csv,
+                            new GridRowColRanges(rowExportRanges.Text, rows),
+                            new GridRowColRanges(columnExportRanges.Text, columns),
+                            headers,
+                            merged.HasValue && merged.Value,
+                            formatted.HasValue && formatted.Value,
+                            images.HasValue && images.Value);
+                        mimeType = "text/csv";
+                        break;
+                    case "PDF":
+                        await grid.SaveAsync(stream, "FlexGrid Sheet", SaveFileFormat.Pdf,
+                            new GridRowColRanges(rowExportRanges.Text, rows),
+                            new GridRowColRanges(columnExportRanges.Text, columns),
+                            headers,
+                            merged.HasValue && merged.Value,
+                            formatted.HasValue && formatted.Value,
+                            images.HasValue && images.Value);
+                        mimeType = "application/pdf";
+                        break;
+                    case "XLSX":
+                        await grid.SaveAsync(stream, "FlexGrid Sheet", SaveFileFormat.Xlsx,
+                            new GridRowColRanges(rowExportRanges.Text, rows),
+                            new GridRowColRanges(columnExportRanges.Text, columns),
+                            headers,
+                            merged.HasValue && merged.Value,
+                            formatted.HasValue && formatted.Value,
+                            images.HasValue && images.Value);
+                        mimeType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                        break;
+                    case "HTML":
+                        await grid.SaveAsync(stream, "FlexGrid Sheet", SaveFileFormat.Html,
+                            new GridRowColRanges(rowExportRanges.Text, rows),
+                            new GridRowColRanges(columnExportRanges.Text, columns),
+                            headers,
+                            merged.HasValue && merged.Value,
+                            formatted.HasValue && formatted.Value,
+                            images.HasValue && images.Value);
+                        mimeType = "application/zip";
+                        break;
+                }
+                fileContent = stream.ToArray();
+            }
+
+            fileName = string.IsNullOrEmpty(fileName) ? "export" : fileName;
+            await JsRuntime.InvokeVoidAsync("downloadFromByteArray", new
+            {
+                ByteArray = fileContent,
+                FileName = fileName,
+                ContentType = mimeType,
+            });
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
+
+    private void ThemeChanged(string theme)
+    {
+        SampleThemes.ApplyThemes(grid, theme);
+    }
+
+    private void AllCheckChanged()
+    {
+        if (headerVisibilityAll.IsChecked.HasValue && headerVisibilityAll.IsChecked.Value)
+        {
+            headerVisibilityColumn.IsChecked = true;
+            headerVisibilityRow.IsChecked = true;
+        }
+        else
+        {
+            headerVisibilityColumn.IsChecked = false;
+            headerVisibilityRow.IsChecked = false;
+        }
+    }
+}

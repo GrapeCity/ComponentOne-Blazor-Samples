@@ -1,0 +1,34 @@
+﻿@page "/FlexGrid/CustomDropDownColumn"
+@using Localization
+@using System.Collections.ObjectModel;
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+@using BlazorExplorer
+
+<FlexGrid AutoGenerateColumns="false" ItemsSource="source">
+    <FlexGridColumns>
+        <GridColumn Binding="FirstName" />
+        <GridColumn Binding="LastName" />
+        <BlazorExplorer.CustomDropDownColumn Binding="Country" MinWidth="250" />
+    </FlexGridColumns>
+</FlexGrid>
+
+<_Sections>
+    <Title>@FlexGridRes.GridColumnCustomizationTitle</Title>
+    <Summary></Summary>
+    <Description>@FlexGridRes.GridColumnCustomizationDescription</Description>
+</_Sections>
+
+@code {
+    List<Person> source;
+
+    protected override void OnInitialized()
+    {
+        source = new List<Person>();
+        source.Add(new Person { FirstName = "John", LastName = "Lennon", Country = Country.GetCountries().Find(c => c.Code == "GB") });
+        source.Add(new Person { FirstName = "Whitney", LastName = "Houston", Country = Country.GetCountries().Find(c => c.Code == "US") });
+        source.Add(new Person { FirstName = "Bob", LastName = "Marley", Country = Country.GetCountries().Find(c => c.Code == "JM") });
+        source.Add(new Person { FirstName = "Amy", LastName = "Winehouse", Country = Country.GetCountries().Find(c => c.Code == "GB") });
+        source.Add(new Person { FirstName = "Jim", LastName = "Morrison", Country = Country.GetCountries().Find(c => c.Code == "US") });
+    }
+}

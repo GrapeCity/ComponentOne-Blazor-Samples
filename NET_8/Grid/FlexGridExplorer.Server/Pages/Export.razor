@@ -1,0 +1,57 @@
+﻿@page "/export"
+@inject IJSRuntime JsRuntime
+@using Resources
+@using System.IO
+@using System.Collections.ObjectModel;
+@using C1.Blazor.Grid
+@using C1.Blazor.Input
+
+<h1>@AppResources.ExportTitle</h1>
+<p>@AppResources.ExportDescription</p>
+
+<p style="display:flex">
+    <C1TextBox @bind-Text="@fileName" Style="@("width:170px;border-width:1px 0 1px 1px;border-radius:4px 0 0 4px;")" />
+    <C1ComboBox ItemsSource="fileTypes" @bind-SelectedItem="fileType" Style="@("width:80px;border-radius: 0 4px 4px 0;")" />
+    <button class="btn btn-primary" @onclick="OnSave" style="margin-left: 8px;">@AppResources.Save</button>
+</p>
+
+<FlexGrid @ref="grid"
+          ItemsSource="@customers" Style="@("max-height:50vh")"
+          StyleKind="@GridStyle.Classic" />
+
+@code {
+    FlexGrid grid;
+    ObservableCollection<Customer> customers;
+    string[] fileTypes = { "CSV", "Text", "HTML" };
+    string fileName = "ExportedGrid";
+    string fileType = "HTML";
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+
+    async void OnSave()
+    {
+        var fileContent = "";
+        using (var stream = new MemoryStream())
+        {
+            switch (fileType)
+            {
+                case "CSV":
+                    grid.Save(stream, GridFileFormat.Csv, System.Text.Encoding.UTF8, GridSaveOptions.SaveColumnHeaders);
+                    break;
+                case "Text":
+                    grid.Save(stream, GridFileFormat.Text, System.Text.Encoding.UTF8, GridSaveOptions.SaveColumnHeaders);
+                    break;
+                case "HTML":
+                    grid.Save(stream, GridFileFormat.Html, System.Text.Encoding.UTF8, GridSaveOptions.SaveHeaders | GridSaveOptions.Formatted);
+                    break;
+            }
+            fileContent = System.Text.UTF8Encoding.UTF8.GetString(stream.GetBuffer());
+        }
+
+        fileName = string.IsNullOrEmpty(fileName) ? "export" : fileName;
+        await JsRuntime.InvokeVoidAsync("openSaveFile", fileName, fileType, fileContent);
+    }
+}

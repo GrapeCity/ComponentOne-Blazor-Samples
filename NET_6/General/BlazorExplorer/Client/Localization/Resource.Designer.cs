@@ -19,7 +19,7 @@ namespace BlazorExplorer.Localization {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resource {
@@ -79,7 +79,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://www.grapecity.com/componentone/docs/blazor/online-blazor/overview.html.
+        ///   Looks up a localized string similar to https://developer.mescius.com/componentone/docs/blazor/online-blazor/overview.html.
         /// </summary>
         public static string ControlLayout_DocumentationUrl {
             get {
@@ -223,7 +223,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://www.grapecity.com/.
+        ///   Looks up a localized string similar to https://developer.mescius.com/componentone/.
         /// </summary>
         public static string Layout_GrapeCityUrl {
             get {
@@ -232,7 +232,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GrapeCity, Inc. All Rights Reserved..
+        ///   Looks up a localized string similar to MESCIUS inc. All rights reserved..
         /// </summary>
         public static string Layout_License1 {
             get {
@@ -259,7 +259,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://www.grapecity.com/componentone/blazor.
+        ///   Looks up a localized string similar to https://developer.mescius.com/componentone/blazor.
         /// </summary>
         public static string Layout_ProductUrl {
             get {
@@ -331,7 +331,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://www.grapecity.com/componentone/blazor.
+        ///   Looks up a localized string similar to https://developer.mescius.com/componentone/blazor.
         /// </summary>
         public static string SiteNav_AboutUrl {
             get {
@@ -358,7 +358,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://www.grapecity.com/en/download/componentone-studio.
+        ///   Looks up a localized string similar to https://developer.mescius.com/download/componentone-studio.
         /// </summary>
         public static string SiteNav_FreeTrialUrl {
             get {
@@ -385,7 +385,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://www.grapecity.com/en/pricing.
+        ///   Looks up a localized string similar to https://developer.mescius.com/pricing.
         /// </summary>
         public static string SiteNav_PricingUrl {
             get {
@@ -403,7 +403,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://supportone.componentone.com/login.
+        ///   Looks up a localized string similar to https://developer.mescius.com/support/contact.
         /// </summary>
         public static string SiteNav_SupportUrl {
             get {

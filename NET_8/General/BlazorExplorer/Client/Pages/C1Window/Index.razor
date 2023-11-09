@@ -1,0 +1,93 @@
+﻿@page "/C1Window/Index"
+@using C1.Blazor.Input
+
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" @bind="isDarkOverlay" id="IsDarkOverlay">
+    <label class="form-check-label" for="IsDarkOverlay">
+        Is dark overlay
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" @bind="isModeless" id="IsModeless">
+    <label class="form-check-label" for="IsModeless">
+        Is modeless
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" @bind="isFullScreen" id="IsFullScreen">
+    <label class="form-check-label" for="IsFullScreen">
+        Is full screen
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" @bind="isDraggable" id="IsDraggable">
+    <label class="form-check-label" for="IsDraggable">
+        Is draggable
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" @bind="isResizable" id="IsResizable">
+    <label class="form-check-label" for="IsResizable">
+        Is resizable
+    </label>
+</div>
+<button class="btn btn-default" @onclick="@OpenPopup">@PopupRes.OpenPopupBtn</button>
+
+<C1Window @ref="myPopup" Style="@("width: 700px")" IsDarkOverlay="isDarkOverlay"  IsModeless="isModeless"
+          IsFullScreen="isFullScreen" IsDraggable="isDraggable" IsResizable="isResizable">
+    <PopupHeader>
+        Popup Header
+    </PopupHeader>
+    <PopupContent>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit
+            amet, vulputate in leo. Maecenas vulputate congue sapien eu tincidunt. Etiam eu sem turpis. Fusce tempor
+            sagittis nunc, ut interdum ipsum vestibulum non. Proin dolor elit, aliquam eget tincidunt non, vestibulum ut
+            turpis. In hac habitasse platea dictumst. In a odio eget enim porttitor maximus. Aliquam nulla nibh,
+            ullamcorper aliquam placerat eu, viverra et dui. Phasellus ex lectus, maximus in mollis ac, luctus vel eros.
+            Vivamus ultrices, turpis sed malesuada gravida, eros ipsum venenatis elit, et volutpat eros dui et ante.
+            Quisque ultricies mi nec leo ultricies mollis. Vivamus egestas volutpat lacinia. Quisque pharetra eleifend
+            efficitur.
+        </p>
+        <p>
+            Mauris at nunc eget lectus lobortis facilisis et eget magna. Vestibulum venenatis augue sapien, rhoncus
+            faucibus magna semper eget. Proin rutrum libero sagittis sapien aliquet auctor. Suspendisse tristique a
+            magna at facilisis. Duis rhoncus feugiat magna in rutrum. Suspendisse semper, dolor et vestibulum lacinia,
+            nunc felis malesuada ex, nec hendrerit justo ex et massa. Quisque quis mollis nulla. Nam commodo est ornare,
+            rhoncus odio eu, pharetra tellus. Nunc sed velit mi.
+        </p>
+        <p>
+            Sed condimentum ultricies turpis convallis pharetra. Sed sagittis quam pharetra luctus porttitor. Cras vel
+            consequat lectus. Sed nec fringilla urna, a aliquet libero. Aenean sed nisl purus. Vivamus vulputate felis
+            et odio efficitur suscipit. Ut volutpat dictum lectus, ac rutrum massa accumsan at. Sed pharetra auctor
+            finibus. In augue libero, commodo vitae nisi non, sagittis convallis ante. Phasellus malesuada eleifend
+            mollis. Curabitur ultricies leo ac metus venenatis elementum.
+        </p> mattis est. In augue dolor, faucibus vel metus at, convallis rhoncus dui.
+    </PopupContent>
+    <PopupFooter>
+        <div style="width: 100%; display: flex; justify-content: center">
+            <button class="btn btn-default" @onclick="@ClosePopup">@PopupRes.BtnClose</button>
+        </div>
+    </PopupFooter>
+</C1Window>
+
+@code{
+    C1Window myPopup;
+    bool isDarkOverlay = true, isDraggable, isFullScreen, isModeless, isResizable;
+
+    void OpenPopup()
+    {
+        myPopup.Open();
+    }
+
+    void ClosePopup()
+    {
+        myPopup.Close();
+    }
+}
+<_Sections>
+    <Title>@PopupRes.OverviewTitle</Title>
+    <Summary>@PopupRes.OverviewSummary</Summary>
+    <Description>@((MarkupString)PopupRes.OverviewDescription)</Description>
+
+</_Sections>

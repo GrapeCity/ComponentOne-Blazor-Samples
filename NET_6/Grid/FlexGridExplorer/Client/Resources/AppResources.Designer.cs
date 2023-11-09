@@ -466,6 +466,24 @@ namespace FlexGridExplorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Showcases the export feature of FlexGrid using GcExcel.
+        /// </summary>
+        public static string ExcelExportDescription {
+            get {
+                return ResourceManager.GetString("ExcelExportDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excel Export.
+        /// </summary>
+        public static string ExcelExportTitle {
+            get {
+                return ResourceManager.GetString("ExcelExportTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Shows how to export to CSV, text, and HTML..
         /// </summary>
         public static string ExportDescription {
@@ -970,6 +988,24 @@ namespace FlexGridExplorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Shows a row that summarizes the values in the columns.
+        /// </summary>
+        public static string SummaryRowDescription {
+            get {
+                return ResourceManager.GetString("SummaryRowDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary Row.
+        /// </summary>
+        public static string SummaryRowTitle {
+            get {
+                return ResourceManager.GetString("SummaryRowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sunday.
         /// </summary>
         public static string Sunday {
@@ -984,6 +1020,24 @@ namespace FlexGridExplorer.Resources {
         public static string Thursday {
             get {
                 return ResourceManager.GetString("Thursday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show how to transpose columns and rows so the data items are shown as columns..
+        /// </summary>
+        public static string TransposedGridDescription {
+            get {
+                return ResourceManager.GetString("TransposedGridDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transposed Grid.
+        /// </summary>
+        public static string TransposedGridTitle {
+            get {
+                return ResourceManager.GetString("TransposedGridTitle", resourceCulture);
             }
         }
         
@@ -1020,6 +1074,24 @@ namespace FlexGridExplorer.Resources {
         public static string UnpinColumn {
             get {
                 return ResourceManager.GetString("UnpinColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show how to display and style validation.
+        /// </summary>
+        public static string ValidationDescription {
+            get {
+                return ResourceManager.GetString("ValidationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validation.
+        /// </summary>
+        public static string ValidationTitle {
+            get {
+                return ResourceManager.GetString("ValidationTitle", resourceCulture);
             }
         }
         

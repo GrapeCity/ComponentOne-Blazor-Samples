@@ -1,0 +1,67 @@
+﻿@if (Model != null)
+{
+  int i = 0;
+  <div id="sourceTab" class="nav nav-tabs ui-helper-clearfix mob-hide-1">
+	<div style="width:100%">
+	  <div class="nav-tabs">
+	    @foreach (var pageSource in Model)
+		{
+		  int capI = i++;
+	      <div class="tab-header @(TabIndex == capI ? "state-active" : null)" @onclick="@(e => OnTabClick(e, capI))"><a>@pageSource.Key</a></div>
+		}
+	  </div>
+	  @for (i = 0; i < 2; i++)
+	  {
+	    <div id=@("sourceContent"+i.ToString()) class="tab-pane pane-content mob-hide-1 @(TabIndex%2==i?"expand-fade":"collapse-fade")">
+	    </div>
+	  }	  
+	</div>
+  </div>
+}
+
+@code {
+    [Parameter]
+    public IDictionary<string, string> Model {
+        get { return _model; }
+        set {
+            if (value != _model)
+            {
+                _model = value;
+                var count = Model.Count;
+                if (TabIndex < 0) TabIndex = 0;
+                if (TabIndex >= count) TabIndex = count - 1;
+            }
+        }
+    }
+    [Parameter]
+    public int TabIndex { get; set; }
+
+    private IDictionary<string, string> _model;
+
+    private void OnTabClick(MouseEventArgs e, int tabIndex)
+    {
+        TabIndex = tabIndex;
+    }
+
+    private string GetSyntaxBrush(string key)
+    {
+        var className = "brush:c#;html-script:true;";
+        if (key.Contains(".razor"))
+        {
+            className = "brush:rzr;";
+        } else if (key.Contains(".cs"))
+        {
+            className = "brush:c#;";
+        }
+        return className;
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (Model != null && TabIndex >=0 && TabIndex < Model.Count())
+        {
+            var pgSrc = Model.ElementAt(TabIndex);
+            _App.JsRuntime.InvokeAsync<object>("highlightSource", pgSrc.Value, GetSyntaxBrush(pgSrc.Key), "sourceContent" + (TabIndex % 2).ToString());
+        }
+    }
+}

@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>8.0.20233.668</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Grid">
+      <Version>8.0.20233.668</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.GridControl">
+      <Version>8.0.20233.668</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Input">
+      <Version>8.0.20233.668</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.ListView">
+      <Version>8.0.20233.668</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0-rc.2.23480.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0-rc.2.23480.2" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include=".gclicx" />
+  </ItemGroup>
+</Project>

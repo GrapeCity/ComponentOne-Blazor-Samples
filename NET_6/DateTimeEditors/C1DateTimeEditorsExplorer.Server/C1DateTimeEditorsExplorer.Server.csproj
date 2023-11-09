@@ -6,7 +6,7 @@
     <SccLocalPath>SAK</SccLocalPath>
   </PropertyGroup>
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <LangVersion>7.3</LangVersion>
     <AssemblyName>C1DateTimeEditorsExplorer.Server</AssemblyName>
     <RootNamespace>C1DateTimeEditorsExplorer.Server</RootNamespace>
@@ -22,18 +22,18 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Calendar">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.20" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Localization\DatePickerRes.Designer.cs">

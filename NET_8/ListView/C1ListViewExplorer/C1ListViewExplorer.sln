@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1ListViewExplorer", "C1ListViewExplorer.csproj", "{CC70966A-664A-43F9-B22D-DAAA611AB301}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		GRAPECITY|Any CPU = GRAPECITY|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC70966A-664A-43F9-B22D-DAAA611AB301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC70966A-664A-43F9-B22D-DAAA611AB301}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC70966A-664A-43F9-B22D-DAAA611AB301}.GRAPECITY|Any CPU.ActiveCfg = Release|Any CPU
+		{CC70966A-664A-43F9-B22D-DAAA611AB301}.GRAPECITY|Any CPU.Build.0 = Release|Any CPU
+		{CC70966A-664A-43F9-B22D-DAAA611AB301}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC70966A-664A-43F9-B22D-DAAA611AB301}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {35CAAC8D-373C-46B5-8918-94278057CB60}
+	EndGlobalSection
+EndGlobal

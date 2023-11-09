@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BtnClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="CancelText" xml:space="preserve">
+    <value>Cancel text: </value>
+    <comment>Cancel text: </comment>
+  </data>
+  <data name="DialogResultDescription" xml:space="preserve">
+    <value>&lt;p&gt; &lt;strong&gt;Dialog result: &lt;/strong&gt; The C1Window control can be used to implement static methods for showing &lt;i&gt;Confirm&lt;/i&gt; and &lt;i&gt;Prompt&lt;/i&gt; dialogs. This sample lets you configure the Popup content and modify the style also.&lt;/p&gt;
+        &lt;p&gt;
+            &lt;strong&gt;IsDialog:&lt;/strong&gt; Gets or sets to determine whether C1Window is dialog result. &lt;br /&gt;
+            &lt;strong&gt;DialogType:&lt;/strong&gt; Gets or sets dialog result type (Confirm or Prompt). &lt;br /&gt;
+            &lt;strong&gt;IsOk:&lt;/strong&gt; Get Ok button is clicked or not. &lt;br /&gt;
+            &lt;strong&gt;OkText:&lt;/strong&gt; Gets or sets OkText button. &lt;br /&gt;
+            &lt;strong&gt;CancelText:&lt;/strong&gt; Gets or sets CancelText button. &lt;br /&gt;
+            &lt;strong&gt;PromptValue:&lt;/strong&gt; Get Prompt value. &lt;br /&gt;
+        &lt;/p&gt;</value>
+  </data>
+  <data name="DialogResultSummary" xml:space="preserve">
+    <value>The C1Window control can be used to implement static methods for showing Confirm and Prompt dialogs.</value>
+  </data>
+  <data name="DialogResultTitle" xml:space="preserve">
+    <value>Dialog result</value>
+  </data>
+  <data name="IsOkay" xml:space="preserve">
+    <value>Is okay:</value>
+  </data>
+  <data name="OkText" xml:space="preserve">
+    <value>Ok text:</value>
+    <comment>Ok text:</comment>
+  </data>
+  <data name="OpenPopupBtn" xml:space="preserve">
+    <value>Open C1Window</value>
+    <comment>Open C1Window</comment>
+  </data>
+  <data name="OverviewDescription" xml:space="preserve">
+    <value>&lt;p&gt;C1Window takes focus from the page or app and require people to interact with them. Unlike a dialog box (Dialog), a modal should be used for hosting lengthy content, such as privacy statements or license agreements, or for asking people to perform complex or multiple actions, such as changing settings.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PopupHeader:&lt;/strong&gt; Define popup header.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PopupContent:&lt;/strong&gt; Define popup content.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PopupFooter:&lt;/strong&gt; Define popup footer.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IsDraggable:&lt;/strong&gt; Gets or sets to make the popup draggable. It is unable when IsFullScreen is true. &lt;i&gt;Popup Header is required&lt;/i&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IsResizable:&lt;/strong&gt; Gets or sets to make the popup resizable. It is unable when IsFullScreen is true.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IsFullScreen:&lt;/strong&gt; Gets or sets to make the popup show full screen. If true: there will be no drag&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IsDarkOverlay:&lt;/strong&gt; Gets or sets whether the overlay is dark theme.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IsModeless:&lt;/strong&gt; Gets or sets whether the dialog should be modeless (e.g. not dismiss when focusing/clicking outside of the dialog). If true: there will be no overlay (isDarkOverlay is ignored).&lt;/p&gt;</value>
+  </data>
+  <data name="OverviewSummary" xml:space="preserve">
+    <value>C1Window allows user to add dialogs to your site for lightboxes, user notifications, or completely custom content.</value>
+  </data>
+  <data name="OverviewTitle" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="PopupOwnerDescription" xml:space="preserve">
+    <value>&lt;p&gt;This sample demonstrates how the C1Window control works when the C1Window has and owner element.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ShowTrigger: &lt;/strong&gt;Specifies actions that trigger showing C1Window controls. Value is None, Hover Owner or Click Owner (default value)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HideTrigger: &lt;/strong&gt;Specifies actions that trigger hiding C1Window controls&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PopupPosition: &lt;/strong&gt;Represents the position of a popup element with respect to a reference element.&lt;/p&gt;</value>
+  </data>
+  <data name="PopupOwnerSummary" xml:space="preserve">
+    <value>This sample demonstrates how the C1Window control works when the C1Window has and owner element.</value>
+  </data>
+  <data name="PopupOwnerTitle" xml:space="preserve">
+    <value>C1Window with Owner Elements</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type:</value>
+    <comment>Type:</comment>
+  </data>
+  <data name="YourAction" xml:space="preserve">
+    <value>Your action:</value>
+  </data>
+  <data name="YourInput" xml:space="preserve">
+    <value>Your input:</value>
+  </data>
+</root>

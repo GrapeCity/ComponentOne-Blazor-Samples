@@ -1,0 +1,126 @@
+﻿@page "/FlexGrid/CellMerging"
+@using Localization
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+
+<FlexGrid @ref="grid" 
+    IsReadOnly="true" 
+    IsVirtualizationEnabled="false" 
+    ColumnOptionsMenuVisibility="GridColumnOptionsMenuVisibility.Collapsed" 
+    MinColumnWidth="80" 
+    DefaultColumnWidth="GridLength.Star" 
+    AllowMerging="GridAllowMerging.All" 
+    HeadersVisibility="GridHeadersVisibility.All" 
+    RowHeaderGridLinesVisibility="GridLinesVisibility.All" 
+    GridLinesVisibility="GridLinesVisibility.All" 
+    SelectionMode="GridSelectionMode.CellRange" 
+    Style="@("border: 1px solid #C7C7CC;border-radius: 8px;")">
+    <FlexGridColumns>
+        <GridColumn Header="@FlexGridRes.Monday" AllowMerging="true" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" HorizontalAlignment="C1HorizontalAlignment.Center" />
+        <GridColumn Header="@FlexGridRes.Tuesday" AllowMerging="true" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" HorizontalAlignment="C1HorizontalAlignment.Center" />
+        <GridColumn Header="@FlexGridRes.Wednesday" AllowMerging="true" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" HorizontalAlignment="C1HorizontalAlignment.Center" />
+        <GridColumn Header="@FlexGridRes.Thursday" AllowMerging="true" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" HorizontalAlignment="C1HorizontalAlignment.Center" />
+        <GridColumn Header="@FlexGridRes.Friday" AllowMerging="true" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" HorizontalAlignment="C1HorizontalAlignment.Center" />
+        <GridColumn Header="@FlexGridRes.Saturday" AllowMerging="true" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" HorizontalAlignment="C1HorizontalAlignment.Center" />
+        <GridColumn Header="@FlexGridRes.Sunday" AllowMerging="true" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" HorizontalAlignment="C1HorizontalAlignment.Center" />
+    </FlexGridColumns>
+    <FlexGridRowHeaderColumns>
+        <GridColumn Width="70" />
+    </FlexGridRowHeaderColumns>
+    <FlexGridColumnHeaderRows>
+        <GridRow AllowMerging="true" />
+        <GridRow />
+    </FlexGridColumnHeaderRows>
+    <FlexGridRows>
+        <GridRow />
+        <GridRow />
+        <GridRow />
+        <GridRow />
+        <GridRow />
+        <GridRow />
+        <GridRow />
+    </FlexGridRows>
+</FlexGrid>
+
+<_Sections>
+    <Title>@FlexGridRes.CellMergingTitle</Title>
+    <Summary>@FlexGridRes.CellMergingSummary</Summary>
+    <Description>@FlexGridRes.CellMergingDescription</Description>
+</_Sections>
+
+@code {
+    FlexGrid grid;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (!firstRender)
+            return;
+
+        grid.ColumnHeaders[0, 0] = FlexGridRes.Weekday;
+        grid.ColumnHeaders[0, 1] = FlexGridRes.Weekday;
+        grid.ColumnHeaders[0, 2] = FlexGridRes.Weekday;
+        grid.ColumnHeaders[0, 3] = FlexGridRes.Weekday;
+        grid.ColumnHeaders[0, 4] = FlexGridRes.Weekday;
+        grid.ColumnHeaders[0, 5] = FlexGridRes.Weekend;
+        grid.ColumnHeaders[0, 6] = FlexGridRes.Weekend;
+
+        grid.RowHeaders[0, 0] = "12:00";
+        grid.RowHeaders[1, 0] = "13:00";
+        grid.RowHeaders[2, 0] = "14:00";
+        grid.RowHeaders[3, 0] = "15:00";
+        grid.RowHeaders[4, 0] = "16:00";
+        grid.RowHeaders[5, 0] = "17:00";
+        grid.RowHeaders[6, 0] = "18:00";
+
+        grid[0, 0] = "Walker";
+        grid[0, 1] = "Morning Show";
+        grid[0, 2] = "Morning Show";
+        grid[0, 3] = "Sports";
+        grid[0, 4] = "Weather";
+        grid[0, 5] = "N/A";
+        grid[0, 6] = "N/A";
+        grid[1, 5] = "N/A";
+        grid[1, 6] = "N/A";
+        grid[2, 5] = "N/A";
+        grid[2, 6] = "N/A";
+        grid[3, 5] = "N/A";
+        grid[3, 6] = "N/A";
+        grid[4, 5] = "N/A";
+        grid[4, 6] = "N/A";
+        grid[1, 0] = "Today Show";
+        grid[1, 1] = "Today Show";
+        grid[2, 0] = "Today Show";
+        grid[2, 1] = "Today Show";
+        grid[1, 2] = "Sesame Street";
+        grid[1, 3] = "Football";
+        grid[2, 3] = "Football";
+        grid[1, 4] = "Market Watch";
+        grid[2, 2] = "Kids Zone";
+        grid[2, 4] = "Soap Opera";
+        grid[3, 0] = "News";
+        grid[3, 1] = "News";
+        grid[3, 2] = "News";
+        grid[3, 3] = "News";
+        grid[3, 4] = "News";
+        grid[4, 0] = "News";
+        grid[4, 1] = "News";
+        grid[4, 2] = "News";
+        grid[4, 3] = "News";
+        grid[4, 4] = "News";
+        grid[5, 0] = "Wheel of Fortune";
+        grid[5, 1] = "Wheel of Fortune";
+        grid[5, 2] = "Wheel of Fortune";
+        grid[5, 3] = "Jeopardy";
+        grid[5, 4] = "Jeopardy";
+        grid[5, 5] = "Movie";
+        grid[6, 5] = "Movie";
+        grid[5, 6] = "Golf";
+        grid[6, 6] = "Golf";
+        grid[6, 0] = "Night Show";
+        grid[6, 1] = "Night Show";
+        grid[6, 2] = "Sports";
+        grid[6, 3] = "Big Brother";
+        grid[6, 4] = "Big Brother";
+    }
+
+}

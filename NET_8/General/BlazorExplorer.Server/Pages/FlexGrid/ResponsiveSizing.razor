@@ -1,0 +1,41 @@
+﻿@page "/FlexGrid/ResponsiveSizing"
+@using Localization
+@using System.Collections.ObjectModel;
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+
+<FlexGrid ItemsSource="customers"
+          DefaultColumnWidth="GridLength.Star"
+          AutoGenerateColumns="false"
+          AllowResizing="GridAllowResizing.None"
+          HeadersVisibility="GridHeadersVisibility.Column"
+          GridLinesVisibility="GridLinesVisibility.None"
+          ColumnHeaderGridLinesVisibility="GridLinesVisibility.None"
+          Style="@("max-height:50vh;background-color:#fff")"
+          RowStyle="@("background-color:#E5E6FA;color:#000")"
+          AlternatingRowStyle="@("background-color:#fff")"
+          ColumnHeaderStyle="@("background-color:#778898;color:#fff;font-weight:bold")"
+          SelectionStyle="@("background-color:#FAD127;color:#000")"
+          IsVirtualizationEnabled="false">
+    <FlexGridColumns>
+        <GridColumn Binding="FirstName" />
+        <GridColumn Binding="LastName" />
+        <GridColumn Binding="LastOrderDate" Format="d" />
+        <GridColumn Binding="OrderTotal" Format="N" HorizontalAlignment="C1HorizontalAlignment.Right" />
+    </FlexGridColumns>
+</FlexGrid>
+
+<_Sections>
+    <Title>@FlexGridRes.ResponsiveSizingTitle</Title>
+    <Summary>@FlexGridRes.ResponsiveSizingSummary</Summary>
+    <Description>@FlexGridRes.ResponsiveSizingDescription</Description>
+</_Sections>
+
+@code {
+    ObservableCollection<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+}

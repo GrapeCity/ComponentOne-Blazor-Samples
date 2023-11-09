@@ -1,0 +1,65 @@
+﻿@page "/FlexChart/StepChart"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Input;
+
+<FlexChart Class="chart" ChartType="chartType ?? ChartType.Step" Stacking="stacking ?? Stacking.None"
+           LegendPosition="Position.Top" LegendStyle="font-size:16px"
+           BindingX="month" ItemsSource="Data">
+    <SeriesCollection>
+        <Series Name="SMS Totals" Binding="sms" />
+        <Series Name="Email Totals" Binding="email" />
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis AxisType="AxisType.X" Position="Position.Bottom" MajorGrid="false" AxisLine="false" MajorTickMarks="TickMark.None" />
+        <Axis AxisType="AxisType.Y" Position="Position.Left" MajorGrid="false" AxisLine="false" MajorTickMarks="TickMark.None" />
+    </AxisCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.StepChartTitle</Title>
+    <Settings>
+        Chart Type <C1ComboBox ItemsSource="chartTypes" @bind-SelectedItem="chartType" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")"/>
+        Stacking <C1ComboBox ItemsSource="stackings" @bind-SelectedItem="stacking" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")"/>
+    </Settings>
+    <Summary>@FlexChartRes.StepChartSummary</Summary>
+    <Description>@FlexChartRes.StepChartDescription</Description>
+</_Sections>
+
+@code {
+    ChartType[] chartTypes = new ChartType[] { ChartType.Step, ChartType.StepSymbols, ChartType.StepArea };
+    ChartType? chartType = ChartType.Step;
+
+    Stacking[] stackings = new Stacking[] { Stacking.None, Stacking.Stacked, Stacking.Stacked100pc };
+    Stacking? stacking = Stacking.None;
+
+    List<object> Data { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Data = DataSource.GetData();
+    }
+
+    public class DataSource
+    {
+        private static Random rnd = new Random();
+
+        public static List<object> GetData()
+        {
+            var data = new List<object>();
+            var months = "jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec".Split(',');
+ 
+            for (var i = 0; i < months.Length; i++)
+            {
+                data.Add( new {
+                    month = months[i],
+                    x = i - 0.5,
+                    sms = Math.Round(rnd.NextDouble() * 50),
+                    email = Math.Round(rnd.NextDouble() * 100)
+                });
+            }
+            return data;
+        }
+    }
+}

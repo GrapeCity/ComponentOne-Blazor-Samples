@@ -1,0 +1,50 @@
+﻿@page "/ListView/Filter"
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using C1.Blazor.ListView
+@using C1.DataCollection
+@using Localization
+
+<C1TextBox TextChanged="OnTextChanged" Placeholder="@ListViewRes.Filter_TextFilter_Placeholder" Style="@("width:500px;margin:8px 0")" />
+<C1ListView @ref="list" ItemsSource="products" T="Customer" DisplayMemberPath="Name" Style="@("max-height:50vh")" />
+
+<_Sections>
+    <Title>@ListViewRes.FilterTitle</Title>
+    <Summary>@ListViewRes.FilterSummary</Summary>
+    <Description>@ListViewRes.FilterDescription</Description>
+</_Sections>
+
+@code
+{
+    string currentFilterValue;
+    C1ListView<Customer> list;
+    IEnumerable<Customer> products;
+    System.Threading.SemaphoreSlim filterSemaphore;
+
+    protected override void OnInitialized()
+    {
+        filterSemaphore = new System.Threading.SemaphoreSlim(1);
+        products = Customer.GetCustomerList(100);
+    }
+
+    private async Task OnTextChanged(string value)
+    {
+        Console.WriteLine($"OnTextChanged({value})");
+        try
+        {
+            var filter = value;
+            currentFilterValue = filter;
+            await Task.Delay(400);
+            await filterSemaphore.WaitAsync();
+            if (currentFilterValue == filter)
+            {
+                Console.WriteLine("FilterAsync");
+                await list.DataCollection.FilterAsync("Name", FilterOperation.Contains, filter);
+            }
+        }
+        finally
+        {
+            filterSemaphore.Release();
+        }
+    }
+}

@@ -1,8 +1,5 @@
 ﻿@page "/selectionmodes"
-@using Resources
 @using System.Collections.ObjectModel;
-@using C1.Blazor.Grid
-@using C1.Blazor.Input
 
 <h1>@AppResources.SelectionModesTitle</h1>
 <p>@AppResources.SelectionModesDescription</p>
@@ -13,13 +10,13 @@
     Allow Dragging <C1ComboBox ItemsSource="allowDraggingModes" @bind-SelectedItem="allowDragging" Class="filled-drop-down" />
 </p>
 
-@selectedCells
+<p>@selectedCells</p>
 
 <FlexGrid ItemsSource="@customers" StyleKind="@GridStyle.Classic" SelectionChanged="OnSelectionChanged" SelectionMode="selectionMode" AllowResizing="allowResizing" AllowDragging="allowDragging" Style="@("max-height:50vh")" />
 
 @code {
     ObservableCollection<Customer> customers;
-    string selectedCells;
+    string selectedCells = $"0 {AppResources.CellsSelectedText}";
     GridSelectionMode selectionMode = GridSelectionMode.MultiRange;
     GridSelectionMode[] selectionModes = Enum.GetValues<GridSelectionMode>();
 
@@ -40,7 +37,8 @@
             int rowsSelected = Math.Abs(e.CellRange.Row2 - e.CellRange.Row) + 1;
             int colsSelected = Math.Abs(e.CellRange.Column2 - e.CellRange.Column) + 1;
 
-            selectedCells = (rowsSelected * colsSelected).ToString() + " " + AppResources.CellsSelectedText;
+            selectedCells = $"{rowsSelected * colsSelected} {AppResources.CellsSelectedText}";
+
             StateHasChanged();
         }
     }

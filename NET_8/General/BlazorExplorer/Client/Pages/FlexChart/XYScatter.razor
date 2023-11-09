@@ -1,0 +1,51 @@
+﻿@page "/FlexChart/XYScatter"
+@using Localization
+@using System.Drawing;
+@using C1.Chart;
+@using C1.Blazor.Chart;
+
+<FlexChart Class="chart" ChartType="ChartType.Scatter"  BindingX="X" Binding="Y">
+    <SeriesCollection>
+        <Series Name="Experiment 1" ItemsSource="Data1" />
+        <Series Name="Experiment 2" ItemsSource="Data2" />
+        <Series Name="Experiment 3" ItemsSource="Data3" />
+    </SeriesCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.XYScatterTitle</Title>
+    <Summary>@FlexChartRes.XYScatterSummary</Summary>
+    <Description>@FlexChartRes.XYScatterDescription</Description>
+</_Sections>
+
+@code {
+    List<PointF> Data1 { get; set; }
+    List<PointF> Data2 { get; set; }
+    List<PointF> Data3 { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Data1 = DataSource.GetData(50, 0, 3);
+        Data2 = DataSource.GetData(40, 100, 12);
+        Data3 = DataSource.GetData(30, -100, 24);
+    }
+
+    public class DataSource
+    {
+        static Random rand = new Random();
+
+        public static List<PointF> GetData(int cnt, double a, double b)
+        {
+            var data = new List<System.Drawing.PointF>();
+            double x = -5 * cnt / 2;
+
+            for (var i = 0; i < cnt; i++)
+            {
+                var rnd = rand.NextDouble() * cnt - cnt / 2;
+                data.Add(new PointF( (float)x, (float)(a + x * (b + rnd) + rnd)));
+                x += .5 + rand.NextDouble() * 10;
+            }
+            return data;
+        }
+    }
+}

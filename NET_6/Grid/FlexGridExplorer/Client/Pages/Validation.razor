@@ -1,0 +1,22 @@
+﻿@page "/validation"
+@using Resources
+@using C1.Blazor.Grid
+@using System.Collections.ObjectModel;
+
+<h1>@AppResources.ValidationTitle</h1>
+<p>@AppResources.ValidationDescription</p>
+
+<FlexGrid ItemsSource="@customers" HeadersVisibility="GridHeadersVisibility.All" Style="@("max-height:50vh")" RowErrorStyle="@("background-color:#FAE0E1")" ErrorStyle="@("color:red")" />
+
+@code {
+    ObservableCollection<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+
+        customers[1].LastName = null;
+        customers[3].Address = "1";
+        customers[4].FirstName = "";
+    }
+}

@@ -26,3 +26,4 @@ Shows the following samples
 	- C1Accordion/C1Expander
 	- C1RangeSlider
 	- C1Excel
+	- C1Gauge

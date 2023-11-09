@@ -1,0 +1,91 @@
+﻿@page "/FlexChart/Legend"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Core
+@using C1.Blazor.Chart;
+@using C1.Blazor.Input;
+
+<FlexChart @ref="chart" Class="chart chart-gray" ChartType="ChartType.Scatter" Binding="@ColorY" BindingX="@ColorX"
+           LegendScrollbars="LegendScrollBars.Vertical" LegendPosition="Position.Right"
+           LegendStyle="font-size:14px"
+           LegendGroupHeaderStyle="font-size:18px"
+           HeaderContent="Web (X11) Colors"
+           Tooltip="@tooltip">
+    <AxisCollection>
+        <Axis AxisType="AxisType.X" Position="Position.Bottom" Title="@ColorX" AxisLine="false" MajorGrid="true" />
+        <Axis AxisType="AxisType.Y" Position="Position.Left" Title="@ColorY" AxisLine="false" MajorGrid="true" />
+    </AxisCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.LegendTitle</Title>
+    <Settings>
+        X-Axis <C1ComboBox ItemsSource="clrs" @bind-SelectedItem="ColorX" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+        Y-Axis <C1ComboBox ItemsSource="clrs" @bind-SelectedItem="ColorY" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+
+        Legend Groups <C1CheckBox @bind-IsChecked="legendGroups" Style="@("margin:8px 8px 8px 0px")" />
+    </Settings>
+    <Summary>@FlexChartRes.LegendSummary</Summary>
+    <Description>@FlexChartRes.LegendDescription</Description>
+</_Sections>
+
+@code {
+    FlexChart chart;
+    string tooltip = "<b>{Name}</b><br/>R={Red}\nG={Green}\nB={Blue}";
+    bool? _legendGroups = false;
+
+    string[] clrs = new string[] { "Red", "Green", "Blue" };
+
+    string ColorX = "Blue";
+    string ColorY = "Red";
+
+    bool? legendGroups
+    {
+        get { return _legendGroups; }
+        set
+        {
+            if (_legendGroups != value)
+            {
+                _legendGroups = value;
+                GroupSeries(value == true);
+            }
+        }
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+            SetupChart();
+
+        base.OnAfterRender(firstRender);
+    }
+
+
+    void SetupChart()
+    {
+        var clrs = WebColors.GetColors();
+
+        chart.BeginUpdate();
+
+        foreach (var clr in clrs)
+        {
+            var ser = new Series() { Name = clr.Name };
+            ser.Style = string.Format("fill:rgb({0},{1},{2})", clr.Red, clr.Green, clr.Blue);
+            ser.ItemsSource = new WebColor[] { clr };
+            chart.Series.Add(ser);
+        }
+
+        chart.EndUpdate();
+    }
+
+    void GroupSeries(bool create)
+    {
+        if (chart == null)
+            return;
+
+        chart.BeginUpdate();
+        foreach (var ser in chart.Series)
+            ser.LegendGroup = create ? ((WebColor[])ser.ItemsSource)[0].Group : null;
+        chart.EndUpdate();
+    }
+}

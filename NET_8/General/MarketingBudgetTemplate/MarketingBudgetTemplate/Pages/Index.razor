@@ -1,0 +1,805 @@
+﻿@page "/"
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+@using C1.Blazor.Input
+<FlexGrid @ref="grid"
+          CellFactory="@cellFactory"
+          MergeManager="@custommergemanager"
+          HeadersVisibility="GridHeadersVisibility.None"
+          SelectionMode="GridSelectionMode.Cell"
+          GridLinesVisibility="GridLinesVisibility.None"
+          CellStyle="@cellStyle"
+          CellEditEnded="OnCellEditEnded" CellDoubleTapped="OnStartEdit" SelectionChanging="OnSelectionChanging"
+          Style="@("max-height:100vh; position: absolute; top:0;")">
+    <FlexGridColumns>
+        @for (int i = 0; i < 16; i++)
+        {
+            if (i == 0)
+            {
+                <GridColumn Width="420" IsReadOnly="true" />
+            }
+            else if (i == 1)
+            {
+                <GridColumn Width="60" HorizontalAlignment="C1HorizontalAlignment.Center" InputType="TextBoxType.Number" />
+            }
+            else if (i < 14)
+            {
+                <GridColumn Width="100" HorizontalAlignment="C1HorizontalAlignment.Right" InputType="TextBoxType.Number" />
+            }
+            else if (i == 14)
+            {
+                <GridColumn Width="5" IsReadOnly="true" />
+            }
+            else
+            {
+                <GridColumn Width="120" IsReadOnly="true" HorizontalAlignment="C1HorizontalAlignment.Right" />
+            }
+        }
+    </FlexGridColumns>
+    <FlexGridRows>
+        @for (int i = 0; i < 59; i++)
+        {
+            if (i == 0)
+            {
+                <GridRow Height="50" IsReadOnly="true" />
+            }
+            else if (i == 1)
+            {
+                <GridRow Height="25" IsReadOnly="true" />
+            }
+            else
+            {
+                <GridRow Height="30" />
+            }
+        }
+    </FlexGridRows>
+</FlexGrid>
+
+@code
+{
+    FlexGrid grid;
+    GridCellFactory cellFactory = new CustomCellFactory();
+    C1Style cellStyle = new C1Style() { Padding = new C1Thickness(5) };
+    CustomMergeManager custommergemanager = new CustomMergeManager();
+
+    //Override AfterRender method to fill unbound grid with budget template fields, sample data and results
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            //Fix first three rows at top
+            grid.FrozenRows = 3;
+            //Fix first column to left
+            grid.FrozenColumns = 1;
+
+            //Populate Labels
+            PopulateLabels();
+
+            //Populate Sample Data
+            PopulateSampleData();
+
+            //Invoke method to calculate budget
+            CalculateBudget();
+        }
+    }
+
+    //Handle Flexgrid's BeginningEdit event to cancel editing for labels and calculated cells.
+    public void OnStartEdit(object sender, GridCellRangeEventArgs e)
+    {
+        if (e.CellRange.Column >= 2 && e.CellRange.Column <= 13)
+        {
+            if ((e.CellRange.Row >= 3 && e.CellRange.Row <= 7) ||
+            e.CellRange.Row == 10 || e.CellRange.Row == 12 || e.CellRange.Row == 14
+            || e.CellRange.Row == 16 || e.CellRange.Row == 20 || e.CellRange.Row == 25
+            || e.CellRange.Row == 26 || e.CellRange.Row == 16 || (e.CellRange.Row >= 31 && e.CellRange.Row <= 33)
+            || e.CellRange.Row == 38 || e.CellRange.Row == 39 || (e.CellRange.Row >= 44 && e.CellRange.Row <= 46)
+            || e.CellRange.Row == 50 || e.CellRange.Row == 51 || e.CellRange.Row == 55 ||
+            (e.CellRange.Row >= 56 && e.CellRange.Row <= 58))
+                e.Cancel = true;
+
+            //Remove percentage sign before edit
+            if (e.CellRange.Row == 8 || e.CellRange.Row == 9 || e.CellRange.Row == 15
+            || e.CellRange.Row == 27 || e.CellRange.Row == 34 || e.CellRange.Row == 40)
+            {
+                string cellVal = grid[e.CellRange.Row, e.CellRange.Column]?.ToString() ?? "0";
+                grid[e.CellRange.Row, e.CellRange.Column] = Convert.ToDouble(cellVal.Replace("%", ""));
+            }
+        }
+
+        if (e.CellRange.Column == 1)
+        {
+            if (e.CellRange.Row != 4 && e.CellRange.Row != 6 && e.CellRange.Row != 10
+            && e.CellRange.Row != 12 && e.CellRange.Row != 16 && e.CellRange.Row != 31
+            && e.CellRange.Row != 32 && e.CellRange.Row != 38 && e.CellRange.Row != 44)
+            {
+                e.Cancel = true;
+            }
+
+            //Remove percentage sign before edit
+            if (e.CellRange.Row == 6 || e.CellRange.Row == 12 || e.CellRange.Row == 31
+            || e.CellRange.Row == 32 || e.CellRange.Row == 38 || e.CellRange.Row == 44)
+            {
+                string cellVal = grid[e.CellRange.Row, e.CellRange.Column]?.ToString() ?? "0";
+                grid[e.CellRange.Row, e.CellRange.Column] = Convert.ToDouble(cellVal.Replace("%", ""));
+            }
+        }
+    }
+
+    //Handle Flexgrid's SelectionChanging event to disable selection of non editable cells.
+    public void OnSelectionChanging(object sender, GridCellRangeEventArgs e)
+    {
+        if (e.CellRange.Column == 0 || e.CellRange.Column == 14 || e.CellRange.Column == 15
+        || e.CellRange.Row == 0 || e.CellRange.Row == 1)
+        {
+            e.Cancel = true;
+        }
+
+        if (e.CellRange.Column >= 2 && e.CellRange.Column <= 13)
+        {
+            if ((e.CellRange.Row >= 3 && e.CellRange.Row <= 7) ||
+            e.CellRange.Row == 10 || e.CellRange.Row == 12 || e.CellRange.Row == 14
+            || e.CellRange.Row == 16 || e.CellRange.Row == 20 || e.CellRange.Row == 25
+            || e.CellRange.Row == 26 || e.CellRange.Row == 16 || (e.CellRange.Row >= 31 && e.CellRange.Row <= 33)
+            || e.CellRange.Row == 38 || e.CellRange.Row == 39 || (e.CellRange.Row >= 44 && e.CellRange.Row <= 46)
+            || e.CellRange.Row == 50 || e.CellRange.Row == 51 || e.CellRange.Row == 55 ||
+            (e.CellRange.Row >= 56 && e.CellRange.Row <= 58))
+                e.Cancel = true;
+        }
+
+        if (e.CellRange.Column == 1)
+        {
+            if (e.CellRange.Row != 4 && e.CellRange.Row != 6 && e.CellRange.Row != 10
+            && e.CellRange.Row != 12 && e.CellRange.Row != 16 && e.CellRange.Row != 31
+            && e.CellRange.Row != 32 && e.CellRange.Row != 38 && e.CellRange.Row != 44)
+            {
+                e.Cancel = true;
+            }
+        }
+    }
+
+    //Handle FlexGrid's CellEditEnded event to recalculate budget after a cell value is edited
+    public async void OnCellEditEnded(object sender, GridCellRangeEventArgs e)
+    {
+        if (grid.Columns[e.CellRange.Column].InputType == TextBoxType.Number &&
+           string.IsNullOrEmpty(grid[e.CellRange.Row, e.CellRange.Column]?.ToString()))
+        {
+            grid[e.CellRange.Row, e.CellRange.Column] = "0";
+        }
+
+        //Add percentage sign to Rate column
+        if (e.CellRange.Column == 1)
+        {
+            if (Array.IndexOf(new int[] { 15, 16, 4, 10 }, e.CellRange.Row) >= 0)
+            {
+                grid[e.CellRange.Row, e.CellRange.Column] = CoerceToInt(grid[e.CellRange.Row, e.CellRange.Column]?.ToString()).ToString();
+            }
+
+            if (e.CellRange.Row == 6 || e.CellRange.Row == 12 || e.CellRange.Row == 31
+            || e.CellRange.Row == 32 || e.CellRange.Row == 38 || e.CellRange.Row == 44)
+            {
+                string? cellVal = grid[e.CellRange.Row, e.CellRange.Column]?.ToString();
+                if (!string.IsNullOrEmpty(cellVal))
+                {
+                    if (!(cellVal.Contains('%')))
+                        grid[e.CellRange.Row, e.CellRange.Column] = string.Format("{0:0.00}", Convert.ToDouble(cellVal)) + "%";
+                    else
+                        grid[e.CellRange.Row, e.CellRange.Column] = string.Format("{0:0.00}", cellVal);
+                }
+            }
+        }
+
+        //Format cell values with percentage sign
+        if (e.CellRange.Column >= 2 && e.CellRange.Column <= 13)
+        {
+            if (Array.IndexOf(new int[] { 4, 2, 8, 27, 34, 40, 9 }, e.CellRange.Row) >= 0)
+            {
+                grid[e.CellRange.Row, e.CellRange.Column] = CoerceToInt(grid[e.CellRange.Row, e.CellRange.Column]?.ToString()).ToString();
+            }
+            if (e.CellRange.Row == 8 || e.CellRange.Row == 9 || e.CellRange.Row == 15
+            || e.CellRange.Row == 27 || e.CellRange.Row == 34 || e.CellRange.Row == 40)
+            {
+                string? cellVal = grid[e.CellRange.Row, e.CellRange.Column]?.ToString();
+                if (!string.IsNullOrEmpty(cellVal))
+                {
+                    if (!(cellVal.Contains('%')))
+                        grid[e.CellRange.Row, e.CellRange.Column] = cellVal + "%";
+                }
+                else
+                {
+                    grid[e.CellRange.Row, e.CellRange.Column] = Convert.ToString(0) + "%";
+                }
+            }
+
+            //Format cell values with two decimal places
+            if (e.CellRange.Row == 29 || e.CellRange.Row == 30 || e.CellRange.Row == 36
+            || e.CellRange.Row == 37 || e.CellRange.Row == 42 || e.CellRange.Row == 48
+            || e.CellRange.Row == 53)
+            {
+                string? cellVal = grid[e.CellRange.Row, e.CellRange.Column]?.ToString();
+                if (!string.IsNullOrEmpty(cellVal))
+                {
+                    grid[e.CellRange.Row, e.CellRange.Column] = string.Format("{0:0.00}", Convert.ToDouble(cellVal));
+                }
+            }
+        }
+
+        //Invoke method to reclaculate budget based on new values.
+        CalculateBudget();
+    }
+
+    //Populate budget fields labels
+    private void PopulateLabels()
+    {
+        //Template Title
+        grid[0, 0] = "CHANNEL MARKETING BUDGET";
+
+        //Populate Budget template field labels
+
+        //Budget Rate and Timeline
+        for (int c = 1; c < 16; c++)
+        {
+            if (c == 1)
+                grid[1, c] = "Rate";
+            else if (c == 15)
+                grid[1, c] = "Total";
+            else if (c <= 13)
+                grid[1, c] = "Month " + (c - 1).ToString();
+        }
+
+        //Budget Fields
+        grid[2, 0] = "ANTICIPATED SALES TOTAL $(000)";
+        grid[3, 0] = "PERSONNEL (% OF TOTAL SALES)";
+        grid[4, 0] = "Human Resources - Headcount";
+        grid[5, 0] = "Human Resources - Cost";
+        grid[6, 0] = "Commission";
+        grid[7, 0] = "Personnel Total $(000)";
+        grid[8, 0] = "DIRECT MARKETING (% OF TOTAL SALES)";
+        grid[9, 0] = "Telemarketing (% of Direct Sales)";
+        grid[10, 0] = "     Human Resources - Headcount";
+        grid[11, 0] = "     Infrastructure Support";
+        grid[12, 0] = "     Commission";
+        grid[13, 0] = "     Training";
+        grid[14, 0] = "Telemarketing Total $(000)";
+        grid[15, 0] = "Internet Marketing (% of Direct Sales)";
+        grid[16, 0] = "      Human Resources - Headcount";
+        grid[17, 0] = "      Website Development (one-time cost)";
+        grid[18, 0] = "      Hosting";
+        grid[19, 0] = "      Support & Maintenance";
+        grid[20, 0] = "Internet Marketing Total $(000)";
+        grid[21, 0] = "Direct email (% of direct sales)";
+        grid[22, 0] = "      Human Resources - Cost";
+        grid[23, 0] = "      Material";
+        grid[24, 0] = "      Postage";
+        grid[25, 0] = "Direct email total $ (000)";
+        grid[26, 0] = "Direct Marketing Total $(000)";
+        grid[27, 0] = "AGENT/BROKER (% OF TOTAL SALES)";
+        grid[28, 0] = "Communication";
+        grid[29, 0] = "Training";
+        grid[30, 0] = "Promotions";
+        grid[31, 0] = "Discounts";
+        grid[32, 0] = "Commission (% of Agent's Sales)";
+        grid[33, 0] = "Agent/Broker Total $(000)";
+        grid[34, 0] = "DISTRIBUTORS (% OF TOTAL SALES)";
+        grid[35, 0] = "Communication";
+        grid[36, 0] = "Training";
+        grid[37, 0] = "Promotions";
+        grid[38, 0] = "Commission/Discounts (% of Distributors' Sales)";
+        grid[39, 0] = "Distributor Total $(000)";
+        grid[40, 0] = "RETAILER (% OF TOTAL SALES)";
+        grid[41, 0] = "Communication";
+        grid[42, 0] = "Training";
+        grid[43, 0] = "Promotions";
+        grid[44, 0] = "Commission/Discounts (% of Retail Sales)";
+        grid[45, 0] = "Retailer Total $(000)";
+        grid[46, 0] = "CUSTOMER ACQUISITION & RETENTION (CAR)";
+        grid[47, 0] = "Human Resources";
+        grid[48, 0] = "Communications";
+        grid[49, 0] = "Promotions/Coupons";
+        grid[50, 0] = "CAR Total $(000)";
+        grid[51, 0] = "OTHER EXPENSES";
+        grid[52, 0] = "Travel";
+        grid[53, 0] = "Infrastructure (computer, telephone, etc.)";
+        grid[54, 0] = "Channel Support";
+        grid[55, 0] = "Other Expenses Total $(000)";
+        grid[57, 0] = "TOTAL MARKETING BUDGET:";
+    }
+
+    //Populate sample budget data
+    private void PopulateSampleData()
+    {
+        //Rate Column
+        //Row 5: Human Resources - Headcount
+        grid[4, 1] = 5;
+        //Row 7: Commission
+        grid[6, 1] = string.Format("{0:0.00}", 0.1) + "%";
+        //Row 11: Human Resources - Headcount
+        grid[10, 1] = 3;
+        //Row 13: Commission
+        grid[12, 1] = string.Format("{0:0.00}", 0.1) + "%";
+        //Row 17: Human Resources - Headcount
+        grid[16, 1] = 1;
+        //Row 32: Commissions
+        //Row 33: Commission (% of Agent's Sales)
+        grid[31, 1] = grid[32, 1] = string.Format("{0:0.00}", 10) + "%";
+        //Row 39: Commission/Discounts (% of Distributors' Sales)
+        grid[38, 1] = string.Format("{0:0.00}", 15) + "%";
+        //Row 45: Commission/Discounts (% of Retail Sales)
+        grid[44, 1] = string.Format("{0:0.00}", 10) + "%";
+
+        //Row 3: Anticipated Sales
+        grid[2, 2] = 750;
+        grid[2, 3] = 200;
+        grid[2, 4] = 500;
+        grid[2, 5] = 1500;
+        grid[2, 6] = 1200;
+        grid[2, 7] = 1500;
+        grid[2, 8] = 1500;
+        grid[2, 9] = 1800;
+        grid[2, 10] = 2000;
+        grid[2, 11] = 2000;
+        grid[2, 12] = 2000;
+        grid[2, 13] = 2000;
+
+        //Row 9: DIRECT MARKETING (% OF TOTAL SALES)
+        grid[8, 2] = Convert.ToString(100) + "%";
+        grid[8, 3] = Convert.ToString(100) + "%";
+        grid[8, 4] = Convert.ToString(75) + "%";
+        grid[8, 5] = Convert.ToString(40) + "%";
+        grid[8, 6] = Convert.ToString(33) + "%";
+        grid[8, 7] = Convert.ToString(25) + "%";
+        grid[8, 8] = Convert.ToString(20) + "%";
+        grid[8, 9] = Convert.ToString(10) + "%";
+        grid[8, 10] = Convert.ToString(5) + "%";
+        grid[8, 11] = Convert.ToString(5) + "%";
+        grid[8, 12] = Convert.ToString(5) + "%";
+        grid[8, 13] = Convert.ToString(5) + "%";
+
+        //Row 10: Telemarketing (% of Direct Sales)
+        for (int c = 2; c <= 13; c++)
+        {
+            if (c == 2)
+                grid[9, c] = Convert.ToString(100) + "%";
+            else
+                grid[9, c] = Convert.ToString(50) + "%";
+        }
+
+        //Row 12: Infrastructure Support
+        //Row 14: Training
+        for (int c = 2; c <= 13; c++)
+        {
+            if (c % 2 == 0)
+                grid[11, c] = grid[13, c] = 25;
+            else
+                grid[11, c] = grid[13, c] = 10;
+        }
+
+        //Row 16: Internet Marketing (% of Direct Sales)
+        //Row 19: Hosting
+        //Row 24: Material
+        //Row 25: Postage
+        //Row 28: AGENT/BROKER (% OF TOTAL SALES)
+        //Row 29: Communication
+        //Row 30: Training
+        //Row 31: Promotions
+        //Row 36: Communication
+        //Row 37: Training
+        //Row 38: Promotions
+        //Row 42: Communication
+        //Row 43: Training
+        //Row 44: Promotions
+        //Row 48: Human Resources
+        //Row 49: Communications
+        //Row 50: Promotions/Coupons
+        //Row 53: Travel
+        //Row 54: Infrastructure (computer, telephone, etc.)
+        //Row 55: Channel Support
+        for (int c = 2; c <= 13; c++)
+        {
+            grid[15, c] = Convert.ToString(25) + "%";
+            grid[18, c] = 10;
+            grid[23, c] = 1000;
+            grid[24, c] = 250;
+            grid[27, c] = Convert.ToString(10) + "%";
+            grid[28, c] = grid[35, c] = grid[41, c] = grid[47, c] = grid[52, c] = 50;
+            grid[29, c] = grid[36, c] = grid[42, c] = grid[48, c] = grid[53, c] = string.Format("{0:0.00}", 250);
+            grid[30, c] = grid[37, c] = grid[43, c] = string.Format("{0:0.00}", 600);
+            grid[49, c] = grid[54, c] = 600;
+        }
+
+        //Row 18: Website Development (one-time cost)
+        grid[17, 2] = 500;
+
+        //Row 20: Support & Maintenance
+        grid[19, 2] = 25;
+        grid[19, 12] = 25;
+
+        //Row 35: DISTRIBUTORS (% OF TOTAL SALES)
+        for (int c = 2; c <= 13; c++)
+        {
+            if (c <= 6)
+                grid[34, c] = Convert.ToString(0) + "%";
+            else if (c == 7)
+                grid[34, c] = Convert.ToString(15) + "%";
+            else if (c == 8)
+                grid[34, c] = Convert.ToString(20) + "%";
+            else
+                grid[34, c] = Convert.ToString(40) + "%";
+        }
+
+        //Row 41: RETAILER (% OF TOTAL SALES)
+        grid[40, 2] = Convert.ToString(0) + "%";
+        grid[40, 3] = Convert.ToString(0) + "%";
+        grid[40, 4] = Convert.ToString(25) + "%";
+        grid[40, 5] = Convert.ToString(60) + "%";
+        grid[40, 6] = Convert.ToString(67) + "%";
+        grid[40, 7] = Convert.ToString(60) + "%";
+        grid[40, 8] = Convert.ToString(60) + "%";
+        grid[40, 9] = Convert.ToString(50) + "%";
+        grid[40, 10] = Convert.ToString(30) + "%";
+        grid[40, 11] = Convert.ToString(30) + "%";
+        grid[40, 12] = Convert.ToString(30) + "%";
+        grid[40, 13] = Convert.ToString(30) + "%";
+    }
+
+    //Method to calculate budget
+    private bool CalculateBudget()
+    {
+        for (int c = 2; c <= 13; c++)
+        {
+            //Row 4: PERSONNEL (% OF TOTAL SALES)
+            string sval1 = (string)grid[8, c] ?? "0";
+            int val1 = Convert.ToInt32(sval1.Replace('%', ' '));
+            string sval2 = (string)grid[27, c] ?? "0";
+            int val2 = Convert.ToInt32(sval2.Replace('%', ' '));
+            string sval3 = (string)grid[34, c] ?? "0";
+            int val3 = Convert.ToInt32(sval3.Replace('%', ' '));
+            string sval4 = (string)grid[40, c] ?? "0";
+            int val4 = Convert.ToInt32(sval4.Replace('%', ' '));
+            int resVal = val1 + val2 + val3 + val4;
+            grid[3, c] = Convert.ToString(resVal) + "%";
+
+            //Row 5: Human Resources - Headcount
+            grid[4, c] = grid[4, 1];
+
+            //Row 6: Human Resources - Cost
+            int val5 = Convert.ToInt32(grid[4, 1]);
+            int val6 = Convert.ToInt32(grid[4, c]);
+            grid[5, c] = string.Format("{0:0.00}", val5 * val6);
+
+            //Row 7: Commission
+            int val7 = Convert.ToInt32(grid[2, c]);
+            string sval8 = (string)grid[6, 1] ?? "0";
+            double val8 = Convert.ToDouble(sval8.Replace('%', ' '));
+            grid[6, c] = string.Format("{0:0.00}", (val7 * val8) / 100);
+
+            //Row 8: Personnel Total $(000)
+            double val9 = Convert.ToDouble(grid[5, c]);
+            double val10 = Convert.ToDouble(grid[6, c]);
+            grid[7, c] = string.Format("{0:0.00}", val9 + val10);
+
+            //Row 11: Human Resources - Headcount
+            int val11 = Convert.ToInt32(grid[10, 1]);
+            string sval12 = (string)grid[9, c] ?? "0";
+            int val12 = Convert.ToInt32(sval12.Replace('%', ' '));
+            grid[10, c] = Convert.ToDouble(val11 * val12) / 100;
+
+            //Row 13: Commission
+            string sval13 = (string)grid[12, 1] ?? "0";
+            double val13 = Convert.ToDouble(sval13.Replace('%', ' '));
+            int val14 = Convert.ToInt32(grid[2, c]);
+            string sval15 = (string)grid[8, c] ?? "0";
+            int val15 = Convert.ToInt32(sval15.Replace('%', ' '));
+            string sval16 = (string)grid[9, c] ?? "0";
+            int val16 = Convert.ToInt32(sval16.Replace('%', ' '));
+            grid[12, c] = string.Format("{0:0.00}", (decimal)(val13 * val14 * val15 * val16) / (100 * 100 * 100));
+
+            //Row 15: Telemarketing Total $(000)
+            double val17 = Convert.ToDouble(grid[10, c]);
+            double val18 = Convert.ToDouble(grid[11, c]);
+            double val19 = Convert.ToDouble(grid[12, c]);
+            double val20 = Convert.ToDouble(grid[13, c]);
+            grid[14, c] = string.Format("{0:0.00}", val17 + val18 + val19 + val20);
+
+            //Row 17: Human Resources - Headcount
+            int val21 = Convert.ToInt32(grid[16, 1]);
+            string sval22 = (string)grid[15, c] ?? "0";
+            int val22 = Convert.ToInt32(sval22.Replace('%', ' '));
+            grid[16, c] = Convert.ToDouble(val21 * val22) / 100;
+
+            //Row 21: Internet Marketing Total $(000)
+            double val23 = Convert.ToDouble(grid[16, c]);
+            double val24 = Convert.ToDouble(grid[17, c]);
+            double val25 = Convert.ToDouble(grid[18, c]);
+            double val26 = Convert.ToDouble(grid[19, c]);
+            grid[20, c] = string.Format("{0:0.00}", val23 + val24 + val25 + val26);
+
+            //Row 26: Direct email total $ (000)
+            double val27 = Convert.ToDouble(grid[22, c]);
+            double val28 = Convert.ToDouble(grid[23, c]);
+            double val29 = Convert.ToDouble(grid[24, c]);
+            grid[25, c] = string.Format("{0:0.00}", val27 + val28 + val29);
+
+            //Row 27: Direct Marketing Total $(000)
+            double val30 = Convert.ToDouble(grid[14, c]);
+            double val31 = Convert.ToDouble(grid[20, c]);
+            double val32 = Convert.ToDouble(grid[25, c]);
+            grid[26, c] = string.Format("{0:0.00}", val30 + val31 + val32);
+
+            //Row 32: Discounts
+            string sval33 = (string)grid[31, 1] ?? "0";
+            double val33 = Convert.ToDouble(sval33.Replace('%', ' '));
+            int val34 = Convert.ToInt32(grid[2, c]);
+            string sval35 = (string)grid[27, c] ?? "0";
+            int val35 = Convert.ToInt32(sval35.Replace('%', ' '));
+            grid[31, c] = string.Format("{0:0.00}", (decimal)(val33 * val34 * val35) / (100 * 100));
+
+            //Row 33: Commission (% of Agent's Sales)
+            string sval36 = (string)grid[32, 1] ?? "0";
+            double val36 = Convert.ToDouble(sval36.Replace('%', ' '));
+            grid[32, c] = string.Format("{0:0.00}", (decimal)(val34 * val35 * val36) / (100 * 100));
+
+            //Row 34: Agent/Broker Total $(000)
+            double val37 = Convert.ToDouble(grid[28, c]);
+            double val38 = Convert.ToDouble(grid[29, c]);
+            double val39 = Convert.ToDouble(grid[30, c]);
+            double val40 = Convert.ToDouble(grid[31, c]);
+            double val41 = Convert.ToDouble(grid[32, c]);
+            grid[33, c] = string.Format("{0:0.00}", val37 + val38 + val39 + val40 + val41);
+
+            //Row 39: Commission/Discounts (% of Distributors' Sales)
+            string sval42 = (string)grid[38, 1] ?? "0";
+            double val42 = Convert.ToDouble(sval42.Replace('%', ' '));
+            string sval43 = (string)grid[34, c] ?? "0";
+            int val43 = Convert.ToInt32(sval43.Replace('%', ' '));
+            grid[38, c] = (decimal)(val34 * val42 * val43) / (100 * 100);
+
+            //Row 40: Distributor Total $(000)
+            double val44 = Convert.ToDouble(grid[35, c]);
+            double val45 = Convert.ToDouble(grid[36, c]);
+            double val46 = Convert.ToDouble(grid[37, c]);
+            double val47 = Convert.ToDouble(grid[38, c]);
+            grid[39, c] = string.Format("{0:0.00}", val44 + val45 + val46 + val47);
+
+            //Row 45: Commission/Discounts (% of Retail Sales)
+            string sval48 = (string)grid[44, 1] ?? "0";
+            double val48 = Convert.ToDouble(sval48.Replace('%', ' '));
+            string sval49 = (string)grid[40, c] ?? "0";
+            int val49 = Convert.ToInt32(sval49.Replace('%', ' '));
+            grid[44, c] = (decimal)(val34 * val48 * val49) / (100 * 100);
+
+            //Row 46: Retailer Total $(000)
+            double val50 = Convert.ToDouble(grid[41, c]);
+            double val51 = Convert.ToDouble(grid[42, c]);
+            double val52 = Convert.ToDouble(grid[43, c]);
+            double val53 = Convert.ToDouble(grid[44, c]);
+            grid[45, c] = string.Format("{0:0.00}", val50 + val51 + val52 + val53);
+
+            //Row 51: CAR Total $(000)
+            double val54 = Convert.ToDouble(grid[47, c]);
+            double val55 = Convert.ToDouble(grid[48, c]);
+            double val56 = Convert.ToDouble(grid[49, c]);
+            grid[50, c] = string.Format("{0:0.00}", val54 + val55 + val56);
+
+            //Row 56: Other Expenses Total $(000)
+            double val57 = Convert.ToDouble(grid[52, c]);
+            double val58 = Convert.ToDouble(grid[53, c]);
+            double val59 = Convert.ToDouble(grid[54, c]);
+            grid[55, c] = string.Format("{0:0.00}", val57 + val58 + val59);
+
+            //Row 58: TOTAL MARKETING BUDGET:
+            double val60 = Convert.ToDouble(grid[7, c]);
+            double val61 = Convert.ToDouble(grid[26, c]);
+            double val62 = Convert.ToDouble(grid[33, c]);
+            double val63 = Convert.ToDouble(grid[39, c]);
+            double val64 = Convert.ToDouble(grid[45, c]);
+            double val65 = Convert.ToDouble(grid[50, c]);
+            double val66 = Convert.ToDouble(grid[55, c]);
+            grid[57, c] = string.Format("{0:0,0.00}", val60 + val61 + val62 + val63 + val64 + val65 + val66);
+        }
+
+        //Total Column
+        for (int r = 2; r < 58; r++)
+        {
+            if (r != 3 && r != 4 && r != 8 && r != 9 && r != 15 && r != 21 && r != 27 && r != 34 && r != 40
+             && r != 46 && r != 51 && r != 56)
+            {
+                double rtotal = 0;
+                for (int c = 2; c <= 13; c++)
+                {
+                    rtotal = rtotal + Convert.ToDouble(grid[r, c]);
+                }
+
+                if (r != 2)
+                    grid[r, 15] = string.Format("{0:0,0.00}", rtotal);
+                else
+                    grid[r, 15] = rtotal;
+            }
+        }
+
+        return true;
+    }
+
+    private static int CoerceToInt(string? value)
+    {
+        int result = default;
+        if (!string.IsNullOrEmpty(value))
+        {
+            value = value.Replace("%", "");
+            if (!int.TryParse(value, out result))
+            {
+                if (double.TryParse(value, out double d))
+                {
+                    result = (int)d;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    //Define custom CellFactory to apply style/formatting to cells
+    public class CustomCellFactory : GridCellFactory
+    {
+        public override void PrepareCellStyle(GridCellType cellType, GridCellRange range, C1Style style, C1Thickness internalBorders)
+        {
+            base.PrepareCellStyle(cellType, range, style, internalBorders);
+
+            //Style Calculator border
+            if (cellType == GridCellType.Cell)
+            {
+                //Title styling
+                if (range.Column == 0 && range.Row == 0)
+                {
+                    style.FontSize = 26;
+                    style.FontWeight = "Bold";
+                    style.Color = C1Color.FromArgb(255, 70, 160, 201);
+                    style.TextAlign = C1StyleTextAlign.Center;
+                }
+
+                if (range.Row == 1)
+                {
+                    style.FontSize = 14;
+                    style.BackgroundColor = C1Color.FromArgb(255, 217, 236, 244);
+                    style.BorderTopStyle = C1StyleBorderStyle.Solid;
+                    style.BorderTopWidth = 3;
+                    style.BorderBottomStyle = C1StyleBorderStyle.Solid;
+                    style.BorderBottomWidth = 3;
+                    style.BorderColor = C1Color.FromArgb(255, 143, 197, 222);
+                    style.TextAlign = C1StyleTextAlign.Center;
+                }
+
+                if (range.Row == 2)
+                {
+                    style.FontSize = 16;
+                    style.FontWeight = "Bold";
+                    style.Color = C1Color.FromArgb(255, 70, 160, 201);
+                    style.BorderBottomStyle = C1StyleBorderStyle.Solid;
+                    style.BorderBottomWidth = 3;
+                    style.BorderColor = C1Color.FromArgb(255, 143, 197, 222);
+                    style.TextAlign = C1StyleTextAlign.Center;
+                }
+
+                if (range.Column == 0 && range.Row > 0 && range.Row < 58)
+                {
+                    style.BorderRightStyle = C1StyleBorderStyle.Solid;
+                    style.BorderRightWidth = 3;
+                    style.BorderColor = C1Color.FromArgb(255, 143, 197, 222);
+                }
+
+                if (range.Row > 2)
+                {
+                    style.BorderBottomStyle = C1StyleBorderStyle.Dotted;
+                    style.BorderBottomWidth = 1;
+                    style.BorderColor = C1Color.FromArgb(255, 143, 197, 222);
+                }
+
+                if (range.Row == 3 || range.Row == 8 || range.Row == 27 || range.Row == 34
+                || range.Row == 40 || range.Row == 46 || range.Row == 51)
+                {
+                    style.FontSize = 16;
+                    style.FontWeight = "Bold";
+                }
+
+                if ((range.Row >= 4 && range.Row <= 6) || (range.Row >= 9 && range.Row <= 13) || (range.Row >= 15 && range.Row <= 20)
+                || (range.Row >= 21 && range.Row <= 24) || (range.Row >= 28 && range.Row <= 32)
+                || (range.Row >= 35 && range.Row <= 38) || (range.Row >= 41 && range.Row <= 44)
+                || (range.Row >= 47 && range.Row <= 49) || (range.Row >= 52 && range.Row <= 54))
+                {
+                    style.FontSize = 14;
+                    style.WhiteSpace = C1StyleWhiteSpace.Pre;
+                }
+
+                if (range.Row == 7 || range.Row == 26 || range.Row == 33 || range.Row == 39
+                || range.Row == 45 || range.Row == 50 || range.Row == 55)
+                {
+                    style.FontSize = 16;
+                    style.FontWeight = "Bold";
+                    style.BackgroundColor = C1Color.FromArgb(255, 143, 197, 222);
+                    style.Color = C1Color.White;
+                }
+
+                if (range.Row == 14 || range.Row == 20 || range.Row == 25)
+                {
+                    style.FontSize = 16;
+                    style.FontWeight = "Bold";
+                    style.Color = C1Color.FromArgb(255, 70, 160, 201);
+                    style.BackgroundColor = C1Color.FromArgb(255, 217, 236, 244);
+                }
+
+                //Total Row Styling
+                if (range.Row == 57)
+                {
+                    style.FontSize = 16;
+                    style.FontWeight = "Bold";
+                    style.Color = C1Color.White;
+                    style.BackgroundColor = C1Color.FromArgb(255, 70, 160, 201);
+                }
+
+                //Rate Column styling
+                if (range.Column == 1)
+                {
+                    if (range.Row != 0 && range.Row != 1 && range.Row != 4 && range.Row != 6 && range.Row != 7 &&
+                    range.Row != 10 && range.Row != 12 && range.Row != 14 && range.Row != 16 &&
+                    range.Row != 20 && range.Row != 25 && range.Row != 26 && range.Row != 31 &&
+                    range.Row != 32 && range.Row != 33 && range.Row != 38 && range.Row != 39 &&
+                    range.Row != 44 && range.Row != 45 && range.Row != 50 && range.Row != 55 &&
+                    range.Row != 56 && range.Row != 57 && range.Row != 58)
+                    {
+                        style.BackgroundColor = C1Color.FromArgb(255, 242, 242, 242);
+                    }
+                }
+
+                if (range.Column == 14)
+                {
+                    style.BackgroundColor = C1Color.White;
+                }
+
+                //Total Column Styling
+                if (range.Column == 15)
+                {
+                    if (range.Row != 58)
+                        style.BackgroundColor = C1Color.FromArgb(255, 217, 236, 244);
+
+                    if (range.Row != 2)
+                    {
+                        if (range.Row != 57)
+                            style.Color = C1Color.Black;
+                        else
+                            style.Color = C1Color.FromArgb(255, 46, 122, 158);
+                    }
+
+                    if (range.Row == 1 || range.Row == 7 || range.Row == 14 || range.Row == 20 || range.Row == 25 || range.Row == 26
+                    || range.Row == 33 || range.Row == 39 || range.Row == 45 || range.Row == 50 || range.Row == 55
+                    || range.Row == 57)
+                        style.FontWeight = "Bold";
+                }
+
+                //Calculated values styling
+                if (range.Column >= 2 && range.Column <= 13)
+                {
+                    if ((range.Row >= 3 && range.Row <= 6) || range.Row == 10 || range.Row == 12
+                    || range.Row == 16 || range.Row == 31 || range.Row == 32 || range.Row == 38
+                    || range.Row == 44 || range.Row == 46 || range.Row == 51)
+                    {
+                        style.BackgroundColor = C1Color.FromArgb(255, 242, 242, 242);
+                    }
+                }
+            }
+        }
+    }
+
+    //Define custom MergeManager class to merge cell ranges based on custom logic
+    public class CustomMergeManager : GridMergeManager
+    {
+        public override GridCellRange GetMergedRange(GridCellType cellType, GridCellRange range)
+        {
+            //Merge cells containing Budget template itle
+            if (cellType == GridCellType.Cell && (range.Row == 0 && range.Column >= 0 && range.Column <= 15))
+            {
+                GridCellRange range1 = new GridCellRange(0, 0, 0, 15);
+                return range1;
+            }
+            return base.GetMergedRange(cellType, range);
+        }
+    }
+}

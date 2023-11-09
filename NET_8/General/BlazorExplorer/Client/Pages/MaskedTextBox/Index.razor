@@ -1,0 +1,175 @@
+﻿@page "/MaskedTextBox/Index"
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+
+<_Sections>
+    <Title>@MaskedTextBoxRes.OverviewTitle</Title>
+    <Summary>@MaskedTextBoxRes.OverviewSummary</Summary>
+    <Description>@MaskedTextBoxRes.OverviewDescription</Description>
+</_Sections>
+
+
+<h4>@MaskedTextBoxRes.Result</h4>
+
+<C1MaskedTextBox @ref="@C1MaskedTextBox" 
+MaskFormat="_maskedTextBoxSettings.MaskFormat"
+FinishedTextChange="FinishedTextChange"
+DisplayMode="_maskedTextBoxSettings.DisplayMode"
+PromptChar="@(_maskedTextBoxSettings.PromptChar != null && _maskedTextBoxSettings.PromptChar.Length == 1 ? Convert.ToChar(_maskedTextBoxSettings.PromptChar) : C1MaskedTextBoxSettings.DefaultPrompt)"
+Mask="@_maskedTextBoxSettings.Mask"
+Placeholder="@_maskedTextBoxSettings.Placeholder"></C1MaskedTextBox>  <span class="@GetStatusIcon()"></span>
+
+<br />
+<br />
+@MaskedTextBoxRes.RawValue
+<br />
+
+<div style="border: 1px dotted; padding: 5px; margin: 3px; width: 300px;">
+    <label>@(string.IsNullOrWhiteSpace(C1MaskedTextBox?.Value)? C1MaskedTextBoxSettings.NotAvailableText :C1MaskedTextBox.Value)</label>
+</div>
+
+
+<hr />
+
+
+<h4>@MaskedTextBoxRes.Settings</h4>
+
+<h6>@MaskedTextBoxRes.MaskTemplates</h6>
+
+@foreach (var con in C1MaskedTextBoxSettings.MaskTemplates)
+{
+<C1HtmlButton Class="mask-template" Click="() => ChangeMaskTemplate(con.Mask)">
+    <ChildContent>
+        <b>@con.Name</b> / <i>@con.Mask </i>
+        <br />
+        -----@MaskedTextBoxRes.ExampleResult-----
+        <br />
+        @con.SampleResult
+    </ChildContent>
+</C1HtmlButton>
+}
+
+<br />
+
+
+<h6>@MaskedTextBoxRes.CustomMask</h6>
+<C1TextBox @bind-Text="@_maskedTextBoxSettings.PromptChar" Placeholder="PromptChar"></C1TextBox>
+<C1TextBox @bind-Text="@_maskedTextBoxSettings.Mask" Placeholder="Mask"></C1TextBox>
+<br />
+<br />
+<C1ComboBox ItemsSource="C1MaskedTextBoxSettings.MaskFormats" T="MaskFormat" Placeholder="Mask Raw Value Format" @bind-SelectedItem="_maskedTextBoxSettings.MaskFormat" SelectedIndexChanged="StateHasChanged" />
+<C1ComboBox ItemsSource="C1MaskedTextBoxSettings.MaskDisplayModes" T="MaskDisplayMode" Placeholder="Display Mode" @bind-SelectedItem="_maskedTextBoxSettings.DisplayMode" SelectedIndexChanged="StateHasChanged" />
+<C1TextBox @bind-Text="@_maskedTextBoxSettings.Placeholder" Placeholder="@MaskedTextBoxRes.Placeholder"></C1TextBox>
+
+@code
+{
+    public class MaskTemplate
+    {
+        public string Name { get; set; }
+        public string Mask { get; set; }
+        public string SampleResult { get; set; }
+    }
+
+    public class C1MaskedTextBoxSettings
+    {
+        public string Placeholder { get; set; }
+        public string Mask { get; set; }
+        public string PromptChar { get; set; }
+        public MaskDisplayMode DisplayMode { get; set; }
+        public MaskFormat MaskFormat { get; set; } = MaskFormat.ExcludePromptAndLiterals;
+
+        public static readonly IList<MaskDisplayMode> MaskDisplayModes = new List<MaskDisplayMode> { MaskDisplayMode.FocusIn, MaskDisplayMode.Always };
+        public static readonly IList<MaskFormat> MaskFormats = new List<MaskFormat> { MaskFormat.IncludePrompt, MaskFormat.IncludeLiterals, MaskFormat.IncludePromptAndLiterals, MaskFormat.ExcludePromptAndLiterals };
+
+        public static readonly IList<MaskTemplate> MaskTemplates = new List<MaskTemplate>
+    {
+    new MaskTemplate()
+    {
+    Mask = "000-00-0000",
+    Name = "Social Security Number",
+    SampleResult = "213-21-3213"
+    },
+    new MaskTemplate()
+    {
+    Mask = "00000",
+    Name = "Zip Code",
+    SampleResult = "12312"
+    },
+    new MaskTemplate()
+    {
+    Mask = "00000-0000",
+    Name = "Zip+4 Code",
+    SampleResult = "32132-1321"
+    },
+    new MaskTemplate()
+    {
+    Mask = "(999) 000-0000",
+    Name = "Phone Number",
+    SampleResult = "(213) 123-2132"
+    },
+    new MaskTemplate()
+    {
+    Mask = "<LLL",
+    Name = "Shift down",
+    SampleResult = "aaa"
+    },
+    new MaskTemplate()
+    {
+    Mask = ">LLL",
+    Name = "Shift up",
+    SampleResult = "AAA"
+    },
+    new MaskTemplate()
+    {
+    Mask = "\\\\### ###",
+    Name = "Escape",
+    SampleResult = "\\321 232"
+    },
+    new MaskTemplate()
+    {
+    Mask = "[\\9\\9] \\### \\###",
+    Name = "Complicated Escape",
+    SampleResult = "[99] #21 #21"
+    },
+    new MaskTemplate()
+    {
+    Mask = "[\\9\\9] \\### \\### >LLL <LLL",
+    Name = "Complicated Escape & Shift",
+    SampleResult = "[99] #32 #32 AAA aaa"
+    }
+    };
+
+        public static char DefaultPrompt = '_';
+        public static string NotAvailableText = "N/A";
+    }
+
+    public C1MaskedTextBox C1MaskedTextBox;
+
+    readonly C1MaskedTextBoxSettings _maskedTextBoxSettings = new C1MaskedTextBoxSettings();
+
+    public string GetStatusIcon()
+    {
+        return C1MaskedTextBox?.IsValid != null && C1MaskedTextBox.IsValid ? "oi oi-circle-check" : "oi oi-circle-x";
+    }
+
+    private void FinishedTextChange(string text)
+    {
+        StateHasChanged();
+    }
+
+
+    private void ChangeMaskTemplate(string mask)
+    {
+        _maskedTextBoxSettings.Mask = mask;
+
+        StateHasChanged();
+    }
+}
+
+
+<style>
+    .mask-template {
+    margin: 5px;
+    padding: 3px;
+    }
+</style>

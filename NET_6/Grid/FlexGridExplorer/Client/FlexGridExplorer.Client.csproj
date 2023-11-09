@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
   <PropertyGroup Label="Globals">
     <SccProjectName>SAK</SccProjectName>
     <SccProvider>SAK</SccProvider>
@@ -7,7 +6,7 @@
     <SccLocalPath>SAK</SccLocalPath>
   </PropertyGroup>
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <AssemblyName>FlexGridExplorer</AssemblyName>
     <RootNamespace>FlexGridExplorer</RootNamespace>
   </PropertyGroup>
@@ -30,34 +29,34 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Accordion">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Calendar">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
-    <PackageReference Include="C1.DataCollection.Serialization" Version="1.0.20232.161" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.6" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.6" />
-    <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
+    <PackageReference Include="C1.DataCollection.Serialization" Version="7.0.20233.174" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.12" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.20" />
+    <PackageReference Include="System.Net.Http.Json" Version="7.0.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\FlexGridExplorer.Shared.csproj" />

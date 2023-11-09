@@ -6,7 +6,7 @@
     <SccLocalPath>SAK</SccLocalPath>
   </PropertyGroup>
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <AssemblyName>BlazorExplorer</AssemblyName>
     <RootNamespace>BlazorExplorer</RootNamespace>
   </PropertyGroup>
@@ -44,8 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Data\ControlPages.xml;Pages\**\*.razor;Models\**\*;" Exclude="bin\**;obj\**;**\*.csproj" />
-    <EmbeddedResource Remove="Pages\FlexGrid\FilterRow.razor" />
-    <EmbeddedResource Remove="Pages\FlexPie\MultiplePies.razor" />
     <EmbeddedResource Include=".gclicx" />
     <EmbeddedResource Include="Data\countries.json" />
     <EmbeddedResource Include="Data\DataFilter\cars.xml" />
@@ -57,58 +55,51 @@
     <EmbeddedResource Include="Data\WebColors.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Pages\Calendar\Index.razor" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Pages\DatePicker\Index.razor" />
-    <None Include="Pages\DateTimePicker\Index.razor" />
-    <None Include="Pages\TimeEditor\Index.razor" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="C1.Blazor.Accordion">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Calendar">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Chart">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Gauge">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid.Excel">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Menu">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.TreeView">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Excel" Version="5.0.20232.27" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.20" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Localization\ExcelRes.Designer.cs">
@@ -226,12 +217,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>MenuRes.resx</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Update="wwwroot\Content\css\Site.css">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Localization\ExcelRes.resx">

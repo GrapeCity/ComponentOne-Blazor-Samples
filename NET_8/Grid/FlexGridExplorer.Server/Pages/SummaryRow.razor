@@ -1,0 +1,41 @@
+﻿@page "/summaryrows"
+@using Resources
+@using C1.Blazor.Grid
+@using System.Collections.ObjectModel;
+
+<h1>@AppResources.SummaryRowTitle</h1>
+<p>@AppResources.SummaryRowDescription</p>
+
+<FlexGrid AutoGenerateColumns=false ItemsSource="@list" HeadersVisibility="GridHeadersVisibility.All" Style="@("max-height:50vh")">
+    <FlexGridColumns>
+        <GridColumn Binding="[Col1]" Format="C2" Width="400">
+            <GridColumnAggregateFunctions>
+                <GridAggregateFunction Aggregate="GridAggregate.Minimum" />
+                <GridAggregateFunction Aggregate="GridAggregate.Maximum" />
+                <CountBetweenFunction Minimum="0.5" Maximum="0.7" Caption="Between[0.5]And[0.7]({value:N0})" />
+            </GridColumnAggregateFunctions>
+        </GridColumn>
+        <GridColumn Binding="[Col2]" Format="N2" Aggregate="GridAggregate.Std" />
+        <GridColumn Binding="[Col3]" Format="N0" Aggregate="GridAggregate.Count" />
+        <GridColumn Binding="[Col4]" Aggregate="GridAggregate.Minimum" />
+    </FlexGridColumns>
+    <FlexGridColumnFooterRows>
+        <GridSummaryRow />
+    </FlexGridColumnFooterRows>
+</FlexGrid>
+
+@code {
+    List<Dictionary<string, double>> list = new List<Dictionary<string, double>>();
+    Random _rand = new Random();
+
+    protected override void OnInitialized()
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            var dictionary = new Dictionary<string, double>();
+            for (int j = 1; j <= 4; j++)
+                dictionary[$"Col{j}"] = _rand.NextDouble();
+            list.Add(dictionary);
+        }
+    }
+}

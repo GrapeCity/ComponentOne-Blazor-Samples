@@ -1,0 +1,42 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorExplorer.Client", "Client\BlazorExplorer.Client.csproj", "{BCE7CBA6-49C0-42FC-90FD-14F2977CBB57}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorExplorer.Shared", "Shared\BlazorExplorer.Shared.csproj", "{EC3344CD-5482-4A4F-A3D9-6E8B8CD55136}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorExplorer.Server", "Server\BlazorExplorer.Server.csproj", "{6D3C8DB4-9DAA-49D6-9A05-41682B0D763B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		GRAPECITY|Any CPU = GRAPECITY|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCE7CBA6-49C0-42FC-90FD-14F2977CBB57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE7CBA6-49C0-42FC-90FD-14F2977CBB57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE7CBA6-49C0-42FC-90FD-14F2977CBB57}.GRAPECITY|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE7CBA6-49C0-42FC-90FD-14F2977CBB57}.GRAPECITY|Any CPU.Build.0 = Debug|Any CPU
+		{BCE7CBA6-49C0-42FC-90FD-14F2977CBB57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE7CBA6-49C0-42FC-90FD-14F2977CBB57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC3344CD-5482-4A4F-A3D9-6E8B8CD55136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC3344CD-5482-4A4F-A3D9-6E8B8CD55136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC3344CD-5482-4A4F-A3D9-6E8B8CD55136}.GRAPECITY|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC3344CD-5482-4A4F-A3D9-6E8B8CD55136}.GRAPECITY|Any CPU.Build.0 = Debug|Any CPU
+		{EC3344CD-5482-4A4F-A3D9-6E8B8CD55136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC3344CD-5482-4A4F-A3D9-6E8B8CD55136}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D3C8DB4-9DAA-49D6-9A05-41682B0D763B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D3C8DB4-9DAA-49D6-9A05-41682B0D763B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D3C8DB4-9DAA-49D6-9A05-41682B0D763B}.GRAPECITY|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D3C8DB4-9DAA-49D6-9A05-41682B0D763B}.GRAPECITY|Any CPU.Build.0 = Debug|Any CPU
+		{6D3C8DB4-9DAA-49D6-9A05-41682B0D763B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D3C8DB4-9DAA-49D6-9A05-41682B0D763B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A502BD5-A91A-4B05-91A6-D02C5F2C4FEB}
+	EndGlobalSection
+EndGlobal

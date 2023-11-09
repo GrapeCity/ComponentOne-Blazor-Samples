@@ -1,0 +1,97 @@
+﻿@page "/unbound"
+@using Resources
+@using System.Collections.ObjectModel;
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+
+<h1>@AppResources.UnboundTitle</h1>
+<p>@AppResources.UnboundDescription</p>
+
+<FlexGrid @ref="grid"
+          ColumnOptionsMenuVisibility="GridColumnOptionsMenuVisibility.Collapsed"
+          CellFactory="@cellFactory"
+          AllowMerging="GridAllowMerging.All"
+          AllowDragging="GridAllowDragging.Both"
+          HeadersVisibility="GridHeadersVisibility.All"
+          SelectionMode="GridSelectionMode.CellRange"
+          GridLinesVisibility="GridLinesVisibility.None"
+          RowHeaderGridLinesVisibility="GridLinesVisibility.Vertical"
+          ColumnHeaderSelectedStyle="@("background-color:#F8F8F8")"
+          RowHeaderSelectedStyle="@("background-color:#F8F8F8")"
+          Style="@("max-height:50vh")">
+    <FlexGridColumns>
+        @for (int i = 0; i < 12; i++) // three years, four quarters per year
+        {
+            <GridColumn HeaderHorizontalAlignment="C1HorizontalAlignment.Center" />
+        }
+    </FlexGridColumns>
+    <FlexGridRows>
+        @for (int i = 0; i < 500; i++)
+        {
+            <GridRow />
+        }
+    </FlexGridRows>
+    <FlexGridColumnHeaderRows>
+        <GridRow AllowMerging="true" /> @*one header row for years, one for quarters*@
+        <GridRow />
+    </FlexGridColumnHeaderRows>
+    <FlexGridRowHeaderColumns>
+        <GridColumn AllowMerging="true" Width="90" />
+        <GridColumn Width="90" />
+    </FlexGridRowHeaderColumns>
+</FlexGrid>
+
+@code {
+
+    FlexGrid grid;
+    GridCellFactory cellFactory = new CustomCellFactory();
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+            PopulateUnboundGrid();
+    }
+
+    /// <summary>
+    /// Fill unbound grid with data
+    /// </summary>
+    private void PopulateUnboundGrid()
+    {
+        // populate the unbound grid with some stuff
+        for (int r = 0; r < grid.Rows.Count; r++)
+        {
+            for (int c = 0; c < grid.Columns.Count; c++)
+            {
+                grid[r, c] = string.Format("cell [{0},{1}]", r, c);
+            }
+        }
+
+        // set unbound column headers
+        var ch = grid.ColumnHeaders;
+        for (int c = 0; c < ch.Columns.Count; c++)
+        {
+            ch[0, c] = 2017 + c / 4; // year
+            ch[1, c] = string.Format("Q {0}", c % 4 + 1); // quarter
+        }
+
+        // set unbound row headers
+        var rh = grid.RowHeaders;
+        for (int c = 0; c < rh.Columns.Count; c++)
+        {
+            for (int r = 0; r < rh.Rows.Count; r++)
+            {
+                rh[r, c] = string.Format("hdr {0},{1}", c == 0 ? r / 2 : r, c);
+            }
+        }
+    }
+
+    public class CustomCellFactory : GridCellFactory
+    {
+        public override void PrepareCellStyle(GridCellType cellType, GridCellRange range, C1Style style, C1Thickness internalBorders)
+        {
+            base.PrepareCellStyle(cellType, range, style, internalBorders);
+            if (cellType == GridCellType.Cell && range.Column % 4 == 0)
+                style.BorderWidth = new C1Thickness(1, 0, 0, 0); //Custom vertical grid line that separate years
+        }
+    }
+}

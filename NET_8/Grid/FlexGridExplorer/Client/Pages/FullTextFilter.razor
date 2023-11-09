@@ -1,0 +1,33 @@
+﻿@page "/fulltextfilter"
+@using Resources
+@using System.Collections.ObjectModel;
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using C1.Blazor.Grid
+
+<h1>@AppResources.FullTextFilterTitle</h1>
+<p>@AppResources.FullTextFilterDescription</p>
+
+<C1TextBox Class="filled-text-box" @bind-Text="filterText" Placeholder="@AppResources.FilterPlaceholderText"/>
+<br />
+<p style="margin:8px 0px">
+    Match Case <C1CheckBox @bind-IsChecked="matchCase" /> Match Whole Word <C1CheckBox @bind-IsChecked="matchWholeWord" />
+</p>
+<FlexGrid ItemsSource="customers" Style="@("max-height:50vh")">
+    <FlexGridBehaviors>
+        <FullTextFilterBehavior FilterString="@filterText" MatchCase="@(matchCase??false)" MatchWholeWord="@(matchWholeWord??false)" MatchNumbers="true" />
+    </FlexGridBehaviors>
+</FlexGrid>
+
+@code {
+    string filterText = "";
+    bool? matchCase = false;
+    bool? matchWholeWord = false;
+    ObservableCollection<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+
+}

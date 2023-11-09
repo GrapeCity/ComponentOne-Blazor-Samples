@@ -1,0 +1,103 @@
+﻿@page "/FlexGrid/Index"
+@using C1.DataCollection
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+@using C1.Blazor.Input
+@using C1.Blazor.DataPager
+@using Localization
+<C1.Blazor.Input.C1TextBox @bind-Text="filterString" Placeholder="@FlexGridRes.SearchText" Style="@("margin:8px 0")" />
+
+<p style="color:#3F51B5">@selectionText</p>
+
+<FlexGrid @ref="grid"
+          ItemsSource="financialData"
+          IsReadOnly="true"
+          CellFactory="@financialCellFactory"
+          SelectionMode="GridSelectionMode.RowRange"
+          HeadersVisibility="GridHeadersVisibility.Column"
+          ColumnOptionsMenuVisibility="GridColumnOptionsMenuVisibility.Visible"
+          AutoGenerateColumns="false"
+          FrozenColumns="1"
+          ColumnHeaderStyle="@("background-color:#1565C0;color:#fff;font-size: 16px;")"
+          SelectionAdornerStyle="@("border-color:#3F51B5;color:#0D47A1")"
+          AlternatingRowStyle="@("background-color:#F5F5F5")"
+          SelectionChanged="OnSelectionChanged">
+    <FlexGridBehaviors>
+        <FullTextFilterBehavior FilterString="@filterString" HighlightStyle="@("color:#3E65FF")" TreatSpacesAsAndOperator="true" />
+    </FlexGridBehaviors>
+    <FlexGridColumns>
+        <GridColumn Binding="Symbol" Width="100" />
+        <GridColumn Binding="Name" Header="Company" MinWidth="275" Width="GridLength.Star" />
+        <GridColumn Binding="LastSale" MinWidth="120" Width="GridLength.Star" InputType="TextBoxType.Number" Format="c2" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
+        <GridColumn Binding="Change" Header="Change" InputType="TextBoxType.Number" Format="p2" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
+        <GridColumn Binding="Bid" MinWidth="120" Width="GridLength.Star" Format="n2" InputType="TextBoxType.Number" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
+        <GridColumn Binding="Ask" MinWidth="120" Width="GridLength.Star" Format="n2" InputType="TextBoxType.Number" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
+        <GridColumn Binding="Change" Header="50MA" Width="70" IsReadOnly="true" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center">
+            <CellTemplate>
+                @if ((decimal)context < 0)
+                {
+                    @C1IconTemplate.ArrowDown.Invoke("width:25px;height:25px;stroke-width:4;stroke:red");
+                }
+                else
+                {
+                    @C1IconTemplate.ArrowUp.Invoke("width:25px;height:25px;stroke-width:4;stroke:green");
+                }
+            </CellTemplate>
+        </GridColumn>
+        <GridColumn Binding="Volume" MinWidth="120" Width="GridLength.Star" Format="n0" InputType="TextBoxType.Number" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
+        <GridDateTimeColumn Binding="TradeTime" Format="hh:mm:ss" Mode="GridDateTimeColumnMode.Time" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
+    </FlexGridColumns>
+</FlexGrid>
+<C1DataPager Source="financialData" />
+
+<_Sections>
+    <Title>@FlexGridRes.OverviewTitle</Title>
+    <Description>@FlexGridRes.OverviewDescription</Description>
+</_Sections>
+
+@code{
+    FlexGrid grid;
+    string selectionText = FlexGridRes.StockSymbolSelectText;
+    string filterString;
+    C1PagedDataCollection<FinancialData> financialData;
+    FinancialCellFactory financialCellFactory = new FinancialCellFactory();
+
+    protected override void OnInitialized()
+    {
+        var collection = new FinancialDataCollection();
+        financialData = new C1PagedDataCollection<FinancialData>(collection) { PageSize = 8 };
+    }
+
+    public void OnSelectionChanged(object sender, GridCellRangeEventArgs e)
+    {
+        if (e.CellRange != null && e.CellRange.Row != -1)
+        {
+            int rowsSelected = Math.Abs(e.CellRange.Row2 - e.CellRange.Row) + 1;
+            double totalSale = 0;
+            double lastSale = 0;
+            int upperRow = e.CellRange.Row;
+            int lowerRow = e.CellRange.Row2;
+            if (e.CellRange.Row2 < e.CellRange.Row)
+            {
+                upperRow = e.CellRange.Row2;
+                lowerRow = e.CellRange.Row;
+            }
+
+            for (int i = upperRow; i <= lowerRow; i++)
+            {
+                if (double.TryParse(grid[i, 2].ToString(), out lastSale))
+                {
+                    totalSale += lastSale;
+                }
+
+            }
+
+            selectionText = rowsSelected.ToString() + " symbol(s) selected, total sale = " + totalSale.ToString("c2");
+        }
+        else
+        {
+            selectionText = FlexGridRes.StockSymbolSelectText;
+        }
+        StateHasChanged();
+    }
+}

@@ -1,0 +1,71 @@
+﻿@page "/CustomColumns"
+@using C1.DataCollection
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+@using C1.Blazor.Input
+@using Resources
+@using FlexGridExplorer.Data
+
+<h1>@AppResources.CustomColumnTitle</h1>
+<p>@AppResources.CustomColumnDescription</p>
+<p>@AppResources.CustomColumnSummary</p>
+
+<p style="margin:8px 0">
+  <span style="color:#d32f2f;font-size:18pt">@AppResources.GroupByDepartmentText</span>
+  <C1CheckBox IsChecked="grouped" IsCheckedChanged="OnGroupByDepartmentChanged" Style="@("margin-left:8px")" />
+</p>
+
+<FlexGrid ItemsSource="employeeDataCollection"
+          AutoGenerateColumns="false"
+          GridLinesVisibility="GridLinesVisibility.Horizontal"
+          DefaultRowHeight="100"
+          Style="@("max-height:50vh")"
+          ColumnHeaderStyle="@("background-color:#b71c1c;color:#fff;font-size:16px")"
+          SelectionStyle="@("background-color:#ef9a9a")"
+          GroupRowStyle="@("background-color:#e53935;color:#fff")"
+          AlternatingRowStyle="@("background-color:#ffebee")"
+          CellStyle="@("align-items:center;padding:8px;")">
+  <FlexGridColumns>
+    <GridImageColumn Binding="ThumbnailUrl" Header="Thumbnail" ClipPath="circle(50%)" AllowSorting="false" />
+    <GridColumn Binding="Name" />
+    <GridColumn Binding="Title" WordWrap="true" />
+    <GridColumn Binding="DepartmentId" Header="Department" MinWidth="200" Width="GridLength.Star" DataMap="departmentDataMap" />
+    <GridDateTimeColumn Binding="HireDate" Format="d" Mode="GridDateTimeColumnMode.Date" />
+    <GridColumn Binding="FullTime" Width="70" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" />
+    <GridColumn Binding="Status" Format="p2" InputType="TextBoxType.Number" MinWidth="100" Width="GridLength.Star" />
+  </FlexGridColumns>
+</FlexGrid>
+
+
+@code{
+  bool? grouped = false;
+  C1DataCollection<Employee> employeeDataCollection;
+  GridDataMap departmentDataMap;
+
+  protected override void OnInitialized()
+  {
+
+    XmlRepository repository = new XmlRepository();
+    var employeeList = repository.GetEmployees();
+    employeeDataCollection = new C1DataCollection<Employee>(employeeList);
+    departmentDataMap = new GridDataMap
+    {
+      ItemsSource = repository.GetDepartments(),
+      SelectedValuePath = "Id",
+      DisplayMemberPath = "Name"
+    };
+  }
+
+  private void OnGroupByDepartmentChanged(bool? isGrouped)
+  {
+    grouped = isGrouped;
+    if (grouped ?? false)
+    {
+      _ = employeeDataCollection.GroupAsync(emp => emp.DepartmentId);
+    }
+    else
+    {
+      _ = employeeDataCollection.GroupAsync();
+    }
+  }
+}

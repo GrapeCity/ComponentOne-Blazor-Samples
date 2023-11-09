@@ -1,0 +1,49 @@
+﻿@page "/FlexGrid/CustomAppearance"
+@using Localization
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+@using System.Collections.ObjectModel;
+
+<FlexGrid ItemsSource="customers"
+          HeadersVisibility="GridHeadersVisibility.All"
+          GridLinesVisibility="GridLinesVisibility.All"
+          ColumnHeaderGridLinesVisibility="GridLinesVisibility.All"
+          RowHeaderGridLinesVisibility="GridLinesVisibility.All"
+          TopLeftHeaderGridLinesVisibility="GridLinesVisibility.All"
+          DefaultRowHeight="38"
+          DefaultColumnHeaderRowHeight="38"
+          DefaultRowHeaderColumnWidth="38"
+          CellStyle="@("padding:4px")"
+          ShowMarquee="true"
+          SelectionMode="GridSelectionMode.CellRange"
+          GridLinesBrush="@("#FFD0D7E5")"
+          ColumnHeaderGridLinesBrush="@("#FF9EB6CE")"
+          RowHeaderGridLinesBrush="@("#FF9EB6CE")"
+          TopLeftHeaderGridLinesBrush="@("#FF9EB6CE")"
+          Style="@("max-height:50vh;color:#000;border: 1px solid #9EB6CE")"
+          RowStyle="@("background-color:#fff")"
+          CursorStyle="@("background-color:rgba(208,215,229,0.2);color:#000")"
+          EditorStyle="@("background-color:#fff;color:#000")"
+          TopLeftHeaderStyle="@("background-color:#A9C4E9")"
+          RowHeaderStyle="@("background-color:#E4ECF7;color:#000")"
+          RowHeaderSelectedStyle="@("background-color:#FFD58D")"
+          SelectionStyle="@("background-color:#EAECF5;color:#000")"
+          SelectionAdornerStyle="@("border-color:#fff;color:#fff")"
+          ColumnHeaderStyle="@("background-image:linear-gradient(to bottom,#F6FAFB,#D5DDEA);color:#000")"
+          ColumnHeaderSelectedStyle="@("background-image:linear-gradient(to bottom,#F8D79B,#F1C263)")"
+          AllowResizing="GridAllowResizing.Both"/>
+
+<_Sections>
+    <Title>@FlexGridRes.CustomAppearanceTitle</Title>
+    <Summary>@FlexGridRes.CustomAppearanceSummary</Summary>
+    <Description>@FlexGridRes.CustomAppearanceDescription</Description>
+</_Sections>
+
+@code {
+    ObservableCollection<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+}

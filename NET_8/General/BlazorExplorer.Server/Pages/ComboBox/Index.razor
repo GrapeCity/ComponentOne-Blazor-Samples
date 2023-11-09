@@ -1,0 +1,20 @@
+﻿@page "/ComboBox/Index"
+@using C1.Blazor.Input
+@using Localization
+
+<C1ComboBox ItemsSource="countries" T="Country" Placeholder="@ComboBoxRes.SelectCountryPlaceholder" Style="@("margin:8px 0")" />
+
+<_Sections>
+    <Title>@ComboBoxRes.OverviewTitle</Title>
+    <Summary>@ComboBoxRes.OverviewSummary</Summary>
+    <Description>@ComboBoxRes.OverviewDescription</Description>
+</_Sections>
+
+@code {
+    IEnumerable<Country> countries;
+
+    protected override void OnInitialized()
+    {
+        countries = Country.GetCountries();
+    }
+}

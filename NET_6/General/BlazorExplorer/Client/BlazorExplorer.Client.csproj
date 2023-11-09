@@ -1,13 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
-  <PropertyGroup Label="Globals">
-    <SccProjectName>SAK</SccProjectName>
-    <SccProvider>SAK</SccProvider>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccLocalPath>SAK</SccLocalPath>
-  </PropertyGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <AssemblyName>BlazorExplorer</AssemblyName>
     <RootNamespace>BlazorExplorer</RootNamespace>
   </PropertyGroup>
@@ -20,53 +13,56 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants>TRACE;BLAZOR</DefineConstants>
+    <RunAOTCompilation>true</RunAOTCompilation>
+    <RunAOTCompilationAfterBuild>true</RunAOTCompilationAfterBuild>
+    <WasmNativeStrip>false</WasmNativeStrip>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Accordion">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Calendar">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Chart">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Gauge">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Menu">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.TreeView">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
-    <PackageReference Include="C1.DataCollection.Serialization" Version="1.0.20232.161" />
-    <PackageReference Include="C1.Excel" Version="5.0.20232.27" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.6" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.6" />
-    <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
+    <PackageReference Include="C1.DataCollection.Serialization" Version="7.0.20233.174" />
+    <PackageReference Include="C1.Excel" Version="5.0.20232.29" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.12" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.12" />
+    <PackageReference Include="System.Net.Http.Json" Version="7.0.1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Localization\FlexGrid\**" />

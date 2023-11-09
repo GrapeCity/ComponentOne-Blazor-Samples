@@ -1,0 +1,176 @@
+﻿@page "/Calendar/Styling"
+@using C1.Blazor.Calendar
+@using C1.Blazor.Core
+@using System;
+
+<style>
+
+    .c1-calendar {
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+    margin: 20px;
+    }
+
+</style>
+
+
+
+
+<C1Calendar FirstDayOfWeek="@DayOfWeek.Tuesday"
+Orientation="@CalendarOrientation.Vertical"
+MonthCount="1"
+HeaderMonthFormat="MMMM"
+DayOfWeekFormat="dd"
+Style="@(new C1Style()
+           {
+       Color = "Black",
+       BorderColor = "#FF343434",
+       BorderWidth = 1,
+       BorderStyle = C1StyleBorderStyle.Solid,
+       Padding = 0
+           })"
+HeaderStyle="@(new C1Style()
+         {
+     Color = "White",
+     BackgroundColor ="#FF3D834B",
+         })"
+DayOfWeekStyle="@(new C1Style()
+    {
+        BackgroundColor = "#FF63A646",
+
+
+    })"
+DayStyle="@(new C1Style()
+      {
+          BorderColor = "#FFF2F2F2",
+          BorderWidth = 1,
+          BorderStyle = C1StyleBorderStyle.Solid
+
+      })"
+SelectedDateStyle="@(new C1Style()
+       {
+           BackgroundColor = "#FFD2D2D2",
+           Color = "Black",
+
+       })"
+TodayStyle="@(new C1Style()
+        {
+    BackgroundColor = "#eeeeee",
+    BorderColor = "#FFF2F2F2",
+    BorderRadius = 0,
+    Color = "Black",
+
+        })"
+AdjacentDayStyle="@(new C1Style()
+      {
+          Color = "#FFA5A5A3"
+
+      })">
+</C1Calendar>
+
+
+<C1Calendar MonthCount="3" Orientation="@CalendarOrientation.Vertical"
+HeaderMonthFormat="MMMM"
+Style="@(new C1Style()
+           {
+       Color = "Black", Height = 500
+           })"
+HeaderStyle="@(new C1Style()
+         {
+             Color = "White",
+             BackgroundColor ="#FF3D834B",
+
+         })"
+DayOfWeekStyle="@(new C1Style()
+            {
+                BackgroundColor = "#FF63A646"
+
+            })"
+DayStyle="@(new C1Style()
+      {
+          BorderColor = "#FFF2F2F2",
+          BorderWidth = 1,
+          BorderStyle = C1StyleBorderStyle.Solid
+
+      })"
+SelectedDateStyle="@(new C1Style()
+               {
+                   BackgroundColor = "#FFD2D2D2",
+                   Color = "Black",
+
+               })"
+TodayStyle="@(new C1Style()
+        {
+            BackgroundColor = "#eeeeee",
+            BorderColor = "#FFF2F2F2",
+            BorderRadius = 0,
+            Color = "Black",
+
+        })"
+AdjacentDayStyle="@(new C1Style()
+              {
+                  Color = "#FFA5A5A3"
+
+              })">
+
+</C1Calendar>
+
+<C1Calendar MonthCount="3" Orientation="@CalendarOrientation.Horizontal"
+HeaderMonthFormat="MMMM"
+Style="@(new C1Style()
+           {
+       Color = "Black", Width = 900
+           })"
+HeaderStyle="@(new C1Style()
+         {
+             Color = "White",
+             BackgroundColor ="#FF3D834B",
+
+         })"
+DayOfWeekStyle="@(new C1Style()
+            {
+                BackgroundColor = "#FF63A646",
+                BorderColor = "#FFF2F2F2",
+
+            })"
+DayStyle="@(new C1Style()
+      {
+          BorderColor = "#FFF2F2F2",
+          BorderWidth = 1,
+          BorderStyle = C1StyleBorderStyle.Solid
+
+      })"
+SelectedDateStyle="@(new C1Style()
+               {
+                   BackgroundColor = "#FFD2D2D2",
+                   Color = "Black",
+
+               })"
+TodayStyle="@(new C1Style()
+        {
+            BackgroundColor = "#eeeeee",
+            BorderColor = "#FFF2F2F2",
+            BorderRadius = 0,
+            Color = "Black",
+
+        })"
+AdjacentDayStyle="@(new C1Style()
+              {
+                  Color = "#FFA5A5A3"
+
+              })">
+
+
+
+
+
+</C1Calendar>
+
+
+
+<_Sections>
+    <Title>@CalendarRes.CustomStylesTitle</Title>
+    <Summary>@CalendarRes.OverviewSummary</Summary>
+    <Description>@CalendarRes.CustomStylesDescription</Description>
+</_Sections>

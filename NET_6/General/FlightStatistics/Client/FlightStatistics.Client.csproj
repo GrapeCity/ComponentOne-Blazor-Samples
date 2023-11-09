@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <None Remove=".gclicx" />
@@ -11,26 +11,26 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Chart">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>6.0.20232.589</Version>
+      <Version>7.0.20233.660</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.6" PrivateAssets="all" />
-    <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.12" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="7.0.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\FlightStatistics.Shared.csproj" />

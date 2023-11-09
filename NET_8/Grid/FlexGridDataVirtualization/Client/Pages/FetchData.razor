@@ -1,0 +1,44 @@
+@page "/fetchdata"
+@using FlexGridDataVirtualization.Shared
+@using C1.Blazor.Input
+@using C1.Blazor.Grid
+@using C1.DataCollection
+@inject HttpClient Http
+@using Resources
+
+<h1>@Resources.AppResource.Customers</h1>
+
+<p>@Resources.AppResource.FetchDataDes</p>
+
+@if (customers == null)
+{
+    <p><em>@Resources.AppResource.Loading</em></p>
+}
+else
+{
+    <C1TextBox @bind-Text="filter" />
+    <FlexGrid ItemsSource="customers" AutoGenerateColumns="false" DefaultColumnWidth="GridLength.Star" ColumnHeaderStyle="@("font-weight:bold")" Style="@("max-height:500px")">
+        <FlexGridColumns>
+            <GridColumn Binding="FirstName" />
+            <GridColumn Binding="LastName" />
+            <GridColumn Binding="Address" />
+            <GridColumn Binding="PostalCode" />
+        </FlexGridColumns>
+        <FlexGridBehaviors>
+            <FullTextFilterBehavior FilterString="@filter" />
+        </FlexGridBehaviors>
+    </FlexGrid>
+
+}
+
+@code {
+    private VirtualModeDataCollection customers;
+    private string filter;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var collection = new VirtualModeDataCollection() { Http = Http };
+        await collection.LoadAsync(0, 0);
+        customers = collection;
+    }
+}

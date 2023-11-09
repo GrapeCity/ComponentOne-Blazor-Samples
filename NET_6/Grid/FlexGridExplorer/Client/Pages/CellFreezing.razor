@@ -6,7 +6,7 @@
 <h1>@AppResources.CellFreezingTitle</h1>
 <p>@AppResources.CellFreezingDescription</p>
 
-<FlexGrid AutoGenerateColumns="false" ItemsSource="customers" FrozenColumns="1" FrozenRows="1" AllowMerging="GridAllowMerging.Cells" Style="@("max-height:50vh")">
+<FlexGrid AutoGenerateColumns="false" ItemsSource="customers" FrozenColumns="1" FrozenRows="1" FrozenBottomRows="2" AllowMerging="GridAllowMerging.Cells" Style="@("max-height:50vh")">
     <FlexGridColumns>
         <GridColumn Binding="Name" />
         <GridColumn Binding="Address" />

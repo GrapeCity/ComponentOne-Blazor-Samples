@@ -1,0 +1,97 @@
+﻿@page "/Menu/Index"
+@using C1.Blazor.Menu
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using Localization
+<div>OpenOnClick <C1CheckBox @bind-IsChecked="@openOnClick" /></div>
+<div>
+    <i>@MenuRes.Selected_Menu_Item:</i> @selectedItem
+</div>
+<div>
+    <div><strong>@MenuRes.SideBar</strong></div>
+    <C1Menu OpenOnClick="openOnClick.Value" ItemsSource="@_dataSource" Orientation="Orientation.Vertical" Style="@("width: 200px")"
+            ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name" OnItemSelected="OnSelectedItem" />
+</div>
+
+<div style="margin-top: 2em">
+    <div><strong>@MenuRes.Inline</strong></div>
+    <C1Menu OpenOnClick="openOnClick.Value" ItemsSource="@_dataSource" OnItemSelected="OnSelectedItem"
+            ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name" />
+</div>
+
+<_Sections>
+    <Title>@MenuRes.Index_Title</Title>
+    <Description>@((MarkupString)MenuRes.Index_Description)</Description>
+</_Sections>
+
+@code{
+    bool? openOnClick = true;
+    string selectedItem = "";
+    public void OnSelectedItem(C1MenuItem item)
+    {
+        selectedItem = GetFullPath(item);
+    }
+
+    readonly IList<Hierarchical> _dataSource = new List<Hierarchical>()
+{
+        new Hierarchical ()
+        {
+            Name = "Hierarchical  2",
+            Subdirectories = new List<Hierarchical >
+        {
+                new Hierarchical  {Name = "Hierarchical  2.0"},
+                new Hierarchical
+                {
+                    Name = "Hierarchical  2.1",
+                    Subdirectories = new List<Hierarchical>
+                {
+                        new Hierarchical  {Name = "Hierarchical  2.1.1"},
+                        new Hierarchical  {Name = "Hierarchical  2.1.2"},
+                        new Hierarchical  {Name = "Hierarchical  2.1.3"}
+                    }
+
+                },
+                new Hierarchical  {Name = "Hierarchical  2.2"},
+            }
+        },
+        new Hierarchical
+        {
+            Name = "Hierarchical  3"
+        },
+        new Hierarchical
+        {
+            Name = "Hierarchical 4",
+            Subdirectories = new List<Hierarchical >()
+        {
+                new Hierarchical
+                {
+                    Name = "Hierarchical  4.1",
+                    Subdirectories = new List<Hierarchical >()
+                {
+                        new Hierarchical  {Name = "Hierarchical  4.1.1"},
+                        new Hierarchical  {Name = "Hierarchical  4.1.2"}
+                    }
+                },
+                new Hierarchical  {Name = "Hierarchical  4.2"},
+                new Hierarchical  {Name = "Hierarchical  4.3"}
+            }
+        },
+        new Hierarchical
+        {
+            Name = "Hierarchical  5"
+        },
+    };
+
+    public class Hierarchical
+    {
+        public string Name { get; set; }
+        public List<Hierarchical> Subdirectories { get; set; }
+    }
+
+    public static string GetFullPath(C1MenuItem item)
+    {
+        if (item.ParentItem == null)
+            return item.Header;
+        return $"{GetFullPath(item.ParentItem)} / {item.Header}";
+    }
+}

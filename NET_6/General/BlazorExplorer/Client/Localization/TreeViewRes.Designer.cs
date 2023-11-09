@@ -79,6 +79,15 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TreeView Accordion.
+        /// </summary>
+        public static string AccordionTreesTitle {
+            get {
+                return ResourceManager.GetString("AccordionTreesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Node for Bound TreeView:.
         /// </summary>
         public static string Adding_BoundTree {
@@ -299,6 +308,15 @@ namespace BlazorExplorer.Localization {
         public static string IconTemplateDescription {
             get {
                 return ResourceManager.GetString("IconTemplateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Icon templates.
+        /// </summary>
+        public static string IconTemplatesTitle {
+            get {
+                return ResourceManager.GetString("IconTemplatesTitle", resourceCulture);
             }
         }
         
@@ -525,6 +543,15 @@ namespace BlazorExplorer.Localization {
         public static string StylingOverview {
             get {
                 return ResourceManager.GetString("StylingOverview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unbound.
+        /// </summary>
+        public static string UnboundTitle {
+            get {
+                return ResourceManager.GetString("UnboundTitle", resourceCulture);
             }
         }
         

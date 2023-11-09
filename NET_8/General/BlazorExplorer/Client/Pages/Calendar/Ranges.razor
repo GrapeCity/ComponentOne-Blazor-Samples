@@ -1,0 +1,22 @@
+﻿@page "/Calendar/Ranges"
+@using C1.Blazor.Calendar
+@using C1.Blazor.Core
+@using System;
+
+<style>
+
+    .c1-calendar {
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+    margin: 20px;
+    }
+</style>
+
+<C1Calendar MinDate="@DateTime.Today.AddDays(-10)" MaxDate="@DateTime.Today.AddDays(10)"></C1Calendar>
+
+<_Sections>
+    <Title>@CalendarRes.UsingRangesTitle</Title>
+    <Summary>@CalendarRes.OverviewSummary</Summary>
+    <Description>@CalendarRes.UsingRangesDescription</Description>
+</_Sections>

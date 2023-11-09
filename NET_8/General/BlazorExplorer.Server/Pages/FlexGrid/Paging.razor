@@ -1,0 +1,24 @@
+﻿@page "/FlexGrid/paging"
+@using C1.DataCollection
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+@using C1.Blazor.DataPager
+@using Localization
+
+<FlexGrid ItemsSource="customers" IsVirtualizationEnabled="false"/>
+<C1DataPager Source="customers" />
+
+<_Sections>
+    <Title>@FlexGridRes.PagingTitle</Title>
+    <Summary>@FlexGridRes.PagingSummary</Summary>
+    <Description>@FlexGridRes.PagingDescription</Description>
+</_Sections>
+
+@code {
+    C1PagedDataCollection<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = new C1PagedDataCollection<Customer>(new VirtualModeDataCollection() { PageSize = 10 });
+    }
+}

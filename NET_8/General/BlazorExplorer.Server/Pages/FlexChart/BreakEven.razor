@@ -1,0 +1,15 @@
+﻿@page "/FlexChart/BreakEven"
+@using Localization
+@using C1.Blazor.Chart;
+
+<FlexChart Class="chart">
+    <SeriesCollection>
+        <C1.Blazor.Chart.BreakEven SalesPrice="120" FixedCost="100000" VariableCost="20" />
+    </SeriesCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.BreakEvenTitle</Title>
+    <Summary>@FlexChartRes.BreakEvenSummary</Summary>
+    <Description>@FlexChartRes.BreakEvenDescription</Description>
+</_Sections>

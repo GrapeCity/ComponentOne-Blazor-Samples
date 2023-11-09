@@ -1,0 +1,73 @@
+﻿@page "/FlexPie/SunburstDemo"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Input;
+
+<Sunburst Class="chart" Palette="palette ?? Palette.Standard" InnerRadius="innerRadius ?? 0" 
+          HeaderContent="OS Share - 2020 August" HeaderStyle="font-size:24px"
+          LegendPosition="Position.Right" Tooltip="{name}: {value:n1}%"
+          BindingName="Name" Binding="Value" ChildItemsPath="Items" ItemsSource="@DataSource.GetData()"
+          FooterContent="Data source: https://gs.statcounter.com/" FooterStyle="font-size:12px"
+          >
+    <Label>
+        <PieDataLabel Position="PieLabelPosition.Center" Content="{name}" Overlapping="PieLabelOverlapping.Hide" />
+    </Label>
+</Sunburst>
+
+<_Sections>
+    <Title>@FlexChartRes.SunburstTitle</Title>
+    <Summary>@FlexChartRes.SunburstSummary</Summary>
+    <Description>@FlexChartRes.SunburstDescription</Description>
+    <Settings>
+        Palette <C1ComboBox ItemsSource="palettes" @bind-SelectedItem="palette" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")"/>
+        Inner Radius <C1ComboBox ItemsSource="innerRadiuses" @bind-SelectedItem="innerRadius" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")"/>
+    </Settings>
+</_Sections>
+
+@code {
+    IEnumerable<Palette> palettes = Enum.GetValues(typeof(Palette)).Cast<Palette>().Where((p, x) => p != Palette.Custom);
+    Palette? palette = Palette.Standard;
+
+    double[] innerRadiuses = new double[] { 0, 0.25, 0.5, 0.75 };
+    double? innerRadius = 0;
+
+    double[] offsets = new double[] { 0, 0.25, 0.5, 0.75 };
+    //double? offset = 0;
+
+    public class DataSource
+    {
+        public class ItemData
+        {
+            public string Name { get; set; }
+            public double Value { get; set; }
+
+            public List<ItemData> Items { get; private set; }
+
+            public ItemData()
+            {
+                Items = new List<ItemData>();
+            }
+        }
+
+        public static List<ItemData> GetData()
+        {
+            var data = new List<ItemData>()
+            {
+                new ItemData{Name="Desktop", Items = {
+                        new ItemData{ Name="Windows", Value = 35.43 },
+                        new ItemData{ Name="OS X", Value = 7.78 },
+                        new ItemData{ Name="Linux", Value = 0.85 },
+                        new ItemData{ Name="ChromeOS", Value = 0.41 },
+
+                    }},
+                new ItemData{Name="Mobile", Items = {
+                        new ItemData{ Name="Android", Value = 39.23 },
+                        new ItemData{ Name="IOS", Value = 14.53 },
+                    }},
+                new ItemData{ Name="Others", Value = 2.0}
+            };
+            return data;
+        }
+    }
+}

@@ -1,0 +1,131 @@
+﻿@page "/TimeEditor/Index"
+@using C1.Blazor.DateTimeEditors
+@using C1.Blazor.DateTimeEditors.EventArgs
+@using C1.Blazor.DateTimeEditors.Views
+@using C1.Blazor.Input
+@using C1.Blazor.Core
+
+
+
+<h5>
+    @TimeEditorRes.WithoutTimeRange
+</h5>
+
+<C1TimeEditor DropDownBehavior="DropDownBehavior.HeaderTap"  ></C1TimeEditor>
+<hr/>
+
+<h5>
+    @TimeEditorRes.HandleValueChange
+</h5>
+
+<C1TimeEditor DropDownBehavior="DropDownBehavior.HeaderTap"  OnValueChanged="OnTimeValueChanged"></C1TimeEditor>
+
+
+<i>
+    @TimeEditorRes.ChangedValueIs <b>@_currentSelectedTime</b>.
+</i>
+
+<br />
+
+
+<h5>
+    @TimeEditorRes.ValueBinding
+</h5>
+<C1TimeEditor @bind-Value="@_bindingValue"
+              DropDownBehavior="DropDownBehavior.HeaderTap"></C1TimeEditor>
+
+
+<i>
+    @TimeEditorRes.BindingValueIs <b>@(_bindingValue?.ToString(_12format)??"Null")</b>.
+</i>
+
+<hr />
+
+<h5>
+    @TimeEditorRes.TimeRange 07:30 - 15:20
+</h5>
+
+<C1TimeEditor  DropDownBehavior="DropDownBehavior.HeaderTap"
+               Min="@(DateTime.Parse("07:30"))" Max="@(DateTime.Parse("15:20"))"  ></C1TimeEditor>
+
+
+<h5>
+    @TimeEditorRes.TimeRange 07:30 - 11:30
+</h5>
+
+<C1TimeEditor   DropDownBehavior="DropDownBehavior.HeaderTap"
+              
+              Min="@(DateTime.Parse("07:30"))" Max="@(DateTime.Parse("11:30"))"  ></C1TimeEditor>
+
+<hr/>
+
+
+<h5>
+    @TimeEditorRes.ClockType 24, 7h30 - 11h30
+</h5>
+
+<C1TimeEditor   DropDownBehavior="DropDownBehavior.HeaderTap" ClockType="@ClockType.Type24"
+               Min="@(DateTime.Parse("07:30"))" Max="@(DateTime.Parse("11:30"))"  ></C1TimeEditor>
+
+<hr/>
+
+<h5>
+    @TimeEditorRes.DropdownIcons
+</h5>
+
+<C1TimeEditor  DropDownBehavior="DropDownBehavior.HeaderTap" ClockType="@ClockType.Type24">
+    
+    <CollapsedButtonIcon>
+        <span class="oi oi-timer"></span>
+    </CollapsedButtonIcon>
+    <ExpandedButtonIcon>
+        <span class="oi oi-timer"></span>
+    </ExpandedButtonIcon>
+
+</C1TimeEditor>
+
+<hr/>
+
+
+<h5>
+    @TimeEditorRes.Placeholder
+</h5>
+<C1TimeEditor  Placeholder="@TimeEditorRes.Placeholder.ToLower()" DropDownBehavior="DropDownBehavior.HeaderTap" ></C1TimeEditor>
+
+<h5>
+    @TimeEditorRes.IsReadOnly <C1CheckBox @bind-IsChecked="@IsReadOnly" />
+</h5>
+<C1TimeEditor IsReadOnly="@IsReadOnly.GetValueOrDefault()" Placeholder="@TimeEditorRes.Placeholder.ToLower()" ></C1TimeEditor>
+
+<h5>
+    @TimeEditorRes.IsEnabled <C1CheckBox @bind-IsChecked="@IsEnabled" />
+</h5>
+<C1TimeEditor IsEnabled="@IsEnabled.GetValueOrDefault()" Placeholder="@TimeEditorRes.Placeholder.ToLower()" ></C1TimeEditor>
+
+
+<br />
+<br />
+
+@code{
+    bool? IsEnabled { get; set; } = true;
+    bool? IsReadOnly { get; set; } = false;
+    string _12format = "hh:mm tt";
+
+    string _currentSelectedTime = "Null";
+    DateTime? _bindingValue = DateTime.Today;
+
+    private void OnTimeValueChanged(object control, DateTimeValueChangedEventArgs eventArgs)
+    {
+
+        _currentSelectedTime = eventArgs.Value?.ToString(_12format).ToUpper() ?? "Null";
+
+        StateHasChanged();
+    }
+
+}
+
+<_Sections>
+    <Title>@TimeEditorRes.OverviewTitle</Title>
+    <Summary>@TimeEditorRes.OverviewSummary</Summary>
+    <Description>@TimeEditorRes.OverviewDescription</Description>
+</_Sections>

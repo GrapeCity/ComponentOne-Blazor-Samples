@@ -1,0 +1,41 @@
+﻿@page "/FlexChart/ColumnWithDataLabels"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+
+<FlexChart Class="chart" ChartType="ChartType.Column"  
+           HeaderContent="Country GDP(B$)" HeaderStyle="font-size:24px"
+           LegendPosition="Position.Bottom" LegendStyle="font-size:18px"
+           BindingX="country" ItemsSource="@DataSource.GetData()">
+    <SeriesCollection>
+        <Series Name="2014" Binding="y2014" />
+    </SeriesCollection>
+    <Label>
+         <DataLabel Position="LabelPosition.Top"  Content="{value}"/>   
+    </Label>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.ColumnWithDataLabelsTitle</Title>
+    <Summary>@FlexChartRes.ColumnWithDataLabelsSummary</Summary>
+    <Description>@FlexChartRes.ColumnWithDataLabelsDescription</Description>
+</_Sections>
+
+@code {
+
+    public class DataSource
+    {
+        public static List<object> GetData()
+        {
+            return new List<object> {
+        new { country= "US", y2014= 17348, y2015= 18036, y2016= 18624 },
+        new { country= "China", y2014= 10356, y2015= 11181, y2016= 11232 },
+        new { country= "Japan", y2014= 4602, y2015= 4124, y2016= 4936 },
+        new { country= "Germany", y2014= 3874, y2015= 3365, y2016= 3479 },
+        new { country= "UK", y2014= 2950, y2015= 2858, y2016= 2629 },
+        new { country= "France", y2014= 2833, y2015= 2420, y2016= 2466 }
+            };
+        }
+    }
+
+}

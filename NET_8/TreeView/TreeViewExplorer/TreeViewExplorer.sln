@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreeViewExplorer", "TreeViewExplorer.csproj", "{250CA29C-EC06-43B6-A0DA-8FA3BBEAA3FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		GRAPECITY|Any CPU = GRAPECITY|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{250CA29C-EC06-43B6-A0DA-8FA3BBEAA3FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{250CA29C-EC06-43B6-A0DA-8FA3BBEAA3FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{250CA29C-EC06-43B6-A0DA-8FA3BBEAA3FE}.GRAPECITY|Any CPU.ActiveCfg = Debug|Any CPU
+		{250CA29C-EC06-43B6-A0DA-8FA3BBEAA3FE}.GRAPECITY|Any CPU.Build.0 = Debug|Any CPU
+		{250CA29C-EC06-43B6-A0DA-8FA3BBEAA3FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{250CA29C-EC06-43B6-A0DA-8FA3BBEAA3FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {50158CF8-8983-4755-B143-4DEBE69B55D4}
+	EndGlobalSection
+EndGlobal
