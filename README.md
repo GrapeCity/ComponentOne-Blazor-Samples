@@ -2,7 +2,7 @@
 
 Use your existing C# programming skills on the server and client with UI components built natively for Blazor. 
 
-This repository contains the samples for [ComponentOne Blazor Edition](https://www.grapecity.com/componentone/blazor-ui-controls). These samples provide complete implementation details for the Blazor control features. They are also included with the full download and install from grapecity.com/componentone. 
+This repository contains the samples for [ComponentOne Blazor Edition](https://developer.mescius.com/componentone/blazor-ui-controls). These samples provide complete implementation details for the Blazor control features. They are also included with the full download and install from grapecity.com/componentone. 
 
 The samples reference but do not include the control packages. The control packages can be downloaded from nuget.org.
 
@@ -21,7 +21,7 @@ This will install any needed dependencies, build the project, and run the projec
 
 ## Resources
 
-* Product Details: https://www.grapecity.com/componentone/blazor-ui-controls
-* Live Demos: https://www.grapecity.com/componentone/demos/blazor/blazorexplorer/
-* Documentation: https://www.grapecity.com/componentone/docs/blazor/online-blazor/overview.html
-* Support Forum: https://www.grapecity.com/forums/blazor-edition
+* Product Details: https://developer.mescius.com/componentone/blazor-ui-controls
+* Live Demos: https://developer.mescius.com/componentone/demos/blazor/blazorexplorer/
+* Documentation: https://developer.mescius.com/componentone/docs/blazor/online-blazor/overview.html
+* Support Forum: https://developer.mescius.com/forums/blazor-edition
