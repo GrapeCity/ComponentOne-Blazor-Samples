@@ -10,7 +10,7 @@
       <Version>8.0.20233.668</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0-rc.2.23480.2" />
-    <PackageReference Include="C1.DataCollection.Serialization" Version="7.0.20233.174" />
+    <PackageReference Include="C1.DataCollection.Serialization" Version="7.0.20233.175" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Client\InvestmentCalculator.Client.csproj" />
