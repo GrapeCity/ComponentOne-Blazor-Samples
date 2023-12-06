@@ -15,7 +15,7 @@
       <Version>8.0.20233.668</Version>
     </PackageReference>
     <PackageReference Include="C1.DataCollection.AdoNet">
-      <Version>7.0.20233.174</Version>
+      <Version>7.0.20233.175</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.2" />
     <PackageReference Include="SqlTableDependency" Version="8.5.8" />
