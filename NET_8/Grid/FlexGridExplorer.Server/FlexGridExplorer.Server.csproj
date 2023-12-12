@@ -9,21 +9,21 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>8.0.20233.668</Version>
+      <Version>8.0.20233.676</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>8.0.20233.668</Version>
+      <Version>8.0.20233.676</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>8.0.20233.668</Version>
+      <Version>8.0.20233.676</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>8.0.20233.668</Version>
+      <Version>8.0.20233.676</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid.Excel">
-      <Version>8.0.20233.668</Version>
+      <Version>8.0.20233.676</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0-rc.2.23480.2" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
   </ItemGroup>
   <ItemGroup>

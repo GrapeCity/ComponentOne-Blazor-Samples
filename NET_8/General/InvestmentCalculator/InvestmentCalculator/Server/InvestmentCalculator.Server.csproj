@@ -4,12 +4,12 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>8.0.20233.668</Version>
+      <Version>8.0.20233.676</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>8.0.20233.668</Version>
+      <Version>8.0.20233.676</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0-rc.2.23480.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
     <PackageReference Include="C1.DataCollection.Serialization" Version="7.0.20233.175" />
   </ItemGroup>
   <ItemGroup>

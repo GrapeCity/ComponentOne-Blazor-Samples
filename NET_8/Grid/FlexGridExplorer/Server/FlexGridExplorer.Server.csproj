@@ -7,22 +7,22 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>8.0.20233.668</Version>
+      <Version>8.0.20233.676</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>8.0.20233.668</Version>
+      <Version>8.0.20233.676</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>8.0.20233.668</Version>
+      <Version>8.0.20233.676</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>8.0.20233.668</Version>
+      <Version>8.0.20233.676</Version>
     </PackageReference>
     <PackageReference Include="C1.DataCollection">
       <Version>7.0.20233.175</Version>
     </PackageReference>
     <PackageReference Include="C1.DataCollection.Serialization" Version="7.0.20233.175" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0-rc.2.23480.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Client\FlexGridExplorer.Client.csproj" />
