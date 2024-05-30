@@ -592,6 +592,24 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Filter by condition.
+        /// </summary>
+        public static string FilterByCondition {
+            get {
+                return ResourceManager.GetString("FilterByCondition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter by values.
+        /// </summary>
+        public static string FilterByValues {
+            get {
+                return ResourceManager.GetString("FilterByValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter text to filter.
         /// </summary>
         public static string FilterPlaceholderText {
@@ -741,6 +759,33 @@ namespace BlazorExplorer.Localization {
         public static string GroupingTitle {
             get {
                 return ResourceManager.GetString("GroupingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shows a tree-like data-source bound to FlexGrid using ChildItemsPath property..
+        /// </summary>
+        public static string HierarchicalRowsDescription {
+            get {
+                return ResourceManager.GetString("HierarchicalRowsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HierarchicalRowsSummary {
+            get {
+                return ResourceManager.GetString("HierarchicalRowsSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hierarchical Rows.
+        /// </summary>
+        public static string HierarchicalRowsTitle {
+            get {
+                return ResourceManager.GetString("HierarchicalRowsTitle", resourceCulture);
             }
         }
         

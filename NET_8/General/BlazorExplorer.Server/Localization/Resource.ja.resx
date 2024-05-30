@@ -251,20 +251,26 @@
   </data>
   <data name="Layout_GrapeCityUrl" xml:space="preserve">
     <value>https://developer.mescius.jp</value>
+    <comment>https://developer.mescius.jp</comment>
   </data>
   <data name="Layout_ProductUrl" xml:space="preserve">
     <value>https://developer.mescius.jp/componentone/blazor</value>
+    <comment>https://developer.mescius.jp/componentone/blazor</comment>
   </data>
   <data name="SiteNav_AboutUrl" xml:space="preserve">
     <value>https://developer.mescius.jp/componentone/blazor</value>
+    <comment>https://developer.mescius.jp/componentone/blazor</comment>
   </data>
   <data name="SiteNav_FreeTrialUrl" xml:space="preserve">
     <value>https://developer.mescius.jp/download</value>
+    <comment>https://developer.mescius.jp/download</comment>
   </data>
   <data name="SiteNav_PricingUrl" xml:space="preserve">
     <value>https://developer.mescius.jp/purchase</value>
+    <comment>https://developer.mescius.jp/purchase</comment>
   </data>
   <data name="SiteNav_SupportUrl" xml:space="preserve">
     <value>https://developer.mescius.jp/support</value>
+    <comment>https://developer.mescius.jp/support</comment>
   </data>
 </root>

@@ -17,16 +17,16 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0" />
   </ItemGroup>

@@ -32,7 +32,7 @@
         <GridColumn Binding="Change" Header="Change" InputType="TextBoxType.Number" Format="p2" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
         <GridColumn Binding="Bid" MinWidth="120" Width="GridLength.Star" Format="n2" InputType="TextBoxType.Number" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
         <GridColumn Binding="Ask" MinWidth="120" Width="GridLength.Star" Format="n2" InputType="TextBoxType.Number" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
-        <GridColumn Binding="Change" Header="50MA" Width="70" IsReadOnly="true" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center">
+        <GridColumn Binding="Change" Header="50MA" Width="90" IsReadOnly="true" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center">
             <CellTemplate>
                 @if ((decimal)context < 0)
                 {

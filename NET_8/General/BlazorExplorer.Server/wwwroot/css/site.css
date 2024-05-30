@@ -263,12 +263,12 @@ app {
     }
 
     .sampleDataFilterSection .filtersSection {
-        flex: 1 0 40%;
+        flex: 0 0 min(40%, 550px);
         max-height: 70vh;
     }
 
     .sampleDataFilterSection .dataSection {
-        flex: 2 1 60%;
+        flex: 1 1 content;
         max-height: 70vh;
     }
 }

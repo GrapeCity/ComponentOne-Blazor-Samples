@@ -157,10 +157,6 @@
     <value>Expander</value>
     <comment>Expander</comment>
   </data>
-  <data name="ExpandsModes" xml:space="preserve">
-    <value>展開モード</value>
-    <comment>Expand Modes</comment>
-  </data>
   <data name="Header" xml:space="preserve">
     <value>ヘッダ</value>
     <comment>Header</comment>

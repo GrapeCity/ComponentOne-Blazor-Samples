@@ -48,54 +48,79 @@
         _data = new C1.DataCollection.C1DataCollection<Car>(DataProvider.GetCarDataCollection(carsTable));
     }
 
-    void OnAutoGeneratingColumn(object sender, GridAutoGeneratingColumnEventArgs args)
+    void OnAutoGeneratingColumn(object sender, GridAutoGeneratingColumnEventArgs a)
     {
-        if (args.Property.Name == nameof(Car.Picture))
+        switch (a.Column.Binding)
         {
-            args.Column.CellTemplate = target => builder =>
-            {
-                builder.OpenElement(0, "img");
-                builder.AddAttribute(1, "style", "max-height: 35px");
-                builder.AddAttribute(2, "src", $"data:image/bmp;base64, {((Lazy<string>)target).Value}");
-                builder.CloseElement();
-            };
+            case nameof(Car.Picture):
+                a.Column.CellTemplate = target => builder =>
+                {
+                    builder.OpenElement(0, "img");
+                    builder.AddAttribute(1, "style", "max-height: 35px");
+                    builder.AddAttribute(2, "src", $"data:image/bmp;base64, {((Lazy<string>)target).Value}");
+                    builder.CloseElement();
+                };
+                break;
+            case nameof(Car.DateProductionLine):
+                a.Column.Format = "g";
+                break;
+            case nameof(Car.PresentationDate):
+                a.Column.Format = "MM/dd/yy H:mm:ss zzz";
+                break;
+            case nameof(Car.FuelConsumption):
+                a.Column.Format = "hh:mm";
+                break;
         }
     }
 
     void FilterAutoGenerating(object sender, FilterAutoGeneratingEventArgs e)
     {
-        if (e.Property.Name == nameof(Car.Brand))
+        switch (e.Property.Name)
         {
-            var filter = e.Filter as ChecklistFilter;
-            filter.ShowSearchBox = true;
-        }
-        else if (e.Property.Name == nameof(Car.Price))
-        {
-            var priceFilter = (RangeFilter)e.Filter;
-            priceFilter.Maximum = _data.Max(o => ((Car)o).Price);
-            priceFilter.Minimum = _data.Min(o => ((Car)o).Price);
-            priceFilter.Increment = 1000;
-            priceFilter.Format = "F0";
-        }
-        else if (e.Property.Name == nameof(Car.TransmissSpeedCount))
-        {
-            var filter = e.Filter as ChecklistFilter;
-            filter.SelectionMode = SelectionMode.Single;
-        }
-        else if (e.Property.Name == nameof(Car.TransmissAutomatic))
-        {
-            var filter = e.Filter as ChecklistFilter;
-            var unset = filter.Items.FirstOrDefault(i => string.IsNullOrEmpty(i.DisplayValue));
-            if (unset != null)
-            {
-                unset.DisplayValue = C1.Blazor.DataFilter.Resources.Resources.Null;
-            }
-        }
-        else if (e.Property.Name == nameof(Car.DateProductionLine))
-        {
-            var filter = e.Filter as DateRangeFilter;
-            filter.Maximum = _data.Max(o => ((Car)o).DateProductionLine);
-            filter.Minimum = _data.Min(o => ((Car)o).DateProductionLine);
+            case nameof(Car.Brand):
+                var brandFilter = e.Filter as ChecklistFilter;
+                brandFilter.ShowSearchBox = true;
+                break;
+            case nameof(Car.Price):
+                var priceFilter = (RangeFilter)e.Filter;
+                priceFilter.Maximum = _data.Max(o => ((Car)o).Price);
+                priceFilter.Minimum = _data.Min(o => ((Car)o).Price);
+                priceFilter.Increment = 1000;
+                priceFilter.Format = "F0";
+                break;
+            case nameof(Car.TransmissSpeedCount):
+                var speedCountFilter = e.Filter as ChecklistFilter;
+                speedCountFilter.SelectionMode = SelectionMode.Single;
+                break;
+            case nameof(Car.TransmissAutomatic):
+                var automaticFilter = e.Filter as ChecklistFilter;
+                var unset = automaticFilter.Items.FirstOrDefault(i => string.IsNullOrEmpty(i.DisplayValue));
+                if (unset != null)
+                {
+                    unset.DisplayValue = C1.Blazor.DataFilter.Resources.Resources.Null;
+                }
+                break;
+            case nameof(Car.DateProductionLine):
+                var dateProductionLineFilter = e.Filter as DateTimeRangeFilter;
+                dateProductionLineFilter.Maximum = _data.Max(o => ((Car)o).DateProductionLine);
+                dateProductionLineFilter.Minimum = _data.Min(o => ((Car)o).DateProductionLine);
+                break;
+            case nameof(Car.PresentationDate):
+                var presentationDateFilter = (DateTimeOffsetRangeFilter)e.Filter;
+                presentationDateFilter.Maximum = _data.Max(x => ((Car)x).PresentationDate);
+                presentationDateFilter.Minimum = _data.Min(x => ((Car)x).PresentationDate);
+                break;
+            case nameof(Car.ManufactureDate):
+                var manufactureDateFilter = (DateOnlyRangeFilter)e.Filter;
+                manufactureDateFilter.Maximum = _data.Max(x => ((Car)x).ManufactureDate);
+                manufactureDateFilter.Minimum = _data.Min(x => ((Car)x).ManufactureDate);
+                break;
+            case nameof(Car.FuelConsumption):
+                var fuelConsumptionFilter = (TimeOnlyRangeFilter)e.Filter;
+                fuelConsumptionFilter.Maximum = _data.Max(x => ((Car)x).FuelConsumption);
+                fuelConsumptionFilter.Minimum = _data.Min(x => ((Car)x).FuelConsumption);
+                fuelConsumptionFilter.Format = "hh:mm";
+                break;
         }
     }
 

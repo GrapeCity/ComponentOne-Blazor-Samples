@@ -537,4 +537,20 @@
     <value>列のピン止め解除</value>
     <comment>Unpin Column</comment>
   </data>
+  <data name="TransposedGridDescription" xml:space="preserve">
+    <value>データ項目が列として表示されるように列と行を入れ替える方法を示します。</value>
+    <comment>Show how to transpose columns and rows so the data items are shown as columns.</comment>
+  </data>
+  <data name="TransposedGridTitle" xml:space="preserve">
+    <value>転置グリッド</value>
+    <comment>Transposed Grid</comment>
+  </data>
+  <data name="SummaryRowDescription" xml:space="preserve">
+    <value>列の値を要約した行を表示します。</value>
+    <comment>Shows a row that summarizes the values in the columns</comment>
+  </data>
+  <data name="SummaryRowTitle" xml:space="preserve">
+    <value>サマリー行</value>
+    <comment>Summary Row</comment>
+  </data>
 </root>

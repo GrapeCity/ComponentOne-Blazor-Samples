@@ -1,0 +1,32 @@
+﻿@page "/Viewer/Index"
+@using C1.Blazor.Viewer
+@using C1.Blazor.Viewer.Model;
+@using C1.Document;
+@using C1.Report;
+@inject IJSRuntime Js
+
+@code {
+    C1DocumentSource docSource = DocSources.GetPdf();
+
+    protected override void OnInitialized()
+    {
+        docSource.GenerateCompleted += (s, e) =>
+        {
+            if (e.Error != null)
+            {
+                Js.InvokeVoidAsync("alert", e.Error.Message);
+                docSource = null;
+            }
+            InvokeAsync(StateHasChanged);
+        };
+        docSource.GenerateAsync();
+    }
+}
+
+<FlexViewer DocumentSource=docSource />
+
+<_Sections>
+    <Title>@ViewerRes.PdfViewerTitle</Title>
+    <Summary>@ViewerRes.PdfViewerSummary</Summary>
+    <Description>@ViewerRes.PdfViewerDescription</Description>
+</_Sections>

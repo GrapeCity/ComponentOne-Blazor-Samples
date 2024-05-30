@@ -13,6 +13,7 @@
 					<action text="Virtual Mode" text.ja="仮想モード" name="VirtualMode"></action>
 					<action text="On Demand" text.ja="リモートデータ連結" name="OnDemand"></action>
 					<!--<action text="OData Service Bind" text.ja="OData サービス連結" name="ODataBind"></action>-->
+					<action text="HierarchicalRows" text.ja="" name="HierarchicalRows" ></action>
 					<action text="Row Details" text.ja="詳細行" name="RowDetails"></action>
 					<action text="Check List" text.ja="チェックリスト" name="CheckList"></action>
 					<action text="Unbound" text.ja="アンバウンド" name="Unbound"></action>
@@ -48,8 +49,8 @@
 					<action text="Cell Merging" text.ja="セルの結合" name="CellMerging"></action>
 					<!--<action text="Data Map" text.ja="データマップ" name="DataMap"></action>-->
 					<action text="Custom appearance" text.ja="カスタム外観" name="CustomAppearance"></action>
-					<action text="Summary Row" text.ja="" name="SummaryRow"></action>
-					<action text="Transposed Grid" text.ja="" name="TransposedGrid"></action>
+					<action text="Summary Row" text.ja="サマリー行" name="SummaryRow"></action>
+					<action text="Transposed Grid" text.ja="転置グリッド" name="TransposedGrid"></action>
 				</subactions>
 			</action>
 			<action text="Editing" text.ja="編集">
@@ -95,7 +96,7 @@
 				</subactions>
 			</action>
 		</Control>
-		<Control name="DataFilter">
+		<Control name="DataFilter" new="true">
 			<action text="Cars List" text.ja="車両リスト" name="Index"></action>
 			<action text="Filter Summary" text.ja="フィルターの概要" name="FiltersSummary"></action>
 			<action text="Conditional Filters" text.ja="条件付きフィルター" name="ConditionalFilters"></action>
@@ -179,7 +180,12 @@
 		<Control name="TreeMap">
 			<action text="TreeMap" text.ja="ツリーマップ" name="Index"></action>
 		</Control>
-	</ControlGroup>
+	<Control name="Viewer" new="true">
+      <action text="PDF" text.ja="PDF" name="Index"></action>
+      <action text="FlexReport" text.ja="FlexReport" name="FlexReport"></action>
+      <action text="Report Services" text.ja="Report Service" name="ReportService"></action>
+    </Control>
+  </ControlGroup>
 
 	<ControlGroup name="Scheduling" name.ja="スケジュール">
 		<Control name="Calendar" documentation="https://developer.mescius.com/componentone/docs/blazor/online-blazor/C1.Blazor.Calendar~C1.Blazor.Calendar_namespace.html">

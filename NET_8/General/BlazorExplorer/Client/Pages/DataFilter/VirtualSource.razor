@@ -4,7 +4,7 @@
 
 <section class="sampleDataFilterSection">
     <div class="filtersSection">
-        <C1DataFilter ItemsSource="@_data" ExpandMode="@ExpandMode.One" Style="@("max-height: inherit;")">
+        <C1DataFilter ItemsSource="@_data" ExpandMode="@ExpandMode.One" FilterAutoGenerating="@FilterAutoGenerating" Style="@("max-height: inherit;")">
 
         </C1DataFilter>
     </div>
@@ -27,7 +27,7 @@
     <Description>@DataFilterRes.VirtualSourceDescription</Description>
 </_Sections>
 
-@code{
+@code {
 
     CarVirtualCollection _data;
 
@@ -38,23 +38,37 @@
         _data.PropertyChanged += DataOnPropertyChanged;
     }
 
-    void OnAutoGeneratingColumn(object sender, GridAutoGeneratingColumnEventArgs args)
+    void OnAutoGeneratingColumn(object sender, GridAutoGeneratingColumnEventArgs a)
     {
-        if (args.Property.Name == nameof(Car.Picture))
+        switch (a.Column.Binding)
         {
-            args.Column.CellTemplate = target => builder =>
-            {
-                if (target == null)
+            case nameof(Car.Picture):
+                a.Column.CellTemplate = target => builder =>
                 {
-                    return;
-                }
-                builder.OpenRegion(0);
-                builder.OpenElement(10, "img");
-                builder.AddAttribute(11, "style", "max-height: 35px;");
-                builder.AddAttribute(12, "src", $"data:image/bmp;base64, {((Lazy<string>)target).Value}");
-                builder.CloseElement();
-                builder.CloseRegion();
-            };
+                    builder.OpenElement(0, "img");
+                    builder.AddAttribute(1, "style", "max-height: 35px");
+                    builder.AddAttribute(2, "src", $"data:image/bmp;base64, {((Lazy<string>)target).Value}");
+                    builder.CloseElement();
+                };
+                break;
+            case nameof(Car.DateProductionLine):
+                a.Column.Format = "g";
+                break;
+            case nameof(Car.PresentationDate):
+                a.Column.Format = "MM/dd/yy H:mm:ss zzz";
+                break;
+            case nameof(Car.FuelConsumption):
+                a.Column.Format = "hh:mm";
+                break;
+        }
+    }
+
+    void FilterAutoGenerating(object sender, FilterAutoGeneratingEventArgs e)
+    {
+        if (e.Property.Name == nameof(Car.FuelConsumption))
+        {
+            var fuelConsumptionFilter = (TimeOnlyFilter)e.Filter;
+            fuelConsumptionFilter.Format = "hh:mm";
         }
     }
 

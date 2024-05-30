@@ -5,64 +5,65 @@
     <RootNamespace>BlazorExplorer</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>1701;1702;1591</NoWarn>
+    <NoWarn>1701;1702;1591;BL0005</NoWarn>
     <DefineConstants>TRACE;BLAZOR</DefineConstants>
   </PropertyGroup>
   <PropertyGroup>
     <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants>TRACE;BLAZOR</DefineConstants>
     <RunAOTCompilation>true</RunAOTCompilation>
     <RunAOTCompilationAfterBuild>true</RunAOTCompilationAfterBuild>
     <WasmNativeStrip>false</WasmNativeStrip>
+    <NoWarn>1701;1702;BL0005</NoWarn>
+    <DefineConstants>TRACE;BLAZOR</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Accordion">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Calendar">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Chart">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Gauge">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Menu">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.TreeView">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
-    <PackageReference Include="C1.DataCollection.Serialization" Version="7.0.20233.175" />
-    <PackageReference Include="C1.Excel" Version="5.0.20232.29" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0" PrivateAssets="all" />
+    <PackageReference Include="C1.DataCollection.Serialization" Version="8.0.20241.192" />
+    <PackageReference Include="C1.Excel" Version="8.0.20241.62" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.3" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0" />
-    <PackageReference Include="System.Net.Http.Json" Version="7.0.1" />
+    <PackageReference Include="System.Net.Http.Json" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Localization\FlexGrid\**" />
@@ -97,6 +98,9 @@
     <EmbeddedResource Include="Data\employees.xml" />
     <EmbeddedResource Include="Data\GdpVsHappiness.json" />
     <EmbeddedResource Include="Data\WebColors.json" />
+    <EmbeddedResource Include="Data\DefaultDocument.pdf" />
+    <EmbeddedResource Include="Data\segoeui.ttf" />
+    <EmbeddedResource Include="Data\Shapes.flxr" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\BlazorExplorer.Shared.csproj" />

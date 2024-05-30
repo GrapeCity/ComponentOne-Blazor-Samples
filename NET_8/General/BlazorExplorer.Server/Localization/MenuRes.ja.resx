@@ -132,18 +132,6 @@
   <data name="File" xml:space="preserve">
     <value>ファイル</value>
   </data>
-  <data name="Overview" xml:space="preserve">
-    <value>概要</value>
-    <comment>Overview</comment>
-  </data>
-  <data name="CustomContent_Description" xml:space="preserve">
-    <value>サンプルは、CustomContent プロパティを作成してメニューコンテンツをカスタマイズする方法を示しています</value>
-    <comment>The sample shows how to custom menu content by creating &lt;b/&gt;CustomContent property</comment>
-  </data>
-  <data name="CustomContent_Title" xml:space="preserve">
-    <value>カスタムコンテンツ</value>
-    <comment>CustomContent</comment>
-  </data>
   <data name="HeaderTemplate_Description" xml:space="preserve">
     <value>サンプルでは、&lt;b&gt;HeaderTemplate&lt;/b&gt; プロパティを作成して C1Menu のヘッダーをカスタム化する方法を示しています。</value>
   </data>
@@ -210,11 +198,11 @@ There are two ways to display sub-menu popup: clicked or hoverred C1MenuItem by 
     <value>降順に並べ替え</value>
     <comment>SortDescending</comment>
   </data>
-	<data name="AutoSizeColumn" xml:space="preserve">
+  <data name="AutoSizeColumn" xml:space="preserve">
     <value>列の自動リサイズ</value>
     <comment>AutoSizeColumn</comment>
   </data>
-	<data name="MatchCase" xml:space="preserve">
+  <data name="MatchCase" xml:space="preserve">
     <value>大文字と小文字を区別</value>
     <comment>Match Case</comment>
   </data>

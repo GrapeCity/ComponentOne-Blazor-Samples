@@ -141,14 +141,6 @@
     <value>この例は、C1DatePicker コントロールを使用して、単一のコントロールを使用して日付と時刻を編集する方法を示します。</value>
     <comment>The example shows a Date value using an C1DatePicker control.</comment>
   </data>
-  <data name="OverviewSummary" xml:space="preserve">
-    <value>C1DatePicker コントロールを使用すると、ユーザーは Globalize クラスでサポートされている任意の形式を使用して日付を入力したり、Calendar コントロールを含むドロップダウンから日付を選択したりできます。</value>
-    <comment>The C1DatePicker control allows users to type in dates using any format supported by the Globalize class, or to pick dates from a drop-down that contains a Calendar control.</comment>
-  </data>
-  <data name="OverviewTitle" xml:space="preserve">
-    <value>概要</value>
-    <comment>Overview</comment>
-  </data>
   <data name="Placeholder" xml:space="preserve">
     <value>プレースホルダ</value>
     <comment>Placeholder</comment>

@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="C1.DataCollection">
-		  <Version>7.0.20233.175</Version>
+		  <Version>8.0.20241.192</Version>
 	</PackageReference>
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.Text.Json" Version="7.0.3" />

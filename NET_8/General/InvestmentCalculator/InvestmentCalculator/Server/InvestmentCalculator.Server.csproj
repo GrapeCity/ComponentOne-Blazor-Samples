@@ -4,13 +4,13 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>8.0.20233.676</Version>
+      <Version>8.0.20241.820</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
-    <PackageReference Include="C1.DataCollection.Serialization" Version="7.0.20233.175" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.3" />
+    <PackageReference Include="C1.DataCollection.Serialization" Version="8.0.20241.192" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Client\InvestmentCalculator.Client.csproj" />

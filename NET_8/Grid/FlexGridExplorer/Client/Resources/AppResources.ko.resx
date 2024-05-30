@@ -460,4 +460,28 @@
   <data name="UnpinColumn" xml:space="preserve">
     <value>Unpin Column</value>
   </data>
+  <data name="ExcelExportDescription" xml:space="preserve">
+    <value>Showcases the export feature of FlexGrid using GcExcel</value>
+  </data>
+  <data name="ExcelExportTitle" xml:space="preserve">
+    <value>Excel Export</value>
+  </data>
+  <data name="ValidationDescription" xml:space="preserve">
+    <value>Show how to display and style validation</value>
+  </data>
+  <data name="ValidationTitle" xml:space="preserve">
+    <value>Validation</value>
+  </data>
+  <data name="TransposedGridDescription" xml:space="preserve">
+    <value>Show how to transpose columns and rows so the data items are shown as columns.</value>
+  </data>
+  <data name="TransposedGridTitle" xml:space="preserve">
+    <value>Transposed Grid</value>
+  </data>
+  <data name="SummaryRowDescription" xml:space="preserve">
+    <value>Shows a row that summarizes the values in the columns</value>
+  </data>
+  <data name="SummaryRowTitle" xml:space="preserve">
+    <value>Summary Row</value>
+  </data>
 </root>

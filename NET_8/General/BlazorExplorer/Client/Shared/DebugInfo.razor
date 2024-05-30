@@ -1,0 +1,147 @@
+﻿@page "/DebugInfo"
+@inject IJSRuntime js
+@using System.Reflection
+
+<script>
+    async function reloadResource(resource) {
+        const headers = new Headers();
+        headers.set("Cache-Control", "no-cache");
+        headers.set("Pragma", "no-cache");
+        headers.set("Expires", "0");
+        const result = await fetch(resource, { headers: headers }).catch(() => { });
+    }
+
+</script>
+<style>
+    .warning {
+        background-color: #ffffcc;
+        border-left: 6px solid #ffeb3b;
+        padding: 12px;
+        margin: 16px 18px;
+        width:fit-content;
+    }
+
+    .styled-table {
+        border-collapse: collapse;
+        margin: 16px 18px;
+        min-width: fit-content;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+        .styled-table thead tr {
+            background-color: #71b2a5;
+            color: #ffffff;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 4px 12px;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #f7f7f7;
+        }
+
+            .styled-table tbody tr:hover {
+                background: #eff9f7;
+            }
+
+    .resourcesPanel {
+        background: #dddddd;
+        width: fit-content;
+        padding: 12px;
+        border-radius: 12px;
+        margin: 16px 18px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+    }
+
+        .resourcesPanel button {
+            align-self: end;
+            background: #b8e2da;
+            border: solid aliceblue;
+            padding: 4px 12px;
+            border-radius: 6px;
+        }
+
+            .resourcesPanel button:hover {
+                background: #d2e7e3;
+            }
+</style>
+<div class="resourcesPanel">
+    <p>
+        Click to reload C1 libraries resources (js/css) and update caches
+        <br />
+        (page will be reloaded)
+
+    </p>
+
+    <button type="button" @onclick="()=>ReloadResources()">
+        Reload
+    </button>
+</div>
+
+<p class="warning">
+    <strong>Warning!</strong> <br />
+    In WASM-hosted applications to clean cache please open the developer tools of the browser, then click and hold the reload button to see <i>Hard Refresh</i> options.
+</p>
+
+
+<table class="styled-table">
+    <thead>
+        <tr><th colspan="2">List of C1 libs</th></tr>
+        <tr>
+            <th> Assembly</th>
+            <th> Version</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in C1Assemblies.OrderBy(i => i.Name))
+        {
+            <tr>
+                <td>@i.Name</td>
+                <td>@i.Version</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+
+    List<PackageInfo> C1Assemblies;
+
+    protected override void OnInitialized()
+    {
+        C1Assemblies = Assembly.GetExecutingAssembly().GetReferencedAssemblies()
+            .Where(i => i.Name.Contains("C1."))
+            .Select(l => new PackageInfo { Name = l.Name, Version = l.Version }).ToList();
+
+        base.OnInitialized();
+    }
+
+    List<string> GetListOfResources()
+    {
+        var result = C1Assemblies.Select(v => $"/_content/{v.Name}/scripts.js").ToList();
+        result.AddRange(C1Assemblies.Select(v => $"/_content/{v.Name}/styles.css").ToList());
+        return result;
+    }
+
+    async Task ReloadResources()
+    {
+        foreach (var resource in GetListOfResources())
+        {
+            await js.InvokeVoidAsync("reloadResource", resource);
+
+        }
+        await js.InvokeVoidAsync("document.location.reload");
+    }
+
+    class PackageInfo
+    {
+        public string Name { get; set; }
+        public Version Version { get; set; }
+    }
+}

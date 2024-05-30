@@ -125,10 +125,6 @@
     <value>線形ゲージ</value>
     <comment>LinearGauge</comment>
   </data>
-  <data name="OverviewDescription" xml:space="preserve">
-    <value>線形ゲージ、ブレットグラフ、放射状ゲージの基本的な機能を示します。</value>
-    <comment>Shows basic LinearGauge, BulletGraph and RadialGauge features.</comment>
-  </data>
   <data name="OverviewSummary" xml:space="preserve">
     <value>線形ゲージ、ブレットグラフ、放射状ゲージの基本的な機能を示します。</value>
     <comment>Shows basic LinearGauge, BulletGraph and RadialGauge features.</comment>

@@ -1,0 +1,32 @@
+﻿@page "/Viewer/ReportService"
+@using C1.Blazor.Viewer
+@using C1.Blazor.Viewer.Model;
+@using C1.Document;
+@using C1.Report;
+@inject IJSRuntime Js
+
+@code {
+    C1DocumentSource docSource = DocSources.GetSSRS();
+
+    protected override void OnInitialized()
+    {
+        docSource.GenerateCompleted += (s, e) =>
+        {
+            if (e.Error != null)
+            {
+                Js.InvokeVoidAsync("alert", e.Error.Message);
+                docSource = null;
+            }
+            InvokeAsync(StateHasChanged);
+        };
+        docSource.GenerateAsync();
+    }
+}
+
+<FlexViewer DocumentSource=docSource />
+
+<_Sections>
+    <Title>@ViewerRes.SsrsViewerTitle</Title>
+    <Summary>@ViewerRes.SsrsViewerSummary</Summary>
+    <Description>@ViewerRes.SsrsViewerDescription</Description>
+</_Sections>

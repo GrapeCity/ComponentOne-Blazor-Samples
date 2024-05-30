@@ -650,11 +650,31 @@
     <comment>Unpin Column</comment>
   </data>
   <data name="ValidationDescription" xml:space="preserve">
-    <value>Show how to display and style validation</value>
+    <value>検証の表示方法とスタイルの表示方法を表示します。</value>
     <comment>Show how to display and style validation</comment>
   </data>
   <data name="ValidationTitle" xml:space="preserve">
-    <value>Validation</value>
-	<comment>Validation</comment>
+    <value>検証</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="SummaryRowDescription" xml:space="preserve">
+    <value>SummaryRows を使用すると、対応する列の AggregateFunction から計算された集計値を表示できます。</value>
+    <comment>SummaryRows allow displaying aggregating values that are calculated from the AggregateFunctions in the corresponding columns.</comment>
+  </data>
+  <data name="SummaryRowTitle" xml:space="preserve">
+    <value>サマリー行</value>
+    <comment>Summary Row</comment>
+  </data>
+  <data name="SummaryRowSummary" xml:space="preserve">
+    <value>列の値を要約した行を表示します。</value>
+    <comment>Shows a row that summarizes the values in the columns</comment>
+  </data>
+  <data name="TransposedGridDescription" xml:space="preserve">
+    <value>データ項目が列として表示されるように列と行を入れ替える方法を示します。</value>
+    <comment>Show how to transpose columns and rows so the data items are shown as columns.</comment>
+  </data>
+  <data name="TransposedGridTitle" xml:space="preserve">
+    <value>転置グリッド</value>
+    <comment>Transposed Grid</comment>
   </data>
 </root>

@@ -546,5 +546,22 @@
   </data>
   <data name="ValidationTitle" xml:space="preserve">
     <value>Validation</value>
-  </data>	
+  </data>
+  <data name="HierarchicalRowsDescription" xml:space="preserve">
+    <value>Shows a tree-like data-source bound to FlexGrid using ChildItemsPath property.</value>
+  </data>
+  <data name="HierarchicalRowsTitle" xml:space="preserve">
+    <value>Hierarchical Rows</value>
+  </data>
+  <data name="HierarchicalRowsSummary" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FilterByCondition" xml:space="preserve">
+    <value>Filter by condition</value>
+    <comment>Filter by condition</comment>
+  </data>
+  <data name="FilterByValues" xml:space="preserve">
+    <value>Filter by values</value>
+    <comment>Filter by values</comment>
+  </data>
 </root>
