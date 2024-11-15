@@ -13,7 +13,7 @@
 					<action text="Virtual Mode" text.ja="仮想モード" name="VirtualMode"></action>
 					<action text="On Demand" text.ja="リモートデータ連結" name="OnDemand"></action>
 					<!--<action text="OData Service Bind" text.ja="OData サービス連結" name="ODataBind"></action>-->
-					<action text="HierarchicalRows" text.ja="" name="HierarchicalRows" ></action>
+					<action text="HierarchicalRows" text.ja="階層的な行" name="HierarchicalRows" ></action>
 					<action text="Row Details" text.ja="詳細行" name="RowDetails"></action>
 					<action text="Check List" text.ja="チェックリスト" name="CheckList"></action>
 					<action text="Unbound" text.ja="アンバウンド" name="Unbound"></action>
@@ -33,6 +33,7 @@
 				<subactions>
 					<action text="Column Definition" text.ja="列の定義" name="ColumnDefinitions"></action>
 					<action text="Custom columns" text.ja="カスタム列" name="CustomColumns"></action>
+					<action text="Column Layout" text.ja="Column Layout" name="ColumnLayout"></action>
 					<action text="GridColumn customization" text.ja="GridColumn カスタマイズ" name="CustomDropDownColumn"></action>
 					<!--<action text="Custom Header Template" text.ja="カスタムヘッダーテンプレート" name="CustomHeaderTemplate"></action>
           <action text="Column Layout" text.ja="列のレイアウト" name="ColumnLayout"></action>
@@ -96,7 +97,7 @@
 				</subactions>
 			</action>
 		</Control>
-		<Control name="DataFilter" new="true">
+		<Control name="DataFilter">
 			<action text="Cars List" text.ja="車両リスト" name="Index"></action>
 			<action text="Filter Summary" text.ja="フィルターの概要" name="FiltersSummary"></action>
 			<action text="Conditional Filters" text.ja="条件付きフィルター" name="ConditionalFilters"></action>
@@ -147,6 +148,7 @@
 					<action text="Animation" name="Animation" text.ja="アニメーション"></action>
 					<action text="Annotations" name="Annotations" text.ja="注釈"></action>
 					<action text="Break Even" name="BreakEven" text.ja="損益分岐"></action>
+					<action text="Heatmap" name="Heatmap" ></action>
 				</subactions>
 			</action>
 			<action text="Interaction">
@@ -155,6 +157,8 @@
 					<action text="Line Marker" text.ja="ラインマーカー" name="Marker"></action>
 					<action text="Axis Scrollbar" text.ja="軸スクロールバー" name="AxisScrollbar"></action>
 					<action text="Range Selector" text.ja="範囲セレクター" name="ChartRangeSelector"></action>
+					<action text="Drag Points" name="DragPoints"></action>
+					<action text="Axis Markers" name="AxisMarkers"></action>
 				</subactions>
 			</action>
 			<action text="Statistical Charts" text.ja="統計チャート">
@@ -166,7 +170,7 @@
 				</subactions>
 			</action>
 		</Control>
-		<Control name="Gauge" new="true">
+		<Control name="Gauge">
 			<action text="Overview" text.ja="概要" name="Index"></action>
 			<action text="Using Ranges" text.ja="範囲の使用" name="UsingRanges"></action>
 		</Control>
@@ -180,13 +184,8 @@
 		<Control name="TreeMap">
 			<action text="TreeMap" text.ja="ツリーマップ" name="Index"></action>
 		</Control>
-	<Control name="Viewer" new="true">
-      <action text="PDF" text.ja="PDF" name="Index"></action>
-      <action text="FlexReport" text.ja="FlexReport" name="FlexReport"></action>
-      <action text="Report Services" text.ja="Report Service" name="ReportService"></action>
-    </Control>
   </ControlGroup>
-
+	
 	<ControlGroup name="Scheduling" name.ja="スケジュール">
 		<Control name="Calendar" documentation="https://developer.mescius.com/componentone/docs/blazor/online-blazor/C1.Blazor.Calendar~C1.Blazor.Calendar_namespace.html">
 			<action text="General" text.ja="一般">
@@ -206,6 +205,32 @@
 				</subactions>
 			</action>
 			<action text="Validation" text.ja="検証" name="Validation"></action>
+		</Control>
+	</ControlGroup>
+
+	<ControlGroup name="Documents" name.ja="ドキュメント">
+		<Control name="FlexViewer" new="true" popular="true">
+			<action text="PDF" text.ja="PDF" name="Index"></action>
+			<action text="FlexReport" text.ja="FlexReport" name="FlexReport"></action>
+			<action text="Report Services" text.ja="Report Service" name="ReportService"></action>
+		</Control>
+		<Control name="Excel" new="true">
+			<action text="General" text.ja="一般">
+				<subactions>
+					<action text="Overview" text.ja="概要" name="Index"></action>
+				</subactions>
+			</action>
+			<action text="Fetch weather" text.ja="天気の取得">
+				<subactions>
+					<action text="Fetch data" text.ja="データの取得" name="FetchData"></action>
+					<action text="Fetch Excel file" text.ja="Excel ファイルの取得" name="FetchExcel"></action>
+				</subactions>
+			</action>
+			<action text="Export" text.ja="エクスポート">
+				<subactions>
+					<action text="XLSX/XLS/CSV Export" text.ja="XLSX/XLS/CSV エクスポート" name="Export"></action>
+				</subactions>
+			</action>
 		</Control>
 	</ControlGroup>
 
@@ -323,26 +348,4 @@
 		<Control referenceApplication="true" name="InvestmentCalculator" name.ja="InvestmentCalculator" link="https://developer.mescius.com/componentone/demos/blazor/investmentcalculator/" link.ja="https://developer.mescius.com/componentone/demos/blazor/investmentcalculator/" />
 		<Control referenceApplication="true" name="MarketingBudgetTemplate" name.ja="MarketingBudgetTemplate" link="https://developer.mescius.com/componentone/demos/blazor/marketingbudgettemplate/" link.ja="https://developer.mescius.com/componentone/demos/blazor/marketingbudgettemplate/" />
 	</ControlGroup>
-
-	<ControlGroup name="Documents" name.ja="ドキュメント">
-		<Control name="Excel" new="true">
-			<action text="General" text.ja="一般">
-				<subactions>
-					<action text="Overview" text.ja="概要" name="Index"></action>
-				</subactions>
-			</action>
-			<action text="Fetch weather" text.ja="天気の取得">
-				<subactions>
-					<action text="Fetch data" text.ja="データの取得" name="FetchData"></action>
-					<action text="Fetch Excel file" text.ja="Excel ファイルの取得" name="FetchExcel"></action>
-				</subactions>
-			</action>
-			<action text="Export" text.ja="エクスポート">
-				<subactions>
-					<action text="XLSX/XLS/CSV Export" text.ja="XLSX/XLS/CSV エクスポート" name="Export"></action>
-				</subactions>
-			</action>
-		</Control>
-	</ControlGroup>
-
 </Controls>

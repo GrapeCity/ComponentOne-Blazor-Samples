@@ -19,7 +19,15 @@
         Position: <C1ComboBox ItemsSource="positions" @bind-SelectedItem="position" Class="filled-drop-down" />
     </div>
     <button class="btn btn-default" id="btnDefault">@PopupRes.OpenPopupBtn</button>
-    <C1Window @ref="myPopup" Style="@("width: 300px")" Target="btnDefault" OpenTrigger="openTrigger" CloseTrigger="closeTrigger" IsDraggable="true" Position="position">
+    <C1Window @ref="myPopup" 
+        IsModeless="true" 
+        IsDarkOverlay="false" 
+        Style="@("width: 300px")" 
+        Target="btnDefault" 
+        OpenTrigger="openTrigger" 
+        CloseTrigger="closeTrigger" 
+        IsDraggable="true" 
+        Position="position">
         <PopupHeader>
             Lorem ipsum
         </PopupHeader>

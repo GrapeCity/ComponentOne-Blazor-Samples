@@ -135,7 +135,10 @@
 	<data name="FlexReportViewerDescription" xml:space="preserve">
     <value>The component opens the FlexReport document and shows in the FlexViewer. Use the FlexReport.Load method with the FlexReport document's path to open it in the FlexViewer instance.</value>
   </data>
-  <data name="SsrsViewerSummary" xml:space="preserve">
+	<data name="FlexReportViewerSelectReport" xml:space="preserve">
+    <value>Select report:</value>
+  </data>
+	<data name="SsrsViewerSummary" xml:space="preserve">
     <value>Demonstrates how to use the FlexViewer to view the SSRS document source.</value>
   </data>
 	<data name="SsrsViewerTitle" xml:space="preserve">

@@ -553,4 +553,20 @@
     <value>サマリー行</value>
     <comment>Summary Row</comment>
   </data>
+  <data name="HierarchicalRowsDescription" xml:space="preserve">
+    <value>ChildItemsPath プロパティを使用して FlexGrid にバインドされたツリー状のデータ ソースを表示します。</value>
+    <comment>Shows a tree-like data-source bound to FlexGrid using ChildItemsPath property.</comment>
+  </data>
+  <data name="HierarchicalRowsTitle" xml:space="preserve">
+    <value>階層的な行</value>
+    <comment>Hierarchical Rows</comment>
+  </data>
+  <data name="TreeColumnIndex" xml:space="preserve">
+    <value>ツリー列インデックス</value>
+    <comment>TreeColumnIndex</comment>
+  </data>
+  <data name="TreeIndent" xml:space="preserve">
+    <value>ツリーインデント</value>
+    <comment>TreeIndent</comment>
+  </data>
 </root>

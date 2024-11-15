@@ -461,4 +461,46 @@
   <data name="ShowSort" xml:space="preserve">
     <value>Show sort icons</value>
   </data>
+  <data name="ValidationDescription" xml:space="preserve">
+    <value>Show how to display and style validation</value>
+  </data>
+  <data name="ValidationTitle" xml:space="preserve">
+    <value>Validation</value>
+  </data>
+  <data name="PinColumn" xml:space="preserve">
+    <value>Pin Column</value>
+  </data>
+  <data name="PinColumnDescription" xml:space="preserve">
+    <value>Shows how to implement pin/unpin columns so they become frozen at the left edge of the grid while scrolling horizontally.</value>
+  </data>
+  <data name="PinColumnTitle" xml:space="preserve">
+    <value>Pin Column</value>
+  </data>
+  <data name="UnpinColumn" xml:space="preserve">
+    <value>Unpin Column</value>
+  </data>
+  <data name="TransposedGridDescription" xml:space="preserve">
+    <value>Show how to transpose columns and rows so the data items are shown as columns.</value>
+  </data>
+  <data name="TransposedGridTitle" xml:space="preserve">
+    <value>Transposed Grid</value>
+  </data>
+  <data name="SummaryRowDescription" xml:space="preserve">
+    <value>Shows a row that summarizes the values in the columns</value>
+  </data>
+  <data name="SummaryRowTitle" xml:space="preserve">
+    <value>Summary Row</value>
+  </data>
+  <data name="HierarchicalRowsDescription" xml:space="preserve">
+    <value>Shows a tree-like data-source bound to FlexGrid using ChildItemsPath property.</value>
+  </data>
+  <data name="HierarchicalRowsTitle" xml:space="preserve">
+    <value>Hierarchical Rows</value>
+  </data>
+  <data name="TreeColumnIndex" xml:space="preserve">
+    <value>TreeColumnIndex</value>
+  </data>
+  <data name="TreeIndent" xml:space="preserve">
+    <value>TreeIndent</value>
+  </data>
 </root>

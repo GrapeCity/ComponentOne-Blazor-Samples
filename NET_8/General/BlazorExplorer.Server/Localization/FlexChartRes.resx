@@ -562,4 +562,31 @@ Specific series may override those properties and use different data sources and
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="DragPointsDescription" xml:space="preserve">
+    <value>The sample shows how to drag data points on the plot.</value>
+  </data>
+  <data name="DragPointsSummary" xml:space="preserve">
+    <value>Drag Data Points</value>
+  </data>
+  <data name="DragPointsTitle" xml:space="preserve">
+    <value>Drag Points</value>
+  </data>
+  <data name="AxisMarkersTitle" xml:space="preserve">
+    <value>Axis Markers</value>
+  </data>
+  <data name="AxisMarkersSummary" xml:space="preserve">
+    <value>Axis Markers</value>
+  </data>
+  <data name="AxisMarkersDescription" xml:space="preserve">
+    <value>This sample shows how to display line markers over the axes. Both axes have markers which follow the pointer and display its position in data coordinates.</value>
+  </data>
+  <data name="HeatmapDescription" xml:space="preserve">
+    <value>Shows Heatmap plot with gradient color scale. The data from two-dimensional array is shown as a table. The color of table's cell depends on the corresponding data value.</value>
+  </data>
+  <data name="HeatmapTitle" xml:space="preserve">
+    <value>Heatmap Plot</value>
+  </data>
+  <data name="HeatmapSummary" xml:space="preserve">
+    <value>Heatmap Plot</value>
+  </data>
 </root>

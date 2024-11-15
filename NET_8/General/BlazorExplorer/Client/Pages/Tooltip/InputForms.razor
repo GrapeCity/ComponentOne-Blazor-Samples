@@ -23,7 +23,7 @@
     <img src="Content/images/clam.png" id="userClamRequired" style="display:@userClamDisplay" />
   </div>
   <div class="cell">@TooltipRes.Validation_Password <span style="color:red">*</span></div>
-  <div class="cell"><C1TextBox @ref="txtPass" Type="TextBoxType.Password" TextChanged="validate"></C1TextBox></div>
+    <div class="cell"><C1TextBox @ref="txtPass" Type="C1HtmlInputType.Password" TextChanged="validate"></C1TextBox></div>
   <div class="cell">
     <img src="Content/images/info.png" id="passRequired" style="display:@passDisplay" />
     <img src="Content/images/clam.png" id="passClamRequired" style="display:@passClamDisplay" />

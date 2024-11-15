@@ -20,11 +20,11 @@
             }
             else if (i == 1)
             {
-                <GridColumn Width="60" HorizontalAlignment="C1HorizontalAlignment.Center" InputType="TextBoxType.Number" />
+                <GridColumn Width="60" HorizontalAlignment="C1HorizontalAlignment.Center" InputType="C1HtmlInputType.Number" />
             }
             else if (i < 14)
             {
-                <GridColumn Width="100" HorizontalAlignment="C1HorizontalAlignment.Right" InputType="TextBoxType.Number" />
+                <GridColumn Width="100" HorizontalAlignment="C1HorizontalAlignment.Right" InputType="C1HtmlInputType.Number" />
             }
             else if (i == 14)
             {
@@ -160,7 +160,7 @@
     //Handle FlexGrid's CellEditEnded event to recalculate budget after a cell value is edited
     public async void OnCellEditEnded(object sender, GridCellRangeEventArgs e)
     {
-        if (grid.Columns[e.CellRange.Column].InputType == TextBoxType.Number &&
+        if (grid.Columns[e.CellRange.Column].InputType == C1HtmlInputType.Number &&
            string.IsNullOrEmpty(grid[e.CellRange.Row, e.CellRange.Column]?.ToString()))
         {
             grid[e.CellRange.Row, e.CellRange.Column] = "0";

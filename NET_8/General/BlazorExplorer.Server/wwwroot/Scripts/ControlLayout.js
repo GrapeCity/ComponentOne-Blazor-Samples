@@ -184,10 +184,6 @@ function initControlsNav() {
     }    
 }
 
-setPageTitle = function (title) {
-    document.title = title;
-}
-
 highlightSource = function (source, brush, sourceContentId) {
     //SyntaxHighlighter.defaults['toolbar'] = false;
     //SyntaxHighlighter.defaults['quick-code'] = false;

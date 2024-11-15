@@ -28,10 +28,10 @@
     <FlexGridColumns>
         <GridColumn Binding="Symbol" Width="100" />
         <GridColumn Binding="Name" Header="Company" MinWidth="275" Width="GridLength.Star" />
-        <GridColumn Binding="LastSale" MinWidth="120" Width="GridLength.Star" InputType="TextBoxType.Number" Format="c2" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
-        <GridColumn Binding="Change" Header="Change" InputType="TextBoxType.Number" Format="p2" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
-        <GridColumn Binding="Bid" MinWidth="120" Width="GridLength.Star" Format="n2" InputType="TextBoxType.Number" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
-        <GridColumn Binding="Ask" MinWidth="120" Width="GridLength.Star" Format="n2" InputType="TextBoxType.Number" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
+        <GridColumn Binding="LastSale" MinWidth="120" Width="GridLength.Star" InputType="C1HtmlInputType.Number" Format="c2" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
+        <GridColumn Binding="Change" Header="Change" InputType="C1HtmlInputType.Number" Format="p2" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
+        <GridColumn Binding="Bid" MinWidth="120" Width="GridLength.Star" Format="n2" InputType="C1HtmlInputType.Number" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
+        <GridColumn Binding="Ask" MinWidth="120" Width="GridLength.Star" Format="n2" InputType="C1HtmlInputType.Number" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
         <GridColumn Binding="Change" Header="50MA" Width="90" IsReadOnly="true" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center">
             <CellTemplate>
                 @if ((decimal)context < 0)
@@ -44,7 +44,7 @@
                 }
             </CellTemplate>
         </GridColumn>
-        <GridColumn Binding="Volume" MinWidth="120" Width="GridLength.Star" Format="n0" InputType="TextBoxType.Number" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
+        <GridColumn Binding="Volume" MinWidth="120" Width="GridLength.Star" Format="n0" InputType="C1HtmlInputType.Number" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
         <GridDateTimeColumn Binding="TradeTime" Format="hh:mm:ss" Mode="GridDateTimeColumnMode.Time" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
     </FlexGridColumns>
 </FlexGrid>

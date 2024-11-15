@@ -9,7 +9,7 @@
         </C1DataFilter>
     </div>
     <div class="dataSection" style="position: relative; top: 0px; left: 0px; min-height:350px; z-index:999">
-        <FlexGrid AutoGeneratingColumn="OnAutoGeneratingColumn" ItemsSource="@_data" HeadersVisibility="GridHeadersVisibility.All" Style=@("max-height: inherit;")>
+        <FlexGrid AutoGeneratingColumn="OnAutoGeneratingColumn" ColumnFilterLoading="OnColumnFilterLoading" ItemsSource="@_data" HeadersVisibility="GridHeadersVisibility.All" Style=@("max-height: inherit;")>
 
         </FlexGrid>
 
@@ -78,6 +78,21 @@
         {
             InvokeAsync(StateHasChanged);
         }
+    }
+
+    async void OnColumnFilterLoading(object sender, GridColumnFilterLoadingEventArgs a)
+    {
+        var dataFilter = await a.DataFilter;
+        
+        // Sample how to change the initial filter operation for column's conditional filters.
+        foreach (var filter in dataFilter.Filters)
+        {
+            if (filter is TextFilter textFilter)
+            {
+                textFilter.DefaultFilterOperation = FilterOperation.StartsWith;
+            }
+        }
+
     }
 
     public void Dispose()

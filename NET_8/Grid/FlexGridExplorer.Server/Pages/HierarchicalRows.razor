@@ -18,16 +18,39 @@
 <p>
     Tree Expand Mode <C1ComboBox ItemsSource="treeExpandModes" @bind-SelectedItem="treeExpandMode" />
 </p>
+<p>
+    Tree Lines Mode <C1ComboBox ItemsSource="treeLinesModes" @bind-SelectedItem="treeLinesMode" />
+</p>
+<p>
+    Tree Indent Mode <C1ComboBox ItemsSource="treeIndentModes" @bind-SelectedItem="treeIndentMode" />
+</p>
+<p>
+    Tree Lines Thickness <C1NumericBox @bind-Value="@treeLinesThickness" />
+</p>
 
-<FlexGrid @ref="grid" ChildItemsPath="SubTasks" TreeIndent="treeIndent" TreeColumnIndex="treeColumnIndex" TreeExpandMode="treeExpandMode" AutoGeneratingColumn="@OnAutoGeneratingColumn" ItemsSource="tasks" Style="@("max-height:50vh")" />
+<FlexGrid @ref="grid" ChildItemsPath="SubTasks" TreeIndent="treeIndent"
+          TreeColumnIndex="treeColumnIndex"
+          TreeExpandMode="treeExpandMode"
+          TreeLinesMode="treeLinesMode"
+          TreeIndentMode="treeIndentMode"
+          TreeLinesThickness="treeLinesThickness"
+          TreeLinesDashArray="treeLinesDashArray"
+          GridLinesVisibility="GridLinesVisibility.None"
+          AutoGeneratingColumn="@OnAutoGeneratingColumn" ItemsSource="tasks" Style="@("max-height:50vh")" />
 
 @code {
     FlexGrid grid;
     List<ProjectTask> tasks;
     int treeColumnIndex = 1;
-    double treeIndent = 14;
+    int treeLinesThickness = 1;
+    double treeIndent = 23;
+    double[] treeLinesDashArray = new double[] { 2, 2 };
     GridTreeExpandMode treeExpandMode = GridTreeExpandMode.OnDemand;
     GridTreeExpandMode[] treeExpandModes = Enum.GetValues<GridTreeExpandMode>();
+    GridTreeLinesMode treeLinesMode = GridTreeLinesMode.Vertical;
+    GridTreeLinesMode[] treeLinesModes = Enum.GetValues<GridTreeLinesMode>();
+    GridTreeIndentMode treeIndentMode = GridTreeIndentMode.ToggleCells;
+    GridTreeIndentMode[] treeIndentModes = Enum.GetValues<GridTreeIndentMode>();
 
     protected override async Task OnInitializedAsync()
     {

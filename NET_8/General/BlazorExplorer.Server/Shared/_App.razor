@@ -9,6 +9,7 @@
 @{
     InitOnRoute();
 }
+<PageTitle>@Title</PageTitle>
 
 @code {
     [Parameter]
@@ -30,42 +31,21 @@
         return base.OnInitializedAsync();
     }
 
-    private bool _initialized;
-    protected override void OnAfterRender(bool firstRender)
-    {
-        if(firstRender)
-        {
-            _initialized = true;
-            if (string.IsNullOrEmpty(_title))
-            {
-                return;
-            }
-
-            SetPageTitle(_title);
-        }
+    string Title {
+        get => App.isGrapeCityVersion ?
+            SplitPath(RelativeUri, "Home/").Item1 + Resource.Layout_TitleSuffix
+            : SplitPath(RelativeUri, "Blazor Server Explorer/").Item1 + Resource.Layout_TitleMesciusSuffix;
     }
 
-    private string _title;
-    public void InitOnRoute()
+    void InitOnRoute()
     {
         var NewRelativeUri = _Nvm.ToBaseRelativePath(_Nvm.Uri);
         if (NewRelativeUri != RelativeUri)
         {
             RelativeUri = NewRelativeUri;
-            _title = SplitPath(RelativeUri, "Home/").Item1 + Localization.Resource.Layout_TitleSuffix;
-            if (_initialized)
-            {
-                SetPageTitle(_title);
-            }
-            //_Sections.Clear();
             _Sections.Reset();
         }
         ViewBagSrv.State = null;
-    }
-
-    public static void SetPageTitle(string title)
-    {
-        JsRuntime.InvokeAsync<object>("setPageTitle", title);
     }
 
     public static Tuple<string, string> SplitPath(string path = null, string defaultPath = "Index")

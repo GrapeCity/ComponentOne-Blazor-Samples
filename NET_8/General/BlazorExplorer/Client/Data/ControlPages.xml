@@ -13,7 +13,7 @@
 					<action text="Virtual Mode" text.ja="仮想モード" name="VirtualMode"></action>
 					<action text="On Demand" text.ja="リモートデータ連結" name="OnDemand"></action>
 					<!--<action text="OData Service Bind" text.ja="OData サービス連結" name="ODataBind"></action>-->
-					<action text="HierarchicalRows" text.ja="" name="HierarchicalRows"> </action>
+					<action text="HierarchicalRows" text.ja="階層的な行" name="HierarchicalRows"> </action>
 					<action text="Row Details" text.ja="詳細行" name="RowDetails"></action>
 					<action text="Check List" text.ja="チェックリスト" name="CheckList"></action>
 					<action text="Unbound" text.ja="アンバウンド" name="Unbound"></action>
@@ -33,6 +33,7 @@
 				<subactions>
 					<action text="Column Definition" text.ja="列の定義" name="ColumnDefinitions"></action>
 					<action text="Custom columns" text.ja="カスタム列" name="CustomColumns"></action>
+					<action text="Column Layout" text.ja="Column Layout" name="ColumnLayout"></action>
 					<action text="GridColumn customization" text.ja="GridColumn カスタマイズ" name="CustomDropDownColumn"></action>
 					<!--<action text="Custom Header Template" text.ja="カスタムヘッダーテンプレート" name="CustomHeaderTemplate"></action>
           <action text="Column Layout" text.ja="列のレイアウト" name="ColumnLayout"></action>
@@ -96,7 +97,7 @@
 				</subactions>
 			</action>
 		</Control>
-		<Control name="DataFilter" new="true">
+		<Control name="DataFilter">
 			<action text="Cars List" text.ja="車両リスト" name="Index"></action>
 			<action text="Filter Summary" text.ja="フィルターの概要" name="FiltersSummary"></action>
 			<action text="Conditional Filters" text.ja="条件付きフィルター" name="ConditionalFilters"></action>
@@ -166,7 +167,7 @@
 				</subactions>
 			</action>
 		</Control>
-		<Control name="Gauge" new="true">
+		<Control name="Gauge">
 			<action text="Overview" text.ja="概要" name="Index"></action>
 			<action text="Using Ranges" text.ja="範囲の使用" name="UsingRanges"></action>
 		</Control>

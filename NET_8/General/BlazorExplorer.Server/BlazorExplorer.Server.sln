@@ -7,8 +7,6 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
-		GRAPECITY|Any CPU = GRAPECITY|Any CPU
-		GRAPECITY|x86 = GRAPECITY|x86
 		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
 	EndGlobalSection
@@ -17,10 +15,6 @@ Global
 		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.Debug|x86.Build.0 = Debug|Any CPU
-		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.GRAPECITY|Any CPU.ActiveCfg = Release|Any CPU
-		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.GRAPECITY|Any CPU.Build.0 = Release|Any CPU
-		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.GRAPECITY|x86.ActiveCfg = Release|Any CPU
-		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.GRAPECITY|x86.Build.0 = Release|Any CPU
 		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0007A7F0-00BA-4847-AB52-248F31CEF09A}.Release|x86.ActiveCfg = Release|Any CPU

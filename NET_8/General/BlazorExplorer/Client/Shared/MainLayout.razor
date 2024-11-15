@@ -2,6 +2,8 @@
 @implements IDisposable
 @using Localization
 @using Models
+@using System.Globalization
+@using BlazorExplorer.Shared.Headers
 
 @if (_App.ViewBagSrv.State != null)
 {
@@ -9,35 +11,15 @@
 }
 
 <header>
-    <div class="hamburger-nav-btn narrow-screen"><a class="glyphicon glyphicon-home" href=""></a><!--<a href="/"><span class="icon-bars"></span></a>--></div>
-    <a class="logo-container" href="@(Resource.Layout_ProductUrl)" target="_blank">
-        <img src="Content/images/componentone-logo.svg"
-             alt="ComponentOne logo"
-             style="padding: 2px 1px;"
-             width="46"
-             height="46" />
-        @_App.HtmlRaw(Resource.Layout_ComponentOne)
-    </a>
-
-    <div class="task-bar">
-        <span class="semi-bold">@_App.HtmlRaw(Resource.Layout_LongTitle)</span>
-        <_SiteNav IsNarrowScreen="false"></_SiteNav>
-    </div>
+    @if (App.isGrapeCityVersion)
+    {
+        <GrapeCityHeaderFragment />
+    }
+    else {
+        <DefaultHeaderFragment />
+    }
     <_BreadcrumbNav Path="@_App.RelativeUri"></_BreadcrumbNav>
 </header>
-
-<div class="hide">
-    <_SiteNav IsNarrowScreen="true"></_SiteNav>
-    @if (allGroups != null)
-    {
-        <ul class="narrow-screen task-bar-nav">
-            @foreach (var group in allGroups)
-            {
-                <_ControlGroup Model="group"></_ControlGroup>
-            }
-        </ul>
-    }
-</div>
 
 <div class="main-content">
     @Body
@@ -57,17 +39,13 @@
 
 
 @code {
-    List<ControlGroup> allGroups = null;
-    private Action<object> _updateUI;
+    Action<object> _updateUI;
 
     protected override void OnInitialized()
     {
         _updateUI = new Action<object>((e) => { base.InvokeAsync(this.StateHasChanged); });
         _App.ViewBagSrv.AddObserveAction(_updateUI);
-        var allGroups = new List<ControlGroup>();
-        allGroups.Add(ControlPages.NewGroup);
-        allGroups.Add(ControlPages.PopularGroup);
-        allGroups.AddRange(ControlPages.ControlGroups);
+
     }
 
     public void Dispose()
@@ -75,8 +53,3 @@
         _App.ViewBagSrv.RemoveObserveAction(_updateUI);
     }
 }
-
-
-
-
-

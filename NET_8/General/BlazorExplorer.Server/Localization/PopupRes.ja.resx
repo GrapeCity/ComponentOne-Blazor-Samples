@@ -173,7 +173,7 @@
 &lt;p&gt;&lt;strong&gt;IsResizable:&lt;/strong&gt; ポップアップをリサイズ可能にするかどうかを取得または設定します。IsFullScreen が true の場合は無効です。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;IsFullScreen:&lt;/strong&gt; ポップアップを全画面表示にするかどうかを取得または設定します。true の場合はドラッグできません。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;IsDarkOverlay:&lt;/strong&gt; オーバーレイがダークテーマであるかどうかを取得または設定します。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;IsModeless:&lt;/strong&gt; ダイアログをモーダレスにする（例えば、ダイアログ外をクリックしたりフォーカスを移動したときに閉じないようにする）かどうかを取得または設定します。true の場合はオーバーレイされません（isDarkOverlay は無効になります）。&lt;/p&gt;</value>
+&lt;p&gt;&lt;strong&gt;IsModeless:&lt;/strong&gt; ダイアログをモーダレスにする（例えば、ダイアログ外をクリックしたりフォーカスを移動したときに閉じないようにする）かどうかを取得または設定します。&lt;/p&gt;</value>
     <comment>&lt;p&gt;C1Window takes focus from the page or app and require people to interact with them. Unlike a dialog box (Dialog), a modal should be used for hosting lengthy content, such as privacy statements or license agreements, or for asking people to perform complex or multiple actions, such as changing settings.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;PopupHeader:&lt;/strong&gt; Define popup header.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;PopupContent:&lt;/strong&gt; Define popup content.&lt;/p&gt;
@@ -182,7 +182,7 @@
 &lt;p&gt;&lt;strong&gt;IsResizable:&lt;/strong&gt; Gets or sets to make the popup resizable. It is unable when IsFullScreen is true.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;IsFullScreen:&lt;/strong&gt; Gets or sets to make the popup show full screen. If true: there will be no drag&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;IsDarkOverlay:&lt;/strong&gt; Gets or sets whether the overlay is dark themed.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;IsModeless:&lt;/strong&gt; Gets or sets whether the dialog should be modeless (e.g. not dismiss when focusing/clicking outside of the dialog). If true: there will be no overlay (isDarkOverlay is ignored).&lt;/p&gt;</comment>
+&lt;p&gt;&lt;strong&gt;IsModeless:&lt;/strong&gt; Gets or sets whether the dialog should be modeless (e.g. not dismiss when focusing/clicking outside of the dialog).&lt;/p&gt;</comment>
   </data>
   <data name="OverviewSummary" xml:space="preserve">
     <value>C1Window を使用して、ユーザーはライトボックス、ユーザー通知、または完全なカスタムコンテンツ用のダイアログをサイトに追加できます。</value>

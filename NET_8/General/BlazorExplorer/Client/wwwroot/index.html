@@ -5,8 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="white">
-    <title>BlazorExplorer.Client</title>
-    <title>Home</title>
+    <meta name="description" content="Advanced Blazor UI controls for your web apps. Use existing C# skills to create Blazor UI datagrids, charts and input controls." />
     <link rel="apple-touch-icon" sizes="180x180" href="Content/favicon/ios/180.png">
     <link rel="icon" type="image/png" href="Content/favicon/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="Content/favicon/favicon-16x16.png" sizes="16x16">
@@ -56,6 +55,11 @@
 <body>
     <app><div class="loading_gc1icon"></div></app>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        const lang = navigator.language || navigator.userLanguage;
+        if (lang.toLowerCase().startsWith("zh")) {
+            document.body.classList.add("grapecity");
+        }
+    </script>
 </body>
-
 </html>

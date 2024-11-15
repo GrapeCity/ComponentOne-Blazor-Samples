@@ -161,7 +161,7 @@
 &lt;p&gt;&lt;strong&gt;IsResizable:&lt;/strong&gt; Gets or sets to make the popup resizable. It is unable when IsFullScreen is true.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;IsFullScreen:&lt;/strong&gt; Gets or sets to make the popup show full screen. If true: there will be no drag&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;IsDarkOverlay:&lt;/strong&gt; Gets or sets whether the overlay is dark theme.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;IsModeless:&lt;/strong&gt; Gets or sets whether the dialog should be modeless (e.g. not dismiss when focusing/clicking outside of the dialog). If true: there will be no overlay (isDarkOverlay is ignored).&lt;/p&gt;</value>
+&lt;p&gt;&lt;strong&gt;IsModeless:&lt;/strong&gt; Gets or sets whether the dialog should be modeless (e.g. not dismiss when focusing/clicking outside of the dialog).&lt;/p&gt;</value>
   </data>
   <data name="OverviewSummary" xml:space="preserve">
     <value>C1Window allows user to add dialogs to your site for lightboxes, user notifications, or completely custom content.</value>

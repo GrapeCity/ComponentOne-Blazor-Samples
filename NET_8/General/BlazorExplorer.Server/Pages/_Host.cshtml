@@ -9,7 +9,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-    <title>Home@(Resource.Layout_TitleSuffix)</title>
+    <meta name="description" content="Advanced Blazor UI controls for your web apps. Use existing C# skills to create Blazor UI datagrids, charts and input controls." />
+    <component type="typeof(Microsoft.AspNetCore.Components.Web.HeadOutlet)" render-mode="ServerPrerendered" />
+
     <link rel="apple-touch-icon" sizes="180x180" href="@Url.Content("~/Content/favicon/ios/180.png")">
     <link rel="icon" type="image/png" href="@Url.Content("~/Content/favicon/favicon-32x32.png")" sizes="32x32">
     <link rel="icon" type="image/png" href="@Url.Content("~/Content/favicon/favicon-16x16.png")" sizes="16x16">
@@ -33,8 +35,9 @@
     <script src="Scripts/SyntaxHighlighter/shBrushRazor.js"></script>
     <script src="Scripts/scripts.js"></script>
     <script src="Scripts/ResizeObserver.js"></script>
+  	<script src="Scripts/DragPoint.js"></script>
 
-    <!-- Add controls's styles, js here: -->
+    <!-- Add controls' styles, js here: -->
     <link rel="stylesheet" href="~/_content/C1.Blazor.Core/styles.css" />
     <link rel="stylesheet" href="~/_content/C1.Blazor.Grid/styles.css" />
     <link rel="stylesheet" href="~/_content/C1.Blazor.ListView/styles.css" />

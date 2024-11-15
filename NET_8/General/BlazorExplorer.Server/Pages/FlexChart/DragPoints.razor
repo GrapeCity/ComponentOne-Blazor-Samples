@@ -1,0 +1,111 @@
+﻿@page "/FlexChart/DragPoints"
+@using Localization
+@using System.Drawing;
+@using C1.Chart;
+@using C1.Blazor.Input;
+@using C1.Blazor.Chart;
+
+<div id="host" onpointerdown="DragPointHelper.hostPointerDown(event)">
+  <FlexChart @ref=chart style="padding:0px;" Class="chart" ChartType="ChartType.SplineSymbols" Binding="Y" BindingX="X" ItemsSource="Data" Tooltip="" Rendered="ChartRendered">
+    <SeriesCollection>
+      <Series />
+    </SeriesCollection>
+  </FlexChart>
+  <div id="handle" onpointerdown="DragPointHelper.pointerDown(event)" onpointerup="DragPointHelper.pointerUp(event)"
+      style="visibility:hidden" class="chart-drag-point" />
+</div>
+
+<_Sections>
+  <Title>@FlexChartRes.DragPointsTitle</Title>
+  <Summary>@FlexChartRes.DragPointsSummary</Summary>
+  <Description>@FlexChartRes.DragPointsDescription</Description>
+</_Sections>
+
+@code {
+  List<PointF> Data { get; set; }
+  FlexChart? chart;
+  PointF? selectedItem = null;
+  private DotNetObjectReference<DragPoints> objRef;
+  [Inject]
+  protected IJSRuntime JSRuntime { get; set; }
+
+  protected override void OnInitialized()
+  {
+    Data = DataSource.GetData(6);
+  }
+
+  protected override async Task OnAfterRenderAsync(bool firstRender)
+  {
+    if (firstRender)
+    {
+      objRef = DotNetObjectReference.Create(this); 
+      await JSRuntime.InvokeVoidAsync("DragPointHelper.setDotNetHelper", objRef);
+    }
+  }
+
+  void ChartRendered(object sender, RenderEventArgs args)
+  {
+    if (selectedItem != null)
+    {
+      var pt = DataToPoint(selectedItem.Value.X, selectedItem.Value.Y);
+      JSRuntime.InvokeVoidAsync("DragPointHelper.selectPoint", pt.X, pt.Y);
+    }
+  }
+
+  PointF DataToPoint(object x, object y)
+  {
+    float dx = x is DateTime dtx ? (float)dtx.ToOADate() : Convert.ToSingle(x);
+    float dy = y is DateTime dty ? (float)dty.ToOADate() : Convert.ToSingle(y);
+    return chart.DataToPoint(new PointF(dx, dy));
+  }
+
+  [JSInvokable]
+  public void UpdateData(double offsetX, double offsetY)
+  {
+    if (selectedItem != null && chart != null)
+    {
+      var i = this.Data.IndexOf(selectedItem.Value);
+      if (i >= 0)
+      {
+        selectedItem = this.Data[i] = new PointF(selectedItem.Value.X, (float)chart.AxisY.ConvertBack(offsetY));
+        chart.Rebind();
+      }
+    }
+  }
+
+  [JSInvokable]
+  public Task<PointF?> HitTest(double x, double y)
+  {
+    PointF? result = null;
+    var ht = chart.HitTest(new C1.Blazor.Core.C1Point((int)x, (int)y));
+
+    if (ht.Distance <= 5)
+    {
+      selectedItem = (PointF)ht.Item;
+      result = DataToPoint(ht.X, ht.Y);
+    }
+    else
+      selectedItem = null;
+    return Task.FromResult(result);
+  }
+
+  public void Dispose() => objRef?.Dispose();
+
+  public class DataSource
+  {
+    static Random rand = new Random();
+
+    public static List<PointF> GetData(int cnt)
+    {
+      var data = new List<PointF>();
+      var a = rand.NextDouble();
+      var b = rand.NextDouble();
+
+      for (var i = 1; i < cnt; i++)
+        data.Add(new PointF(i, (float)(a + i * b + i * rand.NextDouble())));
+
+      return data;
+    }
+  }
+
+}

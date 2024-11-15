@@ -70,6 +70,15 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select report:.
+        /// </summary>
+        public static string FlexReportViewerSelectReport {
+            get {
+                return ResourceManager.GetString("FlexReportViewerSelectReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Demonstrates how to use the FlexViewer to view the FlexReport documents..
         /// </summary>
         public static string FlexReportViewerSummary {

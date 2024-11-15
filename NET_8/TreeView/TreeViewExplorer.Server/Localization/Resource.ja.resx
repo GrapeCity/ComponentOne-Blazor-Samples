@@ -195,7 +195,8 @@
 &lt;b&gt;ExpandedIconStyle：&lt;/b&gt;展開/折りたたまれたアイコンに適用されるスタイルを取得または設定します。&lt;br/&gt;</value>
   </data>
   <data name="ItemTemplate" xml:space="preserve">
-    <value>ItemTemplate</value>
+    <value>項目テンプレート</value>
+    <comment>ItemTemplate</comment>
   </data>
   <data name="ItemTemplate_Description" xml:space="preserve">
     <value>ItemTemplate タグで定義することにより、C1TreeView 項目の独自のビューをカスタマイズできます。</value>
@@ -246,7 +247,8 @@
     <value>TreeNode名を入力します</value>
   </data>
   <data name="ShowCheckboxes" xml:space="preserve">
-    <value>ShowCheckboxes</value>
+    <value>チェックボックスの表示</value>
+    <comment>ShowCheckboxes</comment>
   </data>
   <data name="ShowCheckboxesDescription" xml:space="preserve">
     <value>TreeNodes は、ShowCheckboxes プロパティを true に設定することにより、チェックボックスで表示できます。

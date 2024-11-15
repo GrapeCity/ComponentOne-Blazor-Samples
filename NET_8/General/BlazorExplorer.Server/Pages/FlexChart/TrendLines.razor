@@ -5,12 +5,18 @@
 @using C1.Blazor.Input;
 @using C1.Blazor.Chart;
 
-<FlexChart Class="chart" ChartType="ChartType.Scatter" BindingX="X" Binding="Y" Tooltip="X={x:n1},Y={y:n1}">
+<div>
+  <div style="position:fixed;margin-left:60px; margin-top:40px">
+    @((MarkupString)formula)
+  </div>
+
+<FlexChart @ref=chart Class="chart" ChartType="ChartType.Scatter" BindingX="X" Binding="Y" Tooltip="X={x:n1},Y={y:n1}" >
     <SeriesCollection>
         <Series Name="Raw Data" ItemsSource="Data" />
         <TrendLine Name="Trend Line" FitType="fitType ?? FitType.Linear" Order="order" ItemsSource="Data" />
     </SeriesCollection>
 </FlexChart>
+</div>
 
 <_Sections>
     <Title>@FlexChartRes.TrendLineTitle</Title>
@@ -29,19 +35,89 @@
 </_Sections>
 
 @code {
-    List<PointF> Data { get; set; }
+  FlexChart chart;
+  string formula { get;set;} = "";
+  List<PointF> Data { get; set; }
 
-    bool hideOrder => fitType != FitType.Polynom && fitType != FitType.Fourier;
+  bool hideOrder => fitType != FitType.Polynom && fitType != FitType.Fourier;
 
-    FitType? fitType = FitType.Linear;
-    IEnumerable<FitType> fitTypes = Enum.GetValues(typeof(FitType)).Cast<FitType>();
+  FitType? fitType = FitType.Linear;
+  IEnumerable<FitType> fitTypes = Enum.GetValues(typeof(FitType)).Cast<FitType>();
 
-    int order = 2;
-    int[] orders = new int[] { 2, 3, 4, 5, 6 };
+  int order = 2;
+  int[] orders = new int[] { 2, 3, 4, 5, 6 };
 
-    protected override void OnInitialized()
+  protected override void OnInitialized()
+  {
+    Data = DataSource.GetData(50);
+  }
+
+  protected override Task OnAfterRenderAsync(bool firstRender)
+  {
+    var task = base.OnAfterRenderAsync(firstRender);
+
+    var f = GetEquationString(chart.Series[1] as TrendLine);
+    if(f!=formula)
     {
-        Data = DataSource.GetData(50);
+      formula = f;
+      StateHasChanged();
+    }
+
+    return task;
+  }
+
+  string GetEquationString(TrendLine trendLine)
+  {
+    if (trendLine == null)
+      return "";
+    string result = String.Empty;
+    int X = 1, Y0 = 0;
+    var order = trendLine.Order;
+    bool rsq = false;
+
+    switch (trendLine.FitType)
+    {
+      case FitType.Linear:
+        result = String.Format("y={1:0.0000}x{0:+0.0000;-0.0000;+0}", trendLine.Coefficients[0], trendLine.Coefficients[1]);
+        rsq = true;
+        break;
+      case FitType.Exponent:
+        result = String.Format("y={0:0.0000}e<sup>{1:0.0000}x</sup>", trendLine.Coefficients[0], trendLine.Coefficients[1]);
+        rsq = true;
+        break;
+      case FitType.Logarithmic:
+        result = String.Format("y={1:0.0000}ln(x){0:+0.0000;-0.0000;+0}", trendLine.Coefficients[0], trendLine.Coefficients[1]);
+        rsq = true;
+        break;
+      case FitType.Power:
+        result = String.Format("y={0:0.0000}x<sup>{1:0.0000}</sup>", trendLine.Coefficients[0], trendLine.Coefficients[1]);
+        rsq = true;
+        break;
+      case FitType.Polynom:
+        result = String.Format("{1:+0.0000;-0.0000;+0}x{0:+0.0000;-0.0000;+0}", trendLine.Coefficients[0], trendLine.Coefficients[1]);
+        for (int i = 2; i <= (int)order; i++)
+          result = result.Insert(0, String.Format("{0:+0.000;-0.0000;+0}x<sup>{1}</sup>", trendLine.Coefficients[i], i));
+        result = result.Remove(0, 1).Insert(0, "y=");
+        rsq = true;
+        break;
+      case FitType.Fourier:
+        result = String.Format("{0:+0.0000;-0.0000;+0}", trendLine.Coefficients[0]);
+        for (int i = 2, a = 1; i <= (int)order; i++, a = i % 2 == 0 ? a + 1 : a)
+          result += String.Format("{0:+0.000;-0.0000;+0}{2}({1}x)", trendLine.Coefficients[i - 1], a == 1 ? "" : a.ToString(), (i) % 2 == 0 ? "cos" : "sin");
+        result = result.Remove(0, 1).Insert(0, "y=");
+        rsq = true;
+        break;
+      case FitType.MaxX: result = "x=" + trendLine.GetValues(X).Max(); break;
+      case FitType.MinX: result = "x=" + trendLine.GetValues(X).Min(); break;
+      case FitType.MaxY: result = "y=" + trendLine.GetValues(Y0).Max(); break;
+      case FitType.MinY: result = "y=" + trendLine.GetValues(Y0).Min(); break;
+      case FitType.AverageX: result = "x=" + trendLine.GetValues(X).Average(); break;
+      case FitType.AverageY: result = "y=" + trendLine.GetValues(Y0).Average(); break;
+    }
+
+    if (rsq)
+      result += $"<br>R2 = {trendLine.GetRegressionStatistics().Rsq:n4}";
+    return result;
     }
 
     public class DataSource

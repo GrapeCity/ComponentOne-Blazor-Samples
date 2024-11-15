@@ -1,0 +1,230 @@
+﻿@using System.Collections.Specialized
+@implements IDisposable
+
+<div style="display:none">
+    <svg id="draggable-area" viewBox="0 0 32 32"><rect x="4" y="4" width="4" height="4"></rect><rect x="4" y="12" width="4" height="4"></rect><rect x="4" y="20" width="4" height="4"></rect><rect x="4" y="28" width="4" height="4"></rect><rect x="12" y="4" width="4" height="4"></rect><rect x="12" y="12" width="4" height="4"></rect><rect x="12" y="20" width="4" height="4"></rect><rect x="12" y="28" width="4" height="4"></rect><rect x="20" y="4" width="4" height="4"></rect><rect x="20" y="12" width="4" height="4"></rect><rect x="20" y="20" width="4" height="4"></rect><rect x="20" y="28" width="4" height="4"></rect><rect x="28" y="4" width="4" height="4"></rect><rect x="28" y="12" width="4" height="4"></rect><rect x="28" y="20" width="4" height="4"></rect><rect x="28" y="28" width="4" height="4"></rect></svg>
+</div>
+
+<FlexGrid IsReadOnly="true"
+          Style="@("width: 230px")"
+          IsVirtualizationEnabled="false"
+          SelectionMode="GridSelectionMode.None"
+          AllowDragging="AllowDragging"
+          AllowResizing="GridAllowResizing.None"
+          AutoGenerateColumns="false"
+          CellFactory="factory"
+          AllowSorting="false"
+          TopLeftHeaderBackground="@C1Color.FromArgb(255, 247, 245, 245)"
+          ColumnOptionsMenuVisibility="GridColumnOptionsMenuVisibility.Collapsed"
+          RowHeaderGridLinesVisibility="GridLinesVisibility.Horizontal"
+          GridLinesVisibility="GridLinesVisibility.Horizontal"
+          HeadersVisibility="GridHeadersVisibility.All"
+          ColumnHeaderStyle="@(new C1Style{ JustifyContent = C1StyleJustifyContent.Center})"
+          RowHeaderStyle="@(new C1Style{ JustifyContent = C1StyleJustifyContent.Center, BackgroundColor ="#f7f5f5"})"
+          ItemsSource="Columns">
+    <FlexGridColumns>
+        <GridColumn Binding="@nameof(ColumnItem.Header)" Width="GridLength.Star" />
+        <GridColumn HorizontalAlignment="C1HorizontalAlignment.Center" Width="40">
+            <CellTemplate>
+                @{
+                    ColumnItem columnInfo = (ColumnItem)context;
+                }
+
+                <input type="checkbox" checked="@columnInfo.IsVisible" @onchange="@((a) => columnInfo.IsVisible = (bool)a.Value)" />
+            </CellTemplate>
+        </GridColumn>
+    </FlexGridColumns>
+    <FlexGridBehaviors>
+        <FullTextFilterBehavior FilterString="@filterText" MatchCase="false" MatchWholeWord="false" />
+    </FlexGridBehaviors>
+</FlexGrid>
+@code {
+    bool? AreColumnsChecked => Columns == null || Columns.All(c => !((ColumnItem)c).IsVisible) ? false :
+                Columns.All(c => ((ColumnItem)c).IsVisible) ? true : null;
+
+    GridAllowDragging AllowDragging => gridColumnsCollection != null
+        && Columns.Count == gridColumnsCollection.Count ? GridAllowDragging.Rows : GridAllowDragging.None;
+
+    string filterText;
+    C1DataCollection<ColumnItem> Columns;
+    bool initialized;
+    GridCellFactory factory;
+    GridColumnCollection gridColumnsCollection;
+
+    /// <summary>
+    /// Provides an instance of the <see cref="FlexGrid"/> for managing its column layout.
+    /// </summary>
+    [Parameter]
+    public FlexGrid Grid { get; set; }
+
+    protected override void OnInitialized()
+    {
+        factory = new Factory
+            {
+                ColumnNameHeaderCellFragment = b =>
+                {
+                    b.OpenElement(0, "div");
+                    b.AddAttribute(1, "style", "padding: 4px; width: 100%");
+
+                    b.OpenElement(2, "input");
+                    b.AddAttribute(3, "style", "max-width: 100%; padding:4px 20px 2px 2px; border: none");
+                    b.AddAttribute(4, "value", filterText);
+                    b.AddAttribute(5, "placeholder", FlexGridRes.SearchText);
+                    b.AddAttribute(6, "oninput", EventCallback.Factory.Create(this, (v) => filterText = (string)v.Value));
+                    b.SetUpdatesAttributeName("value");
+                    b.CloseElement();
+
+                    if (!string.IsNullOrEmpty(filterText))
+                    {
+                        b.OpenElement(10, "div");
+                        b.AddAttribute(11, "style", "display: inline-block; transform: translateX(-16px); user-select: none; width: 18px; color:gray; cursor: pointer;");
+                        b.AddAttribute(12, "onclick", EventCallback.Factory.Create(this, () => filterText = ""));
+                        b.AddContent(13, "×");
+                        b.CloseElement();
+                    }
+
+                    b.CloseElement();
+                },
+
+                ColumnVisibleHeaderCellFragment = b =>
+                    {
+                        b.OpenComponent<C1CheckBox>(0);
+                        b.AddAttribute(1, nameof(C1CheckBox.IsChecked), AreColumnsChecked);
+                        b.AddAttribute(2, nameof(C1CheckBox.IsCheckedChanged), EventCallback.Factory.Create<bool?>(this, (v) =>
+                        {
+                            var visibility = !v.HasValue || v.Value == false ? false : true;
+                            foreach (ColumnItem c in Columns)
+                            {
+                                c.IsVisible = visibility;
+                            }
+                        }));
+                        b.CloseElement();
+                    },
+            };
+
+        base.OnInitialized();
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (!initialized && Grid != null)
+        {
+            initialized = true;
+            gridColumnsCollection = Grid.Columns;
+            InvalidateColumnsCollection();
+            gridColumnsCollection.CollectionChanged += OnGridColumnsCollectionChanged;
+        }
+
+        base.OnParametersSet();
+    }
+
+    void InvalidateColumnsCollection()
+    {
+        if (Columns != null)
+        {
+            Columns.CollectionChanged -= OnColumnsLayoutUpdate;
+        }
+
+        Columns = new C1DataCollection<ColumnItem>(gridColumnsCollection.Select(c => new ColumnItem { Column = c, IsVisible = c.IsVisible }).ToList());
+        Columns.CollectionChanged += OnColumnsLayoutUpdate;
+    }
+
+    void OnColumnsLayoutUpdate(object sender, NotifyCollectionChangedEventArgs e)
+    {
+        gridColumnsCollection.CollectionChanged -= OnGridColumnsCollectionChanged;
+
+        if (e.Action == NotifyCollectionChangedAction.Move)
+        {
+            gridColumnsCollection.Move(e.OldStartingIndex, e.NewStartingIndex);
+        }
+
+        gridColumnsCollection.CollectionChanged += OnGridColumnsCollectionChanged;
+
+        StateHasChanged();
+    }
+
+    void OnGridColumnsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+    {
+        InvalidateColumnsCollection();
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        if (gridColumnsCollection != null)
+        {
+            gridColumnsCollection.CollectionChanged -= OnGridColumnsCollectionChanged;
+        }
+
+        if (Columns != null)
+        {
+            Columns.CollectionChanged -= OnColumnsLayoutUpdate;
+        }
+
+    }
+
+    class Factory : GridCellFactory
+    {
+        public RenderFragment ColumnNameHeaderCellFragment { get; set; }
+        public RenderFragment ColumnVisibleHeaderCellFragment { get; set; }
+
+        public override RenderFragment GetCellContentRenderFragment(GridCellType cellType, GridCellRange range)
+        {
+            if (cellType == GridCellType.TopLeft)
+            {
+                return b =>
+                {
+                    b.OpenElement(0, "div");
+                    b.AddAttribute(1, "style", "width: 100%; text-align: center;");
+                    b.AddContent(2, "⇅");
+                    b.CloseElement();
+                };
+            }
+
+            if (cellType == GridCellType.RowHeader)
+            {
+                return b =>
+                {
+                    b.OpenElement(0, "svg");
+                    b.AddAttribute(1, "width", 16);
+                    b.AddAttribute(2, "height", 16);
+                    b.AddAttribute(3, "fill", Grid.AllowDragging == GridAllowDragging.None ? "#d3cfcf" : "darkgray");
+
+                    b.OpenElement(4, "use");
+                    b.AddAttribute(5, "href", "#draggable-area");
+                    b.CloseElement();
+
+                    b.CloseElement();
+                };
+            }
+
+            if (cellType == GridCellType.ColumnHeader)
+            {
+                if (range.Column == 0)
+                {
+                    return ColumnNameHeaderCellFragment;
+                }
+
+                if (range.Column == 1)
+                {
+                    return ColumnVisibleHeaderCellFragment;
+                }
+            }
+
+            return base.GetCellContentRenderFragment(cellType, range);
+        }
+    }
+
+    class ColumnItem
+    {
+        public GridColumn Column { get; set; }
+
+        public bool IsVisible
+        {
+            get => Column.IsVisible;
+            set => Column.IsVisible = value;
+        }
+
+        public string Header => Column.ActualHeader;
+    }
+}

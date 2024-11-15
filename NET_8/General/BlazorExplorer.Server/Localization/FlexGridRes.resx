@@ -564,4 +564,11 @@
     <value>Filter by values</value>
     <comment>Filter by values</comment>
   </data>
+  <data name="ColumnLayoutTitle" xml:space="preserve">
+	<value>Column Layout</value>
+  </data>
+	
+  <data name="ColumnLayoutSummary" xml:space="preserve">
+   <value>Demos how to customize the grid's column layout by hiding unnecessary columns and reordering them.</value>
+  </data>
 </root>

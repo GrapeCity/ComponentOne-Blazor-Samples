@@ -10,3 +10,14 @@
         </LayoutView>
     </NotFound>
 </Router>
+
+@code {
+    static public bool isGrapeCityVersion
+    {
+        get
+        {
+            return CultureInfo.
+                CurrentUICulture.TwoLetterISOLanguageName.Equals("zh", StringComparison.OrdinalIgnoreCase);
+        }
+    }
+}

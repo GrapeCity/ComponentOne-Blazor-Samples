@@ -677,4 +677,23 @@
     <value>転置グリッド</value>
     <comment>Transposed Grid</comment>
   </data>
+  <data name="HierarchicalRowsDescription" xml:space="preserve">
+    <value>ChildItemsPath プロパティを使用して FlexGrid にバインドされたツリー状のデータ ソースを表示します。</value>
+    <comment>Shows a tree-like data-source bound to FlexGrid using ChildItemsPath property.</comment>
+  </data>
+  <data name="HierarchicalRowsTitle" xml:space="preserve">
+    <value>階層的な行</value>
+    <comment>Hierarchical Rows</comment>
+  </data>
+  <data name="HierarchicalRowsSummary" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FilterByCondition" xml:space="preserve">
+    <value>条件で絞り込む</value>
+    <comment>Filter by condition</comment>
+  </data>
+  <data name="FilterByValues" xml:space="preserve">
+    <value>値で絞り込む</value>
+    <comment>Filter by values</comment>
+  </data>
 </root>

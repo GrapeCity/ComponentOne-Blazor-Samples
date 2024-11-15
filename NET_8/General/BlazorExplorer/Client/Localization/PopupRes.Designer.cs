@@ -19,7 +19,7 @@ namespace BlazorExplorer.Localization {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class PopupRes {
@@ -79,11 +79,11 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;p&gt;&lt;strong&gt;Dialog result:&lt;/strong&gt; The C1Window control can be used to implement static methods for showing &lt;i&gt;Confirm&lt;/i&gt; and &lt;i&gt;Prompt&lt;/i&gt; dialogs. This sample lets you configure the Popup content and modify the style also.&lt;/p&gt;
+        ///   Looks up a localized string similar to &lt;p&gt; &lt;strong&gt;Dialog result: &lt;/strong&gt; The C1Window control can be used to implement static methods for showing &lt;i&gt;Confirm&lt;/i&gt; and &lt;i&gt;Prompt&lt;/i&gt; dialogs. This sample lets you configure the Popup content and modify the style also.&lt;/p&gt;
         ///        &lt;p&gt;
         ///            &lt;strong&gt;IsDialog:&lt;/strong&gt; Gets or sets to determine whether C1Window is dialog result. &lt;br /&gt;
         ///            &lt;strong&gt;DialogType:&lt;/strong&gt; Gets or sets dialog result type (Confirm or Prompt). &lt;br /&gt;
-        ///            &lt;strong&gt;IsOk:&lt;/strong&gt; Get Ok button is clicke [rest of string was truncated]&quot;;.
+        ///            &lt;strong&gt;IsOk:&lt;/strong&gt; Get Ok button is clic [rest of string was truncated]&quot;;.
         /// </summary>
         public static string DialogResultDescription {
             get {

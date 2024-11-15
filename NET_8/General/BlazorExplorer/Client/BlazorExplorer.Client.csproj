@@ -20,46 +20,46 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Accordion">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Calendar">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Chart">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Gauge">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Menu">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.TreeView">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
-    <PackageReference Include="C1.DataCollection.Serialization" Version="8.0.20241.192" />
-    <PackageReference Include="C1.Excel" Version="8.0.20241.62" />
+    <PackageReference Include="C1.DataCollection.Serialization" Version="8.0.20242.201" />
+    <PackageReference Include="C1.Excel" Version="8.0.20241.67" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.3" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0" />
@@ -186,6 +186,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>PopupRes.resx</DependentUpon>
     </Compile>
+    <Compile Update="Localization\Resource.zh.Designer.cs">
+      <DependentUpon>Resource.zh.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="Localization\Resource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -259,6 +264,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>NumericBoxRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Localization\Resource.zh.resx">
+      <LastGenOutput>Resource.zh.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Localization\TimeEditorRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TimeEditorRes.Designer.cs</LastGenOutput>
@@ -306,5 +315,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\Excel\" />
+    <Folder Include="Shared\Headers\" />
   </ItemGroup>
 </Project>

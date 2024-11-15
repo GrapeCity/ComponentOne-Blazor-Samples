@@ -178,10 +178,6 @@ function initControlsNav() {
     }
 }
 
-function setPageTitle(title) {
-    document.title = title;
-}
-
 function highlightSource(source, brush, sourceContentId) {
     //SyntaxHighlighter.defaults['toolbar'] = false;
     //SyntaxHighlighter.defaults['quick-code'] = false;
@@ -235,5 +231,7 @@ function imageExists(path, callBack) {
 }
 
 function keepHeight(el, release) {
-    el.style.height = release ? "auto" : el && el.clientHeight + "px";
+    if (el) {
+        el.style.height = release ? "auto" : el.clientHeight + "px";
+    }
 }

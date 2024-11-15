@@ -2,6 +2,7 @@
 @using System.Net.Http;
 @using System.Text;
 @using System.Text.Json;
+@using C1.Blazor.Core;
 @using C1.Blazor.Grid
 @using C1.Blazor.Input
 @using InvestmentCalculator.Shared
@@ -13,6 +14,7 @@
     <div class="title">@Resource.InvestmentCalculator</div>
     <div class="content-container">
         <FlexGrid @ref="grid"
+                  LostFocus="()=> grid.FinishEditing()"
                   CellFactory="@cellFactory"
                   CellEditEnded="OnCellEditEnded" 
                   MergeManager="@custommergemanager"
@@ -24,7 +26,7 @@
             <FlexGridColumns>
                 <GridColumn Width="214" IsReadOnly="true" />
                 <GridColumn Width="294" IsReadOnly="true" />
-                <GridColumn Width="GridLength.Star" Format="c2" InputType="TextBoxType.Number"/>
+                <GridColumn Width="GridLength.Star" Format="c2" InputType="C1HtmlInputType.Number"/>
             </FlexGridColumns>
             <FlexGridRows>
                 @for (int i = 0; i < 11; i++)

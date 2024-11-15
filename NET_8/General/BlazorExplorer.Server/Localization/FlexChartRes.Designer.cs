@@ -115,6 +115,33 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This sample shows how to display line markers over the axes. Both axes have markers which follow the pointer and display its position in data coordinates..
+        /// </summary>
+        public static string AxisMarkersDescription {
+            get {
+                return ResourceManager.GetString("AxisMarkersDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Axis Markers.
+        /// </summary>
+        public static string AxisMarkersSummary {
+            get {
+                return ResourceManager.GetString("AxisMarkersSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Axis Markers.
+        /// </summary>
+        public static string AxisMarkersTitle {
+            get {
+                return ResourceManager.GetString("AxisMarkersTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Axis scrollbar allows to select scale and scroll through the data range..
         /// </summary>
         public static string AxisScrollbarDescription {
@@ -367,6 +394,33 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The sample shows how to drag data points on the plot..
+        /// </summary>
+        public static string DragPointsDescription {
+            get {
+                return ResourceManager.GetString("DragPointsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drag Data Points.
+        /// </summary>
+        public static string DragPointsSummary {
+            get {
+                return ResourceManager.GetString("DragPointsSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drag Points.
+        /// </summary>
+        public static string DragPointsTitle {
+            get {
+                return ResourceManager.GetString("DragPointsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The ErrorBar class extends the regular Series class to provide error bars that can be added on top of the regular series data..
         /// </summary>
         public static string ErrorBarDescription {
@@ -482,6 +536,33 @@ namespace BlazorExplorer.Localization {
         public static string FunnelType {
             get {
                 return ResourceManager.GetString("FunnelType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shows Heatmap plot with gradient color scale. The data from two-dimensional array is shown as a table. The color of table&apos;s cell depends on the corresponding data value..
+        /// </summary>
+        public static string HeatmapDescription {
+            get {
+                return ResourceManager.GetString("HeatmapDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heatmap Plot.
+        /// </summary>
+        public static string HeatmapSummary {
+            get {
+                return ResourceManager.GetString("HeatmapSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heatmap Plot.
+        /// </summary>
+        public static string HeatmapTitle {
+            get {
+                return ResourceManager.GetString("HeatmapTitle", resourceCulture);
             }
         }
         

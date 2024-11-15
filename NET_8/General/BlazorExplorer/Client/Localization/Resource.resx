@@ -234,4 +234,35 @@
 	<data name="Reference_Applications" xml:space="preserve">
     <value>Reference Applications</value>
   </data>
+	<data name="SiteNav_Demos" xml:space="preserve">
+    <value>DEMOS</value>
+	<comment>DEMOS (link title in header)</comment>
+  </data>
+	<data name="SiteNav_DemosUrl" xml:space="preserve">
+    <value>https://developer.mescius.com/componentone/demos</value>
+  </data>
+	<data name="SiteNav_Docs" xml:space="preserve">
+    <value>DOCS</value>
+	<comment>DOCS (link title in header)</comment>
+  </data>
+	<data name="SiteNav_DocsUrl" xml:space="preserve">
+    <value>https://developer.mescius.com/componentone/docs/mvc/online-mvc/overview.html</value>
+  </data>
+	<data name="SiteNav_Samples" xml:space="preserve">
+    <value>SAMPLES</value>
+	<comment>SAMPLES (link title in header)</comment>
+  </data>
+	<data name="SiteNav_SamplesUrl" xml:space="preserve">
+    <value>https://developer.mescius.com/componentone/samples</value>
+  </data>
+	<data name="SiteNav_Download" xml:space="preserve">
+    <value>DOWNLOAD</value>
+  </data>
+	<data name="SiteNav_DownloadUrl" xml:space="preserve">
+    <value>https://developer.mescius.com/componentone/download</value>
+  </data>
+	<data name="Layout_TitleMesciusSuffix" xml:space="preserve">
+    <value> | ComponentOne Blazor Controls</value>
+    <comment> | ComponentOne Blazor Controls (uses as suffix in html page title)</comment>
+  </data>
 </root>

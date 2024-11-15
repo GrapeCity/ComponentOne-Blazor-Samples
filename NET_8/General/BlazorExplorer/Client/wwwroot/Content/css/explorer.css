@@ -116,6 +116,41 @@ a.culture-selector-link {
     color: inherit;
 }
 
+/*#region default view*/
+.default-header {
+}
+
+    .default-header menu {
+        display: flex;
+        height: 50px;
+        align-items: center;
+        background-color: #D6564C;
+        color: #ffffff;
+        list-style: none;
+    }
+
+    .default-header menu > li {
+        font-size: 14pt;
+        padding: 0 12px;
+    }
+
+    .default-header menu > li.separator {
+        padding: 0;
+        height: 18px;
+        width: 1px;
+        flex-shrink: 0;
+        flex-grow: 0;
+        background: white;
+    }
+
+    .default-header menu > li > a {
+        color: white;
+        text-decoration: none;
+        outline: none;
+    }
+
+/*#endregion*/
+
 .task-bar {
     background-color: #727272;
     color: #ffffff;
@@ -180,7 +215,7 @@ a.culture-selector-link {
     width: 40px;
     height: 40px;
     border: 8px solid silver;
-    border-top: 8px solid rgb(158, 33, 50);
+    border-top: 8px solid #D6564C;
     border-radius: 50%;
     animation: wheel 600ms linear infinite;
     animation-fill-mode: none;
@@ -193,6 +228,10 @@ a.culture-selector-link {
     opacity: 0.8;
 }
 
+.grapecity .loading_wheel {
+    border-top: 8px solid rgb(158, 33, 50);
+}
+
 .loading_gc1icon {
     width: 108px;
     height: 120px;
@@ -201,16 +240,24 @@ a.culture-selector-link {
     position: fixed;
     top: 50%;
     left: 50%;
-    margin-top: -54px;
-    margin-left: -60px;
+    margin-top: -60px;
+    margin-left: -54px;
     opacity: 0.8;
     background-image: url('../images/splash-120.png');
     background-size: cover;
 }
 
+.grapecity .loading_gc1icon {
+    background-image: url('../images/grapecity-splash-120.png');
+}
+
 @media (-webkit-min-device-pixel-ratio : 2) {
     .loading_gc1icon {
         background-image: url('../images/splash-240.png');
+    }
+
+    .grapecity .loading_gc1icon {
+        background-image: url('../images/grapecity-splash-240.png');
     }
 }
 
@@ -946,6 +993,11 @@ footer {
         background-color: #727272;
         color: #ffffff;
     }
+
+    .default-header menu > li.title {
+        font-size: 12pt;
+    }
+
 
         .task-bar-nav li {
             border-color: #eee;

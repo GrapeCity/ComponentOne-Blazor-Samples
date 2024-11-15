@@ -17,8 +17,21 @@
 <p>
     Tree Expand Mode <C1ComboBox ItemsSource="treeExpandModes" @bind-SelectedItem="treeExpandMode" />
 </p>
+<p>
+    Tree Lines Mode <C1ComboBox ItemsSource="treeLinesModes" @bind-SelectedItem="treeLinesMode" />
+</p>
+<p>
+    Tree Indent Mode <C1ComboBox ItemsSource="treeIndentModes" @bind-SelectedItem="treeIndentMode" />
+</p>
 
-<FlexGrid @ref="grid" ChildItemsPath="SubTasks" TreeIndent="treeIndent" TreeColumnIndex="treeColumnIndex" TreeExpandMode="treeExpandMode" AutoGeneratingColumn="@OnAutoGeneratingColumn" ItemsSource="tasks" Style="@("max-height:50vh")" />
+<FlexGrid @ref="grid" ChildItemsPath="SubTasks" TreeIndent="treeIndent"
+          TreeColumnIndex="treeColumnIndex"
+          TreeExpandMode="treeExpandMode"
+          TreeLinesMode="treeLinesMode"
+          TreeIndentMode="treeIndentMode"
+          GridLinesVisibility="GridLinesVisibility.None"
+          AutoGeneratingColumn="@OnAutoGeneratingColumn"
+          ItemsSource="tasks" Style="@("max-height:50vh")" />
 
 @code {
     FlexGrid grid;
@@ -27,6 +40,10 @@
     double treeIndent = 14;
     GridTreeExpandMode treeExpandMode = GridTreeExpandMode.OnDemand;
     GridTreeExpandMode[] treeExpandModes = Enum.GetValues<GridTreeExpandMode>();
+    GridTreeLinesMode treeLinesMode = GridTreeLinesMode.Vertical;
+    GridTreeLinesMode[] treeLinesModes = Enum.GetValues<GridTreeLinesMode>();
+    GridTreeIndentMode treeIndentMode = GridTreeIndentMode.ToggleCells;
+    GridTreeIndentMode[] treeIndentModes = Enum.GetValues<GridTreeIndentMode>();
 
     protected override async Task OnInitializedAsync()
     {

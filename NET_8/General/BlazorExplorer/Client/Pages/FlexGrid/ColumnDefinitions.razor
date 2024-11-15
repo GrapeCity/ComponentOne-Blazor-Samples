@@ -5,7 +5,7 @@
 @using C1.Blazor.Input
 @using C1.Blazor.Grid
 
-<FlexGrid ItemsSource="@customers" MinColumnWidth="85" AutoGenerateColumns="false" IsVirtualizationEnabled="false" Style="@("max-height:50vh")">
+<FlexGrid @ref="grid" LostFocus="CommitChanges" ItemsSource="@customers" MinColumnWidth="85" AutoGenerateColumns="false" IsVirtualizationEnabled="false" Style="@("max-height:50vh")">
     <FlexGridColumns>
         <GridColumn Binding="@nameof(Customer.Active)" MinWidth="70" Width="new GridLength(0.5, GridUnitType.Star)" HorizontalAlignment="C1HorizontalAlignment.Center" />
         <GridColumn Binding="@nameof(Customer.FirstName)" MinWidth="110" Width="GridLength.Star" />
@@ -13,7 +13,7 @@
         <GridColumn Binding="@nameof(Customer.CountryId)" Header="Country" MinWidth="110" Width="GridLength.Star" DataMap="countryDataMap" AllowFiltering="false" OptionsLoading="OnGridColumnOptionsLoading" />
         <GridDateTimeColumn Binding="@nameof(Customer.LastOrderDate)" Format="d" Mode="GridDateTimeColumnMode.Date" MinWidth="160" Width="GridLength.Star" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
         <GridDateTimeColumn Binding="@nameof(Customer.LastOrderDate)" AllowFiltering="false" SortMemberPath="LastOrderTime" Format="t" Mode="GridDateTimeColumnMode.Time" Header="Last Order Time" MinWidth="150" Width="GridLength.Star" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" />
-        <GridNumericColumn Binding="@nameof(Customer.OrderTotal)" Format="C" Minimum="0" MinWidth="110" Width="GridLength.Star" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" InputType="TextBoxType.Number" />
+        <GridNumericColumn Binding="@nameof(Customer.OrderTotal)" Format="C" Minimum="0" MinWidth="110" Width="GridLength.Star" HorizontalAlignment="C1HorizontalAlignment.Right" HeaderHorizontalAlignment="C1HorizontalAlignment.Right" InputType="C1HtmlInputType.Number" />
     </FlexGridColumns>
 </FlexGrid>
 
@@ -26,7 +26,7 @@
 @code {
     C1DataCollection<Customer> customers;
     GridDataMap countryDataMap = new GridDataMap() { ItemsSource = Customer.GetCountries(), DisplayMemberPath = "Value", SelectedValuePath = "Key" };
-
+    FlexGrid grid;
     protected override void OnInitialized()
     {
         customers = new C1DataCollection<Customer>(Customer.GetCustomerList(100));
@@ -51,5 +51,13 @@
             });
 
         menu.Refresh();
+    }
+
+    void CommitChanges()
+    {
+        if (grid.EditorRange != null)
+        {
+            _ = grid.FinishRowEditing();
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace BlazorExplorer
         {
             get
             {
-                return $"https://raw.githubusercontent.com/gosquared/flags/master/flags/flags-iso/shiny/32/{Code}.png";
+                return $"https://raw.githubusercontent.com/GrapeCity/ComponentOne-Blazor-Samples/master/Images/samples/flags/{Code}.png";
             }
         }
     }

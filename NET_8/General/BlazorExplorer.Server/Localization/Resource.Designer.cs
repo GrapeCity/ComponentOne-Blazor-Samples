@@ -277,6 +277,15 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  | ComponentOne Blazor Controls.
+        /// </summary>
+        public static string Layout_TitleMesciusSuffix {
+            get {
+                return ResourceManager.GetString("Layout_TitleMesciusSuffix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  - C1 Blazor.
         /// </summary>
         public static string Layout_TitleSuffix {
@@ -340,6 +349,60 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DEMOS.
+        /// </summary>
+        public static string SiteNav_Demos {
+            get {
+                return ResourceManager.GetString("SiteNav_Demos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://developer.mescius.com/componentone/demos.
+        /// </summary>
+        public static string SiteNav_DemosUrl {
+            get {
+                return ResourceManager.GetString("SiteNav_DemosUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DOCS.
+        /// </summary>
+        public static string SiteNav_Docs {
+            get {
+                return ResourceManager.GetString("SiteNav_Docs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://developer.mescius.com/componentone/docs/mvc/online-mvc/overview.html.
+        /// </summary>
+        public static string SiteNav_DocsUrl {
+            get {
+                return ResourceManager.GetString("SiteNav_DocsUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DOWNLOAD.
+        /// </summary>
+        public static string SiteNav_Download {
+            get {
+                return ResourceManager.GetString("SiteNav_Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://developer.mescius.com/componentone/download.
+        /// </summary>
+        public static string SiteNav_DownloadUrl {
+            get {
+                return ResourceManager.GetString("SiteNav_DownloadUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Theme &amp;gt;.
         /// </summary>
         public static string SiteNav_EditTheme {
@@ -390,6 +453,24 @@ namespace BlazorExplorer.Localization {
         public static string SiteNav_PricingUrl {
             get {
                 return ResourceManager.GetString("SiteNav_PricingUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SAMPLES.
+        /// </summary>
+        public static string SiteNav_Samples {
+            get {
+                return ResourceManager.GetString("SiteNav_Samples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://developer.mescius.com/componentone/samples.
+        /// </summary>
+        public static string SiteNav_SamplesUrl {
+            get {
+                return ResourceManager.GetString("SiteNav_SamplesUrl", resourceCulture);
             }
         }
         

@@ -1,4 +1,5 @@
-﻿<Router AppAssembly="@typeof(Program).Assembly">
+﻿@using System.Globalization
+<Router AppAssembly="@typeof(Program).Assembly">
   <Found Context="routeData">
     <_App RouteData="@routeData"></_App>
     <RouteView RouteData="@routeData" DefaultLayout="@typeof(ControlLayout)" />
@@ -9,3 +10,13 @@
     </LayoutView>
   </NotFound>
 </Router>
+
+@code{
+    static public bool isGrapeCityVersion
+    {
+        get {
+            return CultureInfo.
+                CurrentUICulture.TwoLetterISOLanguageName.Equals("zh", StringComparison.OrdinalIgnoreCase);
+        }
+    }
+}

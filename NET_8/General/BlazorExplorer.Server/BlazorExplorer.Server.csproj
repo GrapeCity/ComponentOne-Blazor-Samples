@@ -31,8 +31,10 @@
     <None Remove=".gclicx" />
     <None Remove="Data\DataFilter\cars.xml" />
     <None Remove="Data\DataFilter\Stores.txt" />
+    <None Remove="Data\DefaultDocument.pdf" />
     <None Remove="Data\departments.xml" />
     <None Remove="Data\employees.xml" />
+    <None Remove="Data\FlexCommonTasksSQLite.flxr" />
     <None Remove="Data\StockSymbols.txt" />
     <None Remove="readme.txt" />
     <None Remove="readme_ja.txt" />
@@ -45,6 +47,7 @@
     <EmbeddedResource Include="Data\countries.json" />
     <EmbeddedResource Include="Data\DataFilter\cars.xml" />
     <EmbeddedResource Include="Data\DataFilter\Stores.txt" />
+    <EmbeddedResource Include="Data\DefaultDocument.pdf" />
     <EmbeddedResource Include="Data\departments.xml" />
     <EmbeddedResource Include="Data\employees.xml" />
     <EmbeddedResource Include="Data\GdpVsHappiness.json" />
@@ -55,65 +58,80 @@
     <None Include="Pages\Calendar\Index.razor" />
   </ItemGroup>
   <ItemGroup>
+    <!--		
+		<ProjectReference Include="..\..\..\..\..\c1-flexreport\Controls\Document\C1.Document.csproj" />
+		<ProjectReference Include="..\..\..\..\..\c1-flexreport\Controls\FlexReport\Report\C1.FlexReport.csproj" />
+		-->
     <None Include="Pages\DatePicker\Index.razor" />
     <None Include="Pages\DateTimePicker\Index.razor" />
     <None Include="Pages\TimeEditor\Index.razor" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Accordion">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Calendar">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Chart">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Gauge">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid.Excel">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Menu">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.TreeView">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Viewer">
-      <Version>8.0.20241.820-beta</Version>
+      <Version>8.0.20242.965-beta</Version>
     </PackageReference>
-    <PackageReference Include="C1.Excel" Version="8.0.20241.62" />
+    <PackageReference Include="C1.Excel" Version="8.0.20242.100" />
+    <PackageReference Include="C1.FlexReport" Version="8.0.20242.38-beta" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0" />
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\FlexCommonTasksSQLite.flxr">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Localization\ExcelRes.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ExcelRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\Resource.zh.Designer.cs">
+      <DependentUpon>Resource.zh.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Update="Localization\ViewerRes.Designer.cs">
       <DependentUpon>ViewerRes.resx</DependentUpon>
@@ -241,6 +259,10 @@
     <EmbeddedResource Update="Localization\ExcelRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ExcelRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\Resource.zh.resx">
+      <LastGenOutput>Resource.zh.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Localization\ViewerRes.resx">
       <LastGenOutput>ViewerRes.Designer.cs</LastGenOutput>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorExplorer
 {
@@ -11,6 +12,9 @@ namespace BlazorExplorer
     {
         private List<PriceInterval> priceIntervals;
 
+#if BLAZOR
+        [ActivatorUtilitiesConstructor]
+#endif
         public PriceFilter()
         {
         }

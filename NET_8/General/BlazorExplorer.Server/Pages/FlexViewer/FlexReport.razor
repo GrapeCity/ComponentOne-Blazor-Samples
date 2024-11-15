@@ -1,0 +1,38 @@
+﻿@page "/FlexViewer/FlexReport"
+@using C1.Blazor.Viewer
+@using C1.Blazor.Viewer.Model;
+@using C1.Blazor.Input
+@using C1.Document;
+@using C1.Report;
+@inject IJSRuntime Js
+
+@code {
+    string[] reportList = DocSources.GetReports();
+    C1DocumentSource docSource;
+    int selected = 0;
+
+    void UpdateReport(string reportName)
+    {
+        docSource = DocSources.GetReport(reportName);
+        docSource.GenerateCompleted += (s, e) =>
+        {
+            if (e.Error != null)
+            {
+                Js.InvokeVoidAsync("alert", e.Error.Message);
+                docSource = null;
+            }
+            InvokeAsync(StateHasChanged);
+        };
+        docSource.GenerateAsync();
+    }
+}
+
+@ViewerRes.FlexReportViewerSelectReport
+<C1ComboBox T="string" Style="@("margin:8px 0;border-radius:4px;width:220px;")" @bind-SelectedIndex="selected" ItemsSource="reportList" SelectedItemChanged=UpdateReport></C1ComboBox>
+<FlexViewer DocumentSource=docSource />
+
+<_Sections>
+    <Title>@ViewerRes.FlexReportViewerTitle</Title>
+    <Summary>@ViewerRes.FlexReportViewerSummary</Summary>
+    <Description>@ViewerRes.FlexReportViewerDescription</Description>
+</_Sections>

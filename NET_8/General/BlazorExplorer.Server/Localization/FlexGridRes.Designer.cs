@@ -268,6 +268,15 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demos how to customize the grid&apos;s column layout by hiding unnecessary columns and reordering them..
+        /// </summary>
+        public static string ColumnLayoutSummary {
+            get {
+                return ResourceManager.GetString("ColumnLayoutSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Column Layout.
         /// </summary>
         public static string ColumnLayoutTitle {

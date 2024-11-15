@@ -4,10 +4,10 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.TreeView">
-      <Version>8.0.20241.820</Version>
+      <Version>8.0.20242.965</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0" />
   </ItemGroup>

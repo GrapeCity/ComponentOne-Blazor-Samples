@@ -18,7 +18,7 @@
         border-left: 6px solid #ffeb3b;
         padding: 12px;
         margin: 16px 18px;
-        width:fit-content;
+        width: fit-content;
     }
 
     .styled-table {
@@ -70,7 +70,67 @@
             .resourcesPanel button:hover {
                 background: #d2e7e3;
             }
+
+    .shortList {
+        max-height: 220px;
+        overflow-y: scroll;
+        scrollbar-width: none;
+    }
+
+    .fullList {
+        max-height: none;
+    }
+
+    .expand-button {
+        color: #695c5c;
+    }
+
+        .expand-button:hover {
+            color: #71b2a5;
+        }
+
+        .expand-button > span {
+            cursor: pointer;
+            border-radius: 8px;
+            padding: 2px 42px;
+            background: linear-gradient(0, transparent, #dddddd, transparent);
+            font-size: 18px;
+        }
 </style>
+<div style="width:min-content;">
+    <div class="@(_shortList?"shortList": "fullList")">
+        <table class="styled-table">
+            <thead>
+                <tr><th colspan="2">List of C1 libs</th></tr>
+                <tr>
+                    <th> Assembly</th>
+                    <th> Version</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in C1Assemblies.OrderBy(i => i.Name))
+                {
+                    <tr>
+                        <td>@i.Name</td>
+                        <td>@i.Version</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align:center; position: relative; top: -14px;">
+        <span @onclick="()=>_shortList=!_shortList" class="expand-button">
+            @if (_shortList)
+            {
+                <span>&#x2B9B;</span>
+            }
+            else
+            {
+                <span>&#x2B99;</span>
+            }
+        </span>
+    </div>
+</div>
 <div class="resourcesPanel">
     <p>
         Click to reload C1 libraries resources (js/css) and update caches
@@ -90,27 +150,10 @@
 </p>
 
 
-<table class="styled-table">
-    <thead>
-        <tr><th colspan="2">List of C1 libs</th></tr>
-        <tr>
-            <th> Assembly</th>
-            <th> Version</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var i in C1Assemblies.OrderBy(i => i.Name))
-        {
-            <tr>
-                <td>@i.Name</td>
-                <td>@i.Version</td>
-            </tr>
-        }
-    </tbody>
-</table>
+
 
 @code {
-
+    bool _shortList = true;
     List<PackageInfo> C1Assemblies;
 
     protected override void OnInitialized()

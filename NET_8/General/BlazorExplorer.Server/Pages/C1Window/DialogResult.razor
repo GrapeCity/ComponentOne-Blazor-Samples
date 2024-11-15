@@ -17,7 +17,7 @@
 
 <button class="btn btn-default" @onclick="@OpenPopup">@PopupRes.OpenPopupBtn</button>
 
-<C1Window @ref="myPopup" Style="@("width: 500px; top: 15")" IsModeless="true" 
+<C1Window @ref="myPopup" Style="@("width: 500px; top: 15")" IsModeless="true" IsDarkOverlay="false"
          IsDialog="true" OkText="@okText" CancelText="@cancelText" DialogType="dialogResult" IsPopupOpenChanged="IsPopupOpenChanged">
     <PopupHeader>
         Lorem ipsum
@@ -27,7 +27,7 @@
     </PopupContent>
 </C1Window>
 
-<C1Window @ref="resultPopup" Style="@("width: 300px; top: 15px")" IsModeless="true">
+<C1Window @ref="resultPopup" Style="@("width: 300px; top: 15px")" IsModeless="true" IsDarkOverlay="false">
     <PopupHeader>
         @PopupRes.YourAction 
     </PopupHeader>

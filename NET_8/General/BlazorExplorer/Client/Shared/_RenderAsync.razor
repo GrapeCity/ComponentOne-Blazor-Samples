@@ -30,11 +30,13 @@
 }
 
 @code {
+    TaskCompletionSource initialization = new ();
+    
     [Parameter]
     public RenderFragment Content
     {
         get { return _content; }
-        set { _ = setContentAsync(value); }
+        set { _ = SetContentAsync(value); }
     }
 
     private ElementReference _div;
@@ -44,12 +46,19 @@
     protected override void OnAfterRender(bool firstRender)
     {
         _lastUri = _App.RelativeUri;
-        base.OnAfterRender(firstRender);
+
+        if (firstRender)
+        {
+            initialization.TrySetResult();
+        }
     }
 
-    private async Task setContentAsync(RenderFragment content_)
+    private async Task SetContentAsync(RenderFragment content_)
     {
+        await initialization.Task;
+
         _ = _App.JsRuntime.InvokeVoidAsync("keepHeight", _div);
+
         var fromHome = _App.IsHome(_lastUri);
         while (_lastUri != _App.RelativeUri)
             await Task.Delay(1);
@@ -57,7 +66,6 @@
         _content = content_;
         StateHasChanged();
         _Sections.Clear(false);
-        //await Task.Delay(0);
         _ = _App.JsRuntime.InvokeVoidAsync("keepHeight", _div, true);
     }
 }
