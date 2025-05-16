@@ -1,0 +1,66 @@
+﻿@page "/FlexChart/AxisScrollbar"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Chart.Interaction;
+
+
+<FlexChart @ref="chart" Class="chart" ChartType="ChartType.Scatter" 
+           BindingX="Day" Binding="Value" ItemsSource="Data" Tooltip="" >
+    <SeriesCollection>
+        <Series />
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis Position="Position.Left" AxisType="AxisType.Y" Scrollbar="sby" />
+        <Axis Position="Position.Bottom" AxisType="AxisType.X" Scrollbar="sbx"/>
+    </AxisCollection>
+</FlexChart>
+
+
+<_Sections>
+    <Title>@FlexChartRes.AxisScrollbarTitle</Title>
+    <Summary>@FlexChartRes.AxisScrollbarSummary</Summary>
+    <Description>@FlexChartRes.AxisScrollbarDescription</Description>
+</_Sections>
+
+@code {
+    C1.Blazor.Chart.Interaction.AxisScrollbar sbx = new C1.Blazor.Chart.Interaction.AxisScrollbar();
+    C1.Blazor.Chart.Interaction.AxisScrollbar sby = new C1.Blazor.Chart.Interaction.AxisScrollbar();
+    FlexChart chart;
+
+    List<DataSource.Quote> Data { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Data = DataSource.GetData();
+    }
+
+    public class DataSource
+    {
+        private static Random rnd = new Random();
+
+        public class Quote
+        {
+            public int Day { get; set; }
+            public double Value { get; set; }
+        }
+
+        public static List<Quote> GetData()
+        {
+            var data = new List<Quote>();
+            for (int i = 0; i < 1000; i++)
+            {
+                var r = rnd.NextDouble();
+                var y = (10 * r * Math.Sin(0.1 * i) * Math.Sin(0.6 * rnd.NextDouble() * i));
+
+                var country = new Quote
+                {
+                    Day = i,
+                    Value = y
+                };
+                data.Add(country);
+            }
+            return data;
+        }
+    }
+}

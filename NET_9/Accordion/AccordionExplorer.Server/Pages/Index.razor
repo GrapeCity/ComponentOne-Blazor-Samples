@@ -1,0 +1,35 @@
+﻿@page "/"
+@using C1.Blazor.ListView
+@using C1.Blazor.Accordion
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using AccordionExplorer.Server.Localization
+<p>
+    @AccordionRes.AccordionDescription
+</p>
+<p>
+    <span style="padding-right: 6px;">Expands Modes</span> <C1ComboBox ItemsSource="expandModes" @bind-SelectedItem="expandMode" />
+</p>
+
+<C1Accordion ExpandMode="expandMode">
+    <AccordionItem Header="@AccordionRes.Header1" IsExpanded=false>
+        <C1ListView ItemsSource="customers" DisplayMemberPath="Name" T="Customer" Style="@("max-height:200px")" />
+    </AccordionItem>
+    <AccordionItem Header="@AccordionRes.Header2">
+        <C1ListView ItemsSource="customers" DisplayMemberPath="Name" T="Customer" Style="@("max-height:200px")" />
+    </AccordionItem>
+    <AccordionItem Header="@AccordionRes.Header3" IsExpanded=false>
+        <C1ListView ItemsSource="customers" DisplayMemberPath="Name" T="Customer" Style="@("max-height:200px")" />
+    </AccordionItem>
+</C1Accordion>
+@code
+{
+    ExpandMode expandMode = ExpandMode.Any;
+    ExpandMode[] expandModes = new ExpandMode[] { ExpandMode.One, ExpandMode.Collapsible, ExpandMode.Any };
+    IEnumerable<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+}

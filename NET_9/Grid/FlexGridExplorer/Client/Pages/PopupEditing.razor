@@ -1,0 +1,153 @@
+﻿@page "/PopupEditing"
+@using System.Collections.ObjectModel
+@using C1.Blazor.Grid
+@using C1.Blazor.Input
+@using Resources
+
+<style>
+  td {
+    padding: 5px;
+  }
+</style>
+
+<h1>@AppResources.PopupEditingTitle</h1>
+<p>@AppResources.PopupEditingDescription</p>
+
+<FlexGrid @ref="grid" ItemsSource="customers"
+          IsReadOnly="true"
+          AutoGenerateColumns="false"
+          SelectionMode="GridSelectionMode.Row"
+          Style="@("max-height:50vh")"
+          SelectionChanged="OnSelectionChanged"
+          ColumnHeaderStyle="@("background-color:#eee;color:black;font-weight:bold;")">
+  <FlexGridColumns>
+    <GridColumn Binding="FirstName" Header="First Name" />
+    <GridColumn Binding="LastName" Header="Last Name" />
+    <GridColumn Binding="Address" Header="Address" />
+    <GridColumn Binding="City" Header="City" />
+    <GridColumn Binding="PostalCode" Header="Postal Code" />
+    <GridColumn Binding="Email" Header="Email" />
+  </FlexGridColumns>
+</FlexGrid>
+
+
+<div style="width: 100%; padding: 15px; background-color: #eee;">
+  <button class="btn btn-default" style="margin-top: 15px;" @onclick="ShowPopup">
+    <span class="glyphicon glyphicon-new-window"></span>
+    @AppResources.EditSelectedItem
+  </button>
+</div>
+
+
+<C1Window @ref="myPopup" Style="@("width: 500px;")">
+  <PopupHeader>
+    @AppResources.EditItem
+  </PopupHeader>
+  <PopupContent>
+    <table class="table">
+      <tr>
+          <th>@AppResources.FirstName</th>
+        <td><input class="form-control" @bind-value="firstName" /></td>
+      </tr>
+      <tr>
+          <th>@AppResources.LastName</th>
+        <td><input class="form-control" @bind-value="lastName" /></td>
+      </tr>
+      <tr>
+          <th>@AppResources.Address</th>
+        <td><input class="form-control" @bind-value="address" /></td>
+      </tr>
+      <tr>
+          <th>@AppResources.City</th>
+        <td><input class="form-control" @bind-value="city" /></td>
+      </tr>
+      <tr>
+          <th>@AppResources.PostalCode</th>
+        <td><input class="form-control" @bind-value="postalCode" /></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><input class="form-control" @bind-value="email" /></td>
+      </tr>
+    </table>
+  </PopupContent>
+  <PopupFooter>
+    <div style="text-align: end">
+      <button type="button" class="btn btn-primary" @onclick="Save">
+        <span class="glyphicon glyphicon-ok"></span>
+        Ok
+      </button>
+      <button type="button" class="btn btn-warning" @onclick="ClosePopop">
+        <span class="glyphicon glyphicon-ban-circle"></span>
+        @AppResources.Cancel
+      </button>
+    </div>
+  </PopupFooter>
+</C1Window>
+
+<C1Window @ref="alert" Style="@("width: 300px; height: 150px")">
+  <PopupHeader>@AppResources.Alert</PopupHeader>
+  <PopupContent>
+    <div class="text-warning">
+      <span class="glyphicon glyphicon-warning-sign" style="margin-right: 5px"></span>
+      @AppResources.AlertText
+    </div>
+  </PopupContent>
+</C1Window>
+
+@code {
+
+  FlexGrid grid;
+  C1Window myPopup, alert;
+  Customer customer;
+  ObservableCollection<Customer> customers;
+  string firstName, lastName, address, city, postalCode, email;
+
+
+  protected override void OnInitialized()
+  {
+    customers = Customer.GetCustomerList(100);
+  }
+
+  private void OnSelectionChanged(object sender, GridCellRangeEventArgs e)
+  {
+    if (e.CellRange != null && e.CellRange.Row != -1)
+    {
+      var selectionRow = grid.Rows[e.CellRange.Row];
+      customer = customers.First(x => ((Customer)selectionRow.DataItem).Id == x.Id);
+      firstName = customer.FirstName;
+      lastName = customer.LastName;
+      address = customer.Address;
+      city = customer.City;
+      postalCode = customer.PostalCode;
+      email = customer.Email;
+      StateHasChanged();
+    }
+  }
+
+  private void Save()
+  {
+    customer.FirstName = firstName;
+    customer.LastName = lastName;
+    customer.Address = address;
+    customer.City = city;
+    customer.PostalCode = postalCode;
+    customer.Email = email;
+    ClosePopop();
+  }
+
+  private void ShowPopup()
+  {
+    if (customer == null)
+    {
+      alert.Open();
+      return;
+    }
+    myPopup.Open();
+  }
+
+  private void ClosePopop()
+  {
+    myPopup.Close();
+  }
+}

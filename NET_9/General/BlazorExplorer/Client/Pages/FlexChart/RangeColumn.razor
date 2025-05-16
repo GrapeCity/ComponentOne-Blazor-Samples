@@ -1,0 +1,48 @@
+﻿@page "/FlexChart/RangeColumn"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+
+<FlexChart Class="chart" ChartType="ChartType.Column"
+           HeaderContent="Climate of New York" HeaderStyle="font-size:24px"
+           LegendPosition="Position.Bottom" LegendStyle="font-size:18px"
+           BindingX="month" ItemsSource="@DataSource.GetData()">
+    <SeriesCollection>
+        <Series Binding="low,high" />
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis AxisType="AxisType.X" Position="Position.Bottom" />
+        <Axis AxisType="AxisType.Y" Position="Position.Left" Title="Temperature °C" AxisLine="false" MajorGrid="true" MajorTickMarks="TickMark.None"/>
+    </AxisCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.RangeColumnTitle</Title>
+    <Summary>@FlexChartRes.RangeColumnSummary</Summary>
+    <Description>@FlexChartRes.RangeColumnDescription</Description>
+</_Sections>
+
+@code {
+
+    public class DataSource
+    {
+        public static List<object> GetData()
+        {
+            return new List<object> {
+                new { month= "Jan", low= -2.8, high= 3.5 },
+                new { month= "Feb", low= -1.7, high= 5.3 },
+                new { month= "Mar", low= 1.8, high= 9.8 },
+                new { month= "Apr", low= 7.1, high= 16.2 },
+                new { month= "May", low= 12.2, high= 21.6 },
+                new { month= "Jun", low= 17.6, high= 26.3 },
+                new { month= "Jul", low= 20.4, high= 28.9 },
+                new { month= "Aug", low= 19.9, high= 28.1 },
+                new { month= "Sep", low= 16.0, high= 24.0 },
+                new { month= "Oct", low= 10.0, high= 17.7 },
+                new { month= "Nov", low= 5.3, high= 12.1 },
+                new { month= "Dec", low= 0.0, high= 6.1 }
+            };
+        }
+    }
+
+}

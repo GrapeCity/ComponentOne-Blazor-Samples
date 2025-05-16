@@ -1,0 +1,77 @@
+﻿@page "/TreeMap/Index"
+@using Localization
+@using C1.Chart;
+@using C1.DataCollection;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Input;
+
+<TreeMap Class="chart" ItemsSource="Data" Binding="Sales" BindingName="Category" ChildItemsPath="Items" 
+         Palette="palette ?? Palette.Standard" >
+    <Label>
+        <DataLabel Position="LabelPosition.Center" Content="{name}" />
+    </Label>
+</TreeMap>
+<_Sections>
+    <Title>@FlexChartRes.TreeMapTitle</Title>
+    <Settings>
+        Palette <C1ComboBox ItemsSource="palettes" @bind-SelectedItem="palette" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")"/>
+    </Settings>
+    <Summary>@FlexChartRes.TreeMapSummary</Summary>
+    <Description>@FlexChartRes.TreeMapDescription</Description>
+</_Sections>
+
+@code {
+    IEnumerable<Palette> palettes = Enum.GetValues(typeof(Palette)).Cast<Palette>().Where((p, x) => p!=Palette.Custom);
+    Palette? palette = Palette.Standard;
+
+    List<DataSource.ProductData> Data { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Data = DataSource.GetData();
+    }
+
+
+    public class DataSource
+    {
+        private static Random rnd = new Random();
+        private static string[] categories = "Beverages,Condiments,Confections,Dairy Products,Grains/Cereals,Meat/Poultry,Produce,Seafood".Split(',');
+        private static string[][] subCategories = {
+            "Soft drinks,Coffees,Teas,Beers,Ales".Split(','),
+            "Sweet and Savory sauces,Relishes,Spreads,Seasonings".Split(','),
+            "Desserts,Candies,Sweet breads".Split(','),
+            "Cheeses".Split(','),
+            "Breads,Crackers,Pasta,Cereal".Split(','),
+            "Prepared meats".Split(','),
+            "Dried fruit,Bean curd".Split(','),
+            "Seaweed,Fish".Split(',')
+        };
+
+        public class ProductData
+        {
+            public string Category { get; set; }
+            public double Sales { get; set; }
+            public List<ProductData> Items { get; set; }
+        }
+
+        public static List<ProductData> GetData()
+        {
+            var data = new List<ProductData>();
+            for (var i = 0; i < categories.Length; i++)
+            {
+                var item = new ProductData() { Category = categories[i], Items = new List<ProductData>() };
+                for (var j = 0; j < subCategories[i].Length ; j++)
+                {
+                    item.Items.Add(new ProductData()
+                    {
+                        Category = subCategories[i][j],
+                        Sales = rnd.Next(10,100)
+                    });
+                };
+                data.Add(item);
+            }
+
+            return data;
+        }
+    }
+}

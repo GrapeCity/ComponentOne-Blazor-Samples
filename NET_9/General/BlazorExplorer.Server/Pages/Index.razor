@@ -1,0 +1,98 @@
+﻿@page "/"
+@layout MainLayout
+@inject ViewBagService ViewBagSrv
+
+@using Models
+@using Localization
+
+<div class="narrow-screen">
+    <section class="description">
+        <p>@_App.HtmlRaw(HomeRes.Index_Text0)</p>
+    </section>
+    <ul class="controls-nav">
+        @foreach (var group in allGroups)
+        {
+            <_ControlGroup Model="group" ViewStyle="smalliconview" IsControlHasIcon="@group.IconVisible"></_ControlGroup>
+        }
+    </ul>
+</div>
+
+<div class="col-md-3 first wide-screen">
+    <section class="description">
+        <p>@_App.HtmlRaw(HomeRes.Index_Text1)</p>
+    </section>
+    <ul>
+        @*<_ControlGroup Model="@ControlPages.ControlGroups.Skip(7).First()"></_ControlGroup>*@
+        <_ControlGroup Model="@ControlPages.NewGroup" ViewStyle="smalliconview"></_ControlGroup>
+        <_ControlGroup Model="@ControlPages.PopularGroup" ViewStyle="smalliconview"></_ControlGroup>
+        @*<_ControlGroup Model="@ControlPages.ControlGroups.Skip(8).First()"></_ControlGroup>*@
+        <_ControlGroup Model="@ControlPages.ReferenceApplicationGroup" ViewStyle="smalliconview" IsControlHasIcon="false"></_ControlGroup>
+    </ul>
+</div>
+
+<div class="col-md-9 wide-screen"  style="display: inline-block">
+  @foreach (var col in cols)
+  {
+    if (col != null)
+    {
+      <div class="col-md-3 wide-screen" style="@colStyle">
+        <ul>
+          @foreach (var group in col)
+          {
+            <_ControlGroup Model="group" ViewStyle="iconview"></_ControlGroup>
+          }
+        </ul>
+      </div>
+    }
+  }
+</div>
+
+@code {
+  private IEnumerable<ControlGroup> groups;
+  private List<ControlGroup> allGroups;
+  private List<ControlGroup>[] cols;
+  private string colStyle;
+  
+  protected override void OnInitialized()
+  {
+    groups = ControlPages.ControlGroups;
+    allGroups = new List<ControlGroup>();
+    allGroups.Add(ControlPages.NewGroup);
+    allGroups.Add(ControlPages.PopularGroup);
+    allGroups.Add(ControlPages.ReferenceApplicationGroup);
+    allGroups.AddRange(groups);
+
+    cols = new List<ControlGroup>[]
+    {
+        groups.Take(3).ToList(),
+        groups.Skip(3).Take(4).ToList(),
+        groups.Skip(9).ToList()
+    };
+    var c = cols.Count();
+    for (var i = 0; i < cols.Count(); i++)
+    {
+      if (IsEmpty(cols[i]))
+      {
+        cols[i] = null;
+        c--;
+      }
+    }
+    c = c > 0 ? (int)(100 / c) : 0;
+    colStyle = c > 0 ? "width:" + c.ToString() + "%" : null;
+  }
+
+  protected override void OnAfterRender(bool firstRender)
+  {
+    _App.JsRuntime.InvokeAsync<object>("initControlsNav");
+  }
+
+  private bool IsEmpty(List<ControlGroup> groups)
+  {
+    foreach (ControlGroup group in groups)
+    {
+      if (group.Controls.Count > 0)
+        return false;
+    }
+    return true;
+  }
+}

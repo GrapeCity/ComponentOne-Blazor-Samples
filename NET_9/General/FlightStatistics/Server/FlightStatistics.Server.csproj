@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove=".gclicx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include=".gclicx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.Chart">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.DataPager">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Grid">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Input">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.ListView">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.DataCollection" Version="9.0.20242.209" />
+    <PackageReference Include="C1.DataCollection.Serialization" Version="9.0.20242.209" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Client\FlightStatistics.Client.csproj" />
+    <ProjectReference Include="..\Shared\FlightStatistics.Shared.csproj" />
+  </ItemGroup>
+</Project>

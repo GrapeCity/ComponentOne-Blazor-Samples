@@ -1,0 +1,17 @@
+﻿<div class="hamburger-nav-btn narrow-screen">
+    <a class="glyphicon glyphicon-home" href=""></a>
+</div>
+
+<a class="logo-container" href="@(Resource.Layout_ProductUrl)" target="_blank">
+    <img src="Content/images/componentone-logo.svg"
+         alt="ComponentOne logo"
+         style="padding: 2px 1px;"
+         width="46"
+         height="46" />
+    @_App.HtmlRaw(Resource.Layout_ComponentOne)
+</a>
+
+<div class="task-bar">
+    <span class="semi-bold">@_App.HtmlRaw(Resource.Layout_LongTitle)</span>
+    <_SiteNav IsNarrowScreen="false"></_SiteNav>
+</div>

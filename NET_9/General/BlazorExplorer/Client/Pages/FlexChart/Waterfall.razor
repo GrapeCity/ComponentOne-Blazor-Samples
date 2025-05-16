@@ -1,0 +1,64 @@
+﻿@page "/FlexChart/Waterfall"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Input;
+
+<FlexChart Class="chart" BindingX="Month" ItemsSource="Data">
+    <SeriesCollection>
+        <C1.Blazor.Chart.Waterfall Name="Increase,Decrease,Total" Binding="Sales" Tooltip="{value}"
+                                   ConnectorLines="(bool)showLines" ShowTotal="(bool)showTotal" 
+                                   RisingStyle="fill:green" FallingStyle="fill:red" ConnectorLineStyle="stroke:black" TotalStyle="fill:blue"/>
+    </SeriesCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.WaterfallTitle</Title>
+    <Settings>
+        Lines <C1CheckBox @bind-IsChecked="showLines" Style="@("margin:8px 8px 8px 0px")" />
+        Total <C1CheckBox @bind-IsChecked="showTotal" Style="@("margin:8px 8px 8px 0px")" />
+
+    </Settings>
+    <Summary>@FlexChartRes.WaterfallSummary</Summary>
+    <Description>@FlexChartRes.WaterfallDescription</Description>
+</_Sections>
+
+@code {
+    bool? showLines = false;
+    bool? showTotal = false;
+
+    List<DataSource.SalesData> Data { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Data = DataSource.GetData();
+    }
+
+    public class DataSource
+    {
+        private static Random rnd = new Random();
+
+        public class SalesData
+        {
+            public string Month { get; set; }
+            public double Sales { get; set; }
+        }
+
+        public static List<SalesData> GetData()
+        {
+            var months = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.AbbreviatedMonthNames;
+            var data = new List<SalesData>();
+
+            for (int i = 0; i < 12; i++)
+            {
+                var item = new SalesData
+                {
+                    Month = months[i],
+                    Sales = Math.Round((rnd.NextDouble() - .4) * 1000)
+                };
+                data.Add(item);
+            }
+            return data;
+        }
+    }
+}

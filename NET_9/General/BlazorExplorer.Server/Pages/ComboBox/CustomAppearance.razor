@@ -1,0 +1,21 @@
+﻿@page "/ComboBox/CustomAppearance"
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using Localization
+
+<C1ComboBox ItemsSource="countries" T="Country" Placeholder="@ComboBoxRes.SelectCountryPlaceholder" IsEditable="true" Style="@("margin:8px 0;border-radius:18px;padding:7px 12px")" ButtonStyle="@("background-color:lightgray;border-left: 1px solid #c2c2c2;")" CollapsedButtonIcon="C1IconTemplate.ChevronDown" />
+
+<_Sections>
+    <Title>@ComboBoxRes.CustomAppearanceTitle</Title>
+    <Summary>@ComboBoxRes.CustomAppearanceSummary</Summary>
+    <Description>@ComboBoxRes.CustomAppearanceDescription</Description>
+</_Sections>
+
+@code{
+    IEnumerable<Country> countries;
+
+    protected override void OnInitialized()
+    {
+        countries = Country.GetCountries();
+    }
+}

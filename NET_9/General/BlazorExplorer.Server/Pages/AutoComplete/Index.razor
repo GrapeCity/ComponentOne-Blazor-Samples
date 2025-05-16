@@ -1,0 +1,19 @@
+﻿@page "/AutoComplete/Index"
+@using C1.Blazor.Input
+@using Localization
+
+<C1AutoComplete ItemsSource="countries" Placeholder="@ComboBoxRes.SelectCountryPlaceholder" T="Country" HighlightStyle="@("color:#428bca;font-weight:bold")" Style="@("margin:8px 0")" />
+
+<_Sections>
+    <Title>@AutoCompleteRes.OverviewTitle</Title>
+    <Description>@AutoCompleteRes.OverviewDescription</Description>
+</_Sections>
+
+@code{
+    IEnumerable<Country> countries;
+
+    protected override void OnInitialized()
+    {
+        countries = Country.GetCountries();
+    }
+}

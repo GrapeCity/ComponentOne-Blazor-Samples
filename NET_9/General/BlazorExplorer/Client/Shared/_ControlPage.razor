@@ -1,0 +1,98 @@
+﻿@using Models
+
+<span class="smalliconview" @onclick="@Toggle">
+    <img class="non-filter lightgray-back" src="-"
+         onerror="tryFiles(this, '@_App.IconPath\Unknown.png,@(_App.TrimSpec(_page.ControlName)).png', '@(_App.IconPath)32');" />
+    @Header <span class="@(IsCollapsed ? "arrow-down" : "arrow-up")"></span>
+</span>
+
+<ul class="narrow-screen features-nav multilevel-menu @(IsCollapsed?"collapse-slidev":"expand-slidev")">
+    @if (_page.ParentPage != null)
+    {
+        <li @onclick="@(e => OnItemClick(e,null))">
+            <a><span class="arrow-left"></span> Back</a>
+        </li>
+    }
+
+    @foreach (ControlPage p in _page.SubPages)
+    {
+        <li @onclick="@(e => OnItemClick(e,p))">
+            @if (HasSub(p))
+            {
+                <a>@p.Text <span class="arrow-right"></span></a>
+            }
+            else
+            {
+                <a>@p.Text</a>
+            }
+        </li>
+    }        
+</ul>
+
+@code {
+  [Parameter]
+  public string Header { get; set; }
+
+  [Parameter]
+  public object Model {
+      set {
+          if (value is ControlPageGroup)
+          {
+              var group = value as ControlPageGroup;
+              if (_page == null || _page.ControlName != group.ControlNameEn)
+              {
+                  _page = new ControlPage
+                  {
+                      ControlName = group.ControlNameEn,
+                      SubPages = group.Pages.ToList()
+                  };
+                  foreach (var p in group.Pages)
+                  {
+                      p.ParentPage = _page;
+                  }
+              }
+          } else if (value is ControlPage)
+          {
+              _page = value as ControlPage;
+          }
+      }
+  }
+
+  [Parameter]
+  public bool IsCollapsed { get; set; } = true;
+
+  private ControlPage _page;
+
+
+  private bool HasSub(ControlPage p)
+  {
+      return p.SubPages != null && p.SubPages.Count() > 0;
+  }
+
+  public void Invalidate()
+  {
+      base.InvokeAsync(this.StateHasChanged);
+  }
+
+  internal void Toggle()
+  {
+      IsCollapsed = !IsCollapsed;
+  }
+
+  internal void OnItemClick(EventArgs e, ControlPage item)
+  {
+      if (item == null) //Back
+      {
+          _page = _page.ParentPage;
+      }
+      else if (HasSub(item))
+      {
+          _page = item;
+      }
+      else
+      {
+          IsCollapsed = true;
+          _ = _App.NavigateTo(item.Path, 300);
+      }
+  }
+}

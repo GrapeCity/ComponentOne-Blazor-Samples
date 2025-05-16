@@ -1,0 +1,82 @@
+﻿@page "/Calendar/CustomSlots"
+
+<p style="margin-bottom: 32px;">
+    <C1Calendar Adapter="_adapterBigRomanNumerals" Style="@("border-bottom: 1px solid #E8E9EA; width: 400px;")" HeaderStyle="@("width: 100%")"> </C1Calendar>
+</p>
+<p>
+    <C1Calendar Adapter="_adapterSmallRomanNumerals" Style="@("border-bottom: 1px solid #E8E9EA; width: 400px;")" HeaderStyle="@("width: 100%")"> </C1Calendar>
+</p>
+
+
+@code {
+    RomanDaysCalendarAdapter _adapterBigRomanNumerals = new() { RomanNumerals = new BigRomanNumerals() };
+    RomanDaysCalendarAdapter _adapterSmallRomanNumerals = new() { RomanNumerals = new SmallRomanNumerals() };
+
+    class RomanDaysCalendarAdapter: CalendarAdapter
+    {
+        private RomanNumerals _romanNumerals;
+        public RomanNumerals RomanNumerals { set { this._romanNumerals = value; } }
+
+        public override RenderFragment GetSlotContentRenderFragment(CalendarSlotInfo slotInfo)
+        {
+            if(slotInfo is CalendarDaySlotInfo slot)
+            {
+                return  b => {
+                    b.AddMarkupContent(5,$"<div>{_romanNumerals.Get(slot.Date.Day)}</div>");
+                };
+            }
+            return base.GetSlotContentRenderFragment(slotInfo);
+        }
+    }
+
+
+    class BigRomanNumerals : RomanNumerals
+    {
+        protected override string getUTF(int number)
+        {
+            return $"&#{8543+number}";
+        }
+    } 
+    
+    class SmallRomanNumerals : RomanNumerals
+    {
+        protected override string getUTF(int number)
+        {
+            return $"&#{8559 + number}";
+        }
+    }
+
+    abstract class RomanNumerals
+    {
+        abstract protected string getUTF(int number);
+        public string Get(int number)
+        {
+            switch (number)
+            {
+                case <= 10: return getUTF(number);
+                case < 32:
+                    {
+                        var output = new StringBuilder();
+                        var rest = number % 10;
+                        var d = number / 10;
+                        for (int i = 0; i < d; i++)
+                        {
+                            output.Append(getUTF(10));
+                        }
+                        if(rest!=0)
+                        {
+                            output.Append(getUTF(rest));
+                        }
+                        return output.ToString();
+                    }
+            }
+            return string.Empty;
+        }
+    }
+}
+
+
+<_Sections>
+    <Title>@CalendarRes.CustomSlotsTitle</Title>
+    <Description>@_App.HtmlRaw(@CalendarRes.CustomSlotsDescription)</Description>
+</_Sections>

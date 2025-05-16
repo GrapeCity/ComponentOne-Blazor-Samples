@@ -1,0 +1,371 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <AssemblyName>BlazorExplorer</AssemblyName>
+    <RootNamespace>BlazorExplorer</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591;BL0005;</NoWarn>
+    <DefineConstants>TRACE;BLAZOR</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;BLAZOR</DefineConstants>
+    <NoWarn>1701;1702;BL0005;</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Localization\FlexGrid\**" />
+    <Compile Remove="Resources\**" />
+    <Content Remove="Localization\FlexGrid\**" />
+    <Content Remove="Resources\**" />
+    <EmbeddedResource Remove="Localization\FlexGrid\**" />
+    <EmbeddedResource Remove="Resources\**" />
+    <None Remove="Localization\FlexGrid\**" />
+    <None Remove="Resources\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Data\countries.json" />
+    <Content Remove="Data\GdpVsHappiness.json" />
+    <Content Remove="Data\WebColors.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove=".gclicx" />
+    <None Remove="Data\DataFilter\cars.xml" />
+    <None Remove="Data\DataFilter\Stores.txt" />
+    <None Remove="Data\DefaultDocument.pdf" />
+    <None Remove="Data\departments.xml" />
+    <None Remove="Data\employees.xml" />
+    <None Remove="Data\FlexCommonTasksSQLite.flxr" />
+    <None Remove="Data\StockSymbols.txt" />
+    <None Remove="readme.txt" />
+    <None Remove="readme_ja.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\ControlPages.xml;Pages\**\*.razor;Models\**\*;" Exclude="bin\**;obj\**;**\*.csproj" />
+    <EmbeddedResource Remove="Pages\FlexGrid\FilterRow.razor" />
+    <EmbeddedResource Remove="Pages\FlexPie\MultiplePies.razor" />
+    <EmbeddedResource Include=".gclicx" />
+    <EmbeddedResource Include="Data\countries.json" />
+    <EmbeddedResource Include="Data\DataFilter\cars.xml" />
+    <EmbeddedResource Include="Data\DataFilter\Stores.txt" />
+    <EmbeddedResource Include="Data\DefaultDocument.pdf" />
+    <EmbeddedResource Include="Data\departments.xml" />
+    <EmbeddedResource Include="Data\employees.xml" />
+    <EmbeddedResource Include="Data\GdpVsHappiness.json" />
+    <EmbeddedResource Include="Data\StockSymbols.txt" />
+    <EmbeddedResource Include="Data\WebColors.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pages\Calendar\Index.razor" />
+  </ItemGroup>
+  <ItemGroup>
+    <!--		
+		<ProjectReference Include="..\..\..\..\..\c1-flexreport\Controls\Document\C1.Document.csproj" />
+		<ProjectReference Include="..\..\..\..\..\c1-flexreport\Controls\FlexReport\Report\C1.FlexReport.csproj" />
+		-->
+    <None Include="Pages\DatePicker\Index.razor" />
+    <None Include="Pages\DateTimePicker\Index.razor" />
+    <None Include="Pages\TimeEditor\Index.razor" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.Accordion">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Calendar">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Chart">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.DataFilter">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.DataPager">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.DateTimeEditors">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Gauge">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Grid">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Grid.ConditionalFormatting">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Grid.Excel">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Input">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.ListView">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Menu">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.RulesManager">
+      <Version>9.0.20251.1071-beta</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.TreeView">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Viewer">
+      <Version>9.0.20251.1071-beta</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Excel" Version="9.0.20251.144" />
+    <PackageReference Include="C1.FlexReport" Version="8.0.20251.85" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\FlexCommonTasksSQLite.flxr">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Localization\ExcelRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ExcelRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\Resource.zh.Designer.cs">
+      <DependentUpon>Resource.zh.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Localization\ViewerRes.Designer.cs">
+      <DependentUpon>ViewerRes.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Localization\GaugeRes.Designer.cs">
+      <DependentUpon>GaugeRes.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Localization\SliderRes.Designer.cs">
+      <DependentUpon>SliderRes.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Localization\AccordionRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AccordionRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\AutoCompleteRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AutoCompleteRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\CalendarRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CalendarRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\DataFilterRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataFilterRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\DatePickerRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DatePickerRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\DateRangePickerRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DateRangePickerRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\DateTimePickerRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DateTimePickerRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\FlexChartRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FlexChartRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\FlexGridRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FlexGridRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\HomeRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HomeRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\ComboBoxRes.Designer.cs">
+      <DependentUpon>ComboBoxRes.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Localization\ListViewRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ListViewRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\MaskedTextBoxRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MaskedTextBoxRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\NumericBoxRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NumericBoxRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\PopupRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PopupRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\TimeEditorRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TimeEditorRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\TooltipRes.Designer.cs">
+      <DependentUpon>TooltipRes.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Localization\TreeViewRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TreeViewRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\MenuRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MenuRes.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="wwwroot\Content\css\Site.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Localization\ExcelRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExcelRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\Resource.zh.resx">
+      <LastGenOutput>Resource.zh.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\ViewerRes.resx">
+      <LastGenOutput>ViewerRes.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\GaugeRes.resx">
+      <LastGenOutput>GaugeRes.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\SliderRes.ja.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\SliderRes.resx">
+      <SubType>Designer</SubType>
+      <LastGenOutput>SliderRes.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\AccordionRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccordionRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\AutoCompleteRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AutoCompleteRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\CalendarRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CalendarRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\DataFilterRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DataFilterRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\DatePickerRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DatePickerRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\DateRangePickerRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DateRangePickerRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\DateTimePickerRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DateTimePickerRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\MaskedTextBoxRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaskedTextBoxRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\NumericBoxRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NumericBoxRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\TimeEditorRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TimeEditorRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\FlexChartRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FlexChartRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\FlexGridRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FlexGridRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\HomeRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HomeRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\ComboBoxRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ComboBoxRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\PopupRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PopupRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\ListViewRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListViewRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\TooltipRes.resx">
+      <LastGenOutput>TooltipRes.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\TreeViewRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TreeViewRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\MenuRes.resx">
+      <LastGenOutput>MenuRes.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

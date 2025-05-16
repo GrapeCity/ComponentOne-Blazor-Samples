@@ -1,0 +1,49 @@
+﻿@page "/Gauge/Index"
+@using C1.Blazor.Gauge;
+@using System.ComponentModel;
+
+<div class="gaugeFrame">
+    <p style="margin:8px 0">
+	    <span>@GaugeRes.LinearGauge</span>
+    </p>
+    <C1LinearGauge Class="gauge" @bind-Value="data.Value" TextVisibility="GaugeTextVisibility.All"></C1LinearGauge>
+</div>
+
+<div class="gaugeFrame">
+    <p style="margin:8px 0">
+	    <span>@GaugeRes.BulletGraph</span>
+    </p>
+    <C1BulletGraph Class="gauge" @bind-Value="data.Value" Bad="@data.Bad" Good="@data.Good" Target="@data.Target" TextVisibility="GaugeTextVisibility.All"></C1BulletGraph>
+</div>
+
+<div class="gaugeFrame">
+    <p style="margin:8px 0">
+	    <span>@GaugeRes.RadialGauge</span>
+    </p>
+    <C1RadialGauge @ref="radGauge" Class="gauge radialGauge" @bind-Value="data.Value" AutoScale="true" StartAngle="@data.StartAngle" SweepAngle="@data.SweepAngle" IsReversed="(bool)isReversed" TextVisibility="GaugeTextVisibility.All"></C1RadialGauge>
+    <C1CheckBox @bind-IsChecked="isReversed"></C1CheckBox><span style="margin-left:10px;margin-right:10px">@GaugeRes.Reversed</span>
+    <label style="align-items:self-end">@GaugeRes.ValueText @lbl</label>
+</div>
+
+<_Sections>
+	<Title>@GaugeRes.OverviewTitle</Title>
+	<Summary>@GaugeRes.OverviewSummary</Summary>
+</_Sections>
+
+@code {
+	bool? isReversed = false;
+	C1RadialGauge radGauge;
+	SampleViewModel data;
+	string lbl;
+
+	protected override void OnInitialized()
+	{
+		data = new SampleViewModel() { Bad = 20, Good = 40, Target = 80, StartAngle = -30, SweepAngle = 240 };
+		data.PropertyChanged += (s, e) =>
+		{
+			if (e.PropertyName == "Value")
+				lbl = data.Value.ToString("N0");
+		};
+		data.Value = 25;
+	}
+}

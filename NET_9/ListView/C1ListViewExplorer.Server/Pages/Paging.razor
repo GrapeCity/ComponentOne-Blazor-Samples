@@ -1,0 +1,21 @@
+﻿@page "/paging"
+@using C1.Blazor.ListView
+@using C1.DataCollection
+@using C1.Blazor.DataPager
+@using Resources
+
+<h1>@AppResources.PagingTitle</h1>
+<p>@AppResources.PagingDescription</p>
+
+<C1ListView ItemsSource="customers" T="Customer" DisplayMemberPath="Name" />
+<C1DataPager Source="customers" />
+
+@code
+{
+    C1PagedDataCollection<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = new C1PagedDataCollection<Customer>(new VirtualModeDataCollection() { PageSize = 10 });
+    }
+}

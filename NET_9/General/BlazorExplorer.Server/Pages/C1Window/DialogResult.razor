@@ -1,0 +1,80 @@
+﻿@page "/C1Window/DialogResult"
+@using Localization
+@using C1.Blazor.Input
+
+<style>
+    input{ margin-top: 5px;}
+    .option{margin-bottom: 15px;}
+</style>
+
+<div class="option">
+    @PopupRes.Type <C1ComboBox ItemsSource="dialogResults" @bind-SelectedItem="dialogResult" Class="filled-drop-down" />
+    <br />
+    @PopupRes.OkText <input id="okText" @bind="okText" />
+    <br />
+    @PopupRes.CancelText <input id="cancelText" @bind="cancelText" />
+</div>
+
+<button class="btn btn-default" @onclick="@OpenPopup">@PopupRes.OpenPopupBtn</button>
+
+<C1Window @ref="myPopup" Style="@("width: 500px; top: 15")" IsModeless="true" IsDarkOverlay="false"
+         IsDialog="true" OkText="@okText" CancelText="@cancelText" DialogType="dialogResult" IsPopupOpenChanged="IsPopupOpenChanged">
+    <PopupHeader>
+        Lorem ipsum
+    </PopupHeader>
+    <PopupContent>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </PopupContent>
+</C1Window>
+
+<C1Window @ref="resultPopup" Style="@("width: 300px; top: 15px")" IsModeless="true" IsDarkOverlay="false">
+    <PopupHeader>
+        @PopupRes.YourAction 
+    </PopupHeader>
+    <PopupContent>
+        @yourAction
+    </PopupContent>
+</C1Window>
+
+@code{
+    C1Window myPopup, resultPopup;
+    string okText = "Okay", cancelText = "Close", yourAction;
+    DialogType dialogResult = DialogType.Confirm;
+    DialogType[] dialogResults = new DialogType[] { DialogType.Confirm, DialogType.Prompt};
+
+    void OpenPopup()
+    {
+        myPopup.Open();
+    }
+
+    void ClosePopup()
+    {
+        myPopup.Close();
+    }
+
+    void IsPopupOpenChanged()
+    {
+        if (!myPopup.IsOpened())
+        {
+            if(dialogResult == DialogType.Prompt)
+            {
+                if (myPopup.IsOk)
+                {
+                    yourAction = PopupRes.YourInput + myPopup.PromptValue;
+                    resultPopup.Open();
+                }
+            }
+            else
+            {
+                yourAction = PopupRes.IsOkay + myPopup.IsOk;
+                resultPopup.Open();
+            }
+        }
+    }
+}
+<_Sections>
+    <Title>@PopupRes.DialogResultTitle</Title>
+    <Summary>@PopupRes.DialogResultSummary</Summary>
+    <Description>@((MarkupString)PopupRes.DialogResultDescription)</Description>
+
+</_Sections>

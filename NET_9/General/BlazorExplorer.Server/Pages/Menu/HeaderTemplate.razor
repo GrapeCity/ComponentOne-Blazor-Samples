@@ -1,0 +1,66 @@
+﻿@page "/Menu/HeaderTemplate"
+@using C1.Blazor.Menu
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using Localization
+
+<style>
+    .name {
+        float: left;
+        line-height: 30px;
+    }
+</style>
+<div>
+    <div class="name">Last Name</div>
+    <div class="icon">
+        <C1Menu SubMenuStyle="@("width: 282px;")">
+            <C1MenuItem>
+                <HeaderTemplate>
+                    <img style="@iconStyle" src="Content/images/three-dots.png" />
+                </HeaderTemplate>
+                <ChildContent>
+                    <C1MenuItem Header="@MenuRes.SortAscending">
+                        <IconTemplate>
+                            <img style="@iconStyle" src="Content/images/ascending.png" />
+                        </IconTemplate>
+                    </C1MenuItem>
+                    <C1MenuItem Header="@MenuRes.SortDescending">
+                        <IconTemplate>
+                            <img style="@iconStyle" src="Content/images/descending.png" />
+                        </IconTemplate>
+                    </C1MenuItem>
+                    <C1MenuSeparator />
+                    <C1MenuItem Header="@MenuRes.AutoSizeColumn">
+                        <IconTemplate>
+                            <img style="@iconStyle" src="Content/images/resizing.jpg" />
+                        </IconTemplate>
+                    </C1MenuItem>
+                    <C1MenuSeparator SeparatorStyle="@("margin-bottom: 5px;")" />
+                    <C1MenuItem IsHighlightSupported=false ClickToCloseMenu=false>
+                        <HeaderTemplate>
+                            <div>
+                                <C1TextBox Placeholder="@MenuRes.EnterTextToFilter" Style="@("width:100%")" />
+                                <div style="padding-top:4px">
+                                    <C1CheckBox Style="@style" IsChecked="matchCase" /> @MenuRes.MatchCase
+                                    <C1CheckBox Style="@style" IsChecked="matchWholeWord" /> @MenuRes.MatchWholeWord
+                                </div>
+                            </div>
+                        </HeaderTemplate>
+                    </C1MenuItem>
+                </ChildContent>
+            </C1MenuItem>
+        </C1Menu>
+    </div>
+</div>
+<_Sections>
+    <Title>@MenuRes.HeaderTemplate_Title</Title>
+    <Description>@((MarkupString)MenuRes.HeaderTemplate_Description)</Description>
+</_Sections>
+
+@code {
+    bool? openOnClick = false, closeOnLeave = false, displayExpandedIcon = true,
+        matchCase = false, matchWholeWord = false;
+
+    C1Style style = new() { ["margin-right"] = "5px;" };
+    C1Style iconStyle = new() { Width = "13px", Height = "13px" };
+}

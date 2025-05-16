@@ -1,0 +1,45 @@
+﻿@page "/Accordion/Expander"
+@using C1.Blazor.ListView
+@using C1.Blazor.Accordion
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+@using Localization
+
+
+<p>@AccordionRes.ExpanderExpandTop</p>
+<C1Expander Header="@("Click")" ExpandDirection="direction" HeaderStyle="@("background-color: rgba(0,128,0,0.2)")"
+        Style="@("overflow:hidden;box-shadow:0px 5px 5px rgba(0,0,0,0.2)")">
+    <FlexGrid ItemsSource="@customers" Style="@("max-height:50vh")" />
+</C1Expander>
+<br />
+<p>@AccordionRes.ExpanderExpandLeft</p>
+<C1Expander Header="@("Click to see image")" ExpandIconAlignment="iconAlignment" ExpandDirection="directionLeft" 
+        HeaderStyle="@("background-color: rgba(0,128,0,0.2);height:334px;")"
+        Style="@("width:95%;")">
+    <img src="Content/images/excelWorkSheets.png" />
+</C1Expander>
+<br />
+<p>@AccordionRes.ExpanderExpandRight</p>
+<C1Expander Header="@("Click to see image")" ExpandIconAlignment="iconAlignment" ExpandDirection="directionRight" 
+        HeaderStyle="@("background-color: rgba(0,128,0,0.2);height:334px;")" Style="@("width:95%;")" >
+    <img src="Content/images/excelWorkSheets.png" />
+</C1Expander>
+@code{
+
+    IEnumerable<Customer> customers;
+    ExpandDirection direction = ExpandDirection.Up;
+    ExpandDirection directionLeft = ExpandDirection.Left;
+    ExpandDirection directionRight = ExpandDirection.Right;
+    ExpanderIconAlignment iconAlignment = ExpanderIconAlignment.Right;
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+}
+
+<_Sections>
+    <Title>@AccordionRes.ExpanderTitle</Title>
+    <Summary>@AccordionRes.ExpanderSummary</Summary>
+    <Description>@AccordionRes.ExpanderDescription</Description>
+</_Sections>

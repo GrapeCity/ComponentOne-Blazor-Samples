@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;BLAZOR</DefineConstants>
+    <NoWarn>1701;1702;CS1591;BL0005</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;BLAZOR</DefineConstants>
+    <NoWarn>1701;1702;CS1591;BL0005</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="readme.txt" />
+    <None Remove="readme_ja.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.Accordion">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.DataFilter">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Grid">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.ListView">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.TreeView">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.DataCollection" Version="9.0.20242.209" />
+    <PackageReference Include="C1.DataCollection.BindingList" Version="9.0.20242.209" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include=".gclicx" />
+    <EmbeddedResource Include="Data\cars.xml" />
+    <EmbeddedResource Include="Data\Stores.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Localization\DataFilterRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataFilterRes.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Localization\DataFilterRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DataFilterRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

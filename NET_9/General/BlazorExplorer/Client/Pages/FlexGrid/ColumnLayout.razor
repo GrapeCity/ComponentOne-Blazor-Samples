@@ -1,0 +1,40 @@
+﻿@page "/FlexGrid/ColumnLayout"
+<FlexGrid CellFactory="factory" StyleKind="GridStyle.Classic" ItemsSource="@customers" Style="@("max-height:50vh")"/>
+
+<_Sections>
+    <Title>@FlexGridRes.ColumnLayoutTitle</Title>
+    <Summary>@FlexGridRes.ColumnLayoutSummary</Summary>
+    <Description>@FlexGridRes.ColumnLayoutDescription</Description>
+</_Sections>
+
+@code {
+    Factory factory = new Factory();
+
+    readonly ObservableCollection<Customer> customers = Customer.GetCustomerList(100);
+
+    class Factory : GridCellFactory
+    {
+        public override RenderFragment GetCellContentRenderFragment(GridCellType cellType, GridCellRange range)
+        {
+            if (cellType == GridCellType.TopLeft)
+            {
+                return b =>
+                {
+                    b.OpenComponent<C1DropDown>(0);
+                    b.AddAttribute(1, nameof(C1DropDown.CollapsedButtonIcon), new RenderFragment<C1Style>(style => b => b.AddContent(0, "⚙")));
+                    b.AddAttribute(2, nameof(C1DropDown.ExpandedButtonIcon), new RenderFragment<C1Style>(style => b => b.AddContent(0, "⚙")));
+                    b.AddAttribute(3, nameof(C1DropDown.ChildContent), new RenderFragment(b =>
+                    {
+                        b.OpenComponent<ColumnsLayoutWidget>(0);
+                        b.AddAttribute(1, nameof(ColumnsLayoutWidget.Grid), Grid);
+                        b.CloseComponent();
+                    }));
+                    b.AddAttribute(4, nameof(C1DropDown.Style), new C1Style { BorderWidth = 0, Padding = 0, ["margin"] = "auto" });
+                    b.CloseComponent();
+                };
+            }
+
+            return base.GetCellContentRenderFragment(cellType, range);
+        }
+    }
+}

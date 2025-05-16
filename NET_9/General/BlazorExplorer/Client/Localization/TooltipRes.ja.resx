@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Index_Text0" xml:space="preserve">
+    <value>これは&lt;b&gt;&lt;span id="testTooltip"&gt;ツールチップ&lt;/span&gt;&lt;/b&gt;のサンプルです。 その上にカーソルを合わせると、そのツールチップが表示されます。</value>
+    <comment>This is sample of &lt;b&gt;&lt;span id="testTooltip"&gt;tooltip&lt;/span&gt;&lt;/b&gt;. Hover on it and its tooltip will be display.</comment>
+  </data>
+  <data name="Index_Text1" xml:space="preserve">
+    <value>スパン要素のツールチップ、またはこのようなボタンを追加できます。&lt;br /&gt;
+  &lt;button class=btn btn-default" id="btnOpenPopup"&gt;ホバーしてください！&lt;/button&gt;</value>
+    <comment>We can add a tooltip for a span element, or a button like this. &lt;br /&gt;
+  &lt;button class="btn btn-default" id="btnOpenPopup"&gt;Hover me!&lt;/button&gt;</comment>
+  </data>
+  <data name="Index_Text10" xml:space="preserve">
+    <value>ツールチップは下側にあり、参照要素の左側に配置されています。</value>
+    <comment>A tooltip is Below and aligned to the left of the reference element.</comment>
+  </data>
+  <data name="Index_Text11" xml:space="preserve">
+    <value>ツールチップは、参照要素の下側にあります。</value>
+    <comment>A tooltip below the reference element.</comment>
+  </data>
+  <data name="Index_Text12" xml:space="preserve">
+    <value>ツールチップは下側にあり、参照要素の右側に配置されています。</value>
+    <comment>A tooltip is Below and aligned to the Right of the reference element.</comment>
+  </data>
+  <data name="Index_Text13" xml:space="preserve">
+    <value>ツールチップは左側にあり、参照要素の上側に配置されています。</value>
+    <comment>A tooltip is at Left and aligned to the top of the reference element.</comment>
+  </data>
+  <data name="Index_Text14" xml:space="preserve">
+    <value>ツールチップは、参照要素の左側にあります。</value>
+    <comment>A tooltip is at Left of the reference element.</comment>
+  </data>
+  <data name="Index_Text15" xml:space="preserve">
+    <value>ツールチップは左側にあり、参照要素の下側に配置されています。</value>
+    <comment>A tooltip is at Left and aligned to the bottom of the reference element.</comment>
+  </data>
+  <data name="Index_Text16" xml:space="preserve">
+    <value>ツールチップは右側にあり、参照要素の上側に配置されています。</value>
+    <comment>A tooltip is at Right and aligned to the top ofthe reference element.</comment>
+  </data>
+  <data name="Index_Text17" xml:space="preserve">
+    <value>ツールチップは、参照要素の右側にあります。</value>
+    <comment>A tooltip is at Right the reference element.</comment>
+  </data>
+  <data name="Index_Text18" xml:space="preserve">
+    <value>ツールチップは右側にあり、参照要素の下側に配置されています。</value>
+    <comment>A tooltip is at Right and aligned to the bottom of the reference element.</comment>
+  </data>
+  <data name="Index_Text2" xml:space="preserve">
+    <value>コンテンツをカスタマイズしてツールチップを表示できます。サンプルについては、この &lt;span id="ttcustom" style="font:bolder;color:brown"&gt;span&lt;/span&gt; にカーソルを合わせてください。</value>
+    <comment>We can display a tooltip with the content is customized. Hover this &lt;span id="ttcustom" style="font:bolder;color:brown"&gt;span&lt;/span&gt; for sample.</comment>
+  </data>
+  <data name="Index_Text3" xml:space="preserve">
+    <value>以下のようにターゲット要素の周囲12か所の位置へのツールチップの表示をサポートします。</value>
+    <comment>We support 12 position that tooltip will be displayed arround the target element like below.</comment>
+  </data>
+  <data name="Index_Text4" xml:space="preserve">
+    <value>これはテキストコンテンツです</value>
+    <comment>This is text content</comment>
+  </data>
+  <data name="Index_Text5" xml:space="preserve">
+    <value>これはボタンのツールチップです</value>
+    <comment>This is tooltip of button</comment>
+  </data>
+  <data name="Index_Text6" xml:space="preserve">
+    <value>&lt;div class="ttPanel"&gt;
+      &lt;div class="ttTitle"&gt;ツールチップボックスのタイトル&lt;/div&gt;
+      &lt;div class="ttContent"&gt;これは&lt;b&gt;ボックス&lt;/b&gt;ツールチップの&lt;br/&gt;コンテンツです&lt;/div&gt;
+    &lt;/div&gt;</value>
+    <comment>&lt;div class="ttPanel"&gt;
+      &lt;div class="ttTitle"&gt;Title of tooltip box&lt;/div&gt;
+      &lt;div class="ttContent"&gt;This is a &lt;b&gt;box&lt;/b&gt; tooltip &lt;br /&gt;content&lt;/div&gt;
+    &lt;/div&gt;</comment>
+  </data>
+  <data name="Index_Text7" xml:space="preserve">
+    <value>ツールチップは上側にあり、参照要素の左側に配置されています。</value>
+    <comment>A tooltip is at Above and aligned to the Left of the reference element.</comment>
+  </data>
+  <data name="Index_Text8" xml:space="preserve">
+    <value>ツールチップは参照要素の上側にあります。</value>
+    <comment>A tooltip is Above the reference element.</comment>
+  </data>
+  <data name="Index_Text9" xml:space="preserve">
+    <value>ツールチップは上側にあり、参照要素の右側に配置されています。</value>
+    <comment>A tooltip is at Above and aligned to the Right of the reference element.</comment>
+  </data>
+  <data name="InputFormDesc" xml:space="preserve">
+    <value>入力フィールドを検証するためのツールチップの使用方法をデモします。</value>
+    <comment>Demo the way to use tooltips for validating input fields.</comment>
+  </data>
+  <data name="InputFormSummary" xml:space="preserve">
+    <value>検証のためのツールチップ</value>
+    <comment>Tooltip for validation</comment>
+  </data>
+  <data name="InputFormTitle" xml:space="preserve">
+    <value>入力フィールドを検証します。</value>
+    <comment>Validate the input fields.</comment>
+  </data>
+  <data name="OverviewDescription" xml:space="preserve">
+    <value>Tooltip は、ユーザーがターゲット要素の上にマウスを移動したときに表示されるフローティングポップアップです。&lt;br /&gt;Target プロパティを使用して、ツールチップをページ上の要素に関連付けます。&lt;br /&gt;デフォルトでは、ツールチップはターゲット要素の上に配置されます。ユーザーは、ツールチップを表示する位置を指定することで、そのデフォルトを変更できます。&lt;br /&gt;&lt;br /&gt;このサンプルでは、いくつかのスパン要素とボタンにツールチップを追加します。この表は、PopupPosition のすべての値を示しています。</value>
+    <comment>Tooltip is a floating popup that appear when the user moves the mouse over target elements.&lt;br /&gt; Use the Target property to associate a tooltip with elements on the page &lt;br /&gt;By default, tooltips are positioned above the target element. User can change that default by specifying the position where the tooltip should appear. &lt;br /&gt;&lt;br /&gt;This sample adds tooltips to some span elements and to a button. The table shows all value of PopupPosition.</comment>
+  </data>
+  <data name="OverviewSummary" xml:space="preserve">
+    <value>ツールチップを使用すると、ユーザーがターゲット要素の上にマウスを移動したときに表示されるフローティングポップアップを追加できます。</value>
+    <comment>Tooltip allows user add a floating popup that appear when the user moves the mouse over target elements.</comment>
+  </data>
+  <data name="OverviewTitle" xml:space="preserve">
+    <value>概要</value>
+    <comment>Overview</comment>
+  </data>
+  <data name="Validation_Age" xml:space="preserve">
+    <value>年齢</value>
+    <comment>Age</comment>
+  </data>
+  <data name="Validation_Comment" xml:space="preserve">
+    <value>コメント</value>
+    <comment>Comment</comment>
+  </data>
+  <data name="Validation_Email" xml:space="preserve">
+    <value>Email</value>
+    <comment>Email</comment>
+  </data>
+  <data name="Validation_Name" xml:space="preserve">
+    <value>ユーザー名</value>
+    <comment>Name</comment>
+  </data>
+  <data name="Validation_Password" xml:space="preserve">
+    <value>パスワード</value>
+    <comment>Password</comment>
+  </data>
+  <data name="Validation_Submit" xml:space="preserve">
+    <value>件名</value>
+    <comment>Submit</comment>
+  </data>
+  <data name="Validation_Text0" xml:space="preserve">
+    <value>ユーザー名を入力してください！</value>
+    <comment>You need input the Name!</comment>
+  </data>
+  <data name="Validation_Text1" xml:space="preserve">
+    <value>年齢を空にすることはできません</value>
+    <comment>Age should not be empty.</comment>
+  </data>
+  <data name="Validation_Text10" xml:space="preserve">
+    <value>あなたの年齢:</value>
+    <comment>Your age is:</comment>
+  </data>
+  <data name="Validation_Text11" xml:space="preserve">
+    <value>あなたの Email:</value>
+    <comment>Your email is:</comment>
+  </data>
+  <data name="Validation_Text12" xml:space="preserve">
+    <value>あなたのユーザー名:</value>
+    <comment>Your user name is:</comment>
+  </data>
+  <data name="Validation_Text13" xml:space="preserve">
+    <value>あなたのパスワード:</value>
+    <comment>Your password is:</comment>
+  </data>
+  <data name="Validation_Text14" xml:space="preserve">
+    <value>コメント:</value>
+    <comment>Comment:</comment>
+  </data>
+  <data name="Validation_Text2" xml:space="preserve">
+    <value>年齢は18歳以上でなければなりません</value>
+    <comment>Age should be number and greater than 18.</comment>
+  </data>
+  <data name="Validation_Text3" xml:space="preserve">
+    <value>Email は必須です</value>
+    <comment>Your email is required.</comment>
+  </data>
+  <data name="Validation_Text4" xml:space="preserve">
+    <value>ユーザー名を入力してください</value>
+    <comment>You need input the user name.</comment>
+  </data>
+  <data name="Validation_Text5" xml:space="preserve">
+    <value>ユーザー名は５文字以上でなければなりません</value>
+    <comment>User name should has length &gt;= 5.</comment>
+  </data>
+  <data name="Validation_Text6" xml:space="preserve">
+    <value>パスワードを入力してください</value>
+    <comment>You need input the pass word.</comment>
+  </data>
+  <data name="Validation_Text7" xml:space="preserve">
+    <value>パスワードは８文字以上でなければなりません</value>
+    <comment>Password should has length &gt;= 8.</comment>
+  </data>
+  <data name="Validation_Text8" xml:space="preserve">
+    <value>入力内容</value>
+    <comment>Your inputs</comment>
+  </data>
+  <data name="Validation_Text9" xml:space="preserve">
+    <value>あなたの名前:</value>
+    <comment>Your name is:</comment>
+  </data>
+  <data name="Validation_User" xml:space="preserve">
+    <value>ユーザー</value>
+    <comment>User</comment>
+  </data>
+</root>

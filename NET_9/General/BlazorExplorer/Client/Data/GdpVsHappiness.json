@@ -1,0 +1,352 @@
+[
+ {
+   "Country": "China",
+   "Code": "CN",
+   "GDP": 15308.71212,
+   "Happiness": 5.099061489,
+   "Population": 1421021952
+ },
+ {
+   "Country": "India",
+   "Code": "IN",
+   "GDP": 6426.674406,
+   "Happiness": 4.046111107,
+   "Population": 1338676992
+ },
+ {
+   "Country": "United States",
+   "Code": "US",
+   "GDP": 54225.44612,
+   "Happiness": 6.9917593,
+   "Population": 325084992
+ },
+ {
+   "Country": "Indonesia",
+   "Code": "ID",
+   "GDP": 11188.74402,
+   "Happiness": 5.098401546,
+   "Population": 264651008
+ },
+ {
+   "Country": "Pakistan",
+   "Code": "PK",
+   "GDP": 5034.707756,
+   "Happiness": 5.830870628,
+   "Population": 207906000
+ },
+ {
+   "Country": "Brazil",
+   "Code": "BR",
+   "GDP": 14103.45153,
+   "Happiness": 6.332929134,
+   "Population": 207834000
+ },
+ {
+   "Country": "Nigeria",
+   "Code": "NG",
+   "GDP": 5338.454127,
+   "Happiness": 5.321928024,
+   "Population": 190872992
+ },
+ {
+   "Country": "Bangladesh",
+   "Code": "BD",
+   "GDP": 3523.983851,
+   "Happiness": 4.309771061,
+   "Population": 159684992
+ },
+ {
+   "Country": "Russia",
+   "Code": "RU",
+   "GDP": 24765.95363,
+   "Happiness": 5.578742981,
+   "Population": 145530000
+ },
+ {
+   "Country": "Japan",
+   "Code": "JP",
+   "GDP": 39002.22332,
+   "Happiness": 5.910676479,
+   "Population": 127503000
+ },
+ {
+   "Country": "Mexico",
+   "Code": "MX",
+   "GDP": 17336.46907,
+   "Happiness": 6.410299301,
+   "Population": 124777000
+ },
+ {
+   "Country": "Ethiopia",
+   "Code": "ET",
+   "GDP": 1729.926639,
+   "Happiness": 4.180315495,
+   "Population": 106400000
+ },
+ {
+   "Country": "Philippines",
+   "Code": "PH",
+   "GDP": 7599.18806,
+   "Happiness": 5.594270229,
+   "Population": 105173000
+ },
+ {
+   "Country": "Egypt",
+   "Code": "EG",
+   "GDP": 10550.2065,
+   "Happiness": 3.929344177,
+   "Population": 96443000
+ },
+ {
+   "Country": "Vietnam",
+   "Code": "VN",
+   "GDP": 6171.884192,
+   "Happiness": 5.175278664,
+   "Population": 94601000
+ },
+ {
+   "Country": "Germany",
+   "Code": "DE",
+   "GDP": 45229.24529,
+   "Happiness": 7.074324608,
+   "Population": 82658000
+ },
+ {
+   "Country": "Democratic Republic of Congo",
+   "Code": "CD",
+   "GDP": 808.1332134,
+   "Happiness": 4.311033249,
+   "Population": 81399000
+ },
+ {
+   "Country": "Turkey",
+   "Code": "TR",
+   "GDP": 25129.34065,
+   "Happiness": 5.607262135,
+   "Population": 81116000
+ },
+ {
+   "Country": "Iran",
+   "Code": "IR",
+   "GDP": 19082.6196,
+   "Happiness": 4.716783047,
+   "Population": 80674000
+ },
+ {
+   "Country": "Thailand",
+   "Code": "TH",
+   "GDP": 16277.67115,
+   "Happiness": 5.938895226,
+   "Population": 69210000
+ },
+ {
+   "Country": "United Kingdom",
+   "Code": "GB",
+   "GDP": 39753.24389,
+   "Happiness": 7.103273392,
+   "Population": 66727000
+ },
+ {
+   "Country": "France",
+   "Code": "FR",
+   "GDP": 38605.6709,
+   "Happiness": 6.635222435,
+   "Population": 64843000
+ },
+ {
+   "Country": "Italy",
+   "Code": "IT",
+   "GDP": 35220.08379,
+   "Happiness": 6.198870182,
+   "Population": 60674000
+ },
+ {
+   "Country": "South Africa",
+   "Code": "ZA",
+   "GDP": 12294.87614,
+   "Happiness": 4.513655186,
+   "Population": 57010000
+ },
+ {
+   "Country": "Tanzania",
+   "Code": "TZ",
+   "GDP": 2683.304024,
+   "Happiness": 3.347121239,
+   "Population": 54660000
+ },
+ {
+   "Country": "Myanmar",
+   "Code": "MM",
+   "GDP": 5591.59688,
+   "Happiness": 4.154341698,
+   "Population": 53383000
+ },
+ {
+   "Country": "South Korea",
+   "Code": "KR",
+   "GDP": 35938.37422,
+   "Happiness": 5.873887062,
+   "Population": 51096000
+ },
+ {
+   "Country": "Kenya",
+   "Code": "KE",
+   "GDP": 2993.028448,
+   "Happiness": 4.475654125,
+   "Population": 50221000
+ },
+ {
+   "Country": "Colombia",
+   "Code": "CO",
+   "GDP": 13254.94922,
+   "Happiness": 6.157341957,
+   "Population": 48910000
+ },
+ {
+   "Country": "Spain",
+   "Code": "ES",
+   "GDP": 34272.36038,
+   "Happiness": 6.230173111,
+   "Population": 46647000
+ },
+ {
+   "Country": "Ukraine",
+   "Code": "UA",
+   "GDP": 7894.392926,
+   "Happiness": 4.311067104,
+   "Population": 44488000
+ },
+ {
+   "Country": "Argentina",
+   "Code": "AR",
+   "GDP": 18933.90715,
+   "Happiness": 6.039330006,
+   "Population": 43937000
+ },
+ {
+   "Country": "Algeria",
+   "Code": "DZ",
+   "GDP": 13913.83936,
+   "Happiness": 5.248912334,
+   "Population": 41389000
+ },
+ {
+   "Country": "Uganda",
+   "Code": "UG",
+   "GDP": 1697.706511,
+   "Happiness": 4.000516891,
+   "Population": 41167000
+ },
+ {
+   "Country": "Poland",
+   "Code": "PL",
+   "GDP": 27216.44488,
+   "Happiness": 6.201268196,
+   "Population": 37953000
+ },
+ {
+   "Country": "Iraq",
+   "Code": "IQ",
+   "GDP": 15663.98607,
+   "Happiness": 4.462399006,
+   "Population": 37553000
+ },
+ {
+   "Country": "Canada",
+   "Code": "CA",
+   "GDP": 44017.59091,
+   "Happiness": 7.414868355,
+   "Population": 36732000
+ },
+ {
+   "Country": "Afghanistan",
+   "Code": "AF",
+   "GDP": 1803.987487,
+   "Happiness": 2.66171813,
+   "Population": 36296000
+ },
+ {
+   "Country": "Morocco",
+   "Code": "MA",
+   "GDP": 7485.012951,
+   "Happiness": 5.312482834,
+   "Population": 35581000
+ },
+ {
+   "Country": "Saudi Arabia",
+   "Code": "SA",
+   "GDP": 49045.41126,
+   "Happiness": 6.294282436,
+   "Population": 33101000
+ },
+ {
+   "Country": "Uzbekistan",
+   "Code": "UZ",
+   "GDP": 6253.10386,
+   "Happiness": 6.421447754,
+   "Population": 31960000
+ },
+ {
+   "Country": "Peru",
+   "Code": "PE",
+   "GDP": 12236.70615,
+   "Happiness": 5.710936546,
+   "Population": 31444000
+ },
+ {
+   "Country": "Ghana",
+   "Code": "GH",
+   "GDP": 4227.629844,
+   "Happiness": 5.481310844,
+   "Population": 29121000
+ },
+ {
+   "Country": "Mozambique",
+   "Code": "MZ",
+   "GDP": 1136.102564,
+   "Happiness": 4.279863358,
+   "Population": 28649000
+ },
+ {
+   "Country": "Nepal",
+   "Code": "NP",
+   "GDP": 2442.803942,
+   "Happiness": 4.736692429,
+   "Population": 27633000
+ },
+ {
+   "Country": "Madagascar",
+   "Code": "MG",
+   "GDP": 1416.439507,
+   "Happiness": 4.078620434,
+   "Population": 25571000
+ },
+ {
+   "Country": "Australia",
+   "Code": "AU",
+   "GDP": 44648.70991,
+   "Happiness": 7.25703764,
+   "Population": 24585000
+ },
+ {
+   "Country": "Cameroon",
+   "Code": "CM",
+   "GDP": 3364.926056,
+   "Happiness": 5.07405138,
+   "Population": 24566000
+ },
+ {
+   "Country": "Cote d'Ivoire",
+   "Code": "CI",
+   "GDP": 3601.005901,
+   "Happiness": 5.037734985,
+   "Population": 24437000
+ },
+ {
+   "Country": "Niger",
+   "Code": "NE",
+   "GDP": 926.000142,
+   "Happiness": 4.615673542,
+   "Population": 21602000
+ }
+]

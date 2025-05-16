@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="DynamicTreeView.styles.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <link rel="stylesheet" href="_content/C1.Blazor.Core/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.Grid/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.DataFilter/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.DateTimeEditors/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.Accordion/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.ListView/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.Input/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.Menu/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.Calendar/styles.css" />
+
+    <HeadOutlet @rendermode="InteractiveServer" />
+</head>
+
+<body>
+    <Routes @rendermode="InteractiveServer" />
+    <script src="_framework/blazor.web.js"></script>
+
+    <script src="_content/C1.Blazor.Core/scripts.js"></script>
+    <script src="_content/C1.Blazor.Input/scripts.js"></script>
+    <script src="_content/C1.Blazor.Calendar/scripts.js"></script>
+    <script src="_content/C1.Blazor.Grid/scripts.js"></script>
+    <script src="_content/C1.Blazor.Menu/scripts.js"></script>
+
+</body>
+
+</html>

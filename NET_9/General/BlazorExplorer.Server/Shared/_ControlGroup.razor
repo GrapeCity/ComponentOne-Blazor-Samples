@@ -1,0 +1,80 @@
+﻿@using Models
+
+@{
+    if (Model == null || !Model.Visible)
+    {
+        return;
+    }
+    var _groupIcon = _App.TrimSpec(Model.GroupNameEn);
+}
+
+<li class="control-group">
+    <h3 class="semi-bold smalliconview">
+        <img class="group @_groupIcon" src="@_App.TryFile(_IconFolder,"png",_groupIcon,"Group",@_App.IconPath+"Unknown")" alt="" />
+        @Model.GroupName
+        <span class="arrow-down"></span>
+        <hr class="red-gradient" />
+    </h3>
+
+    <ul class="@ViewStyle">
+        @foreach (var control in Model.Controls)
+        {
+            string target = "", href;
+            if (string.IsNullOrEmpty(control.Link))
+            {
+                href = control.ControlNameEn + "/Index";
+            }
+            else
+            {
+                href = control.Link;
+                target = "_blank";
+            }
+            <li>
+                <a href="@href" target="@target">
+                    @if (!String.IsNullOrEmpty(_IconFolder) && IsControlHasIcon == true)
+                    {
+                        var _controlIcon = @_App.TrimSpec(control.ControlNameEn);
+                        <img class="@_controlIcon" src="@(_App.TryFile(_IconFolder,"png",_controlIcon, _App.IconPath+"Unknown"))" alt="" />
+                    }
+                    @control.Text
+                </a>
+            </li>
+
+        }
+    </ul>
+</li>
+
+@code {
+    [Parameter]
+    public ControlGroup Model { get; set; }
+    [Parameter]
+    public bool IsControlHasIcon { get; set; } = true;
+    [Parameter]
+    public string ViewStyle
+    {
+        get { return _ViewStyle; }
+        set { _ViewStyle = value; _IconFolder = GetIconFolder(); }
+    }
+    private string _ViewStyle;
+    //private string _IconPath = "Content/css/images/icons/";
+    private string _IconFolder;
+
+    private string GetIconFolder()
+    {
+        string sizes = "64,32,164,16";
+        if (String.IsNullOrEmpty(ViewStyle))
+            return null;
+        if (ViewStyle == "smalliconview")
+            sizes = "32,64,164,16";
+        else if (ViewStyle == "iconview")
+            sizes = "64,164,32,16";
+
+        foreach (var size in sizes.Split(","))
+        {
+            var dirPath = _App.IconPath + size;
+            if (_App.DirExists(dirPath))
+                return dirPath;
+        }
+        return null;
+    }
+}

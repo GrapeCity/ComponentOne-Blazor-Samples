@@ -1,0 +1,583 @@
+﻿@page "/"
+@using Localization;
+@using Models;
+@using C1.DataCollection
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+@using C1.Chart;
+@using C1.Blazor.Chart
+@using C1.Blazor.Chart.Interaction;
+@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Drawing;
+@using System.Globalization;
+@inject HttpClient Http
+
+<div id="container" class="container-fluid" style="margin-top:10px;">
+    <div class="row">
+        <div class="col-lg-8" style="margin-top:5px">
+            <FlexGrid @ref="grid"
+                      IsReadOnly="true" DefaultColumnWidth="C1.Blazor.Grid.GridLength.Star"
+                      CellFactory="@flightDataCellFactory"
+                      AutoGenerateColumns="false" AllowResizing="GridAllowResizing.Columns" AutoSizeMode="GridAutoSizeMode.Both"
+                      HeadersVisibility="GridHeadersVisibility.Column" DefaultColumnHeaderRowHeight="30"
+                      ColumnHeaderStyle="@("color: #999999;background-color: #fff;border-bottom: solid 1px #d9d9d9;font-weight: normal;font-size: 12px;")"
+                      DefaultRowHeight="36"
+                      DefaultGroupRowHeight="36" GroupHeaderFormat="{name}: {value}"
+                      SelectionMode="GridSelectionMode.Row"
+                      SelectionChanged="OnFlexGridSelectionChanged"
+                      ItemsSource="gridItems"
+                      Style="@("width:100%;max-height:780px;height:780px;font-size:12px;")">
+                <FlexGridColumns>
+                    <GridColumn Header="Airport Code" Binding="AirportCode" WordWrap="false" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" MinWidth="40"/>
+                    <GridColumn Header="City" Binding="AirportCity" WordWrap="false" AllowResizing="false" HorizontalAlignment="C1HorizontalAlignment.Left" HeaderHorizontalAlignment="C1HorizontalAlignment.Left" MinWidth="170" />
+                    <GridColumn Header="Rank" Binding="OnTimeRanking" WordWrap="false" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" MinWidth="30"/>
+                    <GridColumn Header="Delay Trend" OptionsMenuVisibility="GridColumnOptionsMenuVisibility.Collapsed" Binding="AirportMonthlyData" WordWrap="false" AllowResizing="false" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" MinWidth="150">
+                        <CellTemplate>
+                            <FlexChart Class="chart monthlyDataChart"
+                                       ChartType="ChartType.Line"
+                                       LegendPosition="Position.None"
+                                       ItemsSource="@context">
+                                <SeriesCollection>
+                                    <Series Binding="Delay" />
+                                </SeriesCollection>
+                                <AxisCollection>
+                                    <Axis AxisType="AxisType.X" MajorUnit="1" AxisLine="false" MinorGrid="false" Labels="false" Position="Position.None" />
+                                    <Axis AxisType="AxisType.Y" AxisLine="false" MinorGrid="false" Labels="false" Position="Position.None" />
+                                </AxisCollection>
+                            </FlexChart>
+                        </CellTemplate>
+                    </GridColumn>
+                    <GridColumn Header="Flights" Binding="Flights" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" MinWidth="60"/>
+                    <GridColumn Header="Completion Factor#" Binding="CompletionFactor" WordWrap="false" Format="p0" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" MinWidth="40"/>
+                    <GridColumn Header="On Time" Binding="OnTime" Format="p0" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" MinWidth="40"/>
+                    <GridColumn Header="Delayed*" Binding="Delayed" WordWrap="false" Format="p0" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" MinWidth="40"/>
+                    <GridColumn Header="Average Delay YoY (mins)" Binding="AverageDelay" WordWrap="false" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" MinWidth="45">
+                        <CellTemplate>
+                            @if ((double)context > 40)
+                            {
+                                <img src="images/Triangle_Down.png" alt="KPI" style="height:10px;width:10px;margin-right:2px" />@context
+                            }
+                            else
+                            {
+                                <img src="images/Triangle_Up.png" alt="KPI" style="height:10px;width:10px;margin-right:2px" />@context
+                            }
+                        </CellTemplate>
+                    </GridColumn>
+                    <GridColumn Header="User Rating" Binding="UserRating" WordWrap="false" HorizontalAlignment="C1HorizontalAlignment.Center" HeaderHorizontalAlignment="C1HorizontalAlignment.Center" MinWidth="80"/>
+                </FlexGridColumns>
+            </FlexGrid>
+            <div style="font-size:11px;font-style:italic;color:#999">
+                <p>#@FlightStatisticsRes.Footnote1 <br />*@FlightStatisticsRes.Footnote2</p>
+            </div>
+        </div>
+
+        <!--Flex Chart-->
+        <div class="col-lg-4">
+            <div class="row" style="border:1px solid #e4e4e4;margin:5px 10px 0px 10px;">
+                <TreeMap @ref="airportsTreeMap"
+                         HeaderContent="@FlightStatisticsRes.TreemapHeader"
+                         Class="chart airportsTreeMap"
+                         Palette="Palette.Custom" CustomPalette="@treemapPalette"
+                         Style="@("border:none;margin-left:2px;padding-top:0px;max-height:150px;")"
+                         Tooltip="<b>{name}</b><br><b>Total flights:</b>{value:n0}"
+                         LegendPosition="Position.None" SelectionMode="ChartSelectionMode.Point">
+                    <Label>
+                        <DataLabel Style="color:rgb(250,250,250)" Position="LabelPosition.Center" Content="{name}" />
+                    </Label>
+                </TreeMap>
+            </div>
+            <div class="row" style="border:1px solid #e4e4e4;margin:5px 10px;">
+                <div>
+                    <ol id="breadCrumbs" style="margin-left:20px; margin-top:5px">
+                        <Breadcrumb @ref="breadCrumb" breadCrumbData="breadCrumbDatas" SelectionChanged="OnBreadCrumbSelectionChanged"></Breadcrumb>
+                    </ol>
+                </div>
+                <FlexChart @ref="regionsFlexChart"
+                           Class="chart regionsFlexChart"
+                           ChartType="ChartType.Column"
+                           Stacking="Stacking.None" LegendPosition="Position.None" LegendToggle="false"
+                           SelectionMode="ChartSelectionMode.Point"
+                           Palette="Palette.Custom" CustomPalette="@colors"
+                           Style="@("border:none;font-size:small;padding-bottom:0px;max-height:240px")"
+                           AnimationSettings="AnimationSettings.All" AnimationDuration="600">
+                    <AxisCollection>
+                        <Axis AxisType="AxisType.X" Labels="true" Position="Position.Bottom" LabelAngle="45" AxisLine="false" />
+                        <Axis AxisType="AxisType.Y" Reversed="false" Position="Position.Left" AxisLine="false" MajorGrid="true" MajorTickMarks="TickMark.None" />
+                    </AxisCollection>
+                </FlexChart>
+            </div>
+            <div class="row" style="border:1px solid #e4e4e4;margin:5px 10px;">
+                <FlexChart @ref="airportsFlexChart"
+                           Class="chart airportsFlexChart"
+                           ChartType="ChartType.LineSymbols"
+                           Stacking="Stacking.None" LegendPosition="Position.Bottom" LegendToggle="false"
+                           HeaderContent="@FlightStatisticsRes.AirportsChartHeader"
+                           Style="@("border:none;max-height:280px")"
+                           SelectionMode="ChartSelectionMode.Series"
+                           Palette="Palette.Custom" CustomPalette="@colors">
+                    <AxisCollection>
+                        <Axis AxisType="AxisType.X" Position="Position.Bottom" />
+                        <Axis AxisType="AxisType.Y" Position="Position.Left" Title="Cummulative Average Delay (in mins)" MajorUnit="2" AxisLine="false" MajorGrid="true" MajorTickMarks="TickMark.None" />
+                    </AxisCollection>
+                </FlexChart>
+
+                <FlexChart @ref="rangeSelectChart"
+                           Class="chart rangeSelectChart"
+                           ChartType="ChartType.Line"
+                           LegendPosition="Position.None"
+                           Style="@("border:none;padding:5px 0px;margin-bottom:0px;height:50px")"
+                           Tooltip="<b>Average Delay:{value:n2}</b>"
+                           RangeSelector="rs">
+                    <AxisCollection>
+                        <Axis AxisType="AxisType.X" LabelAngle="0" Position="Position.Bottom" MajorTickMarks="TickMark.Inside" />
+                        <Axis AxisType="AxisType.Y" Position="Position.None" />
+                    </AxisCollection>
+                </FlexChart>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    FlexGrid grid;
+    FlexChart regionsFlexChart;
+    FlexChart airportsFlexChart;
+    TreeMap airportsTreeMap;
+    FlexChart rangeSelectChart;
+    Breadcrumb breadCrumb;
+
+    IEnumerable<Airport> airports;
+    C1DataCollection<Airport> gridItems;
+    FlightDataCellFactory flightDataCellFactory = new FlightDataCellFactory();
+
+    IGrouping<string, Airport>[] dataGroupRegion;
+
+    IEnumerable<AirportsGroupedDataByRegion> AirportsGroupedDatas { get; set; }
+
+    private List<string> breadCrumbDatas = new List<string>();
+    private List<string> currentItem = new List<string>();
+    int expandedRows = 0;
+
+    private static List<object> colors = new List<object>
+    {
+        Color.FromArgb(178, ColorTranslator.FromHtml("#287ab6")),
+        Color.FromArgb(178, ColorTranslator.FromHtml("#fc7900")),
+        Color.FromArgb(178, ColorTranslator.FromHtml("#00a514")),
+        Color.FromArgb(178, ColorTranslator.FromHtml("#dc0400")),
+        Color.FromArgb(178, ColorTranslator.FromHtml("#6400bc"))
+    };
+    private static List<object> treemapPalette = new List<object>
+    {
+        Color.FromArgb(178, ColorTranslator.FromHtml("#dc0400")),
+        Color.FromArgb(178, ColorTranslator.FromHtml("#fc7900")),
+        Color.FromArgb(178, ColorTranslator.FromHtml("#00a514")),
+        Color.FromArgb(178, ColorTranslator.FromHtml("#287ab6")),
+        Color.FromArgb(178, ColorTranslator.FromHtml("#6400bc"))
+    };
+
+    RangeSelector rs = new RangeSelector();
+
+    protected override async Task OnInitializedAsync()
+    {
+        airports = await Http.GetFromJsonAsync<IEnumerable<Airport>>("Flight");
+        var dataCollection = new C1DataCollection<Airport>(airports);
+        await dataCollection.GroupAsync(c => c.Region);
+        await dataCollection.SortAsync(s => s.Region);
+        gridItems = dataCollection;
+
+        dataGroupRegion = airports.GroupBy(x => x.Region).ToArray();
+
+        AirportsGroupedDatas = dataGroupRegion
+            .Select(x => new AirportsGroupedDataByRegion
+            {
+                Region = x.Key,
+                TotalFlights = x.Sum(a => a.Flights),
+                AverageDelayAvg = x.Average(a => a.Delayed),
+                OnTimeAvg = x.Average(a => a.OnTime),
+            });
+
+        RenderTreeMap(AirportsGroupedDatas);
+        RenderBreadCrumbs();
+        RenderRegionsChart(AirportsGroupedDatas);
+        RenderAirportsFlexChart(dataGroupRegion);
+
+        var dataRangeChart = airports.SelectMany(x => x.AirportMonthlyData)
+            .GroupBy(x => x.RecordedMonth)
+            .Select(x => new
+            {
+                RecordedMonth = DateTime.ParseExact(x.Key, "MMM", CultureInfo.CurrentCulture),
+                AverageDelayAvg = x.Average(a => a.Delay)
+            }).OrderBy(x => x.RecordedMonth);
+
+        RenderRangeSelectChart(dataRangeChart);
+    }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        CollapseGroups();
+
+        if (firstRender)
+        {
+            airportsTreeMap.SelectionChanged += (s, e) => OnTreeMapSelectionChanged(s, e);
+            regionsFlexChart.SelectionChanged += (s, e) => OnRegionsChartSelectionChanged(s, e);
+            airportsFlexChart.SelectionChanged += (s, e) => OnAirportsChartSelectionChanged(s, e);
+        }
+        return base.OnAfterRenderAsync(firstRender);
+    }
+
+    public void CollapseGroups()
+    {
+        for (var r = 0; r < grid.Rows.Count(); r++)
+        {
+            if (grid.Rows[r].Level == 0)
+            {
+                var row = (GridGroupRow)grid.Rows[r];
+                row.IsCollapsed = expandedRows == r ? false : true;
+            }
+        }
+    }
+
+    public void RenderTreeMap(object itemsSource)
+    {
+        airportsTreeMap.BeginUpdate();
+        airportsTreeMap.ItemsSource = itemsSource;
+        airportsTreeMap.Binding = "TotalFlights";
+        airportsTreeMap.BindingName = "Region";
+        airportsTreeMap.MaxDepth = 1;
+        airportsTreeMap.EndUpdate();
+    }
+
+    public void RenderBreadCrumbs()
+    {
+        breadCrumbDatas.Clear();
+        AppendBreadCrumbs();
+        currentItem.Clear();
+        breadCrumb.Invalidate();
+    }
+
+    public void AppendBreadCrumbs()
+    {
+        breadCrumbDatas.Add("Regions");
+        for (var i = 0; i < currentItem.Count(); i++)
+        {
+            breadCrumbDatas.Add(currentItem[i]);
+        }
+    }
+
+    public void RenderRegionsChart(object itemsSource)
+    {
+        regionsFlexChart.BeginUpdate();
+        regionsFlexChart.ItemsSource = itemsSource;
+        regionsFlexChart.BindingX = "Region";
+
+        var series = new Series();
+        series.Binding = "OnTimeAvg";
+        if (regionsFlexChart.Series.Count() == 0)
+            regionsFlexChart.Series.Add(series);
+        else
+            regionsFlexChart.Series[0] = series;
+
+        regionsFlexChart.HeaderContent = FlightStatisticsRes.RegionsChartHeader1 + " (" + FlightStatisticsRes.RegionsChartHeader3 + ")";
+        regionsFlexChart.Tooltip = "<b>{name}</b><br>On-Time:{value:P2}";
+
+        regionsFlexChart.AxisY.Format = "p0";
+        regionsFlexChart.AxisY.Title = FlightStatisticsRes.RegionsChartHeader1;
+        regionsFlexChart.EndUpdate();
+    }
+
+    public void RenderAirportsFlexChart(object itemsSource)
+    {
+        var group = (IGrouping<string, Airport>[])itemsSource;
+
+        airportsFlexChart.BeginUpdate();
+        for (var g = 0; g < group.Count(); g++)
+        {
+            var newGroupedCV = group[g];
+
+            var data = newGroupedCV.SelectMany(x => x.AirportMonthlyData)
+                .GroupBy(x => new { x.RecordedMonth, x.Region })
+                .Select(x => new
+                {
+                    Region = x.Key.Region,
+                    RecordedMonth = DateTime.ParseExact(x.Key.RecordedMonth, "MMM", CultureInfo.CurrentCulture),
+                    AverageDelayAvg = x.Average(a => a.Delay)
+                }).OrderBy(x => x.RecordedMonth);
+
+            var series = new Series();
+            series.ItemsSource = data;
+            series.Binding = "AverageDelayAvg";
+            series.Name = group[g].Key;
+            series.BindingX = "RecordedMonth";
+            airportsFlexChart.Series.Add(series);
+        }
+        airportsFlexChart.Tooltip = "<b>Average Delay:</b> {value:n2}";
+        airportsFlexChart.EndUpdate();
+    }
+
+    public void RenderRangeSelectChart(object itemsSource)
+    {
+        rangeSelectChart.BeginUpdate();
+        var series = new Series();
+        series.ItemsSource = itemsSource;
+        series.Binding = "AverageDelayAvg";
+        series.BindingX = "RecordedMonth";
+        rangeSelectChart.Series.Add(series);
+        rangeSelectChart.EndUpdate();
+
+        rs.ValueChanged += (s, e) =>
+        {
+            airportsFlexChart.BeginUpdate();
+            var amin = rangeSelectChart.AxisX.ActualMin;
+            var amax = rangeSelectChart.AxisX.ActualMax;
+
+            airportsFlexChart.AxisX.Min = amin + rs.LowerValue * (amax - amin);
+            airportsFlexChart.AxisX.Max = amin + rs.UpperValue * (amax - amin);
+            airportsFlexChart.EndUpdate();
+        };
+    }
+
+    public void OnBreadCrumbSelectionChanged(object sender, string item)
+    {
+        if (item == "Regions")
+        {
+            currentItem.Clear();
+            grid.UnselectAll();
+            expandedRows = 0;
+            airportsFlexChart.SelectedSeries = null;
+
+            RenderTreeMap(AirportsGroupedDatas);
+            RenderRegionsChart(AirportsGroupedDatas);
+            RenderBreadCrumbs();
+        }
+        else
+        {
+            GridSelectRow(item);
+        }
+        CollapseGroups();
+    }
+
+    public void GridSelectRow(string group, string item = null)
+    {
+        for (var r = 0; r < grid.Rows.Count(); r++)
+        {
+            if (item == null)
+            {
+                if (grid.Rows[r].Level == 0)
+                {
+                    var dataRow = (GridGroupRow)grid.Rows[r];
+                    var label = dataRow.GroupText;
+                    if (label == group)
+                    {
+                        grid.Select(r, 0);
+                        expandedRows = r;
+                        break;
+                    }
+                }
+            }
+            else if (grid.Rows[r].Level != 0)
+            {
+                var dataRow = (Airport)grid.Rows[r].DataItem;
+                var city = dataRow.AirportCity;
+                if (city == item)
+                {
+                    grid.Select(r, 0);
+                    expandedRows = r;
+                    break;
+                }
+            }
+        }
+    }
+
+    public void AirportsChartSelectSeries(string name)
+    {
+        var series = airportsFlexChart.Series;
+        foreach (var item in series)
+        {
+            if (item.Name == name)
+            {
+                airportsFlexChart.SelectedSeries = item;
+                break;
+            }
+        }
+    }
+
+    public void OnFlexGridSelectionChanged(object sender, GridCellRangeEventArgs e)
+    {
+        string label;
+        if (e.CellRange != null && e.CellRange.Row != -1)
+        {
+            var row = grid.Rows[e.CellRange.Row];
+            if (row.Level == 0)
+            {
+                var dataRow = (GridGroupRow)row;
+                label = dataRow.GroupText;
+                NavigateTreemap("Regions", label);
+                expandedRows = row.Index;
+                AirportsChartSelectSeries(label);
+            }
+            else
+            {
+                var dataRow = (Airport)row.DataItem;
+                var region = dataRow.Region;
+                label = dataRow.AirportCity;
+                NavigateTreemap(region, label);
+                var groupRow = row.Parent;
+                expandedRows = groupRow.Index;
+            }
+            CollapseGroups();
+        }
+    }
+
+    public void OnTreeMapSelectionChanged(object sender, EventArgs e)
+    {
+        TreeMap chart = (TreeMap)sender;
+        var selectedItem = chart.SelectedItem;
+        if (selectedItem == null)
+            return;
+
+        if (breadCrumbDatas.Count == 1)
+        {
+            var data = (AirportsGroupedDataByRegion)selectedItem;
+            var region = data.Region;
+            GridSelectRow(region);
+        }
+        else if (breadCrumbDatas.Count == 2)
+        {
+            var data = (AirportsGroupedDataByCity)selectedItem;
+            var region = data.Region;
+            var city = data.AirportCity;
+            GridSelectRow(region, city);
+        }
+    }
+
+    public void OnRegionsChartSelectionChanged(object sender, EventArgs e)
+    {
+        FlexChart chart = (FlexChart)sender;
+        int selectedIndex = chart.SelectedIndex;
+        var items = chart.ItemsSource;
+
+        if (breadCrumbDatas.Count == 1)
+        {
+            var data = ((IEnumerable<AirportsGroupedDataByRegion>)items).ToArray();
+            var selectedItem = data[selectedIndex];
+            var region = selectedItem.Region;
+            GridSelectRow(region);
+        }
+        else if (breadCrumbDatas.Count == 2)
+        {
+            var data = ((IEnumerable<AirportsGroupedDataByCity>)items).ToArray();
+            var selectedItem = data[selectedIndex];
+            var region = selectedItem.Region;
+            var city = selectedItem.AirportCity;
+            GridSelectRow(region, city);
+        }
+    }
+
+    public void OnAirportsChartSelectionChanged(object sender, EventArgs e)
+    {
+        FlexChart chart = (FlexChart)sender;
+        var series = chart.SelectedSeries;
+        if (series != null)
+        {
+            var region = series.Name;
+            GridSelectRow(region);
+        }
+    }
+
+    public void NavigateTreemap(string group, string label)
+    {
+        if (group == "Regions")
+        {
+            IEnumerable<AirportsGroupedDataByCity> data = null;
+            for (var i = 0; i < dataGroupRegion.Length; i++)
+            {
+                if (dataGroupRegion[i].Key == label)
+                {
+                    data = dataGroupRegion[i].GroupBy(x => x.AirportCity)
+                        .Select(x => new AirportsGroupedDataByCity
+                        {
+                            Region = label,
+                            AirportCity = x.Key,
+                            TotalFlights = x.Sum(a => a.Flights),
+                            OnTimeAvg = x.Average(a => a.OnTime),
+                        });
+                    break;
+                }
+            }
+
+            airportsTreeMap.BeginUpdate();
+            airportsTreeMap.ItemsSource = data;
+            airportsTreeMap.Binding = "TotalFlights";
+            airportsTreeMap.BindingName = "Region,AirportCity";
+            airportsTreeMap.MaxDepth = 2;
+            airportsTreeMap.EndUpdate();
+
+
+            regionsFlexChart.BeginUpdate();
+            var series = new Series();
+            series.Binding = "OnTimeAvg";
+            series.BindingX = "AirportCity";
+            regionsFlexChart.Series[0] = series;
+            regionsFlexChart.ItemsSource = data;
+            regionsFlexChart.BindingX = "AirportCity";
+            regionsFlexChart.Tooltip = "<b>{name}</b><br>On-Time:{value:P2}";
+            regionsFlexChart.AxisY.Format = "p0";
+            regionsFlexChart.AxisY.Title = FlightStatisticsRes.RegionsChartHeader1;
+            regionsFlexChart.HeaderContent = FlightStatisticsRes.RegionsChartHeader1 + " : " + label;
+            regionsFlexChart.EndUpdate();
+
+            currentItem.Add(label);
+        }
+        else
+        {
+            var dataCity = airports.Where(x => x.AirportCity == label);
+
+            var dataTreeMap = dataCity
+                .Select(x => new
+                {
+                    AirportCity = x.AirportCity,
+                    TotalFlights = x.Flights
+                });
+            airportsTreeMap.BeginUpdate();
+            airportsTreeMap.ItemsSource = dataTreeMap;
+            airportsTreeMap.Binding = "TotalFlights";
+            airportsTreeMap.BindingName = "AirportCity";
+            airportsTreeMap.MaxDepth = 1;
+            airportsTreeMap.EndUpdate();
+
+            var dataRegionsChart = dataCity.SelectMany(x => x.AirportMonthlyData)
+                .Where(x => x.RecordedDate.Year == 2017)
+                .GroupBy(x => x.RecordedMonth)
+                .Select(x => new
+                {
+                    RecordedMonth = x.Key + ", 17",
+                    AverageDelayAvg = x.Average(a => a.Delay),
+                })
+                .OrderBy(x => DateTime.ParseExact(x.RecordedMonth, "MMM, yy", CultureInfo.CurrentCulture));
+
+            regionsFlexChart.BeginUpdate();
+            var series = new Series();
+            series.Binding = "AverageDelayAvg";
+            series.BindingX = "RecordedMonth";
+
+            regionsFlexChart.ItemsSource = dataRegionsChart;
+            regionsFlexChart.BindingX = "RecordedMonth";
+            regionsFlexChart.Series[0] = series;
+            regionsFlexChart.HeaderContent = FlightStatisticsRes.RegionsChartHeader2 + " : " + label;
+            regionsFlexChart.Tooltip = "<b>{name}</b><br>Average Delay(mins):{value:N2}";
+
+            regionsFlexChart.AxisY.Format = "n0";
+            regionsFlexChart.AxisY.Title = FlightStatisticsRes.RegionsChartHeader2;
+            regionsFlexChart.EndUpdate();
+
+            currentItem.AddRange(new List<string> { group, label });
+        }
+
+        RenderBreadCrumbs();
+
+    }
+
+}

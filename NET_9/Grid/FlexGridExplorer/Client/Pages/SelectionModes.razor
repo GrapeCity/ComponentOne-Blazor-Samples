@@ -1,0 +1,46 @@
+﻿@page "/selectionmodes"
+@using System.Collections.ObjectModel;
+
+<h1>@AppResources.SelectionModesTitle</h1>
+<p>@AppResources.SelectionModesDescription</p>
+
+<p>
+    Selection Modes <C1ComboBox ItemsSource="selectionModes" @bind-SelectedItem="selectionMode" Class="filled-drop-down" />
+    Allow Resizing <C1ComboBox ItemsSource="allowResizingModes" @bind-SelectedItem="allowResizing" Class="filled-drop-down" />
+    Allow Dragging <C1ComboBox ItemsSource="allowDraggingModes" @bind-SelectedItem="allowDragging" Class="filled-drop-down" />
+</p>
+
+<p>@selectedCells</p>
+
+<FlexGrid ItemsSource="@customers" StyleKind="@GridStyle.Classic" SelectionChanged="OnSelectionChanged" SelectionMode="selectionMode" AllowResizing="allowResizing" AllowDragging="allowDragging" Style="@("max-height:50vh")" />
+
+@code {
+    ObservableCollection<Customer> customers;
+    string selectedCells = $"0 {AppResources.CellsSelectedText}";
+    GridSelectionMode selectionMode = GridSelectionMode.MultiRange;
+    GridSelectionMode[] selectionModes = Enum.GetValues<GridSelectionMode>();
+
+    GridAllowResizing allowResizing = GridAllowResizing.Columns;
+    GridAllowResizing[] allowResizingModes = new GridAllowResizing[] { GridAllowResizing.None, GridAllowResizing.Columns, GridAllowResizing.Rows, GridAllowResizing.Both, };
+    GridAllowDragging allowDragging = GridAllowDragging.Columns;
+    GridAllowDragging[] allowDraggingModes = new GridAllowDragging[] { GridAllowDragging.None, GridAllowDragging.Columns, GridAllowDragging.Rows, GridAllowDragging.Both, };
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+
+    private void OnSelectionChanged(object sender, GridCellRangeEventArgs e)
+    {
+        if (e.CellRange != null && e.CellRange.Row != -1)
+        {
+            int rowsSelected = Math.Abs(e.CellRange.Row2 - e.CellRange.Row) + 1;
+            int colsSelected = Math.Abs(e.CellRange.Column2 - e.CellRange.Column) + 1;
+
+            selectedCells = $"{rowsSelected * colsSelected} {AppResources.CellsSelectedText}";
+
+            StateHasChanged();
+        }
+    }
+
+}

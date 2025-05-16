@@ -1,0 +1,48 @@
+﻿@page "/FlexGrid/ConditionalFormatting"
+@using Localization
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using C1.Blazor.Grid
+@using C1.Blazor.Grid.ConditionalFormatting
+@using C1.Blazor.RulesManager
+@using System.Collections.ObjectModel;
+
+<FlexGrid AutoGenerateColumns="false" ItemsSource="customers" Style="@("max-height:50vh")">
+    <FlexGridColumns>
+        <GridColumn Binding="FirstName" />
+        <GridColumn Binding="LastName" />
+        <GridColumn Binding="OrderTotal" Format="C2" InputType="C1HtmlInputType.Number" />
+        <GridColumn Binding="OrderCount" Format="N1" InputType="C1HtmlInputType.Number" />
+        <GridDateTimeColumn Binding="LastOrderDate" Format="d" Mode="GridDateTimeColumnMode.Date" />
+        <GridDateTimeColumn Binding="LastOrderDate" AllowFiltering="false" Header="Last Order Time" Format="t" Mode="GridDateTimeColumnMode.Time" />
+    </FlexGridColumns>
+    <FlexGridBehaviors>
+        <ConditionalFormattingBehavior Engine="engine" />
+    </FlexGridBehaviors>
+</FlexGrid>
+
+<_Sections>
+    <Title>@FlexGridRes.ConditionalFormattingTitle</Title>
+    <Summary>@FlexGridRes.ConditionalFormattingSummary</Summary>
+    <Description>@FlexGridRes.ConditionalFormattingDescription</Description>
+</_Sections>
+
+@code {
+    ObservableCollection<Customer> customers;
+    C1RulesEngine engine = new C1RulesEngine();
+
+    protected override void OnInitialized()
+    {
+        var orderTotalSegments = new RulesEngineSegmentsRule { Ranges = new RulesEngineRangeCollection { new RulesEngineRange("OrderTotal") } };
+        orderTotalSegments.Segments.Add(new RulesEngineSegment() { Value = 5000.0, Style = new RulesEngineStyle { Foreground = C1ThemeInfo.ApplicationTheme.CriticalForeground } });
+        orderTotalSegments.Segments.Add(new RulesEngineSegment() { Style = new RulesEngineStyle { Foreground = C1ThemeInfo.ApplicationTheme.SuccessForeground } });
+
+        var orderCountSegments = new RulesEngineSegmentsRule { Ranges = new RulesEngineRangeCollection { new RulesEngineRange("OrderCount") } };
+        orderCountSegments.Segments.Add(new RulesEngineSegment() { Value = 50.0, Style = new RulesEngineStyle { Background = C1ThemeInfo.ApplicationTheme.CriticalBackground } });
+        orderCountSegments.Segments.Add(new RulesEngineSegment() { Style = new RulesEngineStyle { Background = C1ThemeInfo.ApplicationTheme.SuccessBackground } });
+
+        engine.Rules.Add(orderTotalSegments);
+        engine.Rules.Add(orderCountSegments);
+        customers = Customer.GetCustomerList(100);
+    }
+}

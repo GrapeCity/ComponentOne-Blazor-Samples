@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Data\StockSymbols.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\StockSymbols.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.Accordion">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Calendar">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Chart">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.DataFilter">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.DataPager">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.DateTimeEditors">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Gauge">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Grid">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Input">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.ListView">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.TreeView">
+      <Version>9.0.20251.1071</Version>
+    </PackageReference>
+    <PackageReference Include="C1.DataCollection" Version="9.0.20242.209" />
+    <PackageReference Include="C1.DataCollection.Serialization" Version="9.0.20242.209" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Client\BlazorExplorer.Client.csproj" />
+    <ProjectReference Include="..\Shared\BlazorExplorer.Shared.csproj" />
+  </ItemGroup>
+</Project>

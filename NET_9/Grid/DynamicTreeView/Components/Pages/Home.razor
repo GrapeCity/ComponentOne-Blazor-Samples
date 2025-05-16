@@ -1,0 +1,33 @@
+﻿@page "/"
+@using C1.Blazor.Grid;
+
+<PageTitle>File Explorer</PageTitle>
+
+<FlexGrid AutoGenerateColumns="false"
+          ItemsSource="@items"
+          ChildItemsPath="Items"
+          GridLinesVisibility="GridLinesVisibility.None"
+          TreeLinesMode="GridTreeLinesMode.Connected"
+          TreeIndentMode="GridTreeIndentMode.AllCells"
+          TreeLinesDashArray="treeLinesDashArray"
+          Style="@("height:100%")">
+          <GroupCollapsedIconTemplate>
+              <img src="images/Collapsed.png"/>
+          </GroupCollapsedIconTemplate>
+          <GroupExpandedIconTemplate>
+              <img src="images/Expanded.png"/>
+          </GroupExpandedIconTemplate>
+    <FlexGridColumns>
+        <GridBitmapIconColumn Binding="Item.Name" BitmapSourceBinding="Icon" Header="Name" IconWidth="19" Width="GridLength.Star" />
+        <GridColumn Binding="Item.ModifiedDate" Header="Modified Date" />
+        <GridColumn Binding="Type" />
+        <GridColumn Binding="Item.Size" Header="Size" ValueConverter="fileSizeConverter" />
+    </FlexGridColumns>
+</FlexGrid>
+
+@code {
+    static FileExplorerViewModel fileExplorer = new FileExplorerViewModel();
+    FileExplorerItemViewCollection items = new FileExplorerItemViewCollection(fileExplorer.Root);
+    FileSizeConverter fileSizeConverter = new FileSizeConverter();
+    double[] treeLinesDashArray = new double[] { 2, 1 };
+}

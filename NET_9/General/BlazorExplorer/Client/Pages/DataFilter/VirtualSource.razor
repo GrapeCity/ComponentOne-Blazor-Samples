@@ -1,0 +1,106 @@
+﻿@page "/DataFilter/VirtualSource"
+
+@implements IDisposable;
+
+<section class="sampleDataFilterSection">
+    <div class="filtersSection">
+        <C1DataFilter ItemsSource="@_data" ExpandMode="@ExpandMode.One" FilterAutoGenerating="@FilterAutoGenerating" Style="@("max-height: inherit;")">
+
+        </C1DataFilter>
+    </div>
+    <div class="dataSection" style="position: relative; top: 0px; left: 0px; min-height:350px; z-index:999">
+        <FlexGrid AutoGeneratingColumn="OnAutoGeneratingColumn" ColumnFilterLoading="OnColumnFilterLoading" ItemsSource="@_data" HeadersVisibility="GridHeadersVisibility.All" Style=@("max-height: inherit;")>
+
+        </FlexGrid>
+
+        @if (_data.IsLoading)
+        {
+            <div style="z-index: 100; width: 280px; height: 200px; position: absolute; left: 50%; top: 50%; margin-left: -150px; margin-top: -100px; background-color: #5252DF;  border-radius: 20px;">
+                <p style="font-size: 26px; text-align:center; padding-top: 85px; color:white;">@DataFilterRes.VirtualSource_TextLoading</p>
+            </div>
+        }
+    </div>
+</section>
+
+<_Sections>
+    <Title>@DataFilterRes.VirtualSourceTitle</Title>
+    <Description>@DataFilterRes.VirtualSourceDescription</Description>
+</_Sections>
+
+@code {
+
+    CarVirtualCollection _data;
+
+
+    protected override void OnInitialized()
+    {
+        _data = new CarVirtualCollection();
+        _data.PropertyChanged += DataOnPropertyChanged;
+    }
+
+    void OnAutoGeneratingColumn(object sender, GridAutoGeneratingColumnEventArgs a)
+    {
+        switch (a.Column.Binding)
+        {
+            case nameof(Car.Picture):
+                a.Column.CellTemplate = target => builder =>
+                {
+                    builder.OpenElement(0, "img");
+                    builder.AddAttribute(1, "style", "max-height: 35px");
+                    builder.AddAttribute(2, "src", $"data:image/bmp;base64, {((Lazy<string>)target).Value}");
+                    builder.CloseElement();
+                };
+                break;
+            case nameof(Car.DateProductionLine):
+                a.Column.Format = "g";
+                break;
+            case nameof(Car.PresentationDate):
+                a.Column.Format = "MM/dd/yy H:mm:ss zzz";
+                break;
+            case nameof(Car.FuelConsumption):
+                a.Column.Format = "hh:mm";
+                break;
+        }
+    }
+
+    void FilterAutoGenerating(object sender, FilterAutoGeneratingEventArgs e)
+    {
+        if (e.Property.Name == nameof(Car.FuelConsumption))
+        {
+            var fuelConsumptionFilter = (TimeOnlyFilter)e.Filter;
+            fuelConsumptionFilter.Format = "hh:mm";
+        }
+    }
+
+    private void DataOnPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs args)
+    {
+        if (args.PropertyName == nameof(_data.IsLoading))
+        {
+            InvokeAsync(StateHasChanged);
+        }
+    }
+
+    void OnColumnFilterLoading(object sender, GridColumnFilterLoadingEventArgs a)
+    {
+        // Sample how to change the initial filter operation for column's conditional filters.
+        foreach (var filter in a.Filters)
+        {
+            if (filter is TextFilter textFilter)
+            {
+                textFilter.DefaultFilterOperation = FilterOperation.StartsWith;
+            }
+        }
+
+    }
+
+    public void Dispose()
+    {
+        if (_data == null)
+        {
+            return;
+        }
+
+        _data.PropertyChanged -= DataOnPropertyChanged;
+    }
+
+}

@@ -1,0 +1,83 @@
+﻿@page "/styling/nodeborders"
+@using C1.Blazor.Core
+@using C1.Blazor.TreeView
+@using C1.Blazor.Input
+
+<style>
+    .c1-tree-view-item {
+        border-bottom: 1px solid #a0a0a0;
+    }
+</style>
+
+<h3>@((MarkupString)Localization.Resource.NodeBorders)</h3>
+
+<p>@((MarkupString)Localization.Resource.NodeBordersDescription)</p>
+
+<C1TreeView Class="p-2" ShowLines="false" IsExpandedPath="Expanded" ItemsSource="@_dataSource" ChildItemsPaths="Subdirectories" DisplayMemberPaths="Name"
+            Style="@_c1Style" KeyboardNavigation="true" SelectionMode="C1SelectionMode.Extended" ExpandMode="TreeViewExpandMode.Single" />
+
+@code{
+    readonly C1Style _c1Style = new C1Style
+    {
+        Height = 500,
+        Width = 300,
+        BackgroundColor = C1Color.FromArgb(250, 240, 240, 240)
+    };
+
+
+
+    readonly IList<Directory> _dataSource = new List<Directory>()
+{
+        new Directory()
+        {
+            Name = "Directory 2",
+            Subdirectories = new List<Directory>
+{
+                new Directory
+                {
+                    Name = "Directory 2.1",
+                    Subdirectories = new List<Directory>
+{
+                        new Directory {Name = "Directory 2.1.1"},
+                        new Directory {Name = "Directory 2.1.2"},
+                        new Directory
+                        {
+                            Name = "Directory 2.1.3",
+                            Subdirectories = new List<Directory>()
+{
+                                new Directory {Name = "Directory 2.1.3.1"},
+                                new Directory
+                                {
+                                    Name = "Directory 2.1.3.2",
+                                    Subdirectories = new List<Directory>()
+        {
+                                        new Directory {Name = "Directory 2.1.3.2.1"},
+                                        new Directory {Name = "Directory 2.1.3.2.2"}
+                                    }
+                                },
+                            }
+                        },
+                    }
+
+                }
+            }
+        },
+        new Directory
+        {
+            Name = "Directory 3",
+            Subdirectories = new List<Directory>()
+{
+                new Directory {Name = "Directory 3.1"}
+            }
+        },
+    };
+
+    public class Directory
+    {
+        public string Name { get; set; }
+        public List<Directory> Subdirectories { get; set; }
+        public bool Expanded { get; set; } = true;
+        public bool Selected { get; set; }
+    }
+
+}

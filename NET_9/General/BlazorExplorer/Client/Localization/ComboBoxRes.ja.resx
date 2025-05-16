@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CustomAppearanceDescription" xml:space="preserve">
+    <value>境界線とドロップダウンボタンを含む C1ComboBox のスタイルと外観をカスタマイズします。</value>
+    <comment>Customize the style and appearance of the C1ComboBox including the border and drop-down button.</comment>
+  </data>
+  <data name="CustomAppearanceSummary" xml:space="preserve">
+    <value>境界線とドロップダウンボタンを含む C1ComboBox のスタイルと外観をカスタマイズします。</value>
+    <comment>Customize the style and appearance of the C1ComboBox including the border and drop-down button.</comment>
+  </data>
+  <data name="CustomAppearanceTitle" xml:space="preserve">
+    <value>カスタム外観</value>
+    <comment>Custom Appearance</comment>
+  </data>
+  <data name="CustomItemDescription" xml:space="preserve">
+    <value>カスタム項目テンプレートを使用して複雑なコンボボックスを作成します。このデモでは、C1ComboBox の各項目内に画像とテキストを表示する方法を示します。</value>
+    <comment>Create complex comboboxes with custom item templates. This demo shows how to display images and text within each item of the C1ComboBox.</comment>
+  </data>
+  <data name="CustomItemSummary" xml:space="preserve">
+    <value>国旗と名前を表示して項目をカスタマイズ</value>
+    <comment>Customizes the item by showing the country flag together with the name</comment>
+  </data>
+  <data name="CustomItemTitle" xml:space="preserve">
+    <value>カスタム項目</value>
+    <comment>Custom Item</comment>
+  </data>
+  <data name="EditableDescription" xml:space="preserve">
+    <value>C1ComboBox は、入力されたテキストを項目のリストに一致させる自動提案機能を備えた編集可能なテキスト入力コントロールとして使用できます。</value>
+    <comment>C1ComboBox can be used as an editable text input control with auto-suggest that matches the typed text to the list of items.</comment>
+  </data>
+  <data name="EditableSummary" xml:space="preserve">
+    <value>入力したテキストとアイテムのリストに従ってテキストを自動補完する編集可能なコンボボックス</value>
+    <comment>Shows an editable combo-box which will auto-complete the text according to the typed text and the list of items</comment>
+  </data>
+  <data name="EditableTitle" xml:space="preserve">
+    <value>編集可能</value>
+    <comment>Editable</comment>
+  </data>
+  <data name="FullScreenDescription" xml:space="preserve">
+    <value>特にモバイルアプリ向けに設計された C1ComboBox のドロップダウン部分は、表示時に画面全体を引き継ぐように設定できます。このモードは、リストを表示するためにより多くのスペースを使用し、ソフトキーボードでシームレスに動作するため、モバイルデバイスにとって非常に実用的です。</value>
+    <comment>Designed especially for mobile apps, the drop-down part of C1ComboBox can be configured to take over the whole screen when displayed. This mode is very practical for mobile devices as it uses more space to display the list and works seamlessly with soft keyboards.</comment>
+  </data>
+  <data name="FullScreenSummary" xml:space="preserve">
+    <value>リストを開いたときにすべての画面を表示するリストを持つコンボボックス</value>
+    <comment>Shows a combo-box whose list takes all the screen when it is opened.</comment>
+  </data>
+  <data name="FullScreenTitle" xml:space="preserve">
+    <value>フルスクリーン</value>
+    <comment>Full Screen</comment>
+  </data>
+  <data name="IsEditableLabel" xml:space="preserve">
+    <value>編集を許可</value>
+    <comment>IsEditable</comment>
+  </data>
+  <data name="OverviewDescription" xml:space="preserve">
+    <value>Blazor の C1ComboBox は、ドロップダウンエディターから項目を選択できます。項目テンプレートのカスタマイズ、テキスト入力機能、ユーザーの入力に応じた自動提案、およびモバイル Web アプリ用に設計されたフルスクリーンモードをサポートしています。</value>
+    <comment>The C1ComboBox control for Blazor provides item selection from a drop-down editor. It supports item template customization, text input capability, auto-suggestion as the user types, and a full-screen mode that is designed for mobile web apps.</comment>
+  </data>
+  <data name="OverviewSummary" xml:space="preserve">
+    <value>Blazor の C1ComboBox は、ドロップダウンエディターから項目を選択できます。</value>
+    <comment>The C1ComboBox control for Blazor provides item selection from a drop-down editor.</comment>
+  </data>
+  <data name="OverviewTitle" xml:space="preserve">
+    <value>概要</value>
+    <comment>Overview</comment>
+  </data>
+  <data name="SelectCountryPlaceholder" xml:space="preserve">
+    <value>国を選択</value>
+    <comment>Select a country</comment>
+  </data>
+</root>

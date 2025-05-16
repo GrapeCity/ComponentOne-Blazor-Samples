@@ -1,0 +1,36 @@
+﻿@if (breadCrumbData != null)
+{
+    @foreach (var item in breadCrumbData)
+    {
+        @if (item == breadCrumbData.Last())
+        {
+            <li class="breakcrumb-item active">@item</li> }
+        else
+        {
+            <li class="breadcrumb-item"><a href="" @onclick="() => OnClick(item)">@item</a></li>
+        }
+    }
+}
+
+@code { 
+    [Parameter]
+    public List<string> breadCrumbData { get; set; }
+
+    [Parameter]
+    public EventHandler<string> SelectionChanged { get; set; }
+
+    protected virtual void OnItemTapped(string item)
+    {
+        SelectionChanged?.Invoke(this, item);
+    }
+
+    public void OnClick(string item)
+    {
+        OnItemTapped(item);
+    }
+
+    public void Invalidate()
+    {
+        base.InvokeAsync(this.StateHasChanged);
+    }
+}

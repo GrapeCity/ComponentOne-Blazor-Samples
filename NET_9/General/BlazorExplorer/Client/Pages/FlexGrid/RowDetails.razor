@@ -1,0 +1,44 @@
+﻿@page "/FlexGrid/RowDetails"
+@using Localization
+@using System.Collections.ObjectModel;
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+@using C1.Blazor.Input
+
+<FlexGrid IsReadOnly="true" AutoGenerateColumns="false" HeadersVisibility="GridHeadersVisibility.All" ItemsSource="customers" Style="@("max-height:50vh")">
+    <FlexGridColumns>
+        <GridColumn Binding="Id" Width="80" />
+        <GridColumn Binding="FirstName" Width="GridLength.Star" />
+        <GridColumn Binding="LastName" Width="GridLength.Star" />
+    </FlexGridColumns>
+    <FlexGridBehaviors>
+        <FlexGridDetailProvider TItem="Customer" Height="130" DetailVisibilityMode="detailVisibilityMode">
+            <div>
+                <div>Country: @context.Country</div>
+                <div>City: @context.City</div>
+                <div>Address: @context.Address</div>
+                <div>PostalCode: @context.PostalCode</div>
+            </div>
+        </FlexGridDetailProvider>
+    </FlexGridBehaviors>
+</FlexGrid>
+
+<_Sections>
+    <Title>@FlexGridRes.RowDetailsTitle</Title>
+    <Settings>
+        DetailVisibilityMode <C1ComboBox ItemsSource="detailVisibilityModes" @bind-SelectedItem="detailVisibilityMode" />
+    </Settings>
+    <Summary>@FlexGridRes.RowDetailsSummary</Summary>
+    <Description>@FlexGridRes.RowDetailsDescription</Description>
+</_Sections>
+
+@code {
+    ObservableCollection<Customer> customers;
+    GridDetailVisibilityMode detailVisibilityMode = GridDetailVisibilityMode.ExpandMultiple;
+    GridDetailVisibilityMode[] detailVisibilityModes = new GridDetailVisibilityMode[] { GridDetailVisibilityMode.ExpandMultiple, GridDetailVisibilityMode.ExpandSingle, GridDetailVisibilityMode.Selection };
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+}

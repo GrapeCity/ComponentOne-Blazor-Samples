@@ -1,0 +1,35 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlexGridExplorer.Client", "Client\FlexGridExplorer.Client.csproj", "{A2D0EF3E-7F81-40C0-857E-F21A9B430D56}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlexGridExplorer.Shared", "Shared\FlexGridExplorer.Shared.csproj", "{E7ABBD38-1D51-4AA7-9C81-FB7ED06B5C28}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlexGridExplorer.Server", "Server\FlexGridExplorer.Server.csproj", "{260DAAA9-7A08-4F52-B091-9A217DA223F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2D0EF3E-7F81-40C0-857E-F21A9B430D56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2D0EF3E-7F81-40C0-857E-F21A9B430D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2D0EF3E-7F81-40C0-857E-F21A9B430D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2D0EF3E-7F81-40C0-857E-F21A9B430D56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7ABBD38-1D51-4AA7-9C81-FB7ED06B5C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7ABBD38-1D51-4AA7-9C81-FB7ED06B5C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7ABBD38-1D51-4AA7-9C81-FB7ED06B5C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7ABBD38-1D51-4AA7-9C81-FB7ED06B5C28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{260DAAA9-7A08-4F52-B091-9A217DA223F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{260DAAA9-7A08-4F52-B091-9A217DA223F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{260DAAA9-7A08-4F52-B091-9A217DA223F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{260DAAA9-7A08-4F52-B091-9A217DA223F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9611F1D1-5835-44C4-A32D-97FBD9B6C8EA}
+	EndGlobalSection
+EndGlobal

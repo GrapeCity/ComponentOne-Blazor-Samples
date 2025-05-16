@@ -1,0 +1,56 @@
+﻿@page "/Gauge/UsingRanges"
+@using C1.Blazor.Gauge;
+@using System.ComponentModel;
+
+<div class="gaugeFrame">
+    <p style="margin:8px 0">
+	    <span>@GaugeRes.LinearGauge</span>
+    </p>
+    <C1LinearGauge @ref="linGauge" Class="gauge" @bind-Value="data.Value" TextVisibility="GaugeTextVisibility.All" ShowRanges=true ></C1LinearGauge>
+</div>
+
+<div class="gaugeFrame">
+    <p style="margin:8px 0">
+	    <span>@GaugeRes.RadialGauge</span>
+    </p>
+    <C1RadialGauge @ref="radGauge" Class="gauge radialGauge" @bind-Value="data.Value" AutoScale="true" StartAngle="@data.StartAngle" SweepAngle="@data.SweepAngle" IsReversed="(bool)isReversed" TextVisibility="GaugeTextVisibility.All" ShowRanges=true></C1RadialGauge>
+    <label style="align-items:self-end">@GaugeRes.ValueText @lbl</label>
+</div>
+
+<_Sections>
+    <Title>@GaugeRes.UsingRangesTitle</Title>
+    <Summary>@GaugeRes.UsingRangesSummary</Summary>
+</_Sections>
+
+@code {
+    bool? isReversed = false;
+    C1LinearGauge linGauge;
+    C1RadialGauge radGauge;
+    SampleViewModel data;
+    string lbl;
+
+    protected override void OnInitialized()
+    {
+        data = new SampleViewModel() { Bad = 20, Good = 40, Target = 80, StartAngle = -30, SweepAngle = 240 };
+        data.PropertyChanged += (s, e) =>
+        {
+            if (e.PropertyName == "Value")
+                lbl = data.Value.ToString("N0");
+        };
+        data.Value = 25;
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            radGauge.Ranges.Add(new GaugeRange() { Min = 0, Max = 40, Color = C1Color.FromArgb(0xFF, 0x22, 0xB1, 0x4C) });
+            radGauge.Ranges.Add(new GaugeRange() { Min = 40, Max = 80, Color = C1Color.FromArgb(0xFF, 0xFF, 0x80, 0x80) });
+            radGauge.Ranges.Add(new GaugeRange() { Min = 80, Max = 100, Color = C1Color.FromArgb(0xFF, 0xEE, 0xE0, 0x4A) });
+            for (int i = 0; i < 3; i++)
+                linGauge.Ranges.Add(radGauge.Ranges[i]);
+            linGauge.Pointer.Thickness = radGauge.Pointer.Thickness = 0.5;
+        }
+        base.OnAfterRender(firstRender);
+    }
+}

@@ -1,0 +1,25 @@
+﻿@page "/ComboBox/FullScreen"
+@using C1.Blazor.Input
+@using Localization
+
+<C1ComboBox ItemsSource="countries" IsEditable="true" DropDownMode="DropDownMode.FullScreen" T="Country" Placeholder="@ComboBoxRes.SelectCountryPlaceholder" Style="@("margin:8px 0")">
+    <ItemTemplate>
+        <img src="@context.FlagUrl" style="height:32px;width:32px" />
+        <span style="margin-left:8px;white-space:nowrap;word-break:break-all">@context.Name</span>
+    </ItemTemplate>
+</C1ComboBox>
+
+<_Sections>
+    <Title>@ComboBoxRes.FullScreenTitle</Title>
+    <Summary>@ComboBoxRes.FullScreenSummary</Summary>
+    <Description>@ComboBoxRes.FullScreenDescription</Description>
+</_Sections>
+
+@code{
+    IEnumerable<Country> countries;
+
+    protected override void OnInitialized()
+    {
+        countries = Country.GetCountries();
+    }
+}

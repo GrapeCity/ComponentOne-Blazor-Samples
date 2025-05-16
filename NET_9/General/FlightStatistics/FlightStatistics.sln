@@ -1,0 +1,42 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightStatistics.Server", "Server\FlightStatistics.Server.csproj", "{8C829E10-0477-4CC4-BCC4-652F52BC74C1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightStatistics.Client", "Client\FlightStatistics.Client.csproj", "{4B95A1E8-E41F-47E9-A4EA-6E7A72CD7F1F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightStatistics.Shared", "Shared\FlightStatistics.Shared.csproj", "{41FE36A5-A23F-4696-B5E7-E5BB9426994A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		GRAPECITY|Any CPU = GRAPECITY|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C829E10-0477-4CC4-BCC4-652F52BC74C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C829E10-0477-4CC4-BCC4-652F52BC74C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C829E10-0477-4CC4-BCC4-652F52BC74C1}.GRAPECITY|Any CPU.ActiveCfg = Release|Any CPU
+		{8C829E10-0477-4CC4-BCC4-652F52BC74C1}.GRAPECITY|Any CPU.Build.0 = Release|Any CPU
+		{8C829E10-0477-4CC4-BCC4-652F52BC74C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C829E10-0477-4CC4-BCC4-652F52BC74C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B95A1E8-E41F-47E9-A4EA-6E7A72CD7F1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B95A1E8-E41F-47E9-A4EA-6E7A72CD7F1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B95A1E8-E41F-47E9-A4EA-6E7A72CD7F1F}.GRAPECITY|Any CPU.ActiveCfg = Release|Any CPU
+		{4B95A1E8-E41F-47E9-A4EA-6E7A72CD7F1F}.GRAPECITY|Any CPU.Build.0 = Release|Any CPU
+		{4B95A1E8-E41F-47E9-A4EA-6E7A72CD7F1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B95A1E8-E41F-47E9-A4EA-6E7A72CD7F1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41FE36A5-A23F-4696-B5E7-E5BB9426994A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41FE36A5-A23F-4696-B5E7-E5BB9426994A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41FE36A5-A23F-4696-B5E7-E5BB9426994A}.GRAPECITY|Any CPU.ActiveCfg = Release|Any CPU
+		{41FE36A5-A23F-4696-B5E7-E5BB9426994A}.GRAPECITY|Any CPU.Build.0 = Release|Any CPU
+		{41FE36A5-A23F-4696-B5E7-E5BB9426994A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41FE36A5-A23F-4696-B5E7-E5BB9426994A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39E4FCD3-C07D-4D38-9E4B-2095FD2186D3}
+	EndGlobalSection
+EndGlobal

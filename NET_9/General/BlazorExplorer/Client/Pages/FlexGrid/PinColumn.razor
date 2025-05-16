@@ -1,0 +1,143 @@
+﻿@page "/FlexGrid/pincolumn"
+
+<FlexGrid ColumnOptionsLoading="@OnColumnOptionsLoading" ItemsSource="@customers" Style="@("max-height:50vh; max-width: 800px;")" />
+<_Sections>
+    <Title>@FlexGridRes.PinColumnTitle</Title>
+    <Summary></Summary>
+    <Description>@FlexGridRes.PinColumnDescription</Description>
+</_Sections>
+@code {
+    ObservableCollection<Customer> customers = Customer.GetCustomerList(100);
+
+    void OnColumnOptionsLoading(object sender, GridColumnOptionsLoadingEventArgs e)
+    {
+        var grid = sender as FlexGrid;
+        var column = e.Column;
+
+        // Define current states of the column.
+        var isFrozen = column.Index < grid.FrozenColumns;
+        var isFrozenRight = column.Index >= grid.Columns.Count - grid.FrozenRightColumns;
+        var canPin = !isFrozen;
+        var canPinRight = !isFrozenRight;
+
+        // Create a new menu item.
+        var menuItem = new C1MenuItem();
+
+        // Override menu item's view.
+        menuItem.HeaderTemplate = builder =>
+        {
+            const string unpinIcon = "M 3.71875 2.28125 L 2.28125 3.71875 L 28.28125 29.71875 L 29.71875 28.28125 L 21.75 20.3125 C 21.988678 19.231627 22.072023 18.111911 21.875 17 L 29.4375 11.46875 L 20.53125 2.5625 L 15 10.125 C 13.889037 9.9274235 12.764228 10.013944 11.6875 10.25 L 3.71875 2.28125 z M 20.78125 5.625 L 26.375 11.21875 L 19.59375 16.1875 L 19.78125 16.84375 C 19.930164 17.410929 20.006357 17.989892 20 18.5625 L 13.4375 12 C 14.010039 11.993776 14.588137 12.069369 15.15625 12.21875 L 15.8125 12.40625 L 20.78125 5.625 z M 8.21875 11.84375 C 7.96575 12.04475 7.732 12.269 7.5 12.5 L 6.78125 13.1875 L 12.09375 18.5 L 4 26.59375 L 4 28 L 5.40625 28 L 13.5 19.90625 L 18.8125 25.21875 L 19.5 24.5 C 19.731 24.269 19.95625 24.03425 20.15625 23.78125 L 8.21875 11.84375 z";
+
+            builder.OpenElement(0, "div");
+            builder.AddAttribute(1, "style", "display: grid; grid-template-columns: min-content auto min-content; padding: 8px; align-items: center;");
+
+#region Left button.
+            builder.OpenElement(10, "button");
+            builder.AddAttribute(11, "style", "border: none;");
+            builder.AddAttribute(12, "onclick", EventCallback.Factory.Create<EventArgs>(this, _ =>
+            {
+
+                if (isFrozen)
+                {
+                    grid.FrozenColumns--;
+                    grid.Columns.Move(column.Index, grid.FrozenColumns);
+                }
+                else
+                {
+                    grid.Columns.Move(column.Index, grid.FrozenColumns);
+                    grid.FrozenColumns++;
+
+                    if (isFrozenRight)
+                    {
+                        grid.FrozenRightColumns--;
+                    }
+                }
+
+                e.Close();
+
+            }));
+
+            builder.OpenElement(20, "div");
+            builder.AddAttribute(21, "style", "display: flex; justify-content: center; align-items: center; width: 32px; height: 32px; padding: 6px;");
+            if (canPin)
+            {
+                // Set pin-to-left view.
+                builder.AddContent(22, "⮜");
+            }
+            else
+            {
+                // Set unpin view.
+                builder.OpenComponent<C1PathIcon>(25);
+                builder.AddAttribute(26, nameof(C1PathIcon.ViewBox), new C1Rect(0, 0, 32, 32));
+                builder.AddAttribute(27, nameof(C1PathIcon.Data), unpinIcon);
+                builder.CloseComponent();
+            }
+            builder.CloseElement();
+
+            builder.CloseElement();
+#endregion
+
+#region Title.
+            builder.OpenElement(30, "div");
+            builder.AddAttribute(31, "style", "justify-self: center;");
+            builder.AddContent(32, FlexGridRes.PinColumnTitle);
+            builder.CloseElement();
+#endregion
+
+#region Right button.
+            builder.OpenElement(40, "button");
+            builder.AddAttribute(41, "style", "border: none;");
+            builder.AddAttribute(42, "onclick", EventCallback.Factory.Create<EventArgs>(this, _ =>
+            {
+                if (isFrozenRight)
+                {
+                    grid.FrozenRightColumns--;
+                    grid.Columns.Move(column.Index, grid.Columns.Count - 1 - grid.FrozenRightColumns);
+                }
+                else
+                {
+                    grid.Columns.Move(column.Index, grid.Columns.Count - 1 - grid.FrozenRightColumns);
+                    grid.FrozenRightColumns++;
+
+                    if (isFrozen)
+                    {
+                        grid.FrozenColumns--;
+                    }
+                }
+
+                e.Close();
+            }));
+
+            builder.OpenElement(43, "div");
+            builder.AddAttribute(44, "style", "display: flex; justify-content: center; align-items: center; width: 32px; height: 32px; padding: 6px;");
+            if (canPinRight)
+            {
+                // Set pin-to-right view.
+                builder.AddContent(45, "⮞");
+            }
+            else
+            {
+                // Set unpin view.
+                builder.OpenComponent<C1PathIcon>(46);
+                builder.AddAttribute(47, nameof(C1PathIcon.ViewBox), new C1Rect(0, 0, 32, 32));
+                builder.AddAttribute(48, nameof(C1PathIcon.Data), unpinIcon);
+                builder.CloseComponent();
+            }
+
+            builder.CloseElement();
+
+            builder.CloseElement();
+
+            builder.CloseElement();
+#endregion
+        };
+
+        // Insert a new menu item.
+        e.MenuItems.Insert(0, menuItem);
+
+        if (e.MenuItems.Count > 1)
+        {
+            e.MenuItems.Insert(1, new C1MenuSeparator());
+        }
+    }
+}

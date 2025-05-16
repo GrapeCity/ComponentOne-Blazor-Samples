@@ -1,0 +1,105 @@
+﻿@page "/RangeSlider/Index"
+@using C1.Blazor.Input
+@using C1.Blazor.Core
+
+<section control-feature>
+    <div control-feature-header>
+        <h4>@SliderRes.SliderText03</h4>
+    </div>
+    <div control-feature-content>
+        <div style="display: inline-block; margin-right: 32px; margin-bottom: 12px;">
+            <h5>@_App.HtmlRaw(SliderRes.SliderText00)</h5>
+
+            <C1RangeSlider @bind-LowerValue="lowerValue" @bind-UpperValue="upperValue" Minimum="-100" Maximum="100" />
+
+            <div style="width: 300px; display: flex; flex: 1 1; justify-content: space-between;">
+                <C1NumericBox Min="-100" Max="100" TNumeric="double" @bind-Value="lowerValue" Format="N2" ButtonDisplayMode="ButtonDisplayMode.Right" FinishEditingKeys=@(new []{ NumericBoxFinishEditingKey.Enter}) />
+                <C1NumericBox Min="-100" Max="100" TNumeric="double" @bind-Value="upperValue" Format="N2" ButtonDisplayMode="ButtonDisplayMode.Right" FinishEditingKeys=@(new []{ NumericBoxFinishEditingKey.Enter}) />
+            </div>
+        </div>
+        <div style="vertical-align: top; display: inline-block;">
+            <h5>@_App.HtmlRaw(@SliderRes.SliderText01)</h5>
+            <div style="width: 120px; display: flex; flex-direction: column; align-items: center; margin-left: 32px; margin-top: 16px;">
+                <C1NumericBox Min="0" Max="100" TNumeric="double" @bind-Value="upperVerticalValue" Format="N2" ButtonDisplayMode="ButtonDisplayMode.Right" FinishEditingKeys=@(new []{ NumericBoxFinishEditingKey.Enter}) />
+                <C1RangeSlider @bind-LowerValue="lowerVerticalValue" ScrollBehavior="RangeSliderScrollBehavior.Range" @bind-UpperValue="upperVerticalValue" Orientation="SliderOrientation.Vertical" />
+                <C1NumericBox Min="0" Max="100" TNumeric="double" @bind-Value="lowerVerticalValue" Format="N2" ButtonDisplayMode="ButtonDisplayMode.Right" FinishEditingKeys=@(new []{ NumericBoxFinishEditingKey.Enter}) />
+            </div>
+        </div>
+    </div>
+    <div control-feature-info>
+        @_App.HtmlRaw(SliderRes.SliderText02)
+    </div>
+
+</section>
+
+<section control-feature>
+    <div control-feature-header>
+        <h4>@SliderRes.SliderText04</h4>
+    </div>
+    <div control-feature-content>
+        <C1RangeSlider Style=@(new C1Style("display: inline-block;")) IsEnabled="isEnabled" />
+        <label style="vertical-align: top; margin-top: 10px;">
+            <input type="checkbox" @bind="isEnabled" /> @SliderRes.SliderText04
+        </label>
+    </div>
+</section>
+
+<section control-feature>
+    <div control-feature-header>
+        <h4>@SliderRes.SliderText05</h4>
+    </div>
+    <div control-feature-content>
+        <div style="display: inline-block; margin-right: 32px; margin-bottom: 12px;">
+            <C1RangeSlider Style=@("width: 150px; border: 2px solid #32a1ce; border-radius: 10px;") />
+
+            <C1RangeSlider Style=@("text-align: center;") 
+                           TrackStyle=@("background-color: #fba0e3;")
+                           RangeTrackStyle=@("background-color: #f53dc4;")
+                           LowerThumbStyle=@("width: 25px; height: 20px; border-radius: 2px; background-color: #d17bd1; border: 2px solid #852e85;")
+                           UpperThumbStyle=@("width: 25px; height: 20px; border-radius: 2px; background-color: #d17bd1; border: 2px solid #852e85;") />
+
+            <C1RangeSlider Style=@("text-align: center;") 
+                           LowerThumbStyle=@("width: 20px; height: 25px; border-radius: 2px;")
+                           UpperThumbStyle=@("width: 20px; height: 25px; border-radius: 2px;") />
+        </div>      
+        <div style="display: inline-block; vertical-align: top;">
+            <C1RangeSlider Style=@("height: 150px; border: 2px solid #32a1ce; border-radius: 10px; display: inline-block; vertical-align: top;") 
+                            Orientation="SliderOrientation.Vertical" />
+
+            <C1RangeSlider Style=@("display: inline-block; vertical-align: top;")
+                            TrackStyle=@("background-color: #fba0e3;")
+                            RangeTrackStyle=@("background-color: #f53dc4;")
+                            LowerThumbStyle=@("height: 25px; width: 20px; border-radius: 2px; background-color: #d17bd1; border: 2px solid #852e85;")
+                            UpperThumbStyle=@("height: 25px; width: 20px; border-radius: 2px; background-color: #d17bd1; border: 2px solid #852e85;")
+                            Orientation="SliderOrientation.Vertical" />
+
+            <C1RangeSlider Style=@("display: inline-block; vertical-align: top;")
+                            LowerThumbStyle=@("height: 20px; width: 25px; border-radius: 2px;")
+                            UpperThumbStyle=@("height: 20px; width: 25px; border-radius: 2px;")
+                            Orientation="SliderOrientation.Vertical" />
+        </div>
+    </div>
+</section>
+<section control-feature>
+    <div control-feature-header>
+        <h4>@SliderRes.SliderText06</h4>
+    </div>
+    <div control-feature-content>
+        <p><span symbol>&#11134;</span> @_App.HtmlRaw(SliderRes.SliderText07)</p>
+        <p><span symbol>&#8593;</span> @_App.HtmlRaw(SliderRes.SliderText08) <span symbol>&#8594;</span>  @_App.HtmlRaw(SliderRes.SliderText09)</p>
+        <p><span symbol>&#8592;</span> @_App.HtmlRaw(SliderRes.SliderText08) <span symbol>&#8595;</span>  @_App.HtmlRaw(SliderRes.SliderText10)</p>
+    </div>
+</section>
+
+<_Sections>
+    <Title>@SliderRes.SliderTitle</Title>
+    <Description>@SliderRes.SliderDescription</Description>
+</_Sections>
+
+@code {
+    private bool isEnabled;
+    private double lowerValue;
+    private double upperValue = 100.0;
+    private double lowerVerticalValue = 25.0;
+    private double upperVerticalValue = 75.0;
+}

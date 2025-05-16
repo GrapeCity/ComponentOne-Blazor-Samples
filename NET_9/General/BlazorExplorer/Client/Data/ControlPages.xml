@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Controls>
+	<ControlGroup name="Data Management" name.ja="データ管理">
+		<Control name="FlexGrid" popular="true" new="true">
+			<action text="General" text.ja="一般">
+				<subactions>
+					<action text="Overview" text.ja="概要" name="Index"></action>
+					<action text="Selection Modes" text.ja="選択モード" name="SelectionModes"></action>
+				</subactions>
+			</action>
+			<action text="Data Binding" text.ja="データ連結">
+				<subactions>
+					<action text="Virtual Mode" text.ja="仮想モード" name="VirtualMode"></action>
+					<action text="On Demand" text.ja="リモートデータ連結" name="OnDemand"></action>
+					<!--<action text="OData Service Bind" text.ja="OData サービス連結" name="ODataBind"></action>-->
+					<action text="HierarchicalRows" text.ja="階層的な行" name="HierarchicalRows" ></action>
+					<action text="Row Details" text.ja="詳細行" name="RowDetails"></action>
+					<action text="Check List" text.ja="チェックリスト" name="CheckList"></action>
+					<action text="Unbound" text.ja="アンバウンド" name="Unbound"></action>
+					<action text="Validation" text.ja="Validation" name="Validation"></action>
+				</subactions>
+			</action>
+			<action text="Data Operations" text.ja="データ操作">
+				<subactions>
+					<action text="Filter Row" text.ja="フィルタ処理" name="FilterRow"></action>
+					<action text="Full-Text Filter" text.ja="Full-Textフィルター" name="FullTextFilter"></action>
+					<action text="Paging" text.ja="ページング" name="Paging"></action>
+					<action text="Custom Sort Icon" text.ja="Custom Sortアイコン" name="CustomSortIcon"></action>
+					<action text="Grouping" text.ja="グループ化" name="Grouping"></action>
+				</subactions>
+			</action>
+			<action text="Columns" text.ja="列">
+				<subactions>
+					<action text="Column Definition" text.ja="列の定義" name="ColumnDefinitions"></action>
+					<action text="Custom columns" text.ja="カスタム列" name="CustomColumns"></action>
+					<action text="Column Layout" text.ja="Column Layout" name="ColumnLayout"></action>
+					<action text="GridColumn customization" text.ja="GridColumn カスタマイズ" name="CustomDropDownColumn"></action>
+					<!--<action text="Custom Header Template" text.ja="カスタムヘッダーテンプレート" name="CustomHeaderTemplate"></action>
+          <action text="Column Layout" text.ja="列のレイアウト" name="ColumnLayout"></action>
+          <action text="Custom Footers" text.ja="カスタムフッター" name="CustomFooters"></action>-->
+					<action text="Responsive Sizing" text.ja="スターサイズ" name="ResponsiveSizing"></action>
+					<action text="Pin Column" text.ja="列のピン止め" name="pincolumn"></action>
+				</subactions>
+			</action>
+			<action text="Cells" text.ja="セル" >
+				<subactions>
+					<action text="Conditional Formatting" new="true" text.ja="条件付き書式" name="ConditionalFormatting"></action>
+					<action text="Cell Freezing" text.ja="固定セル" name="CellFreezing"></action>
+					<!--<action text="Custom Cells" text.ja="カスタムセル" name="CustomCells"></action>-->
+					<action text="Cell Merging" text.ja="セルの結合" name="CellMerging"></action>
+					<!--<action text="Data Map" text.ja="データマップ" name="DataMap"></action>-->
+					<action text="Custom appearance" text.ja="カスタム外観" name="CustomAppearance"></action>
+					<action text="Summary Row" text.ja="サマリー行" name="SummaryRow"></action>
+					<action text="Transposed Grid" text.ja="転置グリッド" name="TransposedGrid"></action>
+				</subactions>
+			</action>
+			<action text="Editing" text.ja="編集">
+				<subactions>
+					<action text="Popup Editing" text.ja="ポップアップ編集" name="PopupEditing"></action>
+					<action text="Edit Confirmation" text.ja="編集確認" name="EditConfirmation"></action>
+					<action text="New Row" text.ja="新規行" name="NewRow"></action>
+					<!--<action text="Editing" text.ja="編集" name="Editing"></action>
+          <action text="Batch Editing" text.ja="一括編集" name="BatchEditing"></action>
+          <action text="Custom Editors" text.ja="カスタムエディタ" name="CustomEditors"></action>
+          <action text="Unobtrusive Validation" text.ja="控えめな検証" name="UnobtrusiveValidation"></action>
+          <action text="Built-in Validation" text.ja="組み込みの検証" name="BuiltInValidation" enhanced="true" enhancetip="Added FlexGrid.ErrorTip property that allows you to specify a Tooltip showing validation errors."
+                  enhancetip.ja="検証エラーを表示するツールチップを指定できるFlexGrid.ErrorTipプロパティを追加しました。"></action>-->
+				</subactions>
+			</action>
+			<action text="Export" text.ja="エクスポート">
+				<subactions>
+					<action text="Html/CSV/Text Export" text.ja="Html/CSV/Text エクスポート" name="Export"></action>
+					<action text="Excel Export" text.ja="Excel エクスポート" name="ExcelExport"></action>
+				</subactions>
+			</action>
+		</Control>
+		<Control name="ListView">
+			<action text="General" text.ja="一般">
+				<subactions>
+					<action text="Overview" text.ja="概要" name="Index"></action>
+					<action text="Selection Modes" text.ja="選択モード" name="SelectionModes"></action>
+				</subactions>
+			</action>
+
+			<action text="Data Binding" text.ja="データ連結">
+				<subactions>
+					<action text="On Demand" text.ja="オンデマンド" name="OnDemand"></action>
+					<action text="Paging" text.ja="ページング" name="Paging"></action>
+					<action text="Virtual Mode" text.ja="仮想モード" name="VirtualMode"></action>
+				</subactions>
+			</action>
+			<action text="Data Operations" text.ja="データ操作">
+				<subactions>
+					<action text="Sorting" text.ja="ソート" name="Sort"></action>
+					<action text="Grouping" text.ja="グループ化" name="Grouping"></action>
+					<action text="Filter" text.ja="フィルタ" name="Filter"></action>
+				</subactions>
+			</action>
+		</Control>
+		<Control name="DataFilter">
+			<action text="Cars List" text.ja="車両リスト" name="Index"></action>
+			<action text="Filter Summary" text.ja="フィルターの概要" name="FiltersSummary"></action>
+			<action text="Conditional Filters" text.ja="条件付きフィルター" name="ConditionalFilters"></action>
+			<action text="Custom Filters" text.ja="カスタムフィルター" name="CustomFilters"></action>
+			<action text="Virtual Source" text.ja="仮想ソース" name="VirtualSource"></action>
+		</Control>
+	</ControlGroup>
+	<ControlGroup name="Data Visualization" name.ja="データの視覚化">
+		<Control name="FlexChart" popular="true">
+			<action text="General" text.ja="一般">
+				<subactions>
+					<action text="Overview" text.ja="概要" name="Index"></action>
+				</subactions>
+			</action>
+			<action text="Bar &amp; Column Charts" text.ja="横棒＆縦棒グラフ">
+				<subactions>
+					<action text="Stacked Bar" name="StackedBar" text.ja="積層棒"></action>
+					<action text="Column With Negative Values" name="ColumnWithNegativeValues" text.ja="負の値を持つ棒グラフ"></action>
+					<action text="Column With Data Labels" name="ColumnWithDataLabels" text.ja="データラベルを持つ棒グラフ"></action>
+					<action text="Range Column" name="RangeColumn" text.ja="範囲列"></action>
+				</subactions>
+			</action>
+			<action text="Line &amp; Area Charts" text.ja="折れ線＆面グラフ">
+				<subactions>
+					<action text="Basic Line" name="BasicLine" text.ja="基本の折れ線"></action>
+					<action text="Stacked 100% Area" name="Stacked100pcArea" text.ja="100% 積層面"></action>
+					<action text="Line With Gaps" name="LineWithGaps" text.ja="ギャップのある折れ線"></action>
+					<action text="Step Charts" name="StepChart" text.ja="ステップチャート"></action>
+				</subactions>
+			</action>
+			<action text="Scatter &amp; Bubble Charts" text.ja="散布図＆バブルチャート">
+				<subactions>
+					<action text="XY Scatter Plot" name="XYScatter" text.ja="XY 散布図"></action>
+					<action text="Bubble Plot" name="Bubble" text.ja="バブルチャート"></action>
+				</subactions>
+			</action>
+			<action text="Features" text.ja="機能">
+				<subactions>
+					<action text="Combination" name="ColumnLine" text.ja="組み合わせ"></action>
+					<action text="Two Y-axes" name="TwoAxes" text.ja="２つのY軸"></action>
+					<action text="Export" name="Export" text.ja="エクスポート"></action>
+					<action text="Multiple Plot Areas" name="PlotAreas" text.ja="複数のプロット領域"></action>
+					<action text="Funnel Chart" name="Funnel" text.ja="ファンネルチャート"></action>
+					<action text="Trend Line" name="TrendLines" text.ja="傾向線"></action>
+					<action text="Waterfall" name="Waterfall" text.ja="ウォーターフォール"></action>
+					<action text="Radar" name="Radar" text.ja="レーダー"></action>
+					<action text="Legend" name="Legend" text.ja="凡例"></action>
+					<action text="Animation" name="Animation" text.ja="アニメーション"></action>
+					<action text="Annotations" name="Annotations" text.ja="注釈"></action>
+					<action text="Break Even" name="BreakEven" text.ja="損益分岐"></action>
+					<action text="Heatmap" name="Heatmap" ></action>
+				</subactions>
+			</action>
+			<action text="Interaction">
+				<subactions>
+					<action text="Selection" text.ja="選択" name="Selection"></action>
+					<action text="Line Marker" text.ja="ラインマーカー" name="Marker"></action>
+					<action text="Axis Scrollbar" text.ja="軸スクロールバー" name="AxisScrollbar"></action>
+					<action text="Range Selector" text.ja="範囲セレクター" name="ChartRangeSelector"></action>
+					<action text="Drag Points" name="DragPoints"></action>
+					<action text="Axis Markers" name="AxisMarkers"></action>
+				</subactions>
+			</action>
+			<action text="Statistical Charts" text.ja="統計チャート">
+				<subactions>
+					<action text="Box and Whisker" name="BoxWhisker" text.ja="箱ひげ図"></action>
+					<action text="Error Bar" name="ErrorBar" text.ja="エラーバー"></action>
+					<action text="Histogram" name="Histogram" text.ja="ヒストグラム"></action>
+					<action text="Ranged Histogram" name="RangedHistogram" text.ja="範囲ヒストグラム"></action>
+				</subactions>
+			</action>
+		</Control>
+		<Control name="Gauge">
+			<action text="Overview" text.ja="概要" name="Index"></action>
+			<action text="Using Ranges" text.ja="範囲の使用" name="UsingRanges"></action>
+		</Control>
+		<Control name="FlexPie" popular="true">
+			<action text="Pie" text.ja="概要" name="Index"></action>
+			<action text="Selection" text.ja="選択" name="Selection"></action>
+			<action text="Multiple Pies" text.ja="複数の円" name="MultiplePies" ></action>
+			<action text="Sunburst" text.ja="サンバースト" name="SunburstDemo"></action>
+			<action text="Animation" text.ja="アニメーション" name="Animation"></action>
+		</Control>
+		<Control name="TreeMap">
+			<action text="TreeMap" text.ja="ツリーマップ" name="Index"></action>
+		</Control>
+  </ControlGroup>
+	
+	<ControlGroup name="Scheduling" name.ja="スケジュール">
+		<Control name="Calendar" documentation="https://developer.mescius.com/componentone/docs/blazor/online-blazor/C1.Blazor.Calendar~C1.Blazor.Calendar_namespace.html">
+			<action text="General" text.ja="一般">
+				<subactions>
+					<action text="Overview" text.ja="概要" name="Index"></action>
+					<action text="Using Ranges" text.ja="範囲の使用" name="Ranges"></action>
+					<action text="Multiple Months" text.ja="複数の月" name="MultipleMonths"></action>
+					<action text="Model Binding" text.ja="モデル連結" name="Binding"></action>
+				</subactions>
+			</action>
+			<action text="Custom Appearance" text.ja="カスタム外観">
+				<subactions>
+					<action text="Custom Styles" text.ja="カスタムスタイル" name="Styling"></action>
+					<action text="Icon Template" text.ja="アイコンテンプレート" name="IconTemplate"></action>
+					<action text="Item Template" text.ja="項目テンプレート" name="ItemTemplate"></action>
+					<action text="Custom Slots" text.ja="カスタムスロット" name="CustomSlots"></action>
+				</subactions>
+			</action>
+			<action text="Validation" text.ja="検証" name="Validation"></action>
+		</Control>
+	</ControlGroup>
+
+	<ControlGroup name="Documents" name.ja="ドキュメント">
+	<!--	<Control name="FlexViewer" new="true" popular="true">
+			<action text="PDF" text.ja="PDF" name="Index"></action>
+			<action text="FlexReport" text.ja="FlexReport" name="FlexReport"></action>
+			<action text="Report Services" text.ja="Report Service" name="ReportService"></action>
+		</Control>-->
+		<Control name="Excel" new="true">
+			<action text="General" text.ja="一般">
+				<subactions>
+					<action text="Overview" text.ja="概要" name="Index"></action>
+				</subactions>
+			</action>
+			<action text="Fetch weather" text.ja="天気の取得">
+				<subactions>
+					<action text="Fetch data" text.ja="データの取得" name="FetchData"></action>
+					<action text="Fetch Excel file" text.ja="Excel ファイルの取得" name="FetchExcel"></action>
+				</subactions>
+			</action>
+			<action text="Export" text.ja="エクスポート">
+				<subactions>
+					<action text="XLSX/XLS/CSV Export" text.ja="XLSX/XLS/CSV エクスポート" name="Export"></action>
+				</subactions>
+			</action>
+		</Control>
+	</ControlGroup>
+
+	<ControlGroup name="Input" name.ja="入力">
+		<Control name="ComboBox">
+			<action text="Overview" text.ja="概要" name="Index"></action>
+			<action text="Custom Item" text.ja="カスタム項目" name="CustomItem"></action>
+			<action text="Editable" text.ja="編集可能" name="Editable"></action>
+			<action text="Full Screen" text.ja="フルスクリーン" name="FullScreen"></action>
+			<action text="Custom Appearance" text.ja="カスタム外観" name="CustomAppearance"></action>
+			<!--<action text="Complex Type" text.ja="複合型" name="ComplexType"></action>
+      <action text="Item Template" text.ja="項目テンプレート" name="ItemTemplate"></action>
+      <action text="Multi-column DropDown" text.ja="複数列のドロップダウン" name="MultiColumnDropDown"></action>
+      <action text="Unobtrusive Validation" text.ja="控えめな検証" name="UnobtrusiveValidation"></action>
+      <action text="Grouping" text.ja="グループ化" name="Grouping"></action>-->
+		</Control>
+		<Control name="AutoComplete">
+			<action text="Overview" text.ja="概要" name="Index"></action>
+			<action text="Custom Item" text.ja="カスタム項目" name="CustomItem"></action>
+			<action text="Dynamic Source" text.ja="動的ソース" name="DynamicSource"></action>
+			<!--<action text="Complex Type" text.ja="複合型" name="ComplexType"></action>
+      <action text="Incremental Search" text.ja="インクリメンタルサーチ" name="CustomAction"></action>
+      <action text="Unobtrusive Validation" text.ja="控えめな検証" name="UnobtrusiveValidation"></action>-->
+		</Control>
+
+		<Control name="NumericBox">
+			<action text="Overview" text.ja="概要" name="Index" enhanced="true" enhancetip="Added InputType property for InputMask and DropDown"
+						  enhancetip.ja="InputMask と DropDown に InputType プロパティを追加しました。"></action>
+			<!--<action text="Editor Template" text.ja="エディタテンプレート" name="EditorTemplates"></action>-->
+			<action text="Model Binding" text.ja="モデル連結" name="ModelBinding"></action>
+			<!--<action text="Form" text.ja="フォーム" name="Form"></action>-->
+			<!--<action text="Unobtrusive Validation" text.ja="控えめな検証" name="UnobtrusiveValidation"></action>-->
+		</Control>
+
+		<Control name="TimeEditor">
+			<action text="Overview" text.ja="概要" name="Index"></action>
+		</Control>
+
+		<Control name="DatePicker">
+			<action text="Overview" text.ja="概要" name="Index"></action>
+		</Control>
+
+		<Control name="DateTimePicker">
+			<action text="Overview" text.ja="概要" name="Index"></action>
+			<!--<action text="Unobtrusive Validation" text.ja="控えめな検証" name="UnobtrusiveValidation"></action>-->
+		</Control>
+
+		<Control name="DateRangePicker">
+			<action text="Overview" text.ja="概要" name="Index"></action>
+			<action text="CustomStyles" text.ja="カスタムスタイル" name="CustomStyles"></action>
+			<!--<action text="Unobtrusive Validation" text.ja="控えめな検証" name="UnobtrusiveValidation"></action>-->
+		</Control>
+
+		<Control name="MaskedTextBox">
+			<action text="Overview" text.ja="概要" name="Index" enhanced="true" enhancetip="Added InputType property for InputMask and DropDown"
+					enhancetip.ja="InputMask と DropDown に InputType プロパティを追加しました。"></action>
+			<!--<action text="Unobtrusive Validation" text.ja="控えめな検証" name="UnobtrusiveValidation"></action>-->
+		</Control>
+		<Control name="Tooltip">
+			<action text="Overview" text.ja="概要" name="Index"></action>
+			<action text="Validation" text.ja="検証" name="InputForms"></action>
+			<!--<action text="Working with grid" text.ja="Tooltips JP" name="Integrate"></action>-->
+		</Control>
+
+		<Control name="RangeSlider">
+			<action text="Overview" text.ja="概要" name="Index"></action>
+		</Control>
+
+	</ControlGroup>
+	<ControlGroup name="Navigation" name.ja="ナビゲーション">
+		<Control name="TreeView">
+			<action text="Navigation" text.ja="ナビゲーション" name="Index"></action>
+			<action text="Unbound" text.ja="アンバウンド" name="Unbound"></action>
+			<action text="Behavior" text.ja="動作" name="Behavior"></action>
+			<action text="ItemTemplate" text.ja="項目テンプレート" name="ItemTemplate"></action>
+			<action text="IconTemplate" text.ja="アイコンテンプレート" name="IconTemplate"></action>
+			<action text="Searching" text.ja="検索" name="Searching"></action>
+			<action text="Styling" text.ja="スタイル">
+				<subactions>
+					<action text="Overview" text.ja="概要" name="Styling"></action>
+					<action text="Node Borders" text.ja="ノードの枠線" name="NodeBorders"></action>
+					<action text="Accordion Trees" text.ja="アコーディオンツリー" name="AccordionTrees"></action>
+					<action text="Clean Accordion" text.ja="アコーディオンの作成" name="CleanAccordion"></action>
+				</subactions>
+			</action>
+			<action text="Nodes" text.ja="ノード">
+				<subactions>
+					<action text="ShowCheckboxes" text.ja="チェックボックスの表示" name="ShowCheckboxes"></action>
+					<action text="Adding" text.ja="追加" name="Adding"></action>
+					<action text="Removing" text.ja="削除" name="Removing"></action>
+					<action text="Drag And Drop" text.ja="ドラッグアンドドロップ" name="DragAndDrop"></action>
+					<action text="Drag/Drop Between Trees" text.ja="ツリー間のドラッグアンドドロップ" name="DragAndDropBetweenTrees"></action>
+				</subactions>
+			</action>
+			<action text="Right to Left" text.ja="右から左へ" name="RightToLeft"></action>
+		</Control>
+		<Control name="C1Window">
+			<action text="Overview" text.ja="概要" name="Index"></action>
+			<action text="Dialog Result" text.ja="ダイアログ結果" name="DialogResult"></action>
+			<action text="Open With Owner" text.ja="所有者要素を持つ C1Window" name="OpenWithOwner"></action>
+		</Control>
+		<Control name="Menu">
+			<action text="Overview" text.ja="概要" name="Index"></action>
+			<action text="Unbound" text.ja="アンバウンド" name="Unbound"></action>
+			<action text="HeaderTemplate" text.ja="ヘッダーテンプレート" name="HeaderTemplate"></action>
+			<action text="ItemTemplate" text.ja="項目テンプレート" name="ItemTemplate"></action>
+		</Control>
+		<Control name="Accordion">
+			<action text="Overview" text.ja="概要" name="Index"></action>
+			<action text="Expander" text.ja="Expander" name="Expander"></action>
+		</Control>
+	</ControlGroup>
+	<ControlGroup name="Reference Applications" name.ja="リファレンスアプリケーション">
+		<Control referenceApplication="true" name="FlightStatistic" name.ja="FlightStatistic" link="https://developer.mescius.com/componentone/demos/blazor/flightstatistics/" link.ja="https://developer.mescius.com/componentone/demos/blazor/flightstatistics/" />
+		<Control referenceApplication="true" name="InvestmentCalculator" name.ja="InvestmentCalculator" link="https://developer.mescius.com/componentone/demos/blazor/investmentcalculator/" link.ja="https://developer.mescius.com/componentone/demos/blazor/investmentcalculator/" />
+		<Control referenceApplication="true" name="MarketingBudgetTemplate" name.ja="MarketingBudgetTemplate" link="https://developer.mescius.com/componentone/demos/blazor/marketingbudgettemplate/" link.ja="https://developer.mescius.com/componentone/demos/blazor/marketingbudgettemplate/" />
+	</ControlGroup>
+</Controls>

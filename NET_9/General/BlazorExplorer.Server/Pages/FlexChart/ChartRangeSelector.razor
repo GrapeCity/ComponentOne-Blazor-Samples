@@ -1,0 +1,84 @@
+﻿@page "/FlexChart/ChartRangeSelector"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Chart.Interaction;
+@using C1.Blazor.Input;
+
+<FlexChart @ref="chart" Class="chart chart-middle" ChartType="ChartType.Line" Style="height:200px;"
+           BindingX="Day" ItemsSource="Data">
+    <SeriesCollection>
+        <Series Binding="Value" />
+    </SeriesCollection>
+</FlexChart>
+
+<FlexChart @ref="chartOverview" Class="chart chart-small" ChartType="ChartType.Line" 
+           BindingX="Day" Binding="Value" ItemsSource="Data" Tooltip="" RangeSelector="rs">
+    <SeriesCollection>
+        <Series Style="stroke-width:0.5px;" />
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis Position="Position.None" AxisType="AxisType.Y" />
+        <Axis Position="Position.Bottom" AxisType="AxisType.X" />
+    </AxisCollection>
+</FlexChart>
+
+
+<_Sections>
+    <Title>@FlexChartRes.RangeSelectorTitle</Title>
+    <Summary>@FlexChartRes.RangeSelectorSummary</Summary>
+    <Description>@FlexChartRes.RangeSelectorDescription</Description>
+</_Sections>
+
+@code {
+    RangeSelector rs = new RangeSelector();
+    FlexChart chart;
+    FlexChart chartOverview;
+
+
+    List<DataSource.Quote> Data { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Data = DataSource.GetData();
+        rs.ValueChanged += (s, e) =>
+        {
+            chart.BeginUpdate();
+            var amin = chartOverview.AxisX.ActualMin;
+            var amax = chartOverview.AxisX.ActualMax;
+
+            chart.AxisX.Min = amin + rs.LowerValue * (amax - amin);
+            chart.AxisX.Max = amin + rs.UpperValue * (amax - amin);
+            chart.EndUpdate();
+        };
+    }
+
+    public class DataSource
+    {
+        private static Random rnd = new Random();
+
+        public class Quote
+        {
+            public int Day { get; set; }
+            public double Value { get; set; }
+        }
+
+        public static List<Quote> GetData()
+        {
+            var data = new List<Quote>();
+            for (int i = 0; i < 1000; i++)
+            {
+                var r = rnd.NextDouble();
+                var y = (10 * r * Math.Sin(0.1 * i) * Math.Sin(0.6 * rnd.NextDouble() * i));
+
+                var country = new Quote
+                {
+                    Day = i,
+                    Value = y
+                };
+                data.Add(country);
+            }
+            return data;
+        }
+    }
+}

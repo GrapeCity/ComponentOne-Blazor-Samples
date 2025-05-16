@@ -1,0 +1,28 @@
+﻿@page "/Calendar/Index"
+@using C1.Blazor.Calendar
+@using C1.Blazor.Core
+@using System;
+
+<style>
+
+    .c1-calendar {
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+    margin: 20px;
+    }
+
+</style>
+
+
+<C1Calendar></C1Calendar>
+<C1Calendar ViewMode="@CalendarViewMode.Year"></C1Calendar>
+<C1Calendar ViewMode="@CalendarViewMode.Decade"></C1Calendar>
+
+
+
+<_Sections>
+    <Title>@CalendarRes.OverviewTitle</Title>
+    <Summary>@CalendarRes.OverviewSummary</Summary>
+    <Description>@CalendarRes.OverviewDescription</Description>
+</_Sections>

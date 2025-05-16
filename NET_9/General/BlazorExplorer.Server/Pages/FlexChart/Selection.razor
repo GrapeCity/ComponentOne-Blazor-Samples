@@ -1,0 +1,71 @@
+﻿@page "/FlexChart/Selection"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Input;
+
+<FlexChart Class="chart" ChartType="chartType ?? ChartType.Column" SelectionMode="selectionMode ?? ChartSelectionMode.Point" Palette="Palette.Zen"
+           LegendPosition="Position.Right" LegendStyle="font-size:20px"
+           SelectionStyle="stroke:darkgreen;stroke-width:3px;stroke-dasharray:5,5"
+           BindingX="Country" ItemsSource="Data">
+    <SeriesCollection>
+        <Series Name="Revenue" Binding="Sales" Style="stroke-width:1" SymbolSize="20" />
+        <Series Name="Expenses" Binding="Expenses" Style="stroke-width:1" SymbolSize="20"/>
+    </SeriesCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.SelectionTitle</Title>
+    <Settings>
+        Chart Type <C1ComboBox ItemsSource="chartTypes" @bind-SelectedItem="chartType" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")"/>
+        Selection Mode <C1ComboBox ItemsSource="selectionModes" @bind-SelectedItem="selectionMode" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")"/>
+    </Settings>
+    <Summary>@FlexChartRes.SelectionSummary</Summary>
+    <Description>@FlexChartRes.SelectionDescription</Description>
+</_Sections>
+
+@code {
+    ChartType[] chartTypes = new ChartType[] { ChartType.Column, ChartType.Bar, ChartType.Line, ChartType.LineSymbols, 
+        ChartType.Scatter, ChartType.Area };
+    ChartType? chartType = ChartType.Column;
+
+    ChartSelectionMode[] selectionModes = new ChartSelectionMode[] { ChartSelectionMode.None, ChartSelectionMode.Point,
+        ChartSelectionMode.Series };
+    ChartSelectionMode? selectionMode = ChartSelectionMode.Point;
+
+    List<DataSource.CountryData> Data { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Data = DataSource.GetData();
+    }
+
+    public class DataSource
+    {
+        private static Random rnd = new Random();
+
+        public class CountryData
+        {
+            public string Country { get; set; }
+            public double Sales { get; set; }
+            public double Expenses { get; set; }
+        }
+
+        public static List<CountryData> GetData(int rangeMin = 100, int rangeMax = 1000)
+        {
+            var countries = "US,Canada,Mexico,Germany,UK,France,Italy,Japan,Korea,China".Split(',');
+            var data = new List<CountryData>();
+            for (int i = 0; i < countries.Length; i++)
+            {
+                var country = new CountryData
+                {
+                    Country = countries[i],
+                    Sales = rnd.Next(rangeMin, rangeMax),
+                    Expenses = rnd.Next(rangeMin, rangeMax)
+                };
+                data.Add(country);
+            }
+            return data;
+        }
+    }
+}

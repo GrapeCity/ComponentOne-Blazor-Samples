@@ -1,0 +1,38 @@
+﻿@page "/FlexChart/Heatmap"
+@using Localization
+@using System.Drawing;
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Input;
+
+<FlexChart Class="chart" Rotated="true" HeaderContent="Average temperature by month" HeaderStyle="font-size:20px" >
+    <SeriesCollection>
+        <Heatmap ItemsSource="heatmapSource" ColorScale="gradientColorScale" />
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis AxisType="AxisType.X" DataSource="months" Position="Position.Bottom" MajorGrid="false" AxisLine="false" MajorTickMarks="TickMark.None" />
+        <Axis AxisType="AxisType.Y" DataSource="cities" Position="Position.Left" MajorGrid="true" AxisLine="false" MajorTickMarks="TickMark.None" />
+    </AxisCollection>
+    <Label>
+        <DataLabel Content="{item}" Style="color:black;font-size:12px" Position="LabelPosition.Center" Overlapping="LabelOverlapping.Hide" />
+    </Label>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.HeatmapTitle</Title>
+    <Summary>@FlexChartRes.HeatmapSummary</Summary>
+    <Description>@FlexChartRes.HeatmapDescription</Description>
+</_Sections>
+
+@code {
+  double[,] heatmapSource = new double[,] {
+              {  3.0, 3.1, 5.7, 8.2, 12.5, 15.0, 17.1, 17.1, 14.3, 10.6, 6.6, 4.3 },
+              { -9.3, -7.7, -2.2, 5.8, 13.1, 16.6, 18.2, 16.4, 11.0, 5.1, -1.2, -6.1},
+               { -15.1, -12.5, -5.2, 3.1, 10.1, 15.5, 18.3, 15.0, 9.4, 1.4, -5.6, -11.4},
+          };
+  string[] months = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.AbbreviatedMonthNames;
+  string[] cities = new string[] { "Amsterdam", "Moscow", "Perm" };
+  GradientColorScale gradientColorScale = new GradientColorScale() { Min = -20, Max = 20, 
+      Colors = new List<Color> { Color.Blue, Color.White, Color.Red }
+    };
+}

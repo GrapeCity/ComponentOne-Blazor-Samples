@@ -1,0 +1,51 @@
+﻿@inherits LayoutComponentBase
+@implements IDisposable
+@using Localization
+@using Models
+@using System.Globalization
+@using BlazorExplorer.Shared.Headers
+
+<header>
+    @if (App.isGrapeCityVersion)
+    {
+        <GrapeCityHeaderFragment/>
+    }
+    else {
+        <DefaultHeaderFragment/>
+    }
+    <_BreadcrumbNav Path="@_App.RelativeUri"></_BreadcrumbNav>
+</header>
+
+<div class="main-content">
+    @Body
+</div>
+
+<footer>
+    <a href="@(Resource.Layout_GrapeCityUrl)">
+        <img src="Content/images/logo.svg"
+             alt="logo"
+             height="44"
+             />
+    </a>
+    <p>
+        © @DateTime.Now.Year @Resource.Layout_License1<br />
+        @Resource.Layout_License2
+    </p>
+</footer>
+
+
+@code {
+    Action<object> _updateUI;
+
+    protected override void OnInitialized()
+    {
+        _updateUI = new Action<object>((e) => { base.InvokeAsync(this.StateHasChanged); });
+        _App.ViewBagSrv.AddObserveAction(_updateUI);
+
+    }
+
+    public void Dispose()
+    {
+        _App.ViewBagSrv.RemoveObserveAction(_updateUI);
+    }
+}
