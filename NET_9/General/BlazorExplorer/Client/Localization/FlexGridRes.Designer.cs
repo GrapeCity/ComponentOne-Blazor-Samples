@@ -268,7 +268,34 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demos how to customize the grid&apos;s column layout by hiding unnecessary columns and reordering them..
+        ///   Looks up a localized string similar to Keep Layout.
+        /// </summary>
+        public static string ColumnLayoutKeepButtonText {
+            get {
+                return ResourceManager.GetString("ColumnLayoutKeepButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use the buttons below to save or restore the current grid layout, including column order, visibility, filtering, and sorting. .
+        /// </summary>
+        public static string ColumnLayoutMaintainingDescription {
+            get {
+                return ResourceManager.GetString("ColumnLayoutMaintainingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restore Layout.
+        /// </summary>
+        public static string ColumnLayoutRestoreButtonText {
+            get {
+                return ResourceManager.GetString("ColumnLayoutRestoreButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demonstrates how to customize the grid&apos;s column layout by hiding unnecessary columns and reordering them..
         /// </summary>
         public static string ColumnLayoutSummary {
             get {
@@ -691,7 +718,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The sample demos how to customize a GridColumn of FlexGrid. The &quot;Country&quot; column has edited using a dropdown instead of textbox editor..
+        ///   Looks up a localized string similar to The sample demonstrates how to customize a GridColumn of FlexGrid. The &quot;Country&quot; column has edited using a dropdown instead of textbox editor..
         /// </summary>
         public static string GridColumnCustomizationDescription {
             get {

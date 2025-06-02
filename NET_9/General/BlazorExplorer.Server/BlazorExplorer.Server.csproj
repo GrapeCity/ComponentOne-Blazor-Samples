@@ -118,6 +118,7 @@
     <PackageReference Include="C1.Blazor.Viewer">
       <Version>9.0.20251.1071-beta</Version>
     </PackageReference>
+	<PackageReference Include="C1.DataCollection.Serialization" Version="9.0.20251.210" />
     <PackageReference Include="C1.Excel" Version="9.0.20251.144" />
     <PackageReference Include="C1.FlexReport" Version="8.0.20251.85" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0" />
