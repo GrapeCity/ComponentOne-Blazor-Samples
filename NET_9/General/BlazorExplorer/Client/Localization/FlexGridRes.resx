@@ -566,8 +566,8 @@
     <comment>button allows to restore previously saved grid state (columns ordering/filtering/etc.)</comment>
   </data>
 	<data name="ColumnLayoutKeepButtonText" xml:space="preserve">
-    <value>Keep Layout</value>
-    <comment>allows to keep grid state (columns ordering/filtering/etc.)</comment>
+    <value>Save Layout</value>
+    <comment>allows to save grid state (columns ordering/filtering/etc.)</comment>
   </data>
 	<data name="ColumnLayoutMaintainingDescription" xml:space="preserve">
     <value>Use the buttons below to save or restore the current grid layout, including column order, visibility, filtering, and sorting. </value>
