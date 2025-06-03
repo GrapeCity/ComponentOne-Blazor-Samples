@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
+	<!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,516 +59,524 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <data name="Apply" xml:space="preserve">
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="Apply" xml:space="preserve">
     <value>Apply</value>
     <comment>apply edits for this item</comment>
   </data>
-  <data name="Cancel" xml:space="preserve">
+	<data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
     <comment>cancel edits for this item</comment>
   </data>
-  <data name="Collapse" xml:space="preserve">
+	<data name="Collapse" xml:space="preserve">
     <value>Collapse</value>
   </data>
-  <data name="ColumnDefinitionSummary" xml:space="preserve">
+	<data name="ColumnDefinitionSummary" xml:space="preserve">
     <value>Shows how to specify and format columns.</value>
   </data>
-  <data name="ColumnDefinitionTitle" xml:space="preserve">
+	<data name="ColumnDefinitionTitle" xml:space="preserve">
     <value>Column Definitions</value>
   </data>
-  <data name="CustomCellsDescription" xml:space="preserve">
+	<data name="CustomCellsDescription" xml:space="preserve">
     <value>Customizes a cell by displaying a numeric value in a gauge.</value>
   </data>
-  <data name="CustomCellsTitle" xml:space="preserve">
+	<data name="CustomCellsTitle" xml:space="preserve">
     <value>Custom Cells</value>
   </data>
-  <data name="EditCustomer" xml:space="preserve">
+	<data name="EditCustomer" xml:space="preserve">
     <value>Edit Customer</value>
   </data>
-  <data name="EditingDescription" xml:space="preserve">
+	<data name="EditingDescription" xml:space="preserve">
     <value>Edit cells by input form rather than inline.</value>
   </data>
-  <data name="EditingTitle" xml:space="preserve">
+	<data name="EditingTitle" xml:space="preserve">
     <value>Editing Form</value>
   </data>
-  <data name="EditRow" xml:space="preserve">
+	<data name="EditRow" xml:space="preserve">
     <value>Edit Row</value>
     <comment>edit a single row</comment>
   </data>
-  <data name="EmptyListText" xml:space="preserve">
+	<data name="EmptyListText" xml:space="preserve">
     <value>There are no videos to show.</value>
   </data>
-  <data name="Filter" xml:space="preserve">
+	<data name="Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
-  <data name="FilterRowDescription" xml:space="preserve">
+	<data name="FilterRowDescription" xml:space="preserve">
     <value>Filters the data by columns through GridFilterRow.</value>
   </data>
-  <data name="FilterPlaceholderText" xml:space="preserve">
+	<data name="FilterPlaceholderText" xml:space="preserve">
     <value>Enter text to filter</value>
   </data>
-  <data name="FilterRowTitle" xml:space="preserve">
+	<data name="FilterRowTitle" xml:space="preserve">
     <value>Filter Row</value>
   </data>
-  <data name="FullTextFilterSummary" xml:space="preserve">
+	<data name="FullTextFilterSummary" xml:space="preserve">
     <value>Filters and highlights the data across all columns.</value>
   </data>
-  <data name="FullTextFilterTitle" xml:space="preserve">
+	<data name="FullTextFilterTitle" xml:space="preserve">
     <value>Full Text Filter</value>
   </data>
-  <data name="GettingStartedDescription" xml:space="preserve">
+	<data name="GettingStartedDescription" xml:space="preserve">
     <value>Display, edit and aggregate your data all at once with FlexGrid.</value>
   </data>
-  <data name="GettingStartedTitle" xml:space="preserve">
+	<data name="GettingStartedTitle" xml:space="preserve">
     <value>Getting Started</value>
   </data>
-  <data name="GroupingSummary" xml:space="preserve">
+	<data name="GroupingSummary" xml:space="preserve">
     <value>Groups and aggregates a collection of data.</value>
   </data>
-  <data name="GroupingTitle" xml:space="preserve">
+	<data name="GroupingTitle" xml:space="preserve">
     <value>Grouping</value>
   </data>
-  <data name="OnDemandSummary" xml:space="preserve">
+	<data name="OnDemandSummary" xml:space="preserve">
     <value>Load items on demand as the user scrolls down the grid.</value>
   </data>
-  <data name="OnDemandTitle" xml:space="preserve">
+	<data name="OnDemandTitle" xml:space="preserve">
     <value>On Demand</value>
   </data>
-  <data name="Remove" xml:space="preserve">
+	<data name="Remove" xml:space="preserve">
     <value>Remove</value>
     <comment>remove filter</comment>
   </data>
-  <data name="SearchPlaceholderText" xml:space="preserve">
+	<data name="SearchPlaceholderText" xml:space="preserve">
     <value>Enter text to search videos on YouTube</value>
   </data>
-  <data name="SelectionModesSummary" xml:space="preserve">
+	<data name="SelectionModesSummary" xml:space="preserve">
     <value>Shows the various cell selection modes.</value>
   </data>
-  <data name="SelectionModesTitle" xml:space="preserve">
+	<data name="SelectionModesTitle" xml:space="preserve">
     <value>Selection Modes</value>
   </data>
-  <data name="Sort" xml:space="preserve">
+	<data name="Sort" xml:space="preserve">
     <value>Sort</value>
   </data>
-  <data name="ConditionalFormattingSummary" xml:space="preserve">
+	<data name="ConditionalFormattingSummary" xml:space="preserve">
     <value>Uses a CellFactory to apply conditional formatting.</value>
   </data>
-  <data name="ConditionalFormattingTitle" xml:space="preserve">
+	<data name="ConditionalFormattingTitle" xml:space="preserve">
     <value>Conditional Formatting</value>
   </data>
-  <data name="OK" xml:space="preserve">
+	<data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="SelectRowMessage" xml:space="preserve">
+	<data name="SelectRowMessage" xml:space="preserve">
     <value>Please select a row first or double-tap the row directly.</value>
   </data>
-  <data name="CellFreezingSummary" xml:space="preserve">
+	<data name="CellFreezingSummary" xml:space="preserve">
     <value>Shows frozen columns, rows and cell merging.</value>
   </data>
-  <data name="CellFreezingTitle" xml:space="preserve">
+	<data name="CellFreezingTitle" xml:space="preserve">
     <value>Cell Freezing &amp; Merging</value>
   </data>
-  <data name="ResponsiveSizingSummary" xml:space="preserve">
+	<data name="ResponsiveSizingSummary" xml:space="preserve">
     <value>Shows a responsive column layout that uses star sizing.</value>
   </data>
-  <data name="ResponsiveSizingTitle" xml:space="preserve">
+	<data name="ResponsiveSizingTitle" xml:space="preserve">
     <value>Responsive Sizing</value>
   </data>
-  <data name="EditConfirmationSummary" xml:space="preserve">
+	<data name="EditConfirmationSummary" xml:space="preserve">
     <value>Shows how to prompt the user with a confirmation dialog before committing changes to a cell.</value>
   </data>
-  <data name="EditConfirmationTitle" xml:space="preserve">
+	<data name="EditConfirmationTitle" xml:space="preserve">
     <value>Edit Confirmation</value>
   </data>
-  <data name="EditConfirmationQuestion" xml:space="preserve">
+	<data name="EditConfirmationQuestion" xml:space="preserve">
     <value>Do you want to commit the edit?</value>
   </data>
-  <data name="EditConfirmationQuestionTitle" xml:space="preserve">
+	<data name="EditConfirmationQuestionTitle" xml:space="preserve">
     <value>Confirm Edit</value>
   </data>
-  <data name="ColumnLayoutDescription" xml:space="preserve">
+	<data name="ColumnLayoutDescription" xml:space="preserve">
     <value>Shows a custom column manager to modify column layout.</value>
   </data>
-  <data name="ColumnLayoutTitle" xml:space="preserve">
+	<data name="ColumnLayoutTitle" xml:space="preserve">
     <value>Column Layout</value>
   </data>
-  <data name="EditColumnLayout" xml:space="preserve">
+	<data name="EditColumnLayout" xml:space="preserve">
     <value>Edit</value>
   </data>
-  <data name="Save" xml:space="preserve">
+	<data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
-  <data name="ResponsiveSizingInstructions" xml:space="preserve">
+	<data name="ResponsiveSizingInstructions" xml:space="preserve">
     <value>Rotate the device to see star-sizing in action.</value>
   </data>
-  <data name="RowDetailsSummary" xml:space="preserve">
+	<data name="RowDetailsSummary" xml:space="preserve">
     <value>Expand and collapse row details.</value>
   </data>
-  <data name="RowDetailsTitle" xml:space="preserve">
+	<data name="RowDetailsTitle" xml:space="preserve">
     <value>Row Details</value>
   </data>
-  <data name="CellMergingSummary" xml:space="preserve">
+	<data name="CellMergingSummary" xml:space="preserve">
     <value>Shows a grid with cell merging.</value>
   </data>
-  <data name="CellMergingTitle" xml:space="preserve">
+	<data name="CellMergingTitle" xml:space="preserve">
     <value>Cells Merging</value>
   </data>
-  <data name="UnboundSummary" xml:space="preserve">
+	<data name="UnboundSummary" xml:space="preserve">
     <value>Add empty rows and columns to create an unbound grid.</value>
   </data>
-  <data name="UnboundTitle" xml:space="preserve">
+	<data name="UnboundTitle" xml:space="preserve">
     <value>Unbound</value>
   </data>
-  <data name="CellsSelectedText" xml:space="preserve">
+	<data name="CellsSelectedText" xml:space="preserve">
     <value>cell(s) selected</value>
   </data>
-  <data name="CustomAppearanceSummary" xml:space="preserve">
+	<data name="CustomAppearanceSummary" xml:space="preserve">
     <value>Shows a grid with a custom style.</value>
   </data>
-  <data name="CustomAppearanceTitle" xml:space="preserve">
+	<data name="CustomAppearanceTitle" xml:space="preserve">
     <value>Custom Appearance</value>
   </data>
-  <data name="DetailsVisibiltyMode" xml:space="preserve">
+	<data name="DetailsVisibiltyMode" xml:space="preserve">
     <value>DetailsVisibiltyMode</value>
   </data>
-  <data name="Friday" xml:space="preserve">
+	<data name="Friday" xml:space="preserve">
     <value>Friday</value>
   </data>
-  <data name="Monday" xml:space="preserve">
+	<data name="Monday" xml:space="preserve">
     <value>Monday</value>
   </data>
-  <data name="Saturday" xml:space="preserve">
+	<data name="Saturday" xml:space="preserve">
     <value>Saturday</value>
   </data>
-  <data name="Sunday" xml:space="preserve">
+	<data name="Sunday" xml:space="preserve">
     <value>Sunday</value>
   </data>
-  <data name="Thursday" xml:space="preserve">
+	<data name="Thursday" xml:space="preserve">
     <value>Thursday</value>
   </data>
-  <data name="Tuesday" xml:space="preserve">
+	<data name="Tuesday" xml:space="preserve">
     <value>Tuesday</value>
   </data>
-  <data name="Wednesday" xml:space="preserve">
+	<data name="Wednesday" xml:space="preserve">
     <value>Wednesday</value>
   </data>
-  <data name="Weekday" xml:space="preserve">
+	<data name="Weekday" xml:space="preserve">
     <value>Weekday</value>
   </data>
-  <data name="Weekend" xml:space="preserve">
+	<data name="Weekend" xml:space="preserve">
     <value>Weekend</value>
   </data>
-  <data name="ShowMarquee" xml:space="preserve">
+	<data name="ShowMarquee" xml:space="preserve">
     <value>ShowMarquee</value>
   </data>
-  <data name="NewRowSummary" xml:space="preserve">
+	<data name="NewRowSummary" xml:space="preserve">
     <value>Shows adding new rows.</value>
   </data>
-  <data name="NewRowTitle" xml:space="preserve">
+	<data name="NewRowTitle" xml:space="preserve">
     <value>New Row</value>
   </data>
-  <data name="NewRowPlaceholder" xml:space="preserve">
+	<data name="NewRowPlaceholder" xml:space="preserve">
     <value>Click here to add a new row</value>
   </data>
-  <data name="MatchCaseLabel" xml:space="preserve">
+	<data name="MatchCaseLabel" xml:space="preserve">
     <value>Match Case</value>
   </data>
-  <data name="MatchWholeWordLabel" xml:space="preserve">
+	<data name="MatchWholeWordLabel" xml:space="preserve">
     <value>Match Whole Word</value>
   </data>
-  <data name="CheckListSummary" xml:space="preserve">
+	<data name="CheckListSummary" xml:space="preserve">
     <value>Show how to select flexgrid rows through checkboxes.</value>
   </data>
-  <data name="CheckListTitle" xml:space="preserve">
+	<data name="CheckListTitle" xml:space="preserve">
     <value>Check-List</value>
   </data>
-  <data name="CustomSortIconTitle" xml:space="preserve">
+	<data name="CustomSortIconTitle" xml:space="preserve">
     <value>Custom Sort Icon</value>
   </data>
-  <data name="CustomSortIconSummary" xml:space="preserve">
+	<data name="CustomSortIconSummary" xml:space="preserve">
     <value>Show how to customize the sorting icon in header columns.</value>
   </data>
-  <data name="SortIconPosition" xml:space="preserve">
+	<data name="SortIconPosition" xml:space="preserve">
     <value>Sort icon position</value>
   </data>
-  <data name="SortIconTemplate" xml:space="preserve">
+	<data name="SortIconTemplate" xml:space="preserve">
     <value>Sort icon template</value>
   </data>
-  <data name="LiveUpdatesDescription" xml:space="preserve">
+	<data name="LiveUpdatesDescription" xml:space="preserve">
     <value>Shows how to animates changes in the grid.</value>
   </data>
-  <data name="LiveUpdatesTitle" xml:space="preserve">
+	<data name="LiveUpdatesTitle" xml:space="preserve">
     <value>Live updates</value>
   </data>
-  <data name="ColorUpdates" xml:space="preserve">
+	<data name="ColorUpdates" xml:space="preserve">
     <value>Color coded updates</value>
   </data>
-  <data name="ExportDescription" xml:space="preserve">
+	<data name="ExportDescription" xml:space="preserve">
     <value>The Save method allows exporting the data shown in the grid to CSV, text, and HTML.</value>
   </data>
-  <data name="ExportTitle" xml:space="preserve">
+	<data name="ExportTitle" xml:space="preserve">
     <value>Export</value>
   </data>
-  <data name="PagingSummary" xml:space="preserve">
+	<data name="PagingSummary" xml:space="preserve">
     <value>Shows how to use C1DataPager to navigate through different  pages of data bound to FlexGrid</value>
   </data>
-  <data name="PagingTitle" xml:space="preserve">
+	<data name="PagingTitle" xml:space="preserve">
     <value>Paging</value>
   </data>
-  <data name="VirtualModeSummary" xml:space="preserve">
+	<data name="VirtualModeSummary" xml:space="preserve">
     <value>Shows how to bind FlexGrid to a data source whose items are fetch as the user scroll down.</value>
   </data>
-  <data name="VirtualModeTitle" xml:space="preserve">
+	<data name="VirtualModeTitle" xml:space="preserve">
     <value>Virtual Mode</value>
   </data>
-  <data name="SearchText" xml:space="preserve">
+	<data name="SearchText" xml:space="preserve">
     <value>Search</value>
   </data>
-  <data name="StockSymbolSelectText" xml:space="preserve">
+	<data name="StockSymbolSelectText" xml:space="preserve">
     <value>Select one or more symbols</value>
   </data>
-  <data name="GroupByDepartmentText" xml:space="preserve">
+	<data name="GroupByDepartmentText" xml:space="preserve">
     <value>Group by department</value>
   </data>
-  <data name="OverviewDescription" xml:space="preserve">
+	<data name="OverviewDescription" xml:space="preserve">
     <value>The native FlexGrid for Blazor control allows you to display, select, edit, sort, group and filter tabular and hierarchical data. It provides exceptional flexibility and customization for cell editing and appearance. Plus, it supports smart, on-demand loading for large data sets, responsive sizing, and many Microsoft Excel-like spreadsheet features such as cell freezing and merging.</value>
   </data>
-  <data name="OverviewTitle" xml:space="preserve">
+	<data name="OverviewTitle" xml:space="preserve">
     <value>Overview</value>
   </data>
-  <data name="SelectionModesDescription" xml:space="preserve">
+	<data name="SelectionModesDescription" xml:space="preserve">
     <value>Manage how cells are selected by setting the selection mode. FlexGrid supports single row, column and cell selection modes, (plus ranges when the user holds the SHIFT key, and multiple ranges by pressing CTRL key) The selected cell data can then be easily retrieved through the control’s Selection and SeletedRanges properties.</value>
   </data>
-  <data name="CellFreezingDescription" xml:space="preserve">
+	<data name="CellFreezingDescription" xml:space="preserve">
     <value>FlexGrid supports freezing rows and columns so that they remain static as the user scrolls.</value>
   </data>
-  <data name="CellMergingDescription" xml:space="preserve">
+	<data name="CellMergingDescription" xml:space="preserve">
     <value>FlexGrid supports cell merging. Data across rows or down columns can be automatically merged when working with bound data. Cells can even be merged in both directions if the data values are the same.</value>
   </data>
-  <data name="CheckListDescription" xml:space="preserve">
+	<data name="CheckListDescription" xml:space="preserve">
     <value>Enable selection of multiple, non-adjacent rows using check-boxes. This feature is built-in using a FlexGrid behavior.</value>
   </data>
-  <data name="ColumnDefinitionDescription" xml:space="preserve">
+	<data name="ColumnDefinitionDescription" xml:space="preserve">
     <value>By default, columns are automatically generated when you bind FlexGrid to a data source. For complete control over which columns are displayed, and in what order, you may define the columns yourself and disable the automatic generation. This demo shows how to define columns in markup, as well as format number and date values.</value>
   </data>
-  <data name="ConditionalFormattingDescription" xml:space="preserve">
+	<data name="ConditionalFormattingDescription" xml:space="preserve">
     <value>The GridCellFactory class is used to create custom cells in FlexGrid. In addition to supporting custom elements within cells, the cell factory can be used to provide complete control over the display of each cell. In this demo, a cell factory is used to customize the cell background and text colors based upon the cell values.</value>
   </data>
-  <data name="CustomAppearanceDescription" xml:space="preserve">
+	<data name="CustomAppearanceDescription" xml:space="preserve">
     <value>FlexGrid contains many properties that allow you to easily style all visual aspects of the grid. This includes column headers, row headers, selection adorners, gridlines, selected cells, and cell padding.</value>
   </data>
-  <data name="CustomColumnDescription" xml:space="preserve">
+	<data name="CustomColumnDescription" xml:space="preserve">
     <value>This demo shows several custom columns including images, numeric input, date &amp; time and cell text with wrapping.</value>
   </data>
-  <data name="CustomColumnSummary" xml:space="preserve">
+	<data name="CustomColumnSummary" xml:space="preserve">
     <value>Shows how to customize different kinds of columns</value>
   </data>
-  <data name="CustomColumnTitle" xml:space="preserve">
+	<data name="CustomColumnTitle" xml:space="preserve">
     <value>Custom Column</value>
   </data>
-  <data name="CustomSortIconDescription" xml:space="preserve">
+	<data name="CustomSortIconDescription" xml:space="preserve">
     <value>Data displayed within FlexGrid can be quickly sorted by clicking or tapping column headers. This demo shows how to customize the sort icon position and template.</value>
   </data>
-  <data name="EditConfirmationDescription" xml:space="preserve">
+	<data name="EditConfirmationDescription" xml:space="preserve">
     <value>This demo shows how to prompt the user with a confirmation dialog before committing changes to a cell.</value>
   </data>
-  <data name="FullTextFilterDescription" xml:space="preserve">
+	<data name="FullTextFilterDescription" xml:space="preserve">
     <value>Full-text filtering is the simplest way to filter FlexGrid. Simply bind a text box (such as C1TextBox) to the FlexGrid’s filter behavior and get instant filtering that can match exact case, partial text or whole words across all columns of the grid. You can also set the highlight text color.</value>
   </data>
-  <data name="GroupingDescription" xml:space="preserve">
+	<data name="GroupingDescription" xml:space="preserve">
     <value>FlexGrid can display data that is grouped and aggregated through C1DataCollection. You can customize the text that is displayed in group header rows using the grid's GroupHeaderFormat property.</value>
   </data>
-  <data name="NewRowDescription" xml:space="preserve">
+	<data name="NewRowDescription" xml:space="preserve">
     <value>Users can add rows to the data grid using the add new row feature. The new row placeholder can be at the top or bottom of the grid.</value>
   </data>
-  <data name="OnDemandDescription" xml:space="preserve">
+	<data name="OnDemandDescription" xml:space="preserve">
     <value>With on-demand loading, FlexGrid loads items as the user scrolls. This is different from virtual mode because the grid never knows the total number of rows, so the scroll bar size and position changes as more data is loaded into the grid. This virtualization technique is supported by the help of C1DataCollection.</value>
   </data>
-  <data name="PagingDescription" xml:space="preserve">
+	<data name="PagingDescription" xml:space="preserve">
     <value>Enable paging using the C1DataPager to navigate through different pages of data bound to FlexGrid. Like the virtual mode and on-demand loading, paging is supported by the help of C1DataCollection.</value>
   </data>
-  <data name="ResponsiveSizingDescription" xml:space="preserve">
+	<data name="ResponsiveSizingDescription" xml:space="preserve">
     <value>FlexGrid can be responsively sized, meaning the column widths can adjust automatically to nicely fill the entire available space no matter what browser or device is being used. This is known as star-sizing, and you can configure each column to be proportionally sized such as 2*, 3*, and so on.</value>
   </data>
-  <data name="RowDetailsDescription" xml:space="preserve">
+	<data name="RowDetailsDescription" xml:space="preserve">
     <value>Adding a row details section enables you to make a hierarchical grid by grouping some data in a template that is collapsed beneath each row. For example, you can add row details to a FlexGrid that presents only a summary of the data for each row but presents more data when the user selects a row.</value>
   </data>
-  <data name="UnboundDescription" xml:space="preserve">
+	<data name="UnboundDescription" xml:space="preserve">
     <value>In addition to displaying bound data, FlexGrid can be used completely unbound. Add any number of rows and columns and populate the cells programmatically or let the end-user fill them in like a spreadsheet.</value>
   </data>
-  <data name="VirtualModeDescription" xml:space="preserve">
+	<data name="VirtualModeDescription" xml:space="preserve">
     <value>FlexGrid supports data virtualization for faster performance for very large data sets. With virtual mode, data is fetched in pages as the user scrolls. The grid knows the total number of rows but only loads and displays those that are visible to the user. This virtualization technique is supported by the help of C1DataCollection.</value>
   </data>
-  <data name="SelectionModesLabel" xml:space="preserve">
+	<data name="SelectionModesLabel" xml:space="preserve">
     <value>Selection Modes</value>
   </data>
-  <data name="ExportSummary" xml:space="preserve">
+	<data name="ExportSummary" xml:space="preserve">
     <value>Shows how to export to CSV, text, and HTML.</value>
   </data>
-  <data name="FilterRowSummary" xml:space="preserve">
+	<data name="FilterRowSummary" xml:space="preserve">
     <value>Filters the data by columns through GridFilterRow.</value>
   </data>
-  <data name="AllowResizingLabel" xml:space="preserve">
+	<data name="AllowResizingLabel" xml:space="preserve">
     <value>Allow Resizing</value>
   </data>
-  <data name="Address" xml:space="preserve">
+	<data name="Address" xml:space="preserve">
     <value>Address</value>
   </data>
-  <data name="Alert" xml:space="preserve">
+	<data name="Alert" xml:space="preserve">
     <value>Alert!</value>
   </data>
-  <data name="AlertText" xml:space="preserve">
+	<data name="AlertText" xml:space="preserve">
     <value>Please select row to edit.</value>
   </data>
-  <data name="City" xml:space="preserve">
+	<data name="City" xml:space="preserve">
     <value>City</value>
   </data>
-  <data name="EditItem" xml:space="preserve">
+	<data name="EditItem" xml:space="preserve">
     <value>Edit item</value>
   </data>
-  <data name="EditSelectedItem" xml:space="preserve">
+	<data name="EditSelectedItem" xml:space="preserve">
     <value>Edit selected item</value>
   </data>
-  <data name="FirstName" xml:space="preserve">
+	<data name="FirstName" xml:space="preserve">
     <value>First name</value>
   </data>
-  <data name="LastName" xml:space="preserve">
+	<data name="LastName" xml:space="preserve">
     <value>Last name</value>
   </data>
-  <data name="PostalCode" xml:space="preserve">
+	<data name="PostalCode" xml:space="preserve">
     <value>Postal code</value>
   </data>
-  <data name="ExcelExportDescription" xml:space="preserve">
+	<data name="ExcelExportDescription" xml:space="preserve">
     <value>Show cases the export feature of FlexGrid using GcExcel</value>
   </data>
-  <data name="ExcelExportSummary" xml:space="preserve">
+	<data name="ExcelExportSummary" xml:space="preserve">
     <value>Show the case how the FlexGrid support export to excel using GcExcel</value>
   </data>
-  <data name="ExcelExportTitle" xml:space="preserve">
+	<data name="ExcelExportTitle" xml:space="preserve">
     <value>Excel Export</value>
   </data>
-  <data name="ShowSort" xml:space="preserve">
+	<data name="ShowSort" xml:space="preserve">
     <value>Show sort icons</value>
   </data>
-  <data name="GridColumnCustomizationDescription" xml:space="preserve">
-    <value>The sample demos how to customize a GridColumn of FlexGrid. The "Country" column has edited using a dropdown instead of textbox editor.</value>
+	<data name="GridColumnCustomizationDescription" xml:space="preserve">
+    <value>The sample demonstrates how to customize a GridColumn of FlexGrid. The "Country" column has edited using a dropdown instead of textbox editor.</value>
   </data>
-  <data name="GridColumnCustomizationTitle" xml:space="preserve">
+	<data name="GridColumnCustomizationTitle" xml:space="preserve">
     <value>GridColumn customization</value>
   </data>
-  <data name="PinColumn" xml:space="preserve">
+	<data name="PinColumn" xml:space="preserve">
     <value>Pin Column</value>
   </data>
-  <data name="PinColumnDescription" xml:space="preserve">
+	<data name="PinColumnDescription" xml:space="preserve">
     <value>Shows how to implement pin/unpin columns so they become frozen at the left edge of the grid while scrolling horizontally.</value>
   </data>
-  <data name="PinColumnTitle" xml:space="preserve">
+	<data name="PinColumnTitle" xml:space="preserve">
     <value>Pin Column</value>
   </data>
-  <data name="UnpinColumn" xml:space="preserve">
+	<data name="UnpinColumn" xml:space="preserve">
     <value>Unpin Column</value>
   </data>
-  <data name="SummaryRowDescription" xml:space="preserve">
+	<data name="SummaryRowDescription" xml:space="preserve">
     <value>SummaryRows allow displaying aggregating values that are calculated from the AggregateFunctions in the corresponding columns.</value>
   </data>
-  <data name="SummaryRowTitle" xml:space="preserve">
+	<data name="SummaryRowTitle" xml:space="preserve">
     <value>Summary Row</value>
   </data>
-  <data name="SummaryRowSummary" xml:space="preserve">
+	<data name="SummaryRowSummary" xml:space="preserve">
     <value>Shows a row that summarizes the values in the columns</value>
   </data>
-  <data name="TransposedGridDescription" xml:space="preserve">
+	<data name="TransposedGridDescription" xml:space="preserve">
     <value>Show how to transpose columns and rows so the data items are shown as columns.</value>
   </data>
-  <data name="TransposedGridTitle" xml:space="preserve">
+	<data name="TransposedGridTitle" xml:space="preserve">
     <value>Transposed Grid</value>
   </data>
-  <data name="ValidationDescription" xml:space="preserve">
+	<data name="ValidationDescription" xml:space="preserve">
     <value>Show how to display and style validation</value>
   </data>
-  <data name="ValidationTitle" xml:space="preserve">
+	<data name="ValidationTitle" xml:space="preserve">
     <value>Validation</value>
   </data>
-  <data name="HierarchicalRowsDescription" xml:space="preserve">
+	<data name="HierarchicalRowsDescription" xml:space="preserve">
     <value>Shows a tree-like data-source bound to FlexGrid using ChildItemsPath property.</value>
   </data>
-  <data name="HierarchicalRowsTitle" xml:space="preserve">
+	<data name="HierarchicalRowsTitle" xml:space="preserve">
     <value>Hierarchical Rows</value>
   </data>
-  <data name="HierarchicalRowsSummary" xml:space="preserve">
+	<data name="HierarchicalRowsSummary" xml:space="preserve">
     <value />
   </data>
-  <data name="FilterByCondition" xml:space="preserve">
+	<data name="FilterByCondition" xml:space="preserve">
     <value>Filter by condition</value>
     <comment>Filter by condition</comment>
   </data>
-  <data name="FilterByValues" xml:space="preserve">
+	<data name="FilterByValues" xml:space="preserve">
     <value>Filter by values</value>
     <comment>Filter by values</comment>
   </data>
-  <data name="ColumnLayoutTitle" xml:space="preserve">
-	<value>Column Layout</value>
+	<data name="ColumnLayoutSummary" xml:space="preserve">
+    <value>Demonstrates how to customize the grid's column layout by hiding unnecessary columns and reordering them.</value>
   </data>
-	
-  <data name="ColumnLayoutSummary" xml:space="preserve">
-   <value>Demos how to customize the grid's column layout by hiding unnecessary columns and reordering them.</value>
+	<data name="ColumnLayoutRestoreButtonText" xml:space="preserve">
+    <value>Restore Layout</value>
+    <comment>button allows to restore previously saved grid state (columns ordering/filtering/etc.)</comment>
+  </data>
+	<data name="ColumnLayoutKeepButtonText" xml:space="preserve">
+    <value>Save Layout</value>
+    <comment>allows to save grid state (columns ordering/filtering/etc.)</comment>
+  </data>
+	<data name="ColumnLayoutMaintainingDescription" xml:space="preserve">
+    <value>Use the buttons below to save or restore the current grid layout, including column order, visibility, filtering, and sorting. </value>
+    <comment>Grid layout maintaining description.</comment>
   </data>
 </root>

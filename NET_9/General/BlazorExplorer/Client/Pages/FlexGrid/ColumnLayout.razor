@@ -1,5 +1,23 @@
 ﻿@page "/FlexGrid/ColumnLayout"
-<FlexGrid CellFactory="factory" StyleKind="GridStyle.Classic" ItemsSource="@customers" Style="@("max-height:50vh")"/>
+@using C1.DataCollection.Serialization
+@using System.Text.Json
+@using System.Text.Json.Serialization
+@inject LocalStorageService localStorageService
+
+
+<FlexGrid @ref="grid" CellFactory="factory" StyleKind="GridStyle.Classic" ItemsSource="@customers" Style="@("max-height:50vh")" />
+<div style="padding: 12px 18px">
+    <p>
+        @FlexGridRes.ColumnLayoutMaintainingDescription
+    </p>
+    <button type="button" class="btn btn-default" style="margin-right: 12px" @attributes="restoreButtonAttributes" @onclick="() => ApplyGridParameterSet(grid, parameterSetJson)">
+        @FlexGridRes.ColumnLayoutRestoreButtonText
+    </button>
+    <button type="button" class="btn btn-default" @attributes="keepButtonAttributes" @onclick="OnKeepButtonClicked">
+        @FlexGridRes.ColumnLayoutKeepButtonText
+    </button>
+</div>
+
 
 <_Sections>
     <Title>@FlexGridRes.ColumnLayoutTitle</Title>
@@ -8,9 +26,39 @@
 </_Sections>
 
 @code {
+    readonly C1DataCollection<Customer> customers = new C1DataCollection<Customer>(Customer.GetCustomerList(100).AsDataCollection());
+    FlexGrid grid;
     Factory factory = new Factory();
 
-    readonly ObservableCollection<Customer> customers = Customer.GetCustomerList(100);
+    const string storageDataKey = "column-layout-grid-parameters";
+    string parameterSetJson;
+    bool updating;
+
+    Dictionary<string, object> restoreButtonAttributes => parameterSetJson is null || updating ? new() { { "disabled", true } } : null;
+    Dictionary<string, object> keepButtonAttributes => updating ? new() { { "disabled", true } } : null;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Load the previously kept parameters.
+            var result = await localStorageService.GetAsync(storageDataKey);
+            parameterSetJson = result;
+
+            // Invalidate view.
+            StateHasChanged();
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    async Task OnKeepButtonClicked()
+    {
+        updating = true;
+        parameterSetJson = SerializeGridParameters(grid);
+        await localStorageService.SetAsync(storageDataKey, parameterSetJson);
+        updating = false;
+    }
 
     class Factory : GridCellFactory
     {
@@ -37,4 +85,121 @@
             return base.GetCellContentRenderFragment(cellType, range);
         }
     }
+
+    #region Grid parameters serialization and restoration
+    /// <summary>
+    /// Serializes the FlexGrid's parameters set, including filter, sort, and column layout information.
+    /// </summary>
+    /// <param name="grid">The FlexGrid instance whose parameters are to be serialized.</param>
+    static string SerializeGridParameters(FlexGrid grid)
+    {
+        var parameterSet = new ParameterSet
+        {
+            // Save the current filter expression applied to the data collection.
+            FilterExpression = grid.DataCollection.GetFilterExpression(),
+            // Save the current sort descriptions applied to the data collection.
+            SortDescriptions = grid.DataCollection.GetSortDescriptions().ToList(),
+            // Save the current column layout (order and visibility).
+            ColumnsInfo = GetColumnsInfo(grid)
+        };
+
+        var options = new JsonSerializerOptions();
+        options.Converters.Add(new SortDescriptionJsonConverter());
+        options.Converters.Add(new FilterExpressionJsonConverter());
+
+        // Serialize parameters to a JSON string.
+        return JsonSerializer.Serialize<ParameterSet>(parameterSet, options);
+
+        static List<ColumnInfo> GetColumnsInfo(FlexGrid grid)
+        {
+            var result = new List<ColumnInfo>();
+            foreach (var c in grid.Columns)
+            {
+                result.Add(new ColumnInfo { Name = c.ColumnName, IsVisible = c.IsVisible });
+            }
+
+            return result;
+        }
+    }
+
+    /// <summary>
+    /// Applies parameters from the saved JSON string to the grid.
+    /// </summary>
+    /// <param name="grid">The FlexGrid instance to apply parameters to.</param>
+    /// <param name="serializedParametersJson">The JSON string representing the serialized parameters set.</param>
+    static async Task ApplyGridParameterSet(FlexGrid grid, string serializedParametersJson)
+    {
+        var options = new JsonSerializerOptions();
+        options.Converters.Add(new SortDescriptionJsonConverter());
+        options.Converters.Add(new FilterExpressionJsonConverter());
+
+        // Deserialize parameter set from the JSON string.
+        var parameterSet = JsonSerializer.Deserialize<ParameterSet>(serializedParametersJson, options);
+
+        // Restore the grid's column layout (order and visibility).
+        RestoreColumnsLayout(grid, parameterSet.ColumnsInfo);
+
+        // Restore filter and sort settings on the data collection.
+        await grid.DataCollection.FilterAsync(parameterSet.FilterExpression);
+        await grid.DataCollection.SortAsync(parameterSet.SortDescriptions.ToArray());
+
+        static void RestoreColumnsLayout(FlexGrid grid, List<ColumnInfo> columnsInfo)
+        {
+            for (int i = 0; i < columnsInfo.Count; i++)
+            {
+                var ci = columnsInfo[i];
+                var gridColumn = grid.Columns[ci.Name];
+
+                gridColumn.IsVisible = ci.IsVisible;
+
+                var columnIndex = grid.Columns.IndexOf(gridColumn);
+                if (columnIndex != i)
+                {
+                    grid.Columns.Move(columnIndex, i);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Represents the set of the grid parameters which will be kept and then applied.
+    /// </summary>
+    class ParameterSet
+    {
+        /// <summary>
+        /// Filter expression applied to the data.
+        /// </summary>
+        public FilterExpression FilterExpression { get; set; }
+
+        /// <summary>
+        /// Sort descriptions applied to the data.
+        /// </summary>
+        public List<SortDescription> SortDescriptions { get; set; }
+
+        /// <summary>
+        /// List of column metadata.
+        /// </summary>
+        public List<ColumnInfo> ColumnsInfo { get; set; }
+
+        // Add support for other properties based on requirements.
+    }
+
+    /// <summary>
+    /// Represents metadata for a grid column.
+    /// </summary>
+    public class ColumnInfo
+    {
+        /// <summary>
+        /// Name of the column.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Indicates whether the column is visible in the grid.
+        /// </summary>
+        public bool IsVisible { get; set; }
+
+        // Add support for other properties based on requirements.
+    }
+    #endregion
 }
