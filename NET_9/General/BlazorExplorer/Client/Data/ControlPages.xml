@@ -70,7 +70,6 @@
 			<action text="Export" text.ja="エクスポート">
 				<subactions>
 					<action text="Html/CSV/Text Export" text.ja="Html/CSV/Text エクスポート" name="Export"></action>
-					<action text="Excel Export" text.ja="Excel エクスポート" name="ExcelExport"></action>
 				</subactions>
 			</action>
 		</Control>
