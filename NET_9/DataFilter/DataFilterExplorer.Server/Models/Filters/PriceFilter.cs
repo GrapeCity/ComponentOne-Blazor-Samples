@@ -4,21 +4,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DataFilterExplorer.Server
 {
     public class PriceFilter : ChecklistFilter
     {
         private List<PriceInterval> priceIntervals;
-
-        public PriceFilter()
-        {
-        }
-
-        public PriceFilter(string propertyName = "") : base(propertyName)
-        {
-
-        }
          
         [Parameter]
         public List<PriceInterval> PriceIntervals { get => priceIntervals; set => priceIntervals = value; }

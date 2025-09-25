@@ -20,52 +20,52 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Accordion">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Calendar">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Chart">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Gauge">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid.ConditionalFormatting">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Menu">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.RulesManager">
-      <Version>9.0.20251.1071-beta</Version>
+      <Version>9.0.20251.1134-beta</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.TreeView">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
-    <PackageReference Include="C1.DataCollection.Serialization" Version="9.0.20242.209" />
-    <PackageReference Include="C1.Excel" Version="9.0.20251.144" />
+    <PackageReference Include="C1.DataCollection.Serialization" Version="9.0.20251.213" />
+    <PackageReference Include="C1.Excel" Version="9.0.20251.173" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.0" />

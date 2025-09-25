@@ -12,17 +12,6 @@ namespace BlazorExplorer
     {
         private List<PriceInterval> priceIntervals;
 
-#if BLAZOR
-        [ActivatorUtilitiesConstructor]
-#endif
-        public PriceFilter()
-        {
-        }
-
-        public PriceFilter(string propertyName = "") : base(propertyName)
-        {
-
-        }
          
         [Parameter]
         public List<PriceInterval> PriceIntervals { get => priceIntervals; set => priceIntervals = value; }

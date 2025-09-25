@@ -7,10 +7,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.GridControl">
-      <Version>9.0.20251.1071</Version>
+      <Version>9.0.20251.1134</Version>
     </PackageReference>
   </ItemGroup>
 </Project>

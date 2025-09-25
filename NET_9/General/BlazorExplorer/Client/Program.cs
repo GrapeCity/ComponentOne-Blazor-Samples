@@ -20,7 +20,7 @@ namespace BlazorExplorer
             builder.Services.AddSingleton<ViewBagService>();
             builder.Services.AddLocalization();
             builder.Services.AddScoped<LocalStorageService>();
-
+            
             SetSpecificCulture();
 
             await builder.Build().RunAsync();
