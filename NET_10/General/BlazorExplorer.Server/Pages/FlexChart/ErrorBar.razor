@@ -1,0 +1,66 @@
+﻿@page "/FlexChart/ErrorBar"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Input;
+
+<FlexChart Class="chart" ChartType="chartType ?? ChartType.Column" 
+           BindingX="Month" ItemsSource="Data">
+    <SeriesCollection>
+        <C1.Blazor.Chart.ErrorBar Binding="Value" ErrorAmount="errorAmount ?? ErrorAmount.StandardError" 
+                                  ErrorValue="0.2" CustomPlusErrorValue="50" CustomMinusErrorValue="25" />
+    </SeriesCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.ErrorBarTitle</Title>
+    <Settings>
+        Chart Type <C1ComboBox ItemsSource="chartTypes" @bind-SelectedItem="chartType" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+        ErrorBar Error Amount <C1ComboBox ItemsSource="errorAmounts" @bind-SelectedItem="errorAmount" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+
+    </Settings>
+    <Summary>@FlexChartRes.ErrorBarSummary</Summary>
+    <Description>@FlexChartRes.ErrorBarDescription</Description>
+</_Sections>
+
+@code {
+    ChartType[] chartTypes = { ChartType.Column, ChartType.Bar, ChartType.Line, ChartType.LineSymbols, ChartType.Scatter, ChartType.Area };
+    ChartType? chartType = ChartType.Column;
+
+    ErrorAmount? errorAmount = ErrorAmount.StandardError;
+    ErrorAmount[] errorAmounts = Enum.GetValues(typeof(ErrorAmount)).Cast<ErrorAmount>().ToArray();
+
+    List<DataSource.MonthData> Data { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Data = DataSource.GetData();
+    }
+
+    public class DataSource
+    {
+        private static Random rnd = new Random();
+
+        public class MonthData
+        {
+            public string Month { get; set; }
+            public double Value { get; set; }
+        }
+
+        public static List<MonthData> GetData(int rangeMin = 100, int rangeMax = 1000)
+        {
+            var months = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.AbbreviatedMonthNames;
+            var data = new List<MonthData>();
+            for (int i = 0; i < 12; i++)
+            {
+                var country = new MonthData
+                {
+                    Month = months[i],
+                    Value = rnd.Next(rangeMin, rangeMax)
+                };
+                data.Add(country);
+            }
+            return data;
+        }
+    }
+}

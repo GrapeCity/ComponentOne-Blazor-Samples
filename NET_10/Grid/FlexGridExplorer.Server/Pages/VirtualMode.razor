@@ -1,0 +1,45 @@
+﻿@page "/virtualmode"
+@using Resources
+@using C1.Blazor.Grid
+@using C1.Blazor.Core
+
+<h1>@AppResources.VirtualModeTitle</h1>
+<p>@AppResources.VirtualModeDescription</p>
+
+<FlexGrid @ref="grid" ItemsSource="@(new VirtualModeDataCollection() { PageSize = 50 })" Style="@("max-height:50vh")" HeadersVisibility="GridHeadersVisibility.All" CellFactory="@cellFactory"/>
+
+@code {
+    MyCellFactory cellFactory = new MyCellFactory();
+    string filterText = "";
+    FlexGrid grid;
+
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        grid.RowHeaders.Columns[0].Width = 65;
+        base.OnAfterRender(firstRender);
+    }
+
+    public class MyCellFactory : GridCellFactory
+    {
+        public override void PrepareCellStyle(GridCellType cellType, GridCellRange range, C1Style style, C1Thickness internalBorders)
+        {
+            base.PrepareCellStyle(cellType, range, style, internalBorders);
+            if (cellType == GridCellType.RowHeader)
+            {
+                style.JustifyContent = C1.Blazor.Core.C1StyleJustifyContent.Center;
+            }
+        }
+        public override RenderFragment GetCellContentRenderFragment(GridCellType cellType, GridCellRange range)
+        {
+            if (cellType == GridCellType.RowHeader)
+            {
+                return new RenderFragment(b =>
+                {
+                    b.AddContent(0, (range.Row + 1).ToString("N0"));
+                });
+            }
+            return base.GetCellContentRenderFragment(cellType, range);
+        }
+    }
+}

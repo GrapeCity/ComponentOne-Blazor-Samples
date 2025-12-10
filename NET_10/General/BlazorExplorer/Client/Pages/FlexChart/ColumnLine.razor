@@ -1,0 +1,54 @@
+﻿@page "/FlexChart/ColumnLine"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Input;
+
+<FlexChart Class="chart" LegendPosition="Position.Right" LegendStyle="font-size:16px"
+           BindingX="month" ItemsSource="Data">
+    <SeriesCollection>
+        <Series Name="Actual" Binding="Actual" />
+        <Series Name="Forecast" ChartType="ChartType.LineSymbols" Binding="Forecast" />
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis AxisType="AxisType.X" Position="Position.Bottom" MajorGrid="false" AxisLine="false" MajorTickMarks="TickMark.None" />
+        <Axis AxisType="AxisType.Y" Position="Position.Left" MajorGrid="true" AxisLine="false" MajorTickMarks="TickMark.None" />
+    </AxisCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.ColumnLineTitle</Title>
+    <Summary>@FlexChartRes.ColumnLineSummary</Summary>
+    <Description>@FlexChartRes.ColumnLineDescription</Description>
+</_Sections>
+
+@code {
+    List<object> Data { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Data = DataSource.GetData();
+    }
+
+    public class DataSource
+    {
+        private static Random rnd = new Random();
+
+        public static List<object> GetData()
+        {
+            var data = new List<object>();
+            var months = "jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec".Split(',');
+
+            for (var i = 0; i < months.Length; i++)
+            {
+                var forecast = 100 + Math.Round( 100 * Math.Exp( -(i - 5) * (i - 5) / 36.0));
+                data.Add( new {
+                    month = months[i],
+                    Actual = i<6 ? forecast * ( 1 + rnd.Next(-20, 20) * 0.01) : 0,
+                    Forecast = forecast
+                });
+            }
+            return data;
+        }
+    }
+}

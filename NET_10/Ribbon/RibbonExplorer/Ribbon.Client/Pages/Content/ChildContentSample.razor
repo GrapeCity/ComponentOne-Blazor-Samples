@@ -1,0 +1,92 @@
+﻿<div>
+    <C1ToolStrip @ref="toolStrip" GroupCornerRadius="16"
+                 Style="@($"background: linear-gradient(90deg, #f5f7fa 0%, #c3cfe2 100%); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 12px; border: 1px solid #e0e0e0; {(((Orientation)orientation)==Orientation.Vertical?"height: 300px;":"")};")"
+                 Orientation="@((Orientation)orientation)"
+                 IsToolLabelVisible="@isLabelVisible.Value"
+                 ToolOrientation="@((Orientation)toolOrientation)"
+                 Overflow="@((ToolStripOverflow)overflowMode)"
+                 ToolStyle="@("border: thin solid; margin: 3px;")">
+
+        <C1DropDownTool Label="options" Description="(C1DropDownTool)" IconTemplate="C1IconTemplate.ThreeDotsHorizontal">
+            <ContentTemplate>
+                <div style="display: grid; grid-template-columns: max-content max-content; gap: 8px; padding: 4px 12px 12px 8px;">
+                    Orientation
+                    <C1ComboBox T="Orientation" @bind-SelectedValue="orientation" ItemsSource="toolStripOrientations" />
+                    Tool orientation
+                    <C1ComboBox T="Orientation" @bind-SelectedValue="toolOrientation" ItemsSource="toolStripOrientations" />
+                    Overflow
+                    <C1ComboBox T="ToolStripOverflow" @bind-SelectedValue="overflowMode" ItemsSource="overflowModes" />
+                    isLabelVisible
+                    <C1CheckBox @bind-IsChecked="isLabelVisible" />
+                </div>
+            </ContentTemplate>
+        </C1DropDownTool>
+
+        <C1ToolSeparator Foreground="@("#888")" />
+
+        <C1ButtonTool Label="select all" Description="(C1ButtonTool)" IconTemplate="C1IconTemplate.SelectAll" />
+
+        <C1ContentControlTool Description="(C1ContentControlTool)" IconTemplate="C1IconTemplate.AlertCircle">
+            <img style="width: 40px; height: 40px" src="@Assets["icon.svg"]" alt="Icon">
+        </C1ContentControlTool>
+
+        <C1ToggleButtonTool Label="filter" Description="(C1ToggleButtonTool)" IconTemplate="C1IconTemplate.Funnel" />
+
+        <C1SelectTool Label="items count" Description="(C1SelectTool)"
+                      IconTemplate="C1IconTemplate.Copy"
+                      ItemsSource="selectToolItems"
+                      @bind-SelectedItem="buttonsCount"
+                      Style="selectToolStyle" />
+
+        <C1MenuTool Label="edit" Description="(C1MenuTool)" IconTemplate="C1IconTemplate.Edit">
+            <C1ButtonTool Label="add" IconTemplate="C1IconTemplate.PlusSquare" Click="AddTool" />
+            <C1ButtonTool Label="remove" Padding="5" IconTemplate="C1IconTemplate.MinusSquare" Click="RemoveTool" />
+            <C1MenuTool Label="misc" IconTemplate="C1IconTemplate.ThreeDotsHorizontal">
+                <C1ButtonTool Label="paste" Padding="5" IconTemplate="C1IconTemplate.MinusSquare" Click="RemoveTool" />
+                <C1SelectTool Label="items count" Description="(C1SelectTool)"
+                              IconTemplate="C1IconTemplate.Copy"
+                              ItemsSource="selectToolItems"
+                              @bind-SelectedItem="buttonsCount" />
+            </C1MenuTool>
+        </C1MenuTool>
+
+    </C1ToolStrip>
+</div>
+
+<br />
+<p>In the sample tools are created as components using the <code>C1ToolStrip.ChildContent</code>.</p>
+
+<span class="badge text-bg-secondary">C1ToolStrip.ChildContent</span>
+<span class="badge text-bg-secondary">RendererInfo: @RendererInfo.Name </span>
+
+
+@code {
+    C1ToolStrip toolStrip;
+    object orientation = Orientation.Horizontal;
+    IEnumerable<Orientation> toolStripOrientations = Enum.GetValues<Orientation>();
+
+    object overflowMode = ToolStripOverflow.Menu;
+    IEnumerable<ToolStripOverflow> overflowModes = Enum.GetValues<ToolStripOverflow>();
+
+    object toolOrientation = Orientation.Horizontal;
+    bool? isLabelVisible = true;
+    int[] selectToolItems = new[] { 1, 2, 3 };
+    object buttonsCount = 1;
+    C1Style selectToolStyle => (Orientation)orientation == Orientation.Horizontal ? "max-width: 60px;" : "";
+
+    void AddTool()
+    {
+        for (var i = 0; i < (int)buttonsCount; i++)
+        {
+            toolStrip.Items.Add(new C1ButtonTool { IconTemplate = C1IconTemplate.Star5 });
+        }
+    }
+
+    void RemoveTool()
+    {
+        if (toolStrip.Items.Any())
+        {
+            toolStrip.Items.RemoveAt(toolStrip.Items.Count - 1);
+        }
+    }
+}

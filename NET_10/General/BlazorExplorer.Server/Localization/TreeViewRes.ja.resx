@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccordionTreesDescription" xml:space="preserve">
+    <value>アコーディオンは、一度に１つのパネルだけが展開されるマルチペインパネルです。ナビゲーションによく使われます。C1TreeView コントロールを使ってアコーディオンを実装することができます。このサンプルでは、C1TreeView と CSS を使って、ヘッダーの表示をカスタマイズすることで、アコーディオンを作成しています。</value>
+  </data>
+  <data name="AccordionTreesSummary" xml:space="preserve">
+    <value>このサンプルでは、C1TreeView と CSS を使って、ヘッダーの表示をカスタマイズすることで、アコーディオンを作成しています。</value>
+  </data>
+  <data name="AccordionTreesTitle" xml:space="preserve">
+    <value>TreeView アコーディオン</value>
+  </data>
+  <data name="AddingDescription" xml:space="preserve">
+    <value>C1TreeView に新しい項目を追加するには、&lt;b&gt;ItemsSource が INotifyCollectionChanged を実装&lt;/b&gt;して、コントロールが変更の通知を受け取ることができるようにする必要があります。そうすると、コントロールに自動的に反映されます。
+このサンプルでは、ObservableCollection&amp;lt;T&amp;gt; を使用します。これは、INotifyCollectionChanged インターフェイスを実装するデータコレクションの組み込み実装です。</value>
+  </data>
+  <data name="AddingSummary" xml:space="preserve">
+    <value>このサンプルは、ノードをルートノードと子ノードに追加する方法を示します。</value>
+  </data>
+  <data name="AddingTitle" xml:space="preserve">
+    <value>追加</value>
+  </data>
+  <data name="Adding_BoundTree" xml:space="preserve">
+    <value>Bound TreeView のノードを追加:</value>
+  </data>
+  <data name="Adding_FirstChild" xml:space="preserve">
+    <value>最初の子項目</value>
+  </data>
+  <data name="Adding_LastChild" xml:space="preserve">
+    <value>最後の子項目</value>
+  </data>
+  <data name="Adding_UnBoundTree" xml:space="preserve">
+    <value>UnBound TreeView のノードを追加:</value>
+  </data>
+  <data name="AddNewNode" xml:space="preserve">
+    <value>新規ノードの追加</value>
+  </data>
+  <data name="AllowDraggingBetweenTrees" xml:space="preserve">
+    <value>ツリー間のドラッグを許可する</value>
+    <comment>Allow dragging between trees</comment>
+  </data>
+  <data name="AllowDraggingWithinTrees" xml:space="preserve">
+    <value>ツリー内のドラッグを許可する</value>
+    <comment>Allow dragging within trees</comment>
+  </data>
+  <data name="BehaviorDescription" xml:space="preserve">
+    <value>コントロールは、その動作をカスタマイズするいくつかのプロパティを提供します。&lt;br/&gt;
+&lt;b&gt;ShowLines：&lt;/b&gt;接続線が表示されているかどうかを示す値を取得または設定します。&lt;br/&gt;
+&lt;b&gt;WholeWidthSelection：&lt;/b&gt;選択項目がコントロールの幅全体を占めるかどうかを取得または設定します。&lt;br/&gt;
+&lt;b&gt;ExpandMode：&lt;/b&gt;展開された C1TreeViewItem の許容数を示す値を取得または設定します。&lt;br/&gt;
+&lt;ul&gt;
+&lt;li&gt;ExpandMode.Single：ノードが展開されたときに兄弟ノードを折りたたむ必要があるかどうかを決定する値を取得または設定します。&lt;/li&gt;
+&lt;li&gt;ExpandMode.Multiple：複数のアイテムを同時に展開できます。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;b&gt;SelectionMode：&lt;/b&gt;C1TreeView の選択動作を取得または設定します。&lt;br/&gt;
+&lt;ul&gt;
+&lt;li&gt;SelectionMode.None：ユーザーは項目を選択できません。&lt;/li&gt;
+&lt;li&gt;SelectionMode.Single：ユーザーは一度に１つの項目しか選択できません。 &lt;/li&gt;
+&lt;li&gt;SelectionMode.Multiple：ユーザーは修飾キーを押さなくても複数の項目を選択できます。&lt;/li&gt;
+&lt;li&gt;SelectionMode.Extended：ユーザーは、対応する修飾キーを押したまま、複数の連続する項目を選択できます。&lt;/li&gt;
+&lt;/ul&gt;</value>
+  </data>
+  <data name="BehaviorSummary" xml:space="preserve">
+    <value>このサンプルは、これらのプロパティのいくつかの効果を示しています。</value>
+  </data>
+  <data name="BehaviorTitle" xml:space="preserve">
+    <value>動作</value>
+  </data>
+  <data name="CleanAccordionDescription" xml:space="preserve">
+    <value>このサンプルでは、CSS を使用して C1TreeView コントロールからアコーディオンを作成します。また、ItemTemplate を使って外観をカスタマイズしています。</value>
+  </data>
+  <data name="CleanAccordionSummary" xml:space="preserve">
+    <value>このサンプルでは、CSS を使用して C1TreeView コントロールからアコーディオンを作成します。また、ItemTemplate を使って外観をカスタマイズしています。</value>
+  </data>
+  <data name="CleanAccordionTitle" xml:space="preserve">
+    <value>アコーディオンの作成</value>
+  </data>
+  <data name="CustomCss" xml:space="preserve">
+    <value>カスタムCSS</value>
+  </data>
+  <data name="DragDropBtwTreesDescription" xml:space="preserve">
+    <value>異なる TreeView コントロール間でノードをドラッグアンドドロップすることもできます。 これを行うには、&lt;b&gt;OnDragOver&lt;/b&gt; イベントのイベントハンドラーを追加して、動作を構成します。</value>
+  </data>
+  <data name="DragDropBtwTreesIndex" xml:space="preserve">
+    <value>ツリー間のドラッグアンドドロップ</value>
+  </data>
+  <data name="DragDropBtwTreesSummary" xml:space="preserve">
+    <value>サンプルでは、TreeNode をツリー間でドラッグアンドドロップする方法を示しています。</value>
+  </data>
+  <data name="DragDropDescription" xml:space="preserve">
+    <value>TreeView コントロールは、ドラッグアンドドロップ動作をサポートしています。これを有効にするには、&lt;b&gt;AllowDragDrop&lt;/b&gt; プロパティを &lt;b&gt;true&lt;/b&gt; に設定します。このサンプルでは、ユーザーはノードを TreeView のさまざまな位置にドラッグできます。</value>
+  </data>
+  <data name="DragDropIndex" xml:space="preserve">
+    <value>ドラッグアンドドロップ</value>
+  </data>
+  <data name="DragDropSummary" xml:space="preserve">
+    <value>サンプルでは、ドラッグアンドドロップ動作を TreeView に適用する方法を示しています。</value>
+  </data>
+  <data name="IconTemplateDescription" xml:space="preserve">
+    <value>&lt;b&gt;ExpandedIconTemplate：&lt;/b&gt;ツリー項目の展開アイコンのコンテンツテンプレート。&lt;br/&gt;
+&lt;b&gt;CollapsedIconTemplate：&lt;/b&gt;ツリー項目の折りたたまれたアイコンのコンテンツテンプレート。&lt;br/&gt;
+&lt;b&gt;ExpandedIconStyle：&lt;/b&gt;展開/折りたたまれたアイコンに適用されるスタイルを取得または設定します。&lt;br/&gt;</value>
+  </data>
+  <data name="IconTemplatesTitle" xml:space="preserve">
+    <value>アイコンテンプレート</value>
+  </data>
+  <data name="IconTemplateSummary" xml:space="preserve">
+    <value>このサンプルは、折りたたまれた/展開されたアイコンをカスタム化する方法を示します</value>
+  </data>
+  <data name="ItemTemplate_Description" xml:space="preserve">
+    <value>ItemTemplate タグで定義することにより、C1TreeView 項目の独自のビューをカスタマイズできます。</value>
+  </data>
+  <data name="ItemTemplate_Summary" xml:space="preserve">
+    <value>このサンプルは、C1TreeView の項目をカスタマイズする方法を示します。</value>
+  </data>
+  <data name="Navigation_Description" xml:space="preserve">
+    <value>C1TreeView コントロールで、マウスや矢印キーでノードを選択したり横断したりすると、OnItemSelected イベントが発生することがあります。このイベントを使ってナビゲーションを制御することができます。この例では、OnItemSelected を使って、選択されたノードを表示しています。</value>
+  </data>
+  <data name="Navigation_Navigating" xml:space="preserve">
+    <value>&lt;b&gt; ** {0} ** &lt;/ b&gt;に移動します</value>
+  </data>
+  <data name="Navigation_Ready" xml:space="preserve">
+    <value>準備ができました</value>
+  </data>
+  <data name="Navigation_Summary" xml:space="preserve">
+    <value>マウスや矢印キーによる C1TreeView コントロールのノードの選択あるいは横断</value>
+  </data>
+  <data name="Navigation_Title" xml:space="preserve">
+    <value>ナビゲーション</value>
+  </data>
+  <data name="NodeBordersDescription" xml:space="preserve">
+    <value>この例では、CSS を使用して、C1TreeView のツリーノードに下枠線を追加します。</value>
+  </data>
+  <data name="NodeBordersTitle" xml:space="preserve">
+    <value>ノードの枠線</value>
+  </data>
+  <data name="RemovingBtn" xml:space="preserve">
+    <value>選択された項目の削除</value>
+  </data>
+  <data name="RemovingDescription" xml:space="preserve">
+    <value>このサンプルは、C1TreeView からノードを削除する方法を示します</value>
+  </data>
+  <data name="RemovingTitle" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="RTLDescription" xml:space="preserve">
+    <value>C1TreeView は、要素のコンテンツが右から左に流れることをサポートします。これを行うには、IsRTL プロパティを "True" に設定します</value>
+  </data>
+  <data name="RTLSummary" xml:space="preserve">
+    <value>C1TreeView は、要素のコンテンツが右から左に流れることをサポートします。</value>
+  </data>
+  <data name="RTLTitle" xml:space="preserve">
+    <value>右から左へ</value>
+  </data>
+  <data name="SearchingDescription" xml:space="preserve">
+    <value>C1AutoComplete コントロールは、C1TreeView で使用する検索ボックスを実装するのに適した方法を提供します。このサンプルでは、GetAllItems API を呼び出してすべての TreeViewItems を取得し、それを C1TreeView を検索するための itemsSource として使用しています。</value>
+  </data>
+  <data name="SearchingSummary" xml:space="preserve">
+    <value>サンプルは、C1TreeView で検索を適用する方法を示します</value>
+  </data>
+  <data name="SearchingTitle" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="Search_AutoComplete_Placeholder" xml:space="preserve">
+    <value>TreeNode名を入力します</value>
+  </data>
+  <data name="ShowCheckboxesDescription" xml:space="preserve">
+    <value>TreeNodes は、ShowCheckboxes プロパティを true に設定することにより、チェックボックスで表示できます。
+OnItemSelected を使用して、チェック済みアイテムのリストを取得または設定できます。</value>
+  </data>
+  <data name="ShowcheckboxesSelectedItem" xml:space="preserve">
+    <value>選択された項目:&lt;ul&gt;</value>
+  </data>
+  <data name="ShowcheckboxesSummary" xml:space="preserve">
+    <value>このサンプルは、チェックボックスをC1TreeViewに追加する方法を示します</value>
+  </data>
+  <data name="StylingDescription" xml:space="preserve">
+    <value>C1TreeView の外観を CSS でカスタマイズすることができます。この例では、選択された項目のスタイルと各 TreeNode の色を変更しています。</value>
+  </data>
+  <data name="StylingOverview" xml:space="preserve">
+    <value>概要</value>
+  </data>
+  <data name="UnboundTitle" xml:space="preserve">
+    <value>アンバウンド(データ非接続)</value>
+    <comment>Unbound</comment>
+  </data>
+  <data name="UnBoundTree_Description" xml:space="preserve">
+    <value>このサンプルは、アンバウンド C1TreeView を定義する方法を示します</value>
+  </data>
+</root>

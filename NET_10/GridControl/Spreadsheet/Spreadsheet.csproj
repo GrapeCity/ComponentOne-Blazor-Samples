@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <RunAOTCompilation>true</RunAOTCompilation>
+    <RunAOTCompilationAfterBuild>true</RunAOTCompilationAfterBuild>
+    <WasmNativeStrip>false</WasmNativeStrip>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>10.0.20252.1227</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.GridControl">
+      <Version>10.0.20252.1227</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Input">
+      <Version>10.0.20252.1227</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.ListView">
+      <Version>10.0.20252.1227</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.0-rc.1.25451.107" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.0-rc.1.25451.107" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Spreadsheet.gclicx" />
+  </ItemGroup>
+</Project>

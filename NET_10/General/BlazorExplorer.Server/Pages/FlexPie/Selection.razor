@@ -1,0 +1,60 @@
+﻿@page "/FlexPie/Selection"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Input;
+
+<FlexPie Class="chart" InnerRadius="innerRadius ?? 0" 
+         SelectionMode="ChartSelectionMode.Point" SelectedItemOffset="offset ?? 0" SelectedItemPosition="position"
+         SelectionStyle="stroke:red;stroke-width:3px;stroke-dasharray:5,5"
+         HeaderContent="Click on pie slice to select" HeaderStyle="font-size:20px"
+         LegendPosition="Position.Bottom"
+         BindingName="Name" Binding="Value" ItemsSource="@DataSource.GetData()" Tooltip="{name}: {p:n1}%">
+</FlexPie>
+
+<_Sections>
+    <Title>@FlexChartRes.PieSelectionTitle</Title>
+    <Summary>@FlexChartRes.PieSelectionSummary</Summary>
+    <Description>@FlexChartRes.PieSelectionDescription</Description>
+    <Settings>
+      InnerRadius <C1ComboBox ItemsSource="innerRadiuses" @bind-SelectedItem="innerRadius" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+      Selected Item Offset <C1ComboBox ItemsSource="offsets" @bind-SelectedItem="offset" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+      Selected Item Position <C1ComboBox ItemsSource="positions" @bind-SelectedItem="position" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+    </Settings>
+</_Sections>
+
+@code {
+    double[] innerRadiuses = new double[] { 0, 0.25, 0.5, 0.75 };
+    double? innerRadius = 0;
+
+    double[] offsets = new double[] { 0, 0.25, 0.5, 0.75 };
+    double? offset = 0;
+
+    Position[] positions = new Position[] { Position.None, Position.Left, Position.Top, Position.Right, Position.Bottom, Position.Auto };
+    Position position = Position.None;
+
+    public class DataSource
+    {
+        public class SalesData
+        {
+            public string Name { get; set; }
+            public double Value { get; set; }
+        }
+
+        public static List<SalesData> GetData()
+        {
+            var data = new List<SalesData>()
+            {
+                new SalesData{Name="Maruti", Value=1643467},
+                new SalesData{Name="Hyundai", Value=536241},
+                new SalesData{Name="Mahindra", Value=248859},
+                new SalesData{Name="Tata", Value=210200},
+                new SalesData{Name="Honda", Value=170026},
+                new SalesData{Name="Toyota", Value=140645},
+                new SalesData{Name="Renault", Value=102222},
+                new SalesData{Name="Ford", Value=90061},
+            };
+            return data;
+        }
+    }
+}

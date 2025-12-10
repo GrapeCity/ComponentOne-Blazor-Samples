@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="white">
+    <meta name="description" content="Advanced Blazor UI controls for your web apps. Use existing C# skills to create Blazor UI datagrids, charts and input controls." />
+    <link rel="apple-touch-icon" sizes="180x180" href="Content/favicon/ios/180.png">
+    <link rel="icon" type="image/png" href="Content/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="Content/favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="Content/favicon/manifest.json">
+    <link rel="mask-icon" href="Content/favicon/ios/safari-pinned-tab.svg" color="#503b75">
+
+    <base href="/" />
+    <link href="css/site.css" rel="stylesheet" />
+
+    <link href="Content/css/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="Content/css/explorer.css" rel="stylesheet" />
+    <link href="Content/css/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+    <link href="Content/css/SyntaxHighlighter/shCoreEclipse.css" rel="stylesheet" />
+
+    <script src="Scripts/ControlLayout.js"></script>
+    <script src="Scripts/SyntaxHighlighter/shCore.js"></script>
+    <script src="Scripts/SyntaxHighlighter/shBrushXml.js"></script>
+    <script src="Scripts/SyntaxHighlighter/shBrushJScript.js"></script>
+    <script src="Scripts/SyntaxHighlighter/shBrushCSharp.js"></script>
+    <script src="Scripts/SyntaxHighlighter/shBrushRazor.js"></script>
+    <script src="Scripts/scripts.js"></script>
+    <script src="Scripts/ResizeObserver.js"></script>
+    <script src="Scripts/DragPoint.js"></script>
+
+    <!-- Add controls's styles, js here: -->
+    <link rel="stylesheet" href="_content/C1.Blazor.Core/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.Grid/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.ListView/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.Input/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.DataPager/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.Calendar/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.DateTimeEditors/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.Chart/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.TreeView/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.Menu/styles.css" />
+
+    <link rel="stylesheet" href="_content/C1.Blazor.DataFilter/styles.css" />
+    <link rel="stylesheet" href="_content/C1.Blazor.Accordion/styles.css" />
+    <script src="_content/C1.Blazor.Core/scripts.js"></script>
+    <script src="_content/C1.Blazor.Input/scripts.js"></script>
+    <script src="_content/C1.Blazor.Grid/scripts.js"></script>
+    <script src="_content/C1.Blazor.Chart/scripts.js"></script>
+    <script src="_content/C1.Blazor.Calendar/scripts.js"></script>
+    <script src="_content/C1.Blazor.TreeView/scripts.js"></script>
+    <script src="_content/C1.Blazor.Menu/scripts.js"></script>
+</head>
+
+<body>
+    <app><div class="loading_gc1icon"></div></app>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        const lang = navigator.language || navigator.userLanguage;
+        if (lang.toLowerCase().startsWith("zh")) {
+            document.body.classList.add("grapecity");
+        }
+    </script>
+</body>
+</html>

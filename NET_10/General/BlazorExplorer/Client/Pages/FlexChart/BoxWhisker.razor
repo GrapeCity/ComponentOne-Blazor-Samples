@@ -1,0 +1,92 @@
+﻿@page "/FlexChart/BoxWhisker"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Input;
+
+<FlexChart Class="chart" BindingX="Quarter" ItemsSource="Data">
+    <SeriesCollection>
+        <C1.Blazor.Chart.BoxWhisker Name="Experiment 1" Binding="Value1" ShowInnerPoints="(bool)innerPoints" ShowOutliers="(bool)outliers" 
+                                    ShowMeanLine="(bool)meanLine" ShowMeanMarks="(bool)meanMarks"/>
+        <C1.Blazor.Chart.BoxWhisker Name="Experiment 2" Binding="Value2" ShowInnerPoints="(bool)innerPoints" ShowOutliers="(bool)outliers"
+                                    ShowMeanLine="(bool)meanLine" ShowMeanMarks="(bool)meanMarks"/>
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis AxisType="AxisType.Y" Min="0" Max="1500" Position="Position.Left" AxisLine="false" MajorGrid="true" />
+    </AxisCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.BoxWhiskerTitle</Title>
+    <Settings>
+        Inner Points <C1CheckBox @bind-IsChecked="innerPoints" Style="@("margin:8px 8px 8px 0px")" />
+        Outliers <C1CheckBox @bind-IsChecked="outliers" Style="@("margin:8px 8px 8px 0px")" />
+        Mean Line <C1CheckBox @bind-IsChecked="meanLine" Style="@("margin:8px 8px 8px 0px")" />
+        Mean Marks <C1CheckBox @bind-IsChecked="meanMarks" Style="@("margin:8px 8px 8px 0px")" />
+
+    </Settings>
+    <Summary>@FlexChartRes.BoxWhiskerSummary</Summary>
+    <Description>@FlexChartRes.BoxWhiskerDescription</Description>
+</_Sections>
+
+@code {
+        List<DataSource.QuarterData> Data { get; set; }
+        bool? innerPoints = false;
+        bool? outliers = false;
+        bool? meanLine = false;
+        bool? meanMarks = false;
+
+    protected override void OnInitialized()
+    {
+        Data = DataSource.GetData();
+    }
+
+    public class DataSource
+    {
+        private static Random rnd = new Random();
+
+        public class QuarterData
+        {
+            public string Quarter { get; set; }
+            public double Value1 { get; set; }
+            public double Value2 { get; set; }
+        }
+
+        public static List<QuarterData> GetData(int rangeMin = 500, int rangeMax = 1000)
+        {
+            var names = "Q1,Q2,Q3,Q4".Split(',');
+            var data = new List<QuarterData>();
+            for (int j = 0; j < 100; j++)
+            {
+                for (int i = 0; i < names.Length; i++)
+                {
+                    var item = new QuarterData
+                    {
+                        Quarter = names[i],
+                        Value1 = rnd.Next(rangeMin, rangeMax),
+                        Value2 = rnd.Next(rangeMin, rangeMax)
+                    };
+                    data.Add(item);
+                }
+            }
+
+            // add some outliers
+            for (int j = 0; j < 5; j++)
+            {
+                for (int i = 0; i < names.Length; i++)
+                {
+                    var item = new QuarterData
+                    {
+                        Quarter = names[i],
+                        Value1 = rnd.Next(0, 1500),
+                        Value2 = rnd.Next(0, 1500),
+                    };
+
+                    data.Add(item);
+                }
+            }
+
+            return data;
+        }
+    }
+}

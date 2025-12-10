@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfDepartment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Department>
+    <Id>1</Id>
+    <Name>Operations</Name>
+  </Department>
+  <Department>
+    <Id>2</Id>
+    <Name>Sales and Marketing</Name>
+  </Department>
+  <Department>
+    <Id>3</Id>
+    <Name>Information Systems</Name>
+  </Department>
+  <Department>
+    <Id>4</Id>
+    <Name>Human Resources</Name>
+  </Department>
+  <Department>
+    <Id>5</Id>
+    <Name>Customer Service</Name>
+  </Department>
+</ArrayOfDepartment>

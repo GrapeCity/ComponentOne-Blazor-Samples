@@ -1,0 +1,150 @@
+﻿@page "/nodes/adding"
+@using C1.Blazor.Core
+@using C1.Blazor.TreeView
+@using System.Collections.ObjectModel
+@using Localization
+
+<h3>@((MarkupString)Localization.Resource.Adding)</h3>
+
+<div class="d-flex flex-row">
+    <div class="p-2 shadow">
+        <div class="d-flex flex-row">
+            <div class="p-2">
+                Unbound TreeView
+                <C1TreeView @ref="unboundTreeView" Style="_c1Style" SelectionMode="C1SelectionMode.Single" ExpandMode="TreeViewExpandMode.Single" OnItemSelected="OnUnBoundTreeSelectedItemChanged">
+
+                    <TreeViewItem Header="Node 1" IsExpanded="true">
+                        <TreeViewItem Header="Node 1.1">
+                            <TreeViewItem Header="Node 1.1.1" />
+                            <TreeViewItem Header="Node 1.1.2" />
+                            <TreeViewItem Header="Node 1.1.3" />
+                        </TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Node 2" />
+                    <TreeViewItem Header="Node 3" />
+                </C1TreeView>
+            </div>
+            <div class="p-2">
+                Bound TreeView
+                <C1TreeView @ref="boundTreeView" IsExpandedPath="Expanded" ItemsSource="@_dataSource" ChildItemsPaths="Subdirectories"
+                            DisplayMemberPaths="Name" Style="@_c1Style" SelectionMode="C1SelectionMode.Single"
+                            ExpandMode="TreeViewExpandMode.Single" OnItemSelected="OnBoundTreeSelectedItemChanged" />
+            </div>
+        </div>
+    </div>
+    <div class="p-2">
+        <div>
+            <input @bind="newItemName" />
+        </div>
+        <div class="pt-2">
+            @Resource.Adding_UnBoundTree
+            <button @onclick="AddFirstUnBoundTree" class="btn btn-default btn-outline-dark">@Resource.Adding_FirstChild</button>
+            <button @onclick="AddLastUnBoundTree" id="btnLast" class="btn btn-default btn-outline-dark">@Resource.Adding_LastChild</button>
+        </div>
+        <div class="pt-2">
+            @Resource.Adding_UnBoundTree
+            <button @onclick="AddFirstBoundTree" class="btn btn-default btn-outline-dark">@Resource.Adding_FirstChild</button>
+            <button @onclick="AddLastBoundTree" id="btnLast" class="btn btn-default btn-outline-dark">@Resource.Adding_LastChild</button>
+        </div>
+    </div>
+</div>
+<div class="mt-5">
+    @((MarkupString)Localization.Resource.AddItemDescription)
+</div>
+
+@code {
+    C1TreeView unboundTreeView, boundTreeView;
+    string newItemName = Localization.Resource.AddNewNode;
+    TreeViewItem boundTreeSelectedItem, unBoundTreeSelectedItem;
+    readonly C1Style _c1Style = new C1Style
+        {
+            Height = 500,
+            Width = 300,
+        };
+    #region Create data for Bound TreeView
+    readonly ObservableCollection<Directory> _dataSource = new ObservableCollection<Directory>()
+    {
+        new Directory()
+        {
+            Name = "Node 1",
+            Expanded = true,
+            Subdirectories = new ObservableCollection<Directory>
+            {
+                new Directory
+                {
+                    Name = "Node 1.1",
+                    Subdirectories = new ObservableCollection<Directory>
+                    {
+                        new Directory {Name = "Node 1.1.1"},
+                        new Directory {Name = "Node 1.1.2"},
+                        new Directory {Name = "Node 1.1.3"}
+                    }
+
+                }
+            }
+        },
+        new Directory
+        {
+            Name = "Node 2",
+        },
+        new Directory
+        {
+            Name = "Node 3",
+            Subdirectories = new ObservableCollection<Directory>()
+        }
+    };
+
+    public class Directory
+    {
+        public string Name { get; set; }
+        public ObservableCollection<Directory> Subdirectories { get; set; } = new ObservableCollection<Directory>();
+        public bool Expanded { get; set; }
+    }
+    #endregion
+
+    public void OnBoundTreeSelectedItemChanged(TreeViewItem item)
+    {
+        boundTreeSelectedItem = item;
+    }
+    public void OnUnBoundTreeSelectedItemChanged(TreeViewItem item)
+    {
+        unBoundTreeSelectedItem = item;
+    }
+
+    #region Add node for Bound TreeView
+    public void AddFirstBoundTree()
+    {
+        var customType = new Directory { Name = newItemName };
+        var collection = (boundTreeSelectedItem?.DataItem as Directory)?.Subdirectories ?? _dataSource;
+        collection.Insert(0, customType);
+        boundTreeView.Expand(boundTreeSelectedItem?.Items.First() ?? boundTreeView.Items.First());
+    }
+    public void AddLastBoundTree()
+    {
+        var customType = new Directory { Name = newItemName };
+        var collection = (boundTreeSelectedItem?.DataItem as Directory)?.Subdirectories ?? _dataSource;
+        collection.Add(customType);
+        boundTreeView.Expand(boundTreeSelectedItem?.Items.Last() ?? boundTreeView.Items.Last());
+    }
+    #endregion
+
+    #region Add node for UnBound TreeView
+    public void AddFirstUnBoundTree()
+    {
+        TreeViewItem tvType = new TreeViewItem { Header = newItemName };
+        var treeViewItemCollection = unBoundTreeSelectedItem?.Items ?? unboundTreeView.Items;
+        treeViewItemCollection.Insert(0, tvType);
+
+        unboundTreeView.Expand(treeViewItemCollection.First());
+    }
+
+    public void AddLastUnBoundTree()
+    {
+        TreeViewItem tvType = new TreeViewItem { Header = newItemName };
+        var treeViewItemCollection = unBoundTreeSelectedItem?.Items ?? unboundTreeView.Items;
+        treeViewItemCollection.Add(tvType);
+
+        unboundTreeView.Expand(treeViewItemCollection.Last());
+    }
+    #endregion
+}

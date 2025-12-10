@@ -1,0 +1,79 @@
+﻿@page "/FlexChart/StackedBar"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+
+<FlexChart Class="chart" ChartType="ChartType.Bar" Stacking="Stacking.Stacked" 
+           HeaderContent="Country GDP (M$)" HeaderStyle="font-size:24px"
+           LegendPosition="Position.Bottom" LegendStyle="font-size:18px"
+           BindingX="year" ItemsSource="@GdpDataSource.GetCountryGdp()">
+    <SeriesCollection>
+        <Series Name="US" Binding="US" />
+        <Series Name="China" Binding="China" />
+        <Series Name="Japan" Binding="Japan" />
+        <Series Name="Germany" Binding="Germany" />
+        <Series Name="UK" Binding="UK" />
+        <Series Name="France" Binding="France" />
+        <Series Name="India" Binding="India" />
+        <Series Name="Italy" Binding="Italy" />
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis AxisType="AxisType.X" Position="Position.Bottom" />
+        <Axis AxisType="AxisType.Y" Position="Position.Left" MajorGrid="false" Reversed="true" />
+    </AxisCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.StackedBarTitle</Title>
+    <Summary>@FlexChartRes.StackedBarSummary</Summary>
+    <Description>@FlexChartRes.StackedBarDescription</Description>
+</_Sections>
+
+@code {
+
+    public class GdpDataSource
+    {
+        public static List<object> GetCountryGdp()
+        {
+            return new List<object> {
+                new 
+                {
+                    year = "2014",
+                    US = 17348075,
+                    China = 10356508,
+                    Japan = 4602367,
+                    Germany = 3874437,
+                    UK = 2950039,
+                    France = 2833687,
+                    India = 2051228,
+                    Italy = 2147744
+                },
+                new
+                {
+                    year = "2015",
+                    US = 18036650,
+                    China =11181556,
+                    Japan = 4124211,
+                    Germany = 3365293,
+                    UK = 2858482,
+                    France = 2420163,
+                    India = 2073002,
+                    Italy = 1815759
+                },
+                new 
+                {
+                    year = "2016",
+                    US = 18624450,
+                    China = 11232110,
+                    Japan = 4936540,
+                    Germany = 3479230,
+                    UK = 2629190,
+                    France = 2466470,
+                    India = 2263790,
+                    Italy = 1850740
+                }
+            };
+        }
+    }
+
+}

@@ -1,0 +1,35 @@
+﻿@page "/DateRangePicker/CustomStyles"
+
+@using C1.Blazor.Calendar
+@using C1.Blazor.Core
+@using C1.Blazor.DateTimeEditors
+@using System;
+@using Localization
+@using C1.Blazor.DateTimeEditors.EventArgs
+@using C1.Blazor.Input
+
+
+<C1DateRangePicker CalendarStyle="@(new C1Style(){ BackgroundColor = C1Color.White, BorderWidth = 1, BorderColor = "#eeeeee" , Width = 300, Margin = 11})"
+                   HeaderStyle="@(new C1Style(){Color = "White", BackgroundColor ="#FF3D834B", FontWeight = "100!important"})"
+                   DayOfWeekStyle="@(new C1Style(){BackgroundColor = "#FF63A646", Height = 27, LineHeight = 27, Color = C1Color.Black})"
+                   DayStyle="@(new C1Style(){ Color = C1Color.Green})"
+                   SelectedDateStyle="@(new C1Style(){BackgroundColor = "#FFD2D2D2", Color = "Black",})"
+                   TodayStyle="@(new C1Style(){BackgroundColor = "#eeeeee", BorderColor = "#FFF2F2F2", BorderRadius = 0, Color = "Black",})"
+                   AdjacentDayStyle="@(new C1Style() {Color = "#FFA5A5A3"})"
+                   DropDownBehavior="@DropDownBehavior.HeaderTap"></C1DateRangePicker>
+
+<br />
+<br />
+
+
+
+<_Sections>
+    <Title>@DateRangePickerRes.CustomStyleTitle</Title>
+    <Summary>@DateRangePickerRes.OverviewSummary</Summary>
+    <Description>@DateRangePickerRes.CustomStyleDescription</Description>
+</_Sections>
+
+
+
+@code {
+}

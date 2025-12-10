@@ -1,0 +1,38 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+<PageTitle>C1ToolStrip</PageTitle>
+
+<h4>C1ToolStrip </h4>
+<div style="background-color: #f0f0f0; padding: 12px; margin: 6px;">
+    <p>with no styles, default view:</p>
+    <C1ToolStrip ItemsSource="data"
+                 Overflow="ToolStripOverflow.None">
+        <ItemTemplate>
+            <div style="width:56px; height: 56px; display: flex; justify-content: center; align-items: center;">
+                @context
+            </div>
+        </ItemTemplate>
+    </C1ToolStrip>
+</div>
+
+<div style="background-color: #f0f0f0; padding: 12px; margin: 6px;">
+    <p>with defined shadow and background color, corner radius:</p>
+    <C1ToolStrip ItemsSource="data" Style="@("box-shadow: 2px 2px 8px -3px #9E9E9E; background-color:#9caad5")"
+                 CornerRadius="12"
+                 Overflow="ToolStripOverflow.None"
+                 ToolStyle="@("padding:0; margin: 4px;")">
+        <ItemTemplate>
+            <div style="width: 56px; height: 56px; display: flex; justify-content: center; align-items: center; border:thin solid; border-radius: inherit">
+                @context
+            </div>
+        </ItemTemplate>
+    </C1ToolStrip>
+</div>
+
+<br />
+<p>In the sample tools are created using <code>C1ToolStrip.ItemsSource</code> and <code>C1ToolStrip.ItemTemplate</code>  parameters.</p>
+
+@code {
+    List<object> data = [1, new C1ToolSeparator(), 2, 3, 4, 5];
+}

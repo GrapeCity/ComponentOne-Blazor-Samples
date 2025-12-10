@@ -1,0 +1,42 @@
+﻿@page "/ListView/Sort"
+@using C1.Blazor.ListView
+@using C1.DataCollection
+@using Localization
+
+<C1ListView @ref="listView" ItemsSource="@customers" T="Customer" DisplayMemberPath="Name" Style="@("max-height:50vh")" />
+
+<_Sections>
+    <Title>@ListViewRes.SortingTitle</Title>
+    <Settings>
+        <button class="btn btn-primary" @onclick="SortClicked" style="margin-bottom:4px">@sortButtonMessage</button>
+    </Settings>
+    <Summary>@ListViewRes.SortingSummary</Summary>
+    <Description>@ListViewRes.SortingDescription</Description>
+</_Sections>
+
+@code
+{
+    SortDirection? sortDirection;
+    string sortButtonMessage;
+    C1ListView<Customer> listView;
+    IEnumerable<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        UpdateSortMessage();
+        customers = Customer.GetCustomerList(100);
+    }
+
+    private async void SortClicked()
+    {
+        sortDirection = sortDirection != SortDirection.Ascending ? SortDirection.Ascending : SortDirection.Descending;
+        UpdateSortMessage();
+        await listView.ChangeViewAsync(0);
+        await listView.DataCollection.SortAsync("Name", sortDirection.Value);
+    }
+
+    private void UpdateSortMessage()
+    {
+        sortButtonMessage = sortDirection != SortDirection.Ascending ? @ListViewRes.SortAscendingly : @ListViewRes.SortDescendingly;
+    }
+}

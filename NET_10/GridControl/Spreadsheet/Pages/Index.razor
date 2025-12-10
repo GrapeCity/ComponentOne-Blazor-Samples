@@ -1,0 +1,8 @@
+﻿@page "/"
+@using C1.Blazor.Grid;
+
+<C1GridControl Adapter="@adapter" GridLinesVisibility="GridLinesVisibility.All" Style="@("width:100%;height:100%")"/>
+
+@code{
+    GridControlAdapter adapter = new SpreadsheetAdapter();
+}

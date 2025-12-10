@@ -1,0 +1,96 @@
+﻿@page "/FlexChart/ContourChart"
+@using Localization
+@using System.Drawing;
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Input;
+
+<FlexChart Class="chart" HeaderContent="Monkey Saddle Contour Chart" HeaderStyle="font-size:20px">
+    <SeriesCollection>
+        <Contour ItemsSource="contourData" Style="stroke-width:1px;" ColorScale="gradientColorScale" />
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis AxisType="AxisType.X" Position="Position.Bottom" Max="axisXMax" />
+        <Axis AxisType="AxisType.Y" Position="Position.Left" Max="axisYMax" />
+    </AxisCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.ContourTitle</Title>
+    <Summary>@FlexChartRes.ContourSummary</Summary>
+    <Description>@FlexChartRes.ContourDescription</Description>
+</_Sections>
+
+@code {
+    private double[,] contourData;
+    private GradientColorScale gradientColorScale;
+    private double startX = 0;
+    private double axisYMax;
+    private double axisXMax;
+    private List<int> palette = new List<int> { 0x67001f, 0xb2182b, 0xd6604d, 0xf4a582, 0xfddbc7, 0xf7f7f7, 0xd1e5f0, 0x92c5de, 0x4393c3, 0x2166ac, 0x053061 };
+
+    protected override void OnInitialized()
+    {
+        // Initialize the contour chart data when component loads
+        InitializeContourChart();
+    }
+
+    private void InitializeContourChart()
+    {
+        var data = MonkeySaddleData();
+
+        // Set up the data
+        contourData = data;
+
+        // Create gradient color scale
+        gradientColorScale = new GradientColorScale()
+        {
+            Min = 0,
+            Max = 100,
+            Colors = palette.Select(i => Color.FromArgb(255, Color.FromArgb(i))).Reverse().ToList()
+        };
+
+        // Set axis ranges
+        axisYMax = data.GetLength(1) - 1;
+        axisXMax = data.GetLength(0) - 1;
+    }
+
+    private static double[,] MonkeySaddleData()
+    {
+        int width = 20;
+        int height = 20;
+        double[,] data = new double[width, height];
+        double minValue = 0;
+        double maxValue = 0;
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                // Center the coordinates
+                double xc = x - width / 2.0;
+                double yc = y - height / 2.0;
+
+                // Monkey saddle equation: z = x³ - 3xy²
+                data[x, y] = (xc * xc * xc - 3 * xc * yc * yc);
+
+                // set initial min and max value, can't be 0.
+                if (x == 0 && y == 0)
+                {
+                    maxValue = data[0, 0];
+                    minValue = data[0, 0];
+                }
+
+                // Track min and max values
+                minValue = Math.Min(minValue, data[x, y]);
+                maxValue = Math.Max(maxValue, data[x, y]);
+            }
+        }
+
+        // normalize to range [0,100]
+        for (int x = 0; x < width; x++)
+            for (int y = 0; y < height; y++)
+                data[x, y] = 100 * (data[x, y] - minValue) / (maxValue - minValue);
+
+        return data;
+    }
+}

@@ -1,0 +1,27 @@
+﻿@page "/ListView/VirtualMode"
+@using C1.Blazor.ListView
+@using Localization
+@inject HttpClient Http
+
+<C1ListView ItemsSource="customers" T="Customer" Style="@("max-height:50vh")">
+    <ItemTemplate Context="customer">
+        @customer.Name
+    </ItemTemplate>
+</C1ListView>
+
+<_Sections>
+    <Title>@ListViewRes.VirtualModeTitle</Title>
+    <Summary>@ListViewRes.VirtualModeSummary</Summary>
+    <Description>@ListViewRes.VirtualModeDescription</Description>
+</_Sections>
+
+@code
+{
+    VirtualModeDataCollection customers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        customers = new VirtualModeDataCollection() { Http = Http };
+        await customers.LoadAsync(0, 0);
+    }
+}

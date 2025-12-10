@@ -1,0 +1,23 @@
+﻿@page "/virtualmode"
+@using C1.Blazor.ListView
+@using Resources
+
+<h1>@AppResources.VirtualModeTitle</h1>
+<p>@AppResources.VirtualModeDescription</p>
+
+<C1ListView ItemsSource="customers" T="Customer" Style="@("max-height:50vh")">
+    <ItemTemplate Context="customer">
+        @customer.Id - @customer.Name
+    </ItemTemplate>
+</C1ListView>
+
+@code
+{
+    VirtualModeDataCollection customers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        customers = new VirtualModeDataCollection();
+        await customers.LoadAsync(0, 0);
+    }
+}

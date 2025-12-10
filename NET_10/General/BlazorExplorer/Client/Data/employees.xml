@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfEmployee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Employee>
+    <Name>Adam Mann</Name>
+    <Title>Network Security Officer</Title>
+    <DepartmentId>3</DepartmentId>
+    <HireDate>2012-09-12</HireDate>
+    <Status>0.8</Status>
+    <FullTime>true</FullTime>
+    <ThumbnailImage>adam.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Richard Reed</Name>
+    <Title>Assistant Manager</Title>
+    <DepartmentId>1</DepartmentId>
+    <HireDate>2013-08-04</HireDate>
+    <Status>0.76</Status>
+    <FullTime>true</FullTime>
+    <ThumbnailImage>richard.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Rob Banner</Name>
+    <Title>Teller Supervisor</Title>
+    <DepartmentId>1</DepartmentId>
+    <HireDate>2015-03-24</HireDate>
+    <Status>0.4</Status>
+    <FullTime>false</FullTime>
+    <ThumbnailImage>rob.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Gene Garray</Name>
+    <Title>Personal Banker</Title>
+    <DepartmentId>5</DepartmentId>
+    <HireDate>2011-11-11</HireDate>
+    <Status>0.98</Status>
+    <FullTime>true</FullTime>
+    <ThumbnailImage>gene.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Samantha Parrington</Name>
+    <Title>Teller Supervisor</Title>
+    <DepartmentId>1</DepartmentId>
+    <HireDate>2010-07-11</HireDate>
+    <Status>0.88</Status>
+    <FullTime>true</FullTime>
+    <ThumbnailImage>samantha.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Cindy Reynolds</Name>
+    <Title>Sales Consultant</Title>
+    <DepartmentId>2</DepartmentId>
+    <HireDate>2012-12-12</HireDate>
+    <Status>0.82</Status>
+    <FullTime>false</FullTime>
+    <ThumbnailImage>cindy.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Kurt Wagner</Name>
+    <Title>Associate Director</Title>
+    <DepartmentId>4</DepartmentId>
+    <HireDate>2014-04-01</HireDate>
+    <Status>0.68</Status>
+    <FullTime>true</FullTime>
+    <ThumbnailImage>kurt.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Steve Freeman</Name>
+    <Title>Information Systems Manager</Title>
+    <DepartmentId>3</DepartmentId>
+    <HireDate>2013-01-22</HireDate>
+    <Status>0.94</Status>
+    <FullTime>true</FullTime>
+    <ThumbnailImage>steve.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Melissa Joan Gold</Name>
+    <Title>Human Resources Director</Title>
+    <DepartmentId>4</DepartmentId>
+    <HireDate>2005-02-22</HireDate>
+    <Status>0.59</Status>
+    <FullTime>true</FullTime>
+    <ThumbnailImage>melissa.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Wayne Bruce</Name>
+    <Title>Branch Manager</Title>
+    <DepartmentId>1</DepartmentId>
+    <HireDate>2003-06-10</HireDate>
+    <Status>1.0</Status>
+    <FullTime>true</FullTime>
+    <ThumbnailImage>wayne.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Jim Randall</Name>
+    <Title>Sales Consultant</Title>
+    <DepartmentId>2</DepartmentId>
+    <HireDate>2014-05-31</HireDate>
+    <Status>0.31</Status>
+    <FullTime>false</FullTime>
+    <ThumbnailImage>jim.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Donna Troy</Name>
+    <Title>Database Administrator</Title>
+    <DepartmentId>3</DepartmentId>
+    <HireDate>2007-11-14</HireDate>
+    <Status>0</Status>
+    <FullTime>true</FullTime>
+    <ThumbnailImage>donna.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Jake Olsen</Name>
+    <Title>Personal Banker</Title>
+    <DepartmentId>5</DepartmentId>
+    <HireDate>2011-09-12</HireDate>
+    <Status>0.8</Status>
+    <FullTime>true</FullTime>
+    <ThumbnailImage>jake.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Noah Talbot</Name>
+    <Title>Applications Engineer</Title>
+    <DepartmentId>3</DepartmentId>
+    <HireDate>2012-10-01</HireDate>
+    <Status>0.8</Status>
+    <FullTime>true</FullTime>
+    <ThumbnailImage>noah.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Paul Cannon</Name>
+    <Title>Teller</Title>
+    <DepartmentId>5</DepartmentId>
+    <HireDate>2012-04-02</HireDate>
+    <Status>0.81</Status>
+    <FullTime>false</FullTime>
+    <ThumbnailImage>paul.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Suzanne Melotti</Name>
+    <Title>Communications Manager</Title>
+    <DepartmentId>2</DepartmentId>
+    <HireDate>2013-06-11</HireDate>
+    <Status>0.97</Status>
+    <FullTime>true</FullTime>
+    <ThumbnailImage>suzanne.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Lorena Marquez</Name>
+    <Title>Teller</Title>
+    <DepartmentId>5</DepartmentId>
+    <HireDate>2010-09-28</HireDate>
+    <Status>0.75</Status>
+    <FullTime>true</FullTime>
+    <ThumbnailImage>lorena.png</ThumbnailImage>
+  </Employee>
+  <Employee>
+    <Name>Jack Knight</Name>
+    <Title>Teller</Title>
+    <DepartmentId>5</DepartmentId>
+    <HireDate>2015-01-15</HireDate>
+    <Status>0.85</Status>
+    <FullTime>true</FullTime>
+    <ThumbnailImage>jackson.png</ThumbnailImage>
+  </Employee>
+</ArrayOfEmployee>

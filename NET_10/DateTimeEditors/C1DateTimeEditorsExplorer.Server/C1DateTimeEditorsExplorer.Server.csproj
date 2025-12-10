@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>C1DateTimeEditorsExplorer.Server</AssemblyName>
+    <RootNamespace>C1DateTimeEditorsExplorer.Server</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove=".gclicx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include=".gclicx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Localization\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.Calendar">
+      <Version>10.0.20252.1227</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>10.0.20252.1227</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.DateTimeEditors">
+      <Version>10.0.20252.1227</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Input">
+      <Version>10.0.20252.1227</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Localization\DatePickerRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DatePickerRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\DateTimePickerRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DateTimePickerRes.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Localization\DatePickerRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DatePickerRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\DateTimePickerRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DateTimePickerRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

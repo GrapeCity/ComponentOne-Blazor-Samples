@@ -1,0 +1,265 @@
+﻿<style>
+    input[type=radio] + label {
+        font-weight: normal;
+        padding: 2px;
+    }
+
+    input[type=radio]:not(:disabled):hover + label {
+        color: dimgray;
+    }
+
+    input[type=radio]:disabled + label {
+        color: lightslategray;
+    }
+
+    input[type=radio]:not(:checked) + label {
+        color: deepskyblue;
+        text-decoration: underline;
+    }
+</style>
+
+<div style="padding: 8px">
+    <div style="padding: 8px">
+        @foreach (var option in options)
+        {
+            <input id="@option.Key"
+                   @key="@option"
+                   type="radio"
+                   style="display: none"
+                   name="mode"
+                   disabled="@option.Disabled"
+                   checked="@option.Selected"
+                   @onchange="@(() => SwitchOption(option))" />
+            <label for="@option.Key"> @option.Label </label>
+        }
+    </div>
+
+    <C1DataFilter AutoGenerateFilters="false"
+                  AutoApply="false"
+                  Style="@(new C1Style("width: 400px;"))"
+                  HeaderStyle="@(new C1Style(" display: none"))"
+                  ItemStyle="@(new C1Style())"
+                  DataFilters="@FiltersFragment"
+                  @ref="dataFilter" />
+
+</div>
+
+@code {
+
+    C1DataFilter dataFilter;
+    List<Option> options { get; set; }
+    Option selectedOption;
+    C1FilterDataCollection<object> filtersSource;
+    TaskCompletionSource rendering;
+    RenderFragment FiltersFragment => selectedOption?.FilterFragment;
+
+    [Parameter]
+    public int NonExistentKey { get; set; } = -1;
+
+    [Parameter]
+    public string PropertyName { get; set; }
+
+    [Parameter]
+    public KeyValuePair<int, string>[] FiltersValues { get; set; }
+
+    [Parameter]
+    public IDataCollection<object> Source { get; set; }
+
+    protected override void OnInitialized()
+    {
+        filtersSource = new C1FilterDataCollection<object>(FiltersValues);
+        options = new List<Option>
+        {
+            new Option {
+                Key = "conditionalRatio",
+                Label = FlexGridRes.FilterByCondition,
+                FilterFragment = CreateConditionalFilterOptionFragment(),
+                Selected = true,
+                ExpressionConverter = new ExpressionConverter{ FiltersValues = FiltersValues}
+            },
+
+            new Option {
+                Key = "checklistRatio",
+                Label = FlexGridRes.FilterByValues,
+                FilterFragment = CreateChecklistFilterOptionFragment(),
+                ExpressionConverter = new CheckListFilterExpressionConverter{ FiltersValues = FiltersValues}
+            }
+        };
+
+        RenderFragment CreateConditionalFilterOptionFragment() =>
+            b =>
+            {
+                b.OpenComponent<TextFilter>(0);
+                b.AddAttribute(1, nameof(TextFilter.PropertyName), "Value");
+                b.AddComponentReferenceCapture(2, r => _ = OnOptionFilterAdded());
+                b.CloseComponent();
+            };
+
+        RenderFragment CreateChecklistFilterOptionFragment() =>
+            b =>
+            {
+                b.OpenComponent<ChecklistFilter>(0);
+                b.AddAttribute(1, nameof(ChecklistFilter.PropertyName), "Value");
+                b.AddAttribute(2, nameof(ChecklistFilter.ValueMemberPath), "Value");
+                b.AddAttribute(3, nameof(ChecklistFilter.DisplayMemberPath), "Value");
+                b.AddAttribute(4, nameof(ChecklistFilter.ItemsSource), FiltersValues);
+                b.AddAttribute(5, nameof(ChecklistFilter.ShowSearchBox), true);
+                b.AddComponentReferenceCapture(6, r => _ = OnOptionFilterAdded());
+                b.CloseComponent();
+            };
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            SwitchOption(options.First(o => o.Selected));
+        }
+
+        rendering?.TrySetResult();
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    void SwitchOption(Option option)
+    {
+        selectedOption = option;
+        foreach (var opt in options)
+        {
+            opt.Disabled = opt.Selected = (opt.Key == option.Key);
+        }
+
+        // Disable/reset DataFilter before introducing a new filter.
+        dataFilter.ItemsSource = null;
+        dataFilter.FilterValueChanged -= OnFilterValueChanged;
+        StateHasChanged();
+    }
+
+    async Task OnOptionFilterAdded()
+    {
+        // Initiate the DataFilter.
+        await InvalidateFilterExpression(selectedOption.ExpressionConverter);
+        dataFilter.ItemsSource = filtersSource;
+
+        // Defers handling of the FilterValueChanged event to avoid processing events fired during the enabling of the DataFilter.
+        rendering = new TaskCompletionSource();
+        StateHasChanged();
+        await rendering.Task;
+
+        dataFilter.FilterValueChanged += OnFilterValueChanged;
+    }
+
+    async Task InvalidateFilterExpression(ExpressionConverter converter)
+    {
+        var sourceExpression = Source.GetFilterExpression().GetExpresssionInScope(PropertyName);
+        FilterExpression exp = converter.Convert(sourceExpression);
+        await filtersSource.FilterAsync(exp);
+    }
+
+    async void OnFilterValueChanged(object s, FilterChangedEventArgs a)
+    {
+        await dataFilter.ApplyFilterAsync();
+        var expression = GenerateFilterExpression();
+
+        var currentExpression = Source.GetFilterExpression();
+        var filterExpression = currentExpression;
+        filterExpression = filterExpression.ReplaceExpressionInScope(PropertyName, expression.GetExpression());
+
+        await Source.FilterAsync(filterExpression);
+
+        CustomCombinationExpressions GenerateFilterExpression()
+        {
+            var result = new CustomCombinationExpressions() { FilterCombination = FilterCombination.Or };
+            foreach (var item in dataFilter.DataCollection)
+            {
+                var key = ((KeyValuePair<int, string>)item).Key;
+                result.Expressions.Add(new OperationExpression() { Value = key, FilterOperation = FilterOperation.Equal, PropertyName = PropertyName });
+            }
+            if (result.Expressions.Count == 0)
+            {
+                result.Expressions.Add(new OperationExpression() { Value = NonExistentKey, FilterOperation = FilterOperation.Equal, PropertyName = PropertyName });
+            }
+            return result;
+        }
+    }
+
+    class Option
+    {
+        public string Key { get; set; }
+        public string Label { get; set; }
+        public bool Selected { get; set; }
+        public bool Disabled { get; set; }
+        public ExpressionConverter ExpressionConverter { get; set; }
+        public RenderFragment FilterFragment { get; set; }
+    }
+
+    class CustomCombinationExpressions : CombinationExpression
+    {
+        public CustomCombinationExpressions() : base() { }
+        public CustomCombinationExpressions(FilterCombination filterCombination, IEnumerable<Expression> expressions) : base(filterCombination, expressions) { }
+
+        public FilterExpression GetExpression()
+        {
+            return this.GetFilterExpression();
+        }
+    }
+
+    class CustomOperationExpressions : OperationExpression
+    {
+        public FilterExpression GetExpression()
+        {
+            return this.GetFilterExpression();
+        }
+    }
+
+    class CheckListFilterExpressionConverter : ExpressionConverter
+    {
+        protected override FilterExpression Convert(FilterOperationExpression expression) =>
+            new CustomOperationExpressions
+                {
+                    PropertyName = "Value",
+                    FilterOperation = FilterOperation.IsOneOf,
+                    Value = FiltersValues.Where(v => v.Key == (int)expression.Value).Select(v => v.Value).ToList()
+                }
+            .GetExpression();
+    }
+
+    class ExpressionConverter
+    {
+        public KeyValuePair<int, string>[] FiltersValues { get; set; }
+
+        protected virtual FilterExpression Convert(FilterOperationExpression expression) =>
+            new CustomCombinationExpressions(
+                FilterCombination.Or,
+                FiltersValues.Where(v => v.Key == (int)expression.Value)
+                            .Select(v => new OperationExpression { PropertyName = "Value", Value = v.Value })
+                            .ToList())
+            .GetExpression();
+
+        protected virtual FilterExpression Convert(FilterNaryExpression expression) =>
+            new CustomCombinationExpressions(
+                FilterCombination.Or,
+                expression.Expressions.Count == FiltersValues.Length ? null :
+                expression.Expressions.Select(oe =>
+                                                new OperationExpression
+                                                    {
+                                                        FilterOperation = FilterOperation.Equal,
+                                                        PropertyName = "Value",
+                                                        Value = FiltersValues.FirstOrDefault(f => f.Key == (int)((FilterOperationExpression)oe).Value).Value
+                                                    }))
+            .GetExpression();
+
+        public FilterExpression Convert(FilterExpression expression)
+        {
+            if (expression is FilterOperationExpression foe)
+            {
+                return Convert(foe);
+            }
+
+            if (expression is FilterNaryExpression fne)
+            {
+                return Convert(fne);
+            }
+            return null;
+        }
+    }
+}

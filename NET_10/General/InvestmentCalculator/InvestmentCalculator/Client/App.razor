@@ -1,0 +1,30 @@
+<Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+    </Found>
+    <NotFound>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <p>Sorry, there's nothing at this address.</p>
+        </LayoutView>
+    </NotFound>
+</Router>
+@code{
+    protected override void OnInitialized()
+    {
+        SetDefaultSpecificCulture();
+
+        base.OnInitialized();
+    }
+
+    void SetDefaultSpecificCulture()
+    {
+        const string defaultCulture = "en-us";
+        var culture = System.Globalization.CultureInfo.DefaultThreadCurrentCulture;
+        if (string.Equals(culture?.Name, defaultCulture, StringComparison.OrdinalIgnoreCase))
+        {
+            return;
+        }
+
+        System.Globalization.CultureInfo.DefaultThreadCurrentCulture = new System.Globalization.CultureInfo(defaultCulture);
+    }
+}

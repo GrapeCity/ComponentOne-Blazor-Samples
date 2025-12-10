@@ -1,0 +1,72 @@
+﻿@page "/"
+@using C1.Blazor.ListView
+@using C1.Blazor.Accordion
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using AccordionExplorer.Server.Localization
+<p>
+    @AccordionRes.AccordionDescription
+</p>
+<p>
+    <span style="padding-right: 6px;">@AccordionRes.ExpandMode</span> <C1ComboBox ItemsSource="expandModes" @bind-SelectedItem="expandMode" />
+    <span style="padding-right: 6px;">@AccordionRes.ExpandDirection</span> <C1ComboBox ItemsSource="expandDirections" @bind-SelectedItem="expandDirection" />
+    <span style="padding-right: 6px;">@AccordionRes.ExpandIconAlignment</span> <C1ComboBox ItemsSource="expanderIconAlignments" @bind-SelectedItem="expanderIconAlignment" />
+    <label style="padding-right: 6px;">@AccordionRes.Fill <input type="checkbox" @bind-value="fill" @attributes="fillContentAttributes" /></label>
+</p>
+
+<C1Accordion ExpandMode="expandMode"
+             ExpandDirection="expandDirection"
+             ExpandIconAlignment="(ExpanderIconAlignment)expanderIconAlignment"
+             Fill="fill"
+             Style="@("height: 400px;")">
+    <AccordionItem Header="@AccordionRes.Header1">
+        <C1ListView ItemsSource="customers" DisplayMemberPath="Name" T="Customer" Style="@("max-height:200px; width: 300px;")" />
+    </AccordionItem>
+    <AccordionItem Header="@AccordionRes.Header2">
+        <div style="width: 600px; height: 600px; background: radial-gradient(closest-side, #3f87a6, #ebf8e1, #f69d3c);"></div>
+    </AccordionItem>
+    <AccordionItem Header="@AccordionRes.Header3">
+        <C1ListView ItemsSource="customers" DisplayMemberPath="Name" T="Customer" Style="@("max-height:200px; width: 300px;")" />
+    </AccordionItem>
+    <AccordionItem Header="@AccordionRes.Header4" @bind-IsExpanded="expanded" RetainChildContent="@(retainChildContent ?? false)">
+        <div style="padding:16px;">
+            <label style="display:block; margin-bottom:8px;">
+                @AccordionRes.UserName:
+                <input type="text" style="padding:6px;">
+            </label>
+
+            <label style="display:block; ">
+                <input type="checkbox" style="margin-right:6px;">
+                @AccordionRes.Subscribe
+            </label>
+
+            <label style="display:block; margin-top: 18px; font-size:.8em;">
+                @AccordionRes.PreserveContent:
+                <C1CheckBox @bind-IsChecked="retainChildContent" />
+            </label>
+        </div>
+
+    </AccordionItem>
+</C1Accordion>
+@code
+{
+    object expanderIconAlignment = ExpanderIconAlignment.Right;
+    ExpanderIconAlignment[] expanderIconAlignments = Enum.GetValues<ExpanderIconAlignment>();
+    ExpandDirection expandDirection = ExpandDirection.Left;
+    ExpandDirection[] expandDirections = Enum.GetValues<ExpandDirection>();
+    ExpandMode expandMode = ExpandMode.Any;
+    ExpandMode[] expandModes = new ExpandMode[] { ExpandMode.One, ExpandMode.Collapsible, ExpandMode.Any };
+    IEnumerable<Customer> customers;
+
+    Dictionary<string, object> fillContentAttributes => fill ? new Dictionary<string, object> { { "checked", true } } : null;
+
+    bool? retainChildContent = true;
+    bool expanded;
+    bool fill = false;
+
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+}

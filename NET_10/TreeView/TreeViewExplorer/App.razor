@@ -1,0 +1,38 @@
+@using System.Globalization
+<Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+    </Found>
+    <NotFound>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <p>Sorry, there's nothing at this address.</p>
+        </LayoutView>
+    </NotFound>
+</Router>
+@code {
+    protected override void OnInitialized()
+    {
+        SetSpecificCulture();
+
+        base.OnInitialized();
+    }
+
+    void SetSpecificCulture()
+    {
+        var culture = CultureInfo.CurrentCulture;
+        if (!culture.IsNeutralCulture)
+        {
+            // Current culture is specific. Nothing needs to do.
+            return;
+        }
+
+        try
+        {
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.CreateSpecificCulture(culture.Name);
+        }
+        catch (Exception ex) when (ex is CultureNotFoundException || ex is ArgumentException)
+        {
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-us");
+        }
+    }
+}

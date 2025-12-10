@@ -1,0 +1,165 @@
+﻿@page "/customsort"
+@using Resources
+@using C1.DataCollection
+@using C1.Blazor.Core
+@using C1.Blazor.Input
+@using C1.Blazor.Grid
+
+<h1>@AppResources.CustomSortIconTitle</h1>
+<p>@AppResources.CustomSortIconDescription</p>
+<p>
+    Sort Icon Position
+    <C1ComboBox ItemsSource="sortIconPositions" @bind-SelectedItem="@sortIconPosition" />
+</p>
+<p>
+    Sort Icon Template
+    <C1ComboBox T="IconsTemplateSet"
+                DisplayMemberPath="@nameof(IconsTemplateSet.Title)"
+                ValueMemberPath="@nameof(IconsTemplateSet.Id)"
+                ItemsSource="sortTemplates"
+                SelectedValue="@selectedTemplateSet"
+                SelectedValueChanged="@(v=> {selectedTemplateSet = v; InvalidateIconsTemplateSet();})" />
+</p>
+<p>
+    Show Sort
+    <C1CheckBox @bind-IsChecked="showSort" />
+</p>
+
+<FlexGrid @ref="grid"
+          ItemsSource="source"
+          ShowSort="@(showSort ?? false)"
+          SortAscendingIconTemplate="sortAscendingIconTemplate"
+          SortDescendingIconTemplate="sortDescendingIconTemplate"
+          SortIndeterminateIconTemplate="sortIndeterminateIconTemplate"
+          SortIconPosition="sortIconPosition"
+          IsVirtualizationEnabled="false"
+          Style="@("max-height: 50vh")">
+</FlexGrid>
+
+@code {
+
+    FlexGrid grid;
+    object selectedTemplateSet;
+    bool? showSort = true;
+    RenderFragment<C1Style> sortAscendingIconTemplate;
+    RenderFragment<C1Style> sortDescendingIconTemplate;
+    RenderFragment<C1Style> sortIndeterminateIconTemplate;
+
+    C1DataCollection<Customer> source;
+    GridSortIconPosition[] sortIconPositions = { GridSortIconPosition.Inline, GridSortIconPosition.Left, GridSortIconPosition.Right };
+    GridSortIconPosition sortIconPosition = GridSortIconPosition.Inline;
+
+    IconsTemplateSet[] sortTemplates = new IconsTemplateSet[]
+    {
+        new (0, "Custom 1"),
+        new (1, "Custom 2"),
+        new (2, nameof(C1IconTemplate.TriangleUp)),
+        new (3, nameof(C1IconTemplate.TriangleNorth)),
+        new (4, nameof(C1IconTemplate.ChevronUp)),
+        new (5, nameof(C1IconTemplate.ArrowUp))
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        var customers = Customer.GetCustomerList(100);
+        var dataCollection = new C1DataCollection<Customer>(customers);
+        await dataCollection.SortAsync(new SortDescription(nameof(Customer.FirstName), SortDirection.Ascending), new SortDescription(nameof(Customer.LastName), SortDirection.Descending));
+        source = dataCollection;
+        selectedTemplateSet = 1;
+        InvalidateIconsTemplateSet();
+    }
+
+    private void InvalidateIconsTemplateSet()
+    {
+        switch ((int)selectedTemplateSet)
+        {
+            case 0:
+                sortAscendingIconTemplate = (s =>
+                {
+                    return (@<svg style="@s" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-up-alt" viewBox="0 0 16 16">
+                                <path d="M3.5 13.5a.5.5 0 0 1-1 0V4.707L1.354 5.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.498.498 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L3.5 4.707V13.5zm4-9.5a.5.5 0 0 1 0-1h1a.5.5 0 0 1 0 1h-1zm0 3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 0 1h-3zm0 3a.5.5 0 0 1 0-1h5a.5.5 0 0 1 0 1h-5zM7 12.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5z" />
+                            </svg>);
+                });
+                sortDescendingIconTemplate = (s =>
+                {
+                    return (@<svg style="@s" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-down" viewBox="0 0 16 16">
+                                <path d="M3.5 2.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 11.293V2.5zm3.5 1a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z" />
+                            </svg>
+                    );
+                });
+                sortIndeterminateIconTemplate = null;
+                break;
+
+            case 1:
+                sortAscendingIconTemplate = (s =>
+                {
+                    return (@<svg style="@s" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16">
+                                <g transform="matrix(0.008928573 0 0 0.008928573 0 0)">
+                                    <g transform="matrix(1 0 0 1 0 0)">
+                                    </g>
+                                    <path transform="matrix(1 0 0 1 0 0)" d="M1408 704C 1408 721.3333 1401.6667 736.3333 1389 749C 1376.3333 761.6667 1361.3333 768 1344 768L1344 768L447.99997 768C 430.66663 768 415.66663 761.6667 402.99997 749C 390.3333 736.3333 383.99997 721.3333 383.99997 704C 383.99997 686.6667 390.3333 671.6667 402.99997 659L402.99997 659L851 211C 863.6667 198.33333 878.6667 192 896 192C 913.3333 192 928.3333 198.33333 941 211L941 211L1389 659C 1401.6667 671.6667 1408 686.6667 1408 704z" stroke="none" fill="#000000" fill-rule="nonzero" />
+                                    <g transform="matrix(1 0 0 1 0 0)">
+                                    </g>
+                                    <path transform="matrix(1 0 0 1 0 0)" d="M1408 1088C 1408 1105.3333 1401.6667 1120.3333 1389 1133L1389 1133L941 1581C 928.3333 1593.6667 913.3333 1600 896 1600C 878.6667 1600 863.6667 1593.6667 851 1581L851 1581L403 1133C 390.33334 1120.3333 384 1105.3333 384 1088C 384 1070.6667 390.33334 1055.6667 403 1043C 415.66666 1030.3333 430.66666 1024 448 1024L448 1024L1344 1024C 1361.3333 1024 1376.3333 1030.3333 1389 1043C 1401.6667 1055.6667 1408 1070.6667 1408 1088z" stroke="none" fill="#000000" fill-rule="nonzero" fill-opacity="0.29803923" />
+                                </g>
+                            </svg>
+                    );
+                });
+                sortDescendingIconTemplate = (s =>
+                {
+                    return (@<svg style="@s" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16">
+                                <g transform="matrix(0.008928573 0 0 0.008928573 0 0)">
+                                    <g transform="matrix(1 0 0 1 0 0)">
+                                    </g>
+                                    <path transform="matrix(1 0 0 1 0 0)" d="M1408 704C 1408 721.3333 1401.6667 736.3333 1389 749C 1376.3333 761.6667 1361.3333 768 1344 768L1344 768L447.99997 768C 430.66663 768 415.66663 761.6667 402.99997 749C 390.3333 736.3333 383.99997 721.3333 383.99997 704C 383.99997 686.6667 390.3333 671.6667 402.99997 659L402.99997 659L851 211C 863.6667 198.33333 878.6667 192 896 192C 913.3333 192 928.3333 198.33333 941 211L941 211L1389 659C 1401.6667 671.6667 1408 686.6667 1408 704z" stroke="none" fill="#000000" fill-rule="nonzero" fill-opacity="0.29803923" />
+                                    <g transform="matrix(1 0 0 1 0 0)">
+                                    </g>
+                                    <path transform="matrix(1 0 0 1 0 0)" d="M1408 1088C 1408 1105.3333 1401.6667 1120.3333 1389 1133L1389 1133L941 1581C 928.3333 1593.6667 913.3333 1600 896 1600C 878.6667 1600 863.6667 1593.6667 851 1581L851 1581L403 1133C 390.33334 1120.3333 384 1105.3333 384 1088C 384 1070.6667 390.33334 1055.6667 403 1043C 415.66666 1030.3333 430.66666 1024 448 1024L448 1024L1344 1024C 1361.3333 1024 1376.3333 1030.3333 1389 1043C 1401.6667 1055.6667 1408 1070.6667 1408 1088z" stroke="none" fill="#000000" fill-rule="nonzero" />
+                                </g>
+                            </svg>
+                        );
+                });
+                sortIndeterminateIconTemplate = (s =>
+                {
+                    return (@<svg style="@s" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16">
+                                <g transform="matrix(0.008928573 0 0 0.008928573 0 0)">
+                                    <g transform="matrix(1 0 0 1 0 0)">
+                                    </g>
+                                    <path transform="matrix(1 0 0 1 0 0)" d="M1408 704C 1408 721.3333 1401.6667 736.3333 1389 749C 1376.3333 761.6667 1361.3333 768 1344 768L1344 768L447.99997 768C 430.66663 768 415.66663 761.6667 402.99997 749C 390.3333 736.3333 383.99997 721.3333 383.99997 704C 383.99997 686.6667 390.3333 671.6667 402.99997 659L402.99997 659L851 211C 863.6667 198.33333 878.6667 192 896 192C 913.3333 192 928.3333 198.33333 941 211L941 211L1389 659C 1401.6667 671.6667 1408 686.6667 1408 704z" stroke="none" fill="#000000" fill-rule="nonzero" fill-opacity="0.29803923" />
+                                    <g transform="matrix(1 0 0 1 0 0)">
+                                    </g>
+                                    <path transform="matrix(1 0 0 1 0 0)" d="M1408 1088C 1408 1105.3333 1401.6667 1120.3333 1389 1133L1389 1133L941 1581C 928.3333 1593.6667 913.3333 1600 896 1600C 878.6667 1600 863.6667 1593.6667 851 1581L851 1581L403 1133C 390.33334 1120.3333 384 1105.3333 384 1088C 384 1070.6667 390.33334 1055.6667 403 1043C 415.66666 1030.3333 430.66666 1024 448 1024L448 1024L1344 1024C 1361.3333 1024 1376.3333 1030.3333 1389 1043C 1401.6667 1055.6667 1408 1070.6667 1408 1088z" stroke="none" fill="#000000" fill-rule="nonzero" fill-opacity="0.29803923" />
+                                </g>
+                            </svg>
+                    );
+                });
+                break;
+
+            case 2:
+                sortAscendingIconTemplate = C1IconTemplate.TriangleUp;
+                sortDescendingIconTemplate = null;
+                sortIndeterminateIconTemplate = null;
+                break;
+
+            case 3:
+                sortAscendingIconTemplate = C1IconTemplate.TriangleNorth;
+                sortDescendingIconTemplate = null;
+                sortIndeterminateIconTemplate = null;
+                break;
+
+            case 4:
+                sortAscendingIconTemplate = C1IconTemplate.ChevronUp;
+                sortDescendingIconTemplate = null;
+                sortIndeterminateIconTemplate = null;
+                break;
+
+            case 5:
+                sortAscendingIconTemplate = C1IconTemplate.ArrowUp;
+                sortDescendingIconTemplate = null;
+                sortIndeterminateIconTemplate = null;
+                break;
+        }
+    }
+
+    record IconsTemplateSet(int Id, string Title);
+}

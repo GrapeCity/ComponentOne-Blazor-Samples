@@ -1,0 +1,134 @@
+﻿@page "/DataFilter/CustomFilters"
+
+@implements IDisposable
+
+<section class="sampleDataFilterSection">
+    <div class="filtersSection">
+        <C1DataFilter ItemsSource="@_data"
+                      AutoGenerateFilters="false"
+                      Style="@("max-height: inherit;")"
+                      ExpandMode="@ExpandMode.One">
+            <DataFilters>
+                <ModelFilter PropertyName="Car.Model" CarModels="@_carsModels" HeaderText="Model" />
+                <PriceFilter PropertyName="Car.Price" HeaderText="Price" PriceIntervals="_priceIntervals" />
+                <TransmissionFilter PropertyName="Car.TransmissAutomatic" HeaderText="Automatic transmission" />
+                <ColorFilter PropertyName="Color" Colors="@_colors" />
+            </DataFilters>
+        </C1DataFilter>
+    </div>
+    <div class="dataSection">
+        <C1TreeView @ref="_treeView" ChildItemsPaths="CountInStores" DisplayMemberPaths="Name" ShowLines="true"
+                    ItemsSource="_treeViewSource"
+                    Style="@("max-height: inherit; width: auto; overflow: auto;")"
+                    ItemStyle=@("height: 150px;")
+                    SelectionMode="C1SelectionMode.Extended" ExpandMode="TreeViewExpandMode.Single">
+
+            <ItemTemplate>
+                @if (context is TreeViewItem { DataItem: CountInStore info } item)
+                {
+                    <div style="overflow: auto;  min-width: 300px; max-width: 500px; padding: 12px;">
+
+                        <div style="display: grid; grid-row-gap: 6px; grid-template-rows: 1fr 1fr 1fr; ">
+                            <div style=" text-overflow: ellipsis;">
+                                Store: @info.Store.City
+                            </div>
+
+                            <div style="text-overflow: ellipsis;">
+                                Number of cars: @info.Count
+                            </div>
+                            <div style="@($"width: 70px; height: 20px; background-color:{C1Color.FromArgb(info.Color.A, info.Color.R, info.Color.G, info.Color.B)}")"></div>
+                        </div>
+                    </div>
+                }
+                else if (context is TreeViewItem { DataItem: CarStoreGroup groupInfo } groupItem)
+                {
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-column-gap: 6px; max-width: max-content; padding-left: 16px; padding-right: 16px;">
+                        <div>
+                            <img style="max-height: 100px;" src="data:image/bmp;base64, @(groupInfo.Car.Picture.Value)" />
+                            <br />
+                            <div style="padding:4px;">
+                                @foreach (var color in groupInfo.Colors)
+                                {
+                                    <span style="@($"background: {C1Color.FromArgb(color.A, color.R, color.G, color.B)}; width: 15px; height: 15px; border-radius: 50%; display:inline-block; margin-left: 3px; margin-right: 3px;")"></span>
+                                }
+                            </div>
+                        </div>
+                        <div>
+                            <b> @groupInfo.Car.Model </b> <br />
+                            Brand: @groupInfo.Car.Brand <br />
+                            Liter: @groupInfo.Car.Liter <br />
+                            Automatic transmission: @groupInfo.Car.TransmissAutomatic <br />
+                            Category: @groupInfo.Car.Category
+                        </div>
+                        <div>
+                            <b>@($"{groupInfo.Car.Price:C0}")</b> <br />
+                            Total numbers in stores: @groupInfo.TotalInStores
+                        </div>
+                    </div>
+                }
+
+            </ItemTemplate>
+        </C1TreeView>
+    </div>
+</section>
+
+<_Sections>
+    <Title>@DataFilterRes.CustomFilterTitle</Title>
+    <Description>@DataFilterRes.CustomFilterDescription</Description>
+</_Sections>
+
+@code{
+    C1.DataCollection.C1DataCollection<CountInStore> _data;
+
+    List<System.Drawing.Color> _colors;
+    List<Car> _carsModels;
+    List<CarStoreGroup> _treeViewSource;
+    C1TreeView _treeView;
+    List<PriceInterval> _priceIntervals;
+
+    protected override void OnInitialized()
+    {
+        var source = DataProvider.GetCarsInStores().ToList();
+        _data = new C1.DataCollection.C1DataCollection<CountInStore>(source);
+        _colors = DataProvider.Colors.Select(x => System.Drawing.Color.FromName(x)).ToList();
+        _carsModels = source.GroupBy(x => ((CountInStore)x).Car).Select(g => g.Key).ToList();
+        _priceIntervals = new List<PriceInterval>
+{
+            new PriceInterval { MaxPrice = 20000 },
+            new PriceInterval { MinPrice = 20000, MaxPrice = 40000 },
+            new PriceInterval { MinPrice = 40000, MaxPrice = 70000 },
+            new PriceInterval { MinPrice = 70000, MaxPrice = 100000 },
+            new PriceInterval { MinPrice = 100000 }
+        };
+        UpdateTreeViewData();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        if (firstRender)
+        {
+            _data.FilterChanged += OnFilterChanged;
+        }
+    }
+
+    void OnFilterChanged(object sender, object args)
+    {
+        UpdateTreeViewData();
+        StateHasChanged();
+    }
+
+    void UpdateTreeViewData()
+    {
+        _treeViewSource = _data.GroupBy(x => ((CountInStore)x).Car)
+            .Select(g => new CarStoreGroup { Car = g.Key, CountInStores = g.Cast<CountInStore>().ToList() }).ToList();
+    }
+
+    public void Dispose()
+    {
+        if (_data != null)
+        {
+            _data.FilterChanged -= OnFilterChanged;
+        }
+    }
+}

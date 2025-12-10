@@ -1,0 +1,24 @@
+﻿@page "/FlexGrid/TransposedGrid"
+@using BlazorExplorer;
+@using C1.Blazor.Grid
+@using System.Collections.ObjectModel;
+
+<FlexGrid ItemsSource="customers" ColumnHeaderFontWeight="C1StyleFontWeight.Bold" ColumnHeaderGridLinesVisibility="GridLinesVisibility.Vertical" GridLinesVisibility="GridLinesVisibility.Vertical">
+    <FlexGridBehaviors>
+        <TransposedGridBehavior />
+    </FlexGridBehaviors>
+</FlexGrid>
+
+<_Sections>
+    <Title>@FlexGridRes.TransposedGridTitle</Title>
+    <Description>@FlexGridRes.TransposedGridDescription</Description>
+</_Sections>
+
+@code {
+    ObservableCollection<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+}

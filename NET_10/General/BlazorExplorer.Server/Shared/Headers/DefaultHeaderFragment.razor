@@ -1,0 +1,46 @@
+﻿<nav class="default-header">
+    <menu>
+        <li class="narrow-screen">
+            <a class="glyphicon glyphicon-home" href=""></a>
+        </li>
+        <li class="separator narrow-screen"></li>
+        <li class="logo wide-screen">
+            <a href="@(Resource.Layout_GrapeCityUrl)">
+                <div>
+                    <svg fill="white" width="145" height="45" style="display: block">
+                        <use href="Content/images/logo.svg#logo"></use>
+                    </svg>
+                </div>
+            </a>
+        </li>
+        <li class="separator wide-screen"></li>
+        <li class="title">
+            <span style="white-space:nowrap;"> @Resource.Layout_ComponentOne &nbsp; </span>
+            <span style="white-space:nowrap;">@_App.HtmlRaw(Resource.Layout_LongTitle)</span>
+        </li>
+        <li style="flex: 1;" class="wide-screen"> </li>
+        <li class="wide-screen">
+            <a href="@(Resource.SiteNav_DemosUrl)" target="_blank">
+                <div>@_App.HtmlRaw(Resource.SiteNav_Demos.ToUpper())</div>
+            </a>
+        </li>
+        <li class="separator wide-screen"></li>       
+        <li class="wide-screen">
+            <a href="@(Resource.SiteNav_DocsUrl)" target="_blank">
+                <div>@_App.HtmlRaw(Resource.SiteNav_Docs.ToUpper())</div>
+            </a>
+        </li>
+        <li class="separator wide-screen"></li> 
+        <li class="wide-screen">
+            <a href="@(Resource.SiteNav_SamplesUrl)" target="_blank">
+                <div>@_App.HtmlRaw(Resource.SiteNav_Samples.ToUpper())</div>
+            </a>
+        </li>
+        <li class="separator wide-screen"></li>    
+        <li class="wide-screen">
+            <a href="@(Resource.SiteNav_DownloadUrl)" target="_blank">
+                <div>@_App.HtmlRaw(Resource.SiteNav_Download.ToUpper())</div>
+            </a>
+        </li>
+    </menu>
+</nav>

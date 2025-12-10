@@ -1,0 +1,56 @@
+﻿@using Localization
+
+<div @ref="_div">
+
+    @if (_App.RelativeUri == _lastUri && _content != null)
+    {
+        @_content
+    }
+</div>
+@{
+    if (_Sections.Get("Settings") != null)
+    {
+        <div class="demo-settings">
+            <h3 class="semi-bold">@_App.HtmlRaw(Resource.ControlLayout_Settings)</h3>
+            <_Sections RenderSections="Settings"></_Sections>
+        </div>
+    }
+
+    if (_Sections.Get("Description") != null)
+    {
+        <div class="demo-description">
+            <h3 class="semi-bold">@_App.HtmlRaw(Resource.ControlLayout_Description)</h3>
+            <_Sections RenderSections="Description"></_Sections>
+        </div>
+    }
+}
+
+@code {
+    [Parameter]
+    public RenderFragment Content
+    {
+        get { return _content; }
+        set { _ = setContentAsync(value); }
+    }
+
+    private ElementReference _div;
+    private RenderFragment _content = null;
+    private string _lastUri = "";
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        _lastUri = _App.RelativeUri;
+        base.OnAfterRender(firstRender);
+    }
+
+    private async Task setContentAsync(RenderFragment content_)
+    {
+        var fromHome = _App.IsHome(_lastUri);
+        while (_lastUri != _App.RelativeUri)
+            await Task.Delay(1);
+        await Task.Delay(fromHome ? 100 : 0);
+        _content = content_;
+        StateHasChanged();
+        _Sections.Clear(false);
+    }
+}

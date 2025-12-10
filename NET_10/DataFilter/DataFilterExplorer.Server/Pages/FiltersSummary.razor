@@ -1,0 +1,97 @@
+﻿@page "/FiltersSummary"
+
+<h3>@DataFilterRes.FilterSummaryTitle</h3>
+<p>@DataFilterRes.FilterSummaryDescription</p>
+
+<section class="sampleDataFilterSection">
+    <div class="filtersSection">
+        <C1DataFilter ItemsSource="@_data" FilterAutoGenerating="@FilterAutoGenerating" Style="@("max-height: inherit")" ExpandMode="@ExpandMode.One">
+
+        </C1DataFilter>
+    </div>
+    <div class="dataSection">
+        <FlexGrid AutoGeneratingColumn="OnAutoGeneratingColumn" ItemsSource="@_data" HeadersVisibility="GridHeadersVisibility.All" Style="@("max-height: inherit")">
+
+        </FlexGrid>
+    </div>
+</section>
+
+
+@code {
+
+    C1.DataCollection.C1DataCollection<Car> _data;
+
+
+    protected override void OnInitialized()
+    {
+        var carsTable = DataProvider.GetCarTable();
+        _data = new C1.DataCollection.C1DataCollection<Car>(DataProvider.GetCarDataCollection(carsTable));
+    }
+
+    void OnAutoGeneratingColumn(object sender, GridAutoGeneratingColumnEventArgs a)
+    {
+        switch (a.Column.Binding)
+        {
+            case nameof(Car.Picture):
+                a.Column.CellTemplate = target => builder =>
+                {
+                    builder.OpenElement(0, "img");
+                    builder.AddAttribute(1, "style", "max-height: 35px");
+                    builder.AddAttribute(2, "src", $"data:image/bmp;base64, {((Lazy<string>)target).Value}");
+                    builder.CloseElement();
+                };
+                break;
+            case nameof(Car.DateProductionLine):
+                a.Column.Format = "g";
+                break;
+            case nameof(Car.PresentationDate):
+                a.Column.Format = "MM/dd/yy H:mm:ss zzz";
+                break;
+            case nameof(Car.FuelConsumption):
+                a.Column.Format = "hh:mm";
+                break;
+        }
+    }
+
+    void FilterAutoGenerating(object sender, FilterAutoGeneratingEventArgs e)
+    {
+        if (e.Property.Name == nameof(Car.Price))
+        {
+            var filter = e.Filter as RangeFilter;
+            filter.Maximum = _data.Max(o => ((Car)o).Price);
+            filter.Minimum = _data.Min(o => ((Car)o).Price);
+        }
+        else if (e.Property.Name == nameof(Car.Brand))
+        {
+            var filter = e.Filter as ChecklistFilter;
+            filter.FilterSummary.PropertyName = nameof(Car.Brand);
+            filter.FilterSummary.Label = "Models:";
+            filter.FilterSummary.AggregateType = AggregateType.Count;
+            filter.ShowSearchBox = true;
+        }
+        else if (e.Property.Name == nameof(Car.Model))
+        {
+            var modelFilter = e.Filter as ChecklistFilter;
+            modelFilter.FilterSummary.AggregateType = AggregateType.Max;
+            modelFilter.FilterSummary.CustomFormat = "C0";
+            modelFilter.FilterSummary.Label = "Max price: ";
+            modelFilter.FilterSummary.PropertyName = nameof(Car.Price);
+        }
+        else if (e.Property.Name == nameof(Car.TransmissAutomatic))
+        {
+            var filter = e.Filter as ChecklistFilter;
+            var unset = filter.Items.FirstOrDefault(i => string.IsNullOrEmpty(i.DisplayValue));
+            if (unset != null)
+            {
+                unset.DisplayValue = DataFilterResources.Null;
+            }
+        }
+        else if (e.Property.Name == nameof(Car.FuelConsumption))
+        {
+            var fuelConsumptionFilter = (TimeOnlyRangeFilter)e.Filter;
+            fuelConsumptionFilter.Maximum = _data.Max(x => ((Car)x).FuelConsumption);
+            fuelConsumptionFilter.Minimum = _data.Min(x => ((Car)x).FuelConsumption);
+            fuelConsumptionFilter.Format = "hh:mm";
+        }
+    }
+}

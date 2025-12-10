@@ -1,0 +1,87 @@
+﻿@page "/FlexPie/MultiplePies"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+
+<FlexPie Class="chart" HeaderContent="Market Share By Quarter 2017" HeaderStyle="font-size:20px"
+         LegendPosition="Position.Bottom"
+         BindingName="Brand" Binding="Q1,Q2,Q3,Q4" ItemsSource="@DataSource.GetData()">
+    <Label>
+        <PieDataLabel Position="PieLabelPosition.Inside" Content="{value:n1}%" Style="font-size:12px;color:white" />
+    </Label>
+</FlexPie>
+
+<_Sections>
+    <Title>@FlexChartRes.MultiplePiesTitle</Title>
+    <Summary>@FlexChartRes.MultiplePiesSummary</Summary>
+    <Description>@FlexChartRes.MultiplePiesDescription</Description>
+</_Sections>
+
+@code {
+    public class DataSource
+    {
+        public class SalesData
+        {
+            public string Brand { get; set; }
+            public double Q1 { get; set; }
+            public double Q2 { get; set; }
+            public double Q3 { get; set; }
+            public double Q4 { get; set; }
+        }
+
+        public static List<SalesData> GetData()
+        {
+            return new List<SalesData>()
+            {
+                new SalesData()
+                {
+                   Brand = "Samsung",
+                   Q1 = 23.2,
+                   Q2 = 22.9,
+                   Q3 = 22.1,
+                   Q4 = 18.9
+                },
+                new SalesData()
+                {
+                    Brand = "Huawei",
+                    Q1 = 10.0,
+                    Q2 = 11.0,
+                    Q3 = 10.4,
+                    Q4 = 10.7
+                },
+                new SalesData()
+                {
+                    Brand = "Apple",
+                    Q1 = 14.7,
+                    Q2 = 11.8,
+                    Q3 = 12.4,
+                    Q4 = 19.6
+                },
+                new SalesData()
+                {
+                    Brand= "Xiaomi",
+                    Q1 = 4.3,
+                    Q2 = 6.2,
+                    Q3 = 7.5,
+                    Q4 = 7.1
+                },
+                new SalesData()
+                {
+                    Brand = "OPPO",
+                    Q1 = 7.5,
+                    Q2 = 8.0,
+                    Q3 = 8.1,
+                    Q4 = 6.9
+                },
+                new SalesData()
+                {
+                    Brand = "Others",
+                    Q1 = 40.2,
+                    Q2 = 40.1,
+                    Q3 = 39.6,
+                    Q4 = 36.8
+                }
+            };
+        }
+    }
+}

@@ -1,0 +1,595 @@
+﻿@page "/Excel/Export"
+@inject IJSRuntime JsRuntime
+@using Localization
+@using System.Collections.ObjectModel;
+@using System.Drawing
+@using System.IO
+@using C1.Excel
+@using GrapeCity.Documents.Imaging
+@using C1.Blazor.Grid
+@using C1.Blazor.Input
+
+<FlexGrid @ref="grid"
+          ItemsSource="@customers"
+          HeadersVisibility="GridHeadersVisibility.All"
+          GridLinesVisibility="GridLinesVisibility.Vertical"
+          ColumnHeaderGridLinesVisibility="GridLinesVisibility.All"
+          RowHeaderGridLinesVisibility="GridLinesVisibility.All"
+          TopLeftHeaderGridLinesVisibility="GridLinesVisibility.All"
+          GridLinesBrush="@("#FF2B2B2B")"
+          ColumnHeaderGridLinesBrush="@("#FF222222")"
+          RowHeaderGridLinesBrush="@("#FF222222")"
+          TopLeftHeaderGridLinesBrush="@("#FF222222")"
+          Style="@("background-color: #777777;color: #E2E2E2;border: 1px solid #222222;max-height:50vh")"
+          ColumnHeaderStyle="@("background-image: linear-gradient(180deg,#A5A5A5 0%,#898989 48%,#777777 52%,#6F6F6F 100%);color: #E2E2E2;font-weight:bold;")"
+          RowHeaderStyle="@("background-color: #6F6F6F;color: #E2E2E2;")"
+          RowStyle="@("background-color: #333333;color: #E2E2E2;")"
+          SelectionStyle="@("background-color: #8B8B8B;")"
+          CursorStyle="@("background-color: #505050;")"
+          TopLeftHeaderStyle="@("background-image: linear-gradient(180deg,#A5A5A5 0%,#898989 48%,#777777 52%,#6F6F6F 100%);")" />
+
+<_Sections>
+    <Title>@ExcelRes.ExportTitle</Title>
+    <Summary>@ExcelRes.ExportSummary</Summary>
+    <Description>@ExcelRes.ExportDescription</Description>
+    <Settings>
+        <p style="display:flex">
+            <C1TextBox @bind-Text="@fileName" Style="@("width:170px;border-width:1px 0 1px 1px;border-radius:4px 0 0 4px;")" />
+            <C1ComboBox ItemsSource="fileTypes" @bind-SelectedItem="fileType" Style="@("width:80px;border-radius: 0 4px 4px 0;")" />
+            <button class="btn btn-primary" @onclick="OnSave" style="margin-left: 8px;">@ExcelRes.Save</button>
+        </p>
+    </Settings>
+</_Sections>
+
+@code {
+    FlexGrid grid;
+    ObservableCollection<Customer> customers;
+    string[] fileTypes = { "CSV", "XLS", "XLSX" };
+    string fileName = "FlexGrid";
+    string fileType = "XLSX";
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+
+    async void OnSave()
+    {
+        C1XLBook book = ToExcel();
+        var fileContent = "";
+        using (var ms = new MemoryStream())
+        {
+            switch (fileType)
+            {
+                case "CSV":
+                    book.Save(ms, FileFormat.Csv);
+                    break;
+                case "XLS":
+                    book.Save(ms, FileFormat.Biff8);
+                    break;
+                default:
+                    book.Save(ms, FileFormat.OpenXml);
+                    break;
+            }
+            fileContent = Convert.ToBase64String(ms.ToArray());
+        }
+        fileName = string.IsNullOrEmpty(fileName) ? "export" : fileName;
+        await JsRuntime.InvokeVoidAsync("saveBase64File", fileName + '.' + fileType.ToLower(), fileContent);
+    }
+
+    C1XLBook ToExcel(GridSaveOptions options = GridSaveOptions.SaveHeaders | GridSaveOptions.Formatted)
+    {
+        // initialize
+        C1XLBook book = new();
+        var sheet = book.Sheets[0];
+
+        // styles
+        var colStyle = GetStyle(sheet, grid.ActualColumnHeaderStyle);
+        var rowStyle = GetStyle(sheet, grid.ActualRowStyle);
+        var altStyle = GetStyle(sheet, grid.ActualAlternatingRowStyle);
+        var numStyle = GetStyle(sheet, grid.ActualRowHeaderStyle);
+        var topStyle = GetStyle(sheet, grid.ActualTopLeftHeaderStyle);
+
+        // grid lines
+        var lineWidth = grid.GridLinesWidth;
+        SetBorders(rowStyle, grid.GridLinesVisibility, grid.GridLinesBrush, lineWidth);
+        SetBorders(altStyle, grid.GridLinesVisibility, grid.GridLinesBrush, lineWidth);
+        SetBorders(colStyle, grid.ColumnHeaderGridLinesVisibility, grid.ColumnHeaderGridLinesBrush, lineWidth);
+        SetBorders(numStyle, grid.RowHeaderGridLinesVisibility, grid.RowHeaderGridLinesBrush, lineWidth);
+        SetBorders(topStyle, grid.TopLeftHeaderGridLinesVisibility, grid.TopLeftHeaderGridLinesBrush, lineWidth);
+
+        // parse options
+        var saveColHdr = grid.HeadersVisibility.HasFlag(GridHeadersVisibility.Column) && options.HasFlag(GridSaveOptions.SaveColumnHeaders);
+        var saveRowHdr = grid.HeadersVisibility.HasFlag(GridHeadersVisibility.Row) && options.HasFlag(GridSaveOptions.SaveRowHeaders);
+        var visCols = options.HasFlag(GridSaveOptions.VisibleColumns);
+        var visRows = options.HasFlag(GridSaveOptions.VisibleRows);
+
+        // collections
+        var rows = grid.Rows;
+        var cols = grid.Columns;
+        var rhCols = grid.RowHeaderColumns;
+
+        // set default properties
+        if (rows.DefaultSize.HasValue && rows.DefaultSize.Value.GridUnitType == GridUnitType.Absolute)
+        {
+            sheet.DefaultRowHeight = C1XLBook.PixelsToTwips(rows.DefaultSize.Value.Value);
+        }
+        if (cols.DefaultSize.HasValue && cols.DefaultSize.Value.GridUnitType == GridUnitType.Absolute)
+        {
+            sheet.DefaultColumnWidth = C1XLBook.PixelsToTwips(cols.DefaultSize.Value.Value);
+        }
+
+        // sheet positions
+        var sheetRow = 0;
+        var sheetCol = 0;
+
+        // columns
+        var fcs = (saveRowHdr ? rhCols.Concat(cols) : cols).Where(c => !visCols || c.ActualWidth > 0);
+        foreach (var fc in fcs)
+        {
+            // configure Excel column
+            var xc = sheet.Columns[sheetCol];
+
+            // hide invisible column before setting the width
+            xc.Visible = fc.IsVisible;
+
+            // set column width
+            xc.Width = C1XLBook.PixelsToTwips(fc.ActualWidth);
+
+            // next sheet column
+            sheetCol++;
+        }
+
+        // column headers
+        if (saveColHdr)
+        {
+            // reset columns
+            sheetCol = 0;
+
+            // fill column headers
+            for (int r = 0; r < grid.ColumnHeaders.Rows.Count; r++)
+            {
+                // get row
+                var fr = grid.ColumnHeaders.Rows[r];
+
+                // configure Excel row
+                var xr = sheet.Rows[sheetRow];
+                if (fr.IsVisible)
+                {
+                    // set row height
+                    xr.Height = C1XLBook.PixelsToTwips(fr.ActualHeight);
+                }
+                else
+                {
+                    // hide invisible rows
+                    xr.Visible = fr.IsVisible;
+                }
+
+                // top-left
+                if (saveRowHdr)
+                {
+                    SaveRow(sheet, Merge(topStyle, fr), grid.TopLeftCells, r, options, ref sheetRow, ref sheetCol);
+                }
+
+                // other columns
+                SaveRow(sheet, Merge(colStyle, fr), grid.ColumnHeaders, r, options, ref sheetRow, ref sheetCol);
+
+                // next sheet row
+                sheetRow++;
+            }
+        }
+
+        // regular cells
+        for (int r = 0; r < rows.Count; r++)
+        {
+            // get row
+            var fr = rows[r];
+
+            // sanity
+            if (visRows && fr.ActualHeight == 0)
+            {
+                continue;
+            }
+
+            // configure Excel row
+            var xr = sheet.Rows[sheetRow];
+            if (fr.IsVisible)
+            {
+                // set row height
+                //xr.Height = C1XLBook.PixelsToTwips(fr.Height.Value);
+                xr.Height = C1XLBook.PixelsToTwips(fr.ActualHeight);
+            }
+            else
+            {
+                // hide invisible rows
+                xr.Visible = fr.IsVisible;
+            }
+
+            // reset columns
+            sheetCol = 0;
+
+            // row left header
+            if (saveRowHdr)
+            {
+                SaveRow(sheet, Merge(numStyle, fr), grid.RowHeaders, r, options, ref sheetRow, ref sheetCol);
+            }
+
+            // cells
+            var cellStyle = (r % 2 == 0) ? rowStyle : altStyle;
+            SaveRow(sheet, Merge(cellStyle, fr), grid.Cells, r, options, ref sheetRow, ref sheetCol);
+
+            // next sheet row
+            sheetRow++;
+        }
+
+        // done
+        return book;
+    }
+
+    void SaveRow(XLSheet sheet, XLStyle style, GridPanel p, int r, GridSaveOptions options, ref int sheetRow, ref int sheetCol)
+    {
+        // skip invisible rows
+        var visRows = options.HasFlag(GridSaveOptions.VisibleRows);
+        if (visRows && p.Rows[r].ActualHeight == 0)
+        {
+            return;
+        }
+
+        // save columns
+        var formatted = options.HasFlag(GridSaveOptions.Formatted);
+        var visCols = options.HasFlag(GridSaveOptions.VisibleColumns);
+        for (int c = 0; c < p.Columns.Count; c++)
+        {
+            // flex grid column
+            var fc = p.Columns[c];
+
+            // skip invisible columns
+            if (visCols && fc.ActualWidth == 0)
+            {
+                continue;
+            }
+
+            // value and style
+            var cell = sheet[sheetRow, sheetCol];
+            cell.Value = GetValue(p, r, c, formatted);
+            cell.Style = Merge(style, fc);
+
+            // merging
+            var mergedRange = grid.MergeManager.GetMergedRange(p.CellType, new GridCellRange(r, c));
+            if (mergedRange.Row == r && mergedRange.Column == c && (mergedRange.Row2 > r || mergedRange.Column2 > c))
+            {
+                var cr = new XLCellRange(sheetRow, sheetCol,
+                    sheetRow + mergedRange.Row2 - r,
+                    sheetCol + mergedRange.Column2 - c);
+                if (!cr.IsEmpty && (cr.RowCount > 1 || cr.ColumnCount > 1) && !sheet.MergedCells.Contains(cr))
+                {
+                    sheet.MergedCells.Add(cr);
+                }
+            }
+
+            // next sheet column
+            sheetCol++;
+        }
+    }
+
+    static object GetValue(GridPanel panel, int row, int col, bool formatted)
+    {
+        if (formatted)
+        {
+            return panel.GetCellText(row, col);
+        }
+        var value = panel[row, col] ?? string.Empty;
+        if (IsExcelType(value))
+        {
+            return value;
+        }
+        if (value is Image)
+        {
+            var img = (Image)value;
+            using (var ms = new MemoryStream())
+            {
+                img.Save(ms, img.RawFormat);
+                return new GcBitmap(ms);
+            }
+        }
+        return value.ToString();
+    }
+
+    static bool IsExcelType(object o)
+    {
+        switch (Type.GetTypeCode(o.GetType()))
+        {
+            case TypeCode.Boolean:
+            case TypeCode.DateTime:
+            case TypeCode.Byte:
+            case TypeCode.SByte:
+            case TypeCode.UInt16:
+            case TypeCode.UInt32:
+            case TypeCode.UInt64:
+            case TypeCode.Int16:
+            case TypeCode.Int32:
+            case TypeCode.Int64:
+            case TypeCode.Decimal:
+            case TypeCode.Double:
+            case TypeCode.Single:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    static XLLineStyle GetLineStyle(double width)
+    {
+        if (width <= 1)
+        {
+            return XLLineStyle.Thin;
+        }
+        if (width > 2)
+        {
+            return XLLineStyle.Thick;
+        }
+        return XLLineStyle.Medium;
+    }
+    static XLLineStyle GetLineStyle(C1StyleBorderStyle borderStyle, double width)
+    {
+        switch (borderStyle)
+        {
+            case C1StyleBorderStyle.Dashed:
+                if (width <= 1)
+                {
+                    return XLLineStyle.ThinDashDotted;
+                }
+                if (width > 2)
+                {
+                    return XLLineStyle.MediumDashed;
+                }
+                return XLLineStyle.Dashed;
+            case C1StyleBorderStyle.Dotted:
+                if (width <= 1)
+                {
+                    return XLLineStyle.ThinDashDotDotted;
+                }
+                if (width > 2)
+                {
+                    return XLLineStyle.MediumDashDotDotted;
+                }
+                return XLLineStyle.Dotted;
+            case C1StyleBorderStyle.Double:
+                return XLLineStyle.Double;
+            case C1StyleBorderStyle.Hidden:
+                return XLLineStyle.Hair;
+            case C1StyleBorderStyle.Groove:
+            case C1StyleBorderStyle.Inset:
+            case C1StyleBorderStyle.Outset:
+            case C1StyleBorderStyle.Ridge:
+            case C1StyleBorderStyle.Solid:
+                if (width <= 1)
+                {
+                    return XLLineStyle.Thin;
+                }
+                if (width > 2)
+                {
+                    return XLLineStyle.Thick;
+                }
+                return XLLineStyle.Medium;
+            case C1StyleBorderStyle.None:
+            default:
+                return XLLineStyle.None;
+        }
+    }
+
+    static Color ToColor(C1Color color)
+    {
+        return Color.FromArgb(color.A, color.R, color.G, color.B);
+    }
+
+    XLStyle Merge(XLStyle style, GridRow fr)
+    {
+        var clone = style;
+        if (fr.Background != null)
+        {
+            // correct background
+            var clr = ToColor(fr.Background);
+            if (clr != clone.BackColor)
+            {
+                clone = (clone == style) ? style.Clone() : clone;
+                clone.BackColor = clr;
+            }
+        }
+        if (fr.Foreground != null)
+        {
+            // correct foreground
+            var clr = ToColor(fr.Foreground);
+            if (clr != clone.ForeColor)
+            {
+                clone = (clone == style) ? style.Clone() : clone;
+                clone.ForeColor = clr;
+            }
+        }
+        return clone;
+    }
+    XLStyle Merge(XLStyle style, GridColumn fc)
+    {
+        var clone = style;
+        if (fc.Background != null)
+        {
+            // correct background
+            var clr = ToColor(fc.Background);
+            if (clr != clone.BackColor)
+            {
+                clone = (clone == style) ? style.Clone() : clone;
+                clone.BackColor = clr;
+            }
+        }
+        if (fc.Foreground != null)
+        {
+            // correct foreground
+            var clr = ToColor(fc.Foreground);
+            if (clr != clone.ForeColor)
+            {
+                clone = (clone == style) ? style.Clone() : clone;
+                clone.ForeColor = clr;
+            }
+        }
+        return clone;
+    }
+    XLStyle GetStyle(XLSheet sheet, params C1Style[] styles)
+    {
+        // initialization
+        XLStyle xs = new(sheet.Book);
+
+        // defaults for Flex Grid
+        xs.AlignVert = XLAlignVert.Center;
+
+        foreach (var style in styles)
+        {
+            // apply background
+            var background = style.BackgroundColor;
+            if (background != null)
+            {
+                xs.BackColor = ToColor(background);
+            }
+
+            // apply foreground
+            var foreground = style.Color;
+            if (foreground != null)
+            {
+                xs.ForeColor = ToColor(foreground);
+            }
+
+            // apply background image
+            if (style.BackgroundImage != null)
+            {
+                IEnumerable<C1StyleGradientStop> stops = null;
+                if (style.BackgroundImage is C1StyleLinearGradient)
+                {
+                    stops = ((C1StyleLinearGradient)style.BackgroundImage).GradientStops;
+                }
+                else if (style.BackgroundImage is C1StyleRadialGradient)
+                {
+                    stops = ((C1StyleRadialGradient)style.BackgroundImage).GradientStops;
+                }
+                if (stops != null)
+                {
+                    foreach (var stop in stops)
+                    {
+                        var bc = xs.BackColor;
+                        var gc = ToColor(stop.Color);
+                        xs.BackColor = (bc.A == 0) ? gc : Color.FromArgb((bc.A + gc.A) / 2, (bc.R + gc.R) / 2, (bc.G + gc.G) / 2, (bc.B + gc.B) / 2);
+                    }
+                }
+            }
+
+            // apply font
+            if (style.FontFamily == null || xs.Font == sheet.Book.DefaultFont)
+            {
+                var fontFamily = style.FontFamily ?? "Segoe UI";
+                float fontSize = 11;
+                var bold = false;
+                var italic = false;
+                try
+                {
+                    if (style.FontSize.HasValue)
+                    {
+                        fontSize = (float)style.FontSize.Value.Length.Value;
+                    }
+                    if (style.FontStyle.HasValue)
+                    {
+                        italic = (style.FontStyle.Value == C1StyleFontStyle.Oblique || style.FontStyle.Value == C1StyleFontStyle.Italic);
+                    }
+                    if (style.FontWeight.HasValue)
+                    {
+                        bold = (style.FontWeight.Value == C1StyleFontWeight.Bold || style.FontWeight.Value == C1StyleFontWeight.Bolder);
+                    }
+                }
+                catch { }
+                xs.Font = new XLFont(fontFamily, fontSize, bold, italic, xs.ForeColor);
+            }
+
+            // apply alignments
+            if (style.AlignItems.HasValue)
+            {
+                switch (style.AlignItems.Value)
+                {
+                    case C1StyleAlignItems.Baseline:
+                        xs.AlignVert = XLAlignVert.Bottom;
+                        break;
+                    case C1StyleAlignItems.Center:
+                        xs.AlignHorz = XLAlignHorz.Center;
+                        break;
+                    case C1StyleAlignItems.FlexStart:
+                        xs.AlignHorz = XLAlignHorz.Left;
+                        break;
+                    case C1StyleAlignItems.FlexEnd:
+                        xs.AlignHorz = XLAlignHorz.Right;
+                        break;
+                    case C1StyleAlignItems.Stretch:
+                        xs.AlignHorz = XLAlignHorz.Justify;
+                        break;
+                }
+            }
+
+            // apply borders
+            if (style.BorderStyle.HasValue)
+            {
+                var w = style.BorderWidth.HasValue ? style.BorderWidth.Value.Left : 2;
+                xs.SetBorderStyle(GetLineStyle(style.BorderStyle.Value, w));
+                xs.SetBorderColor(ToColor(style.BorderColor));
+            }
+            else if (style.BorderTopStyle.HasValue)
+            {
+                var w = style.BorderTopWidth.HasValue ? style.BorderTopWidth.Value.Top : 2;
+                xs.BorderTop = GetLineStyle(style.BorderTopStyle.Value, w);
+                xs.BorderColorTop = ToColor(style.BorderColor);
+            }
+            else if (style.BorderLeftStyle.HasValue)
+            {
+                var w = style.BorderLeftWidth.HasValue ? style.BorderLeftWidth.Value.Left : 2;
+                xs.BorderLeft = GetLineStyle(style.BorderLeftStyle.Value, w);
+                xs.BorderColorLeft = ToColor(style.BorderColor);
+            }
+            else if (style.BorderRightStyle.HasValue)
+            {
+                var w = style.BorderRightWidth.HasValue ? style.BorderRightWidth.Value.Right : 2;
+                xs.BorderRight = GetLineStyle(style.BorderRightStyle.Value, w);
+                xs.BorderColorRight = ToColor(style.BorderColor);
+            }
+            else if (style.BorderBottomStyle.HasValue)
+            {
+                var w = style.BorderBottomWidth.HasValue ? style.BorderBottomWidth.Value.Bottom : 2;
+                xs.BorderBottom = GetLineStyle(style.BorderBottomStyle.Value, w);
+                xs.BorderColorBottom = ToColor(style.BorderColor);
+            }
+
+            // maybe apply
+            //style.Margin
+            //xs.Indent
+            //xs.WordWrap
+            //xs.Rotation
+            //xs.PatternColor
+        }
+
+        // done
+        return xs;
+    }
+
+    void SetBorders(XLStyle xs, GridLinesVisibility visibility, C1Color color, double width)
+    {
+        var clr = ToColor(color);
+        switch (visibility)
+        {
+            case GridLinesVisibility.Horizontal:
+                xs.BorderTop = xs.BorderBottom = GetLineStyle(width);
+                xs.BorderColorTop = xs.BorderColorBottom = clr;
+                break;
+            case GridLinesVisibility.Vertical:
+                xs.BorderLeft = xs.BorderRight = GetLineStyle(width);
+                xs.BorderColorLeft = xs.BorderColorRight = clr;
+                break;
+            case GridLinesVisibility.All:
+                xs.SetBorderStyle(GetLineStyle(width));
+                xs.SetBorderColor(clr);
+                break;
+        }
+    }
+}

@@ -1,0 +1,84 @@
+﻿@page "/FlexChart/AxisMarkers"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+@using C1.Blazor.Chart.Interaction;
+@using C1.Blazor.Input;
+
+<FlexChart Class="chart" HeaderContent="CPU Utilization" ChartType="ChartType.Line" BindingX="Time" ItemsSource="Data" LegendPosition="Position.LeftTop" >
+  <AxisCollection>
+    <Axis AxisType="AxisType.X" Position="Position.Bottom" Format="mm:ss" Title="time" 
+        MajorGrid="true" MajorTickMarks="TickMark.None" AxisLine="false"/>
+    <Axis AxisType="AxisType.Y" Position="Position.Left" Format="0'%'" Min="0" Max="100"
+          MajorGrid="true" MajorTickMarks="TickMark.None" AxisLine="false" />
+  </AxisCollection>
+  <SeriesCollection>
+    <Series Binding="Cpu1" Name="CPU1"/>
+    <Series Binding="Cpu2" Name="CPU2" />
+  </SeriesCollection>
+  <MarkerCollection>
+      <LineMarker Alignment="LineMarkerAlignment.PlotBottom" Lines="LineMarkerLines.Vertical" LineStyle="stroke:gray;stroke-width:0.5"
+                Content=@contentX
+                Interaction="LineMarkerInteraction.Move" />
+      <LineMarker Alignment="LineMarkerAlignment.PlotLeft" Lines="LineMarkerLines.Horizontal" LineStyle="stroke:gray;stroke-width:0.5"
+                Content=@contentY 
+                Interaction="LineMarkerInteraction.Move" />
+  </MarkerCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.AxisMarkersTitle</Title>
+    <Summary>@FlexChartRes.AxisMarkersSummary</Summary>
+    <Description>@FlexChartRes.AxisMarkersDescription</Description>
+</_Sections>
+
+@code {
+  static string style = "'padding:0px 4px;border:1px solid darkgrey;border-radius:2px;background:#f0f0f0;'";
+  string contentX = $$"""<div style={{style}}><b>{dataX:mm:ss}</b></div>""";
+  string contentY = $$"""<div style={{style}}><b>{dataY:0}%</b></div>""";
+
+  List<DataSource.CpuDataItem> Data { get; set; }
+
+  static Random rnd = new Random();
+
+  protected override void OnInitialized()
+  {
+    Data = DataSource.GetData();
+  }
+
+  public class DataSource
+  {
+    static int npts = 150;
+    static Random rnd = new Random();
+    static List<CpuDataItem> _data;
+
+    public static List<CpuDataItem> GetData()
+    {
+        if (_data == null)
+        {
+          _data = new List<CpuDataItem>();
+          var dateStep = 0;
+          for (var i = 0; i < npts; i++)
+          {
+            var date = DateTime.Today.AddSeconds(dateStep += 9);
+            _data.Add(new CpuDataItem()
+              {
+                Cpu1 = rnd.Next(10, 20),
+                Cpu2 = rnd.Next(40, 80),
+                Time = date
+              });
+          }
+        }
+
+        return _data;
+    }
+
+    public class CpuDataItem
+    {
+      public int? Cpu1 { get; set; }
+      public int? Cpu2 { get; set; }
+      public DateTime Time { get; set; }
+    }
+
+  }
+}

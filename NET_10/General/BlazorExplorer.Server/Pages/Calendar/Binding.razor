@@ -1,0 +1,67 @@
+﻿@page "/Calendar/Binding"
+@using C1.Blazor.Calendar
+@using C1.Blazor.Core
+@using System;
+@using Localization
+
+<style>
+
+    .c1-calendar {
+        -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+        margin: 20px;
+    }
+    
+
+</style>
+
+
+<div style="display: inline-block">
+    <C1Calendar  HeaderMonthFormat="MMMM" @bind-SelectedDate=Time MaxDate="@(new DateTime(2025, 12,12))" MinDate="@(new DateTime(2020, 9,1))"></C1Calendar>
+</div>
+<div style="display: inline-block">
+    <C1Calendar HeaderMonthFormat="MMMM" MaxDate="@(new DateTime(2025, 12,12))" MinDate="@(new DateTime(2020, 9,1))" 
+                OnSelectionChanged="HandleSelectedDateChanged"
+                DisplayDateChanged="HandleDisplayDateChanged"
+                >
+          </C1Calendar>
+</div>
+
+<div>
+  @CalendarRes.SelectedDateText: @Time.ToShortDateString()
+  <p></p>
+  @CalendarRes.DisplayDateText: @Date.ToString("yyyy MMM")
+</div>
+
+@code
+{
+  [Parameter]
+  public DateTime Time { get; set; } = DateTime.Today;
+
+  public DateTime Date { get; set; } = DateTime.Today;
+
+
+  private void HandleSelectedDateChanged(object sender, CalendarSelectionChangedEventArgs args)
+  {
+    Time = args.Value;
+
+    StateHasChanged();
+  }
+
+
+  private void HandleDisplayDateChanged(object sender, PropertyChangedEventArgs<DateTime> value)
+  {
+    Date = value.NewValue;
+
+    StateHasChanged();
+  }
+
+}
+
+
+<_Sections>
+    <Title>@CalendarRes.ModelBindingTitle</Title>
+    <Summary>@CalendarRes.OverviewSummary</Summary>
+    <Description>@CalendarRes.ModelBindingDescription</Description>
+</_Sections>

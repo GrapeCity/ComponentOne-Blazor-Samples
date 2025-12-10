@@ -1,0 +1,33 @@
+﻿@page "/FlexGrid/CellFreezing"
+@using Localization
+@using System.Collections.ObjectModel;
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+
+<FlexGrid @ref="grid" AutoGenerateColumns="false" ItemsSource="customers" FrozenColumns="1" FrozenRows="1" FrozenBottomRows="2" AllowMerging="GridAllowMerging.Cells" GridLinesVisibility="GridLinesVisibility.All" Style="@("max-height:50vh")">
+    <FlexGridColumns>
+        <GridColumn Binding="Name" />
+        <GridColumn Binding="Address" />
+        <GridColumn Binding="City" />
+        <GridColumn Binding="Country" AllowMerging="true" />
+        <GridColumn Binding="PostalCode" />
+        <GridColumn Binding="Email" />
+        <GridColumn Binding="LastOrderDate" />
+    </FlexGridColumns>
+</FlexGrid>
+
+<_Sections>
+    <Title>@FlexGridRes.CellFreezingTitle</Title>
+    <Summary>@FlexGridRes.CellFreezingSummary</Summary>
+    <Description>@FlexGridRes.CellFreezingDescription</Description>
+</_Sections>
+
+@code {
+    FlexGrid grid;
+    ObservableCollection<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+}

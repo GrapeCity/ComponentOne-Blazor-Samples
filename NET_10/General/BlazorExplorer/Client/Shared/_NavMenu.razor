@@ -1,0 +1,182 @@
+﻿@using Models
+
+@if (Item != null)
+{
+    <div class="wj-node @(NavItem.SelectedItem==Item? "wj-state-selected":null) @(Item.IsCollapsed?"wj-state-collapsed":null)" @onclick="@((e) => OnItemClick(e,Item))">
+        <a>
+            <span class="wj-node-text">@Item.Header</span>
+            <span class="right-icon"></span>
+        </a>
+    </div>
+}
+
+<div class="page-nav wide-screen wj-control wj-content wj-treeview @(Item != null && Item.IsCollapsed?"collapse-none":"expand-slidev")">
+    @foreach (var item in Items)
+    {
+        if (item.Items == null || item.Items.Count() == 0)
+        {
+            <div class="wj-node wj-state-empty @(NavItem.SelectedItem==item? "wj-state-selected":null)" @onclick="@((e) => OnItemClick(e,item))">
+                <a>
+                    <span class="wj-node-text">@item.Header</span>
+                    <span class="right-icon"></span>
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="wj-nodelist">
+                <_NavMenu Items="item.Items" Item="item" Parent="this"></_NavMenu>
+            </div>
+        }
+    }
+</div>
+
+@code {
+  [Parameter]
+  public NavItem Item { get; set; }
+  [Parameter]
+  public object Parent { get; set; }
+  [Parameter]
+  public IEnumerable<NavItem> Items { get; set; }
+  [Parameter]
+  public ControlPage CurrentPage
+  {
+      get { return _currentPage; }
+      set
+      {
+          if (_currentPage != value)
+          {
+              _currentPage = value;
+              Select(_currentPage);
+          }
+      }
+  }
+  [Parameter]
+  public ControlPageGroup PageGroup { get; set; }
+  /*
+  [Parameter]
+  public ControlPageGroup PageGroup
+  {
+  get { return _pageGroup; }
+  set
+  {
+    if (value != null && value != _pageGroup)
+    {
+    _pageGroup = value;
+    }
+  }
+  }
+
+  private ControlPageGroup _pageGroup;
+  */
+
+  private bool ParentInvoke(string methodName, params object[] args)
+  {
+      if (Parent != null)
+      {
+          var method = Parent.GetType().GetMethod(methodName);
+          if (method != null)
+          {
+              method.Invoke(Parent, args);
+              return true;
+          }
+      }
+      return false;
+  }
+
+  private ControlPage _currentPage;
+
+  public void Invalidate()
+  {
+      base.InvokeAsync(this.StateHasChanged);
+  }
+
+  public void InvalidateTopUpRecursive()
+  {
+      if (ParentInvoke("Invalidate"))
+          ParentInvoke("InvalidateTopUpRecursive");
+      else Invalidate();
+  }
+  public void InvalidateTopMostParent()
+  {
+      if (!ParentInvoke("InvalidateTopMostParent"))
+          Invalidate();
+  }
+
+  protected override void OnInitialized()
+  {
+      base.OnInitialized();
+      if (Items == null) {
+          Items = ControlPages.GetNavMenuItems(PageGroup.Pages, CurrentPage);
+          Select(NavItem.SelectedItem);
+      }
+  }
+
+  internal bool IsLeaf(NavItem item)
+  {
+      return item.Items == null || item.Items.Count() == 0;
+  }
+
+  private NavItem FindNavItem(IEnumerable<NavItem> Items, ControlPage page)
+  {
+      if (Items != null)
+      {
+          foreach (var item in Items)
+          {
+              if (item.Page == page)
+                  return item;
+              else if (item.Items != null)
+              {
+                  var itemi = FindNavItem(item.Items, page);
+                  if (itemi != null) return itemi;
+              }
+          }
+      }
+      return null;
+  }
+
+  private void Select(NavItem item)
+  {
+      var itemi = NavItem.SelectedItem;
+      if (item != null && Items != null)
+      {
+          //Clear
+          if (itemi != null)
+          {
+              while (itemi.ParentItem != null)
+              {
+                  itemi = itemi.ParentItem;
+              }
+              itemi.IsCollapsed = true;
+          }
+          //Select
+          itemi = item;
+          NavItem.SelectedItem = itemi;
+          while (itemi.ParentItem != null)
+          {
+              itemi.ParentItem.IsCollapsed = false;
+              itemi = itemi.ParentItem;
+          }
+          InvalidateTopMostParent();
+      }
+  }
+
+  private void Select(ControlPage page)
+  {
+      Select(FindNavItem(Items, page));
+  }
+
+  public void OnItemClick(MouseEventArgs e, NavItem item)
+  {
+      if (item.Items != null && item.Items.Count() > 0)
+      {
+          item.IsCollapsed = !item.IsCollapsed;
+      }
+      else if (item != NavItem.SelectedItem)
+      {
+          _ = _App.NavigateTo(item.Href);
+      }
+      if (item != NavItem.SelectedItem)
+          Select(item);
+  }
+}

@@ -1,0 +1,152 @@
+﻿@page "/TreeView/CleanAccordion"
+@using C1.Blazor.Core
+@using C1.Blazor.TreeView
+@using Localization
+
+<style>
+
+    .custom-css {
+        font-family: 'Segoe UI';
+    }
+
+    .custom-css .header-item {
+        font-size: 20px;
+        padding: 6px 10px;
+    }
+
+    .custom-css .c1-tree-view-item-container{
+        grid-template-rows: auto !important;
+    }
+
+    .custom-css .c1-tree-view-item {
+        background: none !important;
+        grid-template-columns: 0 auto !important;
+        height: auto !important;
+    }
+
+    .custom-css .c1-tree-view-item > div:first-child {
+        width: 0 !important;
+    }
+    .custom-css .content-item .item-info{
+        padding-left: 2em;
+    }
+</style>
+
+<C1TreeView Class="@("p-2 custom-css shadow")" ShowLines="false" 
+            IsExpandedPath="Expanded" ItemsSource="@_dataSource" DisplayMemberPaths="Name"
+            ItemStyle="new C1Style() { Height = C1StyleLength.Auto }"
+            Style="@_c1Style" KeyboardNavigation="true" SelectionMode="C1SelectionMode.Single" ExpandOnClick="true" ExpandMode="TreeViewExpandMode.Single">
+    <ItemTemplate>
+
+        @if (context is TreeViewItem { DataItem: Directory dir } item)
+        {
+            if (item.IsExpanded)
+            {
+                <div class="content-item">
+                    <div class="header-item">
+                        @dir.Name
+                    </div>
+                    <div class="item-info">
+                        <b>@dir.City</b>(@dir.State)<br />
+                        @dir.Address<br />
+                        Phone: <b>@dir.Phone</b><br />
+                        Fax: <b>@dir.Fax</b><br />
+                        Website: <a href="@dir.Site">@dir.Site</a><br />
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="header-item">
+                    @dir.Name
+                </div>
+            }
+
+        }
+
+    </ItemTemplate>
+</C1TreeView>
+
+<_Sections>
+    <Title>@TreeViewRes.CleanAccordionTitle</Title>
+    <Summary>@TreeViewRes.CleanAccordionSummary</Summary>
+    <Description>@((MarkupString)TreeViewRes.CleanAccordionDescription)</Description>
+</_Sections>
+
+@code{
+    readonly C1Style _c1Style = new C1Style
+    {
+        Height = 400,
+        Width = 600,
+        BackgroundColor = "#f0f0f0"
+    };
+
+
+
+    readonly IList<Directory> _dataSource = new List<Directory>()
+{
+        new Directory()
+        {
+            Name = "Electro Mart",
+            City = "Accident",
+            State = "Maryland",
+            Address = "8785 Windfall St.",
+            Phone = "(800) 555-1234",
+            Fax = "(800) 555-5678",
+            Site = "https://www.electromartnot.com",
+            Expanded = true,
+        },
+        new Directory
+        {
+            Name = "Sue's Depot",
+            City = "Big Arm",
+            State = "Montana",
+            Address = "77 Winchester Lane",
+            Phone = "(800) 555-2345",
+            Fax = "(800) 555-6789",
+            Site = "https=//www.suesdepotnot.com"
+        },
+        new Directory
+        {
+            Name = "D&K Digital Locker",
+            City = "Chicken",
+            State = "Alaska",
+            Address = "787 Lakeview St. ",
+            Phone = "(800) 555-3456",
+            Fax = "(800) 555-7890",
+            Site = "https=//www.digilockernot.com"
+        },
+        new Directory
+        {
+            Name = "Paul's Pub & Bistro",
+            City = "Coupon",
+            State = "Pennsylvania",
+            Address = "711 Old York Drive ",
+            Phone = "(800) 555-0987",
+            Fax = "(800) 555-6543",
+            Site = "https=//www.paulspubnot.com"
+        },
+        new Directory
+        {
+            Name = "Amazing Deals Inc",
+            City = "Cut And Shoot",
+            State = "Texas",
+            Address = "91 Beech St.",
+            Phone = "(800) 955-2109",
+            Fax = "(800) 955-8765",
+            Site = "https=//www.amazingdealsnot.com"
+        }
+    };
+
+    public class Directory
+    {
+        public string Name { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string Fax { get; set; }
+        public string Site { get; set; }
+        public bool Expanded { get; set; }
+    }
+}

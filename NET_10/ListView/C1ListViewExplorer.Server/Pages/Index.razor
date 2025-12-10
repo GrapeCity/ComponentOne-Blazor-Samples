@@ -1,0 +1,41 @@
+﻿@page "/"
+@using C1.Blazor.ListView
+@using Resources
+
+<h1>@AppResources.OverviewTitle</h1>
+<p>@AppResources.OverviewDescription</p>
+
+<C1ListView ItemsSource="@customers" T="Customer" DisplayMemberPath="Name" SelectionChanged="SelectionChanged" ScrollBarVisibility="C1.Blazor.Core.ScrollBarVisibility.Visible" Style="@("max-height:50vh")" />
+
+<div>
+    <p>
+        <b>CheckedItems:</b>
+    </p>
+    <ul id="checkedItems">
+        @SelectionRender
+    </ul>
+</div>
+@code
+{
+    IEnumerable<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+    RenderFragment SelectionRender;
+    protected void SelectionChanged(object obj)
+    {
+        var selectionIndexes = obj as IEnumerable<int>;
+        SelectionRender = new RenderFragment(builder =>
+        {
+            for (int i = 0; i < selectionIndexes.Count(); i++)
+            {
+                int seq = i * 2;
+                builder.OpenElement(seq, "li");
+                builder.AddContent(seq + 1, customers.ElementAt(selectionIndexes.ElementAt(i)).Name);
+                builder.CloseElement();
+            }
+        });
+    }
+}

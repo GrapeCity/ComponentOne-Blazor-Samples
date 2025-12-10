@@ -1,0 +1,52 @@
+﻿@page "/selectedItems"
+@using C1.Blazor.Grid
+@using System.Collections.ObjectModel;
+@using Resources
+
+<h1>@AppResources.SelectedItemsTitle</h1>
+<p>@AppResources.SelectedItemsDescription</p>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 60vh;">
+    <div>
+        <h4 style="text-align: center; margin: 4px;">@AppResources.AllCustomersLabel</h4>
+        <FlexGrid @ref="grid" ItemsSource="customers"
+                  SelectionMode="GridSelectionMode.ListBox" 
+                  HeadersVisibility="GridHeadersVisibility.All"
+                  SelectionChanged="OnSelectionChanged"
+                  Style="@("max-height:50vh; border: 1px solid #ccc")" >
+        </FlexGrid>
+    </div>
+
+    <div>
+        <h4 style="text-align: center; margin: 4px;">@AppResources.SelectedCustomersLabel</h4>
+        @if (grid?.SelectedItems?.Count > 0)
+        {
+            <FlexGrid ItemsSource="grid.SelectedItems"
+                      HeadersVisibility="GridHeadersVisibility.All"
+                      IsReadOnly="true"
+                      Style="@("max-height:50vh; border: 1px solid #ccc")" >
+            </FlexGrid>
+        }
+        else
+        {
+            <div style="display: flex; align-items: center; justify-content: center; height: 50vh; text-align: center; border: 1px solid #ccc; padding: 20px; color: #666;">
+                @AppResources.SelectCustomersMessage
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    ObservableCollection<Customer> customers;
+    FlexGrid grid;
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+
+    private void OnSelectionChanged(object sender, GridSelectionEventArgs e)
+    {
+        StateHasChanged();
+    }
+}

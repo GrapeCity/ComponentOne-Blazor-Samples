@@ -1,0 +1,56 @@
+﻿@using Localization
+@using Models
+
+@{
+    string controlName, actionName;
+    var isHome = _App.IsHome(Path, out controlName, out actionName);
+    var controlPage = ControlPages.GetControlPage(controlName, actionName);
+    var controlPageGroup = ControlPages.GetControlPageGroup(controlName);
+    if (controlPageGroup != null)
+    {
+        var group = ControlPages.GetGroup(controlPageGroup.ControlGroupName);
+        isHome = isHome || (group == null ? false : !group.Visible);
+    }
+}
+
+<ul class="breadcrumb wide-screen">
+    <li class="odd"><a class="glyphicon glyphicon-home" href=""></a></li>
+    @if (!isHome)
+    {
+        <li class="separator1 right-icon"></li>
+        <li class="even pointer" @onclick="@((e) => _App.OnClickNavigateTo(e,controlPage.ControlName+"/Index"))">
+            <a>
+                <img src="-" onerror="tryFiles(this, '@(_App.IconPath)\Unknown.png,@(_App.TrimSpec(controlPage.ControlName)).png', '@(_App.IconPath)32');" />
+                @controlPage.ControlName
+            </a>
+        </li>
+        <li class="separator2 right-icon"></li>
+        <li class="odd"><span>@controlPage.Text</span></li>
+    }
+    <li class="separator right-icon"></li>
+</ul>
+@if (!isHome)
+{
+    var groups = ControlPages.VisibleControlGroups;
+    <ul id="controlsNav" class="hide">
+        @foreach (var group in groups)
+        {
+            <_ControlGroup Model="group"></_ControlGroup>
+        }
+    </ul>
+}
+
+@code {
+    [Parameter]
+    public string Path { get; set; }
+
+    public void SetPath(string path)
+    {
+        Path = path;
+    }
+
+    public void Invalidate()
+    {
+        base.InvokeAsync(this.StateHasChanged);
+    }
+}

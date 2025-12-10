@@ -1,0 +1,70 @@
+﻿@page "/customcells"
+@using C1.DataCollection
+@using Resources
+@using C1.Blazor.Grid
+@using System.Collections.ObjectModel;
+
+<h1>@AppResources.CustomCellsTitle</h1>
+<p>@AppResources.CustomCellsDescription</p>
+
+<FlexGrid AutoGenerateColumns="false" CellFactory="musicCellFactory" ItemsSource="@source" Style="@("max-height:50vh")">
+    <FlexGridColumns>
+        <GridColumn Binding="Name" Header="Title" AllowDragging="false" Width="GridLength.Star" />
+        <GridColumn Binding="Duration" HorizontalAlignment="C1HorizontalAlignment.Right" AllowFiltering="false" IsReadOnly="true" ValueConverter="durationConverter" />
+        <GridColumn Binding="Size" HorizontalAlignment="C1HorizontalAlignment.Right" IsReadOnly="true" ValueConverter="sizeConverter"/>
+        <GridColumn Binding="Rating" HorizontalAlignment="C1HorizontalAlignment.Left" Width="200" Aggregate="GridAggregate.Average" IsReadOnly="true" />
+    </FlexGridColumns>
+</FlexGrid>
+
+@code {
+    C1DataCollection<Song> source;
+    MusicCellFactory musicCellFactory = new MusicCellFactory();
+    SongDurationConverter durationConverter = new SongDurationConverter();
+    SongSizeConverter sizeConverter = new SongSizeConverter();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        var songs = await MediaLibrary.LoadAsync();
+        var dataCollection = new C1DataCollection<Song>(songs);
+        await dataCollection.GroupAsync(nameof(Song.Artist), nameof(Song.Album));
+        source = dataCollection;
+    }
+
+    class MusicCellFactory : GridCellFactory
+    {
+        public override RenderFragment GetCellContentRenderFragment(GridCellType cellType, GridCellRange range)
+        {
+            return base.GetCellContentRenderFragment(cellType, range);
+        }
+    }
+
+    class SongDurationConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            var ts = TimeSpan.FromMilliseconds((long)value);
+            return ts.Hours == 0
+                ? string.Format("{0:00}:{1:00}", ts.Minutes, ts.Seconds)
+                : string.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds);
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    // converter for song sizes (return x.xx MB)
+    class SongSizeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return string.Format("{0:n2} MB", (long)value / 1024.0 / 1024.0);
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+}

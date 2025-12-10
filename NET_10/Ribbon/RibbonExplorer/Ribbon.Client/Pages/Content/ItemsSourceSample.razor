@@ -1,0 +1,36 @@
+﻿<C1ToolStrip ItemsSource="data"
+                              CornerRadius="12"
+                              GroupCornerRadius="12"
+                              Style="@("box-shadow: 2px 2px 8px -3px #9E9E9E;")"
+                              ToolStyle="@("background-color: #83a8eb; padding: 0; border: thin solid #6f6f6f; border-radius: 3px; margin: 2px")"
+                              Background="C1Color.CornflowerBlue">
+    <ItemTemplate>
+        <div @onclick="@(() => OnToolSelected(context))" style="min-width:40px; min-height: 40px; display: flex; justify-content: center; align-items: center">
+            @context
+        </div>
+    </ItemTemplate>
+</C1ToolStrip>
+
+<p>log: @clickedText</p>
+<br />
+<p>In the sample tools are created using <code>C1ToolStrip.ItemsSource</code> and <code>C1ToolStrip.ItemTemplate</code>  parameters.</p>
+<span class="badge text-bg-secondary">C1ToolStrip.ItemsSource</span>
+<span class="badge text-bg-secondary">RendererInfo: @RendererInfo.Name </span>
+
+@code {
+    string clickedText = "wait for clicks";
+    object lastClicked;
+    int clickedCount;
+    void OnToolSelected(object toolItemData)
+    {
+        if (lastClicked != toolItemData)
+        {
+            lastClicked = toolItemData;
+            clickedCount = 0;
+        }
+        clickedCount++;
+
+        clickedText = $"tool {toolItemData} clicked {clickedCount} times";
+    }
+    List<object> data = [1, new C1ToolSeparator { Style = new C1Style { Margin = new C1Thickness(0, 10, 0, 10) } }, 2, 3, 4, 5];
+}

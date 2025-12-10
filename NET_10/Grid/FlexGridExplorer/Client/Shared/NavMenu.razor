@@ -1,0 +1,187 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">FlexGridExplorer</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.GettingStartedTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="columndefinitions">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.ColumnDefinitionTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="selectedItems">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.SelectedItemsTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="selectionmodes">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.SelectionModesTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="editconfirmation">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.EditConfirmationTitle</span>
+            </NavLink>
+        </li>
+        @*<li class="nav-item px-3">
+        <NavLink class="nav-link" href="editingform">
+        <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.EditingTitle</span>
+        </NavLink>
+        </li>*@
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="conditionalformatting">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.ConditionalFormattingTitle</span>
+            </NavLink>
+        </li>
+        @*<li class="nav-item px-3">
+        <NavLink class="nav-link" href="customcells">
+        <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.CustomCellsTitle</span>
+        </NavLink>
+        </li>*@
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="hierarchicalrows">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.HierarchicalRowsTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="grouping">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.GroupingTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="rowdetails">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.RowDetailsTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="filterrow">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.FilterRowTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="fulltextfilter">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.FullTextFilterTitle</span>
+            </NavLink>
+        </li>
+        @*<li class="nav-item px-3">
+        <NavLink class="nav-link" href="columnlayout">
+        <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.ColumnLayoutTitle</span>
+        </NavLink>
+        </li>*@
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="responsivesizing">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.ResponsiveSizingTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="cellfreezing">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.CellFreezingTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="cellmerging">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.CellMergingTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="unbound">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.UnboundTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="ondemand">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.OnDemandTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="customappearance">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.CustomAppearanceTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="newrow">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.NewRowTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="checklist">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.CheckListTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="customsort">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.CustomSortIconTitle</span>
+            </NavLink>
+        </li>
+        @*<li class="nav-item px-3">
+        <NavLink class="nav-link" href="liveupdates">
+        <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.LiveUpdatesTitle</span>
+        </NavLink>
+        </li>*@
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="export">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.ExportTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="paging">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.PagingTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="virtualmode">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.VirtualModeTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="pincolumn">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.PinColumnTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="popupediting">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.EditItem</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="customcolumns">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.CustomColumnTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="validation">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.ValidationTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="transposedgrid">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.TransposedGridTitle</span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="summaryrows">
+                <span class="oi oi-list-rich" aria-hidden="true"></span><span class="nav-item-text">@Resources.AppResources.SummaryRowTitle</span>
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@functions {
+    bool collapseNavMenu = true;
+
+    string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

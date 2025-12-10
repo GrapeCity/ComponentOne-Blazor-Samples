@@ -1,0 +1,188 @@
+﻿@page "/Tooltip/InputForms"
+@using Localization
+@using C1.Blazor.Input
+
+
+<div class="formInput" style="">
+    <div class="cell">@TooltipRes.Validation_Name <span style="color:red">*</span></div>
+    <div class="cell"><C1TextBox @ref="txtName" TextChanged="validate"></C1TextBox></div>
+    <div class="cell"><img src="Content/images/info.png" id="nameRequired" style="display:@nameDisplay" /></div>
+    <div class="cell">@TooltipRes.Validation_Age <span style="color:red">*</span></div>
+    <div class="cell"><C1TextBox @ref="txtAge" TextChanged="validate"></C1TextBox></div>
+    <div class="cell">
+        <img src="Content/images/info.png" id="ageRequired" style="display:@ageDisplay" />
+        <img src="Content/images/clam.png" id="ageClamRequired" style="display:@ageClamDisplay" />
+    </div>
+    <div class="cell">@TooltipRes.Validation_Email <span style="color:red">*</span></div>
+    <div class="cell"><div class="grid-item"><C1TextBox @ref="txtEmail" TextChanged="validate"></C1TextBox></div></div>
+    <div class="cell"><img src="Content/images/info.png" id="mailRequired" style="display:@mailDisplay" /></div>
+
+    <div class="cell">@TooltipRes.Validation_User <span style="color:red">*</span></div>
+    <div class="cell"><C1TextBox @ref="txtUser" TextChanged="validate"></C1TextBox></div>
+    <div class="cell">
+        <img src="Content/images/info.png" id="userRequired" style="display:@userDisplay" />
+        <img src="Content/images/clam.png" id="userClamRequired" style="display:@userClamDisplay" />
+    </div>
+    <div class="cell">@TooltipRes.Validation_Password <span style="color:red">*</span></div>
+    <div class="cell"><C1TextBox @ref="txtPass" Type="C1HtmlInputType.Password" TextChanged="validate"></C1TextBox></div>
+    <div class="cell">
+        <img src="Content/images/info.png" id="passRequired" style="display:@passDisplay" />
+        <img src="Content/images/clam.png" id="passClamRequired" style="display:@passClamDisplay" />
+    </div>
+    <div class="cell">@TooltipRes.Validation_Comment</div>
+    <div class="cell"><C1TextBox @ref="txtComment"></C1TextBox></div>
+    <div class="cell"></div>
+</div>
+<p>
+    <button class="btn btn-default" id="btnOpenPopup" disabled="@btnDisabled" @onclick="@submit">@TooltipRes.Validation_Submit</button>
+</p>
+<style>
+
+    .formInput {
+        margin: 20px;
+        display: grid;
+        grid-template-columns: 80px 160px 20px;
+        grid-template-rows: repeat(30px);
+    }
+
+    .cell {
+        font-size: 14px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+</style>
+
+<C1Tooltip Target="nameRequired" Position="PopupPosition.Right">
+    <Content>@TooltipRes.Validation_Text0</Content>
+</C1Tooltip>
+
+<C1Tooltip Target="ageRequired" Position="PopupPosition.Right">
+    <Content>@TooltipRes.Validation_Text1</Content>
+</C1Tooltip>
+<C1Tooltip Target="ageClamRequired" Position="PopupPosition.Right">
+    <Content>@TooltipRes.Validation_Text2</Content>
+</C1Tooltip>
+<C1Tooltip Target="mailRequired" Position="PopupPosition.Right">
+    <Content>@TooltipRes.Validation_Text3</Content>
+</C1Tooltip>
+<C1Tooltip Target="userRequired" Position="PopupPosition.Right">
+    <Content>@TooltipRes.Validation_Text4</Content>
+</C1Tooltip>
+<C1Tooltip Target="userClamRequired" Position="PopupPosition.Right">
+    <Content>@TooltipRes.Validation_Text5</Content>
+</C1Tooltip>
+<C1Tooltip Target="passRequired" Position="PopupPosition.Right">
+    <Content>@TooltipRes.Validation_Text6</Content>
+</C1Tooltip>
+<C1Tooltip Target="passClamRequired" Position="PopupPosition.Right">
+    <Content>@TooltipRes.Validation_Text7</Content>
+</C1Tooltip>
+
+<C1Window @ref="myPopup" IsDarkOverlay="false" IsDraggable="true" Style="@("width: 700px")"
+          IsResizable="false">
+    <PopupHeader>
+        @TooltipRes.Validation_Text8
+    </PopupHeader>
+    <PopupContent>
+        <p>
+            Hi @txtName.Text !
+        </p>
+        <p>
+            @TooltipRes.Validation_Text9 @txtName.Text<br />
+            @TooltipRes.Validation_Text10 @txtAge.Text<br />
+            @TooltipRes.Validation_Text11 @txtEmail.Text<br />
+            @TooltipRes.Validation_Text12 @txtUser.Text<br />
+            @TooltipRes.Validation_Text13 @txtPass.Text<br />
+            @TooltipRes.Validation_Text14 @txtComment.Text<br />
+        </p>
+        <p>
+        </p>
+    </PopupContent>
+    <PopupFooter>
+        <div style="width: 100%; display: flex; justify-content: center">
+            <button class="btn btn-default" @onclick="@ClosePopup">@PopupRes.BtnClose</button>
+        </div>
+    </PopupFooter>
+</C1Window>
+
+@code{
+    C1TextBox txtName, txtAge, txtEmail, txtUser, txtPass, txtComment;
+    C1Window myPopup;
+    string nameDisplay = "", ageDisplay = "", mailDisplay = "", userDisplay = "", passDisplay = "";
+    string ageClamDisplay = "none", userClamDisplay = "none", passClamDisplay = "none";
+
+    bool btnDisabled = true;
+
+    private void validate(string text)
+    {
+        nameDisplay = string.IsNullOrEmpty(txtName.Text) ? "" : "none";
+        ageDisplay = string.IsNullOrEmpty(txtAge.Text) ? "" : "none";
+        if (string.IsNullOrEmpty(txtAge.Text))
+        {
+            ageDisplay = "";
+            ageClamDisplay = "none";
+        }
+        else
+        {
+            ageDisplay = "none";
+            ageClamDisplay = validateAge(txtAge.Text) ? "none" : "";
+        }
+        mailDisplay = string.IsNullOrEmpty(txtEmail.Text) ? "" : "none";
+        if (string.IsNullOrEmpty(txtUser.Text))
+        {
+            userDisplay = "";
+            userClamDisplay = "none";
+        }
+        else
+        {
+            userDisplay = "none";
+            userClamDisplay = txtUser.Text.Length >= 5 ? "none" : "";
+        }
+        //passDisplay = string.IsNullOrEmpty(txtPass.Text) ? "" : "none";
+        if (string.IsNullOrEmpty(txtPass.Text))
+        {
+            passDisplay = "";
+            passClamDisplay = "none";
+        }
+        else
+        {
+            passDisplay = "none";
+            passClamDisplay = txtPass.Text.Length >= 8 ? "none" : "";
+        }
+
+        btnDisabled = !isValidate();
+    }
+
+    private bool isValidate()
+    {
+        if (string.IsNullOrEmpty(txtName.Text)) return false;
+        if (!validateAge(txtAge.Text)) return false;
+        if (string.IsNullOrEmpty(txtEmail.Text)) return false;
+        if (string.IsNullOrEmpty(txtUser.Text) || txtUser.Text.Length < 5) return false;
+        if (string.IsNullOrEmpty(txtPass.Text) || txtPass.Text.Length < 8) return false;
+        return true;
+    }
+
+    private bool validateAge(string age)
+    {
+        if (string.IsNullOrEmpty(age)) return false;
+        int iage;
+        int.TryParse(txtAge.Text, out iage);
+        if (iage < 18) return false;
+        return true;
+    }
+    void submit()
+    {
+        myPopup.Open();
+    }
+    void ClosePopup()
+    {
+        myPopup.Close();
+    }
+}
+<_Sections>
+    <Title>@TooltipRes.InputFormTitle</Title>
+    <Summary>@TooltipRes.InputFormSummary</Summary>
+    <Description>@((MarkupString)TooltipRes.InputFormDesc)</Description>
+
+</_Sections>

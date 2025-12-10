@@ -1,0 +1,62 @@
+﻿@page "/FlexGrid/EditConfirmation"
+@inject IJSRuntime JsRuntime
+@using Localization
+@using System.Collections.ObjectModel
+@using C1.Blazor.Core
+@using C1.Blazor.Grid
+
+<FlexGrid @ref="grid" ItemsSource="customers"
+          AutoGenerateColumns="true"
+          BeginningEdit="OnBeginningEdit"
+          CellEditEnded="OnCellEditEnded"
+          GridLinesVisibility="GridLinesVisibility.None"
+          ColumnHeaderGridLinesVisibility="GridLinesVisibility.None"
+          HeadersVisibility="GridHeadersVisibility.Column"
+          Style="@("max-height:50vh;background-color:#fff")"
+          RowStyle="@("background-color:#E2EFDB;color:#000")"
+          AlternatingRowStyle="@("background-color:#fff")"
+          ColumnHeaderStyle="@("background-color:#70AD46;color:#fff;font-weight:bold;")"
+          SelectionStyle="@("background-color:#5A823F;color:#0f0")"
+          IsVirtualizationEnabled="false"/>
+
+<_Sections>
+    <Title>@FlexGridRes.EditConfirmationTitle</Title>
+    <Summary>@FlexGridRes.EditConfirmationSummary</Summary>
+    <Description>@FlexGridRes.EditConfirmationDescription</Description>
+</_Sections>
+
+@code {
+    FlexGrid grid;
+    ObservableCollection<Customer> customers;
+
+    protected override void OnInitialized()
+    {
+        customers = Customer.GetCustomerList(100);
+    }
+
+    private object _originalValue;
+
+    private void OnBeginningEdit(object sender, GridCellEditEventArgs e)
+    {
+        _originalValue = grid[e.CellRange.Row, e.CellRange.Column];
+    }
+
+    private async void OnCellEditEnded(object sender, GridCellEditEventArgs e)
+    {
+        var originalValue = _originalValue;
+        var currentValue = grid[e.CellRange.Row, e.CellRange.Column];
+        if (!e.CancelEdits && (originalValue == null && currentValue != null || !originalValue.Equals(currentValue)))
+        {
+            var confirmed = await DisplayAlert(FlexGridRes.EditConfirmationQuestion);
+            if (!confirmed)
+            {
+                grid[e.CellRange.Row, e.CellRange.Column] = originalValue;
+            }
+        }
+    }
+
+    private Task<bool> DisplayAlert(string message)
+    {
+        return JsRuntime.InvokeAsync<bool>("confirm", message).AsTask();
+    }
+}

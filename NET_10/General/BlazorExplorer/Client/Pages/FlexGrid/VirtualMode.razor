@@ -1,0 +1,70 @@
+﻿@page "/FlexGrid/VirtualMode"
+@using Localization
+@using C1.Blazor.Grid
+@using C1.Blazor.Input
+@using C1.Blazor.Core 
+@inject HttpClient Http
+
+<_Sections>
+    <Title>@FlexGridRes.VirtualModeTitle</Title>
+    <Summary>@FlexGridRes.VirtualModeSummary</Summary>
+    <Description>@FlexGridRes.VirtualModeDescription</Description>
+</_Sections>
+
+<C1TextBox Class="filled-text-box" @bind-Text="filterText" Placeholder="@FlexGridRes.FilterPlaceholderText" /> @loadingMessage
+
+<FlexGrid @ref="grid" ItemsSource="collection" Style="@("max-height:50vh")" HeadersVisibility="GridHeadersVisibility.All" CellFactory="@cellFactory">
+    <FlexGridBehaviors>
+        <FullTextFilterBehavior FilterString="@filterText" />
+    </FlexGridBehaviors>
+</FlexGrid>
+
+
+@code {
+    MyCellFactory cellFactory = new MyCellFactory();
+    string filterText = "";
+    string loadingMessage = "";
+    FlexGrid grid;
+    VirtualModeDataCollection collection;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if(firstRender)
+        {
+            collection = new VirtualModeDataCollection() { Http = Http, PageSize = 50 };
+            collection.PropertyChanged += (s, e) =>
+                {
+                    if (e.PropertyName == nameof(VirtualModeDataCollection.IsLoading))
+                    {
+                        loadingMessage = collection.IsLoading ? FlexGridRes.LoadingMessage : "";
+                        StateHasChanged();
+                    }
+                };
+            grid.RowHeaders.Columns[0].Width = 65;
+            StateHasChanged();
+        }
+        base.OnAfterRender(firstRender);
+    }
+    public class MyCellFactory : GridCellFactory
+    {
+        public override void PrepareCellStyle(GridCellType cellType, GridCellRange range, C1Style style, C1Thickness internalBorders)
+        {
+            base.PrepareCellStyle(cellType, range, style, internalBorders);
+            if (cellType == GridCellType.RowHeader)
+            {
+                style.JustifyContent = C1.Blazor.Core.C1StyleJustifyContent.Center;
+            }
+        }
+        public override RenderFragment GetCellContentRenderFragment(GridCellType cellType, GridCellRange range)
+        {
+            if (cellType == GridCellType.RowHeader)
+            {
+                return new RenderFragment(b =>
+                {
+                    b.AddContent(0, (range.Row + 1).ToString("N0"));
+                });
+            }
+            return base.GetCellContentRenderFragment(cellType, range);
+        }
+    }
+}

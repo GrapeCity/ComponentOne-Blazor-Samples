@@ -1,0 +1,152 @@
+﻿@page "/FlexChart/RangedHistogram"
+@using Localization
+@using System.Drawing;
+@using C1.Chart;
+@using C1.Blazor.Input;
+@using C1.Blazor.Chart;
+
+<FlexChart Class="chart" ChartType="ChartType.RangedHistogram"
+           ItemsSource="Data">
+    <SeriesCollection>
+        <C1.Blazor.Chart.RangedHistogram @ref="rhist" BindingX="@BindingX"
+                                         Binding="Age" 
+                                         BinMode="binMode ?? HistogramBinning.BinWidth"
+                                         OverflowBin="150" UnderflowBin="0" />
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis AxisType="AxisType.X" Position="Position.Bottom" Title="Age Groups" />
+        <Axis AxisType="AxisType.Y" Position="Position.Left" Title="Number Of Persons" />
+    </AxisCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.RangedHistogramTitle</Title>
+    <Settings>
+        By Category <C1CheckBox @bind-IsChecked="byCategory" />
+        <div hidden="@byCategory">
+            Bin Mode <C1ComboBox ItemsSource="binModes" @bind-SelectedItem="BinMode" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+
+            <div hidden="@hideBinNumbers">
+                NumBins <C1ComboBox T="int" ItemsSource="binNumbers" @bind-SelectedItem="@BinNumber" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+            </div>
+            <div hidden="@hideBinWidth">
+                Bin Width <C1ComboBox T="int" ItemsSource="binWidths" @bind-SelectedItem="@BinWidth" Class="filled-drop-down" Style="@("margin:8px 8px 8px 0px")" />
+            </div>
+        </div>
+    </Settings>
+    <Summary>@FlexChartRes.RangedHistogramSummary</Summary>
+    <Description>@FlexChartRes.RangedHistogramDescription</Description>
+</_Sections>
+
+@code {
+    C1.Blazor.Chart.RangedHistogram rhist;
+
+    string BindingX { get { return byCategory == true ? "AgeGroup" : ""; } }
+    bool? byCategory = false;
+
+    HistogramBinning? binMode = HistogramBinning.BinWidth;
+
+    HistogramBinning? BinMode
+    {
+        get { return binMode; }
+        set
+        {
+            if (value != binMode)
+            {
+                binMode = value;
+                if (rhist != null)
+                {
+                    if (binMode == HistogramBinning.BinWidth)
+                        rhist.BinWidth = BinWidth;
+                    else if (binMode == HistogramBinning.NumberOfBins)
+                        rhist.NumberOfBins = BinNumber;
+                }
+            }
+        }
+    }
+
+
+    HistogramBinning[] binModes = { HistogramBinning.Automatic, HistogramBinning.BinWidth, HistogramBinning.NumberOfBins };
+
+    int binNumber = 10;
+    int BinNumber
+    {
+        get { return binNumber; }
+        set
+        {
+            if (value != binNumber)
+            {
+                binNumber = value;
+                if(rhist!=null)
+                    rhist.NumberOfBins = binNumber;
+            }
+        }
+    }
+
+    int[] binNumbers = { 5, 6, 7, 8, 9, 10 };
+
+    int binWidth = 10;
+    int BinWidth
+    {
+        get { return binWidth; }
+        set
+        {
+            if (value != binWidth)
+            {
+                binWidth = value;
+                if (rhist != null)
+                    rhist.BinWidth = binWidth;
+            }
+        }
+    }
+
+    int[] binWidths = { 10, 15, 20, 25 };
+
+    bool hideBinWidth { get { return binMode != HistogramBinning.BinWidth; } }
+    bool hideBinNumbers { get { return binMode != HistogramBinning.NumberOfBins; } }
+
+    List<object> Data;
+
+    protected override void OnInitialized()
+    {
+        Data = DataSource.GetData();
+    }
+
+    public class DataSource
+    {
+        private static Random rnd = new Random();
+
+        public static List<Object> GetData()
+        {
+            var data = new List<Object>();
+            for (int i = 0; i < 500; i++)
+            {
+                var age = rnd.NextDouble() < 0.6 ? rnd.Next(1, 45) : (rnd.NextDouble() < 0.7 ? rnd.Next(46, 65) : rnd.Next(66, 99));
+                data.Add(new
+                {
+                    AgeGroup = GetAgeGroups(age),
+                    Age = age,
+                    Count = 1,
+                });
+            }
+            return data.OrderBy((dynamic x) => x.Age).ToList();
+        }
+
+        private static string GetAgeGroups(int age)
+        {
+            if (age < 13)
+                return "Children";
+            else if (age >= 13 && age < 20)
+                return "Youth";
+            else if (age >= 20 && age < 25)
+                return "Young Adults";
+            else if (age >= 25 && age < 40)
+                return "Adults";
+            else if (age >= 40 && age < 65)
+                return "Middle Aged";
+            else
+                return "Older";
+        }
+
+    }
+}
