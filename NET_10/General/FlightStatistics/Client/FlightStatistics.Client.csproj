@@ -1,34 +1,34 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove=".gclicx" />
+    <None Remove=".sa3licx" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include=".gclicx" />
+    <EmbeddedResource Include=".sa3licx" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Chart">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.0-rc.1.25451.107" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.0-rc.1.25451.107" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.0" PrivateAssets="all" />
     <PackageReference Include="System.Net.Http.Json" Version="9.0.0" />
   </ItemGroup>
   <ItemGroup>

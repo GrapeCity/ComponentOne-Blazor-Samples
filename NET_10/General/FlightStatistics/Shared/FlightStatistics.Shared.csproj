@@ -4,4 +4,7 @@
 		<TargetFramework>net10.0</TargetFramework>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<EmbeddedResource Include=".sa3licx" />
+	</ItemGroup>
 </Project>

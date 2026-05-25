@@ -1,14 +1,11 @@
 ﻿@page "/FlexGrid/VirtualMode"
-@using Localization
-@using C1.Blazor.Grid
-@using C1.Blazor.Input
-@using C1.Blazor.Core
 
 <C1TextBox Class="filled-text-box" @bind-Text="filterText" Placeholder="@FlexGridRes.FilterPlaceholderText" />
 
-<FlexGrid @ref="grid" ItemsSource="@(new VirtualModeDataCollection() { PageSize = 50 })" Style="@("max-height:50vh")" HeadersVisibility="GridHeadersVisibility.All" CellFactory="@cellFactory">
+<FlexGrid @ref="grid" ItemsSource="data" Style="@("max-height:50vh")" HeadersVisibility="GridHeadersVisibility.All" CellFactory="@cellFactory">
     <FlexGridBehaviors>
         <FullTextFilterBehavior FilterString="@filterText" MatchNumbers="true" />
+        <SkeletonLoadingBehavior />
     </FlexGridBehaviors>
 </FlexGrid>
 
@@ -16,7 +13,7 @@
     MyCellFactory cellFactory = new MyCellFactory();
     string filterText = "";
     FlexGrid grid;
-
+    IEnumerable data = new VirtualModeDataCollection() { PageSize = 50 };
 
     protected override void OnAfterRender(bool firstRender)
     {

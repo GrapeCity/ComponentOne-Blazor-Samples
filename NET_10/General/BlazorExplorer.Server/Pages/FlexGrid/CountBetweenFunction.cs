@@ -22,7 +22,7 @@ namespace BlazorExplorer.Pages.FlexGrid
         public new double Maximum { get; set; } = double.MaxValue;
 
         ///<inheritdoc/>
-        public override double GetValue(GridColumn column, IEnumerable<GridRow> rows)
+        public override object GetValue(GridColumn column, IEnumerable<GridRow> rows)
         {
             var count = 0;
             var grid = column.Grid;

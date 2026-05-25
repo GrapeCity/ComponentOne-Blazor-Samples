@@ -2,6 +2,7 @@
 using C1.Blazor.Grid;
 using FlightStatistics.Shared;
 using Microsoft.AspNetCore.Components;
+using System.Globalization;
 using System.Linq;
 
 namespace FlightStatistics.Client.Models
@@ -32,7 +33,24 @@ namespace FlightStatistics.Client.Models
                         b.OpenElement(0, "img");
                         b.AddAttribute(1, "style", new C1Style { Height = "25px", Width = "25px", Padding = new C1Thickness(0, 0, 3, 0) });
                         b.AddAttribute(2, "alt", "flag");
-                        b.AddAttribute(3, "src", "images/flags/" + row.CountryName + ".png");
+                        
+                        // Convert country name to match flag filename convention
+                        var countryName = row.CountryName;
+                        string flagFileName;
+                        
+                        // Handle special cases: acronyms that should stay uppercase
+                        if (countryName == "USA" || countryName == "UAE" || countryName == "NATO")
+                        {
+                            flagFileName = countryName;
+                        }
+                        else
+                        {
+                            // Convert to Title Case and replace spaces with hyphens
+                            var textInfo = new CultureInfo("en-US", false).TextInfo;
+                            flagFileName = textInfo.ToTitleCase(countryName.ToLower()).Replace(" ", "-");
+                        }
+                        
+                        b.AddAttribute(3, "src", "images/flags/" + flagFileName + ".png");
                         b.CloseElement();
                         b.AddContent(4, row.AirportCity + " (" + row.CountryCode + ")");
                     });

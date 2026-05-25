@@ -1,0 +1,84 @@
+﻿@page "/mouseover"
+@using System.Collections.ObjectModel;
+
+<h1>@AppResources.MouseHoverTitle</h1>
+<p>@AppResources.MouseHoverDescription</p>
+<style>
+    .preview {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: relative;
+        border: 1px solid #ccc;
+        background: repeating-conic-gradient(#ccc 0% 25%, transparent 0% 50%) 50% / 12px 12px;
+    }
+
+    .preview > div {
+        position: absolute;
+        inset: 0;
+    }
+
+</style>
+<p>
+    MouseOverMode <C1ComboBox ItemsSource="mouseOverModes" @bind-SelectedItem="mouseOverMode" Class="filled-drop-down" />
+    SelectionMode <C1ComboBox ItemsSource="selectionModes" @bind-SelectedItem="selectionMode" Class="filled-drop-down" />
+
+
+    <C1DropDown DropDownBehavior="DropDownBehavior.HeaderTap">
+        <Header>
+            MouseOverBrush
+            <div class="preview">
+                <div style="@($"background-color:{mouseOverBrush.ToString()};")"></div>
+            </div>
+        </Header>
+        <ChildContent>
+            <div style="padding: 6px;">
+                <label> @AppResources.Color <input type="color" @bind="MouseOverBrush" @bind:event="oninput" /></label>
+                <label> @AppResources.Opacity <input type="range" min="0" max="255" @bind="Opacity" /></label>
+            </div>
+        </ChildContent>
+    </C1DropDown>
+
+</p>
+
+<FlexGrid MouseOverMode="mouseOverMode" MouseOverBrush="mouseOverBrush"
+          ItemsSource="customers"
+          StyleKind="GridStyle.Classic"
+          SelectionMode="selectionMode"
+          Style="@("max-height:50vh")" />
+
+@code {
+    ObservableCollection<Customer> customers;
+    GridSelectionMode selectionMode = GridSelectionMode.MultiRange;
+    GridSelectionMode[] selectionModes = Enum.GetValues<GridSelectionMode>();
+
+    C1Color mouseOverBrush;
+    double opacity = 10;
+    double Opacity
+    {
+        get => opacity;
+        set
+        {
+            opacity = value;
+            ApplyColor(mouseOverBrush);
+        }
+    }
+
+    string MouseOverBrush
+    {
+        get => C1Color.ColorToHTML(mouseOverBrush);
+        set => ApplyColor((C1Color)value);
+    }
+
+    GridMouseOverMode mouseOverMode = GridMouseOverMode.Cell;
+    GridMouseOverMode[] mouseOverModes = Enum.GetValues<GridMouseOverMode>();
+
+    protected override void OnInitialized()
+    {
+        ApplyColor(C1Color.Black);
+
+        customers = Customer.GetCustomerList(100);
+    }
+
+    void ApplyColor(C1Color color) => mouseOverBrush = C1Color.FromArgb(Convert.ToByte(opacity), color.R, color.G, color.B);
+}

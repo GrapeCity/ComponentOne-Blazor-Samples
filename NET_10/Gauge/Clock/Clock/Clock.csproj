@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove=".sa3licx" />
+    <None Remove="Icons\dot.svg" />
+    <None Remove="Icons\hours.svg" />
+    <None Remove="Icons\minutes.svg" />
+    <None Remove="Icons\seconds.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include=".sa3licx" />
+    <EmbeddedResource Include="Icons\dot.svg" />
+    <EmbeddedResource Include="Icons\hours.svg" />
+    <EmbeddedResource Include="Icons\minutes.svg" />
+    <EmbeddedResource Include="Icons\seconds.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>10.0.20261.50</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Gauge">
+      <Version>10.0.20261.50</Version>
+    </PackageReference>
+    <ProjectReference Include="..\Clock.Client\Clock.Client.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.13" />
+  </ItemGroup>
+</Project>

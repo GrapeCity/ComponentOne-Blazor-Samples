@@ -21,4 +21,7 @@
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include=".sa3licx" />
+	</ItemGroup>
 </Project>

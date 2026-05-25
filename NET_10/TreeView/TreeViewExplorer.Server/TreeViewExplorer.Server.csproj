@@ -1,13 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.TreeView">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.0" />
   </ItemGroup>
@@ -25,6 +25,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include=".gclicx" />
+    <EmbeddedResource Include=".sa3licx" />
   </ItemGroup>
 </Project>

@@ -5,32 +5,38 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove=".sa3licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include=".sa3licx" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="C1.Blazor.Accordion">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.GridControl">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Menu">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="System.Drawing.Common" Version="8.0.8" />
   </ItemGroup>

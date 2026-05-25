@@ -1,16 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Spreadsheet.Server.gclicx" />
+    <EmbeddedResource Include="Spreadsheet.Server.sa3licx" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.GridControl">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
   </ItemGroup>
 </Project>

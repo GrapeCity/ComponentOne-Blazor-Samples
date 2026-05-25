@@ -594,4 +594,19 @@
   <data name="SelectedItemsDescription" xml:space="preserve">
     <value>Shows how to bind the Selected Items of one grid to another control</value>
   </data>
+  <data name="TreatSpacesAsAndOperatorLabel" xml:space="preserve">
+    <value>Treat Spaces As And Operator</value>
+  </data>
+  <data name="MatchNumbersLabel" xml:space="preserve">
+    <value>Match Numbers</value>
+  </data>
+  <data name="MatchBooleansLabel" xml:space="preserve">
+    <value>Match Booleans</value>
+  </data>
+  <data name="FilteredFieldsLabel" xml:space="preserve">
+    <value>Filtered Fields</value>
+  </data>
+  <data name="AllFieldsLabel" xml:space="preserve">
+    <value>All Fields</value>
+  </data>
 </root>

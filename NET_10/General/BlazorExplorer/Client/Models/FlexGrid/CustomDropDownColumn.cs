@@ -12,7 +12,7 @@ namespace BlazorExplorer
         private static readonly List<Country> _countries = Country.GetCountries();
         public CustomDropDownColumn()
         {
-            CellTemplate = data => (RenderFragment) (b =>
+            CellTemplate = data => (RenderFragment)(b =>
             {
                 b.OpenElement(0, "div");
 
@@ -30,7 +30,7 @@ namespace BlazorExplorer
         public C1DropDown CurrentDropDown { get; set; }
         public object CurrentValue { get; private set; }
 
-        protected override RenderFragment GetCellEditorFragment(GridRow row, Action<ComponentBase> editorCreated)
+        protected override RenderFragment GetCellEditorFragment(GridRow row, GridControlEditingContext editingContext)
         {
             return new RenderFragment(builder =>
             {
@@ -73,7 +73,7 @@ namespace BlazorExplorer
                 {
                     b.AddContent(0, CurrentValue.ToString());
                 }));
-                builder.AddComponentReferenceCapture(6, r => { CurrentDropDown = r as C1DropDown; editorCreated(r as ComponentBase); });
+                builder.AddComponentReferenceCapture(6, r => { CurrentDropDown = r as C1DropDown; editingContext.Editor = r as ComponentBase; });
                 builder.CloseComponent();
             });
         }

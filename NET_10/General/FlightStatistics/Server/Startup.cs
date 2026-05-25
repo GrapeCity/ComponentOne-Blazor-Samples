@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using System.Linq;
 
 namespace FlightStatistics.Server
@@ -33,6 +34,9 @@ namespace FlightStatistics.Server
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var basePath = Configuration["BASE_PATH"];
+            app.UsePathBase(basePath);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -44,6 +48,7 @@ namespace FlightStatistics.Server
             }
 
             app.UseBlazorFrameworkFiles();
+
             app.UseStaticFiles();
 
             app.UseRouting();

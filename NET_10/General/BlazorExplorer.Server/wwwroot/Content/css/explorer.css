@@ -808,7 +808,7 @@ h4.semi-bold {
 
 footer {
     padding: 20px 20px 20px 12px;
-    float: right;
+    float: left;
     font-size: 7pt;
     max-width: 300px;
     clear: left;

@@ -97,6 +97,15 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All Fields.
+        /// </summary>
+        public static string AllFieldsLabel {
+            get {
+                return ResourceManager.GetString("AllFieldsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Allow Resizing.
         /// </summary>
         public static string AllowResizingLabel {
@@ -655,6 +664,15 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Filtered Fields.
+        /// </summary>
+        public static string FilteredFieldsLabel {
+            get {
+                return ResourceManager.GetString("FilteredFieldsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter text to filter.
         /// </summary>
         public static string FilterPlaceholderText {
@@ -862,11 +880,29 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Match Booleans.
+        /// </summary>
+        public static string MatchBooleansLabel {
+            get {
+                return ResourceManager.GetString("MatchBooleansLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Match Case.
         /// </summary>
         public static string MatchCaseLabel {
             get {
                 return ResourceManager.GetString("MatchCaseLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Match Numbers.
+        /// </summary>
+        public static string MatchNumbersLabel {
+            get {
+                return ResourceManager.GetString("MatchNumbersLabel", resourceCulture);
             }
         }
         
@@ -1344,6 +1380,15 @@ namespace BlazorExplorer.Localization {
         public static string TransposedGridTitle {
             get {
                 return ResourceManager.GetString("TransposedGridTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Treat Spaces As And Operator.
+        /// </summary>
+        public static string TreatSpacesAsAndOperatorLabel {
+            get {
+                return ResourceManager.GetString("TreatSpacesAsAndOperatorLabel", resourceCulture);
             }
         }
         

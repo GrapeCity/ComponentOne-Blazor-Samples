@@ -237,7 +237,7 @@ namespace Spreadsheet
         public override bool IsMouseOverEnabled => true;
 
         #endregion
-        
+
         #region edit
 
         public override bool AllowEditing(GridControlRange range)
@@ -245,7 +245,7 @@ namespace Spreadsheet
             return range.Row >= 1 && range.Column >= 1;
         }
 
-        protected override RenderFragment GetCellEditorFragment(GridControlRange range, Action<ComponentBase> editorCreated)
+        protected override RenderFragment GetCellEditorFragment(GridControlRange range, GridControlEditingContext editingContext)
         {
             return new RenderFragment(b =>
             {
@@ -258,7 +258,7 @@ namespace Spreadsheet
                 b.AddAttribute(1, nameof(C1TextBox.Text), value);
                 b.AddAttribute(2, nameof(C1TextBox.BorderThickness), new C1Thickness(0));
                 b.AddAttribute(3, nameof(C1TextBox.Padding), CellPadding);
-                b.AddComponentReferenceCapture(4, r => editorCreated(r as ComponentBase));
+                b.AddComponentReferenceCapture(4, r => editingContext.Editor = r as ComponentBase);
                 b.CloseComponent();
             });
         }

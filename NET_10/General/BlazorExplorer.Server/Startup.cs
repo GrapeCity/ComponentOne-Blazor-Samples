@@ -39,6 +39,9 @@ namespace BlazorExplorer
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var basePath = Configuration["BASE_PATH"];
+            app.UsePathBase(basePath);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -59,7 +62,8 @@ namespace BlazorExplorer
             // Allowed using of date, number formats for all available cultures.
             var allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Select(c=>c.Name)
                                 .Append("zh-CN").ToArray();
-            
+
+
             var localizationOptions = new RequestLocalizationOptions()
                 .AddSupportedCultures(allCultures)
                 .AddSupportedUICultures(allCultures)

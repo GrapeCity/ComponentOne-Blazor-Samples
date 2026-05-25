@@ -4,14 +4,14 @@
 
 <div class="gaugeFrame">
     <p style="margin:8px 0">
-	    <span>@GaugeRes.LinearGauge</span>
+        <span>@GaugeRes.LinearGauge</span>
     </p>
-    <C1LinearGauge @ref="linGauge" Class="gauge" @bind-Value="data.Value" TextVisibility="GaugeTextVisibility.All" ShowRanges=true ></C1LinearGauge>
+    <C1LinearGauge @ref="linGauge" Class="gauge" @bind-Value="data.Value" TextVisibility="GaugeTextVisibility.All" ShowRanges=true></C1LinearGauge>
 </div>
 
 <div class="gaugeFrame">
     <p style="margin:8px 0">
-	    <span>@GaugeRes.RadialGauge</span>
+        <span>@GaugeRes.RadialGauge</span>
     </p>
     <C1RadialGauge @ref="radGauge" Class="gauge radialGauge" @bind-Value="data.Value" AutoScale="true" StartAngle="@data.StartAngle" SweepAngle="@data.SweepAngle" IsReversed="(bool)isReversed" TextVisibility="GaugeTextVisibility.All" ShowRanges=true></C1RadialGauge>
     <label style="align-items:self-end">@GaugeRes.ValueText @lbl</label>
@@ -44,11 +44,11 @@
     {
         if (firstRender)
         {
-            radGauge.Ranges.Add(new GaugeRange() { Min = 0, Max = 40, Color = C1Color.FromArgb(0xFF, 0x22, 0xB1, 0x4C) });
-            radGauge.Ranges.Add(new GaugeRange() { Min = 40, Max = 80, Color = C1Color.FromArgb(0xFF, 0xFF, 0x80, 0x80) });
-            radGauge.Ranges.Add(new GaugeRange() { Min = 80, Max = 100, Color = C1Color.FromArgb(0xFF, 0xEE, 0xE0, 0x4A) });
+            radGauge.Decorators.Add(new GaugeRange() { From = 0, To = 40, Brush = C1Color.FromArgb(0xFF, 0x22, 0xB1, 0x4C) });
+            radGauge.Decorators.Add(new GaugeRange() { From = 40, To = 80, Brush = C1Color.FromArgb(0xFF, 0xFF, 0x80, 0x80) });
+            radGauge.Decorators.Add(new GaugeRange() { From = 80, To = 100, Brush = C1Color.FromArgb(0xFF, 0xEE, 0xE0, 0x4A) });
             for (int i = 0; i < 3; i++)
-                linGauge.Ranges.Add(radGauge.Ranges[i]);
+                linGauge.Decorators.Add(radGauge.Decorators[i]);
             linGauge.Pointer.Thickness = radGauge.Pointer.Thickness = 0.5;
         }
         base.OnAfterRender(firstRender);

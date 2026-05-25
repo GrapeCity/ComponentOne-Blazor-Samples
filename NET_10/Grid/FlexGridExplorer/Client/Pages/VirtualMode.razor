@@ -1,18 +1,14 @@
 ﻿@page "/virtualmode"
-@using Resources
-@using C1.Blazor.Grid
-@using C1.Blazor.Input
-@using C1.Blazor.Core
 @inject HttpClient Http
-
 <h1>@AppResources.VirtualModeTitle</h1>
 <p>@AppResources.VirtualModeDescription</p>
 
 <C1TextBox Class="filled-text-box" @bind-Text="filterText" Placeholder="@AppResources.FilterPlaceholderText" />
 
-<FlexGrid @ref="grid" ItemsSource="@(new VirtualModeDataCollection() { Http = Http, PageSize = 50 })" Style="@("max-height:50vh")" HeadersVisibility="GridHeadersVisibility.All" CellFactory="@cellFactory">
+<FlexGrid @ref="grid" ItemsSource="data" Style="@("max-height:50vh")" HeadersVisibility="GridHeadersVisibility.All" CellFactory="@cellFactory">
     <FlexGridBehaviors>
         <FullTextFilterBehavior FilterString="@filterText" />
+        <SkeletonLoadingBehavior />
     </FlexGridBehaviors>
 </FlexGrid>
 
@@ -20,7 +16,12 @@
     MyCellFactory cellFactory = new MyCellFactory();
     string filterText = "";
     FlexGrid grid;
+    IEnumerable data;
 
+    protected override void OnInitialized()
+    {
+        data = new VirtualModeDataCollection { Http = Http, PageSize = 50 };
+    }
 
     protected override void OnAfterRender(bool firstRender)
     {

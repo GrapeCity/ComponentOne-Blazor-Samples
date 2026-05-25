@@ -13,8 +13,7 @@
 
     protected override void OnInitialized()
     {
-        customers = Customer.GetCustomerList(100);
-
+        customers = Customer.GetCustomerListClone(100);
         customers[1].LastName = null;
         customers[3].Address = "1";
         customers[4].FirstName = "";

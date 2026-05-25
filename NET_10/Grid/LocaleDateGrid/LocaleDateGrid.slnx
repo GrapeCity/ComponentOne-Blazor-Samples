@@ -1,0 +1,5 @@
+<Solution>
+
+  <Project Path="LocaleDateGrid.Client/LocaleDateGrid.Client.csproj" />
+  <Project Path="LocaleDateGrid/LocaleDateGrid.csproj" />
+</Solution>

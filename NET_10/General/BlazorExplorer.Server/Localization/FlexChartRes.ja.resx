@@ -751,24 +751,27 @@ Specific series may override those properties and use different data sources and
     <comment>Heatmap Plot</comment>
   </data>
   <data name="AxisBreakTitle" xml:space="preserve">
-    <value />
+    <value>軸の分割</value>
+    <comment>Axis Break</comment>
   </data>
   <data name="AxisBreakSummary" xml:space="preserve">
-    <value />
+    <value>軸の分割付き FlexChart</value>
+    <comment>FlexChart with Axis Break</comment>
   </data>
   <data name="AxisBreakDescription" xml:space="preserve">
-    <value />
+    <value>軸の分割をシミュレートする2つのプロットエリアに同じデータを表示します。カスタム軸の外観と分割領域は、チャートの Rendered イベントハンドラで描画されます。</value>
+    <comment>Display the same data on two plot areas simulating axis break. Custom axis appearance and 'break area' are drawn in chart Rendered event handler.</comment>
   </data>
   <data name="ContourDescription" xml:space="preserve">
-    <value>Shows Contour plot with gradient color scale. The data from two-dimensional array is shown as a table. The color of table's cell depends on the corresponding data value.</value>
+    <value>グラデーションカラースケール付きの等高線図を表示します。2次元配列のデータは表形式で表示されます。表のセルの色は、対応するデータ値によって異なります。</value>
     <comment>Shows Contour plot with gradient color scale. The data from two-dimensional array is shown as a table. The color of table's cell depends on the corresponding data value.</comment>
   </data>
   <data name="ContourSummary" xml:space="preserve">
-    <value>Contour Plot</value>
+    <value>等高線チャート</value>
     <comment>Contour Plot</comment>
   </data>
   <data name="ContourTitle" xml:space="preserve">
-    <value>Contour Plot</value>
+    <value>等高線チャート</value>
     <comment>Contour Plot</comment>
   </data>
 </root>

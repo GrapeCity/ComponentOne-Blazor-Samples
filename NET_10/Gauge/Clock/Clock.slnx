@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/C1Libs/">
+
+  </Folder>
+  <Project Path="Clock.Client/Clock.Client.csproj" />
+  <Project Path="Clock/Clock.csproj" />
+</Solution>

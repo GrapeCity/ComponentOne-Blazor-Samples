@@ -1,18 +1,20 @@
 ﻿@page "/virtualmode"
-@using Resources
-@using C1.Blazor.Grid
-@using C1.Blazor.Core
 
 <h1>@AppResources.VirtualModeTitle</h1>
 <p>@AppResources.VirtualModeDescription</p>
 
-<FlexGrid @ref="grid" ItemsSource="@(new VirtualModeDataCollection() { PageSize = 50 })" Style="@("max-height:50vh")" HeadersVisibility="GridHeadersVisibility.All" CellFactory="@cellFactory"/>
+<FlexGrid @ref="grid" ItemsSource="data" Style="@("max-height:50vh")" HeadersVisibility="GridHeadersVisibility.All" CellFactory="@cellFactory">
+    <FlexGridBehaviors>
+        <SkeletonLoadingBehavior />
+    </FlexGridBehaviors>
+</FlexGrid>
 
 @code {
     MyCellFactory cellFactory = new MyCellFactory();
     string filterText = "";
     FlexGrid grid;
 
+    IEnumerable data = new VirtualModeDataCollection { PageSize = 50 };
 
     protected override void OnAfterRender(bool firstRender)
     {

@@ -24,7 +24,14 @@
 
 @code {
     
-    RadarChartType[] chartTypes = new RadarChartType[] { RadarChartType.Line, RadarChartType.LineSymbols, RadarChartType.Scatter, RadarChartType.Area };
+    RadarChartType[] chartTypes = new RadarChartType[] 
+    { 
+        RadarChartType.Line, 
+        RadarChartType.LineSymbols, 
+        RadarChartType.Scatter, 
+        RadarChartType.Area,
+        RadarChartType.Column
+    };
     RadarChartType? chartType = RadarChartType.Line;
 
     IEnumerable<Palette> palettes = Enum.GetValues(typeof(Palette)).Cast<Palette>().Where((p, x) => p!=Palette.Custom);

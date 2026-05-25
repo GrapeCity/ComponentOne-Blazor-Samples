@@ -14,7 +14,7 @@ namespace BlazorExplorer.Pages
     /// <summary>
     /// Simple data class generator.
     /// </summary>
-    public class Customer : ObservableValidator, IEditableObject
+    public class Customer : ObservableValidator, IEditableObject, ICloneable
     {
         #region fields
 
@@ -239,8 +239,8 @@ namespace BlazorExplorer.Pages
         {
             return string.Format("{0} {1}", GetRandomString(_firstNames), GetRandomString(_lastNames));
         }
-
         private static ObservableCollection<Customer> _customers;
+
         // ** static list provider
         public static ObservableCollection<Customer> GetCustomerList(int count)
         {
@@ -266,6 +266,13 @@ namespace BlazorExplorer.Pages
             }
 
             return _customers;
+        }
+
+        // ** method to get a clone for samples that need to modify data
+        public static ObservableCollection<Customer> GetCustomerListClone(int count)
+        {
+            var source = GetCustomerList(count);
+            return new ObservableCollection<Customer>(source.Select(item => (Customer)item.Clone()));
         }
 
         private static string GetRandomAddress()
@@ -323,6 +330,11 @@ namespace BlazorExplorer.Pages
         {
             ValidateAllProperties();
             return !HasErrors;
+        }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
     }
 

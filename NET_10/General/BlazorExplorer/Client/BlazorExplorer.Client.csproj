@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <AssemblyName>BlazorExplorer</AssemblyName>
@@ -20,54 +20,54 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Accordion">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Calendar">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Chart">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DateTimeEditors">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Gauge">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid.ConditionalFormatting">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Menu">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.RulesManager">
-      <Version>10.0.20252.1227-beta</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.TreeView">
-      <Version>10.0.20252.1227</Version>
+      <Version>10.0.20261.50</Version>
     </PackageReference>
-    <PackageReference Include="C1.DataCollection.Serialization" Version="10.0.20252.3" />
-    <PackageReference Include="C1.Excel" Version="9.0.20251.148" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.0-rc.1.25451.107" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.0-rc.1.25451.107" PrivateAssets="all" />
+    <PackageReference Include="C1.DataCollection.Serialization" Version="10.0.20261.3" />
+    <PackageReference Include="C1.Excel" Version="10.0.20261.269" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.0" />
     <PackageReference Include="System.Net.Http.Json" Version="9.0.0" />
   </ItemGroup>
@@ -87,7 +87,7 @@
     <Content Remove="Data\WebColors.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove=".gclicx" />
+    <None Remove=".sa3licx" />
     <None Remove="Data\DataFilter\cars.xml" />
     <None Remove="Data\DataFilter\Stores.txt" />
     <None Remove="Data\departments.xml" />
@@ -96,7 +96,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Data\ControlPages.xml;Pages\**\*.razor;Models\**\*;" Exclude="bin\**;obj\**;**\*.csproj" />
     <EmbeddedResource Remove="Models\FlexGrid\StockDataCollection.cs" />
-    <EmbeddedResource Include=".gclicx" />
+    <EmbeddedResource Include=".sa3licx" />
     <EmbeddedResource Include="Data\countries.json" />
     <EmbeddedResource Include="Data\DataFilter\cars.xml" />
     <EmbeddedResource Include="Data\DataFilter\Stores.txt" />

@@ -182,21 +182,30 @@
     <comment>Home</comment>
   </data>
   <data name="UserName" xml:space="preserve">
-    <value>User name</value>
+    <value>ユーザー名</value>
+    <comment>User name</comment>
   </data>
   <data name="Subscribe" xml:space="preserve">
-    <value>Subscribe to newsletter</value>
+    <value>ニュースレターの購読</value>
+    <comment>Subscribe to newsletter</comment>
   </data>
   <data name="PreserveContent" xml:space="preserve">
-    <value>Preserve content</value>
+    <value>コンテンツの保存</value>
+    <comment>Preserve content</comment>
   </data>
   <data name="ExpandMode" xml:space="preserve">
-    <value>Expand Mode</value>
+    <value>展開モード</value>
+    <comment>Expand Mode</comment>
   </data>
   <data name="ExpandDirection" xml:space="preserve">
-    <value>Expand Direction</value>
+    <value>展開方向</value>
+    <comment>Expand Direction</comment>
   </data>
   <data name="ExpandIconAlignment" xml:space="preserve">
-    <value>Expand Icon Alignment</value>
+    <value>展開アイコンの配置</value>
+    <comment>Expand Icon Alignment</comment>
+  </data>
+  <data name="Fill" xml:space="preserve">
+    <value>Fill remaining space</value>
   </data>
 </root>

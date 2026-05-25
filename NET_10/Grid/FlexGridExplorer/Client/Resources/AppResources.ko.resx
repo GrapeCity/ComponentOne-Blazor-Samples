@@ -511,4 +511,32 @@
   <data name="SelectCustomersMessage" xml:space="preserve">
     <value>Please select customers on the grid at the left.</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TreatSpacesAsAndOperatorLabel" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="MatchNumbersLabel" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="MatchBooleansLabel" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="FilteredFieldsLabel" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="AllFieldsLabel" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="MouseHoverDescription" xml:space="preserve">
+    <value>Shows the effects of different settings of MouseOverMode</value>
+  </data>
+  <data name="MouseHoverTitle" xml:space="preserve">
+    <value>Mouse Hover</value>
+  </data>
+  <data name="Opacity" xml:space="preserve">
+    <value>Opacity</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
 </root>

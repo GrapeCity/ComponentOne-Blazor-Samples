@@ -743,7 +743,7 @@ Specific series may override those properties and use different data sources and
     <comment>Shows Heatmap plot with gradient color scale. The data from two-dimensional array is shown as a table. The color of table's cell depends on the corresponding data value.</comment>
   </data>
   <data name="ContourDescription" xml:space="preserve">
-    <value>Shows Contour chart with gradient color scale. The data from two-dimensional array is shown as a table. The color of table's cell depends on the corresponding data value.</value>
+    <value>グラデーションカラースケール付きの等高線グラフを表示します。2次元配列のデータは表形式で表示されます。表のセルの色は、対応するデータ値によって異なります。</value>
     <comment>Shows Contour plot with gradient color scale. The data from two-dimensional array is shown as a table. The color of table's cell depends on the corresponding data value.</comment>
   </data>
   <data name="HeatmapTitle" xml:space="preserve">
@@ -751,7 +751,7 @@ Specific series may override those properties and use different data sources and
     <comment>Heatmap Plot</comment>
   </data>
   <data name="ContourTitle" xml:space="preserve">
-    <value>Contour chart</value>
+    <value>等高線チャート</value>
     <comment>Contour Plot</comment>
   </data>
   <data name="HeatmapSummary" xml:space="preserve">
@@ -759,7 +759,7 @@ Specific series may override those properties and use different data sources and
     <comment>Heatmap Plot</comment>
   </data>
   <data name="ContourSummary" xml:space="preserve">
-    <value>Contour chart</value>
+    <value>等高線チャート</value>
     <comment>Contour Plot</comment>
   </data>
 </root>

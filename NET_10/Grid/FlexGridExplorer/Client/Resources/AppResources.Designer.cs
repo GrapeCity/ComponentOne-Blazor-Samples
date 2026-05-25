@@ -19,7 +19,7 @@ namespace FlexGridExplorer.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class AppResources {
@@ -102,6 +102,15 @@ namespace FlexGridExplorer.Resources {
         public static string AllCustomersLabel {
             get {
                 return ResourceManager.GetString("AllCustomersLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Fields.
+        /// </summary>
+        public static string AllFieldsLabel {
+            get {
+                return ResourceManager.GetString("AllFieldsLabel", resourceCulture);
             }
         }
         
@@ -210,6 +219,15 @@ namespace FlexGridExplorer.Resources {
         public static string Collapse {
             get {
                 return ResourceManager.GetString("Collapse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string Color {
+            get {
+                return ResourceManager.GetString("Color", resourceCulture);
             }
         }
         
@@ -520,6 +538,15 @@ namespace FlexGridExplorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Filtered Fields.
+        /// </summary>
+        public static string FilteredFieldsLabel {
+            get {
+                return ResourceManager.GetString("FilteredFieldsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter text to filter.
         /// </summary>
         public static string FilterPlaceholderText {
@@ -673,11 +700,29 @@ namespace FlexGridExplorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Match Booleans.
+        /// </summary>
+        public static string MatchBooleansLabel {
+            get {
+                return ResourceManager.GetString("MatchBooleansLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Match Case.
         /// </summary>
         public static string MatchCaseLabel {
             get {
                 return ResourceManager.GetString("MatchCaseLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Match Numbers.
+        /// </summary>
+        public static string MatchNumbersLabel {
+            get {
+                return ResourceManager.GetString("MatchNumbersLabel", resourceCulture);
             }
         }
         
@@ -696,6 +741,24 @@ namespace FlexGridExplorer.Resources {
         public static string Monday {
             get {
                 return ResourceManager.GetString("Monday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shows the effects of different settings of MouseOverMode.
+        /// </summary>
+        public static string MouseHoverDescription {
+            get {
+                return ResourceManager.GetString("MouseHoverDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Hover.
+        /// </summary>
+        public static string MouseHoverTitle {
+            get {
+                return ResourceManager.GetString("MouseHoverTitle", resourceCulture);
             }
         }
         
@@ -750,6 +813,15 @@ namespace FlexGridExplorer.Resources {
         public static string OnDemandTitle {
             get {
                 return ResourceManager.GetString("OnDemandTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opacity.
+        /// </summary>
+        public static string Opacity {
+            get {
+                return ResourceManager.GetString("Opacity", resourceCulture);
             }
         }
         
@@ -1101,6 +1173,15 @@ namespace FlexGridExplorer.Resources {
         public static string TransposedGridTitle {
             get {
                 return ResourceManager.GetString("TransposedGridTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Treat Spaces As And Operator.
+        /// </summary>
+        public static string TreatSpacesAsAndOperatorLabel {
+            get {
+                return ResourceManager.GetString("TreatSpacesAsAndOperatorLabel", resourceCulture);
             }
         }
         

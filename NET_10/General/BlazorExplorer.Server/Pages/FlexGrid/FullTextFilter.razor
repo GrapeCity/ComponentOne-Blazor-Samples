@@ -8,30 +8,153 @@
 <p style="margin:8px 0">
     <C1TextBox Class="filled-text-box" @bind-Text="filterText" Placeholder="@FlexGridRes.FilterPlaceholderText" />
 </p>
-<FlexGrid ItemsSource="customers" IsVirtualizationEnabled="false" Style="@("max-height:50vh")">
+<FlexGrid ItemsSource="customers" AutoGenerateColumns="false" MinColumnWidth="85" Style="@("height:50vh")">
     <FlexGridBehaviors>
-        <FullTextFilterBehavior FilterString="@filterText" MatchCase="@(matchCase??false)" MatchWholeWord="@(matchWholeWord??false)" MatchNumbers="true" />
+        <FullTextFilterBehavior FilterString="@filterText"
+            FilteredFields="@FilteredFields"
+            MatchCase="@(matchCase ?? false)"
+            MatchWholeWord="@(matchWholeWord ?? false)"
+            TreatSpacesAsAndOperator="@(treatSpacesAsAndOperator ?? false)"
+            MatchNumbers="@(matchNumbers ?? false)"
+            MatchBooleans="@(matchBooleans ?? false)" />
     </FlexGridBehaviors>
+    <FlexGridColumns>
+        <GridColumn Binding="FirstName" Header="First Name"/>
+        <GridColumn Binding="LastName" Header="Last Name"/>
+        <GridColumn Binding="Address"/>
+        <GridColumn Binding="City" />
+        <GridColumn Binding="PostalCode" Header="Postal Code"  />
+        <GridColumn Binding="Email"/>
+        <GridColumn Binding="Active"/>
+    </FlexGridColumns>
 </FlexGrid>
 
 <_Sections>
     <Title>@FlexGridRes.FullTextFilterTitle</Title>
     <Settings>
-        Match Case <C1CheckBox @bind-IsChecked="matchCase" /> Match Whole Word <C1CheckBox @bind-IsChecked="matchWholeWord" />
+        <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                <C1CheckBox @bind-IsChecked="matchCase" />
+                <span>@FlexGridRes.MatchCaseLabel</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                <C1CheckBox @bind-IsChecked="matchWholeWord" />
+                <span>@FlexGridRes.MatchWholeWordLabel</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                <C1CheckBox @bind-IsChecked="treatSpacesAsAndOperator" />
+                <span>@FlexGridRes.TreatSpacesAsAndOperatorLabel</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                <C1CheckBox @bind-IsChecked="matchNumbers" />
+                <span>@FlexGridRes.MatchNumbersLabel</span>
+            </label>
+            @if (IsBooleanFieldIncluded)
+            {
+                <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                    <C1CheckBox @bind-IsChecked="matchBooleans"/>
+                    <span>@FlexGridRes.MatchBooleansLabel</span>
+                </label>
+            }
+            <span style="margin-left: 10px; font-weight:bold;">@FlexGridRes.FilteredFieldsLabel:</span>
+                <C1DropDown @bind-IsDropDownOpen="isFieldsDropDownOpen"
+                    Style="@(new C1Style { Width = new C1StyleLength(250), Height = new C1StyleLength(30) })"
+                    DropDownStyle="@(new C1Style { MinWidth = new C1StyleLength(250) })">
+                    <Header>
+                        <div style="padding: 6px 8px; display: flex; align-items: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.2;">
+                            @if (FilteredFields == null || !FilteredFields.Any() || FilteredFields.Count() == availableFields.Count)
+                            {
+                                <span style="color: #666;">@FlexGridRes.AllFieldsLabel</span>
+                            }
+                            else
+                            {
+                                <span>@string.Join(", ", FilteredFields)</span>
+                            }
+                        </div>
+                    </Header>
+                    <ChildContent>
+                        <C1ListView @ref="fieldListView"
+                            ItemsSource="@availableFields"
+                            T="string"
+                            SelectionMode="C1SelectionMode.Multiple"
+                            ShowCheckboxes="true"
+                            Style="@(new C1Style { MaxHeight = new C1StyleLength(180), Padding = new C1Thickness(8) })"
+                            SelectionChanged="@OnFieldSelectionChanged" />
+                    </ChildContent>
+                </C1DropDown>
+        </div>
     </Settings>
     <Summary>@FlexGridRes.FullTextFilterSummary</Summary>
     <Description>@FlexGridRes.FullTextFilterDescription</Description>
 </_Sections>
 
 @code {
-    string filterText = "";
-    bool? matchCase = false;
-    bool? matchWholeWord = false;
-    ObservableCollection<Customer> customers;
+    private string filterText = "";
+    private bool? matchCase = false;
+    private bool? matchWholeWord = false;
+    private bool? treatSpacesAsAndOperator = false;
+    private bool? matchNumbers = false;
+    private bool? matchBooleans = false;
+    private ObservableCollection<Customer> customers;
+    private bool isFieldsDropDownOpen = false;
+    private C1ListView<string> fieldListView;
+
+    public IEnumerable<string> FilteredFields { get; set; }
+
+    private List<string> availableFields = new List<string>
+    {
+        nameof(Customer.FirstName),
+        nameof(Customer.LastName),
+        nameof(Customer.Address),
+        nameof(Customer.City),
+        nameof(Customer.PostalCode),
+        nameof(Customer.Email),
+        nameof(Customer.Active)
+    };
 
     protected override void OnInitialized()
     {
         customers = Customer.GetCustomerList(100);
+        FilteredFields = null;
     }
 
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender && fieldListView != null)
+        {
+            for (int i = 0; i < availableFields.Count; i++)
+            {
+                fieldListView.Select(i);
+            }
+            FilteredFields = availableFields;
+            StateHasChanged();
+        }
+    }
+
+    private void OnFieldSelectionChanged(IEnumerable<int> selectedIndexes)
+    {
+        // Skip if ListView is still initializing
+        if (fieldListView != null && !fieldListView.IsInitialized)
+            return;
+
+        var selectedFields = selectedIndexes.Select(index => availableFields[index]).ToList();
+        FilteredFields = selectedFields.Any() ? selectedFields : null;
+      
+        if (!IsBooleanFieldIncluded)
+        {
+            matchBooleans = false;
+        }
+        
+        StateHasChanged();
+    }
+
+    private bool IsBooleanFieldIncluded
+    {
+        get
+        {
+            if (FilteredFields == null || FilteredFields.Count() == availableFields.Count)
+                return true;
+            return FilteredFields.Contains(nameof(Customer.Active));
+        }
+    }
 }

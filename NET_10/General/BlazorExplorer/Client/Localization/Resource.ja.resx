@@ -290,11 +290,11 @@
     <comment>https://developer.mescius.com/componentone/docs/mvc/online-mvc/overview.html</comment>
   </data>
   <data name="SiteNav_Samples" xml:space="preserve">
-    <value>サンプル</value>
+    <value>ナレッジベース</value>
     <comment>SAMPLES (link title in header)</comment>
   </data>
   <data name="SiteNav_SamplesUrl" xml:space="preserve">
-    <value>https://developer.mescius.com/componentone/samples</value>
+    <value>https://developer.mescius.jp/support/knowledge</value>
     <comment>https://developer.mescius.com/componentone/samples</comment>
   </data>
   <data name="SiteNav_Download" xml:space="preserve">

@@ -1,0 +1,63 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@using C1.Blazor.Core
+@using C1.Blazor.Gauge
+<div style="height:100%;padding:40px;">
+    <div style="width:100%;height:100%;position:relative">
+        <C1RadialGauge @ref="backgroundGauge" StartAngle="90" SweepAngle="360" Thickness="1" TextVisibility="GaugeTextVisibility.None" FaceBrush="C1Color.Transparent" ShowRanges="true" Style="style" />
+        <C1RadialGauge @ref="marksGauge" StartAngle="90" SweepAngle="360" Maximum="720" Thickness="1" TextVisibility="GaugeTextVisibility.None" FaceBrush="C1Color.Transparent" Style="style" />
+        <C1RadialGauge @ref="hoursGauge" StartAngle="90" SweepAngle="360" Maximum="720" Thickness="1" TextVisibility="GaugeTextVisibility.None" ShowRangePointer="false" FaceBrush="C1Color.Transparent" Style="style" />
+        <C1RadialGauge @ref="minutesGauge" StartAngle="90" SweepAngle="360" Maximum="60" Thickness="1" TextVisibility="GaugeTextVisibility.None" ShowRangePointer="false" FaceBrush="C1Color.Transparent" Style="style" />
+        <C1RadialGauge @ref="secondsGauge" StartAngle="90" SweepAngle="360" Maximum="60" Thickness="1" TextVisibility="GaugeTextVisibility.None" ShowRangePointer="false" FaceBrush="C1Color.Transparent" Style="style" />
+    </div>
+</div>
+
+@code {
+    C1Style style = new C1Style { Width = C1StyleLength.FitParent, Height = C1StyleLength.FitParent, Position = C1StylePosition.Absolute, Top = 0, Left = 0 };
+    C1RadialGauge backgroundGauge, marksGauge, hoursGauge, minutesGauge, secondsGauge;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        if (firstRender)
+        {
+            backgroundGauge.Decorators.Add(new GaugeRange() { Brush = C1Color.FromArgb(0xFF, 0xDF, 0xDF, 0xDF) });
+            backgroundGauge.Decorators.Add(new GaugeRange() { Brush = C1Color.FromArgb(0xFF, 0x77, 0x77, 0x77), Thickness = .01, Location = 0.99 });
+            backgroundGauge.Decorators.Add(new GaugeRange() { Brush = C1Color.FromArgb(0xFF, 0x84, 0x84, 0x84), Thickness = .06, Location = 0.93 });
+            backgroundGauge.Decorators.Add(new GaugeRange() { Brush = C1Color.FromArgb(0xFF, 0x77, 0x77, 0x77), Thickness = .01, Location = 0.92 });
+            backgroundGauge.Decorators.Add(new GaugeRange() { Brush = C1Color.FromArgb(0xFF, 0x9A, 0x9A, 0x9A), Thickness = .005, Location = 0.45 });
+
+            marksGauge.MarkBrush = C1Color.FromArgb(0xFF, 0x30, 0x30, 0x30);
+            marksGauge.Decorators.Add(new GaugeMark { From = 0, To = 720, Interval = 60, Location = 0.85, Alignment = GaugeDecoratorAlignment.Center, Thickness = 0.10, Source = new Uri("embedded://Clock.Icons.dot.svg") });
+            marksGauge.Decorators.Add(new GaugeMark { From = 0, To = 720, Interval = 12, Location = 0.85, Alignment = GaugeDecoratorAlignment.Center, Thickness = 0.05, Source = new Uri("embedded://Clock.Icons.dot.svg") });
+            marksGauge.Decorators.Add(new GaugeLabel { From = 1, To = 720, Interval = 60, Location = 0.65, Alignment = GaugeDecoratorAlignment.Center, Thickness = 0.12, IsRotated = true, FontFamily = "Times New Roman", Converter = new HoursConverter() { ShowRomanNumbers = true } });
+
+            hoursGauge.Decorators.Add(new GaugePointer() { Thickness = 0.55, BorderWidth = 8, Source = new Uri("embedded://Clock.Icons.hours.svg"), StartPoint = new C1Point(5.04, 31.46), EndPoint = new C1Point(5.04, 2.36) });
+            minutesGauge.Decorators.Add(new GaugePointer() { Thickness = 0.75, BorderWidth = 4, Source = new Uri("embedded://Clock.Icons.minutes.svg"), StartPoint = new C1Point(5.04, 46.73), EndPoint = new C1Point(5.26, 1.42) });
+            secondsGauge.Decorators.Add(new GaugePointer() { Thickness = 0.85, BorderWidth = 2, Brush = C1Color.Red, Source = new Uri("embedded://Clock.Icons.seconds.svg"), StartPoint = new C1Point(5.08, 50.1), EndPoint = new C1Point(5.15, 1.55) });
+            UpdateClock(DateTime.Now);
+            _ = RunClock();
+        }
+    }
+
+    private async Task RunClock()
+    {
+        while (true)
+        {
+            var now = DateTime.Now;
+            var date = DateOnly.FromDateTime(now);
+            var time = new TimeOnly((now.Hour / 12) * 12 + (int)hoursGauge.Value / 60, (int)minutesGauge.Value, (int)secondsGauge.Value);
+            var next = new DateTime(date, time) + TimeSpan.FromSeconds(1);
+            var diff = next - now;
+            await Task.Delay(diff > TimeSpan.Zero ? diff : TimeSpan.Zero);
+            UpdateClock(next);
+        }
+    }
+
+    private void UpdateClock(DateTime datetime)
+    {
+        hoursGauge.Value = (datetime.Hour % 12) * 60 + datetime.Minute;
+        minutesGauge.Value = datetime.Minute + datetime.Second / 60.0;
+        secondsGauge.Value = datetime.Second;
+    }
+}
