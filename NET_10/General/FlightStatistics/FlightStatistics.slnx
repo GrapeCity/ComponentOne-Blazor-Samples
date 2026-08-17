@@ -1,0 +1,17 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="GRAPECITY" />
+    <BuildType Name="Release" />
+  </Configurations>
+
+  <Project Path="Client/FlightStatistics.Client.csproj">
+    <BuildType Solution="GRAPECITY|*" Project="Release" />
+  </Project>
+  <Project Path="Server/FlightStatistics.Server.csproj">
+    <BuildType Solution="GRAPECITY|*" Project="Release" />
+  </Project>
+  <Project Path="Shared/FlightStatistics.Shared.csproj">
+    <BuildType Solution="GRAPECITY|*" Project="Release" />
+  </Project>
+</Solution>

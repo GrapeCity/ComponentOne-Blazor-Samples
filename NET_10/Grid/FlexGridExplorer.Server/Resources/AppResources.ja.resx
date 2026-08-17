@@ -235,10 +235,6 @@
     <value>セルの固定</value>
     <comment>Cell Freezing &amp; Merging</comment>
   </data>
-  <data name="CellFreezingTitle" xml:space="preserve">
-    <value>セルの固定</value>
-    <comment>Cell Freezing &amp; Merging</comment>
-  </data>
   <data name="StarSizingDescription" xml:space="preserve">
     <value>配分で列幅を設定するレスポンシブなレイアウト</value>
   </data>
@@ -621,6 +617,7 @@
     <value>Opacity</value>
   </data>
   <data name="Color" xml:space="preserve">
-    <value>Color</value>
+    <value>色</value>
+    <comment>Color</comment>
   </data>
 </root>

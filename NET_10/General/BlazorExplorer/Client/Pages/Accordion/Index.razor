@@ -32,7 +32,7 @@
 
 </style>
 
-<C1Accordion ExpandMode="expandMode" ExpandIconAlignment="iconAlignment"
+<C1Accordion ExpandMode="expandMode" ExpandIconAlignment="(ExpanderIconAlignment)iconAlignment"
              Style="@("overflow:hidden; height: 600px;")"
              Fill="fill"
              ExpandDirection="(ExpandDirection)expandDirection"
@@ -165,7 +165,7 @@
 @code
 {
     ExpandMode expandMode = ExpandMode.Any;
-    ExpanderIconAlignment iconAlignment = ExpanderIconAlignment.Right;
+    object iconAlignment = ExpanderIconAlignment.Right;
     ExpandMode[] expandModes = new ExpandMode[] { ExpandMode.One, ExpandMode.Collapsible, ExpandMode.Any };
     ExpanderIconAlignment[] alignments = new ExpanderIconAlignment[] { ExpanderIconAlignment.Left, ExpanderIconAlignment.Right };
     bool retainChildContent = true;

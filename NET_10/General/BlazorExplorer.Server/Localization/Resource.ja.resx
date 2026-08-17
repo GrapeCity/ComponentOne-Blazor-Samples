@@ -181,6 +181,22 @@
     <value>トライアル版</value>
     <comment>FREE TRIAL</comment>
   </data>
+  <data name="SiteNav_AboutUrl" xml:space="preserve">
+    <value>https://developer.mescius.jp/componentone/blazor</value>
+    <comment>https://developer.mescius.jp/componentone/blazor</comment>
+  </data>
+  <data name="SiteNav_SupportUrl" xml:space="preserve">
+    <value>https://developer.mescius.jp/support</value>
+    <comment>https://developer.mescius.jp/support</comment>
+  </data>
+  <data name="SiteNav_PricingUrl" xml:space="preserve">
+    <value>https://developer.mescius.jp/purchase</value>
+    <comment>https://developer.mescius.jp/purchase</comment>
+  </data>
+  <data name="SiteNav_FreeTrialUrl" xml:space="preserve">
+    <value>https://developer.mescius.jp/download</value>
+    <comment>https://developer.mescius.jp/download</comment>
+  </data>
   <data name="SiteNav_EditTheme" xml:space="preserve">
     <value>テーマの編集 &amp;gt;</value>
     <comment>Edit Theme &amp;gt;</comment>
@@ -197,6 +213,10 @@
     <value>Blazor Edition Control Explorer</value>
     <comment>Blazor Edition Control Explorer</comment>
   </data>
+  <data name="Layout_GrapeCityUrl" xml:space="preserve">
+    <value>https://developer.mescius.jp</value>
+    <comment>https://developer.mescius.jp</comment>
+  </data>
   <data name="Layout_License1" xml:space="preserve">
     <value>MESCIUS inc. All rights reserved.</value>
     <comment>MESCIUS inc. All rights reserved.</comment>
@@ -212,6 +232,10 @@
   <data name="Layout_ComponentOne" xml:space="preserve">
     <value>ComponentOne</value>
     <comment>ComponentOne</comment>
+  </data>
+  <data name="Layout_ProductUrl" xml:space="preserve">
+    <value>https://developer.mescius.jp/componentone/blazor</value>
+    <comment>https://developer.mescius.jp/componentone/blazor</comment>
   </data>
   <data name="ControlsNav_Features" xml:space="preserve">
     <value>機能</value>
@@ -249,30 +273,6 @@
     <value>参照アプリケーション</value>
     <comment>Reference Applications</comment>
   </data>
-  <data name="Layout_GrapeCityUrl" xml:space="preserve">
-    <value>https://developer.mescius.jp</value>
-    <comment>https://developer.mescius.jp</comment>
-  </data>
-  <data name="Layout_ProductUrl" xml:space="preserve">
-    <value>https://developer.mescius.jp/componentone/blazor</value>
-    <comment>https://developer.mescius.jp/componentone/blazor</comment>
-  </data>
-  <data name="SiteNav_AboutUrl" xml:space="preserve">
-    <value>https://developer.mescius.jp/componentone/blazor</value>
-    <comment>https://developer.mescius.jp/componentone/blazor</comment>
-  </data>
-  <data name="SiteNav_FreeTrialUrl" xml:space="preserve">
-    <value>https://developer.mescius.jp/download</value>
-    <comment>https://developer.mescius.jp/download</comment>
-  </data>
-  <data name="SiteNav_PricingUrl" xml:space="preserve">
-    <value>https://developer.mescius.jp/purchase</value>
-    <comment>https://developer.mescius.jp/purchase</comment>
-  </data>
-  <data name="SiteNav_SupportUrl" xml:space="preserve">
-    <value>https://developer.mescius.jp/support</value>
-    <comment>https://developer.mescius.jp/support</comment>
-  </data>
   <data name="SiteNav_Demos" xml:space="preserve">
     <value>デモ</value>
     <comment>DEMOS (link title in header)</comment>
@@ -299,7 +299,6 @@
   </data>
   <data name="SiteNav_Download" xml:space="preserve">
     <value>ダウンロード</value>
-    <comment>DOWNLOAD</comment>
   </data>
   <data name="SiteNav_DownloadUrl" xml:space="preserve">
     <value>https://developer.mescius.jp/download/componentone-update</value>
@@ -308,5 +307,56 @@
   <data name="Layout_TitleMesciusSuffix" xml:space="preserve">
     <value> | ComponentOne Blazor Controls</value>
     <comment> | ComponentOne Blazor Controls (uses as suffix in html page title)</comment>
+  </data>
+  <data name="Footer_Header_Company" xml:space="preserve">
+    <value>会社</value>
+  </data>
+  <data name="Footer_Link_About" xml:space="preserve">
+    <value>について</value>
+  </data>
+  <data name="Footer_Link_Contact" xml:space="preserve">
+    <value>お問い合わせ</value>
+  </data>
+  <data name="Footer_Link_Media_Center" xml:space="preserve">
+    <value>メディアセンタ</value>
+  </data>
+  <data name="Footer_Link_Privacy" xml:space="preserve">
+    <value>プライバシー</value>
+  </data>
+  <data name="Footer_Link_Terms" xml:space="preserve">
+    <value>条項</value>
+  </data>
+  <data name="Footer_Link_EULA" xml:space="preserve">
+    <value>エンドユーザー使用許諾契約書</value>
+  </data>
+  <data name="Footer_Header_Get_The_Latest_News" xml:space="preserve">
+    <value>最新ニュースを入手</value>
+  </data>
+  <data name="Footer_Text_Newsletter" xml:space="preserve">
+    <value>ブログ、電子書籍、イベント、ホワイトペーパーなどの最新情報を入手しましょう。</value>
+  </data>
+  <data name="Footer_Btn_Join_Now" xml:space="preserve">
+    <value>今すぐ参加</value>
+  </data>
+  <data name="Footer_About_Url" xml:space="preserve">
+    <value>https://developer.mescius.com/about</value>
+  </data>
+  <data name="Footer_Contact_Url" xml:space="preserve">
+    <value>https://developer.mescius.com/contact</value>
+  </data>
+  <data name="Footer_Media_Center_Url" xml:space="preserve">
+    <value>https://developer.mescius.com/about/media-center</value>
+  </data>
+  <data name="Footer_Privacy_Url" xml:space="preserve">
+    <value>https://developer.mescius.com/legal/privacy-policy</value>
+  </data>
+  <data name="Footer_Terms_Url" xml:space="preserve">
+    <value>https://developer.mescius.com/legal/tos</value>
+  </data>
+  <data name="Footer_EULA_Url" xml:space="preserve">
+    <value>https://developer.mescius.com/legal/eula</value>
+  </data>
+  <data name="Footer_Btn_Url" xml:space="preserve">
+    <value>https://developer.mescius.com/subscribe</value>
   </data>
 </root>

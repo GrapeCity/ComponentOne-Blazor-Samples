@@ -617,6 +617,7 @@
     <value>Opacity</value>
   </data>
   <data name="Color" xml:space="preserve">
-    <value>Color</value>
+    <value>色</value>
+    <comment>Color</comment>
   </data>
 </root>

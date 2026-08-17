@@ -8,25 +8,25 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataFilter">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid.ConditionalFormatting">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid.Excel">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.RulesManager">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.0" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />

@@ -10,31 +10,32 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Chart">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
-    <PackageReference Include="C1.DataCollection" Version="10.0.20261.3" />
-    <PackageReference Include="C1.DataCollection.Serialization" Version="10.0.20261.3" />
+    <PackageReference Include="C1.DataCollection" Version="10.0.20261.8" />
+    <PackageReference Include="C1.DataCollection.Serialization" Version="10.0.20261.8" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.8" />
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.3" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Client\FlightStatistics.Client.csproj" />

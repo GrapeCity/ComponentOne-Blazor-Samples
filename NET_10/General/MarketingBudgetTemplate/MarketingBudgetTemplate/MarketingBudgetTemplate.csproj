@@ -7,19 +7,19 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.GridControl">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.ListView">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.0" PrivateAssets="all" />

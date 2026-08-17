@@ -13,7 +13,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>10.0.20261.50</Version>
+      <Version>10.0.20261.126</Version>
     </PackageReference>
     <ProjectReference Include="..\LocaleDateGrid.Client\LocaleDateGrid.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.14" />

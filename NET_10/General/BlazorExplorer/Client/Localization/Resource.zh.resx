@@ -236,21 +236,21 @@
   </data>
   <data name="SiteNav_Demos" xml:space="preserve">
     <value>DEMOS</value>
-	<comment>DEMOS (link title in header)</comment>
+    <comment>DEMOS (link title in header)</comment>
   </data>
   <data name="SiteNav_DemosUrl" xml:space="preserve">
     <value>https://developer.mescius.com/componentone/demos</value>
   </data>
   <data name="SiteNav_Docs" xml:space="preserve">
     <value>DOCS</value>
-	<comment>DOCS (link title in header)</comment>
+    <comment>DOCS (link title in header)</comment>
   </data>
   <data name="SiteNav_DocsUrl" xml:space="preserve">
     <value>https://developer.mescius.com/componentone/docs/mvc/online-mvc/overview.html</value>
   </data>
   <data name="SiteNav_Samples" xml:space="preserve">
     <value>SAMPLES</value>
-	<comment>SAMPLES (link title in header)</comment>
+    <comment>SAMPLES (link title in header)</comment>
   </data>
   <data name="SiteNav_SamplesUrl" xml:space="preserve">
     <value>https://developer.mescius.com/componentone/samples</value>
@@ -264,5 +264,56 @@
   <data name="Layout_TitleMesciusSuffix" xml:space="preserve">
     <value> | ComponentOne Blazor Controls</value>
     <comment> | ComponentOne Blazor Controls (uses as suffix in html page title)</comment>
+  </data>
+  <data name="Footer_Header_Company" xml:space="preserve">
+    <value>公司</value>
+  </data>
+  <data name="Footer_Link_About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Footer_Link_Contact" xml:space="preserve">
+    <value>联系我们</value>
+  </data>
+  <data name="Footer_Link_Media_Center" xml:space="preserve">
+    <value>媒体中心</value>
+  </data>
+  <data name="Footer_Link_Privacy" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="Footer_Link_Terms" xml:space="preserve">
+    <value>条款</value>
+  </data>
+  <data name="Footer_Link_EULA" xml:space="preserve">
+    <value>最终用户许可协议</value>
+  </data>
+  <data name="Footer_Header_Get_The_Latest_News" xml:space="preserve">
+    <value>获取最新消息</value>
+  </data>
+  <data name="Footer_Text_Newsletter" xml:space="preserve">
+    <value>随时关注博客、电子书、活动和白皮书的最新动态。</value>
+  </data>
+  <data name="Footer_Btn_Join_Now" xml:space="preserve">
+    <value>立即加入</value>
+  </data>
+  <data name="Footer_About_Url" xml:space="preserve">
+    <value>https://developer.mescius.com/about</value>
+  </data>
+  <data name="Footer_Contact_Url" xml:space="preserve">
+    <value>https://developer.mescius.com/contact</value>
+  </data>
+  <data name="Footer_Media_Center_Url" xml:space="preserve">
+    <value>https://developer.mescius.com/about/media-center</value>
+  </data>
+  <data name="Footer_Privacy_Url" xml:space="preserve">
+    <value>https://developer.mescius.com/legal/privacy-policy</value>
+  </data>
+  <data name="Footer_Terms_Url" xml:space="preserve">
+    <value>https://developer.mescius.com/legal/tos</value>
+  </data>
+  <data name="Footer_EULA_Url" xml:space="preserve">
+    <value>https://developer.mescius.com/legal/eula</value>
+  </data>
+  <data name="Footer_Btn_Url" xml:space="preserve">
+    <value>https://developer.mescius.com/subscribe</value>
   </data>
 </root>

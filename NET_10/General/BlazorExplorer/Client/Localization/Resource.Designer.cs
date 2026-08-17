@@ -19,7 +19,7 @@ namespace BlazorExplorer.Localization {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resource {
@@ -201,6 +201,159 @@ namespace BlazorExplorer.Localization {
         public static string CultureSpanish {
             get {
                 return ResourceManager.GetString("CultureSpanish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://developer.mescius.com/about.
+        /// </summary>
+        public static string Footer_About_Url {
+            get {
+                return ResourceManager.GetString("Footer_About_Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Join Now.
+        /// </summary>
+        public static string Footer_Btn_Join_Now {
+            get {
+                return ResourceManager.GetString("Footer_Btn_Join_Now", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://developer.mescius.com/subscribe.
+        /// </summary>
+        public static string Footer_Btn_Url {
+            get {
+                return ResourceManager.GetString("Footer_Btn_Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://developer.mescius.com/contact.
+        /// </summary>
+        public static string Footer_Contact_Url {
+            get {
+                return ResourceManager.GetString("Footer_Contact_Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://developer.mescius.com/legal/eula.
+        /// </summary>
+        public static string Footer_EULA_Url {
+            get {
+                return ResourceManager.GetString("Footer_EULA_Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company.
+        /// </summary>
+        public static string Footer_Header_Company {
+            get {
+                return ResourceManager.GetString("Footer_Header_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get The Latest News.
+        /// </summary>
+        public static string Footer_Header_Get_The_Latest_News {
+            get {
+                return ResourceManager.GetString("Footer_Header_Get_The_Latest_News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string Footer_Link_About {
+            get {
+                return ResourceManager.GetString("Footer_Link_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        public static string Footer_Link_Contact {
+            get {
+                return ResourceManager.GetString("Footer_Link_Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EULA.
+        /// </summary>
+        public static string Footer_Link_EULA {
+            get {
+                return ResourceManager.GetString("Footer_Link_EULA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Media Center.
+        /// </summary>
+        public static string Footer_Link_Media_Center {
+            get {
+                return ResourceManager.GetString("Footer_Link_Media_Center", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy.
+        /// </summary>
+        public static string Footer_Link_Privacy {
+            get {
+                return ResourceManager.GetString("Footer_Link_Privacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terms.
+        /// </summary>
+        public static string Footer_Link_Terms {
+            get {
+                return ResourceManager.GetString("Footer_Link_Terms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://developer.mescius.com/about/media-center.
+        /// </summary>
+        public static string Footer_Media_Center_Url {
+            get {
+                return ResourceManager.GetString("Footer_Media_Center_Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://developer.mescius.com/legal/privacy-policy.
+        /// </summary>
+        public static string Footer_Privacy_Url {
+            get {
+                return ResourceManager.GetString("Footer_Privacy_Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://developer.mescius.com/legal/tos.
+        /// </summary>
+        public static string Footer_Terms_Url {
+            get {
+                return ResourceManager.GetString("Footer_Terms_Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stay up to date with blogs, eBooks, events, and whitepapers..
+        /// </summary>
+        public static string Footer_Text_Newsletter {
+            get {
+                return ResourceManager.GetString("Footer_Text_Newsletter", resourceCulture);
             }
         }
         

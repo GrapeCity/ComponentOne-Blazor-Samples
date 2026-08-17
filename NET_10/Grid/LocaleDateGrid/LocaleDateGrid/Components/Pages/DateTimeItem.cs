@@ -2,8 +2,7 @@
 
 namespace LocaleDateGrid.Components.Pages
 {
-    [ObservableObject]
-    public partial class DateTimeItem
+    public partial class DateTimeItem : ObservableObject
     {
         [ObservableProperty]
         public partial string Label { get; set; }

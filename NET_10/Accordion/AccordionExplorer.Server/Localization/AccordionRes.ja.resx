@@ -206,6 +206,7 @@
     <comment>Expand Icon Alignment</comment>
   </data>
   <data name="Fill" xml:space="preserve">
-    <value>Fill remaining space</value>
+    <value>残りのスペースを埋める</value>
+    <comment>Fill remaining space</comment>
   </data>
 </root>

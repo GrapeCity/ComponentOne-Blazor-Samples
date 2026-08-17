@@ -1,0 +1,14 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="GRAPECITY" />
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="../../../../Shared/Controls/CodeGeneration/C1.CodeGeneration.csproj">
+    <BuildType Solution="GRAPECITY|*" Project="Debug" />
+  </Project>
+
+  <Project Path="DataFilterExplorer.Server.csproj">
+    <BuildType Solution="GRAPECITY|*" Project="Release" />
+  </Project>
+</Solution>

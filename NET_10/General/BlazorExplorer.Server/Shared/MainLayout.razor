@@ -16,22 +16,49 @@
     <_BreadcrumbNav Path="@_App.RelativeUri"></_BreadcrumbNav>
 </header>
 
-<div class="main-content">
-    @Body
-</div>
+<div class="page-container">
+    <div class="main-content" style="flex:1;">
+        @Body
+    </div>
 
-<footer>
-    <a href="@(Resource.Layout_GrapeCityUrl)">
-        <img src="Content/images/logo.svg"
-             alt="logo"
-             height="44"
-             />
-    </a>
-    <p>
-        © @DateTime.Now.Year @Resource.Layout_License1<br />
-        @Resource.Layout_License2
-    </p>
-</footer>
+    <footer class="custom-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 footer-brand">
+                    <a href="@(Resource.Layout_GrapeCityUrl)">
+                        <img src="Content/images/logo-light.svg"
+                             alt="logo"
+                             width="211"
+                             height="50" />
+                    </a>
+                    <p>
+                        ©@DateTime.Now.Year @Resource.Layout_License1
+                        <br />
+                        1.800.858.2739
+                        <br /><br />
+                        @Resource.Layout_License2
+                    </p>
+                </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-3 footer-links">
+                    <h4>@(Resource.Footer_Header_Company)</h4>
+                    <a href="@(Resource.Footer_About_Url)" target="_blank">@(Resource.Footer_Link_About)</a>
+                    <a href="@(Resource.Footer_Contact_Url)" target="_blank">@(Resource.Footer_Link_Contact)</a>
+                    <a href="@(Resource.Footer_Media_Center_Url)" target="_blank">@(Resource.Footer_Link_Media_Center)</a>
+                    <a href="@(Resource.Footer_Privacy_Url)" target="_blank">@(Resource.Footer_Link_Privacy)</a>
+                    <a href="@(Resource.Footer_Terms_Url)" target="_blank">@(Resource.Footer_Link_Terms)</a>
+                    <a href="@(Resource.Footer_EULA_Url)" target="_blank">@(Resource.Footer_Link_EULA)</a>
+                </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 footer-newsletter">
+                    <h4>@(Resource.Footer_Header_Get_The_Latest_News)</h4>
+                    <p>@(Resource.Footer_Text_Newsletter)</p>
+                    <a href="@(Resource.Footer_Btn_Url)" class="footer-join-btn" target="_blank">@(Resource.Footer_Btn_Join_Now)</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
 
 
 @code {
