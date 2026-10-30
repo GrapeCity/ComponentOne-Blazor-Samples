@@ -1,0 +1,26 @@
+﻿@using DiagramExplorer.Components.Layout
+@using Microsoft.AspNetCore.Components.Web
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <ResourcePreloader />
+    <link rel="stylesheet" href="/_content/C1.Blazor.Chart/styles.css" />
+    <link rel="stylesheet" href="/_content/C1.Blazor.Diagram/styles.css" />
+    <link rel="stylesheet" href="/_content/DiagramExplorer.Common/app.css" />
+    <ImportMap />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <HeadOutlet />
+</head>
+
+<body>
+    <Routes @rendermode="Microsoft.AspNetCore.Components.Web.RenderMode.InteractiveServer" />
+    <ReconnectModal />
+    <script src="@Assets["_framework/blazor.web.js"]"></script>
+</body>
+
+</html>

@@ -4,9 +4,8 @@ ____
 #### Shows samples of the DataFilter control.
 ____
 
-* FilterAutoGenerating
-* AutoApply
-* FiltersSummary
-* CustomFilter
-* ConditionalFilter
-
+* CarsList
+* FilterSummary
+* ConditionalFilters
+* CustomFilters
+* VirtualSource

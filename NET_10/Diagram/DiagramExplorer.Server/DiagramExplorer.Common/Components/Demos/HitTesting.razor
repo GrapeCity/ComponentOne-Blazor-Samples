@@ -1,0 +1,70 @@
+﻿@using C1.Chart
+@using C1.Diagram
+@using C1.Blazor.Diagram
+@inject IJSRuntime JS
+
+<DiagramEditor @bind-Direction="direction" @bind-EdgeRouting="edgeRouting" @bind-Palette="palette"/>
+
+<div class="diagram-host" @onclick="OnClick">
+    <FlexDiagram @ref="diagram" Direction="direction" EdgeRouting="edgeRouting" Palette="palette"  ScaleMode="ScaleMode.ScaleToFit" />
+</div>
+
+@code {
+    DiagramDirection direction = DiagramDirection.TopBottom;
+    EdgeRouting edgeRouting = EdgeRouting.Rectilinear;
+    Palette palette = Palette.Standard;
+    FlexDiagram diagram;
+    static Random random = new Random();
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        if (firstRender)
+            CreateRandomPersonDiagram(diagram);
+    }
+
+    private async void OnClick(MouseEventArgs args)
+    {
+        var info = diagram.HitTest(args.OffsetX, args.OffsetY);
+        if (info?.Element is Node node)
+            await ShowAlert($"Clicked node: {node.Text}\nShape: {node.Shape}\nIndex: {diagram.Nodes.IndexOf(node)}");
+    }
+
+    private async Task ShowAlert(string message)
+    {
+        await JS.InvokeVoidAsync("alert", message);
+    }
+
+    static void CreateRandomPersonDiagram(FlexDiagram diagram)
+    {
+        var nodes = diagram.Nodes;
+        var edges = diagram.Edges;
+
+        diagram.BeginUpdate();
+
+        nodes.Clear();
+        edges.Clear();
+
+        var persons = "👨,👩,👦,👧".Split(",");
+        var shapes = Enum.GetValues<Shape>();
+
+        for (var i = 0; i < 15; i++)
+        {
+            var text = persons[random.Next(0, persons.Length)];
+            var shape = (C1.Diagram.Shape)random.Next(0, shapes.Length - 1);
+            var node = new Node() { Title = text, LegendItem = text, Shape = shape };
+            nodes.Add(node);
+
+            if (i == 0)
+                continue;
+
+            var k = random.Next(0, nodes.Count - 2);
+            edges.Add(new Edge() { Source = nodes[k], Target = nodes[nodes.Count - 1] });
+            k = random.Next(0, nodes.Count - 1);
+            edges.Add(new Edge() { Source = nodes[k], Target = nodes[nodes.Count - 1] });
+
+            diagram.EndUpdate();
+        }
+    }
+}

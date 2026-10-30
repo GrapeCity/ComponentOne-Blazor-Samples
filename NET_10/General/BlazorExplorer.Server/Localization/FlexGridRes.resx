@@ -209,7 +209,7 @@
     <value>Sort</value>
   </data>
   <data name="ConditionalFormattingSummary" xml:space="preserve">
-    <value>Uses a CellFactory to apply conditional formatting.</value>
+    <value>Uses conditional formatting rules to style cells based on their values.</value>
   </data>
   <data name="ConditionalFormattingTitle" xml:space="preserve">
     <value>Conditional Formatting</value>
@@ -410,7 +410,7 @@
     <value>By default, columns are automatically generated when you bind FlexGrid to a data source. For complete control over which columns are displayed, and in what order, you may define the columns yourself and disable the automatic generation. This demo shows how to define columns in markup, as well as format number and date values.</value>
   </data>
   <data name="ConditionalFormattingDescription" xml:space="preserve">
-    <value>The GridCellFactory class is used to create custom cells in FlexGrid. In addition to supporting custom elements within cells, the cell factory can be used to provide complete control over the display of each cell. In this demo, a cell factory is used to customize the cell background and text colors based upon the cell values.</value>
+    <value>The ConditionalFormattingBehavior uses a C1RulesEngine to apply styles to FlexGrid cells based on their values. In this sample, Order Total values below 5,000 use the critical foreground color, while values of 5,000 or more use the success foreground color. Order Count values below 50 use the critical background color, while values of 50 or more use the success background color.</value>
   </data>
   <data name="CustomAppearanceDescription" xml:space="preserve">
     <value>FlexGrid contains many properties that allow you to easily style all visual aspects of the grid. This includes column headers, row headers, selection adorners, gridlines, selected cells, and cell padding.</value>

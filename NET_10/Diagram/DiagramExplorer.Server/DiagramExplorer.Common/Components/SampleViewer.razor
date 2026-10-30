@@ -1,0 +1,76 @@
+﻿@using DiagramExplorer.Components
+@using DiagramExplorer.Components.Demos
+@using DiagramExplorer.Models
+
+<div class="sample-viewer">
+    @if (Sample is null)
+    {
+        <div class="empty-state">
+            <div class="empty-icon">📂</div>
+            <h2>No sample selected</h2>
+            <p>Pick an item from the tree to see its content here.</p>
+        </div>
+    }
+    else
+    {
+        <header class="sample-header">
+           <h1>@Sample.Title</h1>
+           <p class="sample-description">@Sample.Description</p>
+        </header>
+
+        <section class="sample-body">
+            @switch (Sample.Id)
+            {
+                case "intro":
+                    <Intro />
+                    break;
+                case "literature":
+                    <Literature />
+                    break;
+                case "decision-tree":
+                    <DecisionTree />
+                    break;
+                case "family-tree":
+                    <FamilyTree />
+                    break;
+                case "programming-languages":
+                    <ProgrammingLanguages />
+                    break;
+                case "custom-shape":
+                    <CustomShape />
+                    break;
+                case "selection":
+                    <Selection />
+                    break;
+                case "animals":
+                    <Animals />
+                    break;
+                case "orgchart":
+                    <OrgChart />
+                    break;
+                case "tooltips":
+                    <Tooltips />
+                    break;
+                case "dynamic":
+                    <Dynamic />
+                    break;
+                case "hit-testing":
+                    <HitTesting />
+                    break;
+                case "flex-chart":
+                    <FlexChartFamily />
+                    break;
+                case "collapsible":
+                    <Collapsible />
+                    break;
+                default:
+                    <p><em>No demo wired up for this sample yet.</em></p>
+                    break;
+            }
+        </section>
+    }
+</div>
+
+@code {
+    [Parameter] public SampleNode? Sample { get; set; }
+}

@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>DiagramExplorer</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AddRazorSupportForMvc>false</AddRazorSupportForMvc>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="Components\App.razor" />
+    <Content Remove="Components\Layout\MainLayout.razor" />
+    <Content Remove="Components\Layout\ReconnectModal.razor" />
+    <Content Remove="Components\Pages\Error.razor" />
+    <Content Remove="Components\Pages\NotFound.razor" />
+    <Content Remove="Components\Routes.razor" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Components\Layout\ReconnectModal.razor.css" />
+    <None Remove="Components\Layout\ReconnectModal.razor.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Components\Layout\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.Chart">
+      <Version>10.0.20262.62</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>10.0.20262.62</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Diagram">
+      <Version>10.0.20262.62-beta</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Rendering">
+      <Version>10.0.20262.62</Version>
+    </PackageReference>
+  </ItemGroup>
+</Project>

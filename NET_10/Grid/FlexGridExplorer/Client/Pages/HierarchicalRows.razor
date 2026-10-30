@@ -26,7 +26,7 @@
 
 <FlexGrid @ref="grid" ChildItemsPath="SubTasks" TreeIndent="treeIndent"
           TreeColumnIndex="treeColumnIndex"
-          TreeExpandMode="treeExpandMode"
+          TreeExpandMode="treeExpandMode ?? GridTreeExpandMode.OnDemand"
           TreeLinesMode="treeLinesMode"
           TreeIndentMode="treeIndentMode"
           GridLinesVisibility="GridLinesVisibility.None"
@@ -38,7 +38,7 @@
     List<ProjectTask> tasks;
     int treeColumnIndex = 1;
     double treeIndent = 14;
-    GridTreeExpandMode treeExpandMode = GridTreeExpandMode.OnDemand;
+    GridTreeExpandMode? treeExpandMode = GridTreeExpandMode.OnDemand;
     GridTreeExpandMode[] treeExpandModes = Enum.GetValues<GridTreeExpandMode>();
     GridTreeLinesMode treeLinesMode = GridTreeLinesMode.Vertical;
     GridTreeLinesMode[] treeLinesModes = Enum.GetValues<GridTreeLinesMode>();

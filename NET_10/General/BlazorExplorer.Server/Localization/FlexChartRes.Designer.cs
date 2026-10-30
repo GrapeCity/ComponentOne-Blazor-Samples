@@ -19,7 +19,7 @@ namespace BlazorExplorer.Localization {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class FlexChartRes {
@@ -1028,6 +1028,33 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The sample shows how to create quadrants using RangeZone series..
+        /// </summary>
+        public static string QuadrantsDescription {
+            get {
+                return ResourceManager.GetString("QuadrantsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plot with Quadrants.
+        /// </summary>
+        public static string QuadrantsSummary {
+            get {
+                return ResourceManager.GetString("QuadrantsSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quadrants.
+        /// </summary>
+        public static string QuadrantsTitle {
+            get {
+                return ResourceManager.GetString("QuadrantsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This sample shows a FlexRadar control with multiple series..
         /// </summary>
         public static string RadarDescription {
@@ -1168,6 +1195,33 @@ namespace BlazorExplorer.Localization {
         public static string RangeSelectorTitle {
             get {
                 return ResourceManager.GetString("RangeSelectorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The sample shows how to use RangeZone to highlight rectangular regions of plot..
+        /// </summary>
+        public static string RangeZonesDescription {
+            get {
+                return ResourceManager.GetString("RangeZonesDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Range Zones.
+        /// </summary>
+        public static string RangeZonesSummary {
+            get {
+                return ResourceManager.GetString("RangeZonesSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Range Zones.
+        /// </summary>
+        public static string RangeZonesTitle {
+            get {
+                return ResourceManager.GetString("RangeZonesTitle", resourceCulture);
             }
         }
         

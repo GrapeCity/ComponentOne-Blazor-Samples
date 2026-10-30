@@ -1,0 +1,133 @@
+@page "/basic-color-picker"
+@rendermode InteractiveServer
+
+<h3>C1BasicColorPickerPart</h3>
+
+<div style="display:flex; gap:32px; align-items:flex-start; flex-wrap:wrap;">
+    <div>
+        <h5>@ColorPickerRes.BasicColorPickerPart</h5>
+        <C1BasicColorPickerPart SelectedColor="@_selectedColor"
+                                Palette="@_palette"
+                                ShowRecentColors="@_showRecentColors"
+                                ShowTransparentColor="@_showTransparentColor"
+                                ColorPicked="@OnColorPicked"
+                                Style="@PickerStyle" />
+    </div>
+
+    <div style="min-width:320px;">
+        <h5>@ColorPickerRes.Settings</h5>
+        <div style="display:grid; gap:10px; max-width:340px;">
+            <label>
+                @ColorPickerRes.SelectedColor
+                <div style="display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:6px;">
+                    <input class="form-control form-control-sm" type="number" min="0" max="255" aria-label="@ColorPickerRes.Alpha" @bind="SelectedAlpha" />
+                    <input class="form-control form-control-sm" type="number" min="0" max="255" aria-label="@ColorPickerRes.Red" @bind="SelectedRed" />
+                    <input class="form-control form-control-sm" type="number" min="0" max="255" aria-label="@ColorPickerRes.Green" @bind="SelectedGreen" />
+                    <input class="form-control form-control-sm" type="number" min="0" max="255" aria-label="@ColorPickerRes.Blue" @bind="SelectedBlue" />
+                </div>
+            </label>
+
+            <label>
+                @ColorPickerRes.Palette
+                <select class="form-select form-select-sm" @bind="_selectedPaletteTheme">
+                    @foreach (var theme in _paletteThemes)
+                    {
+                        <option value="@theme">@theme</option>
+                    }
+                </select>
+            </label>
+
+            <label>
+                @ColorPickerRes.ShowRecentColors
+                <input type="checkbox" @bind="_showRecentColors" />
+            </label>
+
+            <label>
+                @ColorPickerRes.ShowTransparentColor
+                <input type="checkbox" @bind="_showTransparentColor" />
+            </label>
+
+            <label>
+                @ColorPickerRes.StyleWidth
+                <input class="form-control form-control-sm" type="number" min="180" max="520" step="10" @bind="_pickerWidth" />
+            </label>
+        </div>
+
+        <h5 style="margin-top:22px;">@ColorPickerRes.CurrentValue</h5>
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:6px 12px; align-items:center; max-width:340px;">
+            <span>@ColorPickerRes.SelectedColor</span>
+            <code>@CssColor</code>
+            <span>@ColorPickerRes.Palette</span>
+            <code>@_selectedPaletteTheme</code>
+            <span>@ColorPickerRes.ColorPicked</span>
+            <code>@_colorPickedCount</code>
+        </div>
+
+        <h5 style="margin-top:22px;">@ColorPickerRes.PickLog</h5>
+        <ul tabindex="0" style="font-size:0.85rem; max-height:150px; overflow-y:auto; padding-left:16px; margin:0;">
+            @foreach (var entry in _log)
+            {
+                <li>@entry</li>
+            }
+        </ul>
+    </div>
+</div>
+
+@code {
+    int _pickerWidth = 320;
+    int _colorPickedCount;
+    bool _showRecentColors = true;
+    bool _showTransparentColor = true;
+    C1Color _selectedColor = C1Color.White;
+    Office2007ColorTheme _selectedPaletteTheme = Office2007ColorTheme.Office;
+    readonly Office2007ColorTheme[] _paletteThemes = Enum.GetValues<Office2007ColorTheme>();
+    readonly List<string> _log = [];
+
+    ColorPalette _palette => ColorPalette.GetColorPalette(_selectedPaletteTheme);
+    C1Style PickerStyle => new($"width:{_pickerWidth}px;");
+
+    int SelectedAlpha
+    {
+        get => _selectedColor.A;
+        set => _selectedColor = C1Color.FromArgb(ClampByte(value), _selectedColor.R, _selectedColor.G, _selectedColor.B);
+    }
+
+    int SelectedRed
+    {
+        get => _selectedColor.R;
+        set => _selectedColor = C1Color.FromArgb(_selectedColor.A, ClampByte(value), _selectedColor.G, _selectedColor.B);
+    }
+
+    int SelectedGreen
+    {
+        get => _selectedColor.G;
+        set => _selectedColor = C1Color.FromArgb(_selectedColor.A, _selectedColor.R, ClampByte(value), _selectedColor.B);
+    }
+
+    int SelectedBlue
+    {
+        get => _selectedColor.B;
+        set => _selectedColor = C1Color.FromArgb(_selectedColor.A, _selectedColor.R, _selectedColor.G, ClampByte(value));
+    }
+
+    string CssColor => $"rgba({_selectedColor.R}, {_selectedColor.G}, {_selectedColor.B}, {(_selectedColor.A / 255d):0.###})";
+
+    void OnColorPicked(C1Color color)
+    {
+        _selectedColor = color ?? C1Color.Transparent;
+        _colorPickedCount++;
+        AddLog(CssColor);
+    }
+
+    void AddLog(string message)
+    {
+        _log.Insert(0, $"{DateTime.Now:HH:mm:ss} - {message}");
+        if (_log.Count > 10)
+            _log.RemoveAt(_log.Count - 1);
+    }
+
+    static byte ClampByte(int value)
+    {
+        return (byte)Math.Max(byte.MinValue, Math.Min(byte.MaxValue, value));
+    }
+}

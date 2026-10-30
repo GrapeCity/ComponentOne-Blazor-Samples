@@ -4,7 +4,7 @@
     flex-direction: column;
 }
 
-main {
+.main {
     flex: 1;
 }
 
@@ -36,9 +36,9 @@ main {
         text-overflow: ellipsis;
     }
 
-@media (max-width: 640.98px) {
-    .top-row {
-        justify-content: space-between;
+@media (max-width: 767.98px) {
+    .main .top-row {
+        display: none;
     }
 
     .top-row ::deep a, .top-row ::deep .btn-link {
@@ -46,7 +46,7 @@ main {
     }
 }
 
-@media (min-width: 641px) {
+@media (min-width: 768px) {
     .page {
         flex-direction: row;
     }
@@ -64,13 +64,7 @@ main {
         z-index: 1;
     }
 
-    .top-row.auth ::deep a:first-child {
-        flex: 1;
-        text-align: right;
-        width: 0;
-    }
-
-    .top-row, article {
+    .main > div {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
     }

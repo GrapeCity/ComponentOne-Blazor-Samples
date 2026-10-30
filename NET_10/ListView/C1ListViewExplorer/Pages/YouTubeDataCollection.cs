@@ -1,11 +1,12 @@
-﻿using System;
+﻿using C1.DataCollection;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
-using C1.DataCollection;
 
 namespace C1ListViewExplorer.Pages
 {
@@ -54,8 +55,8 @@ namespace C1ListViewExplorer.Pages
             if (response.IsSuccessStatusCode)
             {
                 var videos = new List<YouTubeVideo>();
-                var serializer = new DataContractJsonSerializer(typeof(YouTubeSearchResult));
-                var result = serializer.ReadObject(await response.Content.ReadAsStreamAsync()) as YouTubeSearchResult;
+                var text = await response.Content.ReadAsStringAsync();
+                var result = JsonSerializer.Deserialize(text, YouTubeSearchResultContext.Default.YouTubeSearchResult);
                 foreach (var item in result.Items)
                 {
                     var video = new YouTubeVideo()
@@ -78,63 +79,83 @@ namespace C1ListViewExplorer.Pages
         }
     }
 
-    [DataContract]
+    [JsonSerializable(typeof(YouTubeSearchResult))]
+    [JsonSerializable(typeof(YouTubeSearchItemResult))]
+    [JsonSerializable(typeof(YouTubeVideoId))]
+    [JsonSerializable(typeof(YouTubeSnippet))]
+    [JsonSerializable(typeof(YouTubeThumbnails))]
+    [JsonSerializable(typeof(YouTubeThumbnail))]
+    [JsonSerializable(typeof(YouTubeVideo))]
+    public partial class YouTubeSearchResultContext : JsonSerializerContext
+    {
+    }
+
+    [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties | DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)]
     public class YouTubeSearchResult
     {
-        [DataMember(Name = "nextPageToken")]
+        [JsonPropertyName("nextPageToken")]
         public string NextPageToken { get; set; }
-        [DataMember(Name = "items")]
+        [JsonPropertyName("items")]
         public YouTubeSearchItemResult[] Items { get; set; }
     }
 
-    [DataContract]
+    [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties | DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)]
     public class YouTubeSearchItemResult
     {
-        [DataMember(Name = "id")]
+        [JsonPropertyName("id")]
         public YouTubeVideoId Id { get; set; }
-        [DataMember(Name = "snippet")]
+
+        [JsonPropertyName("snippet")]
         public YouTubeSnippet Snippet { get; set; }
     }
 
-    [DataContract]
+    [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties | DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)]
     public class YouTubeVideoId
     {
-        [DataMember(Name = "videoId")]
+        [JsonPropertyName("videoId")]
         public string VideoId { get; set; }
     }
 
-    [DataContract]
+    [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties | DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)]
     public class YouTubeSnippet
     {
-        [DataMember(Name = "title")]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
-        [DataMember(Name = "description")]
+
+        [JsonPropertyName("description")]
         public string Description { get; set; }
-        [DataMember(Name = "thumbnails")]
+
+        [JsonPropertyName("thumbnails")]
         public YouTubeThumbnails Thumbnails { get; set; }
-        [DataMember(Name = "channelTitle")]
+
+        [JsonPropertyName("channelTitle")]
         public string ChannelTitle { get; set; }
+        
+        [JsonPropertyName("publishedAt")]
+        public string PublishedAt { get; set; }
     }
 
-    [DataContract]
+    [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties | DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)]
     public class YouTubeThumbnails
     {
-        [DataMember(Name = "default")]
+        [JsonPropertyName("default")]
         public YouTubeThumbnail Default { get; set; }
-        [DataMember(Name = "medium")]
+
+        [JsonPropertyName("medium")]
         public YouTubeThumbnail Medium { get; set; }
-        [DataMember(Name = "high")]
+
+        [JsonPropertyName("high")]
         public YouTubeThumbnail High { get; set; }
     }
 
-    [DataContract]
+    [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties | DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)]
     public class YouTubeThumbnail
     {
-        [DataMember(Name = "url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
     }
 
-    [DataContract]
+    [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties | DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)]
     public class YouTubeVideo
     {
         public string Title { get; set; }

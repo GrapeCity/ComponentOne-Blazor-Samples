@@ -1,0 +1,103 @@
+@page "/"
+@page "/checkered-border"
+@rendermode InteractiveServer
+
+<h3>C1CheckeredBorder</h3>
+
+<div style="display:flex; gap:32px; align-items:flex-start; flex-wrap:wrap;">
+    <div>
+        <h5>@ColorPickerRes.CheckeredBorder</h5>
+        <C1CheckeredBorder Background="@_background"
+                           SquareBrush="@_squareBrush"
+                           AlternatingSquareBrush="@_alternatingSquareBrush"
+                           SquareWidth="@_squareWidth"
+                           Style="@BorderStyle" />
+    </div>
+
+    <div style="min-width:320px;">
+        <h5>@ColorPickerRes.Settings</h5>
+        <div style="display:grid; gap:10px; max-width:340px;">
+            <label>
+                @ColorPickerRes.BackgroundAlpha
+                <input class="form-range" type="range" min="0" max="255" @bind="BackgroundAlpha" />
+            </label>
+
+            <label>
+                @ColorPickerRes.SquareBrush
+                <select class="form-select form-select-sm" @bind="_squareBrushName">
+                    <option value="LightGray">@ColorPickerRes.LightGray</option>
+                    <option value="Gray">@ColorPickerRes.Gray</option>
+                    <option value="Blue">@ColorPickerRes.Blue</option>
+                </select>
+            </label>
+
+            <label>
+                @ColorPickerRes.AlternatingSquareBrush
+                <select class="form-select form-select-sm" @bind="_alternatingSquareBrushName">
+                    <option value="White">@ColorPickerRes.White</option>
+                    <option value="LightYellow">@ColorPickerRes.LightYellow</option>
+                    <option value="LightBlue">@ColorPickerRes.LightBlue</option>
+                </select>
+            </label>
+
+            <label>
+                @ColorPickerRes.SquareWidth
+                <input class="form-control form-control-sm" type="number" min="2" max="24" step="1" @bind="_squareWidth" />
+            </label>
+
+            <label>
+                @ColorPickerRes.StyleSize
+                <input class="form-control form-control-sm" type="number" min="40" max="220" step="10" @bind="_size" />
+            </label>
+        </div>
+
+        <h5 style="margin-top:22px;">@ColorPickerRes.CurrentValue</h5>
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:6px 12px; align-items:center; max-width:340px;">
+            <span>@ColorPickerRes.Background</span>
+            <code>@BackgroundCss</code>
+            <span>@ColorPickerRes.SquareBrush</span>
+            <code>@_squareBrushName</code>
+            <span>@ColorPickerRes.AlternatingSquareBrush</span>
+            <code>@_alternatingSquareBrushName</code>
+            <span>@ColorPickerRes.SquareWidth</span>
+            <code>@_squareWidth</code>
+        </div>
+    </div>
+</div>
+
+@code {
+    int _size = 120;
+    double _squareWidth = 8;
+    string _squareBrushName = "LightGray";
+    string _alternatingSquareBrushName = "White";
+    C1Color _background = C1Color.FromArgb(128, 0, 122, 204);
+
+    C1Color _squareBrush => BrushFromName(_squareBrushName);
+    C1Color _alternatingSquareBrush => BrushFromName(_alternatingSquareBrushName);
+    C1Style BorderStyle => new($"width:{_size}px;height:{_size}px;");
+
+    int BackgroundAlpha
+    {
+        get => _background.A;
+        set => _background = C1Color.FromArgb(ClampByte(value), _background.R, _background.G, _background.B);
+    }
+
+    string BackgroundCss => $"rgba({_background.R}, {_background.G}, {_background.B}, {(_background.A / 255d):0.###})";
+
+    static C1Color BrushFromName(string name)
+    {
+        return name switch
+        {
+            "Gray" => C1Color.Gray,
+            "Blue" => C1Color.FromArgb(255, 64, 140, 220),
+            "LightYellow" => C1Color.FromArgb(255, 255, 248, 196),
+            "LightBlue" => C1Color.FromArgb(255, 218, 236, 255),
+            _ => name == "White" ? C1Color.White : C1Color.FromArgb(255, 215, 215, 215)
+        };
+    }
+
+    static byte ClampByte(int value)
+    {
+        return (byte)Math.Max(byte.MinValue, Math.Min(byte.MaxValue, value));
+    }
+}

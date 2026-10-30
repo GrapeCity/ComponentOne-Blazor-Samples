@@ -2,9 +2,9 @@ DataFilter for Blazor
 -----------------------------------
 Shows samples of the DataFilter control.
 
-	- FilterAutoGenerating
-	- AutoApply
-	- FiltersSummary
-	- CustomFilter
-	- ConditionalFilter
+	- CarsList
+	- FilterSummary
+	- ConditionalFilters
+	- CustomFilters
+	- VirtualSource
 

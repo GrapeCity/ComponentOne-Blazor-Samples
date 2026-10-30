@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove=".sa3licx" />
+    <None Remove="ColorPickerExplorer.sa3licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ColorPickerExplorer.sa3licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.ColorPicker">
+      <Version>10.0.20262.62-beta</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>10.0.20262.62</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Input">
+      <Version>10.0.20262.62</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="10.0.8" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Localization\ColorPickerRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ColorPickerRes.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Localization\ColorPickerRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ColorPickerRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

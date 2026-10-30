@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="About" xml:space="preserve"><value>About</value></data>
+  <data name="AboveOrBelow" xml:space="preserve"><value>Above or below</value></data>
+  <data name="Advanced" xml:space="preserve"><value>Advanced</value></data>
+  <data name="AdvancedColorPickerPart" xml:space="preserve"><value>Advanced color picker part</value></data>
+  <data name="Alpha" xml:space="preserve"><value>Alpha</value></data>
+  <data name="AlphaSlider" xml:space="preserve"><value>Alpha slider</value></data>
+  <data name="AlternatingSquareBrush" xml:space="preserve"><value>AlternatingSquareBrush</value></data>
+  <data name="ApplicationName" xml:space="preserve"><value>ColorPicker Explorer</value></data>
+  <data name="Background" xml:space="preserve"><value>Background</value></data>
+  <data name="BackgroundAlpha" xml:space="preserve"><value>Background alpha</value></data>
+  <data name="Basic" xml:space="preserve"><value>Basic</value></data>
+  <data name="BasicColorPickerPart" xml:space="preserve"><value>Basic color picker part</value></data>
+  <data name="BelowOrAbove" xml:space="preserve"><value>Below or above</value></data>
+  <data name="Blue" xml:space="preserve"><value>Blue</value></data>
+  <data name="Both" xml:space="preserve"><value>Both</value></data>
+  <data name="Callbacks" xml:space="preserve"><value>Callbacks</value></data>
+  <data name="CheckeredBorder" xml:space="preserve"><value>Checkered border</value></data>
+  <data name="Color" xml:space="preserve"><value>Color</value></data>
+  <data name="ColorAlpha" xml:space="preserve"><value>Color alpha</value></data>
+  <data name="ColorChanged" xml:space="preserve"><value>ColorChanged</value></data>
+  <data name="ColorEditor" xml:space="preserve"><value>Color editor</value></data>
+  <data name="ColorHue" xml:space="preserve"><value>Color hue</value></data>
+  <data name="ColorLuminance" xml:space="preserve"><value>Color luminance</value></data>
+  <data name="ColorPicker" xml:space="preserve"><value>Color picker</value></data>
+  <data name="ColorPicked" xml:space="preserve"><value>ColorPicked</value></data>
+  <data name="ColorSaturation" xml:space="preserve"><value>Color saturation</value></data>
+  <data name="ColorSliderUsage" xml:space="preserve"><value>C1Slider Color Usage</value></data>
+  <data name="CurrentValue" xml:space="preserve"><value>Current value</value></data>
+  <data name="Dismiss" xml:space="preserve"><value>Dismiss</value></data>
+  <data name="DropDownDirection" xml:space="preserve"><value>DropDownDirection</value></data>
+  <data name="ForceAbove" xml:space="preserve"><value>Force above</value></data>
+  <data name="ForceBelow" xml:space="preserve"><value>Force below</value></data>
+  <data name="Gray" xml:space="preserve"><value>Gray</value></data>
+  <data name="Green" xml:space="preserve"><value>Green</value></data>
+  <data name="HexColorBox" xml:space="preserve"><value>Hex color box</value></data>
+  <data name="Hue" xml:space="preserve"><value>Hue</value></data>
+  <data name="HueSlider" xml:space="preserve"><value>Hue slider</value></data>
+  <data name="IsDropDownOpen" xml:space="preserve"><value>IsDropDownOpen</value></data>
+  <data name="IsDropDownOpenChanged" xml:space="preserve"><value>IsDropDownOpenChanged</value></data>
+  <data name="LightBlue" xml:space="preserve"><value>Light blue</value></data>
+  <data name="LightGray" xml:space="preserve"><value>Light gray</value></data>
+  <data name="LightYellow" xml:space="preserve"><value>Light yellow</value></data>
+  <data name="Luminance" xml:space="preserve"><value>Luminance</value></data>
+  <data name="Mode" xml:space="preserve"><value>Mode</value></data>
+  <data name="NavigationMenu" xml:space="preserve"><value>Navigation menu</value></data>
+  <data name="NotFound" xml:space="preserve"><value>Not Found</value></data>
+  <data name="NotFoundMessage" xml:space="preserve"><value>Sorry, the content you are looking for does not exist.</value></data>
+  <data name="Orange50" xml:space="preserve"><value>Orange 50%</value></data>
+  <data name="Palette" xml:space="preserve"><value>Palette</value></data>
+  <data name="PickLog" xml:space="preserve"><value>Pick log</value></data>
+  <data name="Presets" xml:space="preserve"><value>Presets</value></data>
+  <data name="Red" xml:space="preserve"><value>Red</value></data>
+  <data name="RejoinFailed" xml:space="preserve"><value>Rejoin failed... trying again in</value></data>
+  <data name="RejoiningServer" xml:space="preserve"><value>Rejoining the server...</value></data>
+  <data name="Reload" xml:space="preserve"><value>Reload</value></data>
+  <data name="ReloadPage" xml:space="preserve"><value>Please retry or reload the page.</value></data>
+  <data name="Resume" xml:space="preserve"><value>Resume</value></data>
+  <data name="ResumeFailed" xml:space="preserve"><value>Failed to resume the session.</value></data>
+  <data name="Retry" xml:space="preserve"><value>Retry</value></data>
+  <data name="Saturation" xml:space="preserve"><value>Saturation</value></data>
+  <data name="SelectedColor" xml:space="preserve"><value>Selected color</value></data>
+  <data name="SelectedColorChanged" xml:space="preserve"><value>SelectedColorChanged</value></data>
+  <data name="Settings" xml:space="preserve"><value>Settings</value></data>
+  <data name="ShowAlphaChannel" xml:space="preserve"><value>ShowAlphaChannel</value></data>
+  <data name="ShowRecentColors" xml:space="preserve"><value>ShowRecentColors</value></data>
+  <data name="ShowSharpPrefix" xml:space="preserve"><value>ShowSharpPrefix</value></data>
+  <data name="ShowTransparentColor" xml:space="preserve"><value>ShowTransparentColor</value></data>
+  <data name="SpectrumColorPicker" xml:space="preserve"><value>Spectrum color picker</value></data>
+  <data name="SpectrumPad" xml:space="preserve"><value>Spectrum pad</value></data>
+  <data name="SquareBrush" xml:space="preserve"><value>SquareBrush</value></data>
+  <data name="SquareWidth" xml:space="preserve"><value>SquareWidth</value></data>
+  <data name="Style" xml:space="preserve"><value>Style</value></data>
+  <data name="StyleHeight" xml:space="preserve"><value>Style height</value></data>
+  <data name="StyleSize" xml:space="preserve"><value>Style size</value></data>
+  <data name="StyleWidth" xml:space="preserve"><value>Style width</value></data>
+  <data name="Seconds" xml:space="preserve"><value>seconds.</value></data>
+  <data name="SessionPaused" xml:space="preserve"><value>The session has been paused by the server.</value></data>
+  <data name="FailedToRejoin" xml:space="preserve"><value>Failed to rejoin.</value></data>
+  <data name="Transparent" xml:space="preserve"><value>Transparent</value></data>
+  <data name="UnhandledError" xml:space="preserve"><value>An unhandled error has occurred.</value></data>
+  <data name="White" xml:space="preserve"><value>White</value></data>
+</root>

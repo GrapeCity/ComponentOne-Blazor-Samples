@@ -1,11 +1,14 @@
 using RibbonExplorer.Components;
 
+using Microsoft.AspNetCore.Localization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+builder.Services.AddLocalization();
 
 var app = builder.Build();
 
@@ -23,7 +26,11 @@ else
 app.UseAntiforgery();
 
 app.UseStaticFiles();
-//app.MapStaticAssets();
+app.MapStaticAssets();
+app.UseRequestLocalization(new RequestLocalizationOptions()
+    .SetDefaultCulture("en")
+    .AddSupportedCultures("en")
+    .AddSupportedUICultures("en"));
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()

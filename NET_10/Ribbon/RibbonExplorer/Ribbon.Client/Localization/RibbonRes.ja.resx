@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ApplicationName" xml:space="preserve"><value>Ribbon Explorer</value></data>
+  <data name="Overview" xml:space="preserve"><value>Overview</value></data>
+  <data name="LayoutAndOverflow" xml:space="preserve"><value>Layout and overflow</value></data>
+  <data name="DataBinding" xml:space="preserve"><value>Data binding</value></data>
+  <data name="Documentation" xml:space="preserve"><value>Documentation</value></data>
+  <data name="OverviewTitle" xml:space="preserve"><value>Document toolbar</value></data>
+  <data name="OverviewDescription" xml:space="preserve"><value>Use C1ToolStrip to organize common application commands into a compact, responsive toolbar.</value></data>
+  <data name="LayoutTitle" xml:space="preserve"><value>Layout and overflow</value></data>
+  <data name="LayoutDescription" xml:space="preserve"><value>Adjust orientation, labels, and available space to see how tools adapt and move into the overflow menu.</value></data>
+  <data name="DataBindingTitle" xml:space="preserve"><value>Data-bound commands</value></data>
+  <data name="DataBindingDescription" xml:space="preserve"><value>Create a toolbar from application data and use an item template to control how each command is presented.</value></data>
+  <data name="Cut" xml:space="preserve"><value>Cut</value></data>
+  <data name="Copy" xml:space="preserve"><value>Copy</value></data>
+  <data name="Paste" xml:space="preserve"><value>Paste</value></data>
+  <data name="Undo" xml:space="preserve"><value>Undo</value></data>
+  <data name="Redo" xml:space="preserve"><value>Redo</value></data>
+  <data name="Delete" xml:space="preserve"><value>Delete</value></data>
+  <data name="Bold" xml:space="preserve"><value>Bold</value></data>
+  <data name="Highlight" xml:space="preserve"><value>Highlight</value></data>
+  <data name="Zoom" xml:space="preserve"><value>Zoom</value></data>
+  <data name="Find" xml:space="preserve"><value>Find</value></data>
+  <data name="More" xml:space="preserve"><value>More</value></data>
+  <data name="SelectAll" xml:space="preserve"><value>Select all</value></data>
+  <data name="ClearFormatting" xml:space="preserve"><value>Clear formatting</value></data>
+  <data name="EditorTitle" xml:space="preserve"><value>Quarterly project update</value></data>
+  <data name="EditorText" xml:space="preserve"><value>The team completed the planned milestones and prepared the next release for customer review.</value></data>
+  <data name="Ready" xml:space="preserve"><value>Ready</value></data>
+  <data name="CommandExecuted" xml:space="preserve"><value>{0} command executed.</value></data>
+  <data name="CommandUnavailable" xml:space="preserve"><value>{0} is unavailable. Check browser permissions and select editable text where required.</value></data>
+  <data name="Orientation" xml:space="preserve"><value>Orientation</value></data>
+  <data name="ToolOrientation" xml:space="preserve"><value>Tool orientation</value></data>
+  <data name="Overflow" xml:space="preserve"><value>Overflow</value></data>
+  <data name="ShowLabels" xml:space="preserve"><value>Show labels</value></data>
+  <data name="ConstrainWidth" xml:space="preserve"><value>Use narrow container</value></data>
+  <data name="Horizontal" xml:space="preserve"><value>Horizontal</value></data>
+  <data name="Vertical" xml:space="preserve"><value>Vertical</value></data>
+  <data name="Menu" xml:space="preserve"><value>Menu</value></data>
+  <data name="None" xml:space="preserve"><value>None</value></data>
+  <data name="Settings" xml:space="preserve"><value>Settings</value></data>
+  <data name="CommandHistory" xml:space="preserve"><value>Recent activity</value></data>
+  <data name="NoActivity" xml:space="preserve"><value>Select a command to see its activity.</value></data>
+  <data name="Refresh" xml:space="preserve"><value>Refresh</value></data>
+  <data name="Share" xml:space="preserve"><value>Share</value></data>
+  <data name="Print" xml:space="preserve"><value>Print</value></data>
+  <data name="Export" xml:space="preserve"><value>Export</value></data>
+  <data name="Save" xml:space="preserve"><value>Save</value></data>
+  <data name="Open" xml:space="preserve"><value>Open</value></data>
+  <data name="AddCommand" xml:space="preserve"><value>Add command</value></data>
+  <data name="RemoveCommand" xml:space="preserve"><value>Remove command</value></data>
+  <data name="ItemsSourceNote" xml:space="preserve"><value>C1ButtonTool instances are supplied through ItemsSource, and collection changes are reflected by the toolbar.</value></data>
+</root>

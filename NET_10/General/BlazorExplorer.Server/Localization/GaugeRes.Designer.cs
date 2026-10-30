@@ -68,7 +68,34 @@ namespace BlazorExplorer.Localization {
                 return ResourceManager.GetString("BulletGraph", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Direction.
+        /// </summary>
+        public static string DirectionLabel {
+            get {
+                return ResourceManager.GetString("DirectionLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Shows the Direction property of C1LinearGauge with different orientations: Right, Left, Up, and Down..
+        /// </summary>
+        public static string LinearGaugeDirectionSummary {
+            get {
+                return ResourceManager.GetString("LinearGaugeDirectionSummary", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Linear Gauge Direction.
+        /// </summary>
+        public static string LinearGaugeDirectionTitle {
+            get {
+                return ResourceManager.GetString("LinearGaugeDirectionTitle", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to LinearGauge.
         /// </summary>

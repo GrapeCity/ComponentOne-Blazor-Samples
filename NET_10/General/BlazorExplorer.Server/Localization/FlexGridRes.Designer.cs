@@ -331,7 +331,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The GridCellFactory class is used to create custom cells in FlexGrid. In addition to supporting custom elements within cells, the cell factory can be used to provide complete control over the display of each cell. In this demo, a cell factory is used to customize the cell background and text colors based upon the cell values..
+        ///   Looks up a localized string similar to The ConditionalFormattingBehavior uses a C1RulesEngine to apply styles to FlexGrid cells based on their values. In this sample, Order Total values below 5,000 use the critical foreground color, while values of 5,000 or more use the success foreground color. Order Count values below 50 use the critical background color, while values of 50 or more use the success background color..
         /// </summary>
         public static string ConditionalFormattingDescription {
             get {
@@ -340,7 +340,7 @@ namespace BlazorExplorer.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uses a CellFactory to apply conditional formatting..
+        ///   Looks up a localized string similar to Uses conditional formatting rules to style cells based on their values..
         /// </summary>
         public static string ConditionalFormattingSummary {
             get {

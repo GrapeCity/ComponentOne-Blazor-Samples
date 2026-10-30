@@ -1,0 +1,31 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="GRAPECITY" />
+    <BuildType Name="Release" />
+  </Configurations>
+
+  <Project Path="C1ListViewExplorer.Server.csproj">
+    <BuildType Solution="GRAPECITY|*" Project="Debug" />
+  </Project>
+  <Properties Name="TeamFoundationVersionControl">
+    <Property Name="SccEnterpriseProvider" Value="{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}" />
+    <Property Name="SccLocalPath0" Value="..\\..\\Controls\\Core" />
+    <Property Name="SccLocalPath1" Value="..\\..\\Controls\\ListView" />
+    <Property Name="SccLocalPath2" Value="..\\..\\Controls\\DataPager" />
+    <Property Name="SccLocalPath3" Value="..\\..\\Controls\\Input" />
+    <Property Name="SccLocalPath4" Value="." />
+    <Property Name="SccLocalPath5" Value="." />
+    <Property Name="SccNumberOfProjects" Value="6" />
+    <Property Name="SccProjectName0" Value="../../Controls/Core" />
+    <Property Name="SccProjectName1" Value="../../Controls/ListView" />
+    <Property Name="SccProjectName2" Value="../../Controls/DataPager" />
+    <Property Name="SccProjectName3" Value="../../Controls/Input" />
+    <Property Name="SccProjectUniqueName0" Value="..\\..\\Controls\\Core\\C1.Blazor.Core.csproj" />
+    <Property Name="SccProjectUniqueName1" Value="..\\..\\Controls\\ListView\\C1.Blazor.ListView.csproj" />
+    <Property Name="SccProjectUniqueName2" Value="..\\..\\Controls\\DataPager\\C1.Blazor.DataPager.csproj" />
+    <Property Name="SccProjectUniqueName3" Value="..\\..\\Controls\\Input\\C1.Blazor.Input.csproj" />
+    <Property Name="SccProjectUniqueName5" Value="C1ListViewExplorer.Server.csproj" />
+    <Property Name="SccTeamFoundationServer" Value="https://tfsdevel.componentone.com:8090/tfs/defaultcollection" />
+  </Properties>
+</Solution>

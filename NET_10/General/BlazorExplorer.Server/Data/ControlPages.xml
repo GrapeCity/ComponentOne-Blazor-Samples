@@ -152,6 +152,8 @@
 					<action text="Heatmap" name="HeatmapChart" ></action>
 					<action text="Contour" name="ContourChart" ></action>
 					<action text="Axis Break" name="AxisBreak" ></action>
+					<action text="Range Zones" name="RangeZones" ></action>
+					<action text="Quadrants" name="Quadrants" ></action>
 				</subactions>
 			</action>
 			<action text="Interaction">
@@ -175,6 +177,7 @@
 		</Control>
 		<Control name="Gauge">
 			<action text="Overview" text.ja="概要" name="Index"></action>
+			<action text="Linear Gauge Direction" name="LinearGaugeDirection"></action>
 			<action text="Using Ranges" text.ja="範囲の使用" name="UsingRanges"></action>
 		</Control>
 		<Control name="FlexPie" popular="true">

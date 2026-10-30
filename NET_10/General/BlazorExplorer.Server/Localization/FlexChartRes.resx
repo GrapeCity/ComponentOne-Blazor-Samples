@@ -607,4 +607,22 @@ Specific series may override those properties and use different data sources and
   <data name="ContourTitle" xml:space="preserve">
     <value>Contour Plot</value>
   </data>
+  <data name="RangeZonesDescription" xml:space="preserve">
+    <value>The sample shows how to use RangeZone to highlight rectangular regions of plot.</value>
+  </data>
+  <data name="QuadrantsDescription" xml:space="preserve">
+    <value>The sample shows how to create quadrants using RangeZone series.</value>
+  </data>
+  <data name="RangeZonesSummary" xml:space="preserve">
+    <value>Range Zones</value>
+  </data>
+  <data name="QuadrantsSummary" xml:space="preserve">
+    <value>Plot with Quadrants</value>
+  </data>
+  <data name="RangeZonesTitle" xml:space="preserve">
+    <value>Range Zones</value>
+  </data>
+  <data name="QuadrantsTitle" xml:space="preserve">
+    <value>Quadrants</value>
+  </data>
 </root>

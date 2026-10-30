@@ -1,0 +1,125 @@
+@implements IAsyncDisposable
+
+<section class="sample-page" aria-labelledby="overview-title">
+    <header class="sample-heading">
+        <h1 id="overview-title">@RibbonRes.OverviewTitle</h1>
+        <p>@RibbonRes.OverviewDescription</p>
+    </header>
+
+    <C1ToolStrip Class="sample-toolstrip" Overflow="ToolStripOverflow.Menu" IsToolLabelVisible="true"
+                 GroupCornerRadius="4" ToolStyle="@("padding: 5px 8px;")">
+        <C1ButtonTool Label="@RibbonRes.Paste" Description="@RibbonRes.Paste" IconTemplate="C1IconTemplate.Paste" Click="@(() => ExecuteEditorCommandAsync("paste", RibbonRes.Paste))" />
+        <C1ButtonTool Label="@RibbonRes.Cut" Description="@RibbonRes.Cut" IconTemplate="C1IconTemplate.Cut" Click="@(() => ExecuteEditorCommandAsync("cut", RibbonRes.Cut))" />
+        <C1ButtonTool Label="@RibbonRes.Copy" Description="@RibbonRes.Copy" IconTemplate="C1IconTemplate.Copy" Click="@(() => ExecuteEditorCommandAsync("copy", RibbonRes.Copy))" />
+        <C1ToolSeparator />
+        <C1ButtonTool Label="@RibbonRes.Undo" Description="@RibbonRes.Undo" IconTemplate="C1IconTemplate.Undo" Click="@(() => ExecuteEditorCommandAsync("undo", RibbonRes.Undo))" />
+        <C1ButtonTool Label="@RibbonRes.Redo" Description="@RibbonRes.Redo" IconTemplate="RedoIcon" Click="@(() => ExecuteEditorCommandAsync("redo", RibbonRes.Redo))" />
+        <C1ButtonTool Label="@RibbonRes.Delete" Description="@RibbonRes.Delete" IconTemplate="C1IconTemplate.Delete" Click="@(() => ExecuteEditorCommandAsync("delete", RibbonRes.Delete))" />
+        <C1ToolSeparator />
+        <C1ToggleButtonTool Label="@RibbonRes.Bold" Description="@RibbonRes.Bold" IconTemplate="C1IconTemplate.Edit"
+                            @bind-IsChecked="_bold" @bind-IsChecked:after="ToggleBoldAsync" />
+        <C1ToggleButtonTool Label="@RibbonRes.Highlight" Description="@RibbonRes.Highlight" IconTemplate="C1IconTemplate.Star5" @bind-IsChecked="_highlight" />
+        <C1MenuTool Label="@_zoom" Description="@RibbonRes.Zoom" IconTemplate="C1IconTemplate.SelectAll">
+            @foreach (var zoomLevel in ZoomLevels)
+            {
+                var level = zoomLevel;
+                <C1ButtonTool Label="@level" Click="@(() => SetZoom(level))" />
+            }
+        </C1MenuTool>
+        <C1ToolSeparator />
+        <C1MenuTool Label="@RibbonRes.More" Description="@RibbonRes.More" IconTemplate="C1IconTemplate.ThreeDotsHorizontal">
+            <C1ButtonTool Label="@RibbonRes.SelectAll" IconTemplate="C1IconTemplate.SelectAll" Click="@(() => ExecuteEditorCommandAsync("selectAll", RibbonRes.SelectAll))" />
+            <C1ButtonTool Label="@RibbonRes.ClearFormatting" IconTemplate="C1IconTemplate.Close" Click="ClearFormattingAsync" />
+        </C1MenuTool>
+    </C1ToolStrip>
+
+    <div class="document-workspace">
+        <article @ref="_editor" class="document-preview" style="@DocumentStyle" contenteditable="true"
+                 role="textbox" aria-multiline="true" aria-label="@RibbonRes.EditorTitle" spellcheck="true"></article>
+        <output class="status-line" aria-live="polite">@_status</output>
+    </div>
+</section>
+
+@code {
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
+
+    private ElementReference _editor;
+    private IJSObjectReference _editorModule;
+    private bool? _bold;
+    private bool? _highlight;
+    private static readonly string[] ZoomLevels = ["75%", "100%", "125%", "150%"];
+    private string _zoom = "100%";
+    private string _status;
+
+    private static RenderFragment<C1Style> RedoIcon => style =>
+        C1IconTemplate.Undo(new C1Style(style) { ["transform"] = "scaleX(-1)" });
+
+    private string DocumentStyle => $"background-color: {(_highlight == true ? "#fff4b8" : "#ffffff")};" +
+        $"font-size: {ZoomScale}rem;";
+
+    private double ZoomScale => _zoom switch
+    {
+        "75%" => 0.85,
+        "125%" => 1.1,
+        "150%" => 1.2,
+        _ => 1
+    };
+
+    protected override void OnInitialized() => _status = RibbonRes.Ready;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender)
+            return;
+
+        _editorModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./editorCommands.js");
+        await _editorModule.InvokeVoidAsync("initialize", _editor, RibbonRes.EditorTitle, RibbonRes.EditorText);
+    }
+
+    private async Task ExecuteEditorCommandAsync(string command, string label)
+    {
+        if (_editorModule == null)
+            return;
+
+        _status = await _editorModule.InvokeAsync<bool>("execute", _editor, command)
+            ? string.Format(RibbonRes.CommandExecuted, label)
+            : string.Format(RibbonRes.CommandUnavailable, label);
+    }
+
+    private Task ToggleBoldAsync() => ExecuteEditorCommandAsync("bold", RibbonRes.Bold);
+
+    private void SetZoom(string zoom) => _zoom = zoom;
+
+    private async Task ClearFormattingAsync()
+    {
+        _bold = false;
+        _highlight = false;
+        _zoom = "100%";
+        await ExecuteEditorCommandAsync("removeFormat", RibbonRes.ClearFormatting);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_editorModule == null)
+            return;
+
+        try
+        {
+            await _editorModule.InvokeVoidAsync("dispose", _editor);
+        }
+        catch (JSDisconnectedException)
+        {
+            // The browser can disconnect before asynchronous component disposal completes.
+        }
+
+        try
+        {
+            await _editorModule.DisposeAsync();
+        }
+        catch (JSDisconnectedException)
+        {
+            // The browser can disconnect before asynchronous component disposal completes.
+        }
+    }
+}

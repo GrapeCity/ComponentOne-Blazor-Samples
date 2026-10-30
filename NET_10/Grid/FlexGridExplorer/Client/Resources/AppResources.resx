@@ -209,7 +209,7 @@
     <value>Sort</value>
   </data>
 	<data name="ConditionalFormattingDescription" xml:space="preserve">
-    <value>Uses a CellFactory to apply conditional formatting.</value>
+    <value>Uses conditional formatting rules to style cells based on their values.</value>
   </data>
 	<data name="ConditionalFormattingTitle" xml:space="preserve">
     <value>Conditional Formatting</value>

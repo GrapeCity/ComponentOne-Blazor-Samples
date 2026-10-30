@@ -1,0 +1,38 @@
+﻿@using C1.Diagram.Parser
+@using C1.Blazor.Diagram
+@inject HttpClient Http
+@inject Services.DataService DataService
+
+<FlexDiagram @ref="diagram" LegendPosition="C1.Chart.Position.None" />
+
+@code {
+    [Parameter]
+    [EditorRequired]
+    public string GraphName { get; set; }
+
+    FlexDiagram? diagram;
+    string graph;
+
+    string Graph
+    {
+        get => graph;
+        set
+        {
+            if (graph != value)
+            {
+                graph = value;
+                if (diagram != null)
+                {
+                    diagram.BeginUpdate();
+                    diagram.LoadMermaidGraph(graph);
+                    diagram.EndUpdate();
+                }
+            }
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Graph = await Http.GetStringAsync(DataService.GetDataPath($"data/{GraphName}"));
+    }
+}

@@ -1,0 +1,118 @@
+@page "/"
+
+@inject DiagramExplorer.Services.SampleService SampleService
+@using DiagramExplorer.Models
+@using DiagramExplorer.Components
+
+<PageTitle>Diagram Explorer</PageTitle>
+
+<div class="app" data-theme="@_theme">
+    <header class="app-header">
+        <button class="icon-btn hamburger" @onclick="ToggleSidebar" title="Toggle sidebar">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor">
+                <rect y="2" width="18" height="2" rx="1" />
+                <rect y="8" width="18" height="2" rx="1" />
+                <rect y="14" width="18" height="2" rx="1" />
+            </svg>
+        </button>
+        <div>
+            <svg fill="white" width="145" height="45" style="display: block">
+                <use href="/_content/DiagramExplorer.Common/logo.svg"></use>
+            </svg>
+       </div>
+        <span class="app-title">ComponentOne | FlexDiagram Explorer</span>
+         <button class="icon-btn theme-btn" @onclick="CycleTheme" title="Theme: @_theme">
+            @if (_theme == "light")
+            {
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="5" />
+                    <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            }
+            else if (_theme == "dark")
+            {
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+            }
+            else
+            {
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" />
+                    <line x1="8" y1="21" x2="16" y2="21" />
+                    <line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+            }
+        </button>
+    </header>
+
+    <div class="app-body">
+        @if (_sidebarOpen)
+        {
+            <div class="overlay" @onclick="CloseSidebar"></div>
+        }
+        <aside class="sidebar @(_sidebarOpen ? "open" : "")">
+            <ul class="tree tree-group">
+                @foreach (var node in _samples)
+                {
+                    <TreeNode Node="node" SelectedId="@_selectedId" OnSelect="SelectSample" />
+                }
+            </ul>
+        </aside>
+
+        <main class="content">
+            @if (_selected is null)
+            {
+                <div class="welcome">
+                    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M4 6h16M4 10h16M4 14h8" />
+                        <rect x="14" y="12" width="7" height="7" rx="1" />
+                    </svg>
+                    <h2>Select a sample</h2>
+                    <p>Choose a sample from the tree on the left to view it here.</p>
+                </div>
+            }
+            else
+            {
+                <SampleViewer Sample="_selected" />
+            }
+        </main>
+    </div>
+</div>
+
+@code {
+    private List<SampleNode> _samples = [];
+    private SampleNode? _selected;
+    private string? _selectedId;
+    private string _theme = "system";
+    private bool _sidebarOpen;
+
+    protected override void OnInitialized()
+    {
+        _samples = SampleService.GetSamples();
+        _selected = SampleService.FindFirstSample();
+    }
+
+    private void SelectSample(SampleNode node)
+    {
+        _selected = node;
+        _selectedId = node.Id;
+        _sidebarOpen = false;
+    }
+
+    private void ToggleSidebar() => _sidebarOpen = !_sidebarOpen;
+    private void CloseSidebar() => _sidebarOpen = false;
+    private void CycleTheme() => _theme = _theme switch
+    {
+        "system" => "light",
+        "light" => "dark",
+        _ => "system",
+    };
+}

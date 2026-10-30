@@ -173,6 +173,7 @@
 		</Control>
 		<Control name="Gauge">
 			<action text="Overview" text.ja="概要" name="Index"></action>
+			<action text="Linear Gauge Direction" name="LinearGaugeDirection"></action>
 			<action text="Using Ranges" text.ja="範囲の使用" name="UsingRanges"></action>
 		</Control>
 		<Control name="FlexPie" popular="true">

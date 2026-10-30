@@ -1,0 +1,214 @@
+@page "/color-picker"
+@rendermode InteractiveServer
+
+<h3>C1ColorPicker</h3>
+
+<div style="display:flex; gap:32px; align-items:flex-start; flex-wrap:wrap;">
+    <div>
+        <h5>@ColorPickerRes.ColorPicker</h5>
+        <C1ColorPicker SelectedColor="@SelectedColor"
+                       SelectedColorChanged="@OnSelectedColorChanged"
+                       IsDropDownOpen="@_isDropDownOpen"
+                       IsDropDownOpenChanged="@OnDropDownOpenChanged"
+                       Mode="@_mode"
+                       Palette="@_palette"
+                       ShowAlphaChannel="@_showAlphaChannel"
+                       ShowRecentColors="@_showRecentColors"
+                       ShowTransparentColor="@_showTransparentColor"
+                       DropDownDirection="@_dropDownDirection"
+                       Style="@PickerStyle" />
+
+        <div style="display:grid; gap:10px; margin-top:16px; max-width:340px;">
+            <label>
+                @ColorPickerRes.SelectedColor
+                <div style="display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:6px;">
+                    <input class="form-control form-control-sm" type="number" min="0" max="255" aria-label="@ColorPickerRes.Alpha" @bind="SelectedAlpha" />
+                    <input class="form-control form-control-sm" type="number" min="0" max="255" aria-label="@ColorPickerRes.Red" @bind="SelectedRed" />
+                    <input class="form-control form-control-sm" type="number" min="0" max="255" aria-label="@ColorPickerRes.Green" @bind="SelectedGreen" />
+                    <input class="form-control form-control-sm" type="number" min="0" max="255" aria-label="@ColorPickerRes.Blue" @bind="SelectedBlue" />
+                </div>
+            </label>
+
+            <label>
+                @ColorPickerRes.IsDropDownOpen
+                <input type="checkbox" @bind="_isDropDownOpen" />
+            </label>
+
+            <label>
+                @ColorPickerRes.Mode
+                <select class="form-select form-select-sm" @bind="_mode">
+                    <option value="@C1ColorPickerMode.Basic">@ColorPickerRes.Basic</option>
+                    <option value="@C1ColorPickerMode.Advanced">@ColorPickerRes.Advanced</option>
+                    <option value="@C1ColorPickerMode.Both">@ColorPickerRes.Both</option>
+                </select>
+            </label>
+
+            <label>
+                @ColorPickerRes.Palette
+                <select class="form-select form-select-sm" @bind="_selectedPaletteTheme">
+                    @foreach (var theme in _paletteThemes)
+                    {
+                        <option value="@theme">@theme</option>
+                    }
+                </select>
+            </label>
+
+            <label>
+                @ColorPickerRes.ShowAlphaChannel
+                <input type="checkbox" @bind="_showAlphaChannel" />
+            </label>
+            <label>
+                @ColorPickerRes.ShowRecentColors
+                <input type="checkbox" @bind="_showRecentColors" />
+            </label>
+            <label>
+                @ColorPickerRes.ShowTransparentColor
+                <input type="checkbox" @bind="_showTransparentColor" />
+            </label>
+
+            <label>
+                @ColorPickerRes.DropDownDirection
+                <select class="form-select form-select-sm" @bind="_dropDownDirection">
+                    <option value="@DropDownDirection.BelowOrAbove">@ColorPickerRes.BelowOrAbove</option>
+                    <option value="@DropDownDirection.AboveOrBelow">@ColorPickerRes.AboveOrBelow</option>
+                    <option value="@DropDownDirection.ForceBelow">@ColorPickerRes.ForceBelow</option>
+                    <option value="@DropDownDirection.ForceAbove">@ColorPickerRes.ForceAbove</option>
+                </select>
+            </label>
+
+            <label>
+                @ColorPickerRes.StyleWidth
+                <input class="form-control form-control-sm" type="number" min="180" max="520" step="10" @bind="_pickerWidth" />
+            </label>
+
+            <label>
+                @ColorPickerRes.StyleHeight
+                <input class="form-control form-control-sm" type="number" min="54" max="120" step="2" @bind="_pickerHeight" />
+            </label>
+        </div>
+    </div>
+
+    <div style="min-width:300px;">
+        <h5>@ColorPickerRes.SelectedColor</h5>
+        <code style="display:block; margin-bottom:16px;">@CssColor</code>
+        <div style="width:160px; height:80px; border:1px solid #d0d7de; border-radius:6px; background:@CssColor;"></div>
+
+        <h5 style="margin-top:22px;">@ColorPickerRes.Presets</h5>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-sm btn-outline-secondary" @onclick="@(() => SelectedColor = C1Color.Red)">@ColorPickerRes.Red</button>
+            <button class="btn btn-sm btn-outline-secondary" @onclick="@(() => SelectedColor = C1Color.Lime)">@ColorPickerRes.Green</button>
+            <button class="btn btn-sm btn-outline-secondary" @onclick="@(() => SelectedColor = C1Color.Blue)">@ColorPickerRes.Blue</button>
+            <button class="btn btn-sm btn-outline-secondary" @onclick="@(() => SelectedColor = C1Color.FromArgb(128, 255, 128, 0))">@ColorPickerRes.Orange50</button>
+            <button class="btn btn-sm btn-outline-secondary" @onclick="@(() => SelectedColor = C1Color.Transparent)">@ColorPickerRes.Transparent</button>
+        </div>
+
+        <h5 style="margin-top:22px;">@ColorPickerRes.Callbacks</h5>
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:6px 12px; align-items:center; max-width:300px;">
+            <span>@ColorPickerRes.SelectedColorChanged</span>
+            <code>@_selectedColorChangedCount</code>
+            <span>@ColorPickerRes.IsDropDownOpenChanged</span>
+            <code>@_dropDownOpenChangedCount</code>
+        </div>
+
+        <h5 style="margin-top:22px;">@ColorPickerRes.CurrentValue</h5>
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:6px 12px; align-items:center; max-width:300px;">
+            <span>@ColorPickerRes.IsDropDownOpen</span>
+            <code>@(_isDropDownOpen ? "true" : "false")</code>
+            <span>@ColorPickerRes.Mode</span>
+            <code>@_mode</code>
+            <span>@ColorPickerRes.Palette</span>
+            <code>@_selectedPaletteTheme</code>
+            <span>@ColorPickerRes.ShowAlphaChannel</span>
+            <code>@_showAlphaChannel</code>
+            <span>@ColorPickerRes.ShowRecentColors</span>
+            <code>@_showRecentColors</code>
+            <span>@ColorPickerRes.ShowTransparentColor</span>
+            <code>@_showTransparentColor</code>
+            <span>@ColorPickerRes.DropDownDirection</span>
+            <code>@_dropDownDirection</code>
+            <span>@ColorPickerRes.Style</span>
+            <code>width:@_pickerWidth px; height:@_pickerHeight px</code>
+            <span>@ColorPickerRes.Alpha</span>
+            <code>@SelectedColor.A</code>
+            <span>@ColorPickerRes.Red</span>
+            <code>@SelectedColor.R</code>
+            <span>@ColorPickerRes.Green</span>
+            <code>@SelectedColor.G</code>
+            <span>@ColorPickerRes.Blue</span>
+            <code>@SelectedColor.B</code>
+        </div>
+    </div>
+</div>
+
+<style>
+    .sample-color-picker-emphasis {
+        box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.18);
+    }
+</style>
+
+@code {
+    bool _isDropDownOpen;
+    bool _showAlphaChannel = true;
+    bool _showRecentColors = true;
+    bool _showTransparentColor = true;
+    int _pickerWidth = 260;
+    int _pickerHeight = 54;
+    int _selectedColorChangedCount;
+    int _dropDownOpenChangedCount;
+    C1ColorPickerMode _mode = C1ColorPickerMode.Both;
+    DropDownDirection _dropDownDirection = DropDownDirection.BelowOrAbove;
+    Office2007ColorTheme _selectedPaletteTheme = Office2007ColorTheme.Office;
+    readonly Office2007ColorTheme[] _paletteThemes = Enum.GetValues<Office2007ColorTheme>();
+    C1Color _selectedColor = C1Color.FromArgb(255, 0, 122, 204);
+    ColorPalette _palette => ColorPalette.GetColorPalette(_selectedPaletteTheme);
+    C1Style PickerStyle => new($"width:{_pickerWidth}px;height:{_pickerHeight}px;");
+
+    C1Color SelectedColor
+    {
+        get => _selectedColor;
+        set => _selectedColor = value ?? C1Color.Transparent;
+    }
+
+    int SelectedAlpha
+    {
+        get => SelectedColor.A;
+        set => SelectedColor = C1Color.FromArgb(ClampByte(value), SelectedColor.R, SelectedColor.G, SelectedColor.B);
+    }
+
+    int SelectedRed
+    {
+        get => SelectedColor.R;
+        set => SelectedColor = C1Color.FromArgb(SelectedColor.A, ClampByte(value), SelectedColor.G, SelectedColor.B);
+    }
+
+    int SelectedGreen
+    {
+        get => SelectedColor.G;
+        set => SelectedColor = C1Color.FromArgb(SelectedColor.A, SelectedColor.R, ClampByte(value), SelectedColor.B);
+    }
+
+    int SelectedBlue
+    {
+        get => SelectedColor.B;
+        set => SelectedColor = C1Color.FromArgb(SelectedColor.A, SelectedColor.R, SelectedColor.G, ClampByte(value));
+    }
+
+    void OnSelectedColorChanged(C1Color color)
+    {
+        SelectedColor = color;
+        _selectedColorChangedCount++;
+    }
+
+    void OnDropDownOpenChanged(bool isOpen)
+    {
+        _isDropDownOpen = isOpen;
+        _dropDownOpenChangedCount++;
+    }
+
+    static byte ClampByte(int value)
+    {
+        return (byte)Math.Max(byte.MinValue, Math.Min(byte.MaxValue, value));
+    }
+
+    string CssColor => $"rgba({SelectedColor.R}, {SelectedColor.G}, {SelectedColor.B}, {(SelectedColor.A / 255d):0.###})";
+}

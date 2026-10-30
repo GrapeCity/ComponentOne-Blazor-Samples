@@ -1,0 +1,8 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x86" />
+  </Configurations>
+
+  <Project Path="BlazorExplorer.Server.csproj" />
+</Solution>

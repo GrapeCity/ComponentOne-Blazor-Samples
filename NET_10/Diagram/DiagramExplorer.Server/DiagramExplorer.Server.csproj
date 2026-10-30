@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
+    <DisableBuildCompression>true</DisableBuildCompression>
+    <RootNamespace>DiagramExplorer</RootNamespace>
+    <DefaultItemExcludes>$(DefaultItemExcludes);DiagramExplorer.Common\**\*</DefaultItemExcludes>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Components\**" />
+    <Content Remove="Components\**" />
+    <EmbeddedResource Remove="Components\**" />
+    <None Remove="Components\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove=".sa3licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Components\Layout\ReconnectModal.razor.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include=".sa3licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="DiagramExplorer.Common\DiagramExplorer.Common.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.Chart">
+      <Version>10.0.20262.62</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>10.0.20262.62</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Diagram">
+      <Version>10.0.20262.62-beta</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Rendering">
+      <Version>10.0.20262.62</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Chart.Drawing" Version="10.0.20262.116" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Components\App.razor" />
+    <Content Include="Components\Layout\MainLayout.razor" />
+    <Content Include="Components\Layout\ReconnectModal.razor" />
+    <None Include="Components\Layout\ReconnectModal.razor.js" />
+    <Content Include="Components\Routes.razor" />
+    <Content Include="Components\Pages\NotFound.razor" />
+    <Content Include="Components\Pages\Error.razor" />
+    <None Include="Components\_Imports.razor" />
+  </ItemGroup>
+</Project>

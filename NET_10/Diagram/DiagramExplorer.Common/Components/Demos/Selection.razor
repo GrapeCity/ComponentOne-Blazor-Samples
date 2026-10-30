@@ -1,0 +1,38 @@
+﻿@using C1.Diagram
+@using C1.Blazor.Diagram
+
+<FlexDiagram @ref="diagram" ScaleMode="ScaleMode.ScaleToFit"
+    DiagramSelectionMode="DiagramSelectionMode.Node"
+    SelectionStyle="color:black;fill:gray;"/>
+
+@code {
+    FlexDiagram diagram;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        if (firstRender)
+            CreateDiagram();
+    }
+
+    private void CreateDiagram()
+    {
+        var node = new Node() { Title = "1.1", Shape = C1.Diagram.Shape.Circle };
+        diagram.Nodes.Add(node);
+        CreateSubNodes(diagram, node, 0, () => 3, 1);
+    }
+
+    private void CreateSubNodes(FlexDiagram diagram, Node node, int level, Func<int> n, int maxLevel = 2, C1.Diagram.Shape shape = C1.Diagram.Shape.Circle)
+    {
+        for (var i = 0; i < n(); i++)
+        {
+            var subNode = new Node() { Title = $"{level + 2}.{i + 1}", Shape = shape };
+            diagram.Nodes.Add(subNode);
+            diagram.Edges.Add(new Edge() { Source = node, Target = subNode });
+
+            if (level < maxLevel)
+                CreateSubNodes(diagram, subNode, level + 1, n, maxLevel, shape);
+        }
+    }
+}

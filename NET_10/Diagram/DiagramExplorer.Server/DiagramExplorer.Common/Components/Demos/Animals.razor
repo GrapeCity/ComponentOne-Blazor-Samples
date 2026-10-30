@@ -1,0 +1,54 @@
+﻿@using C1.Chart
+@using C1.Diagram
+@using C1.Blazor.Diagram
+@using DiagramExplorer.Models
+@inject DiagramExplorer.Services.DataService DataService
+
+<DiagramEditor @bind-Direction="direction" @bind-EdgeRouting="edgeRouting" @bind-Palette="palette" />
+
+<FlexDiagram @ref="diagram" Direction="direction" EdgeRouting="edgeRouting" Palette="palette" LegendPosition="Position.None" 
+    Binding="Phylum,Class,Order,Name" />
+
+@code {
+    DiagramDirection direction = DiagramDirection.TopBottom;
+    EdgeRouting edgeRouting = EdgeRouting.Rectilinear;
+    Palette palette = Palette.Standard;
+    FlexDiagram diagram;
+
+    List<Animal> Data { get; set; }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        if (firstRender)
+        {
+            diagram.NodeCreated += (s, args) =>
+            {
+                var node = (Node)args.Node;
+                var animal = args.Data as Animal;
+
+                node.Title = animal != null ? animal.Name : args.Data.ToString();
+
+                if (animal != null && !string.IsNullOrEmpty(animal.ImagePath))
+                {
+                    node.TitleImage = DataService.GetDataPath(animal.ImagePath);
+                    node.TitleImageSize = new System.Drawing.Size(64, 64);
+                    node.TitleDirection = Direction.Vertical;
+                }
+
+                node.Shape = Shape.RoundedRectangle;
+                node.LegendItem = args.ParentNode == null ? args.Data?.ToString() : args.ParentNode.LegendItem;
+            };
+
+            if(Data!=null)
+                diagram.ItemsSource = Data;
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Data = await DataService.GetAnimalData();
+        diagram?.ItemsSource = Data;
+    }
+}

@@ -1,0 +1,34 @@
+@page "/Gauge/LinearGaugeDirection"
+@using C1.Blazor.Gauge
+@using GaugeDirection = C1.Blazor.Gauge.LinearGaugeDirection
+
+<div class="gaugeFrame">
+    <C1LinearGauge Class="@GetGaugeClass()"
+                   @bind-Value="value"
+                   Direction="selectedDirection"
+                   TextVisibility="GaugeTextVisibility.All" />
+    <label style="align-items:self-end; margin-top:10px">@GaugeRes.ValueText @value.ToString("N0")</label>
+</div>
+
+<_Sections>
+    <Title>@GaugeRes.LinearGaugeDirectionTitle</Title>
+    <Settings>
+        @GaugeRes.DirectionLabel
+        <C1ComboBox T="GaugeDirection"
+                    ItemsSource="directions"
+                    @bind-SelectedItem="selectedDirection"
+                    Class="filled-drop-down" />
+    </Settings>
+    <Summary>@GaugeRes.LinearGaugeDirectionSummary</Summary>
+</_Sections>
+
+@code {
+    private readonly GaugeDirection[] directions = Enum.GetValues<GaugeDirection>();
+    private GaugeDirection selectedDirection = GaugeDirection.Right;
+    private double value = 65;
+
+    private static bool IsVertical(GaugeDirection direction) =>
+        direction is GaugeDirection.Up or GaugeDirection.Down;
+
+    private string GetGaugeClass() => IsVertical(selectedDirection) ? "gauge-vertical" : "gauge";
+}

@@ -1,0 +1,62 @@
+﻿@using C1.Chart
+@using C1.Diagram
+
+<div class="diagram-editor">
+    <label class="enum-field">
+        <span>Direction</span>
+        <InputSelect TValue="DiagramDirection"
+                     Value="Direction"
+                     ValueChanged="OnDirectionChanged"
+                     ValueExpression="@(() => Direction)">
+            @foreach (var status in Enum.GetValues<DiagramDirection>())
+            {
+                <option value="@status">@status</option>
+            }
+        </InputSelect>
+    </label>
+
+    <label class="enum-field">
+        <span>Edge Routing</span>
+        <InputSelect TValue="EdgeRouting"
+                     Value="EdgeRouting"
+                     ValueChanged="OnEdgeRoutingChanged"
+                     ValueExpression="@(() => EdgeRouting)">
+            @foreach (var status in Enum.GetValues<EdgeRouting>())
+            {
+                <option value="@status">@status</option>
+            }
+        </InputSelect>
+    </label>
+
+    <label class="enum-field">
+        <span>Palette</span>
+        <InputSelect TValue="Palette"
+                     Value="Palette"
+                     ValueChanged="OnPaletteChanged"
+                     ValueExpression="@(() => Palette)">
+            @foreach (var status in Enum.GetValues<Palette>())
+            {
+                <option value="@status">@status</option>
+            }
+        </InputSelect>
+    </label>
+
+</div>
+
+@code {
+    [Parameter]
+    public DiagramDirection Direction { get; set; } = DiagramDirection.TopBottom;
+    [Parameter] public EventCallback<DiagramDirection> DirectionChanged { get; set; }
+
+    [Parameter]
+    public EdgeRouting EdgeRouting { get; set; } = EdgeRouting.Rectilinear;
+    [Parameter] public EventCallback<EdgeRouting> EdgeRoutingChanged { get; set; }
+
+    [Parameter]
+    public Palette Palette { get; set; } = Palette.Standard;
+    [Parameter] public EventCallback<Palette> PaletteChanged { get; set; }
+
+    private Task OnDirectionChanged(DiagramDirection value) => DirectionChanged.InvokeAsync(value);
+    private Task OnEdgeRoutingChanged(EdgeRouting value) => EdgeRoutingChanged.InvokeAsync(value);
+    private Task OnPaletteChanged(Palette value) => PaletteChanged.InvokeAsync(value);
+}

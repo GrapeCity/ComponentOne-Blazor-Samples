@@ -177,6 +177,13 @@ app {
     margin-bottom: 12px;
 }
 
+.gauge-vertical {
+    width: 100px;
+    height: 300px;
+    font-family: Arial;
+    margin-bottom: 12px;
+}
+
 .radialGauge {
     height: 200px;
 }

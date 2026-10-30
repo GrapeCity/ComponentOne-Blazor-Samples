@@ -13,26 +13,26 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>10.0.20261.126</Version>
+      <Version>10.0.20262.62</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.DataPager">
-      <Version>10.0.20261.126</Version>
+      <Version>10.0.20262.62</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid">
-      <Version>10.0.20261.126</Version>
+      <Version>10.0.20262.62</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Grid.ConditionalFormatting">
-      <Version>10.0.20261.126</Version>
+      <Version>10.0.20262.62</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>10.0.20261.126</Version>
+      <Version>10.0.20262.62</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.RulesManager">
-      <Version>10.0.20261.126</Version>
+      <Version>10.0.20262.62</Version>
     </PackageReference>
-    <PackageReference Include="C1.DataCollection" Version="10.0.20261.8" />
-    <PackageReference Include="C1.DataCollection.Serialization" Version="10.0.20261.8" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.0" />
+    <PackageReference Include="C1.DataCollection" Version="10.0.20262.6" />
+    <PackageReference Include="C1.DataCollection.Serialization" Version="10.0.20262.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.13" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Client\FlexGridExplorer.Client.csproj" />

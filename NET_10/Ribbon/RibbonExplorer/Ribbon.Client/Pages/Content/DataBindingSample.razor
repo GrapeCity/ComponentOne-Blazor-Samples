@@ -1,0 +1,83 @@
+@using System.Collections.ObjectModel
+
+<section class="sample-page" aria-labelledby="binding-title">
+    <header class="sample-heading">
+        <h1 id="binding-title">@RibbonRes.DataBindingTitle</h1>
+        <p>@RibbonRes.DataBindingDescription</p>
+    </header>
+
+    <C1ToolStrip Class="sample-toolstrip" ItemsSource="_commands" Overflow="ToolStripOverflow.Menu" />
+
+    <p class="implementation-note">@RibbonRes.ItemsSourceNote</p>
+
+    <C1ToolStrip Class="binding-actions" Overflow="ToolStripOverflow.None" IsToolLabelVisible="true">
+        <C1ButtonTool Label="@RibbonRes.AddCommand" IconTemplate="C1IconTemplate.PlusSquare" Click="AddCommand" />
+        <C1ButtonTool Label="@RibbonRes.RemoveCommand" IconTemplate="C1IconTemplate.MinusSquare" Click="RemoveCommand" />
+    </C1ToolStrip>
+
+    <section class="activity-panel" aria-labelledby="activity-title">
+        <h2 id="activity-title">@RibbonRes.CommandHistory</h2>
+        @if (_history.Count == 0)
+        {
+            <p>@RibbonRes.NoActivity</p>
+        }
+        else
+        {
+            <ol>
+                @foreach (var entry in _history)
+                {
+                    <li>@entry</li>
+                }
+            </ol>
+        }
+    </section>
+</section>
+
+@code {
+    private readonly ObservableCollection<C1ButtonTool> _commands = [];
+    private readonly Queue<CommandDefinition> _availableCommands = new();
+    private readonly List<string> _history = [];
+
+    protected override void OnInitialized()
+    {
+        _commands.Add(CreateTool(new(RibbonRes.Open, C1IconTemplate.Edit)));
+        _commands.Add(CreateTool(new(RibbonRes.Save, C1IconTemplate.CheckMark)));
+        _commands.Add(CreateTool(new(RibbonRes.Refresh, C1IconTemplate.Undo)));
+        _commands.Add(CreateTool(new(RibbonRes.Print, C1IconTemplate.SelectAll)));
+        _availableCommands.Enqueue(new(RibbonRes.Export, C1IconTemplate.ArrowDown));
+        _availableCommands.Enqueue(new(RibbonRes.Share, C1IconTemplate.Star5));
+    }
+
+    private C1ButtonTool CreateTool(CommandDefinition command) => new()
+    {
+        Label = command.Label,
+        Description = command.Label,
+        IconTemplate = command.Icon,
+        Click = EventCallback.Factory.Create(this, () => Execute(command.Label))
+    };
+
+    private void Execute(string label)
+    {
+        _history.Insert(0, string.Format(RibbonRes.CommandExecuted, label));
+        if (_history.Count > 5)
+            _history.RemoveAt(_history.Count - 1);
+    }
+
+    private void AddCommand()
+    {
+        if (_availableCommands.TryDequeue(out var command))
+            _commands.Add(CreateTool(command));
+    }
+
+    private void RemoveCommand()
+    {
+        if (_commands.Count == 0)
+            return;
+
+        var command = _commands[^1];
+        _availableCommands.Enqueue(new(command.Label, command.IconTemplate));
+        _commands.RemoveAt(_commands.Count - 1);
+    }
+
+    private sealed record CommandDefinition(string Label, RenderFragment<C1Style> Icon);
+}

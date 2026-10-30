@@ -153,4 +153,13 @@
     <value>現在の値：</value>
     <comment>Value:</comment>
   </data>
+  <data name="DirectionLabel" xml:space="preserve">
+    <value>方向</value>
+  </data>
+  <data name="LinearGaugeDirectionSummary" xml:space="preserve">
+    <value>C1LinearGauge の Direction プロパティを示します。Right、Left、Up、Down の各方向での表示を確認できます。</value>
+  </data>
+  <data name="LinearGaugeDirectionTitle" xml:space="preserve">
+    <value>Linear Gauge の方向</value>
+  </data>
 </root>

@@ -120,6 +120,15 @@
   <data name="BulletGraph" xml:space="preserve">
     <value>BulletGraph</value>
   </data>
+  <data name="DirectionLabel" xml:space="preserve">
+    <value>Direction</value>
+  </data>
+  <data name="LinearGaugeDirectionSummary" xml:space="preserve">
+    <value>Shows the Direction property of C1LinearGauge with different orientations: Right, Left, Up, and Down.</value>
+  </data>
+  <data name="LinearGaugeDirectionTitle" xml:space="preserve">
+    <value>Linear Gauge Direction</value>
+  </data>
   <data name="LinearGauge" xml:space="preserve">
     <value>LinearGauge</value>
   </data>

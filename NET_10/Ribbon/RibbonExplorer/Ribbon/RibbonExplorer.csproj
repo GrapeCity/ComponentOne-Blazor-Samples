@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <DisableBuildCompression>true</DisableBuildCompression>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="C1.Blazor.Core">
-      <Version>10.0.20261.126</Version>
+      <Version>10.0.20262.62</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Input">
-      <Version>10.0.20261.126</Version>
+      <Version>10.0.20262.62</Version>
     </PackageReference>
     <PackageReference Include="C1.Blazor.Ribbon">
-      <Version>10.0.20261.126</Version>
+      <Version>10.0.20262.62</Version>
     </PackageReference>
     <ProjectReference Include="..\Ribbon.Client\RibbonExplorer.Client.csproj" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.13" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="RibbonExplorer.sa3licx" />

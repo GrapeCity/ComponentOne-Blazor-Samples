@@ -277,7 +277,7 @@ namespace FlexGridExplorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uses a CellFactory to apply conditional formatting..
+        ///   Looks up a localized string similar to Uses conditional formatting rules to style cells based on their values..
         /// </summary>
         public static string ConditionalFormattingDescription {
             get {

@@ -1,0 +1,74 @@
+﻿@using C1.Diagram
+@using C1.Blazor.Diagram
+@implements IDisposable
+
+<div class="diagram-host" @onclick="OnClick">
+    <FlexDiagram @ref="diagram" ScaleMode="ScaleMode.ScaleToFit" InteractionMode="InteractionMode.None" />
+</div>
+
+@code {
+    FlexDiagram? diagram;
+    Random rnd = new Random();
+    System.Timers.Timer timer = new(1000);
+    uint[] palette = new uint[] { 0xfffbb4ae, 0xffb3cde3, 0xffccebc5, 0xffdecbe4, 0xfffed9a6, 0xffffffcc, 0xffe5d8bd, 0xfffddaec };
+    string[] insects = "🐝,🦋,🐞,🐜,🐛,🦗,🦟,🐌".Split(",");
+    Random random = new Random();
+
+    private void OnClick()
+    {
+        timer.Enabled = !timer.Enabled;
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        if (firstRender && diagram!=null)
+        {
+            // dynamically create diagram
+            timer.Elapsed += async (s, e) =>
+            {
+
+                await InvokeAsync(
+                    () => {
+                        diagram.BeginUpdate();
+
+                        var nodes = diagram.Nodes;
+                        var edges = diagram.Edges;
+
+                        if (nodes.Count >= 20)
+                        {
+                            nodes.Clear();
+                            edges.Clear();
+                        }
+
+                        var text = insects[random.Next(0, insects.Length)].Trim();
+                        nodes.Add(new Node() { Title = text, LegendItem = text, Shape = C1.Diagram.Shape.Circle });
+
+                        var i = random.Next(0, nodes.Count - 1);
+                        if (i != nodes.Count - 1)
+                            edges.Add(new Edge() { Source = nodes[i], Target = nodes[nodes.Count - 1] });
+                        i = random.Next(0, nodes.Count - 1);
+                        if (i != nodes.Count - 1)
+                            edges.Add(new Edge() { Source = nodes[i], Target = nodes[nodes.Count - 1] });
+
+                        diagram.EndUpdate();
+
+                        StateHasChanged();
+                    });
+            };
+
+            timer.Start();
+        }
+    }
+
+    public void Dispose()
+    {
+        if (timer != null)
+        {
+            timer.Stop();
+            timer.Dispose();
+            timer = null;
+        }
+    }
+}

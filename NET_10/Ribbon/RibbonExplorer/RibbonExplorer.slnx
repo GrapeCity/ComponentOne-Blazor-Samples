@@ -1,0 +1,5 @@
+<Solution>
+
+  <Project Path="Ribbon.Client/RibbonExplorer.Client.csproj" />
+  <Project Path="Ribbon/RibbonExplorer.csproj" />
+</Solution>

@@ -1,0 +1,36 @@
+﻿@using C1.Chart
+@using C1.Diagram
+@using C1.Blazor.Diagram
+
+<DiagramEditor @bind-Direction="direction" @bind-EdgeRouting="edgeRouting" @bind-Palette="palette"/>
+
+<FlexDiagram @ref="diagram" Direction="direction" EdgeRouting="edgeRouting" Palette="palette" 
+    InteractionMode="InteractionMode.Pan" />
+
+@code {
+    DiagramDirection direction = DiagramDirection.TopBottom;
+    EdgeRouting edgeRouting = EdgeRouting.Rectilinear;
+    Palette palette = Palette.Standard;
+    FlexDiagram diagram;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        if (firstRender)
+        {
+            ((C1.Diagram.IDiagram)diagram).Clear();
+
+            diagram.Nodes.Add(new Node { Text = "Start", Shape = Shape.Circle, LegendItem = "Start", Tooltip = "Start" });
+            diagram.Nodes.Add(new Node { Text = "Decision", Shape = Shape.Diamond, LegendItem = "Decision", Tooltip = "Decision" });
+            diagram.Nodes.Add(new Node { Text = "Option A", Shape = Shape.RoundedRectangle, LegendItem = "Option", Tooltip = "Option A" });
+            diagram.Nodes.Add(new Node { Text = "Option B", Shape = Shape.RoundedRectangle, LegendItem = "Option", Tooltip = "Option A" });
+            diagram.Nodes.Add(new Node { Text = "Option C", Shape = Shape.RoundedRectangle, LegendItem = "Option", Tooltip = "Option A" });
+
+            diagram.Edges.Add(new Edge { Source = diagram.Nodes[0], Target = diagram.Nodes[1], TargetArrow = C1.Chart.ArrowStyle.Normal });
+            diagram.Edges.Add(new Edge { Source = diagram.Nodes[1], Target = diagram.Nodes[2], TargetArrow = C1.Chart.ArrowStyle.Normal });
+            diagram.Edges.Add(new Edge { Source = diagram.Nodes[1], Target = diagram.Nodes[3], TargetArrow = C1.Chart.ArrowStyle.Normal });
+            diagram.Edges.Add(new Edge { Source = diagram.Nodes[1], Target = diagram.Nodes[4], TargetArrow = C1.Chart.ArrowStyle.Normal });
+        }
+    }
+}

@@ -1,0 +1,123 @@
+@page "/advanced-color-picker"
+@rendermode InteractiveServer
+
+<h3>C1AdvancedColorPickerPart</h3>
+
+<div style="display:flex; gap:32px; align-items:flex-start; flex-wrap:wrap;">
+    <div>
+        <h5>@ColorPickerRes.AdvancedColorPickerPart</h5>
+        <C1AdvancedColorPickerPart SelectedColor="@SelectedColor"
+                                   SelectedColorChanged="@OnSelectedColorChanged"
+                                   ColorPicked="@OnColorPicked"
+                                   ShowAlphaChannel="@_showAlphaChannel"
+                                   Style="@PickerStyle" />
+    </div>
+
+    <div style="min-width:320px;">
+        <h5>@ColorPickerRes.Settings</h5>
+        <div style="display:grid; gap:10px; max-width:360px;">
+            <label>
+                @ColorPickerRes.SelectedColor
+                <div style="display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:6px;">
+                    <input class="form-control form-control-sm" type="number" min="0" max="255" aria-label="@ColorPickerRes.Alpha" @bind="SelectedAlpha" />
+                    <input class="form-control form-control-sm" type="number" min="0" max="255" aria-label="@ColorPickerRes.Red" @bind="SelectedRed" />
+                    <input class="form-control form-control-sm" type="number" min="0" max="255" aria-label="@ColorPickerRes.Green" @bind="SelectedGreen" />
+                    <input class="form-control form-control-sm" type="number" min="0" max="255" aria-label="@ColorPickerRes.Blue" @bind="SelectedBlue" />
+                </div>
+            </label>
+
+            <label>
+                @ColorPickerRes.ShowAlphaChannel
+                <input type="checkbox" @bind="_showAlphaChannel" />
+            </label>
+
+            <label>
+                @ColorPickerRes.StyleWidth
+                <input class="form-control form-control-sm" type="number" min="320" max="720" step="10" @bind="_pickerWidth" />
+            </label>
+        </div>
+
+        <h5 style="margin-top:22px;">@ColorPickerRes.CurrentValue</h5>
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <div style="@PreviewStyle"></div>
+            <code>@CssColor</code>
+        </div>
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:6px 12px; align-items:center; max-width:340px;">
+            <span>@ColorPickerRes.SelectedColorChanged</span>
+            <code>@_selectedColorChangedCount</code>
+            <span>@ColorPickerRes.ColorPicked</span>
+            <code>@_colorPickedCount</code>
+            <span>@ColorPickerRes.ShowAlphaChannel</span>
+            <code>@_showAlphaChannel</code>
+        </div>
+
+        <h5 style="margin-top:22px;">@ColorPickerRes.Presets</h5>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-sm btn-outline-secondary" @onclick="@(() => SelectedColor = C1Color.Red)">@ColorPickerRes.Red</button>
+            <button class="btn btn-sm btn-outline-secondary" @onclick="@(() => SelectedColor = C1Color.Lime)">@ColorPickerRes.Green</button>
+            <button class="btn btn-sm btn-outline-secondary" @onclick="@(() => SelectedColor = C1Color.Blue)">@ColorPickerRes.Blue</button>
+            <button class="btn btn-sm btn-outline-secondary" @onclick="@(() => SelectedColor = C1Color.FromArgb(128, 255, 128, 0))">@ColorPickerRes.Orange50</button>
+            <button class="btn btn-sm btn-outline-secondary" @onclick="@(() => SelectedColor = C1Color.Transparent)">@ColorPickerRes.Transparent</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    int _pickerWidth = 560;
+    int _selectedColorChangedCount;
+    int _colorPickedCount;
+    bool _showAlphaChannel = true;
+    C1Color _selectedColor = C1Color.FromArgb(255, 0, 122, 204);
+
+    C1Color SelectedColor
+    {
+        get => _selectedColor;
+        set => _selectedColor = value ?? C1Color.Transparent;
+    }
+
+    int SelectedAlpha
+    {
+        get => SelectedColor.A;
+        set => SelectedColor = C1Color.FromArgb(ClampByte(value), SelectedColor.R, SelectedColor.G, SelectedColor.B);
+    }
+
+    int SelectedRed
+    {
+        get => SelectedColor.R;
+        set => SelectedColor = C1Color.FromArgb(SelectedColor.A, ClampByte(value), SelectedColor.G, SelectedColor.B);
+    }
+
+    int SelectedGreen
+    {
+        get => SelectedColor.G;
+        set => SelectedColor = C1Color.FromArgb(SelectedColor.A, SelectedColor.R, ClampByte(value), SelectedColor.B);
+    }
+
+    int SelectedBlue
+    {
+        get => SelectedColor.B;
+        set => SelectedColor = C1Color.FromArgb(SelectedColor.A, SelectedColor.R, SelectedColor.G, ClampByte(value));
+    }
+
+    C1Style PickerStyle => new($"width:{_pickerWidth}px;");
+    string CssColor => $"rgba({SelectedColor.R}, {SelectedColor.G}, {SelectedColor.B}, {(SelectedColor.A / 255d):0.###})";
+    string PreviewStyle => $"width:48px;height:48px;border:1px solid #bbb;border-radius:3px;background:{CssColor};";
+
+    void OnSelectedColorChanged(C1Color color)
+    {
+        SelectedColor = color;
+        _selectedColorChangedCount++;
+    }
+
+    Task OnColorPicked(C1Color color)
+    {
+        SelectedColor = color;
+        _colorPickedCount++;
+        return Task.CompletedTask;
+    }
+
+    static byte ClampByte(int value)
+    {
+        return (byte)Math.Max(byte.MinValue, Math.Min(byte.MaxValue, value));
+    }
+}

@@ -1,0 +1,137 @@
+﻿@using C1.Chart
+@using C1.Diagram
+@using C1.Blazor.Diagram
+@using System.Drawing
+@using DiagramExplorer.Models
+@inject DiagramExplorer.Services.DataService DataService
+
+<DiagramEditor @bind-Direction="direction" @bind-EdgeRouting="edgeRouting" @bind-Palette="palette" />
+
+<div class="diagram-host" @onclick="OnClick">
+    <FlexDiagram @ref="diagram" Direction="direction" EdgeRouting="edgeRouting" Palette="palette"
+             Binding="World,Continent,Region,Code" LegendPosition="Position.None" />
+</div>
+
+@code {
+    DiagramDirection direction = DiagramDirection.TopBottom;
+    EdgeRouting edgeRouting = EdgeRouting.Rectilinear;
+    Palette palette = Palette.Standard;
+    FlexDiagram diagram;
+
+    List<Country> Data { get; set; }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        if (firstRender)
+        {
+            diagram.NodeCreated += (s, args) =>
+            {
+                var node = (Node)args.Node;
+                var country = args.Data as Country;
+                node.Shape = C1.Diagram.Shape.RoundedRectangle;
+
+                if (country != null)
+                {
+                    node.Tooltip = country.Name;
+                    node.TitleImage = DataService.GetDataPath(country.FlagImagePath);
+                    node.TitleImageAlignment = C1.Chart.ContentAlignment.MiddleCenter;
+                    node.TitleImageSize = new Size(16, 16);
+                }
+
+                if (country != null)
+                {
+                    args.ParentNode.LegendItem = node.LegendItem = country.Continent;
+                    // hide low-level nodes
+                    args.ParentNode.Appearance = node.Appearance = NodeAppearance.None;
+                }
+                else
+                {
+                    var text = args.Data.ToString();
+                    node.Content = text == "World" ? "➖" : "➕";
+                    node.LegendItem = text;
+                }
+            };
+            if (Data != null)
+                diagram.ItemsSource = Data;
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Data = await DataService.GetCountryData();
+        diagram?.ItemsSource = Data;
+    }
+
+
+    private async void OnClick(MouseEventArgs args)
+    {
+        var info = diagram.HitTest(args.OffsetX, args.OffsetY);
+        if (info != null && info.Distance == 0 && info.Element is INode node)
+        {
+            diagram.BeginUpdate();
+            ToggleNodeState(node);
+            diagram.EndUpdate();
+        }
+    }
+
+    // expand or collapse the node
+    static void ToggleNodeState(INode node)
+    {
+        var childs = GetChilds(node);
+
+        if (childs.Count > 0)
+        {
+            var collapsed = childs[0].Appearance != NodeAppearance.Visible;
+
+            if (collapsed)
+            {
+                foreach (var child in childs)
+                    child.Appearance = NodeAppearance.Visible;
+            }
+            else
+            {
+                SetChildAppearance(node, NodeAppearance.None,
+                    (n) =>
+                    {
+                        if (n.Content.Text == "➖")
+                            n.Content.Text = "➕";
+                    }
+                );
+
+                // the first child is hidden to keep node on the same layout layer
+                childs[0].Appearance = NodeAppearance.Hidden;
+            }
+
+            node.Content.Text = collapsed ? "➖" : "➕";
+        }
+    }
+
+    static void SetChildAppearance(INode node, NodeAppearance appearance, Action<INode>? action = null)
+    {
+        var childNodes = GetChilds(node);
+
+        foreach (var child in childNodes)
+        {
+            child.Appearance = appearance;
+            SetChildAppearance(child, appearance, action);
+            action?.Invoke(child);
+        }
+    }
+
+    static List<INode> GetChilds(INode node)
+    {
+        var list = new List<INode>();
+        var diagram = node.Diagram;
+        var edges = diagram.GetEdges();
+
+        foreach (var edge in edges)
+        {
+            if (edge.Source == node && edge.Target != null)
+                list.Add(edge.Target);
+        }
+
+        return list;
+    }
+}

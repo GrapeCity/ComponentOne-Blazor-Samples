@@ -1,0 +1,53 @@
+﻿@using C1.Chart
+@using C1.Diagram
+@using C1.Blazor.Diagram
+@using DiagramExplorer.Models
+@inject DiagramExplorer.Services.DataService DataService
+
+<DiagramEditor @bind-Direction="direction" @bind-EdgeRouting="edgeRouting" @bind-Palette="palette" />
+
+<FlexDiagram @ref="diagram" Direction="direction" EdgeRouting="edgeRouting" Palette="palette" LegendPosition="Position.None"
+             Binding="Name" ChildItemsPath="Childs" ItemsSource="DataService.GetOrgChartData()" />
+
+@code {
+    DiagramDirection direction = DiagramDirection.TopBottom;
+    EdgeRouting edgeRouting = EdgeRouting.Rectilinear;
+    Palette palette = Palette.Standard;
+    FlexDiagram diagram;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        if (firstRender)
+        {
+            diagram.NodeCreated += (s, args) =>
+            {
+                var orgNode = args.Data as OrgNode;
+                var node = args.Node as Node;
+
+                if (orgNode == null || node == null)
+                    return;
+
+                if (!string.IsNullOrEmpty(orgNode.FirstName))
+                {
+                    node.Title = $"{orgNode.FirstName}\n{orgNode.LastName}";
+                    node.Content = orgNode.JobTitle;
+
+                    node.TitleImage = DataService.GetDataPath(orgNode.ImagePath); 
+                    node.TitleImageSize = new System.Drawing.Size(60, 80);
+                    //node.TitleStyle = nodeStyle;
+                    //node.NodeStyle = nodeContentStyle;
+                }
+                else
+                {
+                    node.Title = orgNode.Name;
+                    //node.TitleStyle = node.NodeStyle = headerStyle;
+                }
+
+                node.LegendItem = orgNode.Department;
+                node.Shape = C1.Diagram.Shape.RoundedRectangle;
+             };
+        }
+    }
+}

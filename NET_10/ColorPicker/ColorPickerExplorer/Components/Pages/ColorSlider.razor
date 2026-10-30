@@ -1,0 +1,112 @@
+@page "/color-slider"
+@rendermode InteractiveServer
+
+<h3>@ColorPickerRes.ColorSliderUsage</h3>
+
+<div style="display:flex; gap:36px; align-items:flex-start; flex-wrap:wrap;">
+    <div>
+        <h5>@ColorPickerRes.HueSlider</h5>
+        <C1Slider Minimum="0"
+                  Maximum="1"
+                  Value="@_hue"
+                  ValueChanged="@OnHueChanged"
+                  SmallValueChange="0.01"
+                  ValueChange="0.1"
+                  Orientation="Orientation.Vertical"
+                  ScrollBehavior="SliderScrollBehavior.None"
+                  ValueChangeMode="SliderValueChangeMode.OnChange"
+                  Style="@VerticalSliderStyle"
+                  TrackStyle="@_hueTrackStyle"
+                  ThumbStyle="@_thumbStyle" />
+    </div>
+
+    <div style="min-width:280px;">
+        <h5>@ColorPickerRes.AlphaSlider</h5>
+        <C1Slider Minimum="0"
+                  Maximum="1"
+                  Value="@_alpha"
+                  ValueChanged="@OnAlphaChanged"
+                  SmallValueChange="0.05"
+                  ValueChange="0.1"
+                  Orientation="Orientation.Horizontal"
+                  ScrollBehavior="SliderScrollBehavior.None"
+                  ValueChangeMode="SliderValueChangeMode.OnChange"
+                  Style="@HorizontalSliderStyle"
+                  TrackStyle="@AlphaTrackStyle"
+                  ThumbStyle="@_thumbStyle" />
+
+        <div style="margin-top:18px; display:flex; align-items:center; gap:10px;">
+            <div style="@PreviewStyle"></div>
+            <code>@PreviewCssColor</code>
+        </div>
+
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:6px 12px; align-items:center; margin-top:18px;">
+            <span>@ColorPickerRes.Hue</span>
+            <code>@_hue.ToString("0.000")</code>
+            <span>@ColorPickerRes.Alpha</span>
+            <code>@_alpha.ToString("0.000")</code>
+        </div>
+    </div>
+</div>
+
+@code {
+    double _hue = 0.58;
+    double _alpha = 1;
+
+    readonly C1Style _hueTrackStyle = new("background:linear-gradient(to top, red 0%, yellow 17%, lime 33%, cyan 50%, blue 67%, magenta 83%, red 100%);width:10px;border-radius:0;");
+    readonly C1Style _thumbStyle = new("width:14px;height:14px;border:2px solid #fff;border-radius:0;background:transparent;box-shadow:0 0 0 1px #000;");
+
+    C1Style VerticalSliderStyle => new("width:28px;height:180px;");
+
+    C1Style HorizontalSliderStyle => new("width:260px;height:28px;");
+
+    C1Style AlphaTrackStyle => new($"background:linear-gradient(to right, {PreviewTransparentCssColor} 0%, {PreviewOpaqueCssColor} 100%);height:10px;border-radius:0;");
+
+    string PreviewOpaqueCssColor
+    {
+        get
+        {
+            var color = C1HslColor.ToColor((float)_hue, 1f, 0.5f);
+            return $"rgba({color.R}, {color.G}, {color.B}, 1)";
+        }
+    }
+
+    string PreviewTransparentCssColor
+    {
+        get
+        {
+            var color = C1HslColor.ToColor((float)_hue, 1f, 0.5f);
+            return $"rgba({color.R}, {color.G}, {color.B}, 0)";
+        }
+    }
+
+    string PreviewCssColor
+    {
+        get
+        {
+            var color = C1HslColor.ToColor((float)_hue, 1f, 0.5f);
+            return $"rgba({color.R}, {color.G}, {color.B}, {_alpha:0.###})";
+        }
+    }
+
+    string PreviewStyle => "width:44px;height:44px;border:1px solid #ccc;border-radius:3px;" +
+        $"background-image:linear-gradient({PreviewCssColor}, {PreviewCssColor})," +
+        "linear-gradient(45deg,#d7d7d7 25%,transparent 25%)," +
+        "linear-gradient(-45deg,#d7d7d7 25%,transparent 25%)," +
+        "linear-gradient(45deg,transparent 75%,#d7d7d7 75%)," +
+        "linear-gradient(-45deg,transparent 75%,#d7d7d7 75%);" +
+        "background-color:#fff;background-size:auto,12px 12px,12px 12px,12px 12px,12px 12px;" +
+        "background-position:0 0,0 0,0 6px,6px -6px,-6px 0;";
+
+    Task OnHueChanged(double value)
+    {
+        _hue = value;
+        return Task.CompletedTask;
+    }
+
+    Task OnAlphaChanged(double value)
+    {
+        _alpha = value;
+        return Task.CompletedTask;
+    }
+}

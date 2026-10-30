@@ -12,14 +12,14 @@
     DetailVisibilityMode <C1ComboBox ItemsSource="detailVisibilityModes" @bind-SelectedItem="detailVisibilityMode" />
 </p>
 
-<FlexGrid IsReadOnly="true" AutoGenerateColumns="false" HeadersVisibility="GridHeadersVisibility.All" ItemsSource="customers" Style="@("max-height:50vh")">
+<FlexGrid IsReadOnly="true" AutoGenerateColumns="false" HeadersVisibility="GridHeadersVisibility.All" ItemsSource="customers" AlternatingRowBackground="@("#FF982222")" AlternatingRowForeground="C1Color.White" AlternatingRowHeaderBackground="@("#FF982222")" AlternatingRowHeaderForeground="C1Color.White" AlternatingStrategy="GridAlternatingStrategy.DataIndex" AlternatingRows="GridAlternatingRows.Even" Style="@("max-height:50vh")">
     <FlexGridColumns>
         <GridColumn Binding="Id" Width="80" />
         <GridColumn Binding="FirstName" Width="GridLength.Star" />
         <GridColumn Binding="LastName" Width="GridLength.Star" />
     </FlexGridColumns>
     <FlexGridBehaviors>
-        <FlexGridDetailProvider TItem="IEnumerable<City>" Height="200" DetailVisibilityMode="detailVisibilityMode" DetailLoading="OnDetailLoading">
+        <FlexGridDetailProvider TItem="IEnumerable<City>" Height="200" DetailVisibilityMode="detailVisibilityMode" DetailLoading="OnDetailLoading" AlternateDetails="false">
             <FlexGrid ItemsSource="@context" Style="@("height:100%")">
                 <FlexGridBehaviors>
                     <CheckListBehavior SelectionBinding="Selected" />

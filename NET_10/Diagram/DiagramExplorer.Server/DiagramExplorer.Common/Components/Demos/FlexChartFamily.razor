@@ -1,0 +1,81 @@
+﻿@using C1.Chart
+@using C1.Diagram
+@using C1.Blazor.Diagram
+@using System.Drawing
+
+<DiagramEditor @bind-Direction="direction" @bind-EdgeRouting="edgeRouting" @bind-Palette="palette"/>
+
+<FlexDiagram @ref="diagram" Direction="direction" EdgeRouting="edgeRouting" Palette="palette" />
+
+@code {
+    DiagramDirection direction = DiagramDirection.TopBottom;
+    EdgeRouting edgeRouting = EdgeRouting.Rectilinear;
+    Palette palette = Palette.Standard;
+    FlexDiagram diagram;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        if (firstRender)
+            CreateFlexChartFamily(diagram);
+    }
+
+    public static void CreateFlexChartFamily(FlexDiagram diagram)
+    {
+        var nodes = diagram.Nodes;
+        var edges = diagram.Edges;
+
+        nodes.Add(new Node() { Text = "📈 FlexChart", Content = "6 Charting Components" });// 0
+        nodes.Add(new Node() { Text = "📋 Table-based Data" }); // 1
+        nodes.Add(new Node() { Appearance = NodeAppearance.Hidden });//
+        nodes.Add(new Node() { Text = "🌳 Hierarchical Data" }); // 2
+
+        nodes.Add(new Node() 
+        { 
+            Text = "📈 FlexChart", 
+        });//3
+        
+        nodes.Add(new Node() 
+        { 
+            Text = "🥧 FlexPie", 
+        });// 4
+        
+        nodes.Add(new Node()
+        {
+            Text = "📡 FlexRadar",
+        }); // 5
+
+        nodes.Add(new Node()
+        {
+            Text = "🧱 TreeMap",
+        }); // 6
+        nodes.Add(new Node()
+        {
+            Text = "💥 Sunburst",
+        });// 7
+        nodes.Add(new Node()
+        {
+            Text = "🔀 FlexDiagram",
+        });// 7
+
+        edges.Add(new Edge() { Source = nodes[0], Target = nodes[1] });
+        edges.Add(new Edge() { Source = nodes[0], Target = nodes[2] });
+        edges.Add(new Edge() { Source = nodes[0], Target = nodes[3] });
+
+        edges.Add(new Edge() { Source = nodes[1], Target = nodes[4] });
+        edges.Add(new Edge() { Source = nodes[1], Target = nodes[5] });
+        edges.Add(new Edge() { Source = nodes[1], Target = nodes[6] });
+
+        edges.Add(new Edge() { Source = nodes[3], Target = nodes[7] });
+        edges.Add(new Edge() { Source = nodes[3], Target = nodes[8] });
+        edges.Add(new Edge() { Source = nodes[3], Target = nodes[9] });
+
+        foreach (var node in nodes)
+        {
+            node.TitleDirection = C1.Chart.Direction.Vertical;
+            node.TitleOrder = C1.Chart.LabelOrder.TextImage;
+            node.Shape = C1.Diagram.Shape.RoundedRectangle;
+        }
+    }
+}

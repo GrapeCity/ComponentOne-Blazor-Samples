@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Components.Routing
+<Router AppAssembly="typeof(Program).Assembly" NotFoundPage="typeof(Pages.NotFound)" AdditionalAssemblies="new[] { typeof(DiagramExplorer.Components.Pages.Home).Assembly }" >
+    <Found Context="routeData">
+        <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
+        <FocusOnNavigate RouteData="routeData" Selector="h1" />
+    </Found>
+</Router>
+
+@code {
+    protected override void OnInitialized()
+    {
+        var asm = typeof(DiagramExplorer.Components.Pages.Home).Assembly;
+        Console.WriteLine($"Assembly: {asm.FullName}");
+        Console.WriteLine($"Routable types: {asm.ExportedTypes
+               .Where(t => t.GetCustomAttributes(typeof(RouteAttribute), false).Any())
+               .Select(t => t.Name)
+               .Aggregate((a, b) => $"{a}, {b}")}");
+    }
+}

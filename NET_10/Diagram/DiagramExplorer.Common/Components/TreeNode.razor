@@ -1,0 +1,41 @@
+@using DiagramExplorer.Models
+
+<li>
+    <div class="tree-item @(Node.IsLeaf ? "" : "is-group") @(SelectedId == Node.Id ? "selected" : "")"
+         @onclick="HandleClick">
+        @if (!Node.IsLeaf)
+        {
+            <span class="tree-toggle @(_expanded ? "open" : "")">&#9658;</span>
+        }
+        else
+        {
+            <span class="tree-leaf-indent"></span>
+        }
+        @Node.Title
+    </div>
+    @if (!Node.IsLeaf && _expanded)
+    {
+        <ul class="tree-group tree-children">
+            @foreach (var child in Node.Children)
+            {
+                <TreeNode Node="child" SelectedId="@SelectedId" OnSelect="OnSelect" />
+            }
+        </ul>
+    }
+</li>
+
+@code {
+    [Parameter, EditorRequired] public SampleNode Node { get; set; } = default!;
+    [Parameter] public string? SelectedId { get; set; }
+    [Parameter] public EventCallback<SampleNode> OnSelect { get; set; }
+
+    private bool _expanded = true;
+
+    private void HandleClick()
+    {
+        if (!Node.IsLeaf)
+            _expanded = !_expanded;
+        else
+            OnSelect.InvokeAsync(Node);
+    }
+}

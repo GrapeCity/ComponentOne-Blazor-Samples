@@ -1,0 +1,125 @@
+﻿@page "/FlexChart/RangeZones"
+@using Localization
+@using C1.Chart;
+@using C1.Blazor.Chart;
+
+<FlexChart @ref="chart" Class="chart" HeaderContent="Ping" ChartType="ChartType.Line" BindingX="Timestamp" Binding="LatencyMs" LegendPosition="Position.Top" AxesOnTop="true">
+    <SeriesCollection>
+        <RangeZone MaxY="100" Name="Good" Style="background:#e7f6ec;" />
+        <RangeZone MinY="100" MaxY="200" Name="Fair" Style="background:#fff6e2;" />
+        <RangeZone MinY="200" Name="Poor" Style="background:#fdeaea;" />
+        <Series Name="8.8.8.8 (Google)" ItemsSource="Data1" Style="stroke:#1b9e77" />
+        <Series Name="1.1.1.1 (Cloudflare)" ItemsSource="Data2" Style="stroke:#7570b3" />
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis AxisType="AxisType.X" Position="Position.Bottom" Title="Time →" MajorGrid="true" />
+        <Axis AxisType="AxisType.Y" Position="Position.Left" Title="Ping, ms →" MajorGrid="true" />
+    </AxisCollection>
+</FlexChart>
+
+<_Sections>
+    <Title>@FlexChartRes.RangeZonesTitle</Title>
+    <Summary>@FlexChartRes.RangeZonesSummary</Summary>
+    <Description>@FlexChartRes.RangeZonesDescription</Description>
+</_Sections>
+
+@code {
+    FlexChart chart;
+    List<PingSample> Data1 { get; set; }
+    List<PingSample> Data2 { get; set; }
+
+    protected override void OnInitialized()
+    {
+        var start = DateTime.Now.AddHours(-1);
+        var duration = TimeSpan.FromHours(3);
+        var interval = TimeSpan.FromSeconds(60);
+
+        Data1 = DataSource.GeneratePingData(new Profile
+        {
+            BaseLatencyMs = 18,
+            JitterMs = 5,
+            SpikeChance = 0.02,
+            PacketLossChance = 0.002
+        }, start: start, duration: duration, interval: interval);
+
+        Data2 = DataSource.GeneratePingData(new Profile
+        {
+            BaseLatencyMs = 85,
+            JitterMs = 18,
+            SpikeChance = 0.05,
+            PacketLossChance = 0.01
+        }, start: start, duration: duration, interval: interval);
+
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        if (firstRender)
+        {
+            foreach (var series in chart.Series)
+                if (series is RangeZone zone)
+                    zone.DataLabel.Position = LabelPosition.Right;
+        }
+    }
+
+    public class PingSample
+    {
+        public DateTime Timestamp { get; set; }
+        public double? LatencyMs { get; set; } // null = timeout / packet loss
+    }
+
+    public class Profile
+    {
+        public double BaseLatencyMs { get; set; }
+        public double JitterMs { get; set; }
+        public double SpikeChance { get; set; }
+        public double PacketLossChance { get; set; }
+    }
+
+    public class DataSource
+    {
+        public static List<PingSample> GeneratePingData(Profile profile, DateTime start, TimeSpan duration, TimeSpan interval)
+        {
+            var random = new Random(123);
+            var result = new List<PingSample>();
+
+            for (var time = start; time <= start + duration; time += interval)
+            {
+                double? latency = GenerateLatency(random, profile, time, start);
+                result.Add(new PingSample { Timestamp = time, LatencyMs = latency });
+            }
+
+            return result;
+        }
+
+        private static double? GenerateLatency(Random random, Profile profile, DateTime timestamp, DateTime start)
+        {
+            if (random.NextDouble() < profile.PacketLossChance)
+                return null;
+
+            var minutes = (timestamp - start).TotalMinutes;
+            var latency = profile.BaseLatencyMs + RandomNormal(random, 0, profile.JitterMs);
+
+            latency += Math.Sin(minutes / 30.0) * profile.JitterMs * 0.5;
+
+            if (random.NextDouble() < profile.SpikeChance)
+                latency += random.Next(80, 400);
+
+            return Math.Max(1, Math.Round(latency, 1));
+        }
+
+        private static double RandomNormal(Random random, double mean, double stdDev)
+        {
+            var u1 = 1.0 - random.NextDouble();
+            var u2 = 1.0 - random.NextDouble();
+
+            var randStdNormal =
+                Math.Sqrt(-2.0 * Math.Log(u1)) *
+                Math.Sin(2.0 * Math.PI * u2);
+
+            return mean + stdDev * randStdNormal;
+        }
+    }
+}

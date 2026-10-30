@@ -1,0 +1,65 @@
+<section class="sample-page" aria-labelledby="layout-title">
+    <header class="sample-heading">
+        <h1 id="layout-title">@RibbonRes.LayoutTitle</h1>
+        <p>@RibbonRes.LayoutDescription</p>
+    </header>
+
+    <section class="settings-band" aria-labelledby="settings-title">
+        <h2 id="settings-title">@RibbonRes.Settings</h2>
+        <div class="settings-grid">
+            <label>
+                <span>@RibbonRes.Orientation</span>
+                <select class="form-select" @bind="_orientation">
+                    <option value="@Orientation.Horizontal">@RibbonRes.Horizontal</option>
+                    <option value="@Orientation.Vertical">@RibbonRes.Vertical</option>
+                </select>
+            </label>
+            <label>
+                <span>@RibbonRes.ToolOrientation</span>
+                <select class="form-select" @bind="_toolOrientation">
+                    <option value="@Orientation.Horizontal">@RibbonRes.Horizontal</option>
+                    <option value="@Orientation.Vertical">@RibbonRes.Vertical</option>
+                </select>
+            </label>
+            <label>
+                <span>@RibbonRes.Overflow</span>
+                <select class="form-select" @bind="_overflow">
+                    <option value="@ToolStripOverflow.Menu">@RibbonRes.Menu</option>
+                    <option value="@ToolStripOverflow.None">@RibbonRes.None</option>
+                </select>
+            </label>
+            <label class="check-setting">
+                <input type="checkbox" @bind="_showLabels" />
+                <span>@RibbonRes.ShowLabels</span>
+            </label>
+            <label class="check-setting">
+                <input type="checkbox" @bind="_narrow" />
+                <span>@RibbonRes.ConstrainWidth</span>
+            </label>
+        </div>
+    </section>
+
+    <div class="layout-demo @(_narrow ? "layout-demo-narrow" : null) @(_orientation == Orientation.Vertical ? "layout-demo-vertical" : null)">
+        <C1ToolStrip Class="sample-toolstrip" Orientation="_orientation" ToolOrientation="_toolOrientation" Overflow="_overflow"
+                     IsToolLabelVisible="_showLabels" GroupCornerRadius="4" ToolStyle="@("padding: 6px 9px;")">
+            <C1ButtonTool Label="@RibbonRes.Open" Description="@RibbonRes.Open" IconTemplate="C1IconTemplate.Edit" />
+            <C1ButtonTool Label="@RibbonRes.Save" Description="@RibbonRes.Save" IconTemplate="C1IconTemplate.CheckMark" />
+            <C1ToolSeparator />
+            <C1ButtonTool Label="@RibbonRes.Cut" Description="@RibbonRes.Cut" IconTemplate="C1IconTemplate.Cut" />
+            <C1ButtonTool Label="@RibbonRes.Copy" Description="@RibbonRes.Copy" IconTemplate="C1IconTemplate.Copy" />
+            <C1ButtonTool Label="@RibbonRes.Paste" Description="@RibbonRes.Paste" IconTemplate="C1IconTemplate.Paste" />
+            <C1ToolSeparator />
+            <C1ButtonTool Label="@RibbonRes.Find" Description="@RibbonRes.Find" IconTemplate="C1IconTemplate.Filter" />
+            <C1ButtonTool Label="@RibbonRes.Share" Description="@RibbonRes.Share" IconTemplate="C1IconTemplate.Star5" />
+            <C1ButtonTool Label="@RibbonRes.Print" Description="@RibbonRes.Print" IconTemplate="C1IconTemplate.SelectAll" />
+        </C1ToolStrip>
+    </div>
+</section>
+
+@code {
+    private Orientation _orientation = Orientation.Horizontal;
+    private Orientation _toolOrientation = Orientation.Horizontal;
+    private ToolStripOverflow _overflow = ToolStripOverflow.Menu;
+    private bool _showLabels = true;
+    private bool _narrow = true;
+}

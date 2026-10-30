@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
+    <RootNamespace>DiagramExplorer</RootNamespace>
+    <DefaultItemExcludes>$(DefaultItemExcludes);DiagramExplorer.Common\**\*</DefaultItemExcludes>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove=".sa3licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include=".sa3licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.Chart">
+      <Version>10.0.20262.62</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Core">
+      <Version>10.0.20262.62</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Diagram">
+      <Version>10.0.20262.62-beta</Version>
+    </PackageReference>
+    <PackageReference Include="C1.Blazor.Rendering">
+      <Version>10.0.20262.62</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.8" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DiagramExplorer.Common\DiagramExplorer.Common.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,6 @@
+<Solution>
+
+  <Project Path="Client/FlexGridExplorer.Client.csproj" />
+  <Project Path="Server/FlexGridExplorer.Server.csproj" />
+  <Project Path="Shared/FlexGridExplorer.Shared.csproj" />
+</Solution>
